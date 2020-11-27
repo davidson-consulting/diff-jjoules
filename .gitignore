@@ -1,0 +1,6 @@
+*.iml
+target/
+.idea
+spooned/
+src/test/resources/example/
+src/test/resources/example-refactor/
