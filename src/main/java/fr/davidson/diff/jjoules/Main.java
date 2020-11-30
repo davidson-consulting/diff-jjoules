@@ -2,6 +2,7 @@ package fr.davidson.diff.jjoules;
 
 import fr.davidson.diff.jjoules.configuration.Configuration;
 import fr.davidson.diff.jjoules.configuration.Options;
+import fr.davidson.diff.jjoules.maven.JJoulesInjection;
 import fr.davidson.diff.jjoules.util.CSVReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,8 +36,10 @@ public class Main {
                 new fr.davidson.diff.jjoules.process.junit5.JJoulesProcessor(testsList);
         LOGGER.info("Instrument version before commit...");
         Main.run(configuration.pathToFirstVersion, processor);
+        Main.inject(configuration.pathToFirstVersion);
         LOGGER.info("Instrument version after commit...");
         Main.run(configuration.pathToSecondVersion, processor);
+        Main.inject(configuration.pathToSecondVersion);
     }
 
     private static void run(final String rootPathFolder, AbstractProcessor<CtMethod<?>> processor) {
@@ -44,13 +47,17 @@ public class Main {
         Launcher launcher = new Launcher();
         launcher.addInputResource(rootPathFolder + "/" + TEST_FOLDER_PATH);
 
-        launcher.getEnvironment().setAutoImports(true);
-        launcher.getEnvironment().setNoClasspath(true);
+        launcher.getEnvironment().setAutoImports(false);
+        launcher.getEnvironment().setNoClasspath(false);
 
         launcher.addProcessor(processor);
         launcher.getEnvironment().setOutputType(OutputType.CLASSES);
         launcher.getEnvironment().setSourceOutputDirectory(new File(rootPathFolder + "/" + TEST_FOLDER_PATH));
         launcher.run();
+    }
+
+    private static void inject(final String rootPathFolder) {
+        new JJoulesInjection(rootPathFolder).inject();
     }
 
 }
