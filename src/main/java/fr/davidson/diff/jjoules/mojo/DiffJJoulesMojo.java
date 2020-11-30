@@ -31,13 +31,20 @@ public class DiffJJoulesMojo extends AbstractMojo {
     @Parameter(property = "tests-list")
     private String testsList;
 
+    /**
+     *	[Optional] Enable this flag for junit4 test suites.
+     */
+    @Parameter(property = "junit4", defaultValue = "false")
+    private boolean junit4;
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         Main.main(
             new String[] {
                     "--path-dir-first-version", this.project.getBasedir().getAbsolutePath(),
                     "--path-dir-second-version", this.pathDirSecondVersion,
-                    "--tests-list", this.testsList
+                    "--tests-list", this.testsList,
+                    this.junit4 ? "--junit4" : ""
             }
         );
     }

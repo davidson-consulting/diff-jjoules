@@ -1,6 +1,5 @@
-package fr.davidson.diff.jjoules.process;
+package fr.davidson.diff.jjoules.process.junit5;
 
-import fr.davidson.diff.jjoules.util.CSVReader;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtAnnotation;
 import spoon.reflect.declaration.CtMethod;
@@ -37,7 +36,7 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
     public void process(CtMethod<?> ctMethod) {
         System.out.println("Processing " + ctMethod.getDeclaringType().getQualifiedName() + "#" + ctMethod.getSimpleName());
         final Factory factory = ctMethod.getFactory();
-        final CtTypeReference<? extends Annotation> reference = factory.Type().createReference("org.powerapi.jjoules.junit.EnergyTest");
+        final CtTypeReference<? extends Annotation> reference = factory.Type().createReference("org.powerapi.jjoules.junit5.EnergyTest");
         final CtAnnotation<? extends Annotation> testAnnotation = ctMethod.getAnnotations().stream().filter(ctAnnotation -> ctAnnotation.getType().getQualifiedName().endsWith("Test")).findAny().get();
         ctMethod.removeAnnotation(testAnnotation);
         ctMethod.addAnnotation(factory.createAnnotation(reference));

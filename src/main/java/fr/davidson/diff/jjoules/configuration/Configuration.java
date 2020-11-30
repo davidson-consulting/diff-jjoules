@@ -13,9 +13,12 @@ public class Configuration {
 
     public final String pathToTestListAsCSV;
 
-    public Configuration(String pathToFirstVersion, String pathToSecondVersion, String pathToTestListAsCSV) {
+    public final boolean junit4;
+
+    public Configuration(String pathToFirstVersion, String pathToSecondVersion, String pathToTestListAsCSV, boolean junit4) {
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
         this.pathToTestListAsCSV = pathToTestListAsCSV;
+        this.junit4 = junit4;
     }
 }

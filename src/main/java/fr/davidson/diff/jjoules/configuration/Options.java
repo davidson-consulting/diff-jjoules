@@ -1,9 +1,6 @@
 package fr.davidson.diff.jjoules.configuration;
 
-import com.martiansoftware.jsap.FlaggedOption;
-import com.martiansoftware.jsap.JSAP;
-import com.martiansoftware.jsap.JSAPException;
-import com.martiansoftware.jsap.JSAPResult;
+import com.martiansoftware.jsap.*;
 import fr.davidson.diff.jjoules.Main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +30,8 @@ public class Options {
         return new Configuration(
                 parse.getString("path-dir-first-version"),
                 parse.getString("path-dir-second-version"),
-                parse.getString("tests-list")
+                parse.getString("tests-list"),
+                parse.getBoolean("junit4")
         );
     }
 
@@ -69,11 +67,17 @@ public class Options {
         pathToDiff.setHelp("[Mandatory] Specify the path to a CSV file that contains the list of tests to be instrumented.");
         pathToDiff.setStringParser(JSAP.STRING_PARSER);
 
+        Switch junit4 = new Switch("junit4");
+        junit4.setLongFlag("junit4");
+        junit4.setDefault("false");
+        junit4.setHelp("[Optional] enable this flag for junit4 test suites");
+
         try {
             jsap.registerParameter(pathDirectoryFirstVersion);
             jsap.registerParameter(pathDirectorySecondVersion);
             jsap.registerParameter(module);
             jsap.registerParameter(pathToDiff);
+            jsap.registerParameter(junit4);
         } catch (JSAPException e) {
             e.printStackTrace();
             usage();

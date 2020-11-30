@@ -2,12 +2,13 @@ package fr.davidson.diff.jjoules;
 
 import fr.davidson.diff.jjoules.configuration.Configuration;
 import fr.davidson.diff.jjoules.configuration.Options;
-import fr.davidson.diff.jjoules.process.JJoulesProcessor;
 import fr.davidson.diff.jjoules.util.CSVReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.Launcher;
 import spoon.OutputType;
+import spoon.processing.AbstractProcessor;
+import spoon.reflect.declaration.CtMethod;
 
 import java.io.File;
 import java.util.List;
@@ -29,13 +30,16 @@ public class Main {
         final Configuration configuration = Options.parse(args);
         final Map<String, List<String>> testsList = CSVReader.readFile(configuration.pathToTestListAsCSV);
         LOGGER.info("{}", testsList.keySet().stream().map(key -> key + ":" + testsList.get(key)).collect(Collectors.joining("\n")));
+        final AbstractProcessor<CtMethod<?>> processor = configuration.junit4 ?
+                new fr.davidson.diff.jjoules.process.junit4.JJoulesProcessor(testsList) :
+                new fr.davidson.diff.jjoules.process.junit5.JJoulesProcessor(testsList);
         LOGGER.info("Instrument version before commit...");
-        Main.run(configuration.pathToFirstVersion, testsList);
+        Main.run(configuration.pathToFirstVersion, processor);
         LOGGER.info("Instrument version after commit...");
-        Main.run(configuration.pathToSecondVersion, testsList);
+        Main.run(configuration.pathToSecondVersion, processor);
     }
 
-    private static void run(final String rootPathFolder, final Map<String, List<String>> testsList) {
+    private static void run(final String rootPathFolder, AbstractProcessor<CtMethod<?>> processor) {
         LOGGER.info("Run on {}", rootPathFolder);
         Launcher launcher = new Launcher();
         launcher.addInputResource(rootPathFolder + "/" + TEST_FOLDER_PATH);
@@ -43,7 +47,7 @@ public class Main {
         launcher.getEnvironment().setAutoImports(true);
         launcher.getEnvironment().setNoClasspath(true);
 
-        launcher.addProcessor(new JJoulesProcessor(testsList));
+        launcher.addProcessor(processor);
         launcher.getEnvironment().setOutputType(OutputType.CLASSES);
         launcher.getEnvironment().setSourceOutputDirectory(new File(rootPathFolder + "/" + TEST_FOLDER_PATH));
         launcher.run();
