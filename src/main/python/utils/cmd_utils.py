@@ -88,6 +88,12 @@ def copy_jjoules_result(src_dir, dst):
     print('copy dir', src,  dst)
     copy_directory(src, dst)
 
+def copy(src, dst):
+    try:
+        copyfile(src, dst)
+    except (SameFileError):
+       print('src and dst same file... passing', src)
+
 def copy_directory(src, dst):
     try:
         copytree(src, dst)
