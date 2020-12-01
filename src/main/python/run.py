@@ -44,5 +44,8 @@ if __name__ == '__main__':
 
     reset_hard(commit_sha_v1, PATH_V1)
     reset_hard(commit_sha_v2, PATH_V2)
-
-    run(nb_iteration, output_path + project_name + '/' + commit_sha_v1[:6] + '_' + commit_sha_v2[:6])
+    try:
+        mkdir(output_path + '/' + project_name + '/' + commit_sha_v1[:6] + '_' + commit_sha_v2[:6])
+    except FileExistsError:
+        print('pass...')
+    run(nb_iteration, output_path + '/' + project_name + '/' + commit_sha_v1[:6] + '_' + commit_sha_v2[:6])

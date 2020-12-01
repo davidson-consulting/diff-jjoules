@@ -111,6 +111,10 @@ def clone(url, folder_path):
         ])
     )
 
+def mkdir(path):
+    os.makedirs(path)
+
+
 CMD_GIT_RESET_HARD = 'git reset --hard'
 
 def reset_hard(commitsha, git_repo_path):
