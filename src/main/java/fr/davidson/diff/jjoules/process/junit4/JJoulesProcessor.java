@@ -1,6 +1,6 @@
 package fr.davidson.diff.jjoules.process.junit4;
 
-import spoon.processing.AbstractProcessor;
+import fr.davidson.diff.jjoules.process.AbstractJJoulesProcessor;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtLiteral;
 import spoon.reflect.code.CtTypeAccess;
@@ -16,21 +16,10 @@ import java.util.*;
  * benjamin.danglot@davidson.fr
  * 27/11/2020
  */
-public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
+public class JJoulesProcessor extends AbstractJJoulesProcessor {
 
-    private final Map<String, List<String>> testsToBeInstrumented;
-
-    public JJoulesProcessor(final Map<String, List<String>> testsList) {
-        this.testsToBeInstrumented = testsList;
-    }
-
-    @Override
-    public boolean isToBeProcessed(CtMethod<?> candidate) {
-        return candidate.getDeclaringType() != null &&
-                this.testsToBeInstrumented.containsKey(candidate.getDeclaringType().getQualifiedName()) &&
-                this.testsToBeInstrumented.get(
-                        candidate.getDeclaringType().getQualifiedName()
-                ).contains(candidate.getSimpleName());
+    public JJoulesProcessor(final Map<String, List<String>> testsList, String rootPathFolder) {
+        super(testsList, rootPathFolder);
     }
 
     @Override
@@ -62,6 +51,6 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
 
         ctMethod.getBody().insertBegin(beforeTestInvocation);
         ctMethod.getBody().insertEnd(afterTestInvocation);
+        this.instrumentedTypes.add(ctMethod.getDeclaringType());
     }
-
 }

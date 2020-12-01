@@ -31,6 +31,7 @@ public class Options {
                 parse.getString("path-dir-first-version"),
                 parse.getString("path-dir-second-version"),
                 parse.getString("tests-list"),
+                parse.getString("classpath").split(":"),
                 parse.getBoolean("junit4")
         );
     }
@@ -67,6 +68,13 @@ public class Options {
         pathToDiff.setHelp("[Mandatory] Specify the path to a CSV file that contains the list of tests to be instrumented.");
         pathToDiff.setStringParser(JSAP.STRING_PARSER);
 
+        FlaggedOption classpath = new FlaggedOption("classpath");
+        classpath.setRequired(false);
+        classpath.setLongFlag("classpath");
+        classpath.setShortFlag('c');
+        classpath.setHelp("[Mandatory] Specify the classpath to execute the tests. Should be a single string, separated by ':' (double-dot)");
+        classpath.setStringParser(JSAP.STRING_PARSER);
+
         Switch junit4 = new Switch("junit4");
         junit4.setLongFlag("junit4");
         junit4.setDefault("false");
@@ -77,6 +85,7 @@ public class Options {
             jsap.registerParameter(pathDirectorySecondVersion);
             jsap.registerParameter(module);
             jsap.registerParameter(pathToDiff);
+            jsap.registerParameter(classpath);
             jsap.registerParameter(junit4);
         } catch (JSAPException e) {
             e.printStackTrace();

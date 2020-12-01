@@ -1,6 +1,6 @@
 package fr.davidson.diff.jjoules.process.junit5;
 
-import spoon.processing.AbstractProcessor;
+import fr.davidson.diff.jjoules.process.AbstractJJoulesProcessor;
 import spoon.reflect.declaration.CtAnnotation;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
@@ -15,21 +15,10 @@ import java.util.Map;
  * benjamin.danglot@davidson.fr
  * 27/11/2020
  */
-public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
+public class JJoulesProcessor extends AbstractJJoulesProcessor {
 
-    private final Map<String, List<String>> testsToBeInstrumented;
-
-    public JJoulesProcessor(final Map<String, List<String>> testsList) {
-        this.testsToBeInstrumented = testsList;
-    }
-
-    @Override
-    public boolean isToBeProcessed(CtMethod<?> candidate) {
-        return candidate.getDeclaringType() != null &&
-                this.testsToBeInstrumented.containsKey(candidate.getDeclaringType().getQualifiedName()) &&
-                this.testsToBeInstrumented.get(
-                        candidate.getDeclaringType().getQualifiedName()
-                ).contains(candidate.getSimpleName());
+    public JJoulesProcessor(Map<String, List<String>> testsList, String rootPathFolder) {
+        super(testsList, rootPathFolder);
     }
 
     @Override
