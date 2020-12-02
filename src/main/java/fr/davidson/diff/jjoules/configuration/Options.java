@@ -17,16 +17,17 @@ public class Options {
     public static final JSAP OPTIONS = initJSAP();
 
     public static void usage() {
-        LOGGER.error("");
-        LOGGER.error("Usage: java -jar target/dspot-<version>-jar-with-dependencies.jar");
-        LOGGER.error("                          " + OPTIONS.getUsage());
+        LOGGER.error(OPTIONS.getUsage());
         LOGGER.error("");
         LOGGER.error(OPTIONS.getHelp());
-        System.exit(1);
     }
 
     public static Configuration parse(String[] args) {
         final JSAPResult parse = OPTIONS.parse(args);
+        if (parse.getBoolean("help")) {
+            usage();
+            return null;
+        }
         return new Configuration(
                 parse.getString("path-dir-first-version"),
                 parse.getString("path-dir-second-version"),
@@ -69,7 +70,7 @@ public class Options {
         pathToDiff.setStringParser(JSAP.STRING_PARSER);
 
         FlaggedOption classpath = new FlaggedOption("classpath");
-        classpath.setRequired(false);
+        classpath.setRequired(true);
         classpath.setLongFlag("classpath");
         classpath.setShortFlag('c');
         classpath.setHelp("[Mandatory] Specify the classpath to execute the tests. Should be a single string, separated by ':' (double-dot)");
@@ -80,6 +81,12 @@ public class Options {
         junit4.setDefault("false");
         junit4.setHelp("[Optional] enable this flag for junit4 test suites");
 
+        Switch help = new Switch("help");
+        help.setLongFlag("help");
+        help.setShortFlag('h');
+        help.setDefault("false");
+        help.setHelp("[Optional] display usage.");
+
         try {
             jsap.registerParameter(pathDirectoryFirstVersion);
             jsap.registerParameter(pathDirectorySecondVersion);
@@ -87,6 +94,7 @@ public class Options {
             jsap.registerParameter(pathToDiff);
             jsap.registerParameter(classpath);
             jsap.registerParameter(junit4);
+            jsap.registerParameter(help);
         } catch (JSAPException e) {
             e.printStackTrace();
             usage();

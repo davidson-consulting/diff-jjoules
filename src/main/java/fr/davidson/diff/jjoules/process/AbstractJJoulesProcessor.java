@@ -51,7 +51,7 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
             env.setAutoImports(true);
             env.setNoClasspath(false);
             env.setCommentEnabled(true);
-            JavaOutputProcessor processor = new JavaOutputProcessor(env.createPrettyPrinterAutoImport());
+            JavaOutputProcessor processor = new JavaOutputProcessor(env.createPrettyPrinter());
             processor.setFactory(type.getFactory());
             processor.getEnvironment().setSourceOutputDirectory(directory);
             processor.createJavaFile(type);

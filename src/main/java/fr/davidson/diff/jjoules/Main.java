@@ -11,6 +11,8 @@ import spoon.Launcher;
 import spoon.OutputType;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
+import spoon.support.modelobs.ChangeCollector;
+import spoon.support.sniper.SniperJavaPrettyPrinter;
 
 import java.util.List;
 import java.util.Map;
@@ -29,6 +31,9 @@ public class Main {
 
     public static void main(String[] args) {
         final Configuration configuration = Options.parse(args);
+        if (configuration == null) {
+            return;
+        }
         final Map<String, List<String>> testsList = CSVReader.readFile(configuration.pathToTestListAsCSV);
         LOGGER.info("{}", testsList.keySet().stream().map(key -> key + ":" + testsList.get(key)).collect(Collectors.joining("\n")));
         final AbstractJJoulesProcessor processor = configuration.junit4 ?
@@ -53,9 +58,13 @@ public class Main {
         System.arraycopy(classpath, 0, finalClassPath, 2, classpath.length);
         launcher.getEnvironment().setSourceClasspath(finalClassPath);
         launcher.getEnvironment().setNoClasspath(false);
-        launcher.getEnvironment().setAutoImports(true);
+        launcher.getEnvironment().setAutoImports(false);
         launcher.getEnvironment().setLevel("DEBUG");
-
+        final ChangeCollector changeCollector = new ChangeCollector();
+        changeCollector.attachTo(launcher.getEnvironment());
+        launcher.getEnvironment().setPrettyPrinterCreator(() ->
+                new SniperJavaPrettyPrinter(launcher.getEnvironment())
+        );
         testsList.keySet().forEach(key -> {
             final String pathToClass = rootPathFolder + "/" + TEST_FOLDER_PATH +
                     (key.replaceAll("\\.", "/") + ".java");
