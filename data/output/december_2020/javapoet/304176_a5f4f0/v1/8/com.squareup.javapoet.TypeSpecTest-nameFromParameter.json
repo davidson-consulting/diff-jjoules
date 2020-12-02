@@ -1,0 +1,21 @@
+{
+  "package-0/uncore|uJ": 183,
+  "psys|uJ": 0,
+  "package-0/dram|uJ": 0,
+  "package-0|uJ": 0,
+  "uncore|uJ": 183,
+  "duration|ns": 962303,
+  "dram|mW": 0,
+  "core|mW": 4630,
+  "package|uJ": 0,
+  "package-0/dram|mW": 0,
+  "dram|uJ": 0,
+  "package-0/core|uJ": 4456,
+  "package-0/core|mW": 4630,
+  "core|uJ": 4456,
+  "package-0/uncore|mW": 190,
+  "package-0|mW": 0,
+  "package|mW": 0,
+  "psys|mW": 0,
+  "uncore|mW": 190
+}
