@@ -43,24 +43,22 @@ public class DiffJJoulesMojo extends AbstractMojo {
     @Parameter(property = "classpath-path", defaultValue = "classpath")
     private String classpathPath;
 
-    /**
-     * [Optional] Enable this flag for junit4 test suites.
-     */
-    @Parameter(property = "junit4", defaultValue = "false")
-    private boolean junit4;
-
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         final String classpath;
         try (BufferedReader reader = new BufferedReader(new FileReader(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath))) {
             classpath = reader.lines().collect(Collectors.joining(":"));
+            final boolean junit4 = classpath.contains("junit-4");
+            if (junit4) {
+                getLog().info("Enable JUnit4 mode");
+            }
             Main.main(
                     new String[]{
                             "--path-dir-first-version", this.project.getBasedir().getAbsolutePath(),
-                            "--path-dir-second-version", this.pathDirSecondVersion,
+                             "--path-dir-second-version", this.pathDirSecondVersion,
                             "--tests-list", this.testsList,
                             "--classpath", classpath,
-                            this.junit4 ? "--junit4" : ""
+                            junit4 ? "--junit4" : ""
                     }
             );
         } catch (Exception e) {
