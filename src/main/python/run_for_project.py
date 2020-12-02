@@ -29,6 +29,8 @@ def run(nb_iteration, output_path):
     if not code == 0:
         return -1
     tests_to_execute = get_tests_to_execute()
+    if len(tests_to_execute) == 0:
+        return -1
     for i in range(nb_iteration):
         print(i)
 
@@ -61,7 +63,6 @@ if __name__ == '__main__':
         for line in lines[1:]:
             commits.append(line[:-1])
 
-    #commits.reverse()
     delete_directory(PATH_V1)
     delete_directory(PATH_V2)
     clone(repo_url[:-1], PATH_V1)
@@ -75,17 +76,19 @@ if __name__ == '__main__':
     while current_nb_completed_commits < nb_commits and cursor_commits < len(commits) - 1:
         commit_sha_v1 = commits[cursor_commits]
         commit_sha_v2 = commits[cursor_commits - 1]
-        print(commits)
         print('Run for', project_name, commit_sha_v1, cursor_commits, commit_sha_v2, cursor_commits - 1, 'output_path', output_path)
         reset_hard(commit_sha_v1, PATH_V1)
         reset_hard(commit_sha_v2, PATH_V2)
+        currnet_output_path = output_path + '/' + project_name + '/' + commit_sha_v1[:6] + '_' + commit_sha_v2[:6]
         try:
-            mkdir(output_path + '/' + project_name + '/' + commit_sha_v1[:6] + '_' + commit_sha_v2[:6])
+            mkdir(currnet_output_path)
         except FileExistsError:
             print('pass...')
-        code = run(nb_iteration, output_path + '/' + project_name + '/' + commit_sha_v1[:6] + '_' + commit_sha_v2[:6])
+        code = run(nb_iteration, currnet_output_path)
         if code == 0:
             current_nb_completed_commits = current_nb_completed_commits + 1
             print('Success!', current_nb_completed_commits, '/', nb_commits)
+        else:
+            delete_directory(currnet_output_path)
         print(cursor_commits, '/', len(commits) - 1)
         cursor_commits = cursor_commits + 1

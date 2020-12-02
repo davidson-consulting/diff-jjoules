@@ -3,7 +3,7 @@ from shutil import copyfile, SameFileError, copytree, rmtree
 
 POM_FILE = '/pom.xml'
 JJOULED_POM_FILE = '/pom_jjouled.xml'
-MVN_CMD = 'mvn --quiet -Drat.skip=true -Djacoco.skip=true -Danimal.sniffer.skip=true -f '
+MVN_CMD = 'mvn -Drat.skip=true -Djacoco.skip=true -Danimal.sniffer.skip=true -f '
 MVN_CLEAN_GOAL = 'clean'
 MVN_TEST = 'test'
 OPT_TEST = '-Dtest='
@@ -128,7 +128,7 @@ def clone(url, folder_path):
     )
 
 GIT_C = '-C'
-LOG_CMD = 'log --pretty=format:"%h" >>'
+LOG_CMD = 'log --pretty=format:"%H" >>'
 
 def git_log(path_project, output_file_path):
     run_command(
