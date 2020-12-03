@@ -2,6 +2,7 @@ import sys
 from utils.cmd_utils import *
 from utils.run_for_project_args import *
 import csv
+import datetime
 
 PREFIX_TMP = '/tmp/'
 FOLDER_PATH_V1 = 'v1'
@@ -79,16 +80,18 @@ if __name__ == '__main__':
         print('Run for', project_name, commit_sha_v1, cursor_commits, commit_sha_v2, cursor_commits - 1, 'output_path', output_path)
         reset_hard(commit_sha_v1, PATH_V1)
         reset_hard(commit_sha_v2, PATH_V2)
-        currnet_output_path = output_path + '/' + project_name + '/' + commit_sha_v1[:6] + '_' + commit_sha_v2[:6]
+        current_output_path = output_path + '/' + project_name + '/' + commit_sha_v1[:6] + '_' + commit_sha_v2[:6]
         try:
-            mkdir(currnet_output_path)
+            mkdir(current_output_path)
         except FileExistsError:
             print('pass...')
-        code = run(nb_iteration, currnet_output_path)
+        with open(current_output_path + '/info', 'w') as info_file:
+            info_file.write(print(str(datetime.datetime.today()).split()[0]) + '\n')
+        code = run(nb_iteration, current_output_path)
         if code == 0:
             current_nb_completed_commits = current_nb_completed_commits + 1
             print('Success!', current_nb_completed_commits, '/', nb_commits)
         else:
-            delete_directory(currnet_output_path)
+            delete_directory(current_output_path)
         print(cursor_commits, '/', len(commits) - 1)
         cursor_commits = cursor_commits + 1
