@@ -1,0 +1,597 @@
+{
+    "com.squareup.javapoet.JavaFileTest-alwaysQualifySimple": {
+        "energy": 10982.509765625,
+        "duration": 1259572.572265625,
+        "dram": 2269.552734375
+    },
+    "com.squareup.javapoet.JavaFileTest-importStaticOnce": {
+        "energy": 21178.73828125,
+        "duration": 2401866.341796875,
+        "dram": 3106.328125
+    },
+    "com.squareup.javapoet.TypeSpecTest-referencedAndDeclaredSimpleNamesConflict": {
+        "energy": 21684.17578125,
+        "duration": 2214386.04296875,
+        "dram": 5288.0859375
+    },
+    "com.squareup.javapoet.JavaFileTest-conflictingParentName": {
+        "energy": 36324.369140625,
+        "duration": 3284461.1484375,
+        "dram": 5835.333984375
+    },
+    "com.squareup.javapoet.JavaFileTest-conflictingAnnotationReferencedClass": {
+        "energy": 30450.98046875,
+        "duration": 3072023.47265625,
+        "dram": 6609.849609375
+    },
+    "com.squareup.javapoet.TypeSpecTest-membersOrdering": {
+        "energy": 15788.337890625,
+        "duration": 1868254.09765625,
+        "dram": 4388.484375
+    },
+    "com.squareup.javapoet.JavaFileTest-importStaticReadmeExample": {
+        "energy": 1081783.80078125,
+        "duration": 94691392.95507812,
+        "dram": 184932.802734375
+    },
+    "com.squareup.javapoet.TypeSpecTest-methodThrows": {
+        "energy": 17565.814453125,
+        "duration": 1890513.2265625,
+        "dram": 3554.3671875
+    },
+    "com.squareup.javapoet.TypeSpecTest-inlineIndent": {
+        "energy": 9747.224609375,
+        "duration": 1202610.458984375,
+        "dram": 2082.53515625
+    },
+    "com.squareup.javapoet.AnnotationSpecTest-defaultAnnotationWithImport": {
+        "energy": 85940.068359375,
+        "duration": 7781951.07421875,
+        "dram": 14825.544921875
+    },
+    "com.squareup.javapoet.TypeSpecTest-lineWrapping": {
+        "energy": 38331.80859375,
+        "duration": 3917811.708984375,
+        "dram": 8364.56640625
+    },
+    "com.squareup.javapoet.TypeSpecTest-enumsMayDefineAbstractMethods": {
+        "energy": 10312.94140625,
+        "duration": 1276914.751953125,
+        "dram": 2000.44921875
+    },
+    "com.squareup.javapoet.TypeSpecTest-nullStringLiteral": {
+        "energy": 6791.634765625,
+        "duration": 1100111.189453125,
+        "dram": 2241.845703125
+    },
+    "com.squareup.javapoet.JavaFileTest-conflictingImports": {
+        "energy": 47947.255859375,
+        "duration": 4029769.513671875,
+        "dram": 4730.8046875
+    },
+    "com.squareup.javapoet.TypeSpecTest-indexedElseIf": {
+        "energy": 12369.267578125,
+        "duration": 1520516.830078125,
+        "dram": 2284.056640625
+    },
+    "com.squareup.javapoet.TypeSpecTest-codeBlocks": {
+        "energy": 27580.041015625,
+        "duration": 2776742.28515625,
+        "dram": 5672.470703125
+    },
+    "com.squareup.javapoet.TypeSpecTest-classImplementsNestedClass": {
+        "energy": 12795.3984375,
+        "duration": 1368217.615234375,
+        "dram": 2879.439453125
+    },
+    "com.squareup.javapoet.TypeSpecTest-basic": {
+        "energy": 21005.697265625,
+        "duration": 2203829.9140625,
+        "dram": 4346.759765625
+    },
+    "com.squareup.javapoet.TypeSpecTest-ifElse": {
+        "energy": 8528.517578125,
+        "duration": 1359280.1484375,
+        "dram": 1001.5390625
+    },
+    "com.squareup.javapoet.FileWritingTest-fileIsUtf8": {
+        "energy": 19455.298828125,
+        "duration": 2366318.1796875,
+        "dram": 3365.609375
+    },
+    "com.squareup.javapoet.FileWritingTest-filerPassesOriginatingElements": {
+        "energy": 5501431.041015625,
+        "duration": 507170306.30078125,
+        "dram": 1146267.853515625
+    },
+    "com.squareup.javapoet.FileWritingTest-filerNestedClasses": {
+        "energy": 84339.33984375,
+        "duration": 7617955.26953125,
+        "dram": 17987.34765625
+    },
+    "com.squareup.javapoet.TypeSpecTest-anonymousInnerClass": {
+        "energy": 30028.236328125,
+        "duration": 3187905.111328125,
+        "dram": 6726.775390625
+    },
+    "com.squareup.javapoet.JavaFileTest-avoidClashesWithNestedClasses_viaClass": {
+        "energy": 41250.552734375,
+        "duration": 4153048.087890625,
+        "dram": 7373.48828125
+    },
+    "com.squareup.javapoet.JavaFileTest-avoidClashes_mapEntry": {
+        "energy": 14118.8984375,
+        "duration": 1567833.068359375,
+        "dram": 2630.7890625
+    },
+    "com.squareup.javapoet.TypeSpecTest-enumWithMembersButNoConstructorCall": {
+        "energy": 11718.904296875,
+        "duration": 1239765.603515625,
+        "dram": 2357.322265625
+    },
+    "com.squareup.javapoet.TypeSpecTest-multipleTypeVariableAddition": {
+        "energy": 10170.04296875,
+        "duration": 1425312.3984375,
+        "dram": 2309.673828125
+    },
+    "com.squareup.javapoet.FileWritingTest-pathNestedClasses": {
+        "energy": 35298.55078125,
+        "duration": 3350450.501953125,
+        "dram": 6149.18359375
+    },
+    "com.squareup.javapoet.JavaFileTest-avoidClashes_parentChild_superclass_type": {
+        "energy": 30659.83203125,
+        "duration": 3707036.177734375,
+        "dram": 5144.919921875
+    },
+    "com.squareup.javapoet.TypeSpecTest-nestedClasses": {
+        "energy": 23321.587890625,
+        "duration": 2336517.62890625,
+        "dram": 4525.140625
+    },
+    "com.squareup.javapoet.JavaFileTest-importStaticMixed": {
+        "energy": 29542.267578125,
+        "duration": 4409542.91796875,
+        "dram": 4723.697265625
+    },
+    "com.squareup.javapoet.TypeSpecTest-lineWrappingWithZeroWidthSpace": {
+        "energy": 10915.412109375,
+        "duration": 1704846.984375,
+        "dram": 3009.208984375
+    },
+    "com.squareup.javapoet.JavaFileTest-defaultPackage": {
+        "energy": 40297.11328125,
+        "duration": 3969528.984375,
+        "dram": 7798.830078125
+    },
+    "com.squareup.javapoet.JavaFileTest-conflictingAnnotation": {
+        "energy": 9567.173828125,
+        "duration": 1392776.134765625,
+        "dram": 1970.515625
+    },
+    "com.squareup.javapoet.TypeSpecTest-typeVariables": {
+        "energy": 19803.025390625,
+        "duration": 1922796.521484375,
+        "dram": 3165.3359375
+    },
+    "com.squareup.javapoet.TypeSpecTest-multilineStatementWithAnonymousClass": {
+        "energy": 32464.59375,
+        "duration": 3949377.974609375,
+        "dram": 4739.59375
+    },
+    "com.squareup.javapoet.TypeSpecTest-intersectionType": {
+        "energy": 11750.154296875,
+        "duration": 1611399.9921875,
+        "dram": 3642.11328125
+    },
+    "com.squareup.javapoet.FileWritingTest-filerDefaultPackage": {
+        "energy": 23636.748046875,
+        "duration": 2464773.0625,
+        "dram": 5204.333984375
+    },
+    "com.squareup.javapoet.JavaFileTest-annotationIsNestedClass": {
+        "energy": 16609.94921875,
+        "duration": 1958609.734375,
+        "dram": 2847.880859375
+    },
+    "com.squareup.javapoet.TypeSpecTest-interfaceDefaultMethods": {
+        "energy": 8724.662109375,
+        "duration": 1136558.091796875,
+        "dram": 2042.353515625
+    },
+    "com.squareup.javapoet.FileReadingTest-javaFileObjectCharacterContent": {
+        "energy": 102115.029296875,
+        "duration": 14673522.4375,
+        "dram": 27558.3515625
+    },
+    "com.squareup.javapoet.TypeSpecTest-multipleSuperinterfaceAddition": {
+        "energy": 11146.140625,
+        "duration": 1485122.625,
+        "dram": 2611.365234375
+    },
+    "com.squareup.javapoet.TypeSpecTest-javadocEnsuresTrailingLine": {
+        "energy": 7782.392578125,
+        "duration": 1422278.185546875,
+        "dram": 2216.45703125
+    },
+    "com.squareup.javapoet.JavaFileTest-importStaticForCrazyFormatsWorks": {
+        "energy": 45204.263671875,
+        "duration": 4528006.27734375,
+        "dram": 8633.34375
+    },
+    "com.squareup.javapoet.TypeSpecTest-javadoc": {
+        "energy": 12713.2890625,
+        "duration": 1485905.02734375,
+        "dram": 2326.361328125
+    },
+    "com.squareup.javapoet.TypeSpecTest-annotation": {
+        "energy": 11529.884765625,
+        "duration": 1181512.791015625,
+        "dram": 1012.111328125
+    },
+    "com.squareup.javapoet.JavaFileTest-avoidClashes_parentChild_superinterface_typeMirror": {
+        "energy": 81013.265625,
+        "duration": 7246668.06640625,
+        "dram": 17205.17578125
+    },
+    "com.squareup.javapoet.JavaFileTest-defaultPackageTypesAreNotImported": {
+        "energy": 9803.048828125,
+        "duration": 1778224.56640625,
+        "dram": 2327.353515625
+    },
+    "com.squareup.javapoet.JavaFileTest-importStaticNone": {
+        "energy": 20910.5234375,
+        "duration": 2129194.8359375,
+        "dram": 5193.771484375
+    },
+    "com.squareup.javapoet.TypeSpecTest-annotatedParameters": {
+        "energy": 26359.88671875,
+        "duration": 2546933.740234375,
+        "dram": 4314.111328125
+    },
+    "com.squareup.javapoet.JavaFileTest-skipJavaLangImportsWithConflictingClassFirst": {
+        "energy": 21674.755859375,
+        "duration": 2311156.888671875,
+        "dram": 4582.630859375
+    },
+    "com.squareup.javapoet.TypeSpecTest-initializerBlockInRightPlace": {
+        "energy": 19703.658203125,
+        "duration": 2178509.41015625,
+        "dram": 3331.32421875
+    },
+    "com.squareup.javapoet.TypeSpecTest-defaultModifiersForInterfaceMembers": {
+        "energy": 10814.515625,
+        "duration": 1318261.52734375,
+        "dram": 1332.58984375
+    },
+    "com.squareup.javapoet.TypeSpecTest-classImplementsExtends": {
+        "energy": 13682.818359375,
+        "duration": 1348651.8359375,
+        "dram": 1728.55078125
+    },
+    "com.squareup.javapoet.FileWritingTest-fileDefaultPackage": {
+        "energy": 75770.248046875,
+        "duration": 7400363.326171875,
+        "dram": 14598.103515625
+    },
+    "com.squareup.javapoet.FileWritingTest-pathNotDirectory": {
+        "energy": 50469.458984375,
+        "duration": 5087712.212890625,
+        "dram": 8657.30859375
+    },
+    "com.squareup.javapoet.JavaFileTest-conflictingChildName": {
+        "energy": 32947.71484375,
+        "duration": 3147715.21484375,
+        "dram": 5844.671875
+    },
+    "com.squareup.javapoet.TypeSpecTest-annotatedField": {
+        "energy": 10804.00390625,
+        "duration": 1195793.55078125,
+        "dram": 2216.435546875
+    },
+    "com.squareup.javapoet.TypeSpecTest-staticCodeBlock": {
+        "energy": 14350.322265625,
+        "duration": 1762041.005859375,
+        "dram": 2941.845703125
+    },
+    "com.squareup.javapoet.TypeSpecTest-typeVariableWithBounds": {
+        "energy": 13363.046875,
+        "duration": 1495088.486328125,
+        "dram": 2674.78125
+    },
+    "com.squareup.javapoet.TypeSpecTest-simpleNameConflictsWithTypeVariable": {
+        "energy": 29623.970703125,
+        "duration": 3137461.736328125,
+        "dram": 7005.96875
+    },
+    "com.squareup.javapoet.JavaFileTest-avoidClashesWithNestedClasses_viaTypeElement": {
+        "energy": 150658.111328125,
+        "duration": 14082944.888671875,
+        "dram": 26201.013671875
+    },
+    "com.squareup.javapoet.JavaFileTest-modifyStaticImports": {
+        "energy": 11298.3828125,
+        "duration": 2921804.462890625,
+        "dram": 1902.4296875
+    },
+    "com.squareup.javapoet.FileWritingTest-fileNestedClasses": {
+        "energy": 28241.076171875,
+        "duration": 3023819.78515625,
+        "dram": 4053.251953125
+    },
+    "com.squareup.javapoet.JavaFileTest-annotatedTypeParam": {
+        "energy": 47710.056640625,
+        "duration": 4049706.52734375,
+        "dram": 6665.755859375
+    },
+    "com.squareup.javapoet.TypeSpecTest-tryCatch": {
+        "energy": 10984.091796875,
+        "duration": 1498990.2890625,
+        "dram": 1763.6875
+    },
+    "com.squareup.javapoet.JavaFileTest-superclassReferencesSelf": {
+        "energy": 16208.865234375,
+        "duration": 1880655.583984375,
+        "dram": 5026.998046875
+    },
+    "com.squareup.javapoet.TypeSpecTest-varargs": {
+        "energy": 13080.681640625,
+        "duration": 1633118.693359375,
+        "dram": 2543.22265625
+    },
+    "com.squareup.javapoet.TypeSpecTest-annotationsAndJavaLangTypes": {
+        "energy": 10628.970703125,
+        "duration": 1197080.76171875,
+        "dram": 2119.650390625
+    },
+    "com.squareup.javapoet.FileReadingTest-compileJavaFile": {
+        "energy": 1528943.244140625,
+        "duration": 138263735.96679688,
+        "dram": 344246.40234375
+    },
+    "com.squareup.javapoet.JavaFileTest-packageClassConflictsWithNestedClass": {
+        "energy": 9265.435546875,
+        "duration": 1328393.0546875,
+        "dram": 2456.685546875
+    },
+    "com.squareup.javapoet.TypeSpecTest-multilineStatement": {
+        "energy": 10695.4921875,
+        "duration": 1281602.90625,
+        "dram": 2374.625
+    },
+    "com.squareup.javapoet.JavaFileTest-conflictingNameOutOfScope": {
+        "energy": 23635.416015625,
+        "duration": 3759614.076171875,
+        "dram": 3789.578125
+    },
+    "com.squareup.javapoet.TypeSpecTest-simpleNamesConflictInThisAndOtherPackage": {
+        "energy": 13960.123046875,
+        "duration": 1616712.623046875,
+        "dram": 2734.724609375
+    },
+    "com.squareup.javapoet.TypeSpecTest-nativeMethods": {
+        "energy": 10470.91796875,
+        "duration": 1277034.25,
+        "dram": 811.275390625
+    },
+    "com.squareup.javapoet.JavaFileTest-classAndSuperclassShareName": {
+        "energy": 11790.521484375,
+        "duration": 1439925.52734375,
+        "dram": 1945.00390625
+    },
+    "com.squareup.javapoet.AnnotationSpecTest-defaultAnnotation": {
+        "energy": 209311.302734375,
+        "duration": 17266405.26171875,
+        "dram": 38467.736328125
+    },
+    "com.squareup.javapoet.JavaFileTest-alwaysQualifySupersedesJavaLangImports": {
+        "energy": 7774.58203125,
+        "duration": 1091543.09375,
+        "dram": 1993.298828125
+    },
+    "com.squareup.javapoet.TypeSpecTest-arrayType": {
+        "energy": 6556.701171875,
+        "duration": 1401406.81640625,
+        "dram": 1893.943359375
+    },
+    "com.squareup.javapoet.JavaFileTest-importStaticTwice": {
+        "energy": 21041.373046875,
+        "duration": 2440313.9765625,
+        "dram": 5374.78515625
+    },
+    "com.squareup.javapoet.TypeSpecTest-interfaceExtends": {
+        "energy": 10389.736328125,
+        "duration": 1243818.58203125,
+        "dram": 2699.25390625
+    },
+    "com.squareup.javapoet.JavaFileTest-importStaticUsingWildcards": {
+        "energy": 15775.109375,
+        "duration": 2009759.33203125,
+        "dram": 3079.703125
+    },
+    "com.squareup.javapoet.TypeSpecTest-enumWithSubclassing": {
+        "energy": 17067.869140625,
+        "duration": 1827218.482421875,
+        "dram": 2745.25
+    },
+    "com.squareup.javapoet.JavaFileTest-nestedClassAndSuperclassShareName": {
+        "energy": 22357.62890625,
+        "duration": 2496167.568359375,
+        "dram": 4501.14453125
+    },
+    "com.squareup.javapoet.TypeSpecTest-elseIf": {
+        "energy": 13294.357421875,
+        "duration": 1994145.068359375,
+        "dram": 3643.07421875
+    },
+    "com.squareup.javapoet.FileWritingTest-pathDefaultPackage": {
+        "energy": 13466.96484375,
+        "duration": 1584297.904296875,
+        "dram": 2024.06640625
+    },
+    "com.squareup.javapoet.JavaFileTest-avoidClashes_parentChild_superclass_typeMirror": {
+        "energy": 150670.181640625,
+        "duration": 11661432.998046875,
+        "dram": 25406.455078125
+    },
+    "com.squareup.javapoet.TypeSpecTest-doWhile": {
+        "energy": 10899.736328125,
+        "duration": 1462743.2109375,
+        "dram": 2610.888671875
+    },
+    "com.squareup.javapoet.FileWritingTest-fileNotDirectory": {
+        "energy": 24850.201171875,
+        "duration": 2672728.509765625,
+        "dram": 4526.298828125
+    },
+    "com.squareup.javapoet.JavaFileTest-singleImport": {
+        "energy": 38579.201171875,
+        "duration": 3825297.826171875,
+        "dram": 5215.8359375
+    },
+    "com.squareup.javapoet.TypeSpecTest-annotationWithFields": {
+        "energy": 8634.47265625,
+        "duration": 1161072.537109375,
+        "dram": 1951.9375
+    },
+    "com.squareup.javapoet.TypeSpecTest-multipleFieldAddition": {
+        "energy": 9219.990234375,
+        "duration": 1188073.3046875,
+        "dram": 663.46875
+    },
+    "com.squareup.javapoet.JavaFileTest-emptyLinesInTopOfFileComment": {
+        "energy": 8584.884765625,
+        "duration": 1287843.958984375,
+        "dram": 2965.029296875
+    },
+    "com.squareup.javapoet.TypeSpecTest-initializersToBuilder": {
+        "energy": 99966.154296875,
+        "duration": 9172054.123046875,
+        "dram": 19216.44140625
+    },
+    "com.squareup.javapoet.TypeSpecTest-innerAnnotationInAnnotationDeclaration": {
+        "energy": 9602.62890625,
+        "duration": 1148848.919921875,
+        "dram": 1027.72265625
+    },
+    "com.squareup.javapoet.TypeSpecTest-enumWithAnnotatedValues": {
+        "energy": 10595.8125,
+        "duration": 1354144.61328125,
+        "dram": 2309.86328125
+    },
+    "com.squareup.javapoet.TypeSpecTest-defaultModifiersForMemberInterfacesAndEnums": {
+        "energy": 8926.91796875,
+        "duration": 1113240.859375,
+        "dram": 2363.421875
+    },
+    "com.squareup.javapoet.TypeSpecTest-multipleTypeAddition": {
+        "energy": 10725.46875,
+        "duration": 1518079.037109375,
+        "dram": 701.830078125
+    },
+    "com.squareup.javapoet.TypeSpecTest-multipleAnnotationAddition": {
+        "energy": 7445.38671875,
+        "duration": 962655.916015625,
+        "dram": 1027.3984375
+    },
+    "com.squareup.javapoet.AnnotationSpecTest-reflectAnnotation": {
+        "energy": 213098.11328125,
+        "duration": 17955031.802734375,
+        "dram": 37789.849609375
+    },
+    "com.squareup.javapoet.JavaFileTest-packageClassConflictsWithSuperlass": {
+        "energy": 9417.85546875,
+        "duration": 1355254.322265625,
+        "dram": 762.009765625
+    },
+    "com.squareup.javapoet.TypeSpecTest-javadocWithTrailingLineDoesNotAddAnother": {
+        "energy": 12574.373046875,
+        "duration": 1661821.806640625,
+        "dram": 3279.357421875
+    },
+    "com.squareup.javapoet.JavaFileTest-noImports": {
+        "energy": 8679.2109375,
+        "duration": 1555576.537109375,
+        "dram": 1377.5859375
+    },
+    "com.squareup.javapoet.TypeSpecTest-multilineStrings": {
+        "energy": 7992.2265625,
+        "duration": 1093682.78125,
+        "dram": 2135.26171875
+    },
+    "com.squareup.javapoet.TypeSpecTest-retrofitStyleInterface": {
+        "energy": 22721.421875,
+        "duration": 2277897.134765625,
+        "dram": 4643.689453125
+    },
+    "com.squareup.javapoet.JavaFileTest-skipJavaLangImportsWithConflictingClassLast": {
+        "energy": 27010.474609375,
+        "duration": 2635110.3828125,
+        "dram": 4412.013671875
+    },
+    "com.squareup.javapoet.JavaFileTest-conflictingTypeVariableBound": {
+        "energy": 37532.1328125,
+        "duration": 4043378.962890625,
+        "dram": 5788.607421875
+    },
+    "com.squareup.javapoet.TypeSpecTest-multipleMethodAddition": {
+        "energy": 10964.71875,
+        "duration": 1559061.3359375,
+        "dram": 2095.830078125
+    },
+    "com.squareup.javapoet.TypeSpecTest-enumImplements": {
+        "energy": 11339.451171875,
+        "duration": 1291348.416015625,
+        "dram": 2744.50390625
+    },
+    "com.squareup.javapoet.TypeSpecTest-interfaceStaticMethods": {
+        "energy": 9272.259765625,
+        "duration": 1161888.7734375,
+        "dram": 1020.859375
+    },
+    "com.squareup.javapoet.FileReadingTest-javaFileObjectInputStreamIsUtf8": {
+        "energy": 67622.857421875,
+        "duration": 6814797.642578125,
+        "dram": 15369.1328125
+    },
+    "com.squareup.javapoet.FileWritingTest-filerClassesWithTabIndent": {
+        "energy": 44884.912109375,
+        "duration": 4930637.59375,
+        "dram": 9711.455078125
+    },
+    "com.squareup.javapoet.AnnotationSpecTest-reflectAnnotationWithDefaults": {
+        "energy": 46891.609375,
+        "duration": 4267241.318359375,
+        "dram": 7417.86328125
+    },
+    "com.squareup.javapoet.TypeSpecTest-annotatedClass": {
+        "energy": 11888.900390625,
+        "duration": 1288481.328125,
+        "dram": 2673.630859375
+    },
+    "com.squareup.javapoet.TypeSpecTest-annotationsInAnnotations": {
+        "energy": 22404.20703125,
+        "duration": 2473573.1171875,
+        "dram": 5748.927734375
+    },
+    "com.squareup.javapoet.JavaFileTest-avoidClashes_parentChild_superinterface_type": {
+        "energy": 16077.962890625,
+        "duration": 1668066.966796875,
+        "dram": 4117.6953125
+    },
+    "com.squareup.javapoet.TypeSpecTest-interestingTypes": {
+        "energy": 24130.21484375,
+        "duration": 2488317.2578125,
+        "dram": 4020.18359375
+    },
+    "com.squareup.javapoet.JavaFileTest-topOfFileComment": {
+        "energy": 6849.53125,
+        "duration": 1356673.23828125,
+        "dram": 1999.193359375
+    },
+    "com.squareup.javapoet.JavaFileTest-avoidClashesWithNestedClasses_viaSuperinterfaceType": {
+        "energy": 93152.765625,
+        "duration": 8599488.568359375,
+        "dram": 16583.8046875
+    }
+}

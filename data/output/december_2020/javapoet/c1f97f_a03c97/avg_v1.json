@@ -1,0 +1,37 @@
+{
+    "com.squareup.javapoet.FileWritingTest-fileIsUtf8": {
+        "energy": 23651.529296875,
+        "duration": 2985438.29296875,
+        "dram": 4174.345703125
+    },
+    "com.squareup.javapoet.FileWritingTest-pathNestedClasses": {
+        "energy": 186586.11328125,
+        "duration": 20544217.685546875,
+        "dram": 28342.802734375
+    },
+    "com.squareup.javapoet.FileWritingTest-fileDefaultPackage": {
+        "energy": 85492.890625,
+        "duration": 11279106.87109375,
+        "dram": 14342.185546875
+    },
+    "com.squareup.javapoet.FileWritingTest-pathNotDirectory": {
+        "energy": 191789.44140625,
+        "duration": 23616659.837890625,
+        "dram": 35204.9453125
+    },
+    "com.squareup.javapoet.FileWritingTest-fileNestedClasses": {
+        "energy": 35995.876953125,
+        "duration": 4493205.30078125,
+        "dram": 7714.244140625
+    },
+    "com.squareup.javapoet.FileWritingTest-pathDefaultPackage": {
+        "energy": 426227.728515625,
+        "duration": 41538077.501953125,
+        "dram": 62905.857421875
+    },
+    "com.squareup.javapoet.FileWritingTest-fileNotDirectory": {
+        "energy": 22326.634765625,
+        "duration": 2844509.685546875,
+        "dram": 3988.984375
+    }
+}
