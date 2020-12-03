@@ -44,5 +44,5 @@ if __name__ == '__main__':
         print(file)
         if os.path.isdir(path_to_file):
             data_v1, data_v2 = compute_avg_energy_for_commit(path_to_file)
-        write_json(path_to_file + '/avg_v1.json', data_v1)
-        write_json(path_to_file + '/avg_v2.json', data_v2)
+            write_json(path_to_file + '/avg_v1.json', data_v1)
+            write_json(path_to_file + '/avg_v2.json', data_v2)

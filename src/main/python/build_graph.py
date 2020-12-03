@@ -143,14 +143,17 @@ if __name__ == '__main__':
 
     path_to_commit_folders = path_to_data + '/' + project_name + '/'
 
-    for file in os.listdir(path_to_commit_folders)[0:1]:
+    for file in os.listdir(path_to_commit_folders):
         path_to_file = path_to_commit_folders + file
+        if file == 'input':
+            continue
+        print('generate', mode, 'for', file)
         data_v1 = read_json(path_to_file  + '/avg_v1.json')
         data_v2 = read_json(path_to_file  + '/avg_v2.json')
 
         if mode == mode.per_class:
             energies_v1, durations_v1, energies_v2, durations_v2, labels = build_data_per_class(data_v1, data_v2)
-            build_graph(energies_v1, durations_v1, energies_v2, durations_v2, labels, output=path_to_file + '/graph.png')
+            build_graph(energies_v1, durations_v1, energies_v2, durations_v2, labels, output=path_to_file + '/'+ project_name +'.png')
         elif mode == mode.per_test:
             build_data_per_test(data_v1, data_v2, path_to_file)
         else:
