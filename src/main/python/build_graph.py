@@ -27,6 +27,8 @@ def build_graph(energies_v1, durations_v1, energies_v2, durations_v2, labels, ou
     tkw = dict(size=4, width=1)
 
     energy_v1_ax = fig.add_subplot(111)
+    for tick in energy_v1_ax.yaxis.get_major_ticks():
+        tick.label.set_fontsize(6)
     duration_v1_ax = energy_v1_ax.twiny()
     energy_v2_ax = energy_v1_ax.twiny()
     duration_v2_ax = energy_v1_ax.twiny()
@@ -75,6 +77,7 @@ def build_graph(energies_v1, durations_v1, energies_v2, durations_v2, labels, ou
     df.EnergyV2.plot.barh(color='orange', ax=energy_v2_ax, width=width, position=1)
     df.DurationV2.plot.barh(color='gold', ax=duration_v2_ax, width=width, position=0)
 
+    plt.tight_layout()
     plt.savefig(output)
 
 def get_test_class(key):
