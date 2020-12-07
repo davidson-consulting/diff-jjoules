@@ -4,6 +4,7 @@ import spoon.compiler.Environment;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
+import spoon.reflect.reference.CtTypeReference;
 import spoon.support.JavaOutputProcessor;
 
 import java.io.File;
@@ -33,10 +34,23 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
     @Override
     public boolean isToBeProcessed(CtMethod<?> candidate) {
         return candidate.getDeclaringType() != null &&
-                this.testsToBeInstrumented.containsKey(candidate.getDeclaringType().getQualifiedName()) &&
-                this.testsToBeInstrumented.get(
-                        candidate.getDeclaringType().getQualifiedName()
-                ).contains(candidate.getSimpleName());
+                (this.testsToBeInstrumented.containsKey(candidate.getDeclaringType().getQualifiedName()) &&
+                        (this.testsToBeInstrumented.get(
+                                candidate.getDeclaringType().getQualifiedName()
+                        ).contains(candidate.getSimpleName())) ||
+                        this.checkInheritance(candidate));
+    }
+
+    private boolean checkInheritance(CtMethod<?> candidate) {
+        final CtType<?> declaringType = candidate.getDeclaringType();
+        return candidate.getFactory().Type().getAll()
+                .stream()
+                .filter(type ->
+                        type.getSuperclass() != null &&
+                                type.getSuperclass().getDeclaringType().getTypeDeclaration().equals(declaringType)
+                ).anyMatch(ctType ->
+                        this.testsToBeInstrumented.containsKey(ctType.getQualifiedName()) &&
+                                this.testsToBeInstrumented.get(ctType.getQualifiedName()).contains(candidate.getSimpleName()));
     }
 
     @Override
