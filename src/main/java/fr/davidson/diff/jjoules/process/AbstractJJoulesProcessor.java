@@ -47,6 +47,8 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
                 .stream()
                 .filter(type ->
                         type.getSuperclass() != null &&
+                                type.getSuperclass().getDeclaringType() != null &&
+                                type.getSuperclass().getDeclaringType().getTypeDeclaration() != null &&
                                 type.getSuperclass().getDeclaringType().getTypeDeclaration().equals(declaringType)
                 ).anyMatch(ctType ->
                         this.testsToBeInstrumented.containsKey(ctType.getQualifiedName()) &&

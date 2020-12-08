@@ -22,11 +22,23 @@ public class JJoulesProcessor extends AbstractJJoulesProcessor {
     }
 
     @Override
+    public boolean isToBeProcessed(CtMethod<?> candidate) {
+        return super.isToBeProcessed(candidate) && candidate.getAnnotations()
+                .stream()
+                .anyMatch(ctAnnotation -> ctAnnotation.getType().getQualifiedName().endsWith("Test"));
+    }
+
+    @Override
     public void process(CtMethod<?> ctMethod) {
         System.out.println("Processing " + ctMethod.getDeclaringType().getQualifiedName() + "#" + ctMethod.getSimpleName());
         final Factory factory = ctMethod.getFactory();
         final CtTypeReference<? extends Annotation> reference = factory.Type().createReference("org.powerapi.jjoules.junit5.EnergyTest");
-        final CtAnnotation<? extends Annotation> testAnnotation = ctMethod.getAnnotations().stream().filter(ctAnnotation -> ctAnnotation.getType().getQualifiedName().endsWith("Test")).findAny().get();
+        final CtAnnotation<? extends Annotation> testAnnotation =
+                ctMethod.getAnnotations()
+                        .stream()
+                        .filter(ctAnnotation -> ctAnnotation.getType().getQualifiedName().endsWith("Test"))
+                        .findAny()
+                        .get();
         ctMethod.removeAnnotation(testAnnotation);
         ctMethod.addAnnotation(factory.createAnnotation(reference));
     }
