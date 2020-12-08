@@ -20,8 +20,12 @@ def get_tests_to_execute():
     return tests_to_execute
 
 def run(nb_iteration, output_path):
-    run_mvn_clean_test(PATH_V1)
-    run_mvn_clean_test(PATH_V2)
+    code = run_mvn_clean_test(PATH_V1)
+    if not code == 0:
+        return -1
+    code = run_mvn_clean_test(PATH_V2)
+    if not code == 0:
+        return -1
     code = run_mvn_diff_select(PATH_V1, PATH_V2)
     if not code == 0:
         return -1
@@ -34,7 +38,6 @@ def run(nb_iteration, output_path):
         return -1
     for i in range(nb_iteration):
         print(i)
-
         run_mvn_test(PATH_V1, tests_to_execute, True)
         v1_result_folder = output_path + '/v1/' + str(i)
         delete_directory(v1_result_folder)

@@ -73,6 +73,8 @@ def run_mvn_build_classpath_and_instrument(path_first_version, path_second_versi
          ' '.join([
             MVN_CMD,
             path_first_version + POM_FILE,
+            MVN_TEST,
+            MVN_SKIP_TEST,
             BUILD_CLASSPATH_GOAL,
             OPT_OUTPUT_CP_FILE,
             CMD_DIFF_INSTRUMENT,
