@@ -86,7 +86,7 @@ if __name__ == '__main__':
         except FileExistsError:
             print('pass...')
         with open(current_output_path + '/info', 'w') as info_file:
-            info_file.write(print(str(datetime.datetime.today()).split()[0]) + '\n')
+            info_file.write(str(datetime.datetime.today()).split()[0] + '\n')
         code = run(nb_iteration, current_output_path)
         if code == 0:
             current_nb_completed_commits = current_nb_completed_commits + 1
