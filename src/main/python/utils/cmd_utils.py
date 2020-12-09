@@ -10,6 +10,10 @@ OPT_TEST = '-Dtest='
 
 MVN_LOG_OPT = '--log-file'
 
+def print_to_file(text, filepath):
+    with open(filepath, 'w') as file:
+        file.write(str(text) + '\n')
+
 def run_command(command):
     print(command)
     return os.system(command)
