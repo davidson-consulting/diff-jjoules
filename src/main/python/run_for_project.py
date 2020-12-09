@@ -108,6 +108,6 @@ if __name__ == '__main__':
             print('Success!', current_nb_completed_commits, '/', nb_commits)
         else:
             delete_directory(current_output_path)
-        print_to_file( str(cursor_commits) + ' / ' + str(len(commits) - 1))
+        print_to_file(str(cursor_commits) + ' / ' + str(len(commits) - 1), current_output_path_log)
         print(cursor_commits, '/', len(commits) - 1)
         cursor_commits = cursor_commits + 1
