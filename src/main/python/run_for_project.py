@@ -78,6 +78,8 @@ if __name__ == '__main__':
     cursor_commits = 1
 
     while current_nb_completed_commits < nb_commits and cursor_commits < len(commits) - 1:
+        commit_sha_v1 = commits[cursor_commits]
+        commit_sha_v2 = commits[cursor_commits - 1]
         current_output_path = output_path + '/' + project_name + '/' + commit_sha_v1[:6] + '_' + commit_sha_v2[:6]
         current_output_path_log = current_output_path + 'log'
         try:
@@ -96,8 +98,6 @@ if __name__ == '__main__':
             output_path
             ]
         ), current_output_path_log)
-        commit_sha_v1 = commits[cursor_commits]
-        commit_sha_v2 = commits[cursor_commits - 1]
         print('Run for', project_name, commit_sha_v1, cursor_commits, commit_sha_v2, cursor_commits - 1, 'output_path', output_path)
         reset_hard(commit_sha_v1, PATH_V1)
         reset_hard(commit_sha_v2, PATH_V2)
