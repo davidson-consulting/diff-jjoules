@@ -27,9 +27,9 @@ def run(nb_iteration, output_path):
     tests_to_execute = get_tests_to_execute()
     for i in range(nb_iteration):
         print(i)
-        run_mvn_test(PATH_V1, tests_to_execute, True)
+        run_mvn_test(PATH_V1, tests_to_execute, '/tmp/logs.txt', True)
         copy_jjoules_result(PATH_V1, output_path + '/v1/' + str(i))
-        run_mvn_test(PATH_V2, tests_to_execute, True)
+        run_mvn_test(PATH_V2, tests_to_execute, '/tmp/logs.txt', True)
         copy_jjoules_result(PATH_V2, output_path + '/v2/' + str(i))
 
 if __name__ == '__main__':

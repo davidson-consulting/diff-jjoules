@@ -26,11 +26,11 @@ def run(nb_iteration, output_path):
     code = run_mvn_clean_test(PATH_V2)
     if not code == 0:
         return -1
-    code = run_mvn_diff_select(PATH_V1, PATH_V2)
+    code = run_mvn_diff_select(PATH_V1, PATH_V2, output_path + '/mvn_test_selections.log')
     if not code == 0:
         return -1
     copy(PATH_V1 + '/' + VALUE_TEST_LISTS, output_path + '/' + VALUE_TEST_LISTS)
-    code = run_mvn_build_classpath_and_instrument(PATH_V1, PATH_V2)
+    code = run_mvn_build_classpath_and_instrument(PATH_V1, PATH_V2, output_path + '/mvn_cp_instr.log')
     if not code == 0:
         return -1
     tests_to_execute = get_tests_to_execute()
@@ -38,13 +38,13 @@ def run(nb_iteration, output_path):
         return -1
     for i in range(nb_iteration):
         print(i)
-        run_mvn_test(PATH_V1, tests_to_execute, True)
         v1_result_folder = output_path + '/v1/' + str(i)
+        run_mvn_test(PATH_V1, tests_to_execute, v1_result_folder + '/mvn_test.log', True)
         delete_directory(v1_result_folder)
         copy_jjoules_result(PATH_V1, v1_result_folder)
 
-        run_mvn_test(PATH_V2, tests_to_execute, True)
         v2_result_folder = output_path + '/v2/' + str(i)
+        run_mvn_test(PATH_V2, tests_to_execute, v2_result_folder + '/mvn_test.log', True)
         delete_directory(v2_result_folder)
         copy_jjoules_result(PATH_V2, v2_result_folder)
 
