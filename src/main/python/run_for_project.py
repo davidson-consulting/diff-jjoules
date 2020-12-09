@@ -89,13 +89,13 @@ if __name__ == '__main__':
         print_to_file(str(datetime.datetime.today()).split()[0], current_output_path_log)
         print_to_file(' '.join([
             'Run for', 
-            project_name, 
-            commit_sha_v1, 
-            cursor_commits, 
-            commit_sha_v2, 
-            cursor_commits - 1, 
+            str(project_name), 
+            str(commit_sha_v1), 
+            str(cursor_commits), 
+            str(commit_sha_v2), 
+            str(cursor_commits - 1), 
             'output_path', 
-            output_path
+            str(output_path)
             ]
         ), current_output_path_log)
         print('Run for', project_name, commit_sha_v1, cursor_commits, commit_sha_v2, cursor_commits - 1, 'output_path', output_path)
