@@ -19,11 +19,11 @@ def run_mvn_test(path, tests_to_execute, output_path_file, jjouled=False):
         ' '.join([
             MVN_CMD,
             path + (JJOULED_POM_FILE if jjouled else POM_FILE),
+            MVN_LOG_OPT,
+            output_path_file,
             MVN_CLEAN_GOAL,
             MVN_TEST,
             OPT_TEST + ','.join([test + '#' + '+'.join(tests_to_execute[test]) for test in tests_to_execute]),
-            MVN_LOG_OPT,
-            output_path_file
         ])
     )
 
@@ -38,11 +38,11 @@ def run_mvn_diff_select(path_first_version, path_second_version, output_path_fil
          ' '.join([
             MVN_CMD,
             path_first_version + POM_FILE,
+            MVN_LOG_OPT,
+            output_path_file,
             MVN_CLEAN_GOAL,
             CMD_DIFF_TEST_SELECTION,
             OPT_PATH_DIR_SECOND_VERSION + path_second_version,
-            MVN_LOG_OPT,
-            output_path_file
         ])
     )
 
@@ -79,6 +79,8 @@ def run_mvn_build_classpath_and_instrument(path_first_version, path_second_versi
          ' '.join([
             MVN_CMD,
             path_first_version + POM_FILE,
+            MVN_LOG_OPT,
+            output_path_file,
             MVN_TEST,
             MVN_SKIP_TEST,
             BUILD_CLASSPATH_GOAL,
@@ -86,8 +88,6 @@ def run_mvn_build_classpath_and_instrument(path_first_version, path_second_versi
             CMD_DIFF_INSTRUMENT,
             OPT_TEST_LISTS + path_first_version + '/' + VALUE_TEST_LISTS,
             OPT_PATH_DIR_SECOND_VERSION + path_second_version,
-            MVN_LOG_OPT,
-            output_path_file
         ])
     )
 
