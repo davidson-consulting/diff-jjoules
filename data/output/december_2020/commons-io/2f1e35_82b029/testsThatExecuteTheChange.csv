@@ -1,1 +1,0 @@
-org.apache.commons.io.input.ReadAheadInputStreamTest;testReadOneByte;testNegativeBytesSkippedAfterRead;testBytesSkipped;testBytesSkippedAfterRead;testReadPastEOF;testBytesSkippedAfterEOF;testReadMultipleBytes;testSkipFromFileChannel
