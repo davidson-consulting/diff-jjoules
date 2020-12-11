@@ -80,8 +80,8 @@ if __name__ == '__main__':
     while current_nb_completed_commits < nb_commits and cursor_commits < len(commits) - 1:
         commit_sha_v1 = commits[cursor_commits]
         commit_sha_v2 = commits[cursor_commits - 1]
-        current_output_path = output_path + '/' + project_name + '/' + commit_sha_v1[:6] + '_' + commit_sha_v2[:6]
-        current_output_path_log = current_output_path + '.log'
+        current_output_path = output_path + '/' + project_name + '/' + '_'.join([str(cursor_commits), commit_sha_v1[:6], commit_sha_v2[:6]])
+        current_output_path_log = current_output_path + '/log'
         try:
             mkdir(current_output_path)
         except FileExistsError:
