@@ -2,7 +2,7 @@ import sys
 from utils.cmd_utils import *
 from run import *
 
-OUTPUT_DIR = 'data/output/december_2020/'
+OUTPUT_DIR = 'data/input/december_2020/'
 commits_file = '/input'
 
 if __name__ == '__main__':

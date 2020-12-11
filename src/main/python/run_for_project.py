@@ -56,7 +56,7 @@ if __name__ == '__main__':
 
     project_name = args.project_name
     output_path = args.output
-    commits_file_path = args.commits
+    commits_file_path = args.commits + '/' + project_name + '/input'
     nb_iteration = int(args.iteration)
     nb_commits = int(args.nb_commits)
 
@@ -81,7 +81,7 @@ if __name__ == '__main__':
         commit_sha_v1 = commits[cursor_commits]
         commit_sha_v2 = commits[cursor_commits - 1]
         current_output_path = output_path + '/' + project_name + '/' + commit_sha_v1[:6] + '_' + commit_sha_v2[:6]
-        current_output_path_log = current_output_path + 'log'
+        current_output_path_log = current_output_path + '.log'
         try:
             mkdir(current_output_path)
         except FileExistsError:
