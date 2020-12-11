@@ -1,4 +1,6 @@
 [INFO] Scanning for projects...
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/eu/stamp-project/dspot-diff-test-selection/3.1.1-SNAPSHOT/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/eu/stamp-project/dspot-parent/3.1.1-SNAPSHOT/maven-metadata.xml
 [INFO] 
 [INFO] -----------------------< commons-io:commons-io >------------------------
 [INFO] Building Apache Commons IO 2.9.0-SNAPSHOT
@@ -8,6 +10,71 @@
 [INFO] Deleting /tmp/v1/target
 [INFO] 
 [INFO] --- dspot-diff-test-selection:3.1.1-SNAPSHOT:list (default-cli) @ commons-io ---
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/eclipse/platform/org.eclipse.core.resources/maven-metadata.xml
+[INFO] Downloading from gradle-repo: https://repo.gradle.org/gradle/libs-releases-local/org/eclipse/platform/org.eclipse.core.resources/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/eclipse/platform/org.eclipse.core.resources/maven-metadata.xml
+[INFO] Downloading from gforge.inria.fr-release: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.resources/maven-metadata.xml
+[INFO] Downloading from maven.inria.fr-snapshot: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.resources/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/eclipse/platform/org.eclipse.core.expressions/maven-metadata.xml
+[INFO] Downloading from gradle-repo: https://repo.gradle.org/gradle/libs-releases-local/org/eclipse/platform/org.eclipse.core.expressions/maven-metadata.xml
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/eclipse/platform/org.eclipse.core.expressions/maven-metadata.xml
+[INFO] Downloading from gforge.inria.fr-release: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.expressions/maven-metadata.xml
+[INFO] Downloading from maven.inria.fr-snapshot: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.expressions/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/eclipse/platform/org.eclipse.core.runtime/maven-metadata.xml
+[INFO] Downloading from gradle-repo: https://repo.gradle.org/gradle/libs-releases-local/org/eclipse/platform/org.eclipse.core.runtime/maven-metadata.xml
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/eclipse/platform/org.eclipse.core.runtime/maven-metadata.xml
+[INFO] Downloading from gforge.inria.fr-release: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.runtime/maven-metadata.xml
+[INFO] Downloading from maven.inria.fr-snapshot: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.runtime/maven-metadata.xml
+[INFO] Downloading from gradle-repo: https://repo.gradle.org/gradle/libs-releases-local/org/eclipse/platform/org.eclipse.osgi/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/eclipse/platform/org.eclipse.osgi/maven-metadata.xml
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/eclipse/platform/org.eclipse.osgi/maven-metadata.xml
+[INFO] Downloading from gforge.inria.fr-release: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.osgi/maven-metadata.xml
+[INFO] Downloading from maven.inria.fr-snapshot: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.osgi/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/eclipse/platform/org.eclipse.equinox.common/maven-metadata.xml
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/eclipse/platform/org.eclipse.equinox.common/maven-metadata.xml
+[INFO] Downloading from gradle-repo: https://repo.gradle.org/gradle/libs-releases-local/org/eclipse/platform/org.eclipse.equinox.common/maven-metadata.xml
+[INFO] Downloading from gforge.inria.fr-release: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.equinox.common/maven-metadata.xml
+[INFO] Downloading from maven.inria.fr-snapshot: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.equinox.common/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/eclipse/platform/org.eclipse.core.jobs/maven-metadata.xml
+[INFO] Downloading from gradle-repo: https://repo.gradle.org/gradle/libs-releases-local/org/eclipse/platform/org.eclipse.core.jobs/maven-metadata.xml
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/eclipse/platform/org.eclipse.core.jobs/maven-metadata.xml
+[INFO] Downloading from gforge.inria.fr-release: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.jobs/maven-metadata.xml
+[INFO] Downloading from maven.inria.fr-snapshot: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.jobs/maven-metadata.xml
+[INFO] Downloading from gforge.inria.fr-release: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.equinox.registry/maven-metadata.xml
+[INFO] Downloading from gradle-repo: https://repo.gradle.org/gradle/libs-releases-local/org/eclipse/platform/org.eclipse.equinox.registry/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/eclipse/platform/org.eclipse.equinox.registry/maven-metadata.xml
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/eclipse/platform/org.eclipse.equinox.registry/maven-metadata.xml
+[INFO] Downloading from maven.inria.fr-snapshot: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.equinox.registry/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/eclipse/platform/org.eclipse.equinox.preferences/maven-metadata.xml
+[INFO] Downloading from gradle-repo: https://repo.gradle.org/gradle/libs-releases-local/org/eclipse/platform/org.eclipse.equinox.preferences/maven-metadata.xml
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/eclipse/platform/org.eclipse.equinox.preferences/maven-metadata.xml
+[INFO] Downloading from gforge.inria.fr-release: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.equinox.preferences/maven-metadata.xml
+[INFO] Downloading from maven.inria.fr-snapshot: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.equinox.preferences/maven-metadata.xml
+[INFO] Downloading from gforge.inria.fr-release: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.contenttype/maven-metadata.xml
+[INFO] Downloading from gradle-repo: https://repo.gradle.org/gradle/libs-releases-local/org/eclipse/platform/org.eclipse.core.contenttype/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/eclipse/platform/org.eclipse.core.contenttype/maven-metadata.xml
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/eclipse/platform/org.eclipse.core.contenttype/maven-metadata.xml
+[INFO] Downloading from maven.inria.fr-snapshot: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.contenttype/maven-metadata.xml
+[INFO] Downloading from gforge.inria.fr-release: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.equinox.app/maven-metadata.xml
+[INFO] Downloading from gradle-repo: https://repo.gradle.org/gradle/libs-releases-local/org/eclipse/platform/org.eclipse.equinox.app/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/eclipse/platform/org.eclipse.equinox.app/maven-metadata.xml
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/eclipse/platform/org.eclipse.equinox.app/maven-metadata.xml
+[INFO] Downloading from maven.inria.fr-snapshot: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.equinox.app/maven-metadata.xml
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/eclipse/platform/org.eclipse.core.filesystem/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/eclipse/platform/org.eclipse.core.filesystem/maven-metadata.xml
+[INFO] Downloading from gradle-repo: https://repo.gradle.org/gradle/libs-releases-local/org/eclipse/platform/org.eclipse.core.filesystem/maven-metadata.xml
+[INFO] Downloading from gforge.inria.fr-release: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.filesystem/maven-metadata.xml
+[INFO] Downloading from maven.inria.fr-snapshot: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.filesystem/maven-metadata.xml
+[INFO] Downloading from gradle-repo: https://repo.gradle.org/gradle/libs-releases-local/org/eclipse/platform/org.eclipse.text/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/eclipse/platform/org.eclipse.text/maven-metadata.xml
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/eclipse/platform/org.eclipse.text/maven-metadata.xml
+[INFO] Downloading from gforge.inria.fr-release: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.text/maven-metadata.xml
+[INFO] Downloading from maven.inria.fr-snapshot: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.text/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/org/eclipse/platform/org.eclipse.core.commands/maven-metadata.xml
+[INFO] Downloading from gradle-repo: https://repo.gradle.org/gradle/libs-releases-local/org/eclipse/platform/org.eclipse.core.commands/maven-metadata.xml
+[INFO] Downloading from gforge.inria.fr-release: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.commands/maven-metadata.xml
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/eclipse/platform/org.eclipse.core.commands/maven-metadata.xml
+[INFO] Downloading from maven.inria.fr-snapshot: http://maven.inria.fr/artifactory/spoon-public-snapshot/org/eclipse/platform/org.eclipse.core.commands/maven-metadata.xml
 [WARNING] No path to diff file has been specified.
 [WARNING] I'll compute a diff file using the UNIX diff command
 [WARNING] You may encounter troubles.
@@ -72,7 +139,7 @@ WARNING: All illegal access operations will be denied in a future release
 [[1;34mINFO[m] [1m--- [0;32mbuildnumber-maven-plugin:1.4:create[m [1m(default)[m @ [36mcommons-io[0;1m ---[m
 [[1;34mINFO[m] Executing: /bin/sh -c cd '/tmp/v1' && 'git' 'rev-parse' '--verify' 'HEAD'
 [[1;34mINFO[m] Working directory: /tmp/v1
-[[1;34mINFO[m] Storing buildNumber: 2bc7e31f1dee0cb6ff4f3c57a63ac09cd4c2d1aa at timestamp: 1607518506168
+[[1;34mINFO[m] Storing buildNumber: 2bc7e31f1dee0cb6ff4f3c57a63ac09cd4c2d1aa at timestamp: 1607674425767
 [[1;34mINFO[m] Storing buildScmBranch: master
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.1.0:resources[m [1m(default-resources)[m @ [36mcommons-io[0;1m ---[m
@@ -122,317 +189,317 @@ WARNING: All illegal access operations will be denied in a future release
 [[1;34mINFO[m]  T E S T S
 [[1;34mINFO[m] -------------------------------------------------------
 [[1;34mINFO[m] Running org.apache.commons.io.[1mByteOrderParserTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.07 s - in org.apache.commons.io.[1mByteOrderParserTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.08 s - in org.apache.commons.io.[1mByteOrderParserTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsFileNewerTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 s - in org.apache.commons.io.[1mFileUtilsFileNewerTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.113 s - in org.apache.commons.io.[1mFileUtilsFileNewerTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.serialization.[1mValidatingObjectInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m18[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.131 s - in org.apache.commons.io.serialization.[1mValidatingObjectInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m18[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.148 s - in org.apache.commons.io.serialization.[1mValidatingObjectInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.serialization.[1mMoreComplexObjectTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.113 s - in org.apache.commons.io.serialization.[1mMoreComplexObjectTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.125 s - in org.apache.commons.io.serialization.[1mMoreComplexObjectTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.serialization.[1mWildcardClassNameMatcherTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.074 s - in org.apache.commons.io.serialization.[1mWildcardClassNameMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 s - in org.apache.commons.io.serialization.[1mWildcardClassNameMatcherTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.serialization.[1mRegexpClassNameMatcherTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.084 s - in org.apache.commons.io.serialization.[1mRegexpClassNameMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s - in org.apache.commons.io.serialization.[1mRegexpClassNameMatcherTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.serialization.[1mFullClassNameMatcherTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s - in org.apache.commons.io.serialization.[1mFullClassNameMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.06 s - in org.apache.commons.io.serialization.[1mFullClassNameMatcherTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mCopyUtilsTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.12 s - in org.apache.commons.io.[1mCopyUtilsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.128 s - in org.apache.commons.io.[1mCopyUtilsTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mLineIteratorTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.139 s - in org.apache.commons.io.[1mLineIteratorTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.163 s - in org.apache.commons.io.[1mLineIteratorTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mThreadMonitorTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.48 s - in org.apache.commons.io.[1mThreadMonitorTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.475 s - in org.apache.commons.io.[1mThreadMonitorTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsCleanSymlinksTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.17 s - in org.apache.commons.io.[1mFileUtilsCleanSymlinksTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.184 s - in org.apache.commons.io.[1mFileUtilsCleanSymlinksTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mEndianUtilsTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m22[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.108 s - in org.apache.commons.io.[1mEndianUtilsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m22[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.121 s - in org.apache.commons.io.[1mEndianUtilsTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mHexDumpTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.085 s - in org.apache.commons.io.[1mHexDumpTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 s - in org.apache.commons.io.[1mHexDumpTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mDirectoryWalkerTestCase[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m15[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.123 s - in org.apache.commons.io.[1mDirectoryWalkerTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOUtilsCopyTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m27[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.072 s - in org.apache.commons.io.[1mIOUtilsCopyTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m27[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.034 s - in org.apache.commons.io.[1mIOUtilsCopyTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFilenameUtilsWildcardTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.156 s - in org.apache.commons.io.[1mFilenameUtilsWildcardTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.166 s - in org.apache.commons.io.[1mFilenameUtilsWildcardTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsCleanDirectoryTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.13 s - in org.apache.commons.io.[1mFileUtilsCleanDirectoryTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.148 s - in org.apache.commons.io.[1mFileUtilsCleanDirectoryTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFilenameUtilsTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m38[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.198 s - in org.apache.commons.io.[1mFilenameUtilsTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m38[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.191 s - in org.apache.commons.io.[1mFilenameUtilsTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOExceptionListTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.076 s - in org.apache.commons.io.[1mIOExceptionListTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 s - in org.apache.commons.io.[1mIOExceptionListTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mCharsetsTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 s - in org.apache.commons.io.[1mCharsetsTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.085 s - in org.apache.commons.io.[1mCharsetsTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsWaitForTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.098 s - in org.apache.commons.io.[1mFileUtilsWaitForTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.104 s - in org.apache.commons.io.[1mFileUtilsWaitForTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mDirectoryWalkerTestCaseJava4[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m14[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.124 s - in org.apache.commons.io.[1mDirectoryWalkerTestCaseJava4[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m14[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.12 s - in org.apache.commons.io.[1mDirectoryWalkerTestCaseJava4[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOUtilsWriteTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m53[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.212 s - in org.apache.commons.io.[1mIOUtilsWriteTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m53[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.202 s - in org.apache.commons.io.[1mIOUtilsWriteTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsTestCase[m
-[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m143[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 2.541 s - in org.apache.commons.io.[1mFileUtilsTestCase[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m143[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 2.614 s - in org.apache.commons.io.[1mFileUtilsTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mDemuxTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.273 s - in org.apache.commons.io.[1mDemuxTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.27 s - in org.apache.commons.io.[1mDemuxTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOCaseTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m17[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.108 s - in org.apache.commons.io.[1mIOCaseTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m17[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.111 s - in org.apache.commons.io.[1mIOCaseTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mNameFileFilterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.166 s - in org.apache.commons.io.filefilter.[1mNameFileFilterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.142 s - in org.apache.commons.io.filefilter.[1mNameFileFilterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mDirectoryFileFilterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.134 s - in org.apache.commons.io.filefilter.[1mDirectoryFileFilterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.133 s - in org.apache.commons.io.filefilter.[1mDirectoryFileFilterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mOrFileFilterTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.084 s - in org.apache.commons.io.filefilter.[1mOrFileFilterTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s - in org.apache.commons.io.filefilter.[1mOrFileFilterTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mAgeFileFilterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.169 s - in org.apache.commons.io.filefilter.[1mAgeFileFilterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.216 s - in org.apache.commons.io.filefilter.[1mAgeFileFilterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mRegexFileFilterTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s - in org.apache.commons.io.filefilter.[1mRegexFileFilterTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 s - in org.apache.commons.io.filefilter.[1mRegexFileFilterTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mAndFileFilterTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s - in org.apache.commons.io.filefilter.[1mAndFileFilterTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s - in org.apache.commons.io.filefilter.[1mAndFileFilterTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mFileFilterTestCase[m
-[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m56[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 2.268 s - in org.apache.commons.io.filefilter.[1mFileFilterTestCase[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m56[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 2.281 s - in org.apache.commons.io.filefilter.[1mFileFilterTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mByteOrderMarkTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s - in org.apache.commons.io.[1mByteOrderMarkTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 s - in org.apache.commons.io.[1mByteOrderMarkTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.monitor.[1mFileAlterationObserverTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.683 s - in org.apache.commons.io.monitor.[1mFileAlterationObserverTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.698 s - in org.apache.commons.io.monitor.[1mFileAlterationObserverTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.monitor.[1mFileAlterationMonitorTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.648 s - in org.apache.commons.io.monitor.[1mFileAlterationMonitorTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.656 s - in org.apache.commons.io.monitor.[1mFileAlterationMonitorTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mCountersTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.152 s - in org.apache.commons.io.file.[1mCountersTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.146 s - in org.apache.commons.io.file.[1mCountersTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsCleanDirectoryTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.108 s - in org.apache.commons.io.file.[1mPathUtilsCleanDirectoryTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s - in org.apache.commons.io.file.[1mPathUtilsCleanDirectoryTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mDeletingPathVisitorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.178 s - in org.apache.commons.io.file.[1mDeletingPathVisitorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.182 s - in org.apache.commons.io.file.[1mDeletingPathVisitorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsVisitorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.168 s - in org.apache.commons.io.file.[1mPathUtilsVisitorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.159 s - in org.apache.commons.io.file.[1mPathUtilsVisitorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mCleaningPathVisitorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.174 s - in org.apache.commons.io.file.[1mCleaningPathVisitorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.177 s - in org.apache.commons.io.file.[1mCleaningPathVisitorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s - in org.apache.commons.io.file.[1mPathUtilsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.11 s - in org.apache.commons.io.file.[1mPathUtilsTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mCountersEqualsAndHashCodeTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s - in org.apache.commons.io.file.[1mCountersEqualsAndHashCodeTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.101 s - in org.apache.commons.io.file.[1mCountersEqualsAndHashCodeTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsCountingTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.102 s - in org.apache.commons.io.file.[1mPathUtilsCountingTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.091 s - in org.apache.commons.io.file.[1mPathUtilsCountingTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mCountingPathVisitorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.156 s - in org.apache.commons.io.file.[1mCountingPathVisitorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.173 s - in org.apache.commons.io.file.[1mCountingPathVisitorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsContentEqualsTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.133 s - in org.apache.commons.io.file.[1mPathUtilsContentEqualsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.152 s - in org.apache.commons.io.file.[1mPathUtilsContentEqualsTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsDeleteFileTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.117 s - in org.apache.commons.io.file.[1mPathUtilsDeleteFileTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.1 s - in org.apache.commons.io.file.[1mPathUtilsDeleteFileTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mAccumulatorPathVisitorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.161 s - in org.apache.commons.io.file.[1mAccumulatorPathVisitorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.18 s - in org.apache.commons.io.file.[1mAccumulatorPathVisitorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsDeleteTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.134 s - in org.apache.commons.io.file.[1mPathUtilsDeleteTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.144 s - in org.apache.commons.io.file.[1mPathUtilsDeleteTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.spi.[1mFileSystemProvidersTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 s - in org.apache.commons.io.file.spi.[1mFileSystemProvidersTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.168 s - in org.apache.commons.io.file.spi.[1mFileSystemProvidersTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsIsEmptyTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s - in org.apache.commons.io.file.[1mPathUtilsIsEmptyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.09 s - in org.apache.commons.io.file.[1mPathUtilsIsEmptyTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mCopyDirectoryVisitorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.167 s - in org.apache.commons.io.file.[1mCopyDirectoryVisitorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.166 s - in org.apache.commons.io.file.[1mCopyDirectoryVisitorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsDeleteDirectoryTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s - in org.apache.commons.io.file.[1mPathUtilsDeleteDirectoryTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.114 s - in org.apache.commons.io.file.[1mPathUtilsDeleteDirectoryTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mDirectoryStreamFilterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s - in org.apache.commons.io.file.[1mDirectoryStreamFilterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.085 s - in org.apache.commons.io.file.[1mDirectoryStreamFilterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOIndexedExceptionTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.058 s - in org.apache.commons.io.[1mIOIndexedExceptionTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s - in org.apache.commons.io.[1mIOIndexedExceptionTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOUtilsTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m114[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.454 s - in org.apache.commons.io.[1mIOUtilsTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m114[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.52 s - in org.apache.commons.io.[1mIOUtilsTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileCleaningTrackerTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.212 s - in org.apache.commons.io.[1mFileCleaningTrackerTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.218 s - in org.apache.commons.io.[1mFileCleaningTrackerTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileDeleteStrategyTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.117 s - in org.apache.commons.io.[1mFileDeleteStrategyTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.116 s - in org.apache.commons.io.[1mFileDeleteStrategyTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.function.[1mIOFunctionTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 s - in org.apache.commons.io.function.[1mIOFunctionTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.101 s - in org.apache.commons.io.function.[1mIOFunctionTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileSystemUtilsTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m30[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.151 s - in org.apache.commons.io.[1mFileSystemUtilsTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m30[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.169 s - in org.apache.commons.io.[1mFileSystemUtilsTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOExceptionWithCauseTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.058 s - in org.apache.commons.io.[1mIOExceptionWithCauseTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 s - in org.apache.commons.io.[1mIOExceptionWithCauseTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileCleanerTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.271 s - in org.apache.commons.io.[1mFileCleanerTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.217 s - in org.apache.commons.io.[1mFileCleanerTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mLastModifiedFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.356 s - in org.apache.commons.io.comparator.[1mLastModifiedFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.343 s - in org.apache.commons.io.comparator.[1mLastModifiedFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mCompositeFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.116 s - in org.apache.commons.io.comparator.[1mCompositeFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.118 s - in org.apache.commons.io.comparator.[1mCompositeFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mSizeFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.14 s - in org.apache.commons.io.comparator.[1mSizeFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.12 s - in org.apache.commons.io.comparator.[1mSizeFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mPathFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.106 s - in org.apache.commons.io.comparator.[1mPathFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.107 s - in org.apache.commons.io.comparator.[1mPathFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mDefaultFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s - in org.apache.commons.io.comparator.[1mDefaultFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.097 s - in org.apache.commons.io.comparator.[1mDefaultFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mDirectoryFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.098 s - in org.apache.commons.io.comparator.[1mDirectoryFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 s - in org.apache.commons.io.comparator.[1mDirectoryFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mNameFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.107 s - in org.apache.commons.io.comparator.[1mNameFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.103 s - in org.apache.commons.io.comparator.[1mNameFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mExtensionFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.12 s - in org.apache.commons.io.comparator.[1mExtensionFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.103 s - in org.apache.commons.io.comparator.[1mExtensionFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsCopyToFileTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.112 s - in org.apache.commons.io.[1mFileUtilsCopyToFileTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s - in org.apache.commons.io.[1mFileUtilsCopyToFileTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsListFilesTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.128 s - in org.apache.commons.io.[1mFileUtilsListFilesTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.123 s - in org.apache.commons.io.[1mFileUtilsListFilesTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mTaggedIOExceptionTest[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s - in org.apache.commons.io.[1mTaggedIOExceptionTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCharSequenceInputStreamTest[m
-[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m30[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m2[m, Time elapsed: 0.382 s - in org.apache.commons.io.input.[1mCharSequenceInputStreamTest[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m30[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m2[m, Time elapsed: 0.436 s - in org.apache.commons.io.input.[1mCharSequenceInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mXmlStreamReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m20[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.491 s - in org.apache.commons.io.input.[1mXmlStreamReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m20[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.482 s - in org.apache.commons.io.input.[1mXmlStreamReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCharacterSetFilterReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s - in org.apache.commons.io.input.[1mCharacterSetFilterReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s - in org.apache.commons.io.input.[1mCharacterSetFilterReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCloseShieldReaderTest[m
 [[1;31mERROR[m] WARNING: An illegal reflective access operation has occurred
 [[1;31mERROR[m] WARNING: Illegal reflective access by org.mockito.internal.util.reflection.ReflectionMemberAccessor (file:/home/spino/.m2/repository/org/mockito/mockito-core/3.6.28/mockito-core-3.6.28.jar) to field java.io.Reader.lock
 [[1;31mERROR[m] WARNING: Please consider reporting this to the maintainers of org.mockito.internal.util.reflection.ReflectionMemberAccessor
 [[1;31mERROR[m] WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 [[1;31mERROR[m] WARNING: All illegal access operations will be denied in a future release
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.42 s - in org.apache.commons.io.input.[1mCloseShieldReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.648 s - in org.apache.commons.io.input.[1mCloseShieldReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mInfiniteCircularInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.085 s - in org.apache.commons.io.input.[1mInfiniteCircularInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 s - in org.apache.commons.io.input.[1mInfiniteCircularInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mClosedReaderTest[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in org.apache.commons.io.input.[1mClosedReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mWindowsLineEndingInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s - in org.apache.commons.io.input.[1mWindowsLineEndingInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s - in org.apache.commons.io.input.[1mWindowsLineEndingInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mRandomAccessFileInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s - in org.apache.commons.io.input.[1mRandomAccessFileInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 s - in org.apache.commons.io.input.[1mRandomAccessFileInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mBufferedFileChannelInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.543 s - in org.apache.commons.io.input.[1mBufferedFileChannelInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.555 s - in org.apache.commons.io.input.[1mBufferedFileChannelInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mBoundedInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 s - in org.apache.commons.io.input.[1mBoundedInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s - in org.apache.commons.io.input.[1mBoundedInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mTeeInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.496 s - in org.apache.commons.io.input.[1mTeeInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.502 s - in org.apache.commons.io.input.[1mTeeInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mBoundedReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.126 s - in org.apache.commons.io.input.[1mBoundedReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s - in org.apache.commons.io.input.[1mBoundedReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mAutoCloseInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.086 s - in org.apache.commons.io.input.[1mAutoCloseInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s - in org.apache.commons.io.input.[1mAutoCloseInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mSequenceReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s - in org.apache.commons.io.input.[1mSequenceReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.097 s - in org.apache.commons.io.input.[1mSequenceReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mSwappedDataInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m14[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.11 s - in org.apache.commons.io.input.[1mSwappedDataInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m14[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.112 s - in org.apache.commons.io.input.[1mSwappedDataInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mBrokenReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.1 s - in org.apache.commons.io.input.[1mBrokenReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.115 s - in org.apache.commons.io.input.[1mBrokenReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mTeeReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.486 s - in org.apache.commons.io.input.[1mTeeReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.504 s - in org.apache.commons.io.input.[1mTeeReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mReadAheadInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.151 s - in org.apache.commons.io.input.[1mReadAheadInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.338 s - in org.apache.commons.io.input.[1mReadAheadInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mBOMInputStreamTest[m
-[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m44[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 0.237 s - in org.apache.commons.io.input.[1mBOMInputStreamTest[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m44[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 0.269 s - in org.apache.commons.io.input.[1mBOMInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mTailerTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.387 s - in org.apache.commons.io.input.[1mTailerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.389 s - in org.apache.commons.io.input.[1mTailerTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCharSequenceReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.103 s - in org.apache.commons.io.input.[1mCharSequenceReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.116 s - in org.apache.commons.io.input.[1mCharSequenceReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mNullReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.085 s - in org.apache.commons.io.input.[1mNullReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 s - in org.apache.commons.io.input.[1mNullReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCountingInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.277 s - in org.apache.commons.io.input.[1mCountingInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.288 s - in org.apache.commons.io.input.[1mCountingInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mNullInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.101 s - in org.apache.commons.io.input.[1mNullInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s - in org.apache.commons.io.input.[1mNullInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCharacterFilterReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.1 s - in org.apache.commons.io.input.[1mCharacterFilterReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s - in org.apache.commons.io.input.[1mCharacterFilterReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.compatibility.[1mXmlStreamReaderUtilitiesCompatibilityTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.122 s - in org.apache.commons.io.input.compatibility.[1mXmlStreamReaderUtilitiesCompatibilityTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.115 s - in org.apache.commons.io.input.compatibility.[1mXmlStreamReaderUtilitiesCompatibilityTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCircularInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s - in org.apache.commons.io.input.[1mCircularInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.09 s - in org.apache.commons.io.input.[1mCircularInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mReaderInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s - in org.apache.commons.io.input.[1mReaderInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s - in org.apache.commons.io.input.[1mReaderInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mReversedLinesFileReaderTestParamBlockSize[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m81[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.62 s - in org.apache.commons.io.input.[1mReversedLinesFileReaderTestParamBlockSize[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m81[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.594 s - in org.apache.commons.io.input.[1mReversedLinesFileReaderTestParamBlockSize[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mUnsynchronizedByteArrayInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.102 s - in org.apache.commons.io.input.[1mUnsynchronizedByteArrayInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s - in org.apache.commons.io.input.[1mUnsynchronizedByteArrayInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCloseShieldInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s - in org.apache.commons.io.input.[1mCloseShieldInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 s - in org.apache.commons.io.input.[1mCloseShieldInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mReversedLinesFileReaderTestSimple[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s - in org.apache.commons.io.input.[1mReversedLinesFileReaderTestSimple[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.128 s - in org.apache.commons.io.input.[1mReversedLinesFileReaderTestSimple[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mClassLoaderObjectInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.107 s - in org.apache.commons.io.input.[1mClassLoaderObjectInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s - in org.apache.commons.io.input.[1mClassLoaderObjectInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mMarkShieldInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s - in org.apache.commons.io.input.[1mMarkShieldInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.086 s - in org.apache.commons.io.input.[1mMarkShieldInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.buffer.[1mCircularBufferInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 s - in org.apache.commons.io.input.buffer.[1mCircularBufferInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.072 s - in org.apache.commons.io.input.buffer.[1mCircularBufferInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mTaggedInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.111 s - in org.apache.commons.io.input.[1mTaggedInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.091 s - in org.apache.commons.io.input.[1mTaggedInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mProxyReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s - in org.apache.commons.io.input.[1mProxyReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s - in org.apache.commons.io.input.[1mProxyReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mBrokenInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s - in org.apache.commons.io.input.[1mBrokenInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 s - in org.apache.commons.io.input.[1mBrokenInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mClosedInputStreamTest[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 s - in org.apache.commons.io.input.[1mClosedInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mObservableInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.102 s - in org.apache.commons.io.input.[1mObservableInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.107 s - in org.apache.commons.io.input.[1mObservableInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mMessageDigestCalculatingInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.073 s - in org.apache.commons.io.input.[1mMessageDigestCalculatingInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.074 s - in org.apache.commons.io.input.[1mMessageDigestCalculatingInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mUnixLineEndingInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.091 s - in org.apache.commons.io.input.[1mUnixLineEndingInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s - in org.apache.commons.io.input.[1mUnixLineEndingInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mXmlStreamReaderUtilitiesTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.13 s - in org.apache.commons.io.input.[1mXmlStreamReaderUtilitiesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.12 s - in org.apache.commons.io.input.[1mXmlStreamReaderUtilitiesTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mTaggedReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 s - in org.apache.commons.io.input.[1mTaggedReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s - in org.apache.commons.io.input.[1mTaggedReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mReversedLinesFileReaderTestParamFile[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.198 s - in org.apache.commons.io.input.[1mReversedLinesFileReaderTestParamFile[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.199 s - in org.apache.commons.io.input.[1mReversedLinesFileReaderTestParamFile[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsDirectoryContainsTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.126 s - in org.apache.commons.io.[1mFileUtilsDirectoryContainsTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.134 s - in org.apache.commons.io.[1mFileUtilsDirectoryContainsTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mThresholdingOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s - in org.apache.commons.io.output.[1mThresholdingOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s - in org.apache.commons.io.output.[1mThresholdingOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mNullAppendableTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 s - in org.apache.commons.io.output.[1mNullAppendableTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.055 s - in org.apache.commons.io.output.[1mNullAppendableTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mAppendableWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s - in org.apache.commons.io.output.[1mAppendableWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.09 s - in org.apache.commons.io.output.[1mAppendableWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mCloseShieldWriterTest[m
 [[1;31mERROR[m] WARNING: An illegal reflective access operation has occurred
 [[1;31mERROR[m] WARNING: Illegal reflective access by org.mockito.internal.util.reflection.ReflectionMemberAccessor (file:/home/spino/.m2/repository/org/mockito/mockito-core/3.6.28/mockito-core-3.6.28.jar) to field java.io.Writer.writeBuffer
 [[1;31mERROR[m] WARNING: Please consider reporting this to the maintainers of org.mockito.internal.util.reflection.ReflectionMemberAccessor
 [[1;31mERROR[m] WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 [[1;31mERROR[m] WARNING: All illegal access operations will be denied in a future release
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.419 s - in org.apache.commons.io.output.[1mCloseShieldWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.473 s - in org.apache.commons.io.output.[1mCloseShieldWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mWriterOutputStreamTest[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.111 s - in org.apache.commons.io.output.[1mWriterOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mClosedOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.068 s - in org.apache.commons.io.output.[1mClosedOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 s - in org.apache.commons.io.output.[1mClosedOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mProxyCollectionWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m23[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.476 s - in org.apache.commons.io.output.[1mProxyCollectionWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m23[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.485 s - in org.apache.commons.io.output.[1mProxyCollectionWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mClosedWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in org.apache.commons.io.output.[1mClosedWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.06 s - in org.apache.commons.io.output.[1mClosedWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mTeeWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m23[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.477 s - in org.apache.commons.io.output.[1mTeeWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m23[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.492 s - in org.apache.commons.io.output.[1mTeeWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mByteArrayOutputStreamTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m30[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.215 s - in org.apache.commons.io.output.[1mByteArrayOutputStreamTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m30[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.234 s - in org.apache.commons.io.output.[1mByteArrayOutputStreamTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mChunkedOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s - in org.apache.commons.io.output.[1mChunkedOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.071 s - in org.apache.commons.io.output.[1mChunkedOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mAppendableOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.073 s - in org.apache.commons.io.output.[1mAppendableOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s - in org.apache.commons.io.output.[1mAppendableOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mCountingOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.198 s - in org.apache.commons.io.output.[1mCountingOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.188 s - in org.apache.commons.io.output.[1mCountingOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mNullPrintStreamTest[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 s - in org.apache.commons.io.output.[1mNullPrintStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mCloseShieldOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 s - in org.apache.commons.io.output.[1mCloseShieldOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.06 s - in org.apache.commons.io.output.[1mCloseShieldOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mFileWriterWithEncodingTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.148 s - in org.apache.commons.io.output.[1mFileWriterWithEncodingTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.149 s - in org.apache.commons.io.output.[1mFileWriterWithEncodingTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mLockableFileWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.129 s - in org.apache.commons.io.output.[1mLockableFileWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.122 s - in org.apache.commons.io.output.[1mLockableFileWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mTaggedOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.09 s - in org.apache.commons.io.output.[1mTaggedOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.097 s - in org.apache.commons.io.output.[1mTaggedOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mChunkedWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.08 s - in org.apache.commons.io.output.[1mChunkedWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.074 s - in org.apache.commons.io.output.[1mChunkedWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mDeferredFileOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m118[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.354 s - in org.apache.commons.io.output.[1mDeferredFileOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m118[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.364 s - in org.apache.commons.io.output.[1mDeferredFileOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mNullOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.06 s - in org.apache.commons.io.output.[1mNullOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 s - in org.apache.commons.io.output.[1mNullOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mBrokenWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.07 s - in org.apache.commons.io.output.[1mBrokenWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s - in org.apache.commons.io.output.[1mBrokenWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mXmlStreamWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.125 s - in org.apache.commons.io.output.[1mXmlStreamWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.131 s - in org.apache.commons.io.output.[1mXmlStreamWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mTaggedWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.09 s - in org.apache.commons.io.output.[1mTaggedWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.085 s - in org.apache.commons.io.output.[1mTaggedWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mStringBuilderWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s - in org.apache.commons.io.output.[1mStringBuilderWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s - in org.apache.commons.io.output.[1mStringBuilderWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mNullWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in org.apache.commons.io.output.[1mNullWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s - in org.apache.commons.io.output.[1mNullWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mBrokenOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.074 s - in org.apache.commons.io.output.[1mBrokenOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.073 s - in org.apache.commons.io.output.[1mBrokenOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mProxyWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m21[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.133 s - in org.apache.commons.io.output.[1mProxyWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m21[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.111 s - in org.apache.commons.io.output.[1mProxyWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mProxyOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.08 s - in org.apache.commons.io.output.[1mProxyOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.077 s - in org.apache.commons.io.output.[1mProxyOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mTeeOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.442 s - in org.apache.commons.io.output.[1mTeeOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.436 s - in org.apache.commons.io.output.[1mTeeOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileSystemTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 s - in org.apache.commons.io.[1mFileSystemTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s - in org.apache.commons.io.[1mFileSystemTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsCopyDirectoryToDirectoryTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.112 s - in org.apache.commons.io.[1mFileUtilsCopyDirectoryToDirectoryTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 s - in org.apache.commons.io.[1mFileUtilsCopyDirectoryToDirectoryTestCase[m
 [[1;34mINFO[m] 
 [[1;34mINFO[m] Results:
 [[1;34mINFO[m] 
@@ -441,11 +508,11 @@ WARNING: All illegal access operations will be denied in a future release
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
 [[1;34mINFO[m] [1;32mBUILD SUCCESS[m
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
-[[1;34mINFO[m] Total time:  02:32 min
-[[1;34mINFO[m] Finished at: 2020-12-09T13:57:33+01:00
+[[1;34mINFO[m] Total time:  02:35 min
+[[1;34mINFO[m] Finished at: 2020-12-11T09:16:15+01:00
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
 Writing HTML report to '/tmp/v1/target/clover/report'
-Done. Processed 13 packages in 4960ms (381ms per package).
+Done. Processed 13 packages in 5435ms (418ms per package).
 [INFO] /tmp/v1/src/main/java/org/apache/commons/io/file/PathUtils.java
 [INFO] /tmp/v2/src/main/java/org/apache/commons/io/file/PathUtils.java
 [INFO] org.apache.commons.io.file.PathUtils:484 is modified.
@@ -528,8 +595,8 @@ java.lang.NullPointerException
 [INFO] org.apache.commons.io.monitor.FileAlterationObserverTestCase;testDirectory
 org.apache.commons.io.FileUtilsTestCase;testDeleteQuietlyDir;testCopyDirectoryToNonExistingDest;testForceDeleteReadOnlyFile;testForceDeleteAFile2;testForceDeleteAFile1;testForceDeleteAFile3
 org.apache.commons.io.file.PathUtilsDeleteTest;testDeleteDirectory1FileSize1OverrideReadOnly;testDeleteDirectory1FileSize0NoOption;testDeleteDirectory1FileSize0OverrideReadonly;testDeleteDirectory1FileSize1NoOption;testDeleteDirectory1FileSize0;testDeleteDirectory1FileSize1;testDeleteFileDoesNotExist
-org.apache.commons.io.file.PathUtilsDeleteFileTest;testSetReadOnlyFileDirectory1FileSize1;testDeleteReadOnlyFileDirectory1FileSize1;testDeleteFileDirectory1FileSize1;testDeleteFileDirectory1FileSize0;testDeleteFileDoesNotExist
 org.apache.commons.io.FileUtilsCleanSymlinksTestCase;testStillClearsIfGivenDirectoryIsASymlink
+org.apache.commons.io.file.PathUtilsDeleteFileTest;testSetReadOnlyFileDirectory1FileSize1;testDeleteFileDirectory1FileSize1;testDeleteReadOnlyFileDirectory1FileSize1;testDeleteFileDirectory1FileSize0;testDeleteFileDoesNotExist
 org.apache.commons.io.FileUtilsCleanDirectoryTestCase;testDeletesRegular;testThrowsOnCannotDeleteFile
 [INFO] Writing Coverage in /tmp/v1/testsThatExecuteTheChange_coverage.csv
 [INFO] org.apache.commons.io.file.PathUtils;1;1
@@ -539,6 +606,6 @@ org.apache.commons.io.FileUtilsCleanDirectoryTestCase;testDeletesRegular;testThr
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  02:42 min
-[INFO] Finished at: 2020-12-09T13:57:41+01:00
+[INFO] Total time:  02:55 min
+[INFO] Finished at: 2020-12-11T09:16:23+01:00
 [INFO] ------------------------------------------------------------------------

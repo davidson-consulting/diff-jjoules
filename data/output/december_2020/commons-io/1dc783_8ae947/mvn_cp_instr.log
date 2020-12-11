@@ -25,7 +25,7 @@
 [INFO] --- buildnumber-maven-plugin:1.4:create (default) @ commons-io ---
 [INFO] Executing: /bin/sh -c cd '/tmp/v1' && 'git' 'rev-parse' '--verify' 'HEAD'
 [INFO] Working directory: /tmp/v1
-[INFO] Storing buildNumber: 1dc7834e639b2245ada901bc011f651a09a98aaf at timestamp: 1607519174153
+[INFO] Storing buildNumber: 1dc7834e639b2245ada901bc011f651a09a98aaf at timestamp: 1607675105656
 [INFO] Storing buildScmBranch: master
 [INFO] 
 [INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ commons-io ---
@@ -73,11 +73,11 @@
 [INFO] Skipped writing classpath file '/tmp/v1/classpath'.  No changes found.
 [INFO] 
 [INFO] --- diff-jjoules:0.0.1-SNAPSHOT:instrument (default-cli) @ commons-io ---
-[INFO] org.apache.commons.io.FileUtilsCleanSymlinksTestCase:[testCleanDirWithASymlinkDir, testCleanDirWithSymlinkFile, testStillClearsIfGivenDirectoryIsASymlink, testCleanDirWithParentSymlinks]
+[INFO] org.apache.commons.io.FileUtilsCleanSymlinksTestCase:[testCleanDirWithSymlinkFile, testCleanDirWithASymlinkDir, testStillClearsIfGivenDirectoryIsASymlink, testCleanDirWithParentSymlinks]
 org.apache.commons.io.FileUtilsCleanDirectoryTestCase:[testDeletesRegular, testThrowsOnCannotDeleteFile, testDeletesNested]
 org.apache.commons.io.FileCleaningTrackerTestCase:[testFileCleanerDirectory_ForceStrategy]
-org.apache.commons.io.FileDeleteStrategyTestCase:[testDeleteForce]
 org.apache.commons.io.FileCleanerTestCase:[testFileCleanerDirectory_ForceStrategy]
+org.apache.commons.io.FileDeleteStrategyTestCase:[testDeleteForce]
 org.apache.commons.io.filefilter.FileFilterTestCase:[testEmpty]
 org.apache.commons.io.FileUtilsTestCase:[testDeleteQuietlyDir, testForceDeleteDir, testCopyDirectoryToNonExistingDest, testForceDeleteReadOnlyFile, testForceDeleteAFile2, testCopyDirectoryPreserveDates, testForceDeleteAFile1, testCopyDirectoryToDirectory_NonExistingDest, testForceDeleteAFile3, testMoveDirectory_CopyDelete]
 org.apache.commons.io.monitor.FileAlterationObserverTestCase:[testDirectory]
@@ -148,6 +148,6 @@ Processing org.apache.commons.io.FileUtilsTestCase#testMoveDirectory_CopyDelete
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  19.846 s
-[INFO] Finished at: 2020-12-09T14:06:32+01:00
+[INFO] Total time:  19.850 s
+[INFO] Finished at: 2020-12-11T09:25:23+01:00
 [INFO] ------------------------------------------------------------------------
