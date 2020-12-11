@@ -1,0 +1,169 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< commons-io:commons-io >------------------------
+[INFO] Building Apache Commons IO 2.9.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M3:enforce (enforce-maven-version) @ commons-io ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M3:enforce (enforce-maven-3) @ commons-io ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M3:enforce (enforce-maven) @ commons-io ---
+[INFO] 
+[INFO] --- apache-rat-plugin:0.13:check (rat-check) @ commons-io ---
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.2.0:parse-version (parse-version) @ commons-io ---
+[INFO] 
+[INFO] --- maven-antrun-plugin:3.0.0:run (javadoc.resources) @ commons-io ---
+[INFO] Executing tasks
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:1.7.0:process (process-resource-bundles) @ commons-io ---
+[INFO] Skipping remote resources execution.
+[INFO] 
+[INFO] --- buildnumber-maven-plugin:1.4:create (default) @ commons-io ---
+[INFO] Executing: /bin/sh -c cd '/tmp/v1' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /tmp/v1
+[INFO] Storing buildNumber: 89bfb64c1091ca80e407077707c6121228db5329 at timestamp: 1607678951110
+[INFO] Storing buildScmBranch: master
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ commons-io ---
+[INFO] Using 'iso-8859-1' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /tmp/v1/src/main/resources
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ commons-io ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 174 source files to /tmp/v1/target/classes
+[WARNING] /tmp/v1/src/main/java/org/apache/commons/io/input/BufferedFileChannelInputStream.java:[29,18] sun.nio.ch.DirectBuffer is internal proprietary API and may be removed in a future release
+[WARNING] /tmp/v1/src/main/java/org/apache/commons/io/input/BufferedFileChannelInputStream.java:[110,41] sun.nio.ch.DirectBuffer is internal proprietary API and may be removed in a future release
+[WARNING] /tmp/v1/src/main/java/org/apache/commons/io/input/BufferedFileChannelInputStream.java:[111,30] sun.nio.ch.DirectBuffer is internal proprietary API and may be removed in a future release
+[WARNING] /tmp/v1/src/main/java/org/apache/commons/io/input/BufferedFileChannelInputStream.java:[123,30] sun.nio.ch.DirectBuffer is internal proprietary API and may be removed in a future release
+[WARNING] /tmp/v1/src/main/java/org/apache/commons/io/input/BufferedFileChannelInputStream.java:[151,44] sun.nio.ch.DirectBuffer is internal proprietary API and may be removed in a future release
+[INFO] /tmp/v1/src/main/java/org/apache/commons/io/input/ClassLoaderObjectInputStream.java: Some input files use or override a deprecated API.
+[INFO] /tmp/v1/src/main/java/org/apache/commons/io/input/ClassLoaderObjectInputStream.java: Recompile with -Xlint:deprecation for details.
+[INFO] /tmp/v1/src/main/java/org/apache/commons/io/IOExceptionList.java: /tmp/v1/src/main/java/org/apache/commons/io/IOExceptionList.java uses unchecked or unsafe operations.
+[INFO] /tmp/v1/src/main/java/org/apache/commons/io/IOExceptionList.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.1:manifest (bundle-manifest) @ commons-io ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ commons-io ---
+[INFO] Using 'iso-8859-1' encoding to copy filtered resources.
+[INFO] Copying 50 resources
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ commons-io ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 172 source files to /tmp/v1/target/test-classes
+[INFO] /tmp/v1/src/test/java/org/apache/commons/io/FileUtilsTestCase.java: /tmp/v1/src/test/java/org/apache/commons/io/FileUtilsTestCase.java uses unchecked or unsafe operations.
+[INFO] /tmp/v1/src/test/java/org/apache/commons/io/FileUtilsTestCase.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- animal-sniffer-maven-plugin:1.19:check (checkAPIcompatibility) @ commons-io ---
+[INFO] Signature checking is skipped.
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.6:prepare-agent (prepare-agent) @ commons-io ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] argLine set to empty
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M5:test (default-test) @ commons-io ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:build-classpath (default-cli) @ commons-io ---
+[INFO] Skipped writing classpath file '/tmp/v1/classpath'.  No changes found.
+[INFO] 
+[INFO] --- diff-jjoules:0.0.1-SNAPSHOT:instrument (default-cli) @ commons-io ---
+[INFO] org.apache.commons.io.filefilter.NameFileFilterTest:[testJavadocExampleUsingNio, testNoCounting]
+org.apache.commons.io.file.PathUtilsTest:[testNewDirectoryStream]
+org.apache.commons.io.file.DirectoryStreamFilterTest:[testFilterByNameNot, testFilterByName]
+org.apache.commons.io.FileUtilsListFilesTestCase:[testListFilesByExtension, testListFiles, testIterateFilesByExtension]
+org.apache.commons.io.filefilter.FileFilterTestCase:[testSuffix, testPathEqualsFilter, testFilterArray_PathVisitorFileFilter_FileExistsNo, testPrefixCaseInsensitive, testNameFilter, testWildcard, testFilterArray_PathVisitorFileFilter_FileExistsYes, testFileEqualsFilter, testDeprecatedWildcard, testPrefix]
+org.apache.commons.io.FileUtilsTestCase:[testListFilesWithDirs, testListFiles, testIterateFilesAndDirs, testIterateFiles]
+org.apache.commons.io.FileUtilsDirectoryContainsTestCase:[testCanonicalPath, testDirectoryContainsFile, testDirectoryDoesNotContainFile, testDirectoryContainsDirectory, testDirectoryDoesNotContainsDirectory]
+org.apache.commons.io.IOCaseTestCase:[test_checkStartsWith_case, test_checkStartsWith_functionality]
+[INFO] Instrument version before commit...
+[INFO] Run on /tmp/v1
+[INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
+[INFO] Spoon version 8.4.0-SNAPSHOT
+[INFO] running Spoon...
+[INFO] start processing...
+[INFO] fr.davidson.diff.jjoules.process.junit5.JJoulesProcessor
+Processing org.apache.commons.io.file.DirectoryStreamFilterTest#testFilterByName
+Processing org.apache.commons.io.file.DirectoryStreamFilterTest#testFilterByNameNot
+Processing org.apache.commons.io.file.PathUtilsTest#testNewDirectoryStream
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testDeprecatedWildcard
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testFilterArray_PathVisitorFileFilter_FileExistsNo
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testFilterArray_PathVisitorFileFilter_FileExistsYes
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testNameFilter
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testFileEqualsFilter
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testPathEqualsFilter
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testPrefix
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testPrefixCaseInsensitive
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testSuffix
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testWildcard
+Processing org.apache.commons.io.filefilter.NameFileFilterTest#testJavadocExampleUsingNio
+Processing org.apache.commons.io.filefilter.NameFileFilterTest#testNoCounting
+Processing org.apache.commons.io.FileUtilsDirectoryContainsTestCase#testCanonicalPath
+Processing org.apache.commons.io.FileUtilsDirectoryContainsTestCase#testDirectoryContainsDirectory
+Processing org.apache.commons.io.FileUtilsDirectoryContainsTestCase#testDirectoryContainsFile
+Processing org.apache.commons.io.FileUtilsDirectoryContainsTestCase#testDirectoryDoesNotContainFile
+Processing org.apache.commons.io.FileUtilsDirectoryContainsTestCase#testDirectoryDoesNotContainsDirectory
+Processing org.apache.commons.io.FileUtilsListFilesTestCase#testIterateFilesByExtension
+Processing org.apache.commons.io.FileUtilsListFilesTestCase#testListFilesByExtension
+Processing org.apache.commons.io.FileUtilsListFilesTestCase#testListFiles
+Processing org.apache.commons.io.FileUtilsTestCase#testIterateFiles
+Processing org.apache.commons.io.FileUtilsTestCase#testIterateFilesAndDirs
+Processing org.apache.commons.io.FileUtilsTestCase#testListFiles
+Processing org.apache.commons.io.FileUtilsTestCase#testListFilesWithDirs
+Processing org.apache.commons.io.IOCaseTestCase#test_checkStartsWith_functionality
+Processing org.apache.commons.io.IOCaseTestCase#test_checkStartsWith_case
+[INFO] end of processing: 
+[INFO] no errors, no warnings
+[INFO] Injecting JUnit-Jjoules in /tmp/v1/pom.xml
+[INFO] Output new POM file in /tmp/v1/pom_jjouled.xml
+[INFO] Instrument version after commit...
+[INFO] Run on /tmp/v2
+[INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
+[INFO] Spoon version 8.4.0-SNAPSHOT
+[INFO] running Spoon...
+[INFO] start processing...
+[INFO] fr.davidson.diff.jjoules.process.junit5.JJoulesProcessor
+Processing org.apache.commons.io.file.DirectoryStreamFilterTest#testFilterByName
+Processing org.apache.commons.io.file.DirectoryStreamFilterTest#testFilterByNameNot
+Processing org.apache.commons.io.file.PathUtilsTest#testNewDirectoryStream
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testDeprecatedWildcard
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testFilterArray_PathVisitorFileFilter_FileExistsNo
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testFilterArray_PathVisitorFileFilter_FileExistsYes
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testNameFilter
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testFileEqualsFilter
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testPathEqualsFilter
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testPrefix
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testPrefixCaseInsensitive
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testSuffix
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testWildcard
+Processing org.apache.commons.io.filefilter.NameFileFilterTest#testJavadocExampleUsingNio
+Processing org.apache.commons.io.filefilter.NameFileFilterTest#testNoCounting
+Processing org.apache.commons.io.FileUtilsDirectoryContainsTestCase#testCanonicalPath
+Processing org.apache.commons.io.FileUtilsDirectoryContainsTestCase#testDirectoryContainsDirectory
+Processing org.apache.commons.io.FileUtilsDirectoryContainsTestCase#testDirectoryContainsFile
+Processing org.apache.commons.io.FileUtilsDirectoryContainsTestCase#testDirectoryDoesNotContainFile
+Processing org.apache.commons.io.FileUtilsDirectoryContainsTestCase#testDirectoryDoesNotContainsDirectory
+Processing org.apache.commons.io.FileUtilsListFilesTestCase#testIterateFilesByExtension
+Processing org.apache.commons.io.FileUtilsListFilesTestCase#testListFilesByExtension
+Processing org.apache.commons.io.FileUtilsListFilesTestCase#testListFiles
+Processing org.apache.commons.io.FileUtilsTestCase#testIterateFiles
+Processing org.apache.commons.io.FileUtilsTestCase#testIterateFilesAndDirs
+Processing org.apache.commons.io.FileUtilsTestCase#testListFiles
+Processing org.apache.commons.io.FileUtilsTestCase#testListFilesWithDirs
+Processing org.apache.commons.io.IOCaseTestCase#test_checkStartsWith_functionality
+Processing org.apache.commons.io.IOCaseTestCase#test_checkStartsWith_case
+[INFO] end of processing: 
+[INFO] no errors, no warnings
+[INFO] Injecting JUnit-Jjoules in /tmp/v2/pom.xml
+[INFO] Output new POM file in /tmp/v2/pom_jjouled.xml
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.079 s
+[INFO] Finished at: 2020-12-11T10:29:29+01:00
+[INFO] ------------------------------------------------------------------------

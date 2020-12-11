@@ -25,7 +25,7 @@
 [INFO] --- buildnumber-maven-plugin:1.4:create (default) @ commons-io ---
 [INFO] Executing: /bin/sh -c cd '/tmp/v1' && 'git' 'rev-parse' '--verify' 'HEAD'
 [INFO] Working directory: /tmp/v1
-[INFO] Storing buildNumber: ade3895ef543dc5a9cf2ebc254253155383bca0f at timestamp: 1607521594365
+[INFO] Storing buildNumber: ade3895ef543dc5a9cf2ebc254253155383bca0f at timestamp: 1607677543658
 [INFO] Storing buildScmBranch: master
 [INFO] 
 [INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ commons-io ---
@@ -79,19 +79,19 @@ org.apache.commons.io.IOUtilsCopyTestCase:[testCopy_inputStreamToOutputStream_IO
 org.apache.commons.io.output.NullOutputStreamTest:[testSingleton]
 org.apache.commons.io.FileUtilsListFilesTestCase:[testListFiles, testIterateFilesByExtension]
 org.apache.commons.io.filefilter.FileFilterTestCase:[testPathEqualsFilter, testFilterArray_PathVisitorFileFilter_FileExistsNo, testFileEqualsFilter, testFilterArray_PathVisitorFileFilter_FileExistsYes, testEmpty]
-org.apache.commons.io.file.PathUtilsCleanDirectoryTest:[testCleanDirectory2FileSize2, testCleanDirectory1FileSize1, testCleanDirectory1FileSize0, testCleanEmptyDirectory]
+org.apache.commons.io.file.PathUtilsCleanDirectoryTest:[testCleanDirectory2FileSize2, testCleanDirectory1FileSize1, testCleanEmptyDirectory, testCleanDirectory1FileSize0]
 org.apache.commons.io.output.LockableFileWriterTest:[testConstructor_File_nullFile, testAlternateLockDir, testFileNotLocked, testFileLocked, testConstructor_File_directory]
 org.apache.commons.io.FileUtilsTestCase:[testDeleteQuietlyDir, testListFiles, testCopyDirectoryPreserveDates, testCopyDirectoryToDirectory_NonExistingDest, testMoveDirectory_CopyDelete, testListFilesWithDirs, testForceDeleteDir, testCopyDirectoryToNonExistingDest, testIterateFilesAndDirs, testChecksum, testForceDeleteAFile2, testForceDeleteAFile1, testForceDeleteAFile3, testIterateFiles]
-org.apache.commons.io.input.CharSequenceInputStreamTest:[testBufferedRead_UTF8, testSkip_USASCII, testLargeSingleByteRead_RequiredCharsets, testBufferedRead_RequiredCharset, testIO_356_B10_D10_S1_UTF8, testIO_356_B10_D13_S0_UTF8, testLargeBufferedRead_RequiredCharsets, testReadZero_EmptyString, testCharsetMismatchInfiniteLoop_RequiredCharsets, testMarkReset_USASCII, testIO_356_B10_D13_S1_UTF8, testMarkReset_UTF8, testLargeSingleByteRead_UTF8, testBufferedRead_AvailableCharset, testSingleByteRead_UTF8, testIO_356_B10_D20_S0_UTF8, testIO_356_B10_D10_S2_UTF8, testSkip_UTF8, testIO_356_Loop_UTF8, testSingleByteRead_RequiredCharsets, testMarkSupported, testSingleByteRead_UTF16, testIO_356_B10_D10_S0_UTF16, testIO_356_Loop_UTF16, testReadZero_RequiredCharsets, testLargeBufferedRead_UTF8, testAvailable, testIO_356_B10_D10_S0_UTF8]
+org.apache.commons.io.input.CharSequenceInputStreamTest:[testSkip_USASCII, testBufferedRead_UTF8, testLargeSingleByteRead_RequiredCharsets, testBufferedRead_RequiredCharset, testIO_356_B10_D10_S1_UTF8, testIO_356_B10_D13_S0_UTF8, testLargeBufferedRead_RequiredCharsets, testReadZero_EmptyString, testCharsetMismatchInfiniteLoop_RequiredCharsets, testMarkReset_USASCII, testIO_356_B10_D13_S1_UTF8, testMarkReset_UTF8, testLargeSingleByteRead_UTF8, testBufferedRead_AvailableCharset, testSingleByteRead_UTF8, testIO_356_B10_D20_S0_UTF8, testIO_356_B10_D10_S2_UTF8, testIO_356_Loop_UTF8, testSkip_UTF8, testSingleByteRead_RequiredCharsets, testMarkSupported, testSingleByteRead_UTF16, testIO_356_B10_D10_S0_UTF16, testIO_356_Loop_UTF16, testReadZero_RequiredCharsets, testLargeBufferedRead_UTF8, testAvailable, testIO_356_B10_D10_S0_UTF8]
 org.apache.commons.io.filefilter.NameFileFilterTest:[testJavadocExampleUsingNio, testNoCounting]
-org.apache.commons.io.FileSystemUtilsTestCase:[testGetFreeSpaceWindows_String_ParseCommaFormatBytes_Small, testGetFreeSpaceWindows_String_ParseCommaFormatBytes, testGetFreeSpaceUnix_String_NormalResponseKbSolaris, testGetFreeSpaceOS_String_Unix, testGetFreeSpaceWindows_String_EmptyResponse, testGetFreeSpaceWindows_String_quoted, testGetFreeSpaceUnix_String_EmptyPath, testGetFreeSpaceWindows_String_StripDrive, testGetFreeSpaceOS_String_InitError, testGetFreeSpaceOS_String_NullPath, testGetFreeSpaceUnix_String_InvalidResponse4, testGetFreeSpaceUnix_String_InvalidResponse3, testGetFreeSpaceUnix_String_EmptyResponse, testGetFreeSpaceUnix_String_InvalidResponse2, testGetFreeSpaceWindows_String_NormalResponse, testGetFreeSpaceUnix_String_InvalidResponse1, testGetFreeSpaceOS_String_Windows, testGetFreeSpaceWindows_String_InvalidTextResponse, testGetFreeSpaceOS_String_Other, testGetFreeSpaceWindows_String_EmptyMultiLineResponse, testGetFreeSpaceWindows_String_NoSuchDirectoryResponse, testGetFreeSpaceUnix_String_LongResponse, testGetFreeSpaceUnix_String_NormalResponseKbFreeBSD, testGetFreeSpaceUnix_String_NormalResponseFreeBSD, testGetFreeSpaceWindows_String_ParseCommaFormatBytes_Big, testGetFreeSpaceWindows_String_EmptyPath, testGetFreeSpaceUnix_String_NormalResponseLinux, testGetFreeSpaceUnix_String_NormalResponseKbLinux, testGetFreeSpaceUnix_String_LongResponseKb]
+org.apache.commons.io.FileSystemUtilsTestCase:[testGetFreeSpaceWindows_String_ParseCommaFormatBytes_Small, testGetFreeSpaceWindows_String_ParseCommaFormatBytes, testGetFreeSpaceUnix_String_NormalResponseKbSolaris, testGetFreeSpaceOS_String_Unix, testGetFreeSpaceWindows_String_EmptyResponse, testGetFreeSpaceWindows_String_quoted, testGetFreeSpaceUnix_String_EmptyPath, testGetFreeSpaceOS_String_InitError, testGetFreeSpaceWindows_String_StripDrive, testGetFreeSpaceOS_String_NullPath, testGetFreeSpaceUnix_String_InvalidResponse4, testGetFreeSpaceUnix_String_InvalidResponse3, testGetFreeSpaceUnix_String_EmptyResponse, testGetFreeSpaceUnix_String_InvalidResponse2, testGetFreeSpaceUnix_String_InvalidResponse1, testGetFreeSpaceWindows_String_NormalResponse, testGetFreeSpaceOS_String_Windows, testGetFreeSpaceWindows_String_InvalidTextResponse, testGetFreeSpaceOS_String_Other, testGetFreeSpaceWindows_String_EmptyMultiLineResponse, testGetFreeSpaceWindows_String_NoSuchDirectoryResponse, testGetFreeSpaceUnix_String_LongResponse, testGetFreeSpaceUnix_String_NormalResponseKbFreeBSD, testGetFreeSpaceUnix_String_NormalResponseFreeBSD, testGetFreeSpaceWindows_String_ParseCommaFormatBytes_Big, testGetFreeSpaceWindows_String_EmptyPath, testGetFreeSpaceUnix_String_NormalResponseLinux, testGetFreeSpaceUnix_String_NormalResponseKbLinux, testGetFreeSpaceUnix_String_LongResponseKb]
 org.apache.commons.io.file.DirectoryStreamFilterTest:[testFilterByNameNot, testFilterByName]
 org.apache.commons.io.file.spi.FileSystemProvidersTest:[testGetFileSystemProvider_fileScheme]
 org.apache.commons.io.FileCleanerTestCase:[testFileCleanerDirectory_ForceStrategy]
 org.apache.commons.io.FileUtilsCleanDirectoryTestCase:[testDeletesRegular, testThrowsOnCannotDeleteFile, testDeletesNested]
 org.apache.commons.io.filefilter.AgeFileFilterTest:[testJavadocExampleUsingNio, testNoCounting]
 org.apache.commons.io.FileCleaningTrackerTestCase:[testFileCleanerDirectory_ForceStrategy]
-org.apache.commons.io.output.FileWriterWithEncodingTest:[sameEncoding_string_constructor, sameEncoding_string_CharsetEncoder_constructor, sameEncoding_Charset_constructor, sameEncoding_null_Charset_constructor, sameEncoding_string_Charset_constructor, constructor_File_encoding_badEncoding, constructor_File_nullFile, testDifferentEncoding, sameEncoding_CharsetEncoder_constructor, constructor_File_directory, sameEncoding_string_string_constructor]
+org.apache.commons.io.output.FileWriterWithEncodingTest:[sameEncoding_string_CharsetEncoder_constructor, sameEncoding_string_constructor, sameEncoding_Charset_constructor, sameEncoding_null_Charset_constructor, sameEncoding_string_Charset_constructor, constructor_File_encoding_badEncoding, testDifferentEncoding, constructor_File_nullFile, sameEncoding_CharsetEncoder_constructor, constructor_File_directory, sameEncoding_string_string_constructor]
 org.apache.commons.io.input.CountingInputStreamTest:[testLargeFiles_IO84]
 org.apache.commons.io.file.PathUtilsTest:[testCopyFile, testNewDirectoryStream]
 org.apache.commons.io.output.CountingOutputStreamTest:[testLargeFiles_IO84]
@@ -104,7 +104,7 @@ org.apache.commons.io.monitor.FileAlterationObserverTestCase:[testDirectory]
 org.apache.commons.io.input.TeeInputStreamTest:[testCloseBranchIOException]
 org.apache.commons.io.EndianUtilsTest:[testCtor]
 org.apache.commons.io.file.PathUtilsCountingTest:[testCountFolders1FileSize1, testCountEmptyFolder, testCountFolders1FileSize0, testCountFolders2FileSize2]
-org.apache.commons.io.file.PathUtilsDeleteFileTest:[testSetReadOnlyFileDirectory1FileSize1, testDeleteFileDirectory1FileSize1, testDeleteReadOnlyFileDirectory1FileSize1, testDeleteFileDirectory1FileSize0, testDeleteFileDoesNotExist]
+org.apache.commons.io.file.PathUtilsDeleteFileTest:[testSetReadOnlyFileDirectory1FileSize1, testDeleteReadOnlyFileDirectory1FileSize1, testDeleteFileDirectory1FileSize1, testDeleteFileDirectory1FileSize0, testDeleteFileDoesNotExist]
 org.apache.commons.io.output.TeeOutputStreamTest:[testIOExceptionOnClose]
 org.apache.commons.io.file.PathUtilsContentEqualsTest:[testDirectoryAndFileContentEquals, testDirectoryContentEquals]
 org.apache.commons.io.file.PathUtilsDeleteDirectoryTest:[testDeleteDirectory2FileSize2, testDeleteDirectory1FileSize0NoOptions, testDeleteEmptyDirectory, testDeleteDirectory1FileSize0OverrideReadOnly, testDeleteDirectory1FileSize0, testDeleteDirectory1FileSize1]
@@ -451,6 +451,6 @@ Processing org.apache.commons.io.IOUtilsTestCase#testConsume
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  38.317 s
-[INFO] Finished at: 2020-12-09T14:47:10+01:00
+[INFO] Total time:  39.426 s
+[INFO] Finished at: 2020-12-11T10:06:21+01:00
 [INFO] ------------------------------------------------------------------------

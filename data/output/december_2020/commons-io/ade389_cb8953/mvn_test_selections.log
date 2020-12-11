@@ -72,7 +72,7 @@ WARNING: All illegal access operations will be denied in a future release
 [[1;34mINFO[m] [1m--- [0;32mbuildnumber-maven-plugin:1.4:create[m [1m(default)[m @ [36mcommons-io[0;1m ---[m
 [[1;34mINFO[m] Executing: /bin/sh -c cd '/tmp/v1' && 'git' 'rev-parse' '--verify' 'HEAD'
 [[1;34mINFO[m] Working directory: /tmp/v1
-[[1;34mINFO[m] Storing buildNumber: ade3895ef543dc5a9cf2ebc254253155383bca0f at timestamp: 1607521432186
+[[1;34mINFO[m] Storing buildNumber: ade3895ef543dc5a9cf2ebc254253155383bca0f at timestamp: 1607677382302
 [[1;34mINFO[m] Storing buildScmBranch: master
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.1.0:resources[m [1m(default-resources)[m @ [36mcommons-io[0;1m ---[m
@@ -122,252 +122,252 @@ WARNING: All illegal access operations will be denied in a future release
 [[1;34mINFO[m]  T E S T S
 [[1;34mINFO[m] -------------------------------------------------------
 [[1;34mINFO[m] Running org.apache.commons.io.[1mByteOrderParserTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s - in org.apache.commons.io.[1mByteOrderParserTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s - in org.apache.commons.io.[1mByteOrderParserTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsFileNewerTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s - in org.apache.commons.io.[1mFileUtilsFileNewerTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.11 s - in org.apache.commons.io.[1mFileUtilsFileNewerTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.serialization.[1mValidatingObjectInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m18[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.136 s - in org.apache.commons.io.serialization.[1mValidatingObjectInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m18[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.135 s - in org.apache.commons.io.serialization.[1mValidatingObjectInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.serialization.[1mMoreComplexObjectTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.108 s - in org.apache.commons.io.serialization.[1mMoreComplexObjectTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.106 s - in org.apache.commons.io.serialization.[1mMoreComplexObjectTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.serialization.[1mWildcardClassNameMatcherTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.069 s - in org.apache.commons.io.serialization.[1mWildcardClassNameMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 s - in org.apache.commons.io.serialization.[1mWildcardClassNameMatcherTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.serialization.[1mRegexpClassNameMatcherTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.08 s - in org.apache.commons.io.serialization.[1mRegexpClassNameMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 s - in org.apache.commons.io.serialization.[1mRegexpClassNameMatcherTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.serialization.[1mFullClassNameMatcherTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 s - in org.apache.commons.io.serialization.[1mFullClassNameMatcherTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 s - in org.apache.commons.io.serialization.[1mFullClassNameMatcherTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mCopyUtilsTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.122 s - in org.apache.commons.io.[1mCopyUtilsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.115 s - in org.apache.commons.io.[1mCopyUtilsTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mLineIteratorTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.15 s - in org.apache.commons.io.[1mLineIteratorTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.161 s - in org.apache.commons.io.[1mLineIteratorTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mThreadMonitorTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.492 s - in org.apache.commons.io.[1mThreadMonitorTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.491 s - in org.apache.commons.io.[1mThreadMonitorTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsCleanSymlinksTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.157 s - in org.apache.commons.io.[1mFileUtilsCleanSymlinksTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.144 s - in org.apache.commons.io.[1mFileUtilsCleanSymlinksTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mEndianUtilsTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m22[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s - in org.apache.commons.io.[1mEndianUtilsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m22[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.112 s - in org.apache.commons.io.[1mEndianUtilsTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mHexDumpTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 s - in org.apache.commons.io.[1mHexDumpTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 s - in org.apache.commons.io.[1mHexDumpTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mDirectoryWalkerTestCase[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m15[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.123 s - in org.apache.commons.io.[1mDirectoryWalkerTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOUtilsCopyTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m27[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.1 s - in org.apache.commons.io.[1mIOUtilsCopyTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m27[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.025 s - in org.apache.commons.io.[1mIOUtilsCopyTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFilenameUtilsWildcardTestCase[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.157 s - in org.apache.commons.io.[1mFilenameUtilsWildcardTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsCleanDirectoryTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.13 s - in org.apache.commons.io.[1mFileUtilsCleanDirectoryTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.129 s - in org.apache.commons.io.[1mFileUtilsCleanDirectoryTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFilenameUtilsTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m38[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.175 s - in org.apache.commons.io.[1mFilenameUtilsTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m38[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.185 s - in org.apache.commons.io.[1mFilenameUtilsTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOExceptionListTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.076 s - in org.apache.commons.io.[1mIOExceptionListTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s - in org.apache.commons.io.[1mIOExceptionListTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mCharsetsTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.085 s - in org.apache.commons.io.[1mCharsetsTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s - in org.apache.commons.io.[1mCharsetsTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsWaitForTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.1 s - in org.apache.commons.io.[1mFileUtilsWaitForTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.096 s - in org.apache.commons.io.[1mFileUtilsWaitForTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mDirectoryWalkerTestCaseJava4[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m14[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.118 s - in org.apache.commons.io.[1mDirectoryWalkerTestCaseJava4[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOUtilsWriteTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m53[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.2 s - in org.apache.commons.io.[1mIOUtilsWriteTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m53[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.19 s - in org.apache.commons.io.[1mIOUtilsWriteTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsTestCase[m
-[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m142[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 2.57 s - in org.apache.commons.io.[1mFileUtilsTestCase[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m142[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 2.537 s - in org.apache.commons.io.[1mFileUtilsTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mDemuxTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.261 s - in org.apache.commons.io.[1mDemuxTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.254 s - in org.apache.commons.io.[1mDemuxTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOCaseTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m17[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.106 s - in org.apache.commons.io.[1mIOCaseTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m17[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.11 s - in org.apache.commons.io.[1mIOCaseTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mNameFileFilterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.142 s - in org.apache.commons.io.filefilter.[1mNameFileFilterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.15 s - in org.apache.commons.io.filefilter.[1mNameFileFilterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mDirectoryFileFilterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.152 s - in org.apache.commons.io.filefilter.[1mDirectoryFileFilterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.134 s - in org.apache.commons.io.filefilter.[1mDirectoryFileFilterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mOrFileFilterTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.102 s - in org.apache.commons.io.filefilter.[1mOrFileFilterTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.084 s - in org.apache.commons.io.filefilter.[1mOrFileFilterTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mAgeFileFilterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.17 s - in org.apache.commons.io.filefilter.[1mAgeFileFilterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.173 s - in org.apache.commons.io.filefilter.[1mAgeFileFilterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mRegexFileFilterTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.072 s - in org.apache.commons.io.filefilter.[1mRegexFileFilterTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.071 s - in org.apache.commons.io.filefilter.[1mRegexFileFilterTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mAndFileFilterTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s - in org.apache.commons.io.filefilter.[1mAndFileFilterTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s - in org.apache.commons.io.filefilter.[1mAndFileFilterTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.filefilter.[1mFileFilterTestCase[m
-[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m56[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 2.294 s - in org.apache.commons.io.filefilter.[1mFileFilterTestCase[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m56[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 2.267 s - in org.apache.commons.io.filefilter.[1mFileFilterTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mByteOrderMarkTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.086 s - in org.apache.commons.io.[1mByteOrderMarkTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 s - in org.apache.commons.io.[1mByteOrderMarkTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.monitor.[1mFileAlterationObserverTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.68 s - in org.apache.commons.io.monitor.[1mFileAlterationObserverTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.701 s - in org.apache.commons.io.monitor.[1mFileAlterationObserverTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.monitor.[1mFileAlterationMonitorTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.641 s - in org.apache.commons.io.monitor.[1mFileAlterationMonitorTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.649 s - in org.apache.commons.io.monitor.[1mFileAlterationMonitorTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mCountersTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.155 s - in org.apache.commons.io.file.[1mCountersTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.147 s - in org.apache.commons.io.file.[1mCountersTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsCleanDirectoryTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.102 s - in org.apache.commons.io.file.[1mPathUtilsCleanDirectoryTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s - in org.apache.commons.io.file.[1mPathUtilsCleanDirectoryTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mDeletingPathVisitorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.178 s - in org.apache.commons.io.file.[1mDeletingPathVisitorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.175 s - in org.apache.commons.io.file.[1mDeletingPathVisitorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsVisitorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.175 s - in org.apache.commons.io.file.[1mPathUtilsVisitorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.166 s - in org.apache.commons.io.file.[1mPathUtilsVisitorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mCleaningPathVisitorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.177 s - in org.apache.commons.io.file.[1mCleaningPathVisitorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.185 s - in org.apache.commons.io.file.[1mCleaningPathVisitorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.115 s - in org.apache.commons.io.file.[1mPathUtilsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 s - in org.apache.commons.io.file.[1mPathUtilsTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mCountersEqualsAndHashCodeTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s - in org.apache.commons.io.file.[1mCountersEqualsAndHashCodeTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.097 s - in org.apache.commons.io.file.[1mCountersEqualsAndHashCodeTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsCountingTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s - in org.apache.commons.io.file.[1mPathUtilsCountingTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 s - in org.apache.commons.io.file.[1mPathUtilsCountingTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mCountingPathVisitorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.182 s - in org.apache.commons.io.file.[1mCountingPathVisitorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.181 s - in org.apache.commons.io.file.[1mCountingPathVisitorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsContentEqualsTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.147 s - in org.apache.commons.io.file.[1mPathUtilsContentEqualsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.125 s - in org.apache.commons.io.file.[1mPathUtilsContentEqualsTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsDeleteFileTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.113 s - in org.apache.commons.io.file.[1mPathUtilsDeleteFileTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.102 s - in org.apache.commons.io.file.[1mPathUtilsDeleteFileTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mAccumulatorPathVisitorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.157 s - in org.apache.commons.io.file.[1mAccumulatorPathVisitorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.168 s - in org.apache.commons.io.file.[1mAccumulatorPathVisitorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsDeleteTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.151 s - in org.apache.commons.io.file.[1mPathUtilsDeleteTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.134 s - in org.apache.commons.io.file.[1mPathUtilsDeleteTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.spi.[1mFileSystemProvidersTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.107 s - in org.apache.commons.io.file.spi.[1mFileSystemProvidersTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s - in org.apache.commons.io.file.spi.[1mFileSystemProvidersTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsIsEmptyTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 s - in org.apache.commons.io.file.[1mPathUtilsIsEmptyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 s - in org.apache.commons.io.file.[1mPathUtilsIsEmptyTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mCopyDirectoryVisitorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.19 s - in org.apache.commons.io.file.[1mCopyDirectoryVisitorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.165 s - in org.apache.commons.io.file.[1mCopyDirectoryVisitorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mPathUtilsDeleteDirectoryTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.112 s - in org.apache.commons.io.file.[1mPathUtilsDeleteDirectoryTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.123 s - in org.apache.commons.io.file.[1mPathUtilsDeleteDirectoryTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.file.[1mDirectoryStreamFilterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s - in org.apache.commons.io.file.[1mDirectoryStreamFilterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s - in org.apache.commons.io.file.[1mDirectoryStreamFilterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOIndexedExceptionTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s - in org.apache.commons.io.[1mIOIndexedExceptionTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 s - in org.apache.commons.io.[1mIOIndexedExceptionTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOUtilsTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m114[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.469 s - in org.apache.commons.io.[1mIOUtilsTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m114[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.506 s - in org.apache.commons.io.[1mIOUtilsTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileCleaningTrackerTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.212 s - in org.apache.commons.io.[1mFileCleaningTrackerTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.234 s - in org.apache.commons.io.[1mFileCleaningTrackerTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileDeleteStrategyTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.131 s - in org.apache.commons.io.[1mFileDeleteStrategyTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.11 s - in org.apache.commons.io.[1mFileDeleteStrategyTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.function.[1mIOFunctionTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 s - in org.apache.commons.io.function.[1mIOFunctionTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.112 s - in org.apache.commons.io.function.[1mIOFunctionTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileSystemUtilsTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m30[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.147 s - in org.apache.commons.io.[1mFileSystemUtilsTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m30[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.152 s - in org.apache.commons.io.[1mFileSystemUtilsTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mIOExceptionWithCauseTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 s - in org.apache.commons.io.[1mIOExceptionWithCauseTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s - in org.apache.commons.io.[1mIOExceptionWithCauseTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileCleanerTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.224 s - in org.apache.commons.io.[1mFileCleanerTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.217 s - in org.apache.commons.io.[1mFileCleanerTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mLastModifiedFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.341 s - in org.apache.commons.io.comparator.[1mLastModifiedFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.347 s - in org.apache.commons.io.comparator.[1mLastModifiedFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mCompositeFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.12 s - in org.apache.commons.io.comparator.[1mCompositeFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s - in org.apache.commons.io.comparator.[1mCompositeFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mSizeFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.122 s - in org.apache.commons.io.comparator.[1mSizeFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.123 s - in org.apache.commons.io.comparator.[1mSizeFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mPathFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s - in org.apache.commons.io.comparator.[1mPathFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.11 s - in org.apache.commons.io.comparator.[1mPathFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mDefaultFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.097 s - in org.apache.commons.io.comparator.[1mDefaultFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.094 s - in org.apache.commons.io.comparator.[1mDefaultFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mDirectoryFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.091 s - in org.apache.commons.io.comparator.[1mDirectoryFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s - in org.apache.commons.io.comparator.[1mDirectoryFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mNameFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s - in org.apache.commons.io.comparator.[1mNameFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.115 s - in org.apache.commons.io.comparator.[1mNameFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.comparator.[1mExtensionFileComparatorTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s - in org.apache.commons.io.comparator.[1mExtensionFileComparatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.11 s - in org.apache.commons.io.comparator.[1mExtensionFileComparatorTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsCopyToFileTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s - in org.apache.commons.io.[1mFileUtilsCopyToFileTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.1 s - in org.apache.commons.io.[1mFileUtilsCopyToFileTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsListFilesTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s - in org.apache.commons.io.[1mFileUtilsListFilesTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.125 s - in org.apache.commons.io.[1mFileUtilsListFilesTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mTaggedIOExceptionTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s - in org.apache.commons.io.[1mTaggedIOExceptionTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 s - in org.apache.commons.io.[1mTaggedIOExceptionTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCharSequenceInputStreamTest[m
-[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m30[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m2[m, Time elapsed: 0.407 s - in org.apache.commons.io.input.[1mCharSequenceInputStreamTest[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m30[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m2[m, Time elapsed: 0.398 s - in org.apache.commons.io.input.[1mCharSequenceInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mXmlStreamReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m20[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.5 s - in org.apache.commons.io.input.[1mXmlStreamReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m20[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.498 s - in org.apache.commons.io.input.[1mXmlStreamReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCharacterSetFilterReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.084 s - in org.apache.commons.io.input.[1mCharacterSetFilterReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.124 s - in org.apache.commons.io.input.[1mCharacterSetFilterReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCloseShieldReaderTest[m
 [[1;31mERROR[m] WARNING: An illegal reflective access operation has occurred
 [[1;31mERROR[m] WARNING: Illegal reflective access by org.mockito.internal.util.reflection.ReflectionMemberAccessor (file:/home/spino/.m2/repository/org/mockito/mockito-core/3.6.0/mockito-core-3.6.0.jar) to field java.io.Reader.lock
 [[1;31mERROR[m] WARNING: Please consider reporting this to the maintainers of org.mockito.internal.util.reflection.ReflectionMemberAccessor
 [[1;31mERROR[m] WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 [[1;31mERROR[m] WARNING: All illegal access operations will be denied in a future release
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.441 s - in org.apache.commons.io.input.[1mCloseShieldReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.424 s - in org.apache.commons.io.input.[1mCloseShieldReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mInfiniteCircularInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s - in org.apache.commons.io.input.[1mInfiniteCircularInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.091 s - in org.apache.commons.io.input.[1mInfiniteCircularInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mClosedReaderTest[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in org.apache.commons.io.input.[1mClosedReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mWindowsLineEndingInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.084 s - in org.apache.commons.io.input.[1mWindowsLineEndingInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s - in org.apache.commons.io.input.[1mWindowsLineEndingInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mRandomAccessFileInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.106 s - in org.apache.commons.io.input.[1mRandomAccessFileInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.094 s - in org.apache.commons.io.input.[1mRandomAccessFileInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mBufferedFileChannelInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.568 s - in org.apache.commons.io.input.[1mBufferedFileChannelInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.599 s - in org.apache.commons.io.input.[1mBufferedFileChannelInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mBoundedInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 s - in org.apache.commons.io.input.[1mBoundedInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 s - in org.apache.commons.io.input.[1mBoundedInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mTeeInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.478 s - in org.apache.commons.io.input.[1mTeeInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.488 s - in org.apache.commons.io.input.[1mTeeInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mBoundedReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.143 s - in org.apache.commons.io.input.[1mBoundedReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.124 s - in org.apache.commons.io.input.[1mBoundedReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mAutoCloseInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s - in org.apache.commons.io.input.[1mAutoCloseInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.097 s - in org.apache.commons.io.input.[1mAutoCloseInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mSequenceReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 s - in org.apache.commons.io.input.[1mSequenceReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s - in org.apache.commons.io.input.[1mSequenceReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mSwappedDataInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m14[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.106 s - in org.apache.commons.io.input.[1mSwappedDataInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m14[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.113 s - in org.apache.commons.io.input.[1mSwappedDataInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mBrokenReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 s - in org.apache.commons.io.input.[1mBrokenReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s - in org.apache.commons.io.input.[1mBrokenReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mTeeReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.509 s - in org.apache.commons.io.input.[1mTeeReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.471 s - in org.apache.commons.io.input.[1mTeeReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mReadAheadInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.306 s - in org.apache.commons.io.input.[1mReadAheadInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.409 s - in org.apache.commons.io.input.[1mReadAheadInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mBOMInputStreamTest[m
-[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m44[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 0.229 s - in org.apache.commons.io.input.[1mBOMInputStreamTest[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m44[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 0.225 s - in org.apache.commons.io.input.[1mBOMInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mTailerTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.353 s - in org.apache.commons.io.input.[1mTailerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.379 s - in org.apache.commons.io.input.[1mTailerTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCharSequenceReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s - in org.apache.commons.io.input.[1mCharSequenceReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 s - in org.apache.commons.io.input.[1mCharSequenceReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mNullReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.086 s - in org.apache.commons.io.input.[1mNullReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.084 s - in org.apache.commons.io.input.[1mNullReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCountingInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.229 s - in org.apache.commons.io.input.[1mCountingInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.221 s - in org.apache.commons.io.input.[1mCountingInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mNullInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s - in org.apache.commons.io.input.[1mNullInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.077 s - in org.apache.commons.io.input.[1mNullInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCharacterFilterReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.094 s - in org.apache.commons.io.input.[1mCharacterFilterReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s - in org.apache.commons.io.input.[1mCharacterFilterReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.compatibility.[1mXmlStreamReaderUtilitiesCompatibilityTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.122 s - in org.apache.commons.io.input.compatibility.[1mXmlStreamReaderUtilitiesCompatibilityTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.112 s - in org.apache.commons.io.input.compatibility.[1mXmlStreamReaderUtilitiesCompatibilityTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCircularInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s - in org.apache.commons.io.input.[1mCircularInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 s - in org.apache.commons.io.input.[1mCircularInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mReaderInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s - in org.apache.commons.io.input.[1mReaderInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.1 s - in org.apache.commons.io.input.[1mReaderInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mReversedLinesFileReaderTestParamBlockSize[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m81[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.62 s - in org.apache.commons.io.input.[1mReversedLinesFileReaderTestParamBlockSize[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m81[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.597 s - in org.apache.commons.io.input.[1mReversedLinesFileReaderTestParamBlockSize[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mUnsynchronizedByteArrayInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.108 s - in org.apache.commons.io.input.[1mUnsynchronizedByteArrayInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.102 s - in org.apache.commons.io.input.[1mUnsynchronizedByteArrayInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mCloseShieldInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in org.apache.commons.io.input.[1mCloseShieldInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 s - in org.apache.commons.io.input.[1mCloseShieldInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mReversedLinesFileReaderTestSimple[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.111 s - in org.apache.commons.io.input.[1mReversedLinesFileReaderTestSimple[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.117 s - in org.apache.commons.io.input.[1mReversedLinesFileReaderTestSimple[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mClassLoaderObjectInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s - in org.apache.commons.io.input.[1mClassLoaderObjectInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.1 s - in org.apache.commons.io.input.[1mClassLoaderObjectInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mMarkShieldInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 s - in org.apache.commons.io.input.[1mMarkShieldInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 s - in org.apache.commons.io.input.[1mMarkShieldInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.buffer.[1mCircularBufferInputStreamTest[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.07 s - in org.apache.commons.io.input.buffer.[1mCircularBufferInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mTaggedInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.094 s - in org.apache.commons.io.input.[1mTaggedInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s - in org.apache.commons.io.input.[1mTaggedInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mProxyReaderTest[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s - in org.apache.commons.io.input.[1mProxyReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mBrokenInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s - in org.apache.commons.io.input.[1mBrokenInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s - in org.apache.commons.io.input.[1mBrokenInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mClosedInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 s - in org.apache.commons.io.input.[1mClosedInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in org.apache.commons.io.input.[1mClosedInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mObservableInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.111 s - in org.apache.commons.io.input.[1mObservableInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.094 s - in org.apache.commons.io.input.[1mObservableInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mMessageDigestCalculatingInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s - in org.apache.commons.io.input.[1mMessageDigestCalculatingInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s - in org.apache.commons.io.input.[1mMessageDigestCalculatingInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mUnixLineEndingInputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.084 s - in org.apache.commons.io.input.[1mUnixLineEndingInputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.091 s - in org.apache.commons.io.input.[1mUnixLineEndingInputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mXmlStreamReaderUtilitiesTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.126 s - in org.apache.commons.io.input.[1mXmlStreamReaderUtilitiesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.116 s - in org.apache.commons.io.input.[1mXmlStreamReaderUtilitiesTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mTaggedReaderTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.097 s - in org.apache.commons.io.input.[1mTaggedReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s - in org.apache.commons.io.input.[1mTaggedReaderTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.input.[1mReversedLinesFileReaderTestParamFile[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.202 s - in org.apache.commons.io.input.[1mReversedLinesFileReaderTestParamFile[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.201 s - in org.apache.commons.io.input.[1mReversedLinesFileReaderTestParamFile[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsDirectoryContainsTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.125 s - in org.apache.commons.io.[1mFileUtilsDirectoryContainsTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.127 s - in org.apache.commons.io.[1mFileUtilsDirectoryContainsTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mThresholdingOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 s - in org.apache.commons.io.output.[1mThresholdingOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s - in org.apache.commons.io.output.[1mThresholdingOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mNullAppendableTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 s - in org.apache.commons.io.output.[1mNullAppendableTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 s - in org.apache.commons.io.output.[1mNullAppendableTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mAppendableWriterTest[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s - in org.apache.commons.io.output.[1mAppendableWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mCloseShieldWriterTest[m
@@ -376,63 +376,63 @@ WARNING: All illegal access operations will be denied in a future release
 [[1;31mERROR[m] WARNING: Please consider reporting this to the maintainers of org.mockito.internal.util.reflection.ReflectionMemberAccessor
 [[1;31mERROR[m] WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 [[1;31mERROR[m] WARNING: All illegal access operations will be denied in a future release
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.413 s - in org.apache.commons.io.output.[1mCloseShieldWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.439 s - in org.apache.commons.io.output.[1mCloseShieldWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mWriterOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.114 s - in org.apache.commons.io.output.[1mWriterOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 s - in org.apache.commons.io.output.[1mWriterOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mClosedOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in org.apache.commons.io.output.[1mClosedOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.06 s - in org.apache.commons.io.output.[1mClosedOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mProxyCollectionWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m23[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.47 s - in org.apache.commons.io.output.[1mProxyCollectionWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m23[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.482 s - in org.apache.commons.io.output.[1mProxyCollectionWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mClosedWriterTest[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.058 s - in org.apache.commons.io.output.[1mClosedWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mTeeWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m23[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.474 s - in org.apache.commons.io.output.[1mTeeWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m23[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.483 s - in org.apache.commons.io.output.[1mTeeWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mByteArrayOutputStreamTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m30[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.232 s - in org.apache.commons.io.output.[1mByteArrayOutputStreamTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m30[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.213 s - in org.apache.commons.io.output.[1mByteArrayOutputStreamTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mChunkedOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 s - in org.apache.commons.io.output.[1mChunkedOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.085 s - in org.apache.commons.io.output.[1mChunkedOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mAppendableOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 s - in org.apache.commons.io.output.[1mAppendableOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.06 s - in org.apache.commons.io.output.[1mAppendableOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mCountingOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.217 s - in org.apache.commons.io.output.[1mCountingOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.183 s - in org.apache.commons.io.output.[1mCountingOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mNullPrintStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 s - in org.apache.commons.io.output.[1mNullPrintStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s - in org.apache.commons.io.output.[1mNullPrintStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mCloseShieldOutputStreamTest[m
 [[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.06 s - in org.apache.commons.io.output.[1mCloseShieldOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mFileWriterWithEncodingTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.145 s - in org.apache.commons.io.output.[1mFileWriterWithEncodingTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.156 s - in org.apache.commons.io.output.[1mFileWriterWithEncodingTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mLockableFileWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.115 s - in org.apache.commons.io.output.[1mLockableFileWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.121 s - in org.apache.commons.io.output.[1mLockableFileWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mTaggedOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s - in org.apache.commons.io.output.[1mTaggedOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.102 s - in org.apache.commons.io.output.[1mTaggedOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mChunkedWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 s - in org.apache.commons.io.output.[1mChunkedWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 s - in org.apache.commons.io.output.[1mChunkedWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mDeferredFileOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m118[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.367 s - in org.apache.commons.io.output.[1mDeferredFileOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m118[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.356 s - in org.apache.commons.io.output.[1mDeferredFileOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mNullOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.072 s - in org.apache.commons.io.output.[1mNullOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in org.apache.commons.io.output.[1mNullOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mBrokenWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.077 s - in org.apache.commons.io.output.[1mBrokenWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.074 s - in org.apache.commons.io.output.[1mBrokenWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mXmlStreamWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.123 s - in org.apache.commons.io.output.[1mXmlStreamWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.122 s - in org.apache.commons.io.output.[1mXmlStreamWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mTaggedWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s - in org.apache.commons.io.output.[1mTaggedWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.086 s - in org.apache.commons.io.output.[1mTaggedWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mStringBuilderWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s - in org.apache.commons.io.output.[1mStringBuilderWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 s - in org.apache.commons.io.output.[1mStringBuilderWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mNullWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 s - in org.apache.commons.io.output.[1mNullWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in org.apache.commons.io.output.[1mNullWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mBrokenOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.086 s - in org.apache.commons.io.output.[1mBrokenOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.071 s - in org.apache.commons.io.output.[1mBrokenOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mProxyWriterTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m21[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.145 s - in org.apache.commons.io.output.[1mProxyWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m21[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s - in org.apache.commons.io.output.[1mProxyWriterTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mProxyOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 s - in org.apache.commons.io.output.[1mProxyOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s - in org.apache.commons.io.output.[1mProxyOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.output.[1mTeeOutputStreamTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.419 s - in org.apache.commons.io.output.[1mTeeOutputStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.441 s - in org.apache.commons.io.output.[1mTeeOutputStreamTest[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileSystemTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.1 s - in org.apache.commons.io.[1mFileSystemTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 s - in org.apache.commons.io.[1mFileSystemTestCase[m
 [[1;34mINFO[m] Running org.apache.commons.io.[1mFileUtilsCopyDirectoryToDirectoryTestCase[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.113 s - in org.apache.commons.io.[1mFileUtilsCopyDirectoryToDirectoryTestCase[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s - in org.apache.commons.io.[1mFileUtilsCopyDirectoryToDirectoryTestCase[m
 [[1;34mINFO[m] 
 [[1;34mINFO[m] Results:
 [[1;34mINFO[m] 
@@ -442,10 +442,10 @@ WARNING: All illegal access operations will be denied in a future release
 [[1;34mINFO[m] [1;32mBUILD SUCCESS[m
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
 [[1;34mINFO[m] Total time:  02:32 min
-[[1;34mINFO[m] Finished at: 2020-12-09T14:46:19+01:00
+[[1;34mINFO[m] Finished at: 2020-12-11T10:05:28+01:00
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
 Writing HTML report to '/tmp/v1/target/clover/report'
-Done. Processed 13 packages in 4840ms (372ms per package).
+Done. Processed 13 packages in 4767ms (366ms per package).
 [INFO] /tmp/v1/src/main/java/org/apache/commons/io/EndianUtils.java
 [INFO] /tmp/v2/src/main/java/org/apache/commons/io/EndianUtils.java
 [INFO] /tmp/v1/src/main/java/org/apache/commons/io/file/Counters.java
@@ -495,39 +495,39 @@ Done. Processed 13 packages in 4840ms (372ms per package).
 [INFO] Saving result in /tmp/v1/testsThatExecuteTheChange.csv ...
 [INFO] org.apache.commons.io.EndianUtilsTest;testCtor
 org.apache.commons.io.monitor.FileAlterationObserverTestCase;testDirectory
-org.apache.commons.io.FileUtilsListFilesTestCase;testListFiles;testIterateFilesByExtension
-org.apache.commons.io.filefilter.NameFileFilterTest;testJavadocExampleUsingNio;testNoCounting
-org.apache.commons.io.FileUtilsTestCase;testDeleteQuietlyDir;testListFiles;testCopyDirectoryPreserveDates;testCopyDirectoryToDirectory_NonExistingDest;testMoveDirectory_CopyDelete;testListFilesWithDirs;testForceDeleteDir;testCopyDirectoryToNonExistingDest;testIterateFilesAndDirs;testChecksum;testForceDeleteAFile2;testForceDeleteAFile1;testForceDeleteAFile3;testIterateFiles
-org.apache.commons.io.file.PathUtilsCleanDirectoryTest;testCleanDirectory2FileSize2;testCleanDirectory1FileSize1;testCleanDirectory1FileSize0;testCleanEmptyDirectory
+org.apache.commons.io.file.PathUtilsCleanDirectoryTest;testCleanDirectory2FileSize2;testCleanDirectory1FileSize1;testCleanEmptyDirectory;testCleanDirectory1FileSize0
 org.apache.commons.io.filefilter.AgeFileFilterTest;testJavadocExampleUsingNio;testNoCounting
 org.apache.commons.io.file.PathUtilsContentEqualsTest;testDirectoryAndFileContentEquals;testDirectoryContentEquals
+org.apache.commons.io.filefilter.NameFileFilterTest;testJavadocExampleUsingNio;testNoCounting
+org.apache.commons.io.FileUtilsTestCase;testDeleteQuietlyDir;testListFiles;testCopyDirectoryPreserveDates;testCopyDirectoryToDirectory_NonExistingDest;testMoveDirectory_CopyDelete;testListFilesWithDirs;testForceDeleteDir;testCopyDirectoryToNonExistingDest;testIterateFilesAndDirs;testChecksum;testForceDeleteAFile2;testForceDeleteAFile1;testForceDeleteAFile3;testIterateFiles
 org.apache.commons.io.filefilter.DirectoryFileFilterTest;testJavadocExampleUsingNio
+org.apache.commons.io.FileUtilsListFilesTestCase;testListFiles;testIterateFilesByExtension
 org.apache.commons.io.file.PathUtilsDeleteDirectoryTest;testDeleteDirectory2FileSize2;testDeleteDirectory1FileSize0NoOptions;testDeleteEmptyDirectory;testDeleteDirectory1FileSize0OverrideReadOnly;testDeleteDirectory1FileSize0;testDeleteDirectory1FileSize1
-org.apache.commons.io.file.CountersEqualsAndHashCodeTest;testLongPathCountersHashCodeFileCounters;testLongPathCountersEqualsDirectoryCounters;testLongPathCountersEqualsFileCounters;testMix;testLongPathCountersEqualsByteCounters
 org.apache.commons.io.file.PathUtilsCountingTest;testCountFolders1FileSize1;testCountEmptyFolder;testCountFolders1FileSize0;testCountFolders2FileSize2
-org.apache.commons.io.filefilter.FileFilterTestCase;testPathEqualsFilter;testFilterArray_PathVisitorFileFilter_FileExistsNo;testFileEqualsFilter;testFilterArray_PathVisitorFileFilter_FileExistsYes;testEmpty
-org.apache.commons.io.file.PathUtilsDeleteTest;testDeleteDirectory1FileSize1OverrideReadOnly;testDeleteDirectory1FileSize0NoOption;testDeleteEmptyDirectory;testDeleteDirectory1FileSize0OverrideReadonly;testDeleteDirectory1FileSize1NoOption;testDeleteEmptyDirectoryNoOption;testDeleteEmptyDirectoryOverrideReadOnly;testDeleteDirectory1FileSize0;testDeleteDirectory1FileSize1;testDeleteFileDoesNotExist
-org.apache.commons.io.FileUtilsCleanDirectoryTestCase;testDeletesRegular;testThrowsOnCannotDeleteFile;testDeletesNested
-org.apache.commons.io.FileUtilsCleanSymlinksTestCase;testCleanDirWithSymlinkFile;testCleanDirWithASymlinkDir;testStillClearsIfGivenDirectoryIsASymlink;testCleanDirWithParentSymlinks
-org.apache.commons.io.file.PathUtilsDeleteFileTest;testSetReadOnlyFileDirectory1FileSize1;testDeleteFileDirectory1FileSize1;testDeleteReadOnlyFileDirectory1FileSize1;testDeleteFileDirectory1FileSize0;testDeleteFileDoesNotExist
-org.apache.commons.io.FileCleaningTrackerTestCase;testFileCleanerDirectory_ForceStrategy
-org.apache.commons.io.FileCleanerTestCase;testFileCleanerDirectory_ForceStrategy
 org.apache.commons.io.FileDeleteStrategyTestCase;testDeleteForce
+org.apache.commons.io.file.PathUtilsDeleteTest;testDeleteDirectory1FileSize1OverrideReadOnly;testDeleteDirectory1FileSize0NoOption;testDeleteEmptyDirectory;testDeleteDirectory1FileSize0OverrideReadonly;testDeleteDirectory1FileSize1NoOption;testDeleteEmptyDirectoryNoOption;testDeleteEmptyDirectoryOverrideReadOnly;testDeleteDirectory1FileSize0;testDeleteDirectory1FileSize1;testDeleteFileDoesNotExist
+org.apache.commons.io.FileCleanerTestCase;testFileCleanerDirectory_ForceStrategy
+org.apache.commons.io.file.CountersEqualsAndHashCodeTest;testLongPathCountersHashCodeFileCounters;testLongPathCountersEqualsDirectoryCounters;testLongPathCountersEqualsFileCounters;testMix;testLongPathCountersEqualsByteCounters
+org.apache.commons.io.FileUtilsCleanSymlinksTestCase;testCleanDirWithSymlinkFile;testCleanDirWithASymlinkDir;testStillClearsIfGivenDirectoryIsASymlink;testCleanDirWithParentSymlinks
+org.apache.commons.io.file.PathUtilsDeleteFileTest;testSetReadOnlyFileDirectory1FileSize1;testDeleteReadOnlyFileDirectory1FileSize1;testDeleteFileDirectory1FileSize1;testDeleteFileDirectory1FileSize0;testDeleteFileDoesNotExist
+org.apache.commons.io.FileUtilsCleanDirectoryTestCase;testDeletesRegular;testThrowsOnCannotDeleteFile;testDeletesNested
+org.apache.commons.io.FileCleaningTrackerTestCase;testFileCleanerDirectory_ForceStrategy
 org.apache.commons.io.file.PathUtilsTest;testCopyFile;testNewDirectoryStream
+org.apache.commons.io.filefilter.FileFilterTestCase;testPathEqualsFilter;testFilterArray_PathVisitorFileFilter_FileExistsNo;testFileEqualsFilter;testFilterArray_PathVisitorFileFilter_FileExistsYes;testEmpty
 org.apache.commons.io.file.DirectoryStreamFilterTest;testFilterByNameNot;testFilterByName
 org.apache.commons.io.file.spi.FileSystemProvidersTest;testGetFileSystemProvider_fileScheme
-org.apache.commons.io.FileSystemUtilsTestCase;testGetFreeSpaceWindows_String_ParseCommaFormatBytes_Small;testGetFreeSpaceWindows_String_ParseCommaFormatBytes;testGetFreeSpaceUnix_String_NormalResponseKbSolaris;testGetFreeSpaceOS_String_Unix;testGetFreeSpaceWindows_String_EmptyResponse;testGetFreeSpaceWindows_String_quoted;testGetFreeSpaceUnix_String_EmptyPath;testGetFreeSpaceWindows_String_StripDrive;testGetFreeSpaceOS_String_InitError;testGetFreeSpaceOS_String_NullPath;testGetFreeSpaceUnix_String_InvalidResponse4;testGetFreeSpaceUnix_String_InvalidResponse3;testGetFreeSpaceUnix_String_EmptyResponse;testGetFreeSpaceUnix_String_InvalidResponse2;testGetFreeSpaceWindows_String_NormalResponse;testGetFreeSpaceUnix_String_InvalidResponse1;testGetFreeSpaceOS_String_Windows;testGetFreeSpaceWindows_String_InvalidTextResponse;testGetFreeSpaceOS_String_Other;testGetFreeSpaceWindows_String_EmptyMultiLineResponse;testGetFreeSpaceWindows_String_NoSuchDirectoryResponse;testGetFreeSpaceUnix_String_LongResponse;testGetFreeSpaceUnix_String_NormalResponseKbFreeBSD;testGetFreeSpaceUnix_String_NormalResponseFreeBSD;testGetFreeSpaceWindows_String_ParseCommaFormatBytes_Big;testGetFreeSpaceWindows_String_EmptyPath;testGetFreeSpaceUnix_String_NormalResponseLinux;testGetFreeSpaceUnix_String_NormalResponseKbLinux;testGetFreeSpaceUnix_String_LongResponseKb
-org.apache.commons.io.input.CharSequenceInputStreamTest;testBufferedRead_UTF8;testSkip_USASCII;testLargeSingleByteRead_RequiredCharsets;testBufferedRead_RequiredCharset;testIO_356_B10_D10_S1_UTF8;testIO_356_B10_D13_S0_UTF8;testLargeBufferedRead_RequiredCharsets;testReadZero_EmptyString;testCharsetMismatchInfiniteLoop_RequiredCharsets;testMarkReset_USASCII;testIO_356_B10_D13_S1_UTF8;testMarkReset_UTF8;testLargeSingleByteRead_UTF8;testBufferedRead_AvailableCharset;testSingleByteRead_UTF8;testIO_356_B10_D20_S0_UTF8;testIO_356_B10_D10_S2_UTF8;testSkip_UTF8;testIO_356_Loop_UTF8;testSingleByteRead_RequiredCharsets;testMarkSupported;testSingleByteRead_UTF16;testIO_356_B10_D10_S0_UTF16;testIO_356_Loop_UTF16;testReadZero_RequiredCharsets;testLargeBufferedRead_UTF8;testAvailable;testIO_356_B10_D10_S0_UTF8
-org.apache.commons.io.output.FileWriterWithEncodingTest;sameEncoding_string_constructor;sameEncoding_string_CharsetEncoder_constructor;sameEncoding_Charset_constructor;sameEncoding_null_Charset_constructor;sameEncoding_string_Charset_constructor;constructor_File_encoding_badEncoding;constructor_File_nullFile;testDifferentEncoding;sameEncoding_CharsetEncoder_constructor;constructor_File_directory;sameEncoding_string_string_constructor
+org.apache.commons.io.FileSystemUtilsTestCase;testGetFreeSpaceWindows_String_ParseCommaFormatBytes_Small;testGetFreeSpaceWindows_String_ParseCommaFormatBytes;testGetFreeSpaceUnix_String_NormalResponseKbSolaris;testGetFreeSpaceOS_String_Unix;testGetFreeSpaceWindows_String_EmptyResponse;testGetFreeSpaceWindows_String_quoted;testGetFreeSpaceUnix_String_EmptyPath;testGetFreeSpaceOS_String_InitError;testGetFreeSpaceWindows_String_StripDrive;testGetFreeSpaceOS_String_NullPath;testGetFreeSpaceUnix_String_InvalidResponse4;testGetFreeSpaceUnix_String_InvalidResponse3;testGetFreeSpaceUnix_String_EmptyResponse;testGetFreeSpaceUnix_String_InvalidResponse2;testGetFreeSpaceUnix_String_InvalidResponse1;testGetFreeSpaceWindows_String_NormalResponse;testGetFreeSpaceOS_String_Windows;testGetFreeSpaceWindows_String_InvalidTextResponse;testGetFreeSpaceOS_String_Other;testGetFreeSpaceWindows_String_EmptyMultiLineResponse;testGetFreeSpaceWindows_String_NoSuchDirectoryResponse;testGetFreeSpaceUnix_String_LongResponse;testGetFreeSpaceUnix_String_NormalResponseKbFreeBSD;testGetFreeSpaceUnix_String_NormalResponseFreeBSD;testGetFreeSpaceWindows_String_ParseCommaFormatBytes_Big;testGetFreeSpaceWindows_String_EmptyPath;testGetFreeSpaceUnix_String_NormalResponseLinux;testGetFreeSpaceUnix_String_NormalResponseKbLinux;testGetFreeSpaceUnix_String_LongResponseKb
+org.apache.commons.io.input.CharSequenceInputStreamTest;testSkip_USASCII;testBufferedRead_UTF8;testLargeSingleByteRead_RequiredCharsets;testBufferedRead_RequiredCharset;testIO_356_B10_D10_S1_UTF8;testIO_356_B10_D13_S0_UTF8;testLargeBufferedRead_RequiredCharsets;testReadZero_EmptyString;testCharsetMismatchInfiniteLoop_RequiredCharsets;testMarkReset_USASCII;testIO_356_B10_D13_S1_UTF8;testMarkReset_UTF8;testLargeSingleByteRead_UTF8;testBufferedRead_AvailableCharset;testSingleByteRead_UTF8;testIO_356_B10_D20_S0_UTF8;testIO_356_B10_D10_S2_UTF8;testIO_356_Loop_UTF8;testSkip_UTF8;testSingleByteRead_RequiredCharsets;testMarkSupported;testSingleByteRead_UTF16;testIO_356_B10_D10_S0_UTF16;testIO_356_Loop_UTF16;testReadZero_RequiredCharsets;testLargeBufferedRead_UTF8;testAvailable;testIO_356_B10_D10_S0_UTF8
+org.apache.commons.io.output.FileWriterWithEncodingTest;sameEncoding_string_CharsetEncoder_constructor;sameEncoding_string_constructor;sameEncoding_Charset_constructor;sameEncoding_null_Charset_constructor;sameEncoding_string_Charset_constructor;constructor_File_encoding_badEncoding;testDifferentEncoding;constructor_File_nullFile;sameEncoding_CharsetEncoder_constructor;constructor_File_directory;sameEncoding_string_string_constructor
 org.apache.commons.io.output.LockableFileWriterTest;testConstructor_File_nullFile;testAlternateLockDir;testFileNotLocked;testFileLocked;testConstructor_File_directory
 org.apache.commons.io.input.CountingInputStreamTest;testLargeFiles_IO84
-org.apache.commons.io.output.CountingOutputStreamTest;testLargeFiles_IO84
-org.apache.commons.io.IOUtilsCopyTestCase;testCopy_inputStreamToOutputStream_IO84
 org.apache.commons.io.input.TeeInputStreamTest;testCloseBranchIOException
+org.apache.commons.io.output.CountingOutputStreamTest;testLargeFiles_IO84
 org.apache.commons.io.IOUtilsTestCase;testConsume
-org.apache.commons.io.output.TeeOutputStreamTest;testIOExceptionOnClose
-org.apache.commons.io.output.NullPrintStreamTest;testNullSingleton
+org.apache.commons.io.IOUtilsCopyTestCase;testCopy_inputStreamToOutputStream_IO84
 org.apache.commons.io.output.NullOutputStreamTest;testSingleton
+org.apache.commons.io.output.NullPrintStreamTest;testNullSingleton
+org.apache.commons.io.output.TeeOutputStreamTest;testIOExceptionOnClose
 [INFO] Writing Coverage in /tmp/v1/testsThatExecuteTheChange_coverage.csv
 [INFO] total;0;0
 
@@ -535,5 +535,5 @@ org.apache.commons.io.output.NullOutputStreamTest;testSingleton
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  02:46 min
-[INFO] Finished at: 2020-12-09T14:46:31+01:00
+[INFO] Finished at: 2020-12-11T10:05:40+01:00
 [INFO] ------------------------------------------------------------------------

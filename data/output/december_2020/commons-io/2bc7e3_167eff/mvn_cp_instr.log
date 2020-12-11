@@ -1,4 +1,6 @@
 [INFO] Scanning for projects...
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/fr/davidson/diff-jjoules/maven-metadata.xml
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/fr/davidson/diff-jjoules/0.0.1-SNAPSHOT/maven-metadata.xml
 [INFO] 
 [INFO] -----------------------< commons-io:commons-io >------------------------
 [INFO] Building Apache Commons IO 2.9.0-SNAPSHOT
@@ -25,7 +27,7 @@
 [INFO] --- buildnumber-maven-plugin:1.4:create (default) @ commons-io ---
 [INFO] Executing: /bin/sh -c cd '/tmp/v1' && 'git' 'rev-parse' '--verify' 'HEAD'
 [INFO] Working directory: /tmp/v1
-[INFO] Storing buildNumber: 2bc7e31f1dee0cb6ff4f3c57a63ac09cd4c2d1aa at timestamp: 1607518664466
+[INFO] Storing buildNumber: 2bc7e31f1dee0cb6ff4f3c57a63ac09cd4c2d1aa at timestamp: 1607674587907
 [INFO] Storing buildScmBranch: master
 [INFO] 
 [INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ commons-io ---
@@ -73,10 +75,11 @@
 [INFO] Wrote classpath file '/tmp/v1/classpath'.
 [INFO] 
 [INFO] --- diff-jjoules:0.0.1-SNAPSHOT:instrument (default-cli) @ commons-io ---
+[INFO] Downloading from apache.snapshots: https://repository.apache.org/snapshots/fr/inria/gforge/spoon/spoon-core/8.4.0-SNAPSHOT/maven-metadata.xml
 [INFO] org.apache.commons.io.FileUtilsCleanSymlinksTestCase:[testStillClearsIfGivenDirectoryIsASymlink]
 org.apache.commons.io.FileUtilsCleanDirectoryTestCase:[testDeletesRegular, testThrowsOnCannotDeleteFile]
 org.apache.commons.io.file.PathUtilsDeleteTest:[testDeleteDirectory1FileSize1OverrideReadOnly, testDeleteDirectory1FileSize0NoOption, testDeleteDirectory1FileSize0OverrideReadonly, testDeleteDirectory1FileSize1NoOption, testDeleteDirectory1FileSize0, testDeleteDirectory1FileSize1, testDeleteFileDoesNotExist]
-org.apache.commons.io.file.PathUtilsDeleteFileTest:[testSetReadOnlyFileDirectory1FileSize1, testDeleteReadOnlyFileDirectory1FileSize1, testDeleteFileDirectory1FileSize1, testDeleteFileDirectory1FileSize0, testDeleteFileDoesNotExist]
+org.apache.commons.io.file.PathUtilsDeleteFileTest:[testSetReadOnlyFileDirectory1FileSize1, testDeleteFileDirectory1FileSize1, testDeleteReadOnlyFileDirectory1FileSize1, testDeleteFileDirectory1FileSize0, testDeleteFileDoesNotExist]
 org.apache.commons.io.FileUtilsTestCase:[testDeleteQuietlyDir, testCopyDirectoryToNonExistingDest, testForceDeleteReadOnlyFile, testForceDeleteAFile2, testForceDeleteAFile1, testForceDeleteAFile3]
 org.apache.commons.io.monitor.FileAlterationObserverTestCase:[testDirectory]
 [INFO] Instrument version before commit...
@@ -148,6 +151,6 @@ Processing org.apache.commons.io.FileUtilsTestCase#testForceDeleteReadOnlyFile
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  16.327 s
-[INFO] Finished at: 2020-12-09T13:57:58+01:00
+[INFO] Total time:  18.580 s
+[INFO] Finished at: 2020-12-11T09:16:43+01:00
 [INFO] ------------------------------------------------------------------------
