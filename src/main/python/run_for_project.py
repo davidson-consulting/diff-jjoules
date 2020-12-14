@@ -19,22 +19,27 @@ def get_tests_to_execute():
             tests_to_execute[line[0]] = line[1:]
     return tests_to_execute
 
-def run(nb_iteration, output_path):
+def run(nb_iteration, output_path, output_path_log):
     code = run_mvn_clean_test(PATH_V1)
     if not code == 0:
+        print_to_file('mvn test did not succeed on v1', output_path_log)
         return -1
     code = run_mvn_clean_test(PATH_V2)
     if not code == 0:
+        print_to_file('mvn test did not succeed on v2', output_path_log)
         return -1
     code = run_mvn_diff_select(PATH_V1, PATH_V2, output_path + '/mvn_test_selections.log')
     if not code == 0:
+        print_to_file('Error(s) while selecting tests with diff-test-selection', output_path_log)
         return -1
     copy(PATH_V1 + '/' + VALUE_TEST_LISTS, output_path + '/' + VALUE_TEST_LISTS)
-    code = run_mvn_build_classpath_and_instrument(PATH_V1, PATH_V2, output_path + '/mvn_cp_instr.log')
-    if not code == 0:
-        return -1
     tests_to_execute = get_tests_to_execute()
     if len(tests_to_execute) == 0:
+        print_to_file('No test could be selected', output_path_log)
+        return -1
+    code = run_mvn_build_classpath_and_instrument(PATH_V1, PATH_V2, output_path + '/mvn_cp_instr.log')
+    if not code == 0:
+        print_to_file('Error(s) while instrumenting tests with diff-jjoules', output_path_log)
         return -1
     for i in range(nb_iteration):
         print(i)
@@ -101,7 +106,7 @@ if __name__ == '__main__':
         print('Run for', project_name, commit_sha_v1, cursor_commits, commit_sha_v2, cursor_commits - 1, 'output_path', output_path)
         reset_hard(commit_sha_v1, PATH_V1)
         reset_hard(commit_sha_v2, PATH_V2)
-        code = run(nb_iteration, current_output_path)
+        code = run(nb_iteration, current_output_path, current_output_path_log)
         if code == 0:
             current_nb_completed_commits = current_nb_completed_commits + 1
             print_to_file('Success!' + str(current_nb_completed_commits) + ' / ' + str(nb_commits), current_output_path_log)
