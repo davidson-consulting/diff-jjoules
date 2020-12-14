@@ -1,17 +1,18 @@
 package fr.davidson.diff.jjoules.process;
 
-import fr.davidson.diff.jjoules.Main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.compiler.Environment;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
-import spoon.reflect.reference.CtTypeReference;
 import spoon.support.JavaOutputProcessor;
 
 import java.io.File;
-import java.util.*;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Benjamin DANGLOT

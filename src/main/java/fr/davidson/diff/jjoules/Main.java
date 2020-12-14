@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.Launcher;
 import spoon.OutputType;
+import spoon.SpoonException;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
 import spoon.support.modelobs.ChangeCollector;
@@ -60,16 +61,21 @@ public class Main {
         launcher.getEnvironment().setNoClasspath(false);
         launcher.getEnvironment().setAutoImports(false);
         launcher.getEnvironment().setLevel("DEBUG");
-/*        final ChangeCollector changeCollector = new ChangeCollector();
+        final ChangeCollector changeCollector = new ChangeCollector();
         changeCollector.attachTo(launcher.getEnvironment());
         launcher.getEnvironment().setPrettyPrinterCreator(() ->
                 new SniperJavaPrettyPrinter(launcher.getEnvironment())
-        );*/
+        );
         launcher.addInputResource(rootPathFolder + "/" + TEST_FOLDER_PATH);
 
         launcher.addProcessor(processor);
         launcher.getEnvironment().setOutputType(OutputType.NO_OUTPUT);
-        launcher.run();
+        try {
+            launcher.buildModel();
+            launcher.process();
+        } catch (SpoonException sp) {
+            sp.printStackTrace();
+        }
     }
 
     private static void inject(final String rootPathFolder) {
