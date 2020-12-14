@@ -1,5 +1,8 @@
 package fr.davidson.diff.jjoules.process;
 
+import fr.davidson.diff.jjoules.Main;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import spoon.compiler.Environment;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
@@ -17,6 +20,8 @@ import java.util.*;
  */
 public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractJJoulesProcessor.class);
+
     protected final Set<CtType<?>> instrumentedTypes;
 
     protected final Map<String, List<String>> testsToBeInstrumented;
@@ -33,26 +38,34 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
 
     @Override
     public boolean isToBeProcessed(CtMethod<?> candidate) {
-        return candidate.getDeclaringType() != null &&
-                (this.testsToBeInstrumented.containsKey(candidate.getDeclaringType().getQualifiedName()) &&
-                        (this.testsToBeInstrumented.get(
-                                candidate.getDeclaringType().getQualifiedName()
-                        ).contains(candidate.getSimpleName())) ||
-                        this.checkInheritance(candidate));
+        if (this.testsToBeInstrumented.values()
+                .stream()
+                .noneMatch(tests -> tests.contains(candidate.getSimpleName()))) {
+            return false;
+        }
+        CtType<?> declaringType = candidate.getDeclaringType();
+        if (declaringType == null) {
+            return false;
+        }
+        return this.mustInstrument(declaringType.getQualifiedName(), candidate.getSimpleName()) ||
+                this.checkInheritance(candidate);
+    }
+
+    private boolean mustInstrument(String testClassQualifiedName, String testMethodName) {
+        return this.testsToBeInstrumented.containsKey(testClassQualifiedName) &&
+                this.testsToBeInstrumented
+                        .get(testClassQualifiedName)
+                        .contains(testMethodName);
     }
 
     private boolean checkInheritance(CtMethod<?> candidate) {
         final CtType<?> declaringType = candidate.getDeclaringType();
         return candidate.getFactory().Type().getAll()
                 .stream()
-                .filter(type ->
-                        type.getSuperclass() != null &&
-                                type.getSuperclass().getDeclaringType() != null &&
-                                type.getSuperclass().getDeclaringType().getTypeDeclaration() != null &&
-                                type.getSuperclass().getDeclaringType().getTypeDeclaration().equals(declaringType)
-                ).anyMatch(ctType ->
-                        this.testsToBeInstrumented.containsKey(ctType.getQualifiedName()) &&
-                                this.testsToBeInstrumented.get(ctType.getQualifiedName()).contains(candidate.getSimpleName()));
+                .filter(type -> type.getSuperclass() != null)
+                .filter(type -> type.getSuperclass().getDeclaration() != null)
+                .filter(type -> type.getSuperclass().getTypeDeclaration().equals(declaringType))
+                .anyMatch(ctType -> this.mustInstrument(ctType.getQualifiedName(), candidate.getSimpleName()));
     }
 
     @Override
@@ -63,6 +76,7 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
     private void printCtType(CtType<?> type) {
         final File directory = new File(this.rootPathFolder + "/" + TEST_FOLDER_PATH);
         final Environment env = type.getFactory().getEnvironment();
+        LOGGER.info("Printing {}", type.getQualifiedName());
         try {
             env.setAutoImports(true);
             env.setNoClasspath(false);
