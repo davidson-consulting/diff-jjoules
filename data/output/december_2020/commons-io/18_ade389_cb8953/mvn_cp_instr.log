@@ -25,7 +25,7 @@
 [INFO] --- buildnumber-maven-plugin:1.4:create (default) @ commons-io ---
 [INFO] Executing: /bin/sh -c cd '/tmp/v1' && 'git' 'rev-parse' '--verify' 'HEAD'
 [INFO] Working directory: /tmp/v1
-[INFO] Storing buildNumber: ade3895ef543dc5a9cf2ebc254253155383bca0f at timestamp: 1607770483412
+[INFO] Storing buildNumber: ade3895ef543dc5a9cf2ebc254253155383bca0f at timestamp: 1608027141044
 [INFO] Storing buildScmBranch: master
 [INFO] 
 [INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ commons-io ---
@@ -70,7 +70,7 @@
 [INFO] Tests are skipped.
 [INFO] 
 [INFO] --- maven-dependency-plugin:3.1.1:build-classpath (default-cli) @ commons-io ---
-[INFO] Skipped writing classpath file '/tmp/v1/classpath'.  No changes found.
+[INFO] Wrote classpath file '/tmp/v1/classpath'.
 [INFO] 
 [INFO] --- diff-jjoules:0.0.1-SNAPSHOT:instrument (default-cli) @ commons-io ---
 [INFO] org.apache.commons.io.FileUtilsCleanSymlinksTestCase:[testCleanDirWithASymlinkDir, testCleanDirWithSymlinkFile, testStillClearsIfGivenDirectoryIsASymlink, testCleanDirWithParentSymlinks]
@@ -82,16 +82,16 @@ org.apache.commons.io.filefilter.FileFilterTestCase:[testPathEqualsFilter, testF
 org.apache.commons.io.file.PathUtilsCleanDirectoryTest:[testCleanDirectory2FileSize2, testCleanDirectory1FileSize1, testCleanDirectory1FileSize0, testCleanEmptyDirectory]
 org.apache.commons.io.output.LockableFileWriterTest:[testConstructor_File_nullFile, testAlternateLockDir, testFileNotLocked, testFileLocked, testConstructor_File_directory]
 org.apache.commons.io.FileUtilsTestCase:[testDeleteQuietlyDir, testListFiles, testCopyDirectoryPreserveDates, testCopyDirectoryToDirectory_NonExistingDest, testMoveDirectory_CopyDelete, testListFilesWithDirs, testForceDeleteDir, testCopyDirectoryToNonExistingDest, testIterateFilesAndDirs, testChecksum, testForceDeleteAFile2, testForceDeleteAFile1, testForceDeleteAFile3, testIterateFiles]
-org.apache.commons.io.input.CharSequenceInputStreamTest:[testBufferedRead_UTF8, testSkip_USASCII, testLargeSingleByteRead_RequiredCharsets, testBufferedRead_RequiredCharset, testIO_356_B10_D10_S1_UTF8, testIO_356_B10_D13_S0_UTF8, testReadZero_EmptyString, testLargeBufferedRead_RequiredCharsets, testCharsetMismatchInfiniteLoop_RequiredCharsets, testMarkReset_USASCII, testIO_356_B10_D13_S1_UTF8, testMarkReset_UTF8, testLargeSingleByteRead_UTF8, testBufferedRead_AvailableCharset, testSingleByteRead_UTF8, testIO_356_B10_D20_S0_UTF8, testIO_356_B10_D10_S2_UTF8, testIO_356_Loop_UTF8, testSkip_UTF8, testSingleByteRead_RequiredCharsets, testMarkSupported, testSingleByteRead_UTF16, testIO_356_Loop_UTF16, testIO_356_B10_D10_S0_UTF16, testReadZero_RequiredCharsets, testLargeBufferedRead_UTF8, testAvailable, testIO_356_B10_D10_S0_UTF8]
+org.apache.commons.io.input.CharSequenceInputStreamTest:[testSkip_USASCII, testBufferedRead_UTF8, testLargeSingleByteRead_RequiredCharsets, testBufferedRead_RequiredCharset, testIO_356_B10_D10_S1_UTF8, testIO_356_B10_D13_S0_UTF8, testReadZero_EmptyString, testLargeBufferedRead_RequiredCharsets, testCharsetMismatchInfiniteLoop_RequiredCharsets, testMarkReset_USASCII, testIO_356_B10_D13_S1_UTF8, testMarkReset_UTF8, testLargeSingleByteRead_UTF8, testBufferedRead_AvailableCharset, testSingleByteRead_UTF8, testIO_356_B10_D20_S0_UTF8, testIO_356_B10_D10_S2_UTF8, testIO_356_Loop_UTF8, testSkip_UTF8, testSingleByteRead_RequiredCharsets, testMarkSupported, testSingleByteRead_UTF16, testIO_356_Loop_UTF16, testIO_356_B10_D10_S0_UTF16, testReadZero_RequiredCharsets, testLargeBufferedRead_UTF8, testAvailable, testIO_356_B10_D10_S0_UTF8]
 org.apache.commons.io.filefilter.NameFileFilterTest:[testJavadocExampleUsingNio, testNoCounting]
-org.apache.commons.io.FileSystemUtilsTestCase:[testGetFreeSpaceWindows_String_ParseCommaFormatBytes_Small, testGetFreeSpaceUnix_String_NormalResponseKbSolaris, testGetFreeSpaceWindows_String_ParseCommaFormatBytes, testGetFreeSpaceOS_String_Unix, testGetFreeSpaceWindows_String_EmptyResponse, testGetFreeSpaceWindows_String_quoted, testGetFreeSpaceUnix_String_EmptyPath, testGetFreeSpaceWindows_String_StripDrive, testGetFreeSpaceOS_String_InitError, testGetFreeSpaceOS_String_NullPath, testGetFreeSpaceUnix_String_InvalidResponse4, testGetFreeSpaceUnix_String_InvalidResponse3, testGetFreeSpaceUnix_String_EmptyResponse, testGetFreeSpaceUnix_String_InvalidResponse2, testGetFreeSpaceWindows_String_NormalResponse, testGetFreeSpaceUnix_String_InvalidResponse1, testGetFreeSpaceOS_String_Windows, testGetFreeSpaceWindows_String_InvalidTextResponse, testGetFreeSpaceOS_String_Other, testGetFreeSpaceWindows_String_EmptyMultiLineResponse, testGetFreeSpaceWindows_String_NoSuchDirectoryResponse, testGetFreeSpaceUnix_String_LongResponse, testGetFreeSpaceUnix_String_NormalResponseKbFreeBSD, testGetFreeSpaceUnix_String_NormalResponseFreeBSD, testGetFreeSpaceWindows_String_ParseCommaFormatBytes_Big, testGetFreeSpaceWindows_String_EmptyPath, testGetFreeSpaceUnix_String_NormalResponseLinux, testGetFreeSpaceUnix_String_NormalResponseKbLinux, testGetFreeSpaceUnix_String_LongResponseKb]
+org.apache.commons.io.FileSystemUtilsTestCase:[testGetFreeSpaceWindows_String_ParseCommaFormatBytes_Small, testGetFreeSpaceUnix_String_NormalResponseKbSolaris, testGetFreeSpaceWindows_String_ParseCommaFormatBytes, testGetFreeSpaceOS_String_Unix, testGetFreeSpaceWindows_String_EmptyResponse, testGetFreeSpaceWindows_String_quoted, testGetFreeSpaceUnix_String_EmptyPath, testGetFreeSpaceWindows_String_StripDrive, testGetFreeSpaceOS_String_NullPath, testGetFreeSpaceOS_String_InitError, testGetFreeSpaceUnix_String_InvalidResponse4, testGetFreeSpaceUnix_String_InvalidResponse3, testGetFreeSpaceUnix_String_EmptyResponse, testGetFreeSpaceUnix_String_InvalidResponse2, testGetFreeSpaceWindows_String_NormalResponse, testGetFreeSpaceUnix_String_InvalidResponse1, testGetFreeSpaceOS_String_Windows, testGetFreeSpaceOS_String_Other, testGetFreeSpaceWindows_String_InvalidTextResponse, testGetFreeSpaceWindows_String_EmptyMultiLineResponse, testGetFreeSpaceWindows_String_NoSuchDirectoryResponse, testGetFreeSpaceUnix_String_LongResponse, testGetFreeSpaceUnix_String_NormalResponseKbFreeBSD, testGetFreeSpaceUnix_String_NormalResponseFreeBSD, testGetFreeSpaceWindows_String_ParseCommaFormatBytes_Big, testGetFreeSpaceWindows_String_EmptyPath, testGetFreeSpaceUnix_String_NormalResponseLinux, testGetFreeSpaceUnix_String_NormalResponseKbLinux, testGetFreeSpaceUnix_String_LongResponseKb]
 org.apache.commons.io.file.DirectoryStreamFilterTest:[testFilterByNameNot, testFilterByName]
 org.apache.commons.io.file.spi.FileSystemProvidersTest:[testGetFileSystemProvider_fileScheme]
 org.apache.commons.io.FileCleanerTestCase:[testFileCleanerDirectory_ForceStrategy]
 org.apache.commons.io.FileUtilsCleanDirectoryTestCase:[testDeletesRegular, testThrowsOnCannotDeleteFile, testDeletesNested]
 org.apache.commons.io.filefilter.AgeFileFilterTest:[testJavadocExampleUsingNio, testNoCounting]
 org.apache.commons.io.FileCleaningTrackerTestCase:[testFileCleanerDirectory_ForceStrategy]
-org.apache.commons.io.output.FileWriterWithEncodingTest:[sameEncoding_string_constructor, sameEncoding_string_CharsetEncoder_constructor, sameEncoding_Charset_constructor, sameEncoding_null_Charset_constructor, sameEncoding_string_Charset_constructor, constructor_File_encoding_badEncoding, testDifferentEncoding, constructor_File_nullFile, sameEncoding_CharsetEncoder_constructor, constructor_File_directory, sameEncoding_string_string_constructor]
+org.apache.commons.io.output.FileWriterWithEncodingTest:[sameEncoding_string_CharsetEncoder_constructor, sameEncoding_string_constructor, sameEncoding_Charset_constructor, sameEncoding_null_Charset_constructor, sameEncoding_string_Charset_constructor, constructor_File_encoding_badEncoding, testDifferentEncoding, constructor_File_nullFile, sameEncoding_CharsetEncoder_constructor, sameEncoding_string_string_constructor, constructor_File_directory]
 org.apache.commons.io.input.CountingInputStreamTest:[testLargeFiles_IO84]
 org.apache.commons.io.file.PathUtilsTest:[testCopyFile, testNewDirectoryStream]
 org.apache.commons.io.output.CountingOutputStreamTest:[testLargeFiles_IO84]
@@ -99,21 +99,18 @@ org.apache.commons.io.filefilter.DirectoryFileFilterTest:[testJavadocExampleUsin
 org.apache.commons.io.IOUtilsTestCase:[testConsume]
 org.apache.commons.io.FileDeleteStrategyTestCase:[testDeleteForce]
 org.apache.commons.io.output.NullPrintStreamTest:[testNullSingleton]
-org.apache.commons.io.file.CountersEqualsAndHashCodeTest:[testLongPathCountersHashCodeFileCounters, testLongPathCountersEqualsDirectoryCounters, testLongPathCountersEqualsFileCounters, testMix, testLongPathCountersEqualsByteCounters]
+org.apache.commons.io.file.CountersEqualsAndHashCodeTest:[testLongPathCountersHashCodeFileCounters, testLongPathCountersEqualsFileCounters, testLongPathCountersEqualsDirectoryCounters, testMix, testLongPathCountersEqualsByteCounters]
 org.apache.commons.io.monitor.FileAlterationObserverTestCase:[testDirectory]
 org.apache.commons.io.input.TeeInputStreamTest:[testCloseBranchIOException]
 org.apache.commons.io.EndianUtilsTest:[testCtor]
-org.apache.commons.io.file.PathUtilsDeleteFileTest:[testSetReadOnlyFileDirectory1FileSize1, testDeleteFileDirectory1FileSize1, testDeleteReadOnlyFileDirectory1FileSize1, testDeleteFileDoesNotExist, testDeleteFileDirectory1FileSize0]
-org.apache.commons.io.file.PathUtilsCountingTest:[testCountEmptyFolder, testCountFolders1FileSize1, testCountFolders1FileSize0, testCountFolders2FileSize2]
+org.apache.commons.io.file.PathUtilsCountingTest:[testCountFolders1FileSize1, testCountEmptyFolder, testCountFolders1FileSize0, testCountFolders2FileSize2]
+org.apache.commons.io.file.PathUtilsDeleteFileTest:[testSetReadOnlyFileDirectory1FileSize1, testDeleteFileDirectory1FileSize1, testDeleteReadOnlyFileDirectory1FileSize1, testDeleteFileDirectory1FileSize0, testDeleteFileDoesNotExist]
 org.apache.commons.io.output.TeeOutputStreamTest:[testIOExceptionOnClose]
 org.apache.commons.io.file.PathUtilsContentEqualsTest:[testDirectoryAndFileContentEquals, testDirectoryContentEquals]
 org.apache.commons.io.file.PathUtilsDeleteDirectoryTest:[testDeleteDirectory2FileSize2, testDeleteDirectory1FileSize0NoOptions, testDeleteEmptyDirectory, testDeleteDirectory1FileSize0OverrideReadOnly, testDeleteDirectory1FileSize0, testDeleteDirectory1FileSize1]
 [INFO] Instrument version before commit...
 [INFO] Run on /tmp/v1
 [INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
-[INFO] Spoon version 8.4.0-SNAPSHOT
-[INFO] running Spoon...
-[INFO] start processing...
 [INFO] fr.davidson.diff.jjoules.process.junit5.JJoulesProcessor
 Processing org.apache.commons.io.file.spi.FileSystemProvidersTest#testGetFileSystemProvider_fileScheme
 Processing org.apache.commons.io.file.CountersEqualsAndHashCodeTest#testLongPathCountersEqualsByteCounters
@@ -274,16 +271,45 @@ Processing org.apache.commons.io.FileUtilsTestCase#testListFilesWithDirs
 Processing org.apache.commons.io.FileUtilsTestCase#testMoveDirectory_CopyDelete
 Processing org.apache.commons.io.IOUtilsCopyTestCase#testCopy_inputStreamToOutputStream_IO84
 Processing org.apache.commons.io.IOUtilsTestCase#testConsume
-[INFO] end of processing: 
-[INFO] no errors, no warnings
+[INFO] Printing org.apache.commons.io.EndianUtilsTest to /tmp/v1/src/test/java//org/apache/commons/io/EndianUtilsTest.java
+[INFO] Printing org.apache.commons.io.input.TeeInputStreamTest to /tmp/v1/src/test/java//org/apache/commons/io/input/TeeInputStreamTest.java
+[INFO] Printing org.apache.commons.io.output.FileWriterWithEncodingTest to /tmp/v1/src/test/java//org/apache/commons/io/output/FileWriterWithEncodingTest.java
+[INFO] Printing org.apache.commons.io.output.CountingOutputStreamTest to /tmp/v1/src/test/java//org/apache/commons/io/output/CountingOutputStreamTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsCountingTest to /tmp/v1/src/test/java//org/apache/commons/io/file/PathUtilsCountingTest.java
+[INFO] Printing org.apache.commons.io.input.CharSequenceInputStreamTest to /tmp/v1/src/test/java//org/apache/commons/io/input/CharSequenceInputStreamTest.java
+[INFO] Printing org.apache.commons.io.FileDeleteStrategyTestCase to /tmp/v1/src/test/java//org/apache/commons/io/FileDeleteStrategyTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsCleanDirectoryTestCase to /tmp/v1/src/test/java//org/apache/commons/io/FileUtilsCleanDirectoryTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsCleanSymlinksTestCase to /tmp/v1/src/test/java//org/apache/commons/io/FileUtilsCleanSymlinksTestCase.java
+[INFO] Printing org.apache.commons.io.filefilter.NameFileFilterTest to /tmp/v1/src/test/java//org/apache/commons/io/filefilter/NameFileFilterTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsContentEqualsTest to /tmp/v1/src/test/java//org/apache/commons/io/file/PathUtilsContentEqualsTest.java
+[INFO] Printing org.apache.commons.io.IOUtilsCopyTestCase to /tmp/v1/src/test/java//org/apache/commons/io/IOUtilsCopyTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsListFilesTestCase to /tmp/v1/src/test/java//org/apache/commons/io/FileUtilsListFilesTestCase.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsDeleteDirectoryTest to /tmp/v1/src/test/java//org/apache/commons/io/file/PathUtilsDeleteDirectoryTest.java
+[INFO] Printing org.apache.commons.io.output.LockableFileWriterTest to /tmp/v1/src/test/java//org/apache/commons/io/output/LockableFileWriterTest.java
+[INFO] Printing org.apache.commons.io.FileSystemUtilsTestCase to /tmp/v1/src/test/java//org/apache/commons/io/FileSystemUtilsTestCase.java
+[INFO] Printing org.apache.commons.io.output.TeeOutputStreamTest to /tmp/v1/src/test/java//org/apache/commons/io/output/TeeOutputStreamTest.java
+[INFO] Printing org.apache.commons.io.monitor.FileAlterationObserverTestCase to /tmp/v1/src/test/java//org/apache/commons/io/monitor/FileAlterationObserverTestCase.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsDeleteTest to /tmp/v1/src/test/java//org/apache/commons/io/file/PathUtilsDeleteTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsCleanDirectoryTest to /tmp/v1/src/test/java//org/apache/commons/io/file/PathUtilsCleanDirectoryTest.java
+[INFO] Printing org.apache.commons.io.filefilter.DirectoryFileFilterTest to /tmp/v1/src/test/java//org/apache/commons/io/filefilter/DirectoryFileFilterTest.java
+[INFO] Printing org.apache.commons.io.FileUtilsTestCase to /tmp/v1/src/test/java//org/apache/commons/io/FileUtilsTestCase.java
+[INFO] Printing org.apache.commons.io.IOUtilsTestCase to /tmp/v1/src/test/java//org/apache/commons/io/IOUtilsTestCase.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsTest to /tmp/v1/src/test/java//org/apache/commons/io/file/PathUtilsTest.java
+[INFO] Printing org.apache.commons.io.file.DirectoryStreamFilterTest to /tmp/v1/src/test/java//org/apache/commons/io/file/DirectoryStreamFilterTest.java
+[INFO] Printing org.apache.commons.io.input.CountingInputStreamTest to /tmp/v1/src/test/java//org/apache/commons/io/input/CountingInputStreamTest.java
+[INFO] Printing org.apache.commons.io.output.NullPrintStreamTest to /tmp/v1/src/test/java//org/apache/commons/io/output/NullPrintStreamTest.java
+[INFO] Printing org.apache.commons.io.FileCleaningTrackerTestCase to /tmp/v1/src/test/java//org/apache/commons/io/FileCleaningTrackerTestCase.java
+[INFO] Printing org.apache.commons.io.file.CountersEqualsAndHashCodeTest to /tmp/v1/src/test/java//org/apache/commons/io/file/CountersEqualsAndHashCodeTest.java
+[INFO] Printing org.apache.commons.io.filefilter.AgeFileFilterTest to /tmp/v1/src/test/java//org/apache/commons/io/filefilter/AgeFileFilterTest.java
+[INFO] Printing org.apache.commons.io.output.NullOutputStreamTest to /tmp/v1/src/test/java//org/apache/commons/io/output/NullOutputStreamTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsDeleteFileTest to /tmp/v1/src/test/java//org/apache/commons/io/file/PathUtilsDeleteFileTest.java
+[INFO] Printing org.apache.commons.io.filefilter.FileFilterTestCase to /tmp/v1/src/test/java//org/apache/commons/io/filefilter/FileFilterTestCase.java
+[INFO] Printing org.apache.commons.io.file.spi.FileSystemProvidersTest to /tmp/v1/src/test/java//org/apache/commons/io/file/spi/FileSystemProvidersTest.java
 [INFO] Injecting JUnit-Jjoules in /tmp/v1/pom.xml
 [INFO] Output new POM file in /tmp/v1/pom_jjouled.xml
 [INFO] Instrument version after commit...
 [INFO] Run on /tmp/v2
 [INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
-[INFO] Spoon version 8.4.0-SNAPSHOT
-[INFO] running Spoon...
-[INFO] start processing...
 [INFO] fr.davidson.diff.jjoules.process.junit5.JJoulesProcessor
 Processing org.apache.commons.io.file.spi.FileSystemProvidersTest#testGetFileSystemProvider_fileScheme
 Processing org.apache.commons.io.file.CountersEqualsAndHashCodeTest#testLongPathCountersEqualsByteCounters
@@ -444,13 +470,65 @@ Processing org.apache.commons.io.FileUtilsTestCase#testListFilesWithDirs
 Processing org.apache.commons.io.FileUtilsTestCase#testMoveDirectory_CopyDelete
 Processing org.apache.commons.io.IOUtilsCopyTestCase#testCopy_inputStreamToOutputStream_IO84
 Processing org.apache.commons.io.IOUtilsTestCase#testConsume
-[INFO] end of processing: 
-[INFO] no errors, no warnings
+[INFO] Printing org.apache.commons.io.input.TeeInputStreamTest to /tmp/v2/src/test/java//org/apache/commons/io/input/TeeInputStreamTest.java
+[INFO] Printing org.apache.commons.io.output.FileWriterWithEncodingTest to /tmp/v2/src/test/java//org/apache/commons/io/output/FileWriterWithEncodingTest.java
+[INFO] Printing org.apache.commons.io.output.FileWriterWithEncodingTest to /tmp/v2/src/test/java//org/apache/commons/io/output/FileWriterWithEncodingTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsCountingTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsCountingTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsCountingTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsCountingTest.java
+[INFO] Printing org.apache.commons.io.FileUtilsCleanDirectoryTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsCleanDirectoryTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsCleanSymlinksTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsCleanSymlinksTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsCleanDirectoryTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsCleanDirectoryTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsCleanSymlinksTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsCleanSymlinksTestCase.java
+[INFO] Printing org.apache.commons.io.filefilter.NameFileFilterTest to /tmp/v2/src/test/java//org/apache/commons/io/filefilter/NameFileFilterTest.java
+[INFO] Printing org.apache.commons.io.filefilter.NameFileFilterTest to /tmp/v2/src/test/java//org/apache/commons/io/filefilter/NameFileFilterTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsContentEqualsTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsContentEqualsTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsContentEqualsTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsContentEqualsTest.java
+[INFO] Printing org.apache.commons.io.FileUtilsListFilesTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsListFilesTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsListFilesTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsListFilesTestCase.java
+[INFO] Printing org.apache.commons.io.output.TeeOutputStreamTest to /tmp/v2/src/test/java//org/apache/commons/io/output/TeeOutputStreamTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsCleanDirectoryTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsCleanDirectoryTest.java
+[INFO] Printing org.apache.commons.io.FileUtilsTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsTestCase.java
+[INFO] Printing org.apache.commons.io.IOUtilsTestCase to /tmp/v2/src/test/java//org/apache/commons/io/IOUtilsTestCase.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsCleanDirectoryTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsCleanDirectoryTest.java
+[INFO] Printing org.apache.commons.io.FileUtilsTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsTestCase.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsTest.java
+[INFO] Printing org.apache.commons.io.file.DirectoryStreamFilterTest to /tmp/v2/src/test/java//org/apache/commons/io/file/DirectoryStreamFilterTest.java
+[INFO] Printing org.apache.commons.io.file.DirectoryStreamFilterTest to /tmp/v2/src/test/java//org/apache/commons/io/file/DirectoryStreamFilterTest.java
+[INFO] Printing org.apache.commons.io.input.CountingInputStreamTest to /tmp/v2/src/test/java//org/apache/commons/io/input/CountingInputStreamTest.java
+[INFO] Printing org.apache.commons.io.filefilter.AgeFileFilterTest to /tmp/v2/src/test/java//org/apache/commons/io/filefilter/AgeFileFilterTest.java
+[INFO] Printing org.apache.commons.io.output.NullOutputStreamTest to /tmp/v2/src/test/java//org/apache/commons/io/output/NullOutputStreamTest.java
+[INFO] Printing org.apache.commons.io.filefilter.AgeFileFilterTest to /tmp/v2/src/test/java//org/apache/commons/io/filefilter/AgeFileFilterTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsDeleteFileTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsDeleteFileTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsDeleteFileTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsDeleteFileTest.java
+[INFO] Printing org.apache.commons.io.filefilter.FileFilterTestCase to /tmp/v2/src/test/java//org/apache/commons/io/filefilter/FileFilterTestCase.java
+[INFO] Printing org.apache.commons.io.filefilter.FileFilterTestCase to /tmp/v2/src/test/java//org/apache/commons/io/filefilter/FileFilterTestCase.java
+[INFO] Printing org.apache.commons.io.EndianUtilsTest to /tmp/v2/src/test/java//org/apache/commons/io/EndianUtilsTest.java
+[INFO] Printing org.apache.commons.io.output.CountingOutputStreamTest to /tmp/v2/src/test/java//org/apache/commons/io/output/CountingOutputStreamTest.java
+[INFO] Printing org.apache.commons.io.input.CharSequenceInputStreamTest to /tmp/v2/src/test/java//org/apache/commons/io/input/CharSequenceInputStreamTest.java
+[INFO] Printing org.apache.commons.io.input.CharSequenceInputStreamTest to /tmp/v2/src/test/java//org/apache/commons/io/input/CharSequenceInputStreamTest.java
+[INFO] Printing org.apache.commons.io.FileDeleteStrategyTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileDeleteStrategyTestCase.java
+[INFO] Printing org.apache.commons.io.IOUtilsCopyTestCase to /tmp/v2/src/test/java//org/apache/commons/io/IOUtilsCopyTestCase.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsDeleteDirectoryTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsDeleteDirectoryTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsDeleteDirectoryTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsDeleteDirectoryTest.java
+[INFO] Printing org.apache.commons.io.output.LockableFileWriterTest to /tmp/v2/src/test/java//org/apache/commons/io/output/LockableFileWriterTest.java
+[INFO] Printing org.apache.commons.io.output.LockableFileWriterTest to /tmp/v2/src/test/java//org/apache/commons/io/output/LockableFileWriterTest.java
+[INFO] Printing org.apache.commons.io.FileSystemUtilsTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileSystemUtilsTestCase.java
+[INFO] Printing org.apache.commons.io.FileSystemUtilsTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileSystemUtilsTestCase.java
+[INFO] Printing org.apache.commons.io.monitor.FileAlterationObserverTestCase to /tmp/v2/src/test/java//org/apache/commons/io/monitor/FileAlterationObserverTestCase.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsDeleteTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsDeleteTest.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsDeleteTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsDeleteTest.java
+[INFO] Printing org.apache.commons.io.filefilter.DirectoryFileFilterTest to /tmp/v2/src/test/java//org/apache/commons/io/filefilter/DirectoryFileFilterTest.java
+[INFO] Printing org.apache.commons.io.output.NullPrintStreamTest to /tmp/v2/src/test/java//org/apache/commons/io/output/NullPrintStreamTest.java
+[INFO] Printing org.apache.commons.io.FileCleaningTrackerTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileCleaningTrackerTestCase.java
+[INFO] Printing org.apache.commons.io.file.CountersEqualsAndHashCodeTest to /tmp/v2/src/test/java//org/apache/commons/io/file/CountersEqualsAndHashCodeTest.java
+[INFO] Printing org.apache.commons.io.file.CountersEqualsAndHashCodeTest to /tmp/v2/src/test/java//org/apache/commons/io/file/CountersEqualsAndHashCodeTest.java
+[INFO] Printing org.apache.commons.io.file.spi.FileSystemProvidersTest to /tmp/v2/src/test/java//org/apache/commons/io/file/spi/FileSystemProvidersTest.java
 [INFO] Injecting JUnit-Jjoules in /tmp/v2/pom.xml
 [INFO] Output new POM file in /tmp/v2/pom_jjouled.xml
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  39.274 s
-[INFO] Finished at: 2020-12-12T11:55:20+01:00
+[INFO] Total time:  23.051 s
+[INFO] Finished at: 2020-12-15T11:12:42+01:00
 [INFO] ------------------------------------------------------------------------

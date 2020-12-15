@@ -1,0 +1,119 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< commons-io:commons-io >------------------------
+[INFO] Building Apache Commons IO 2.9.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M3:enforce (enforce-maven-version) @ commons-io ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M3:enforce (enforce-maven-3) @ commons-io ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M3:enforce (enforce-maven) @ commons-io ---
+[INFO] 
+[INFO] --- apache-rat-plugin:0.13:check (rat-check) @ commons-io ---
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.2.0:parse-version (parse-version) @ commons-io ---
+[INFO] 
+[INFO] --- maven-antrun-plugin:1.8:run (javadoc.resources) @ commons-io ---
+[INFO] Executing tasks
+
+main:
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:1.7.0:process (process-resource-bundles) @ commons-io ---
+[INFO] Skipping remote resources execution.
+[INFO] 
+[INFO] --- buildnumber-maven-plugin:1.4:create (default) @ commons-io ---
+[INFO] Executing: /bin/sh -c cd '/tmp/v1' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /tmp/v1
+[INFO] Storing buildNumber: 683590f0a0fbb83d03e4b97813cbf2e302f4283d at timestamp: 1608036292948
+[INFO] Storing buildScmBranch: master
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ commons-io ---
+[INFO] Using 'iso-8859-1' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /tmp/v1/src/main/resources
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ commons-io ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 169 source files to /tmp/v1/target/classes
+[INFO] /tmp/v1/src/main/java/org/apache/commons/io/input/ClassLoaderObjectInputStream.java: Some input files use or override a deprecated API.
+[INFO] /tmp/v1/src/main/java/org/apache/commons/io/input/ClassLoaderObjectInputStream.java: Recompile with -Xlint:deprecation for details.
+[INFO] /tmp/v1/src/main/java/org/apache/commons/io/IOExceptionList.java: /tmp/v1/src/main/java/org/apache/commons/io/IOExceptionList.java uses unchecked or unsafe operations.
+[INFO] /tmp/v1/src/main/java/org/apache/commons/io/IOExceptionList.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-bundle-plugin:5.1.1:manifest (bundle-manifest) @ commons-io ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ commons-io ---
+[INFO] Using 'iso-8859-1' encoding to copy filtered resources.
+[INFO] Copying 50 resources
+[INFO] Copying 2 resources to META-INF
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ commons-io ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 169 source files to /tmp/v1/target/test-classes
+[INFO] /tmp/v1/src/test/java/org/apache/commons/io/filefilter/FileFilterTestCase.java: /tmp/v1/src/test/java/org/apache/commons/io/filefilter/FileFilterTestCase.java uses unchecked or unsafe operations.
+[INFO] /tmp/v1/src/test/java/org/apache/commons/io/filefilter/FileFilterTestCase.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- animal-sniffer-maven-plugin:1.19:check (checkAPIcompatibility) @ commons-io ---
+[INFO] Signature checking is skipped.
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.6:prepare-agent (prepare-agent) @ commons-io ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] argLine set to empty
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ commons-io ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:build-classpath (default-cli) @ commons-io ---
+[INFO] Skipped writing classpath file '/tmp/v1/classpath'.  No changes found.
+[INFO] 
+[INFO] --- diff-jjoules:0.0.1-SNAPSHOT:instrument (default-cli) @ commons-io ---
+[INFO] org.apache.commons.io.filefilter.FileFilterTestCase:[testFileFilterUtils_or, testNot]
+org.apache.commons.io.FileUtilsListFilesTestCase:[testListFilesByExtension, testListFiles, testIterateFilesByExtension]
+org.apache.commons.io.FileUtilsTestCase:[testListFilesWithDirs, testListFiles, testIterateFilesAndDirs, testIterateFiles]
+[INFO] Instrument version before commit...
+[INFO] Run on /tmp/v1
+[INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
+[INFO] fr.davidson.diff.jjoules.process.junit5.JJoulesProcessor
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testNot
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testFileFilterUtils_or
+Processing org.apache.commons.io.FileUtilsListFilesTestCase#testIterateFilesByExtension
+Processing org.apache.commons.io.FileUtilsListFilesTestCase#testListFilesByExtension
+Processing org.apache.commons.io.FileUtilsListFilesTestCase#testListFiles
+Processing org.apache.commons.io.FileUtilsTestCase#testListFiles
+Processing org.apache.commons.io.FileUtilsTestCase#testListFilesWithDirs
+Processing org.apache.commons.io.FileUtilsTestCase#testIterateFiles
+Processing org.apache.commons.io.FileUtilsTestCase#testIterateFilesAndDirs
+[INFO] Printing org.apache.commons.io.FileUtilsListFilesTestCase to /tmp/v1/src/test/java//org/apache/commons/io/FileUtilsListFilesTestCase.java
+[INFO] Printing org.apache.commons.io.filefilter.FileFilterTestCase to /tmp/v1/src/test/java//org/apache/commons/io/filefilter/FileFilterTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsTestCase to /tmp/v1/src/test/java//org/apache/commons/io/FileUtilsTestCase.java
+[INFO] Injecting JUnit-Jjoules in /tmp/v1/pom.xml
+[INFO] Output new POM file in /tmp/v1/pom_jjouled.xml
+[INFO] Instrument version after commit...
+[INFO] Run on /tmp/v2
+[INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
+[INFO] fr.davidson.diff.jjoules.process.junit5.JJoulesProcessor
+Processing org.apache.commons.io.filefilter.FileFilterTestCase#testFileFilterUtils_or
+Processing org.apache.commons.io.FileUtilsListFilesTestCase#testIterateFilesByExtension
+Processing org.apache.commons.io.FileUtilsListFilesTestCase#testListFilesByExtension
+Processing org.apache.commons.io.FileUtilsListFilesTestCase#testListFiles
+Processing org.apache.commons.io.FileUtilsTestCase#testListFiles
+Processing org.apache.commons.io.FileUtilsTestCase#testListFilesWithDirs
+Processing org.apache.commons.io.FileUtilsTestCase#testIterateFiles
+Processing org.apache.commons.io.FileUtilsTestCase#testIterateFilesAndDirs
+[INFO] Printing org.apache.commons.io.FileUtilsListFilesTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsListFilesTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsListFilesTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsListFilesTestCase.java
+[INFO] Printing org.apache.commons.io.filefilter.FileFilterTestCase to /tmp/v2/src/test/java//org/apache/commons/io/filefilter/FileFilterTestCase.java
+[INFO] Printing org.apache.commons.io.filefilter.FileFilterTestCase to /tmp/v2/src/test/java//org/apache/commons/io/filefilter/FileFilterTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsTestCase.java
+[INFO] Injecting JUnit-Jjoules in /tmp/v2/pom.xml
+[INFO] Output new POM file in /tmp/v2/pom_jjouled.xml
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  19.828 s
+[INFO] Finished at: 2020-12-15T13:45:10+01:00
+[INFO] ------------------------------------------------------------------------

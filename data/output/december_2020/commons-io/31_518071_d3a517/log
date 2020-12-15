@@ -1,0 +1,4 @@
+2020-12-15
+Run for commons-io 518071297ee09d47ca8e9945cd050f386fc36ed4 31 d3a51772915cff2b36aebf4622dd367ad60f6459 30 output_path data/output/december_2020/
+mvn test did not succeed on v1
+31 / 2739

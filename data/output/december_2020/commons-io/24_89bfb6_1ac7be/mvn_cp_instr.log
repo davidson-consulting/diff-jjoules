@@ -25,7 +25,7 @@
 [INFO] --- buildnumber-maven-plugin:1.4:create (default) @ commons-io ---
 [INFO] Executing: /bin/sh -c cd '/tmp/v1' && 'git' 'rev-parse' '--verify' 'HEAD'
 [INFO] Working directory: /tmp/v1
-[INFO] Storing buildNumber: 89bfb64c1091ca80e407077707c6121228db5329 at timestamp: 1607771890786
+[INFO] Storing buildNumber: 89bfb64c1091ca80e407077707c6121228db5329 at timestamp: 1608028992704
 [INFO] Storing buildScmBranch: master
 [INFO] 
 [INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ commons-io ---
@@ -84,9 +84,6 @@ org.apache.commons.io.IOCaseTestCase:[test_checkStartsWith_case, test_checkStart
 [INFO] Instrument version before commit...
 [INFO] Run on /tmp/v1
 [INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
-[INFO] Spoon version 8.4.0-SNAPSHOT
-[INFO] running Spoon...
-[INFO] start processing...
 [INFO] fr.davidson.diff.jjoules.process.junit5.JJoulesProcessor
 Processing org.apache.commons.io.file.DirectoryStreamFilterTest#testFilterByName
 Processing org.apache.commons.io.file.DirectoryStreamFilterTest#testFilterByNameNot
@@ -117,16 +114,19 @@ Processing org.apache.commons.io.FileUtilsTestCase#testListFiles
 Processing org.apache.commons.io.FileUtilsTestCase#testListFilesWithDirs
 Processing org.apache.commons.io.IOCaseTestCase#test_checkStartsWith_functionality
 Processing org.apache.commons.io.IOCaseTestCase#test_checkStartsWith_case
-[INFO] end of processing: 
-[INFO] no errors, no warnings
+[INFO] Printing org.apache.commons.io.file.PathUtilsTest to /tmp/v1/src/test/java//org/apache/commons/io/file/PathUtilsTest.java
+[INFO] Printing org.apache.commons.io.IOCaseTestCase to /tmp/v1/src/test/java//org/apache/commons/io/IOCaseTestCase.java
+[INFO] Printing org.apache.commons.io.file.DirectoryStreamFilterTest to /tmp/v1/src/test/java//org/apache/commons/io/file/DirectoryStreamFilterTest.java
+[INFO] Printing org.apache.commons.io.FileUtilsListFilesTestCase to /tmp/v1/src/test/java//org/apache/commons/io/FileUtilsListFilesTestCase.java
+[INFO] Printing org.apache.commons.io.filefilter.NameFileFilterTest to /tmp/v1/src/test/java//org/apache/commons/io/filefilter/NameFileFilterTest.java
+[INFO] Printing org.apache.commons.io.FileUtilsDirectoryContainsTestCase to /tmp/v1/src/test/java//org/apache/commons/io/FileUtilsDirectoryContainsTestCase.java
+[INFO] Printing org.apache.commons.io.filefilter.FileFilterTestCase to /tmp/v1/src/test/java//org/apache/commons/io/filefilter/FileFilterTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsTestCase to /tmp/v1/src/test/java//org/apache/commons/io/FileUtilsTestCase.java
 [INFO] Injecting JUnit-Jjoules in /tmp/v1/pom.xml
 [INFO] Output new POM file in /tmp/v1/pom_jjouled.xml
 [INFO] Instrument version after commit...
 [INFO] Run on /tmp/v2
 [INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
-[INFO] Spoon version 8.4.0-SNAPSHOT
-[INFO] running Spoon...
-[INFO] start processing...
 [INFO] fr.davidson.diff.jjoules.process.junit5.JJoulesProcessor
 Processing org.apache.commons.io.file.DirectoryStreamFilterTest#testFilterByName
 Processing org.apache.commons.io.file.DirectoryStreamFilterTest#testFilterByNameNot
@@ -157,13 +157,26 @@ Processing org.apache.commons.io.FileUtilsTestCase#testListFiles
 Processing org.apache.commons.io.FileUtilsTestCase#testListFilesWithDirs
 Processing org.apache.commons.io.IOCaseTestCase#test_checkStartsWith_functionality
 Processing org.apache.commons.io.IOCaseTestCase#test_checkStartsWith_case
-[INFO] end of processing: 
-[INFO] no errors, no warnings
+[INFO] Printing org.apache.commons.io.FileUtilsListFilesTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsListFilesTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsListFilesTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsListFilesTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsTestCase.java
+[INFO] Printing org.apache.commons.io.file.PathUtilsTest to /tmp/v2/src/test/java//org/apache/commons/io/file/PathUtilsTest.java
+[INFO] Printing org.apache.commons.io.IOCaseTestCase to /tmp/v2/src/test/java//org/apache/commons/io/IOCaseTestCase.java
+[INFO] Printing org.apache.commons.io.IOCaseTestCase to /tmp/v2/src/test/java//org/apache/commons/io/IOCaseTestCase.java
+[INFO] Printing org.apache.commons.io.file.DirectoryStreamFilterTest to /tmp/v2/src/test/java//org/apache/commons/io/file/DirectoryStreamFilterTest.java
+[INFO] Printing org.apache.commons.io.file.DirectoryStreamFilterTest to /tmp/v2/src/test/java//org/apache/commons/io/file/DirectoryStreamFilterTest.java
+[INFO] Printing org.apache.commons.io.filefilter.NameFileFilterTest to /tmp/v2/src/test/java//org/apache/commons/io/filefilter/NameFileFilterTest.java
+[INFO] Printing org.apache.commons.io.filefilter.NameFileFilterTest to /tmp/v2/src/test/java//org/apache/commons/io/filefilter/NameFileFilterTest.java
+[INFO] Printing org.apache.commons.io.FileUtilsDirectoryContainsTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsDirectoryContainsTestCase.java
+[INFO] Printing org.apache.commons.io.FileUtilsDirectoryContainsTestCase to /tmp/v2/src/test/java//org/apache/commons/io/FileUtilsDirectoryContainsTestCase.java
+[INFO] Printing org.apache.commons.io.filefilter.FileFilterTestCase to /tmp/v2/src/test/java//org/apache/commons/io/filefilter/FileFilterTestCase.java
+[INFO] Printing org.apache.commons.io.filefilter.FileFilterTestCase to /tmp/v2/src/test/java//org/apache/commons/io/filefilter/FileFilterTestCase.java
 [INFO] Injecting JUnit-Jjoules in /tmp/v2/pom.xml
 [INFO] Output new POM file in /tmp/v2/pom_jjouled.xml
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  20.027 s
-[INFO] Finished at: 2020-12-12T12:18:28+01:00
+[INFO] Total time:  19.850 s
+[INFO] Finished at: 2020-12-15T11:43:30+01:00
 [INFO] ------------------------------------------------------------------------
