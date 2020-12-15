@@ -120,7 +120,7 @@ if __name__ == '__main__':
                 mkdir(current_output_path_log)
             except FileExistsError:
                 print('pass...')
-            move_directory(current_output_path, current_output_path_log)
+            move_directory(current_output_path, current_err_output_path)
         print(cursor_commits, '/', len(commits) - 1)
         print_to_file(str(cursor_commits) + ' / ' + str(len(commits) - 1), current_output_path_log)
         cursor_commits = cursor_commits + 1
