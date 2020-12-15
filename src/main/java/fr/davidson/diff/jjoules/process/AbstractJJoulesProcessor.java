@@ -6,9 +6,12 @@ import spoon.compiler.Environment;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
+import spoon.reflect.visitor.PrettyPrinter;
 import spoon.support.JavaOutputProcessor;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.List;
@@ -76,18 +79,15 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
 
     private void printCtType(CtType<?> type) {
         final File directory = new File(this.rootPathFolder + "/" + TEST_FOLDER_PATH);
-        final Environment env = type.getFactory().getEnvironment();
-        LOGGER.info("Printing {}", type.getQualifiedName());
-        try {
-            env.setAutoImports(true);
-            env.setNoClasspath(false);
-            env.setCommentEnabled(true);
-            JavaOutputProcessor processor = new JavaOutputProcessor(env.createPrettyPrinter());
-            processor.setFactory(type.getFactory());
-            processor.getEnvironment().setSourceOutputDirectory(directory);
-            processor.createJavaFile(type);
-            env.setAutoImports(false);
-        } catch (Exception e) {
+        type.getFactory().getEnvironment().setSourceOutputDirectory(directory);
+        final PrettyPrinter prettyPrinter = type.getFactory().getEnvironment().createPrettyPrinter();
+        final String fileName = this.rootPathFolder + "/" +
+                TEST_FOLDER_PATH + "/" +
+                type.getQualifiedName().replaceAll("\\.", "/") + ".java";
+        LOGGER.info("Printing {} to {}", type.getQualifiedName(), fileName);
+        try (final FileWriter write = new FileWriter(fileName)) {
+            write.write(prettyPrinter.printTypes(type));
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
