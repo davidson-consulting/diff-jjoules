@@ -1,5 +1,5 @@
 import os
-from shutil import copyfile, SameFileError, copytree, rmtree
+from shutil import copyfile, SameFileError, copytree, rmtree, move
 
 POM_FILE = '/pom.xml'
 JJOULED_POM_FILE = '/pom_jjouled.xml'
@@ -96,6 +96,9 @@ def run_mvn_build_classpath_and_instrument(path_first_version, path_second_versi
     )
 
 JJOULES_REPORT_FOLDER = 'target/jjoules-reports'
+
+def move_directory(src_dir, dst):
+    move(src_dir, dst)
 
 def copy_jjoules_result(src_dir, dst):
     src = src_dir + '/' + JJOULES_REPORT_FOLDER

@@ -82,10 +82,14 @@ if __name__ == '__main__':
     current_nb_completed_commits = 0
     cursor_commits = 1
 
+    success_output_path = output_path + '/' + project_name + '/'
+    error_output_path = output_path + '/' + project_name + '_error/'
+
     while current_nb_completed_commits < nb_commits and cursor_commits < len(commits) - 1:
         commit_sha_v1 = commits[cursor_commits]
         commit_sha_v2 = commits[cursor_commits - 1]
-        current_output_path = output_path + '/' + project_name + '/' + '_'.join([str(cursor_commits), commit_sha_v1[:6], commit_sha_v2[:6]])
+        current_output_path = success_output_path + '/' + '_'.join([str(cursor_commits), commit_sha_v1[:6], commit_sha_v2[:6]])
+        current_err_output_path = error_output_path + '/' + '_'.join([str(cursor_commits), commit_sha_v1[:6], commit_sha_v2[:6]])
         current_output_path_log = current_output_path + '/log'
         try:
             mkdir(current_output_path)
@@ -111,6 +115,12 @@ if __name__ == '__main__':
             current_nb_completed_commits = current_nb_completed_commits + 1
             print_to_file('Success!' + str(current_nb_completed_commits) + ' / ' + str(nb_commits), current_output_path_log)
             print('Success!', current_nb_completed_commits, '/', nb_commits)
+        else:
+            try:
+                mkdir(current_output_path_log)
+            except FileExistsError:
+                print('pass...')
+            move_directory(current_output_path, current_output_path_log)
         print(cursor_commits, '/', len(commits) - 1)
         print_to_file(str(cursor_commits) + ' / ' + str(len(commits) - 1), current_output_path_log)
         cursor_commits = cursor_commits + 1
