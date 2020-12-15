@@ -1,6 +1,5 @@
 package fr.davidson.diff.jjoules.maven;
 
-import fr.davidson.diff.jjoules.Main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -41,7 +40,10 @@ public class JJoulesInjection {
             final DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             final Document document = docBuilder.parse(this.absolutePathToProjectRoot + "/" + POM_FILE);
             final Node root = Utils.findSpecificNodeFromGivenRoot(document.getFirstChild(), Utils.PROJECT);
+
             this.addJJoulesDependencies(document, root);
+            this.addSurefireRandomRunOrder(document, root);
+
             final TransformerFactory transformerFactory = TransformerFactory.newInstance();
             final Transformer transformer = transformerFactory.newTransformer();
             final DOMSource source = new DOMSource(document);
@@ -64,6 +66,24 @@ public class JJoulesInjection {
                 "1.0-SNAPSHOT"
         );
         dependencies.appendChild(dependency);
+    }
+
+    private void addSurefireRandomRunOrder(Document document, Node root) {
+        final Node build = Utils.findOrCreateGivenNode(document, root, "build");
+        final Node plugins = Utils.findOrCreateGivenNode(document, build, "plugins");
+        final Node pluginMavenSurefirePlugin =
+                Utils.findNodeWithSpecificChild(
+                        document,
+                        plugins,
+                        "artifactId",
+                        "maven-surefire-plugin",
+                        "org.apache.maven.plugins",
+                        "maven-surefire-plugin",
+                        ""
+                );
+        final Node configuration = Utils.findOrCreateGivenNode(document, pluginMavenSurefirePlugin, "configuration");
+        final Node runOrder = Utils.findOrCreateGivenNode(document, configuration, "runOrder");
+        runOrder.setTextContent("random");
     }
 
 }
