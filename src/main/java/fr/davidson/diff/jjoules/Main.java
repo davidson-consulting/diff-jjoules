@@ -61,11 +61,11 @@ public class Main {
         launcher.getEnvironment().setNoClasspath(false);
         launcher.getEnvironment().setAutoImports(false);
         launcher.getEnvironment().setLevel("DEBUG");
-        final ChangeCollector changeCollector = new ChangeCollector();
-        changeCollector.attachTo(launcher.getEnvironment());
-        launcher.getEnvironment().setPrettyPrinterCreator(() ->
-                new SniperJavaPrettyPrinter(launcher.getEnvironment())
-        );
+        //final ChangeCollector changeCollector = new ChangeCollector();
+        //changeCollector.attachTo(launcher.getEnvironment());
+        //launcher.getEnvironment().setPrettyPrinterCreator(() ->
+        //        new SniperJavaPrettyPrinter(launcher.getEnvironment())
+        //);
         launcher.addInputResource(rootPathFolder + "/" + TEST_FOLDER_PATH);
 
         launcher.addProcessor(processor);

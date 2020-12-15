@@ -39,8 +39,9 @@ public class JJoulesProcessor extends AbstractJJoulesProcessor {
                         .filter(ctAnnotation -> ctAnnotation.getType().getQualifiedName().endsWith("Test"))
                         .findAny()
                         .get();
-        ctMethod.removeAnnotation(testAnnotation);
-        ctMethod.addAnnotation(factory.createAnnotation(reference));
+        //ctMethod.removeAnnotation(testAnnotation);
+        //ctMethod.addAnnotation(factory.createAnnotation(reference));
+        testAnnotation.replace(factory.createAnnotation(reference));
         super.instrumentedTypes.add(ctMethod.getDeclaringType());
     }
 }
