@@ -110,10 +110,12 @@ if __name__ == '__main__':
         print('Run for', project_name, commit_sha_v1, cursor_commits, commit_sha_v2, cursor_commits - 1, 'output_path', output_path)
         reset_hard(commit_sha_v1, PATH_V1)
         reset_hard(commit_sha_v2, PATH_V2)
+        print(cursor_commits, '/', len(commits) - 1)
+        print_to_file(str(cursor_commits) + ' / ' + str(len(commits) - 1), current_output_path_log)
         code = run(nb_iteration, current_output_path, current_output_path_log)
         if code == 0:
             current_nb_completed_commits = current_nb_completed_commits + 1
-            print_to_file('Success!' + str(current_nb_completed_commits) + ' / ' + str(nb_commits), current_output_path_log)
+            print_to_file('Success! ' + str(current_nb_completed_commits) + ' / ' + str(nb_commits), current_output_path_log)
             print('Success!', current_nb_completed_commits, '/', nb_commits)
         else:
             try:
@@ -121,6 +123,4 @@ if __name__ == '__main__':
             except FileExistsError:
                 print('pass...')
             move_directory(current_output_path, current_err_output_path)
-        print(cursor_commits, '/', len(commits) - 1)
-        print_to_file(str(cursor_commits) + ' / ' + str(len(commits) - 1), current_output_path_log)
         cursor_commits = cursor_commits + 1
