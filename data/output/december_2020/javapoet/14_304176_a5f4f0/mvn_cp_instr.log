@@ -1,0 +1,199 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.squareup:javapoet >------------------------
+[INFO] Building JavaPoet 1.13.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ javapoet ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ javapoet ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /tmp/v1/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javapoet ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 17 source files to /tmp/v1/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ javapoet ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /tmp/v1/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javapoet ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 22 source files to /tmp/v1/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ javapoet ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:build-classpath (default-cli) @ javapoet ---
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-impl/2.0.5/maven-reporting-impl-2.0.5.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-impl/2.0.5/maven-reporting-impl-2.0.5.pom (4.2 kB at 15 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-doxia-tools/1.0.2/maven-doxia-tools-1.0.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-doxia-tools/1.0.2/maven-doxia-tools-1.0.2.pom (5.9 kB at 244 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/2.3/plexus-archiver-2.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/2.3/plexus-archiver-2.3.pom (3.4 kB at 153 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/2.0.6/plexus-io-2.0.6.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/2.0.6/plexus-io-2.0.6.pom (2.2 kB at 111 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.9/plexus-utils-3.0.9.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.9/plexus-utils-3.0.9.pom (3.1 kB at 143 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-analyzer/1.4/maven-dependency-analyzer-1.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-analyzer/1.4/maven-dependency-analyzer-1.4.pom (5.2 kB at 234 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/asm/asm/3.3.1/asm-3.3.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/asm/asm/3.3.1/asm-3.3.1.pom (266 B at 14 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/asm/asm-parent/3.3.1/asm-parent-3.3.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/asm/asm-parent/3.3.1/asm-parent-3.3.1.pom (4.3 kB at 217 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.5/maven-project-2.0.5.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.5/maven-project-2.0.5.pom (1.8 kB at 88 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.5/maven-settings-2.0.5.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.5/maven-settings-2.0.5.pom (1.7 kB at 84 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.5/maven-profile-2.0.5.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.5/maven-profile-2.0.5.pom (1.7 kB at 75 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.5/maven-artifact-manager-2.0.5.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.5/maven-artifact-manager-2.0.5.pom (1.8 kB at 92 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.5/maven-repository-metadata-2.0.5.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.5/maven-repository-metadata-2.0.5.pom (1.5 kB at 74 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-invoker/2.0.11/maven-invoker-2.0.11.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-invoker/2.0.11/maven-invoker-2.0.11.pom (5.1 kB at 254 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-impl/2.0.5/maven-reporting-impl-2.0.5.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-doxia-tools/1.0.2/maven-doxia-tools-1.0.2.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/2.3/plexus-archiver-2.3.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.9/plexus-utils-3.0.9.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/2.0.6/plexus-io-2.0.6.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-impl/2.0.5/maven-reporting-impl-2.0.5.jar (21 kB at 375 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-analyzer/1.4/maven-dependency-analyzer-1.4.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/2.0.6/plexus-io-2.0.6.jar (58 kB at 930 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/asm/asm/3.3.1/asm-3.3.1.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-doxia-tools/1.0.2/maven-doxia-tools-1.0.2.jar (41 kB at 595 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-invoker/2.0.11/maven-invoker-2.0.11.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/2.3/plexus-archiver-2.3.jar (186 kB at 2.7 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-analyzer/1.4/maven-dependency-analyzer-1.4.jar (27 kB at 361 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/asm/asm/3.3.1/asm-3.3.1.jar (44 kB at 513 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-invoker/2.0.11/maven-invoker-2.0.11.jar (29 kB at 308 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.9/plexus-utils-3.0.9.jar (232 kB at 1.8 MB/s)
+[INFO] Wrote classpath file '/tmp/v1/classpath'.
+[INFO] 
+[INFO] --- diff-jjoules:0.0.1-SNAPSHOT:instrument (default-cli) @ javapoet ---
+[INFO] Enable JUnit4 mode
+[INFO] com.squareup.javapoet.MethodSpecTest:[withoutParameterJavaDoc, withParameterJavaDoc, withParameterJavaDocAndWithoutMethodJavadoc, overrideExtendsOthersWorksWithActualTypeParameters, overrideDoesNotCopyParameterAnnotations, equalsAndHashCode, modifyParameters, overrideEverything, overrideGenerics]
+com.squareup.javapoet.TypeSpecTest:[anonymousInnerClass, enumWithSubclassing, multilineStatementWithAnonymousClass, annotatedParameters, tryCatch, nameFromParameter, parameterToString, lineWrapping, codeBlocks, nativeMethods, javadoc, constructorToString, typeVariables, membersOrdering, ifElse, varargs, retrofitStyleInterface]
+com.squareup.javapoet.JavaFileTest:[importStaticMixed, importStaticUsingWildcards, importStaticTwice, importStaticOnce, importStaticNone, defaultPackage]
+com.squareup.javapoet.FileWritingTest:[filerClassesWithTabIndent]
+com.squareup.javapoet.ParameterSpecTest:[modifyAnnotations, modifyModifiers, addNonFinalModifier, nullAnnotationsAddition, parameterVariableElement, equalsAndHashCode]
+com.squareup.javapoet.AnnotatedTypeNameTest:[annotatedArrayTypeVarargsParameter, annotatedArrayTypeInVarargsParameter]
+[INFO] Instrument version before commit...
+[INFO] Run on /tmp/v1
+[INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
+[INFO] fr.davidson.diff.jjoules.process.junit4.JJoulesProcessor
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArrayTypeVarargsParameter
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArrayTypeInVarargsParameter
+Processing com.squareup.javapoet.FileWritingTest#filerClassesWithTabIndent
+Processing com.squareup.javapoet.JavaFileTest#importStaticMixed
+Processing com.squareup.javapoet.JavaFileTest#importStaticNone
+Processing com.squareup.javapoet.JavaFileTest#importStaticOnce
+Processing com.squareup.javapoet.JavaFileTest#importStaticTwice
+Processing com.squareup.javapoet.JavaFileTest#importStaticUsingWildcards
+Processing com.squareup.javapoet.JavaFileTest#defaultPackage
+Processing com.squareup.javapoet.MethodSpecTest#overrideEverything
+Processing com.squareup.javapoet.MethodSpecTest#overrideGenerics
+Processing com.squareup.javapoet.MethodSpecTest#overrideExtendsOthersWorksWithActualTypeParameters
+Processing com.squareup.javapoet.MethodSpecTest#overrideDoesNotCopyParameterAnnotations
+Processing com.squareup.javapoet.MethodSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.MethodSpecTest#withoutParameterJavaDoc
+Processing com.squareup.javapoet.MethodSpecTest#withParameterJavaDoc
+Processing com.squareup.javapoet.MethodSpecTest#withParameterJavaDocAndWithoutMethodJavadoc
+Processing com.squareup.javapoet.MethodSpecTest#modifyParameters
+Processing com.squareup.javapoet.ParameterSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.ParameterSpecTest#nullAnnotationsAddition
+Processing com.squareup.javapoet.ParameterSpecTest#parameterVariableElement
+Processing com.squareup.javapoet.ParameterSpecTest#addNonFinalModifier
+Processing com.squareup.javapoet.ParameterSpecTest#modifyAnnotations
+Processing com.squareup.javapoet.ParameterSpecTest#modifyModifiers
+Processing com.squareup.javapoet.TypeSpecTest#anonymousInnerClass
+Processing com.squareup.javapoet.TypeSpecTest#annotatedParameters
+Processing com.squareup.javapoet.TypeSpecTest#retrofitStyleInterface
+Processing com.squareup.javapoet.TypeSpecTest#enumWithSubclassing
+Processing com.squareup.javapoet.TypeSpecTest#typeVariables
+Processing com.squareup.javapoet.TypeSpecTest#javadoc
+Processing com.squareup.javapoet.TypeSpecTest#varargs
+Processing com.squareup.javapoet.TypeSpecTest#codeBlocks
+Processing com.squareup.javapoet.TypeSpecTest#membersOrdering
+Processing com.squareup.javapoet.TypeSpecTest#nativeMethods
+Processing com.squareup.javapoet.TypeSpecTest#constructorToString
+Processing com.squareup.javapoet.TypeSpecTest#parameterToString
+Processing com.squareup.javapoet.TypeSpecTest#multilineStatementWithAnonymousClass
+Processing com.squareup.javapoet.TypeSpecTest#tryCatch
+Processing com.squareup.javapoet.TypeSpecTest#ifElse
+Processing com.squareup.javapoet.TypeSpecTest#nameFromParameter
+Processing com.squareup.javapoet.TypeSpecTest#lineWrapping
+[INFO] Printing com.squareup.javapoet.FileWritingTest to /tmp/v1/src/test/java//com/squareup/javapoet/FileWritingTest.java
+[INFO] Printing com.squareup.javapoet.AnnotatedTypeNameTest to /tmp/v1/src/test/java//com/squareup/javapoet/AnnotatedTypeNameTest.java
+[INFO] Printing com.squareup.javapoet.ParameterSpecTest to /tmp/v1/src/test/java//com/squareup/javapoet/ParameterSpecTest.java
+[INFO] Printing com.squareup.javapoet.TypeSpecTest to /tmp/v1/src/test/java//com/squareup/javapoet/TypeSpecTest.java
+[INFO] Printing com.squareup.javapoet.JavaFileTest to /tmp/v1/src/test/java//com/squareup/javapoet/JavaFileTest.java
+[INFO] Printing com.squareup.javapoet.MethodSpecTest to /tmp/v1/src/test/java//com/squareup/javapoet/MethodSpecTest.java
+[INFO] Injecting JUnit-Jjoules in /tmp/v1/pom.xml
+[INFO] Output new POM file in /tmp/v1/pom_jjouled.xml
+[INFO] Instrument version after commit...
+[INFO] Run on /tmp/v2
+[INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
+[INFO] fr.davidson.diff.jjoules.process.junit4.JJoulesProcessor
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArrayTypeVarargsParameter
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArrayTypeInVarargsParameter
+Processing com.squareup.javapoet.FileWritingTest#filerClassesWithTabIndent
+Processing com.squareup.javapoet.JavaFileTest#importStaticMixed
+Processing com.squareup.javapoet.JavaFileTest#importStaticNone
+Processing com.squareup.javapoet.JavaFileTest#importStaticOnce
+Processing com.squareup.javapoet.JavaFileTest#importStaticTwice
+Processing com.squareup.javapoet.JavaFileTest#importStaticUsingWildcards
+Processing com.squareup.javapoet.JavaFileTest#defaultPackage
+Processing com.squareup.javapoet.MethodSpecTest#overrideEverything
+Processing com.squareup.javapoet.MethodSpecTest#overrideGenerics
+Processing com.squareup.javapoet.MethodSpecTest#overrideExtendsOthersWorksWithActualTypeParameters
+Processing com.squareup.javapoet.MethodSpecTest#overrideDoesNotCopyParameterAnnotations
+Processing com.squareup.javapoet.MethodSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.MethodSpecTest#withoutParameterJavaDoc
+Processing com.squareup.javapoet.MethodSpecTest#withParameterJavaDoc
+Processing com.squareup.javapoet.MethodSpecTest#withParameterJavaDocAndWithoutMethodJavadoc
+Processing com.squareup.javapoet.MethodSpecTest#modifyParameters
+Processing com.squareup.javapoet.ParameterSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.ParameterSpecTest#nullAnnotationsAddition
+Processing com.squareup.javapoet.ParameterSpecTest#parameterVariableElement
+Processing com.squareup.javapoet.ParameterSpecTest#addNonFinalModifier
+Processing com.squareup.javapoet.ParameterSpecTest#modifyAnnotations
+Processing com.squareup.javapoet.ParameterSpecTest#modifyModifiers
+Processing com.squareup.javapoet.TypeSpecTest#anonymousInnerClass
+Processing com.squareup.javapoet.TypeSpecTest#annotatedParameters
+Processing com.squareup.javapoet.TypeSpecTest#retrofitStyleInterface
+Processing com.squareup.javapoet.TypeSpecTest#enumWithSubclassing
+Processing com.squareup.javapoet.TypeSpecTest#typeVariables
+Processing com.squareup.javapoet.TypeSpecTest#javadoc
+Processing com.squareup.javapoet.TypeSpecTest#varargs
+Processing com.squareup.javapoet.TypeSpecTest#codeBlocks
+Processing com.squareup.javapoet.TypeSpecTest#membersOrdering
+Processing com.squareup.javapoet.TypeSpecTest#nativeMethods
+Processing com.squareup.javapoet.TypeSpecTest#constructorToString
+Processing com.squareup.javapoet.TypeSpecTest#parameterToString
+Processing com.squareup.javapoet.TypeSpecTest#multilineStatementWithAnonymousClass
+Processing com.squareup.javapoet.TypeSpecTest#tryCatch
+Processing com.squareup.javapoet.TypeSpecTest#ifElse
+Processing com.squareup.javapoet.TypeSpecTest#nameFromParameter
+Processing com.squareup.javapoet.TypeSpecTest#lineWrapping
+[INFO] Printing com.squareup.javapoet.FileWritingTest to /tmp/v2/src/test/java//com/squareup/javapoet/FileWritingTest.java
+[INFO] Printing com.squareup.javapoet.AnnotatedTypeNameTest to /tmp/v2/src/test/java//com/squareup/javapoet/AnnotatedTypeNameTest.java
+[INFO] Printing com.squareup.javapoet.AnnotatedTypeNameTest to /tmp/v2/src/test/java//com/squareup/javapoet/AnnotatedTypeNameTest.java
+[INFO] Printing com.squareup.javapoet.ParameterSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/ParameterSpecTest.java
+[INFO] Printing com.squareup.javapoet.TypeSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/TypeSpecTest.java
+[INFO] Printing com.squareup.javapoet.ParameterSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/ParameterSpecTest.java
+[INFO] Printing com.squareup.javapoet.TypeSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/TypeSpecTest.java
+[INFO] Printing com.squareup.javapoet.JavaFileTest to /tmp/v2/src/test/java//com/squareup/javapoet/JavaFileTest.java
+[INFO] Printing com.squareup.javapoet.JavaFileTest to /tmp/v2/src/test/java//com/squareup/javapoet/JavaFileTest.java
+[INFO] Printing com.squareup.javapoet.MethodSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/MethodSpecTest.java
+[INFO] Printing com.squareup.javapoet.MethodSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/MethodSpecTest.java
+[INFO] Injecting JUnit-Jjoules in /tmp/v2/pom.xml
+[INFO] Output new POM file in /tmp/v2/pom_jjouled.xml
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.365 s
+[INFO] Finished at: 2020-12-15T15:42:33+01:00
+[INFO] ------------------------------------------------------------------------

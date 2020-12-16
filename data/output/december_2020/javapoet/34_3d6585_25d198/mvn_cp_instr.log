@@ -1,0 +1,62 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.squareup:javapoet >------------------------
+[INFO] Building JavaPoet 1.12.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ javapoet ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ javapoet ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /tmp/v1/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javapoet ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 17 source files to /tmp/v1/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ javapoet ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /tmp/v1/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javapoet ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 22 source files to /tmp/v1/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ javapoet ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:build-classpath (default-cli) @ javapoet ---
+[INFO] Skipped writing classpath file '/tmp/v1/classpath'.  No changes found.
+[INFO] 
+[INFO] --- diff-jjoules:0.0.1-SNAPSHOT:instrument (default-cli) @ javapoet ---
+[INFO] Enable JUnit4 mode
+[INFO] com.squareup.javapoet.TypeSpecTest:[indexedElseIf, tryCatch, elseIf, ifElse]
+[INFO] Instrument version before commit...
+[INFO] Run on /tmp/v1
+[INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
+[INFO] fr.davidson.diff.jjoules.process.junit4.JJoulesProcessor
+Processing com.squareup.javapoet.TypeSpecTest#indexedElseIf
+Processing com.squareup.javapoet.TypeSpecTest#elseIf
+Processing com.squareup.javapoet.TypeSpecTest#tryCatch
+Processing com.squareup.javapoet.TypeSpecTest#ifElse
+[INFO] Printing com.squareup.javapoet.TypeSpecTest to /tmp/v1/src/test/java//com/squareup/javapoet/TypeSpecTest.java
+[INFO] Injecting JUnit-Jjoules in /tmp/v1/pom.xml
+[INFO] Output new POM file in /tmp/v1/pom_jjouled.xml
+[INFO] Instrument version after commit...
+[INFO] Run on /tmp/v2
+[INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
+[INFO] fr.davidson.diff.jjoules.process.junit4.JJoulesProcessor
+Processing com.squareup.javapoet.TypeSpecTest#indexedElseIf
+Processing com.squareup.javapoet.TypeSpecTest#elseIf
+Processing com.squareup.javapoet.TypeSpecTest#tryCatch
+Processing com.squareup.javapoet.TypeSpecTest#ifElse
+[INFO] Printing com.squareup.javapoet.TypeSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/TypeSpecTest.java
+[INFO] Printing com.squareup.javapoet.TypeSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/TypeSpecTest.java
+[INFO] Injecting JUnit-Jjoules in /tmp/v2/pom.xml
+[INFO] Output new POM file in /tmp/v2/pom_jjouled.xml
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.112 s
+[INFO] Finished at: 2020-12-15T16:07:21+01:00
+[INFO] ------------------------------------------------------------------------

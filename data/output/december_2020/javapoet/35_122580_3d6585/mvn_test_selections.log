@@ -1,0 +1,147 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.squareup:javapoet >------------------------
+[INFO] Building JavaPoet 1.12.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ javapoet ---
+[INFO] Deleting /tmp/v1/target
+[INFO] 
+[INFO] --- dspot-diff-test-selection:3.1.1-SNAPSHOT:list (default-cli) @ javapoet ---
+[WARNING] No path to diff file has been specified.
+[WARNING] I'll compute a diff file using the UNIX diff command
+[WARNING] You may encounter troubles.
+[WARNING] If so, please specify a path to a correct diff file
+[WARNING] or implement a new way to compute a diff file.
+[INFO] Computing the diff with diff commnd line
+[INFO] The diff will be computed between:
+[INFO] /tmp/v1 and 
+[INFO] /tmp/v2
+[INFO] Executing: diff -ru /tmp/v1 /tmp/v2 from /tmp/v1
+[INFO] Computing coverage for /tmp/v1
+[WARN] Maven will be executed in interactive mode, but no input stream has been configured for this MavenInvoker instance.
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-----------------------< [0;36mcom.squareup:javapoet[0;1m >------------------------[m
+[[1;34mINFO[m] [1mBuilding JavaPoet 1.12.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mjavapoet[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mclover-maven-plugin:4.4.1:setup[m [1m(default-cli)[m @ [36mjavapoet[0;1m ---[m
+[[1;34mINFO[m] OpenClover Version 4.4.1, built on October 11 2019 (build-1020)
+[[1;34mINFO[m] Creating new database at '/tmp/v1/target/clover/clover.db'.
+[[1;34mINFO[m] Processing files at 1.8 source level.
+[[1;34mINFO[m] Clover all over. Instrumented 17 files (1 package).
+[[1;34mINFO[m] OpenClover Version 4.4.1, built on October 11 2019 (build-1020)
+[[1;34mINFO[m] Updating existing database at '/tmp/v1/target/clover/clover.db'.
+[[1;34mINFO[m] Processing files at 1.8 source level.
+[[1;34mINFO[m] Clover all over. Instrumented 21 files (2 packages).
+[[1;34mINFO[m] 346 test methods detected.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:1.0:enforce[m [1m(enforce-maven)[m @ [36mjavapoet[0;1m ---[m
+[[1;34mINFO[m] Skipping Rule Enforcement.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mjavapoet[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /tmp/v1/src/main/resources
+[[1;34mINFO[m] Copying 1 resource
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.0:compile[m [1m(default-compile)[m @ [36mjavapoet[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module!
+[[1;34mINFO[m] Compiling 17 source files to /tmp/v1/target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mjavapoet[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /tmp/v1/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.0:testCompile[m [1m(default-testCompile)[m @ [36mjavapoet[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module!
+[[1;34mINFO[m] Compiling 21 source files to /tmp/v1/target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.12.4:test[m [1m(default-test)[m @ [36mjavapoet[0;1m ---[m
+[[1;34mINFO[m] Surefire report directory: /tmp/v1/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running ClassNameNoPackageTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.094 sec
+Running com.squareup.javapoet.CodeBlockTest
+Tests run: 36, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.091 sec
+Running com.squareup.javapoet.MethodSpecTest
+Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.745 sec
+Running com.squareup.javapoet.NameAllocatorTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 sec
+Running com.squareup.javapoet.TypeSpecTest
+Tests run: 120, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.407 sec
+Running com.squareup.javapoet.AnnotatedTypeNameTest
+Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 sec
+Running com.squareup.javapoet.TypeNameTest
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 sec
+Running com.squareup.javapoet.FileWritingTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 sec
+Running com.squareup.javapoet.ClassNameTest
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.425 sec
+Running com.squareup.javapoet.LineWrapperTest
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 sec
+Running com.squareup.javapoet.ParameterSpecTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.069 sec
+Running com.squareup.javapoet.UtilTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
+Running com.squareup.javapoet.TypesEclipseTest
+Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.209 sec
+Running com.squareup.javapoet.TypesTest
+Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.189 sec
+Running com.squareup.javapoet.AnnotationSpecTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.11 sec
+Running com.squareup.javapoet.FieldSpecTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec
+Running com.squareup.javapoet.JavaFileTest
+Tests run: 31, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.026 sec
+Running com.squareup.javapoet.FileReadingTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 sec
+
+Results :
+
+Tests run: 367, Failures: 0, Errors: 0, Skipped: 1
+
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  16.811 s
+[[1;34mINFO[m] Finished at: 2020-12-15T16:10:37+01:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+Writing HTML report to '/tmp/v1/target/clover/report'
+Done. Processed 2 packages in 1605ms (802ms per package).
+[INFO] /tmp/v1/src/main/java/com/squareup/javapoet/CodeWriter.java
+[INFO] /tmp/v2/src/main/java/com/squareup/javapoet/CodeWriter.java
+[INFO] com.squareup.javapoet.CodeWriter:464 is modified.
+[INFO] com.squareup.javapoet.CodeWriter:464 covered.
+[INFO] Saving result in /tmp/v1/testsThatExecuteTheChange.csv ...
+[INFO] com.squareup.javapoet.AnnotatedTypeNameTest;annotatedInnerMultidimensionalArrayType;annotatedArrayElementType;annotatedOuterMultidimensionalArrayType;withoutAnnotationsOnAnnotatedEnclosingType;annotatedWildcardTypeNameWithExtends;annotatedArrayTypeInVarargsParameter;annotatedArgumentOfParameterizedType;annotated;withoutAnnotationsOnAnnotatedNestedType;annotatedNestedType;withoutAnnotationsOnAnnotatedEnclosingAndNestedType;annotatedTwice;annotatedType;annotatedEnclosingAndNestedType;annotatedArrayTypeVarargsParameter;annotatedParameterizedType;annotatedEquivalence;annotatedArrayType;annotatedNestedParameterizedType;annotatedWildcardTypeNameWithSuper
+com.squareup.javapoet.TypesTest;typeVariable;arrayType;wildcardMirrorExtendsType;wildcardSuperType;wildcardMirrorNoBounds;wildcardMirrorSuperType;getArrayTypeMirror;box;parameterizedType;getBasicTypeMirror;getTypeVariableTypeMirror;unbox;getTypeVariableTypeMirrorRecursive;wildcardExtendsObject;getParameterizedTypeMirror;errorTypes;wildcardExtendsType
+com.squareup.javapoet.TypeNameTest;isBoxedPrimitive;innerStaticInGenericType;equalsAndHashCodeTypeVariableName;equalsAndHashCodeWildcardTypeName;equalsAndHashCodeArrayTypeName;genericType;equalsAndHashCodeParameterizedTypeName;innerGenericInGenericType;equalsAndHashCodePrimitive;equalsAndHashCodeClassName;innerClassInGenericType
+com.squareup.javapoet.TypesEclipseTest;typeVariable;arrayType;wildcardMirrorExtendsType;wildcardSuperType;wildcardMirrorNoBounds;wildcardMirrorSuperType;getArrayTypeMirror;box;parameterizedType;getBasicTypeMirror;getTypeVariableTypeMirror;unbox;getTypeVariableTypeMirrorRecursive;getParameterizedTypeMirror;wildcardExtendsObject;errorTypes;wildcardExtendsType
+com.squareup.javapoet.TypeSpecTest;multilineStatementWithAnonymousClass;annotationWithFields;interfaceStaticMethods;parameterToString;annotationToString;multilineStrings;multipleSuperinterfaceAddition;initializerBlockInRightPlace;innerAnnotationInAnnotationDeclaration;multipleMethodAddition;defaultModifiersForInterfaceMembers;defaultModifiersForMemberInterfacesAndEnums;equalsAndHashCode;ifElse;varargs;annotationsAndJavaLangTypes;javadocEnsuresTrailingLine;lineWrappingWithZeroWidthSpace;arrayType;enumWithSubclassing;nameFromMethod;multipleTypeAddition;indexedElseIf;tryCatch;nameFromParameter;stringFromNull;simpleNameConflictsWithTypeVariable;interfaceExtends;annotatedClass;annotationsInAnnotations;enumImplements;inlineIndent;codeBlockAddStatementOfCodeBlockToString;multipleAnnotationAddition;annotationDeclarationToString;typeVariableWithBounds;doWhile;interfaceDefaultMethods;classImplementsNestedClass;elseIf;typeVariables;basic;interfaceClassToString;anonymousInnerClass;nameFromType;staticCodeBlock;nullStringLiteral;methodThrows;simpleNamesConflictInThisAndOtherPackage;annotatedParameters;intersectionType;multipleTypeVariableAddition;invalidSuperClass;anonymousClassToString;javadoc;literalFromAnything;codeBlockToString;constructorToString;referencedAndDeclaredSimpleNamesConflict;nestedClasses;annotatedField;membersOrdering;classImplementsExtends;typeFromTypeElement;javadocWithTrailingLineDoesNotAddAnother;enumWithAnnotatedValues;annotation;methodToString;enumsMayDefineAbstractMethods;initializersToBuilder;multipleFieldAddition;typeFromTypeMirror;interestingTypes;nameFromCharSequence;lineWrapping;codeBlocks;nativeMethods;fieldToString;classToString;nameFromField;enumWithMembersButNoConstructorCall;multilineStatement;typeFromReflectType;stringFromAnything;typeFromTypeName;retrofitStyleInterface
+com.squareup.javapoet.JavaFileTest;singleImport;classAndSuperclassShareName;importStaticReadmeExample;importStaticUsingWildcards;packageClassConflictsWithSuperlass;importStaticOnce;importStaticForCrazyFormatsWorks;conflictingImports;conflictingTypeVariableBound;conflictingNameOutOfScope;defaultPackageTypesAreNotImported;importStaticTwice;annotatedTypeParam;conflictingParentName;modifyStaticImports;annotationIsNestedClass;importStaticNone;defaultPackage;emptyLinesInTopOfFileComment;skipJavaLangImportsWithConflictingClassFirst;packageClassConflictsWithNestedClass;topOfFileComment;noImports;conflictingChildName;conflictingAnnotation;skipJavaLangImportsWithConflictingClassLast;importStaticMixed;superclassReferencesSelf;conflictingAnnotationReferencedClass;nestedClassAndSuperclassShareName
+com.squareup.javapoet.FileWritingTest;fileIsUtf8;filerPassesOriginatingElements;pathDefaultPackage;filerNestedClasses;fileDefaultPackage;filerClassesWithTabIndent;pathNestedClasses;fileNestedClasses;filerDefaultPackage
+com.squareup.javapoet.FieldSpecTest;equalsAndHashCode
+com.squareup.javapoet.AnnotationSpecTest;modifyMembers;defaultAnnotationWithImport;defaultAnnotationToBuilder;defaultAnnotation;reflectAnnotation;emptyArray;equalsAndHashCode;dynamicArrayOfEnumConstants;reflectAnnotationWithDefaults
+com.squareup.javapoet.MethodSpecTest;overrideExtendsOthersWorksWithActualTypeParameters;overrideEverything;modifyMethodName;ensureTrailingNewline;withoutParameterJavaDoc;overrideDoesNotCopyOverrideAnnotation;withParameterJavaDoc;overrideDoesNotCopyDefaultModifier;withParameterJavaDocAndWithoutMethodJavadoc;equalsAndHashCode;duplicateExceptionsIgnored;overrideGenerics;ensureTrailingNewlineWithExistingNewline
+com.squareup.javapoet.ParameterSpecTest;parameterVariableElement;equalsAndHashCode
+com.squareup.javapoet.CodeBlockTest;joining;simpleNamedArgument;literalFormatCanBeIndexed;namedAndNoArgFormat;namedNewline;typeFormatCanBeIndexed;sameIndexCanBeUsedWithDifferentFormats;joiningSingle;of;multipleNamedArguments;stringFormatCanBeIndexed;join;equalsAndHashCode;nameFormatCanBeIndexed;joiningWithPrefixAndSuffix;repeatedNamedArgument
+com.squareup.javapoet.ClassNameTest;peerClass;bestGuessForString_defaultPackage;classNameFromTypeElement;bestGuessForString_nestedClass;createNestedClass;bestGuessForString_simpleClass;classNameFromClass;classNameFromTypeElementDoesntUseGetKind
+com.squareup.javapoet.FileReadingTest;javaFileObjectCharacterContent;javaFileObjectInputStreamIsUtf8;compileJavaFile
+ClassNameNoPackageTest;shouldSupportClassInDefaultPackage
+[INFO] Writing Coverage in /tmp/v1/testsThatExecuteTheChange_coverage.csv
+[INFO] com.squareup.javapoet.CodeWriter;1;1
+
+[INFO] total;1;1
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  21.991 s
+[INFO] Finished at: 2020-12-15T16:10:40+01:00
+[INFO] ------------------------------------------------------------------------

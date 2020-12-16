@@ -1,0 +1,496 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.squareup:javapoet >------------------------
+[INFO] Building JavaPoet 1.12.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ javapoet ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ javapoet ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /tmp/v1/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ javapoet ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 17 source files to /tmp/v1/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ javapoet ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /tmp/v1/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ javapoet ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to /tmp/v1/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ javapoet ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:build-classpath (default-cli) @ javapoet ---
+[INFO] Skipped writing classpath file '/tmp/v1/classpath'.  No changes found.
+[INFO] 
+[INFO] --- diff-jjoules:0.0.1-SNAPSHOT:instrument (default-cli) @ javapoet ---
+[INFO] Enable JUnit4 mode
+[INFO] com.squareup.javapoet.FileReadingTest:[javaFileObjectCharacterContent, javaFileObjectInputStreamIsUtf8, compileJavaFile, javaFileObjectKind, javaFileObjectUri]
+com.squareup.javapoet.CodeBlockTest:[joining, simpleNamedArgument, statementExitWithoutStatementEnter, literalFormatCanBeIndexed, namedAndNoArgFormat, namedNewline, typeFormatCanBeIndexed, sameIndexCanBeUsedWithDifferentFormats, joiningSingle, of, multipleNamedArguments, stringFormatCanBeIndexed, join, equalsAndHashCode, nameFormatCanBeIndexed, joiningWithPrefixAndSuffix, tooManyStatementEnters, repeatedNamedArgument]
+com.squareup.javapoet.TypesTest:[wildcardMirrorExtendsType, wildcardSuperType, wildcardMirrorSuperType, wildcardExtendsType]
+com.squareup.javapoet.TypeNameTest:[equalsAndHashCodeWildcardTypeName]
+com.squareup.javapoet.FileWritingTest:[fileIsUtf8, filerPassesOriginatingElements, fileNotDirectory, pathDefaultPackage, filerNestedClasses, fileDefaultPackage, filerClassesWithTabIndent, fileNestedClasses, pathNestedClasses, pathNotDirectory, filerDefaultPackage]
+com.squareup.javapoet.FieldSpecTest:[equalsAndHashCode]
+com.squareup.javapoet.MethodSpecTest:[modifyMethodName, withoutParameterJavaDoc, overrideDoesNotCopyOverrideAnnotation, withParameterJavaDoc, overrideDoesNotCopyDefaultModifier, withParameterJavaDocAndWithoutMethodJavadoc, overrideExtendsOthersWorksWithActualTypeParameters, equalsAndHashCode, overrideEverything, duplicateExceptionsIgnored, overrideGenerics]
+com.squareup.javapoet.TypesEclipseTest:[wildcardMirrorExtendsType, wildcardSuperType, wildcardMirrorSuperType, wildcardExtendsType]
+com.squareup.javapoet.AnnotationSpecTest:[disallowsNullMemberName, defaultAnnotationWithImport, defaultAnnotationToBuilder, defaultAnnotation, reflectAnnotation, emptyArray, dynamicArrayOfEnumConstants, equalsAndHashCode, requiresValidMemberName, reflectAnnotationWithDefaults]
+com.squareup.javapoet.JavaFileTest:[singleImport, classAndSuperclassShareName, importStaticReadmeExample, importStaticUsingWildcards, packageClassConflictsWithSuperlass, importStaticOnce, importStaticForCrazyFormatsWorks, conflictingImports, conflictingTypeVariableBound, conflictingNameOutOfScope, defaultPackageTypesAreNotImported, importStaticTwice, annotatedTypeParam, conflictingParentName, annotationIsNestedClass, importStaticNone, defaultPackage, emptyLinesInTopOfFileComment, packageClassConflictsWithNestedClass, skipJavaLangImportsWithConflictingClassFirst, topOfFileComment, noImports, conflictingChildName, conflictingAnnotation, skipJavaLangImportsWithConflictingClassLast, importStaticMixed, superclassReferencesSelf, conflictingAnnotationReferencedClass, nestedClassAndSuperclassShareName]
+com.squareup.javapoet.TypeSpecTest:[multilineStatementWithAnonymousClass, annotationWithFields, interfaceStaticMethods, parameterToString, annotationToString, multilineStrings, initializerBlockUnsupportedExceptionOnInterface, multipleSuperinterfaceAddition, doubleFieldInitialization, initializerBlockInRightPlace, innerAnnotationInAnnotationDeclaration, multipleMethodAddition, defaultModifiersForInterfaceMembers, defaultModifiersForMemberInterfacesAndEnums, classCannotHaveDefaultValueForMethod, equalsAndHashCode, ifElse, varargs, annotationsAndJavaLangTypes, lineWrappingWithZeroWidthSpace, arrayType, enumWithSubclassing, nameFromMethod, multipleTypeAddition, indexedElseIf, tryCatch, stringFromNull, nameFromParameter, simpleNameConflictsWithTypeVariable, interfaceExtends, annotatedClass, classNameFactories, annotationsInAnnotations, enumImplements, inlineIndent, codeBlockAddStatementOfCodeBlockToString, multipleAnnotationAddition, annotationDeclarationToString, typeVariableWithBounds, doWhile, interfaceDefaultMethods, classImplementsNestedClass, elseIf, typeVariables, originatingElementsIncludesThoseOfNestedTypes, basic, interfaceClassToString, onlyEnumsMayHaveEnumConstants, anonymousInnerClass, nameFromType, staticCodeBlock, nullStringLiteral, methodThrows, simpleNamesConflictInThisAndOtherPackage, annotatedParameters, initializerBlockUnsupportedExceptionOnAnnotation, intersectionType, multipleTypeVariableAddition, anonymousClassToString, javadoc, literalFromAnything, codeBlockToString, constructorToString, referencedAndDeclaredSimpleNamesConflict, nestedClasses, annotatedField, membersOrdering, classImplementsExtends, typeFromTypeElement, enumWithAnnotatedValues, annotation, methodToString, enumsMayDefineAbstractMethods, initializersToBuilder, multipleFieldAddition, typeFromTypeMirror, interestingTypes, nameFromCharSequence, lineWrapping, codeBlocks, nativeMethods, fieldToString, classToString, classCannotHaveDefaultMethods, nameFromField, enumWithMembersButNoConstructorCall, multilineStatement, typeFromReflectType, stringFromAnything, typeFromTypeName, retrofitStyleInterface]
+com.squareup.javapoet.ParameterSpecTest:[equalsAndHashCode]
+com.squareup.javapoet.AnnotatedTypeNameTest:[annotatedInnerMultidimensionalArrayType, annotatedArrayElementType, annotatedOuterMultidimensionalArrayType, annotatedWildcardTypeNameWithExtends, annotatedArrayTypeInVarargsParameter, annotatedArgumentOfParameterizedType, annotated, annotatedNestedType, annotatedType, annotatedTwice, annotatedEnclosingAndNestedType, annotatedArrayTypeVarargsParameter, annotatedParameterizedType, annotatedEquivalence, annotatedArrayType, annotatedNestedParameterizedType, annotatedWildcardTypeNameWithSuper]
+[INFO] Instrument version before commit...
+[INFO] Run on /tmp/v1
+[INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
+[INFO] fr.davidson.diff.jjoules.process.junit4.JJoulesProcessor
+Processing com.squareup.javapoet.AbstractTypesTest#wildcardExtendsType
+Processing com.squareup.javapoet.AbstractTypesTest#wildcardSuperType
+Processing com.squareup.javapoet.AbstractTypesTest#wildcardMirrorExtendsType
+Processing com.squareup.javapoet.AbstractTypesTest#wildcardMirrorSuperType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotated
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedTwice
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedParameterizedType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArgumentOfParameterizedType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedWildcardTypeNameWithSuper
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedWildcardTypeNameWithExtends
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedEquivalence
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedEquivalence
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedNestedType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedEnclosingAndNestedType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedNestedParameterizedType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArrayType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArrayElementType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedOuterMultidimensionalArrayType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedInnerMultidimensionalArrayType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArrayTypeVarargsParameter
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArrayTypeInVarargsParameter
+Processing com.squareup.javapoet.AnnotationSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.AnnotationSpecTest#defaultAnnotation
+Processing com.squareup.javapoet.AnnotationSpecTest#defaultAnnotationWithImport
+Processing com.squareup.javapoet.AnnotationSpecTest#emptyArray
+Processing com.squareup.javapoet.AnnotationSpecTest#dynamicArrayOfEnumConstants
+Processing com.squareup.javapoet.AnnotationSpecTest#defaultAnnotationToBuilder
+Processing com.squareup.javapoet.AnnotationSpecTest#reflectAnnotation
+Processing com.squareup.javapoet.AnnotationSpecTest#reflectAnnotationWithDefaults
+Processing com.squareup.javapoet.AnnotationSpecTest#disallowsNullMemberName
+Processing com.squareup.javapoet.AnnotationSpecTest#requiresValidMemberName
+Processing com.squareup.javapoet.CodeBlockTest#equalsAndHashCode
+Processing com.squareup.javapoet.CodeBlockTest#of
+Processing com.squareup.javapoet.CodeBlockTest#nameFormatCanBeIndexed
+Processing com.squareup.javapoet.CodeBlockTest#literalFormatCanBeIndexed
+Processing com.squareup.javapoet.CodeBlockTest#stringFormatCanBeIndexed
+Processing com.squareup.javapoet.CodeBlockTest#typeFormatCanBeIndexed
+Processing com.squareup.javapoet.CodeBlockTest#simpleNamedArgument
+Processing com.squareup.javapoet.CodeBlockTest#repeatedNamedArgument
+Processing com.squareup.javapoet.CodeBlockTest#namedAndNoArgFormat
+Processing com.squareup.javapoet.CodeBlockTest#multipleNamedArguments
+Processing com.squareup.javapoet.CodeBlockTest#namedNewline
+Processing com.squareup.javapoet.CodeBlockTest#sameIndexCanBeUsedWithDifferentFormats
+Processing com.squareup.javapoet.CodeBlockTest#tooManyStatementEnters
+Processing com.squareup.javapoet.CodeBlockTest#statementExitWithoutStatementEnter
+Processing com.squareup.javapoet.CodeBlockTest#join
+Processing com.squareup.javapoet.CodeBlockTest#joining
+Processing com.squareup.javapoet.CodeBlockTest#joiningSingle
+Processing com.squareup.javapoet.CodeBlockTest#joiningWithPrefixAndSuffix
+Processing com.squareup.javapoet.FieldSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.FileReadingTest#javaFileObjectUri
+Processing com.squareup.javapoet.FileReadingTest#javaFileObjectKind
+Processing com.squareup.javapoet.FileReadingTest#javaFileObjectCharacterContent
+Processing com.squareup.javapoet.FileReadingTest#javaFileObjectInputStreamIsUtf8
+Processing com.squareup.javapoet.FileReadingTest#compileJavaFile
+Processing com.squareup.javapoet.FileWritingTest#pathNotDirectory
+Processing com.squareup.javapoet.FileWritingTest#fileNotDirectory
+Processing com.squareup.javapoet.FileWritingTest#pathDefaultPackage
+Processing com.squareup.javapoet.FileWritingTest#fileDefaultPackage
+Processing com.squareup.javapoet.FileWritingTest#filerDefaultPackage
+Processing com.squareup.javapoet.FileWritingTest#pathNestedClasses
+Processing com.squareup.javapoet.FileWritingTest#fileNestedClasses
+Processing com.squareup.javapoet.FileWritingTest#filerNestedClasses
+Processing com.squareup.javapoet.FileWritingTest#filerPassesOriginatingElements
+Processing com.squareup.javapoet.FileWritingTest#filerClassesWithTabIndent
+Processing com.squareup.javapoet.FileWritingTest#fileIsUtf8
+Processing com.squareup.javapoet.JavaFileTest#importStaticReadmeExample
+Processing com.squareup.javapoet.JavaFileTest#importStaticForCrazyFormatsWorks
+Processing com.squareup.javapoet.JavaFileTest#importStaticMixed
+Processing com.squareup.javapoet.JavaFileTest#importStaticNone
+Processing com.squareup.javapoet.JavaFileTest#importStaticOnce
+Processing com.squareup.javapoet.JavaFileTest#importStaticTwice
+Processing com.squareup.javapoet.JavaFileTest#importStaticUsingWildcards
+Processing com.squareup.javapoet.JavaFileTest#noImports
+Processing com.squareup.javapoet.JavaFileTest#singleImport
+Processing com.squareup.javapoet.JavaFileTest#conflictingImports
+Processing com.squareup.javapoet.JavaFileTest#annotatedTypeParam
+Processing com.squareup.javapoet.JavaFileTest#skipJavaLangImportsWithConflictingClassLast
+Processing com.squareup.javapoet.JavaFileTest#skipJavaLangImportsWithConflictingClassFirst
+Processing com.squareup.javapoet.JavaFileTest#conflictingParentName
+Processing com.squareup.javapoet.JavaFileTest#conflictingChildName
+Processing com.squareup.javapoet.JavaFileTest#conflictingNameOutOfScope
+Processing com.squareup.javapoet.JavaFileTest#nestedClassAndSuperclassShareName
+Processing com.squareup.javapoet.JavaFileTest#classAndSuperclassShareName
+Processing com.squareup.javapoet.JavaFileTest#conflictingAnnotation
+Processing com.squareup.javapoet.JavaFileTest#conflictingAnnotationReferencedClass
+Processing com.squareup.javapoet.JavaFileTest#conflictingTypeVariableBound
+Processing com.squareup.javapoet.JavaFileTest#superclassReferencesSelf
+Processing com.squareup.javapoet.JavaFileTest#annotationIsNestedClass
+Processing com.squareup.javapoet.JavaFileTest#defaultPackage
+Processing com.squareup.javapoet.JavaFileTest#defaultPackageTypesAreNotImported
+Processing com.squareup.javapoet.JavaFileTest#topOfFileComment
+Processing com.squareup.javapoet.JavaFileTest#emptyLinesInTopOfFileComment
+Processing com.squareup.javapoet.JavaFileTest#packageClassConflictsWithNestedClass
+Processing com.squareup.javapoet.JavaFileTest#packageClassConflictsWithSuperlass
+Processing com.squareup.javapoet.MethodSpecTest#overrideEverything
+Processing com.squareup.javapoet.MethodSpecTest#overrideGenerics
+Processing com.squareup.javapoet.MethodSpecTest#overrideDoesNotCopyOverrideAnnotation
+Processing com.squareup.javapoet.MethodSpecTest#overrideDoesNotCopyDefaultModifier
+Processing com.squareup.javapoet.MethodSpecTest#overrideExtendsOthersWorksWithActualTypeParameters
+Processing com.squareup.javapoet.MethodSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.MethodSpecTest#withoutParameterJavaDoc
+Processing com.squareup.javapoet.MethodSpecTest#withParameterJavaDoc
+Processing com.squareup.javapoet.MethodSpecTest#withParameterJavaDocAndWithoutMethodJavadoc
+Processing com.squareup.javapoet.MethodSpecTest#duplicateExceptionsIgnored
+Processing com.squareup.javapoet.MethodSpecTest#modifyMethodName
+Processing com.squareup.javapoet.ParameterSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.TypeNameTest#equalsAndHashCodeWildcardTypeName
+Processing com.squareup.javapoet.TypeSpecTest#basic
+Processing com.squareup.javapoet.TypeSpecTest#interestingTypes
+Processing com.squareup.javapoet.TypeSpecTest#anonymousInnerClass
+Processing com.squareup.javapoet.TypeSpecTest#annotatedParameters
+Processing com.squareup.javapoet.TypeSpecTest#annotationsAndJavaLangTypes
+Processing com.squareup.javapoet.TypeSpecTest#retrofitStyleInterface
+Processing com.squareup.javapoet.TypeSpecTest#annotatedField
+Processing com.squareup.javapoet.TypeSpecTest#annotatedClass
+Processing com.squareup.javapoet.TypeSpecTest#enumWithSubclassing
+Processing com.squareup.javapoet.TypeSpecTest#enumsMayDefineAbstractMethods
+Processing com.squareup.javapoet.TypeSpecTest#onlyEnumsMayHaveEnumConstants
+Processing com.squareup.javapoet.TypeSpecTest#enumWithMembersButNoConstructorCall
+Processing com.squareup.javapoet.TypeSpecTest#enumWithAnnotatedValues
+Processing com.squareup.javapoet.TypeSpecTest#methodThrows
+Processing com.squareup.javapoet.TypeSpecTest#typeVariables
+Processing com.squareup.javapoet.TypeSpecTest#typeVariableWithBounds
+Processing com.squareup.javapoet.TypeSpecTest#classImplementsExtends
+Processing com.squareup.javapoet.TypeSpecTest#classImplementsNestedClass
+Processing com.squareup.javapoet.TypeSpecTest#enumImplements
+Processing com.squareup.javapoet.TypeSpecTest#interfaceExtends
+Processing com.squareup.javapoet.TypeSpecTest#nestedClasses
+Processing com.squareup.javapoet.TypeSpecTest#annotation
+Processing com.squareup.javapoet.TypeSpecTest#innerAnnotationInAnnotationDeclaration
+Processing com.squareup.javapoet.TypeSpecTest#annotationWithFields
+Processing com.squareup.javapoet.TypeSpecTest#classCannotHaveDefaultValueForMethod
+Processing com.squareup.javapoet.TypeSpecTest#classCannotHaveDefaultMethods
+Processing com.squareup.javapoet.TypeSpecTest#interfaceStaticMethods
+Processing com.squareup.javapoet.TypeSpecTest#interfaceDefaultMethods
+Processing com.squareup.javapoet.TypeSpecTest#referencedAndDeclaredSimpleNamesConflict
+Processing com.squareup.javapoet.TypeSpecTest#simpleNamesConflictInThisAndOtherPackage
+Processing com.squareup.javapoet.TypeSpecTest#simpleNameConflictsWithTypeVariable
+Processing com.squareup.javapoet.TypeSpecTest#originatingElementsIncludesThoseOfNestedTypes
+Processing com.squareup.javapoet.TypeSpecTest#intersectionType
+Processing com.squareup.javapoet.TypeSpecTest#arrayType
+Processing com.squareup.javapoet.TypeSpecTest#javadoc
+Processing com.squareup.javapoet.TypeSpecTest#annotationsInAnnotations
+Processing com.squareup.javapoet.TypeSpecTest#varargs
+Processing com.squareup.javapoet.TypeSpecTest#codeBlocks
+Processing com.squareup.javapoet.TypeSpecTest#indexedElseIf
+Processing com.squareup.javapoet.TypeSpecTest#elseIf
+Processing com.squareup.javapoet.TypeSpecTest#doWhile
+Processing com.squareup.javapoet.TypeSpecTest#inlineIndent
+Processing com.squareup.javapoet.TypeSpecTest#defaultModifiersForInterfaceMembers
+Processing com.squareup.javapoet.TypeSpecTest#defaultModifiersForMemberInterfacesAndEnums
+Processing com.squareup.javapoet.TypeSpecTest#membersOrdering
+Processing com.squareup.javapoet.TypeSpecTest#nativeMethods
+Processing com.squareup.javapoet.TypeSpecTest#nullStringLiteral
+Processing com.squareup.javapoet.TypeSpecTest#annotationToString
+Processing com.squareup.javapoet.TypeSpecTest#codeBlockToString
+Processing com.squareup.javapoet.TypeSpecTest#codeBlockAddStatementOfCodeBlockToString
+Processing com.squareup.javapoet.TypeSpecTest#fieldToString
+Processing com.squareup.javapoet.TypeSpecTest#methodToString
+Processing com.squareup.javapoet.TypeSpecTest#constructorToString
+Processing com.squareup.javapoet.TypeSpecTest#parameterToString
+Processing com.squareup.javapoet.TypeSpecTest#classToString
+Processing com.squareup.javapoet.TypeSpecTest#anonymousClassToString
+Processing com.squareup.javapoet.TypeSpecTest#interfaceClassToString
+Processing com.squareup.javapoet.TypeSpecTest#annotationDeclarationToString
+Processing com.squareup.javapoet.TypeSpecTest#multilineStatement
+Processing com.squareup.javapoet.TypeSpecTest#multilineStatementWithAnonymousClass
+Processing com.squareup.javapoet.TypeSpecTest#multilineStrings
+Processing com.squareup.javapoet.TypeSpecTest#doubleFieldInitialization
+Processing com.squareup.javapoet.TypeSpecTest#multipleAnnotationAddition
+Processing com.squareup.javapoet.TypeSpecTest#multipleFieldAddition
+Processing com.squareup.javapoet.TypeSpecTest#multipleMethodAddition
+Processing com.squareup.javapoet.TypeSpecTest#multipleSuperinterfaceAddition
+Processing com.squareup.javapoet.TypeSpecTest#multipleTypeVariableAddition
+Processing com.squareup.javapoet.TypeSpecTest#multipleTypeAddition
+Processing com.squareup.javapoet.TypeSpecTest#tryCatch
+Processing com.squareup.javapoet.TypeSpecTest#ifElse
+Processing com.squareup.javapoet.TypeSpecTest#literalFromAnything
+Processing com.squareup.javapoet.TypeSpecTest#nameFromCharSequence
+Processing com.squareup.javapoet.TypeSpecTest#nameFromField
+Processing com.squareup.javapoet.TypeSpecTest#nameFromParameter
+Processing com.squareup.javapoet.TypeSpecTest#nameFromMethod
+Processing com.squareup.javapoet.TypeSpecTest#nameFromType
+Processing com.squareup.javapoet.TypeSpecTest#stringFromAnything
+Processing com.squareup.javapoet.TypeSpecTest#stringFromNull
+Processing com.squareup.javapoet.TypeSpecTest#typeFromTypeName
+Processing com.squareup.javapoet.TypeSpecTest#typeFromTypeMirror
+Processing com.squareup.javapoet.TypeSpecTest#typeFromTypeElement
+Processing com.squareup.javapoet.TypeSpecTest#typeFromReflectType
+Processing com.squareup.javapoet.TypeSpecTest#staticCodeBlock
+Processing com.squareup.javapoet.TypeSpecTest#initializerBlockInRightPlace
+Processing com.squareup.javapoet.TypeSpecTest#initializersToBuilder
+Processing com.squareup.javapoet.TypeSpecTest#initializerBlockUnsupportedExceptionOnInterface
+Processing com.squareup.javapoet.TypeSpecTest#initializerBlockUnsupportedExceptionOnAnnotation
+Processing com.squareup.javapoet.TypeSpecTest#lineWrapping
+Processing com.squareup.javapoet.TypeSpecTest#lineWrappingWithZeroWidthSpace
+Processing com.squareup.javapoet.TypeSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.TypeSpecTest#classNameFactories
+[INFO] Printing com.squareup.javapoet.CodeBlockTest to /tmp/v1/src/test/java//com/squareup/javapoet/CodeBlockTest.java
+[INFO] Printing com.squareup.javapoet.AbstractTypesTest to /tmp/v1/src/test/java//com/squareup/javapoet/AbstractTypesTest.java
+[INFO] Printing com.squareup.javapoet.FileWritingTest to /tmp/v1/src/test/java//com/squareup/javapoet/FileWritingTest.java
+[INFO] Printing com.squareup.javapoet.AnnotatedTypeNameTest to /tmp/v1/src/test/java//com/squareup/javapoet/AnnotatedTypeNameTest.java
+[INFO] Printing com.squareup.javapoet.AnnotationSpecTest to /tmp/v1/src/test/java//com/squareup/javapoet/AnnotationSpecTest.java
+[INFO] Printing com.squareup.javapoet.FieldSpecTest to /tmp/v1/src/test/java//com/squareup/javapoet/FieldSpecTest.java
+[INFO] Printing com.squareup.javapoet.FileReadingTest to /tmp/v1/src/test/java//com/squareup/javapoet/FileReadingTest.java
+[INFO] Printing com.squareup.javapoet.ParameterSpecTest to /tmp/v1/src/test/java//com/squareup/javapoet/ParameterSpecTest.java
+[INFO] Printing com.squareup.javapoet.TypeNameTest to /tmp/v1/src/test/java//com/squareup/javapoet/TypeNameTest.java
+[INFO] Printing com.squareup.javapoet.TypeSpecTest to /tmp/v1/src/test/java//com/squareup/javapoet/TypeSpecTest.java
+[INFO] Printing com.squareup.javapoet.JavaFileTest to /tmp/v1/src/test/java//com/squareup/javapoet/JavaFileTest.java
+[INFO] Printing com.squareup.javapoet.MethodSpecTest to /tmp/v1/src/test/java//com/squareup/javapoet/MethodSpecTest.java
+[INFO] Injecting JUnit-Jjoules in /tmp/v1/pom.xml
+[INFO] Output new POM file in /tmp/v1/pom_jjouled.xml
+[INFO] Instrument version after commit...
+[INFO] Run on /tmp/v2
+[INFO] Running in NOCLASSPATH mode (doc: http://spoon.gforge.inria.fr/launcher.html).
+[INFO] fr.davidson.diff.jjoules.process.junit4.JJoulesProcessor
+Processing com.squareup.javapoet.AbstractTypesTest#wildcardExtendsType
+Processing com.squareup.javapoet.AbstractTypesTest#wildcardSuperType
+Processing com.squareup.javapoet.AbstractTypesTest#wildcardMirrorExtendsType
+Processing com.squareup.javapoet.AbstractTypesTest#wildcardMirrorSuperType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotated
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedTwice
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedParameterizedType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArgumentOfParameterizedType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedWildcardTypeNameWithSuper
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedWildcardTypeNameWithExtends
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedEquivalence
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedEquivalence
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedNestedType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedEnclosingAndNestedType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedNestedParameterizedType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArrayType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArrayElementType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedOuterMultidimensionalArrayType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedInnerMultidimensionalArrayType
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArrayTypeVarargsParameter
+Processing com.squareup.javapoet.AnnotatedTypeNameTest#annotatedArrayTypeInVarargsParameter
+Processing com.squareup.javapoet.AnnotationSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.AnnotationSpecTest#defaultAnnotation
+Processing com.squareup.javapoet.AnnotationSpecTest#defaultAnnotationWithImport
+Processing com.squareup.javapoet.AnnotationSpecTest#emptyArray
+Processing com.squareup.javapoet.AnnotationSpecTest#dynamicArrayOfEnumConstants
+Processing com.squareup.javapoet.AnnotationSpecTest#defaultAnnotationToBuilder
+Processing com.squareup.javapoet.AnnotationSpecTest#reflectAnnotation
+Processing com.squareup.javapoet.AnnotationSpecTest#reflectAnnotationWithDefaults
+Processing com.squareup.javapoet.AnnotationSpecTest#disallowsNullMemberName
+Processing com.squareup.javapoet.AnnotationSpecTest#requiresValidMemberName
+Processing com.squareup.javapoet.CodeBlockTest#equalsAndHashCode
+Processing com.squareup.javapoet.CodeBlockTest#of
+Processing com.squareup.javapoet.CodeBlockTest#nameFormatCanBeIndexed
+Processing com.squareup.javapoet.CodeBlockTest#literalFormatCanBeIndexed
+Processing com.squareup.javapoet.CodeBlockTest#stringFormatCanBeIndexed
+Processing com.squareup.javapoet.CodeBlockTest#typeFormatCanBeIndexed
+Processing com.squareup.javapoet.CodeBlockTest#simpleNamedArgument
+Processing com.squareup.javapoet.CodeBlockTest#repeatedNamedArgument
+Processing com.squareup.javapoet.CodeBlockTest#namedAndNoArgFormat
+Processing com.squareup.javapoet.CodeBlockTest#multipleNamedArguments
+Processing com.squareup.javapoet.CodeBlockTest#namedNewline
+Processing com.squareup.javapoet.CodeBlockTest#sameIndexCanBeUsedWithDifferentFormats
+Processing com.squareup.javapoet.CodeBlockTest#tooManyStatementEnters
+Processing com.squareup.javapoet.CodeBlockTest#statementExitWithoutStatementEnter
+Processing com.squareup.javapoet.CodeBlockTest#join
+Processing com.squareup.javapoet.CodeBlockTest#joining
+Processing com.squareup.javapoet.CodeBlockTest#joiningSingle
+Processing com.squareup.javapoet.CodeBlockTest#joiningWithPrefixAndSuffix
+Processing com.squareup.javapoet.FieldSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.FileReadingTest#javaFileObjectUri
+Processing com.squareup.javapoet.FileReadingTest#javaFileObjectKind
+Processing com.squareup.javapoet.FileReadingTest#javaFileObjectCharacterContent
+Processing com.squareup.javapoet.FileReadingTest#javaFileObjectInputStreamIsUtf8
+Processing com.squareup.javapoet.FileReadingTest#compileJavaFile
+Processing com.squareup.javapoet.FileWritingTest#pathNotDirectory
+Processing com.squareup.javapoet.FileWritingTest#fileNotDirectory
+Processing com.squareup.javapoet.FileWritingTest#pathDefaultPackage
+Processing com.squareup.javapoet.FileWritingTest#fileDefaultPackage
+Processing com.squareup.javapoet.FileWritingTest#filerDefaultPackage
+Processing com.squareup.javapoet.FileWritingTest#pathNestedClasses
+Processing com.squareup.javapoet.FileWritingTest#fileNestedClasses
+Processing com.squareup.javapoet.FileWritingTest#filerNestedClasses
+Processing com.squareup.javapoet.FileWritingTest#filerPassesOriginatingElements
+Processing com.squareup.javapoet.FileWritingTest#filerClassesWithTabIndent
+Processing com.squareup.javapoet.FileWritingTest#fileIsUtf8
+Processing com.squareup.javapoet.JavaFileTest#importStaticReadmeExample
+Processing com.squareup.javapoet.JavaFileTest#importStaticForCrazyFormatsWorks
+Processing com.squareup.javapoet.JavaFileTest#importStaticMixed
+Processing com.squareup.javapoet.JavaFileTest#importStaticNone
+Processing com.squareup.javapoet.JavaFileTest#importStaticOnce
+Processing com.squareup.javapoet.JavaFileTest#importStaticTwice
+Processing com.squareup.javapoet.JavaFileTest#importStaticUsingWildcards
+Processing com.squareup.javapoet.JavaFileTest#noImports
+Processing com.squareup.javapoet.JavaFileTest#singleImport
+Processing com.squareup.javapoet.JavaFileTest#conflictingImports
+Processing com.squareup.javapoet.JavaFileTest#annotatedTypeParam
+Processing com.squareup.javapoet.JavaFileTest#skipJavaLangImportsWithConflictingClassLast
+Processing com.squareup.javapoet.JavaFileTest#skipJavaLangImportsWithConflictingClassFirst
+Processing com.squareup.javapoet.JavaFileTest#conflictingParentName
+Processing com.squareup.javapoet.JavaFileTest#conflictingChildName
+Processing com.squareup.javapoet.JavaFileTest#conflictingNameOutOfScope
+Processing com.squareup.javapoet.JavaFileTest#nestedClassAndSuperclassShareName
+Processing com.squareup.javapoet.JavaFileTest#classAndSuperclassShareName
+Processing com.squareup.javapoet.JavaFileTest#conflictingAnnotation
+Processing com.squareup.javapoet.JavaFileTest#conflictingAnnotationReferencedClass
+Processing com.squareup.javapoet.JavaFileTest#conflictingTypeVariableBound
+Processing com.squareup.javapoet.JavaFileTest#superclassReferencesSelf
+Processing com.squareup.javapoet.JavaFileTest#annotationIsNestedClass
+Processing com.squareup.javapoet.JavaFileTest#defaultPackage
+Processing com.squareup.javapoet.JavaFileTest#defaultPackageTypesAreNotImported
+Processing com.squareup.javapoet.JavaFileTest#topOfFileComment
+Processing com.squareup.javapoet.JavaFileTest#emptyLinesInTopOfFileComment
+Processing com.squareup.javapoet.JavaFileTest#packageClassConflictsWithNestedClass
+Processing com.squareup.javapoet.JavaFileTest#packageClassConflictsWithSuperlass
+Processing com.squareup.javapoet.MethodSpecTest#overrideEverything
+Processing com.squareup.javapoet.MethodSpecTest#overrideGenerics
+Processing com.squareup.javapoet.MethodSpecTest#overrideDoesNotCopyOverrideAnnotation
+Processing com.squareup.javapoet.MethodSpecTest#overrideDoesNotCopyDefaultModifier
+Processing com.squareup.javapoet.MethodSpecTest#overrideExtendsOthersWorksWithActualTypeParameters
+Processing com.squareup.javapoet.MethodSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.MethodSpecTest#withoutParameterJavaDoc
+Processing com.squareup.javapoet.MethodSpecTest#withParameterJavaDoc
+Processing com.squareup.javapoet.MethodSpecTest#withParameterJavaDocAndWithoutMethodJavadoc
+Processing com.squareup.javapoet.MethodSpecTest#duplicateExceptionsIgnored
+Processing com.squareup.javapoet.MethodSpecTest#modifyMethodName
+Processing com.squareup.javapoet.ParameterSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.TypeNameTest#equalsAndHashCodeWildcardTypeName
+Processing com.squareup.javapoet.TypeSpecTest#basic
+Processing com.squareup.javapoet.TypeSpecTest#interestingTypes
+Processing com.squareup.javapoet.TypeSpecTest#anonymousInnerClass
+Processing com.squareup.javapoet.TypeSpecTest#annotatedParameters
+Processing com.squareup.javapoet.TypeSpecTest#annotationsAndJavaLangTypes
+Processing com.squareup.javapoet.TypeSpecTest#retrofitStyleInterface
+Processing com.squareup.javapoet.TypeSpecTest#annotatedField
+Processing com.squareup.javapoet.TypeSpecTest#annotatedClass
+Processing com.squareup.javapoet.TypeSpecTest#enumWithSubclassing
+Processing com.squareup.javapoet.TypeSpecTest#enumsMayDefineAbstractMethods
+Processing com.squareup.javapoet.TypeSpecTest#onlyEnumsMayHaveEnumConstants
+Processing com.squareup.javapoet.TypeSpecTest#enumWithMembersButNoConstructorCall
+Processing com.squareup.javapoet.TypeSpecTest#enumWithAnnotatedValues
+Processing com.squareup.javapoet.TypeSpecTest#methodThrows
+Processing com.squareup.javapoet.TypeSpecTest#typeVariables
+Processing com.squareup.javapoet.TypeSpecTest#typeVariableWithBounds
+Processing com.squareup.javapoet.TypeSpecTest#classImplementsExtends
+Processing com.squareup.javapoet.TypeSpecTest#classImplementsNestedClass
+Processing com.squareup.javapoet.TypeSpecTest#enumImplements
+Processing com.squareup.javapoet.TypeSpecTest#interfaceExtends
+Processing com.squareup.javapoet.TypeSpecTest#nestedClasses
+Processing com.squareup.javapoet.TypeSpecTest#annotation
+Processing com.squareup.javapoet.TypeSpecTest#innerAnnotationInAnnotationDeclaration
+Processing com.squareup.javapoet.TypeSpecTest#annotationWithFields
+Processing com.squareup.javapoet.TypeSpecTest#classCannotHaveDefaultValueForMethod
+Processing com.squareup.javapoet.TypeSpecTest#classCannotHaveDefaultMethods
+Processing com.squareup.javapoet.TypeSpecTest#interfaceStaticMethods
+Processing com.squareup.javapoet.TypeSpecTest#interfaceDefaultMethods
+Processing com.squareup.javapoet.TypeSpecTest#referencedAndDeclaredSimpleNamesConflict
+Processing com.squareup.javapoet.TypeSpecTest#simpleNamesConflictInThisAndOtherPackage
+Processing com.squareup.javapoet.TypeSpecTest#simpleNameConflictsWithTypeVariable
+Processing com.squareup.javapoet.TypeSpecTest#originatingElementsIncludesThoseOfNestedTypes
+Processing com.squareup.javapoet.TypeSpecTest#intersectionType
+Processing com.squareup.javapoet.TypeSpecTest#arrayType
+Processing com.squareup.javapoet.TypeSpecTest#javadoc
+Processing com.squareup.javapoet.TypeSpecTest#annotationsInAnnotations
+Processing com.squareup.javapoet.TypeSpecTest#varargs
+Processing com.squareup.javapoet.TypeSpecTest#codeBlocks
+Processing com.squareup.javapoet.TypeSpecTest#indexedElseIf
+Processing com.squareup.javapoet.TypeSpecTest#elseIf
+Processing com.squareup.javapoet.TypeSpecTest#doWhile
+Processing com.squareup.javapoet.TypeSpecTest#inlineIndent
+Processing com.squareup.javapoet.TypeSpecTest#defaultModifiersForInterfaceMembers
+Processing com.squareup.javapoet.TypeSpecTest#defaultModifiersForMemberInterfacesAndEnums
+Processing com.squareup.javapoet.TypeSpecTest#membersOrdering
+Processing com.squareup.javapoet.TypeSpecTest#nativeMethods
+Processing com.squareup.javapoet.TypeSpecTest#nullStringLiteral
+Processing com.squareup.javapoet.TypeSpecTest#annotationToString
+Processing com.squareup.javapoet.TypeSpecTest#codeBlockToString
+Processing com.squareup.javapoet.TypeSpecTest#codeBlockAddStatementOfCodeBlockToString
+Processing com.squareup.javapoet.TypeSpecTest#fieldToString
+Processing com.squareup.javapoet.TypeSpecTest#methodToString
+Processing com.squareup.javapoet.TypeSpecTest#constructorToString
+Processing com.squareup.javapoet.TypeSpecTest#parameterToString
+Processing com.squareup.javapoet.TypeSpecTest#classToString
+Processing com.squareup.javapoet.TypeSpecTest#anonymousClassToString
+Processing com.squareup.javapoet.TypeSpecTest#interfaceClassToString
+Processing com.squareup.javapoet.TypeSpecTest#annotationDeclarationToString
+Processing com.squareup.javapoet.TypeSpecTest#multilineStatement
+Processing com.squareup.javapoet.TypeSpecTest#multilineStatementWithAnonymousClass
+Processing com.squareup.javapoet.TypeSpecTest#multilineStrings
+Processing com.squareup.javapoet.TypeSpecTest#doubleFieldInitialization
+Processing com.squareup.javapoet.TypeSpecTest#multipleAnnotationAddition
+Processing com.squareup.javapoet.TypeSpecTest#multipleFieldAddition
+Processing com.squareup.javapoet.TypeSpecTest#multipleMethodAddition
+Processing com.squareup.javapoet.TypeSpecTest#multipleSuperinterfaceAddition
+Processing com.squareup.javapoet.TypeSpecTest#multipleTypeVariableAddition
+Processing com.squareup.javapoet.TypeSpecTest#multipleTypeAddition
+Processing com.squareup.javapoet.TypeSpecTest#tryCatch
+Processing com.squareup.javapoet.TypeSpecTest#ifElse
+Processing com.squareup.javapoet.TypeSpecTest#literalFromAnything
+Processing com.squareup.javapoet.TypeSpecTest#nameFromCharSequence
+Processing com.squareup.javapoet.TypeSpecTest#nameFromField
+Processing com.squareup.javapoet.TypeSpecTest#nameFromParameter
+Processing com.squareup.javapoet.TypeSpecTest#nameFromMethod
+Processing com.squareup.javapoet.TypeSpecTest#nameFromType
+Processing com.squareup.javapoet.TypeSpecTest#stringFromAnything
+Processing com.squareup.javapoet.TypeSpecTest#stringFromNull
+Processing com.squareup.javapoet.TypeSpecTest#typeFromTypeName
+Processing com.squareup.javapoet.TypeSpecTest#typeFromTypeMirror
+Processing com.squareup.javapoet.TypeSpecTest#typeFromTypeElement
+Processing com.squareup.javapoet.TypeSpecTest#typeFromReflectType
+Processing com.squareup.javapoet.TypeSpecTest#staticCodeBlock
+Processing com.squareup.javapoet.TypeSpecTest#initializerBlockInRightPlace
+Processing com.squareup.javapoet.TypeSpecTest#initializersToBuilder
+Processing com.squareup.javapoet.TypeSpecTest#initializerBlockUnsupportedExceptionOnInterface
+Processing com.squareup.javapoet.TypeSpecTest#initializerBlockUnsupportedExceptionOnAnnotation
+Processing com.squareup.javapoet.TypeSpecTest#lineWrapping
+Processing com.squareup.javapoet.TypeSpecTest#lineWrappingWithZeroWidthSpace
+Processing com.squareup.javapoet.TypeSpecTest#equalsAndHashCode
+Processing com.squareup.javapoet.TypeSpecTest#classNameFactories
+[INFO] Printing com.squareup.javapoet.CodeBlockTest to /tmp/v2/src/test/java//com/squareup/javapoet/CodeBlockTest.java
+[INFO] Printing com.squareup.javapoet.CodeBlockTest to /tmp/v2/src/test/java//com/squareup/javapoet/CodeBlockTest.java
+[INFO] Printing com.squareup.javapoet.FileWritingTest to /tmp/v2/src/test/java//com/squareup/javapoet/FileWritingTest.java
+[INFO] Printing com.squareup.javapoet.FileWritingTest to /tmp/v2/src/test/java//com/squareup/javapoet/FileWritingTest.java
+[INFO] Printing com.squareup.javapoet.AnnotationSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/AnnotationSpecTest.java
+[INFO] Printing com.squareup.javapoet.AnnotationSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/AnnotationSpecTest.java
+[INFO] Printing com.squareup.javapoet.FileReadingTest to /tmp/v2/src/test/java//com/squareup/javapoet/FileReadingTest.java
+[INFO] Printing com.squareup.javapoet.ParameterSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/ParameterSpecTest.java
+[INFO] Printing com.squareup.javapoet.TypeNameTest to /tmp/v2/src/test/java//com/squareup/javapoet/TypeNameTest.java
+[INFO] Printing com.squareup.javapoet.FileReadingTest to /tmp/v2/src/test/java//com/squareup/javapoet/FileReadingTest.java
+[INFO] Printing com.squareup.javapoet.AbstractTypesTest to /tmp/v2/src/test/java//com/squareup/javapoet/AbstractTypesTest.java
+[INFO] Printing com.squareup.javapoet.AbstractTypesTest to /tmp/v2/src/test/java//com/squareup/javapoet/AbstractTypesTest.java
+[INFO] Printing com.squareup.javapoet.AnnotatedTypeNameTest to /tmp/v2/src/test/java//com/squareup/javapoet/AnnotatedTypeNameTest.java
+[INFO] Printing com.squareup.javapoet.AnnotatedTypeNameTest to /tmp/v2/src/test/java//com/squareup/javapoet/AnnotatedTypeNameTest.java
+[INFO] Printing com.squareup.javapoet.FieldSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/FieldSpecTest.java
+[INFO] Printing com.squareup.javapoet.TypeSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/TypeSpecTest.java
+[INFO] Printing com.squareup.javapoet.TypeSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/TypeSpecTest.java
+[INFO] Printing com.squareup.javapoet.JavaFileTest to /tmp/v2/src/test/java//com/squareup/javapoet/JavaFileTest.java
+[INFO] Printing com.squareup.javapoet.JavaFileTest to /tmp/v2/src/test/java//com/squareup/javapoet/JavaFileTest.java
+[INFO] Printing com.squareup.javapoet.MethodSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/MethodSpecTest.java
+[INFO] Printing com.squareup.javapoet.MethodSpecTest to /tmp/v2/src/test/java//com/squareup/javapoet/MethodSpecTest.java
+[INFO] Injecting JUnit-Jjoules in /tmp/v2/pom.xml
+[INFO] Output new POM file in /tmp/v2/pom_jjouled.xml
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.797 s
+[INFO] Finished at: 2020-12-15T16:28:01+01:00
+[INFO] ------------------------------------------------------------------------
