@@ -1,4 +1,0 @@
-2020-12-15
-Run for javapoet a0eadbbf0e7b70f0fbbc66043536e4328c3808fd 42 e6993cc2af1a2db55c134e45dc324148d76b3993 41 output_path data/output/december_2020/
-42 / 833
-mvn test did not succeed on v1

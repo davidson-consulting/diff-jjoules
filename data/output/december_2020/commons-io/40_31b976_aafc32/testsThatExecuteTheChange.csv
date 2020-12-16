@@ -1,5 +1,0 @@
-org.apache.commons.io.FileUtilsTestCase;testListFilesWithDirs;testListFiles;testIterateFilesAndDirs;testIterateFiles
-org.apache.commons.io.filefilter.DirectoryFileFilterTest;testJavadocExampleUsingNio
-org.apache.commons.io.filefilter.NameFileFilterTest;testJavadocExampleUsingNio;testNoCounting
-org.apache.commons.io.FileUtilsListFilesTestCase;testListFiles
-org.apache.commons.io.filefilter.AgeFileFilterTest;testJavadocExampleUsingNio;testNoCounting

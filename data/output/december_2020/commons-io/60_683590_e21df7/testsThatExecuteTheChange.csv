@@ -1,3 +1,0 @@
-org.apache.commons.io.filefilter.FileFilterTestCase;testFileFilterUtils_or;testNot
-org.apache.commons.io.FileUtilsListFilesTestCase;testListFilesByExtension;testListFiles;testIterateFilesByExtension
-org.apache.commons.io.FileUtilsTestCase;testListFilesWithDirs;testListFiles;testIterateFilesAndDirs;testIterateFiles
