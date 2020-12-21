@@ -12,9 +12,8 @@ import spoon.OutputType;
 import spoon.SpoonException;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
-import spoon.support.modelobs.ChangeCollector;
-import spoon.support.sniper.SniperJavaPrettyPrinter;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -35,6 +34,7 @@ public class Main {
         if (configuration == null) {
             return;
         }
+        LOGGER.info("{}", configuration.toString());
         final Map<String, List<String>> testsList = CSVReader.readFile(configuration.pathToTestListAsCSV);
         LOGGER.info("{}", testsList.keySet().stream().map(key -> key + ":" + testsList.get(key)).collect(Collectors.joining("\n")));
         final AbstractJJoulesProcessor processor = configuration.junit4 ?

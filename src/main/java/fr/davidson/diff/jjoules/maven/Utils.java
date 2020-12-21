@@ -20,12 +20,7 @@ public class Utils {
                                                  String version) {
         Node current = parent.getFirstChild();
         while (current != null) {
-            System.out.println("current " + current + " " + current.getNodeValue());
-            for (int i = 0 ; i < current.getChildNodes().getLength() ; i++) {
-                System.out.println(i + " " + current.getChildNodes().item(i));
-            }
             final Node artifactIdNode = Utils.findSpecificNodeFromGivenRoot(current, nodeNameChild);
-            System.out.println(artifactIdNode);
             if (artifactIdNode != null && nodeChildValue.equals(artifactIdNode.getNodeValue())) {
                 return current;
             }

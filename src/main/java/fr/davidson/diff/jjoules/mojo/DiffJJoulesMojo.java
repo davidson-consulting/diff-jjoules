@@ -47,6 +47,10 @@ public class DiffJJoulesMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
         final String classpath;
         try (BufferedReader reader = new BufferedReader(new FileReader(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath))) {
+            final String module = this.project.getBasedir().getAbsolutePath().substring(this.pathDirSecondVersion.length());
+            getLog().info("Running on:");
+            getLog().info(this.project.getBasedir().getAbsolutePath());
+            getLog().info(this.pathDirSecondVersion + "/" + module);
             classpath = reader.lines().collect(Collectors.joining(":"));
             final boolean junit4 = classpath.contains("junit-4");
             if (junit4) {
@@ -55,14 +59,14 @@ public class DiffJJoulesMojo extends AbstractMojo {
             Main.main(
                     new String[]{
                             "--path-dir-first-version", this.project.getBasedir().getAbsolutePath(),
-                             "--path-dir-second-version", this.pathDirSecondVersion,
+                            "--path-dir-second-version", this.pathDirSecondVersion + "/" + module,
                             "--tests-list", this.testsList,
                             "--classpath", classpath,
                             junit4 ? "--junit4" : ""
                     }
             );
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
     }

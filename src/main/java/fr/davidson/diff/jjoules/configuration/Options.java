@@ -35,6 +35,7 @@ public class Options {
                 parse.getString("classpath").split(":"),
                 parse.getBoolean("junit4")
         );
+        
     }
 
     private static JSAP initJSAP() {
@@ -53,14 +54,6 @@ public class Options {
         pathDirectorySecondVersion.setRequired(true);
         pathDirectorySecondVersion.setHelp("[Mandatory] Specify the path to root directory of the project in the second version.");
         pathDirectorySecondVersion.setStringParser(JSAP.STRING_PARSER);
-
-        FlaggedOption module = new FlaggedOption("module");
-        module.setRequired(false);
-        module.setLongFlag("module");
-        module.setShortFlag('m');
-        module.setDefault("");
-        module.setHelp("[Optional] In case of multi-module project, specify which module (a path from the project's root).");
-        module.setStringParser(JSAP.STRING_PARSER);
 
         FlaggedOption pathToDiff = new FlaggedOption("tests-list");
         pathToDiff.setRequired(false);
@@ -90,7 +83,6 @@ public class Options {
         try {
             jsap.registerParameter(pathDirectoryFirstVersion);
             jsap.registerParameter(pathDirectorySecondVersion);
-            jsap.registerParameter(module);
             jsap.registerParameter(pathToDiff);
             jsap.registerParameter(classpath);
             jsap.registerParameter(junit4);

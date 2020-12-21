@@ -25,8 +25,6 @@ public class JJoulesInjection {
 
     private static final String POM_FILE = "pom.xml";
 
-    private static final String JJOULED_POM_FILE = "pom_jjouled.xml";
-
     private final String absolutePathToProjectRoot;
 
     public JJoulesInjection(String absolutePathToProjectRoot) {
@@ -47,8 +45,8 @@ public class JJoulesInjection {
             final TransformerFactory transformerFactory = TransformerFactory.newInstance();
             final Transformer transformer = transformerFactory.newTransformer();
             final DOMSource source = new DOMSource(document);
-            LOGGER.info("Output new POM file in {}", this.absolutePathToProjectRoot + "/" + JJOULED_POM_FILE);
-            final String newPomFilename = this.absolutePathToProjectRoot + "/" + JJOULED_POM_FILE;
+            LOGGER.info("Output new POM file in {}", this.absolutePathToProjectRoot + "/" + POM_FILE);
+            final String newPomFilename = this.absolutePathToProjectRoot + "/" + POM_FILE;
             final StreamResult result = new StreamResult(new File(newPomFilename));
             transformer.transform(source, result);
 
