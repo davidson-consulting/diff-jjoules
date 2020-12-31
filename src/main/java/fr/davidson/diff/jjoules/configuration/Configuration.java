@@ -18,18 +18,25 @@ public class Configuration {
 
     public final String[] classpath;
 
+    public final String[] classpathV1;
+
+    public final String[] classpathV2;
+
     public final boolean junit4;
 
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
                          String pathToTestListAsCSV,
                          String[] classpath,
+                         String[] classpathV2,
                          boolean junit4) {
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
         this.pathToTestListAsCSV = new File(pathToTestListAsCSV).isAbsolute() ? pathToTestListAsCSV : this.pathToFirstVersion + "/" + pathToTestListAsCSV;
         this.junit4 = junit4;
         this.classpath = classpath;
+        this.classpathV1 = classpath;
+        this.classpathV2 = classpathV2;
     }
 
     @Override

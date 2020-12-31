@@ -13,7 +13,6 @@ import spoon.SpoonException;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
 
-import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -41,11 +40,11 @@ public class Main {
                 new fr.davidson.diff.jjoules.process.junit4.JJoulesProcessor(testsList, configuration.pathToFirstVersion) :
                 new fr.davidson.diff.jjoules.process.junit5.JJoulesProcessor(testsList, configuration.pathToFirstVersion);
         LOGGER.info("Instrument version before commit...");
-        Main.run(configuration.pathToFirstVersion, processor, configuration.classpath, testsList);
+        Main.run(configuration.pathToFirstVersion, processor, configuration.classpathV1, testsList);
         Main.inject(configuration.pathToFirstVersion);
         processor.setRootPathFolder(configuration.pathToSecondVersion);
         LOGGER.info("Instrument version after commit...");
-        Main.run(configuration.pathToSecondVersion, processor, configuration.classpath, testsList);
+        Main.run(configuration.pathToSecondVersion, processor, configuration.classpathV2, testsList);
         Main.inject(configuration.pathToSecondVersion);
     }
 

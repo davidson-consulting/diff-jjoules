@@ -9,7 +9,9 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.stream.Collectors;
 
 /**
@@ -40,19 +42,29 @@ public class DiffJJoulesMojo extends AbstractMojo {
      * We advise use to use the following goal right before this one :
      * dependency:build-classpath -Dmdep.outputFile=classpath
      */
-    @Parameter(property = "classpath-path", defaultValue = "classpath")
+    @Parameter(property = "classpath-path-v1", defaultValue = "classpath")
     private String classpathPath;
+
+    /**
+     * [Optional] Specify the path to a file that contains the full classpath of the project.
+     * We advise use to use the following goal right before this one :
+     * dependency:build-classpath -Dmdep.outputFile=classpath
+     */
+    @Parameter(property = "classpath-path-v2", defaultValue = "classpath")
+    private String classpathPathV2;
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         final String classpath;
-        try (BufferedReader reader = new BufferedReader(new FileReader(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath))) {
+        final String classpathV2;
+        try {
             final String module = this.project.getBasedir().getAbsolutePath().substring(this.pathDirSecondVersion.length());
             getLog().info("Running on:");
             getLog().info(this.project.getBasedir().getAbsolutePath());
             getLog().info(this.pathDirSecondVersion + "/" + module);
-            classpath = reader.lines().collect(Collectors.joining(":"));
-            final boolean junit4 = classpath.contains("junit-4");
+            classpath = this.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath);
+            classpathV2 = this.readClasspathFile(this.pathDirSecondVersion + "/" + module + "/" + this.classpathPathV2);
+            final boolean junit4 = classpath.contains("junit-4") || classpath.contains("junit-3");
             if (junit4) {
                 getLog().info("Enable JUnit4 mode");
             }
@@ -61,7 +73,8 @@ public class DiffJJoulesMojo extends AbstractMojo {
                             "--path-dir-first-version", this.project.getBasedir().getAbsolutePath(),
                             "--path-dir-second-version", this.pathDirSecondVersion + "/" + module,
                             "--tests-list", this.testsList,
-                            "--classpath", classpath,
+                            "--classpath-v1", classpath,
+                            "--classpath-v2", classpathV2,
                             junit4 ? "--junit4" : ""
                     }
             );
@@ -69,5 +82,14 @@ public class DiffJJoulesMojo extends AbstractMojo {
             e.printStackTrace();
         }
 
+    }
+
+    private String readClasspathFile(String path) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            return reader.lines().collect(Collectors.joining(":"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 }
