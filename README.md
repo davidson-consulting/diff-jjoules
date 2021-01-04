@@ -3,7 +3,7 @@
 **Diff-JJoules** is a project that allows to measure the energy consumption delta
 between two versions of the same program.
 
-This project can be apply on Maven project in Java and with JUnit (4 or 5).
+This project can be apply on Maven project in Java and with JUnit.
 
 It relies on the two following projects:
 
@@ -21,94 +21,59 @@ cd junit-jjoules
 mvn clean install
 ```
 
-## Usage
-
-We advise you to use this project as maven project. You can run everything from the command-line.
-We advise you also to have a versions management, because this project modifies your source code.
-
-1. Ensure that you have both versions of your project. In the remainder of this step-by-step, we will
-refer to the version of the program before change. as `v1` and `v2` is the version of the program after
-the changes. Both of them should be compiled, _e.g._ run `mvn clean install -DskipTests`
-
-2. Go to the root of `v1` and run:
+Then install `diff-jjoules`:
 
 ```sh
-mvn eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list -Dpath-dir-second-version=/tmp/v2 \
-dependency:build-classpath -Dmdep.outputFile=classpath \
-fr.davidson:diff-jjoules:instrument -Dtests-list=/tmp/v1/testsThatExecuteTheChange.csv
+mvn clean install -DskipTest
 ```
 
-With:
-* `eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list -Dpath-dir-second-version=/tmp/v2`
-the maven goal to select the tests that execute the change (based on a UNIX diff between `v1` and `v2`).
-This selection will be in the file `testsThatExecuteTheChange.csv` at the root of `v1`.
-* `dependency:build-classpath -Dmdep.outputFile=classpath·` retrieve the complete classpath of the
-project, required for the instrumentation. This goal generates a file named `classpath` that will be
-used by the next maven goal.
-* `fr.davidson:diff-jjoules:instrument -Dtests-list=/tmp/v1/testsThatExecuteTheChange.csv` that will
-instrument the selected tests in  **BOTH** versions of the program `v1` and `v2`.
+## Usage
 
-Then, you can run the tests. You can collect the data in `target/jjoules-reports/`.
-We advise you to keep the data and run several time the tests to increase the confidence
-in the measures.
+To use easily `diff-jjoules`, we provide python scripts that use maven plugins.
 
-## Continuous integration
+```sh
+$ python3 src/main/python/run.py --help                              
+usage: run.py [-h] [-f FIRST_VERSION_PATH] [-s SECOND_VERSION_PATH] [-i ITERATION]
 
-**TO BE DONE**
+optional arguments:
+  -h, --help            show this help message and exit
+  -f FIRST_VERSION_PATH, --first-version-path FIRST_VERSION_PATH
+                        Specify the path to the folder of the first version of the program, i.e. before the commit.
+  -s SECOND_VERSION_PATH, --second-version-path SECOND_VERSION_PATH
+                        Specify the path to the folder of the second version of the program, i.e. after the commit.
+  -i ITERATION, --iteration ITERATION
+                        Specify the number of time tests will be executed for measuring the energy consumption.
+```
 
-Here, we want to propose a bunch of scripts to enable the easy usage of this approach
-in the CI.
+This script will output two json files that contains the average, over the iterations, of the energy consumption for each test that execute the changes, on per version.
+It will also print on the standard output the delta between both versions, test method wise.
 
-## TODO
+## Example
 
-13 / 833
-Run for javapoet 304176e 14 a5f4f0f 13 output_path data/output/december_2020/
+We provide an example to run `diff-jjoules`. This is `google/gson`, which an open-source project avalaible on GitHub.
 
-#### Remove callgraph from `junit-jjoules`
-#### Deploy `junit-jjoules` on maven central
-#### Support multi-module projects
-#### Potential projects:
-* AuthZForce PDP Core
-* Amazon Web Services SDK
-* Apache Commons CLI
-* Apache Commons Codec
-* Apache Commons Collections
-* Apache Commons IO
-* Apache Commons Lang
-* Apache Flink
-* Google Gson
-* Jaxen XPath Engine
-* JFreeChart
-* Java Git
-* Joda-Time
-* JOpt Simple
-* jsoup
-* SAT4J Core
-* Apache PdfBox
-* SCIFIO
-* Spoon
-* Urban Airship Client Library
-* XWiki Rendering Engine
-* jpush-api-java-client
-* yahoofinance-api
-* gson-fire
-* j2html
-* spring-petclinic
-* javapoet
-* eaxy
-* java-html-sanitizer
-* cron-utils
-* TridentSDK
-* jcodemodel
+To run this example, you can use the following python script:
 
-#### In case of a new feature
+```sh
+python3 src/main/python/example.py
+```
 
-We can just instrument V2 and measure the energy consumption of thise new feature.
-The process would be the following:
+This script will:
 
-1. Detect if it is a new feature or not
-2. if there are new tests that execute the new feature, we can go to step 3.
-2. Instrument V2
-3. Run X times the tests of the new feature
+1. clone twice `google/gson` in `/tmp/example_v1`, `/tmp/example_v2`.
+2. set these folder to specific commits, that we know `diff-jjoules` works, _i.e._ the delta between the versions is measurable.
+3. run the provided script `src/main/python/run.py` with the correct parameters:
+    `$ python3 src/main/python/run.py --first-version-path /tmp/example_v1 --second-version-path /tmp/example_v2 --iteration 1`
 
-Use case : https://github.com/apache/commons-io/commit/397f69d2438f95f7946d83f1b7f240f93febbb3a
+At the end of the execution, you will have the delta between both versions, test method wise, printed on the stdout.
+And two json files `avg_v1.json` and `avg_v2.json` that contains the average, over the iterations, of the energy consumption for each test that execute the changes, on per version.
+
+## Detail behind the script `src/main/python/run.py`
+
+The script `src/main/python/run.py` performs the following steps:
+
+1. It runs `mvn clean install -DskipTests` on both versions.
+2. It runs `dspot-diff-test-selection` maven plugin to select test methods that execute the lines that changed.
+3. It runs `diff-jjoules` maven plugin to instrument the test methods selected at the previous step. It also inject some dependencies in the `pom.xml` of both versions.
+4. It runs X times the tests, and compute the average of the energy consumption and the duration for each test methods.
+5. It computes the delta of the energy consumption between both versions, test method wise.

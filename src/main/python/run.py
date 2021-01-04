@@ -151,8 +151,8 @@ def run_tests(nb_iteration, first_version_path, second_version_path, tests_to_ex
         result_v1 = collect_data(first_version_path, result_v1)
         run_mvn_test(second_version_path, tests_to_execute)
         result_v2 = collect_data(second_version_path, result_v2)
-    write_json(first_version_path + '/avg_sec.json', result_v1)
-    write_json(second_version_path + '/avg_sec.json', result_v2)
+    write_json('avg_v1.json', result_v1)
+    write_json('avg_v2.json', result_v2)
     delta_acc = 0
     for name in result_v1:
         if name in result_v2:
