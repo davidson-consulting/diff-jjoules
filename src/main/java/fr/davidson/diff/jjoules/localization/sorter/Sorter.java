@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.localization;
+package fr.davidson.diff.jjoules.localization.sorter;
 
 import java.util.List;
 import java.util.Map;

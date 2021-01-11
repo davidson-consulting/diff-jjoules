@@ -1,6 +1,6 @@
-package fr.davidson.diff.jjoules.process.junit5;
+package fr.davidson.diff.jjoules.instrumentation.process.junit5;
 
-import fr.davidson.diff.jjoules.process.AbstractJJoulesProcessor;
+import fr.davidson.diff.jjoules.instrumentation.process.AbstractJJoulesProcessor;
 import spoon.reflect.declaration.CtAnnotation;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;

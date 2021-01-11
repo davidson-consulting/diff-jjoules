@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.maven;
+package fr.davidson.diff.jjoules.instrumentation.maven;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,5 +1,6 @@
 package fr.davidson.diff.jjoules.localization;
 
+import fr.davidson.diff.jjoules.localization.sorter.OccurrenceSorter;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

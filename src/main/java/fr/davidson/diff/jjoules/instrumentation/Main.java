@@ -1,9 +1,9 @@
-package fr.davidson.diff.jjoules;
+package fr.davidson.diff.jjoules.instrumentation;
 
-import fr.davidson.diff.jjoules.configuration.Configuration;
-import fr.davidson.diff.jjoules.configuration.Options;
-import fr.davidson.diff.jjoules.maven.JJoulesInjection;
-import fr.davidson.diff.jjoules.process.AbstractJJoulesProcessor;
+import fr.davidson.diff.jjoules.instrumentation.configuration.Configuration;
+import fr.davidson.diff.jjoules.instrumentation.configuration.Options;
+import fr.davidson.diff.jjoules.instrumentation.maven.JJoulesInjection;
+import fr.davidson.diff.jjoules.instrumentation.process.AbstractJJoulesProcessor;
 import fr.davidson.diff.jjoules.util.CSVReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,8 +37,8 @@ public class Main {
         final Map<String, List<String>> testsList = CSVReader.readFile(configuration.pathToTestListAsCSV);
         LOGGER.info("{}", testsList.keySet().stream().map(key -> key + ":" + testsList.get(key)).collect(Collectors.joining("\n")));
         final AbstractJJoulesProcessor processor = configuration.junit4 ?
-                new fr.davidson.diff.jjoules.process.junit4.JJoulesProcessor(testsList, configuration.pathToFirstVersion) :
-                new fr.davidson.diff.jjoules.process.junit5.JJoulesProcessor(testsList, configuration.pathToFirstVersion);
+                new fr.davidson.diff.jjoules.instrumentation.process.junit4.JJoulesProcessor(testsList, configuration.pathToFirstVersion) :
+                new fr.davidson.diff.jjoules.instrumentation.process.junit5.JJoulesProcessor(testsList, configuration.pathToFirstVersion);
         LOGGER.info("Instrument version before commit...");
         Main.run(configuration.pathToFirstVersion, processor, configuration.classpathV1, testsList);
         Main.inject(configuration.pathToFirstVersion);

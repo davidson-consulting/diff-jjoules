@@ -1,6 +1,6 @@
-package fr.davidson.diff.jjoules.mojo;
+package fr.davidson.diff.jjoules.instrumentation.mojo;
 
-import fr.davidson.diff.jjoules.Main;
+import fr.davidson.diff.jjoules.instrumentation.Main;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -9,9 +9,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.stream.Collectors;
 
 /**
@@ -20,7 +18,7 @@ import java.util.stream.Collectors;
  * 26/11/2020
  */
 @Mojo(name = "instrument")
-public class DiffJJoulesMojo extends AbstractMojo {
+public class InstrumentMojo extends AbstractMojo {
 
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
     private MavenProject project;
@@ -81,7 +79,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     private String readClasspathFile(String path) {

@@ -1,33 +1,24 @@
-package fr.davidson.diff.jjoules;
+package fr.davidson.diff.jjoules.localization;
 
 
 import eu.stamp_project.diff_test_selection.clover.CloverExecutor;
 import eu.stamp_project.diff_test_selection.clover.CloverReader;
-import eu.stamp_project.diff_test_selection.configuration.Configuration;
-import fr.davidson.diff.jjoules.localization.CodeFinder;
+import fr.davidson.diff.jjoules.localization.configuration.Configuration;
+import fr.davidson.diff.jjoules.localization.configuration.Options;
+import fr.davidson.diff.jjoules.localization.finder.CodeFinder;
 
 import java.util.*;
 
-public class FaultLocalization {
+public class Main {
 
     public static void main(String[] args) {
-        run(new Configuration(
-                "/tmp/v1/gson",
-                "/tmp/v2/gson",
-                "./",
-                "CSV",
-                "",
-                false
-        ));
+        run(Options.parse(args));
     }
 
     public static void run(Configuration configuration) {
         System.out.println(configuration.toString());
-        final Map<String, List<String>> tests = new HashMap<>();
-        tests.put("com.google.gson.DefaultDateTypeAdapterTest", new ArrayList<>());
-        tests.get("com.google.gson.DefaultDateTypeAdapterTest").add("testDatePattern");
-        final Map<String, Map<String, Map<String, List<Integer>>>> coverageV1 = getCoverage(configuration.pathToFirstVersion, tests);
-        final Map<String, Map<String, Map<String, List<Integer>>>> coverageV2 = getCoverage(configuration.pathToSecondVersion, tests);
+        final Map<String, Map<String, Map<String, List<Integer>>>> coverageV1 = getCoverage(configuration.pathToFirstVersion, configuration.testsList);
+        final Map<String, Map<String, Map<String, List<Integer>>>> coverageV2 = getCoverage(configuration.pathToSecondVersion, configuration.testsList);
         final CodeFinder finder = new CodeFinder(
                 configuration.pathToFirstVersion,
                 configuration.pathToSecondVersion,

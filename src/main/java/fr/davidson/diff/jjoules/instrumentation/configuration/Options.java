@@ -1,7 +1,7 @@
-package fr.davidson.diff.jjoules.configuration;
+package fr.davidson.diff.jjoules.instrumentation.configuration;
 
 import com.martiansoftware.jsap.*;
-import fr.davidson.diff.jjoules.Main;
+import fr.davidson.diff.jjoules.instrumentation.Main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

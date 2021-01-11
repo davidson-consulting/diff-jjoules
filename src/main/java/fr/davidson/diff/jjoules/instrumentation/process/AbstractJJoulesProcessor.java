@@ -1,13 +1,11 @@
-package fr.davidson.diff.jjoules.process;
+package fr.davidson.diff.jjoules.instrumentation.process;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import spoon.compiler.Environment;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.visitor.PrettyPrinter;
-import spoon.support.JavaOutputProcessor;
 
 import java.io.File;
 import java.io.FileWriter;

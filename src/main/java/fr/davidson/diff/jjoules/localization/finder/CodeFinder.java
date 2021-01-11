@@ -1,7 +1,9 @@
-package fr.davidson.diff.jjoules.localization;
+package fr.davidson.diff.jjoules.localization.finder;
 
 import eu.stamp_project.diff_test_selection.diff.ModifiedLinesTool;
 import eu.stamp_project.diff_test_selection.utils.DiffTestSelectionChecker;
+import fr.davidson.diff.jjoules.localization.sorter.OccurrenceSorter;
+import fr.davidson.diff.jjoules.localization.sorter.Sorter;
 
 import java.util.*;
 import java.util.stream.Collectors;

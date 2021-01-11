@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.configuration;
+package fr.davidson.diff.jjoules.instrumentation.configuration;
 
 import java.io.File;
 import java.util.Arrays;
