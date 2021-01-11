@@ -82,6 +82,20 @@ def run_mvn_instrument_jjoules(path_first_version, path_second_version):
         ])
     )
 
+CMD_JJOULES_LOCATE = 'fr.davidson:diff-jjoules:locate'
+
+def run_mvn_locate_jjoules(path_first_version, path_second_version, tests):
+    run_command(
+        ' '.join([
+            MVN_CMD,
+            MVN_OPT_FILE,
+            path_first_version + '/' + MVN_POM_FILE,
+            OPT_PATH_DIR_SECOND_VERSION  + path_second_version,
+            OPT_TEST + tests,
+            CMD_JJOULES_LOCATE
+        ])
+    )
+
 def get_path_to_selected_tests_csv_file(output_path):
     for dirName, subdirList, fileList in os.walk(output_path):
         for file in fileList:
@@ -133,10 +147,12 @@ def collect_data(root_path_project, result):
     for file in os.listdir(path_to_jjoules_report):
         data = get_energy_data(read_json(path_to_jjoules_report + '/' + file))
         name = get_fullqualified_name_test(file)
-        if name in result:
-            result[name] = avg_on_each_field(result[name], data)
-        else:
-            result[name] = data
+        if 'energy' in data:
+            energy = data['energy']
+            if name in result:
+                result[name].append(energy)
+            else:
+                result[name] = [energy]
     return result
 
 def write_json(path_to_json, data):
@@ -151,14 +167,40 @@ def run_tests(nb_iteration, first_version_path, second_version_path, tests_to_ex
         result_v1 = collect_data(first_version_path, result_v1)
         run_mvn_test(second_version_path, tests_to_execute)
         result_v2 = collect_data(second_version_path, result_v2)
-    write_json('avg_v1.json', result_v1)
-    write_json('avg_v2.json', result_v2)
+    for test in result_v1:
+        result_v1[test] = sorted(result_v1[test])[int(len(result_v1[test]) / 2)]
+    for test in result_v2:
+        result_v2[test] = sorted(result_v2[test])[int(len(result_v2[test]) / 2)]
+    write_json('data_v1.json', result_v1)
+    write_json('data_v2.json', result_v2)
     delta_acc = 0
     for name in result_v1:
         if name in result_v2:
-            if 'energy' in result_v1[name] and 'energy' in result_v2[name]:
-                delta_acc = result_v2[name]['energy'] - result_v1[name]['energy']
+            delta_acc = delta_acc + (result_v2[name] - result_v1[name])
     print(delta_acc)
+
+def select_test_to_locate():
+    data_v1 = read_json('data_v1.json')
+    data_v2 = read_json('data_v2.json')
+
+    delta_per_test = {}
+    delta_acc = 0
+    for test in data_v1:
+        if test in data_v2:
+            current_delta = data_v2[test] - data_v1[test]
+            delta_acc = delta_acc + current_delta
+            delta_per_test[test] = current_delta
+
+    selected_test = {}
+    for test in delta_per_test:
+        if (delta_per_test[test] / delta_acc) * 100 > 25:
+            test_name_splitted = test.split('-')
+            if not test_name_splitted[0] in selected_test:
+                selected_test[test_name_splitted[0]] = []
+            selected_test[test_name_splitted[0]].append(test_name_splitted[1])
+    
+    print(selected_test)
+    return selected_test
 
 if __name__ == '__main__':
 
@@ -177,3 +219,8 @@ if __name__ == '__main__':
     run_mvn_build_cp(second_version_path)
     run_mvn_instrument_jjoules(first_version_path, second_version_path)
     run_tests(nb_iteration, first_version_path, second_version_path, get_tests_to_execute(first_version_path))
+
+    tests = select_test_to_locate()
+    formatted_tests = ','.join([test_class_name + '#' + '+'.join(tests[test_class_name]) for test_class_name in tests])
+    print(formatted_tests)
+    run_mvn_locate_jjoules(first_version_path, second_version_path, formatted_tests)

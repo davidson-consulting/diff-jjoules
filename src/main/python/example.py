@@ -46,8 +46,8 @@ if __name__ == '__main__':
 
     clone('http://github.com/google/gson', '/tmp/example_v1')
     clone('http://github.com/google/gson', '/tmp/example_v2')
-    reset_hard('fa947212e010e5757864fbebe9cdafde8faadabb', '/tmp/example_v1')
-    reset_hard('55acc23d8656a9fe5b19b92029a2dc7277e3765c', '/tmp/example_v2')
+    reset_hard('f0aa1118e9ef66ed324f9a63cdfb551cb4e9eca5', '/tmp/example_v1')
+    reset_hard('7a9fd5962dce7f277efa15fcc996606be0733bac', '/tmp/example_v2')
     delete_module_info_java('/tmp/example_v1')
     delete_module_info_java('/tmp/example_v2')
 
