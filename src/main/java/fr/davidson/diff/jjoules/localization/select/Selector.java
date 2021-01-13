@@ -7,4 +7,8 @@ public interface Selector {
 
     public Map<String, List<String>> select(String pathJSONDataFirstVersion, String pathJSONDataSecondVersion);
 
+    public double getDelta();
+
+    public Map<String, Double> getDeltaPerTest();
+
 }

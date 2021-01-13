@@ -10,6 +10,10 @@ public class JSONReport implements Report {
 
     public static final String OUTPUT_PATH_NAME_SELECTED_TESTS = "selectedTests.json";
 
+    public static final String KEY_GLOBAL_DELTA = "global";
+
+    public static final String OUTPUT_PATH_NAME_DELTA_PER_TEST = "deltas.json";
+
     public static final String OUTPUT_PATH_NAME_SUSPECT_LINES = "suspectLines.json";
 
     private final String outputPath;
@@ -26,7 +30,9 @@ public class JSONReport implements Report {
     }
 
     @Override
-    public void outputSelectedTests(Map<String, List<String>> testsList) {
+    public void outputSelectedTests(Map<String, List<String>> testsList, double delta, Map<String, Double> deltaPerTest) {
+        deltaPerTest.put(KEY_GLOBAL_DELTA, delta);
+        JSONUtils.write(outputPath + "/" + OUTPUT_PATH_NAME_DELTA_PER_TEST, deltaPerTest);
         JSONUtils.write(outputPath + "/" + OUTPUT_PATH_NAME_SELECTED_TESTS, testsList);
     }
 
