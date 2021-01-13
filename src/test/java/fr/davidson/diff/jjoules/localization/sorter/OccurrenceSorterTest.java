@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.localization;
+package fr.davidson.diff.jjoules.localization.sorter;
 
 import fr.davidson.diff.jjoules.localization.sorter.OccurrenceSorter;
 import org.junit.jupiter.api.Test;

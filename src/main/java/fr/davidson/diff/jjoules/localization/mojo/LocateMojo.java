@@ -2,6 +2,7 @@ package fr.davidson.diff.jjoules.localization.mojo;
 
 import fr.davidson.diff.jjoules.localization.Main;
 import fr.davidson.diff.jjoules.localization.configuration.Configuration;
+import fr.davidson.diff.jjoules.localization.output.ReportEnum;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -37,6 +38,18 @@ public class LocateMojo extends AbstractMojo {
     @Parameter(defaultValue = "", property = "path-to-diff")
     private String pathToDiff;
 
+    /**
+     *
+     */
+    @Parameter(defaultValue = "JSON", property = "report")
+    private String reportType;
+
+    /**
+     *
+     */
+    @Parameter(defaultValue = "target/diff-jjoules", property = "output-path")
+    private String outputPath;
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         try {
@@ -49,7 +62,8 @@ public class LocateMojo extends AbstractMojo {
                             this.project.getBasedir().getAbsolutePath(),
                             this.pathDirSecondVersion + "/" + module,
                             this.test,
-                            this.pathToDiff
+                            this.pathToDiff,
+                            ReportEnum.fromReportEnumValue(this.reportType, this.project.getBasedir().getAbsolutePath() + "/" + this.outputPath)
                     )
             );
         } catch (Exception e) {

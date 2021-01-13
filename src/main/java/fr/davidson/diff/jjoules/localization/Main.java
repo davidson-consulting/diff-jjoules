@@ -27,7 +27,7 @@ public class Main {
                 coverageV2
         );
         final Map<String, List<Integer>> faultyLines = finder.findFaultyLines();
-        System.out.println(faultyLines);
+        configuration.report.output(faultyLines);
     }
 
     private static Map<String, Map<String, Map<String, List<Integer>>>> getCoverage(final String pathToFirstVersion, Map<String, List<String>> tests) {

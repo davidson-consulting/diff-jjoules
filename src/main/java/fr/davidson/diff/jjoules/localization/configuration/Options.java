@@ -2,6 +2,8 @@ package fr.davidson.diff.jjoules.localization.configuration;
 
 import com.martiansoftware.jsap.*;
 import fr.davidson.diff.jjoules.instrumentation.Main;
+import fr.davidson.diff.jjoules.localization.output.Report;
+import fr.davidson.diff.jjoules.localization.output.ReportEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,7 +34,8 @@ public class Options {
                 parse.getString("path-dir-first-version"),
                 parse.getString("path-dir-second-version"),
                 parse.getString("tests-list"),
-                parse.getString("path-to-diff")
+                parse.getString("path-to-diff"),
+                ReportEnum.fromReportEnumValue(parse.getString("report"), parse.getString("output-path"))
         );
     }
 
@@ -68,6 +71,22 @@ public class Options {
         pathToDiff.setHelp("[Optional] Specify the path of a diff file. If it is not specified, it will be computed using diff command line.");
         pathToDiff.setStringParser(JSAP.STRING_PARSER);
 
+        FlaggedOption report = new FlaggedOption("report");
+        report.setRequired(false);
+        report.setLongFlag("report");
+        report.setShortFlag('r');
+        report.setDefault("JSONReport");
+        report.setHelp("TODO");
+        report.setStringParser(JSAP.STRING_PARSER);
+
+        FlaggedOption outputPath = new FlaggedOption("output-path");
+        outputPath.setRequired(false);
+        outputPath.setLongFlag("output-path");
+        outputPath.setShortFlag('o');
+        outputPath.setDefault("target/diff-jjoules");
+        outputPath.setHelp("TODO");
+        outputPath.setStringParser(JSAP.STRING_PARSER);
+
         Switch help = new Switch("help");
         help.setLongFlag("help");
         help.setShortFlag('h');
@@ -79,6 +98,8 @@ public class Options {
             jsap.registerParameter(pathDirectorySecondVersion);
             jsap.registerParameter(testsList);
             jsap.registerParameter(pathToDiff);
+            jsap.registerParameter(report);
+            jsap.registerParameter(outputPath);
             jsap.registerParameter(help);
         } catch (JSAPException e) {
             e.printStackTrace();

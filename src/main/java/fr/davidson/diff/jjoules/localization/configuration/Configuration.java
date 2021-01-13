@@ -2,6 +2,7 @@ package fr.davidson.diff.jjoules.localization.configuration;
 
 
 import eu.stamp_project.diff_test_selection.diff.DiffComputer;
+import fr.davidson.diff.jjoules.localization.output.Report;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,10 +30,13 @@ public class Configuration {
 
     public final String diff;
 
+    public final Report report;
+
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
                          String testsList,
-                         String pathToDiff) {
+                         String pathToDiff,
+                         Report report) {
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
         final String[] testClassList = testsList.split(",");
@@ -56,6 +60,7 @@ public class Configuration {
         } else {
             this.diff = this.readFile(pathToDiff);
         }
+        this.report = report;
     }
 
     private String readFile(String pathToFileToRead) {
