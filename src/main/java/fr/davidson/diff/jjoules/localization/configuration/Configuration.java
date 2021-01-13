@@ -3,6 +3,7 @@ package fr.davidson.diff.jjoules.localization.configuration;
 
 import eu.stamp_project.diff_test_selection.diff.DiffComputer;
 import fr.davidson.diff.jjoules.localization.output.Report;
+import fr.davidson.diff.jjoules.localization.select.Selector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,25 +27,50 @@ public class Configuration {
 
     public final String pathToSecondVersion;
 
+    public final String pathToJSONDataFirstVersion;
+
+    public final String pathToJSONDataSecondVersion;
+
     public final Map<String, List<String>> testsList;
 
     public final String diff;
 
     public final Report report;
 
+    public final Selector selector;
+
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
+                         String pathToJSONDataFirstVersion,
+                         String pathToJSONDataSecondVersion,
                          String testsList,
                          String pathToDiff,
-                         Report report) {
+                         Report report,
+                         Selector selector) {
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
-        final String[] testClassList = testsList.split(",");
-        this.testsList = new HashMap<>();
-        for (String testClass : testClassList) {
-            final String[] testClassSplit = testClass.split("#");
-            this.testsList.put(testClassSplit[0], new ArrayList<>());
-            Arrays.stream(testClassSplit[1].split("\\+")).forEach(this.testsList.get(testClassSplit[0])::add);
+        if (checkInputTestSelection(pathToJSONDataFirstVersion, pathToJSONDataSecondVersion, testsList)) {
+            LOGGER.error("You did not provide nor json path data or a test list to use for the green faults localization.");
+            LOGGER.error("You must provide at least one of the following configuration:");
+            LOGGER.error("Paths to JSON data for both versions. This JSON must contain the energy consumption of test methods");
+            LOGGER.error("Or provide a list of test class and test methods to use for the localization");
+            throw new IllegalArgumentException();
+        }
+        if (testsList == null || testsList.isEmpty()) {
+            LOGGER.info("You provided path to JSON data for both versions.");
+            this.pathToJSONDataFirstVersion = pathToJSONDataFirstVersion;
+            this.pathToJSONDataSecondVersion = pathToJSONDataSecondVersion;
+            this.testsList = null;
+        } else {
+            this.pathToJSONDataFirstVersion = "";
+            this.pathToJSONDataSecondVersion = "";
+            final String[] testClassList = testsList.split(",");
+            this.testsList = new HashMap<>();
+            for (String testClass : testClassList) {
+                final String[] testClassSplit = testClass.split("#");
+                this.testsList.put(testClassSplit[0], new ArrayList<>());
+                Arrays.stream(testClassSplit[1].split("\\+")).forEach(this.testsList.get(testClassSplit[0])::add);
+            }
         }
         if (pathToDiff == null || pathToDiff.isEmpty()) {
             LOGGER.warn("No path to diff file has been specified.");
@@ -61,6 +87,15 @@ public class Configuration {
             this.diff = this.readFile(pathToDiff);
         }
         this.report = report;
+        this.selector = selector;
+    }
+
+    private boolean checkInputTestSelection(String pathToJSONDataFirstVersion, String pathToJSONDataSecondVersion, String testsList) {
+        return (pathToJSONDataFirstVersion.isEmpty() || pathToJSONDataSecondVersion.isEmpty()) && (testsList == null || testsList.isEmpty());
+    }
+
+    public boolean mustSelect() {
+        return (this.testsList == null || this.testsList.isEmpty()) && !(this.pathToJSONDataFirstVersion.isEmpty() && this.pathToJSONDataSecondVersion.isEmpty());
     }
 
     private String readFile(String pathToFileToRead) {
@@ -74,5 +109,16 @@ public class Configuration {
             throw new RuntimeException(e);
         }
         return builder.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Configuration{" +
+                "pathToFirstVersion='" + pathToFirstVersion + '\'' +
+                ", pathToSecondVersion='" + pathToSecondVersion + '\'' +
+                ", pathToJSONDataFirstVersion='" + pathToJSONDataFirstVersion + '\'' +
+                ", pathToJSONDataSecondVersion='" + pathToJSONDataSecondVersion + '\'' +
+                ", testsList=" + testsList +
+                '}';
     }
 }

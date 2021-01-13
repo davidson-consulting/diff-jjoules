@@ -1,0 +1,65 @@
+{
+    "com.google.gson.functional.DefaultTypeAdaptersTest-testDateSerializationWithPatternNotOverridenByTypeAdapter": {
+        "energy": 73852,
+        "duration": 2600121.0808080807,
+        "dram": 7052.171717171717,
+        "iteration": 99,
+        "stdev": 15785.535726681857
+    },
+    "com.google.gson.functional.DefaultTypeAdaptersTest-testDateSerializationWithPattern": {
+        "energy": 978635,
+        "duration": 18812435.923076924,
+        "dram": 55661.93406593407,
+        "iteration": 91,
+        "stdev": 503860.7733982037
+    },
+    "com.google.gson.DefaultDateTypeAdapterTest-testDateDeserializationISO8601": {
+        "energy": 364867,
+        "duration": 11070617.646464646,
+        "dram": 33841.79797979798,
+        "iteration": 99,
+        "stdev": 144183.34779317645
+    },
+    "com.google.gson.DefaultDateTypeAdapterTest-testDatePattern": {
+        "energy": 36804,
+        "duration": 7390851.246153846,
+        "dram": 22316.138461538463,
+        "iteration": 65,
+        "stdev": 502478.52482222655
+    },
+    "com.google.gson.functional.DefaultTypeAdaptersTest-testSqlDateSerialization": {
+        "energy": 37170,
+        "duration": 1273365.4666666666,
+        "dram": 2849.8888888888887,
+        "iteration": 90,
+        "stdev": 2416.700446864804
+    },
+    "com.google.gson.functional.DefaultTypeAdaptersTest-testTimestampSerialization": {
+        "energy": 37292,
+        "duration": 1397095.6451612904,
+        "dram": 3337.043010752688,
+        "iteration": 93,
+        "stdev": 9825.752504564593
+    },
+    "com.google.gson.functional.DefaultTypeAdaptersTest-testDateDeserializationWithPattern": {
+        "energy": 74462,
+        "duration": 2485156.6464646463,
+        "dram": 6954.090909090909,
+        "iteration": 99,
+        "stdev": 22100.463837426698
+    },
+    "com.google.gson.functional.DefaultTypeAdaptersTest-testDateSerializationInCollection": {
+        "energy": 76477,
+        "duration": 2671684.4646464647,
+        "dram": 7417.585858585859,
+        "iteration": 99,
+        "stdev": 16852.860260613903
+    },
+    "com.google.gson.DefaultDateTypeAdapterTest-testDateSerialization": {
+        "energy": 36560,
+        "duration": 1028094.7272727273,
+        "dram": 3031.3818181818183,
+        "iteration": 55,
+        "stdev": 5202.098670268241
+    }
+}

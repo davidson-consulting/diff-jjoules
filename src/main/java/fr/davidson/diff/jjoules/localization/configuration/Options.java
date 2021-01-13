@@ -4,6 +4,7 @@ import com.martiansoftware.jsap.*;
 import fr.davidson.diff.jjoules.instrumentation.Main;
 import fr.davidson.diff.jjoules.localization.output.Report;
 import fr.davidson.diff.jjoules.localization.output.ReportEnum;
+import fr.davidson.diff.jjoules.localization.select.SelectorEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,9 +34,12 @@ public class Options {
         return new Configuration(
                 parse.getString("path-dir-first-version"),
                 parse.getString("path-dir-second-version"),
+                parse.getString("path-data-json-first-version"),
+                parse.getString("path-data-json-second-version"),
                 parse.getString("tests-list"),
                 parse.getString("path-to-diff"),
-                ReportEnum.fromReportEnumValue(parse.getString("report"), parse.getString("output-path"))
+                ReportEnum.fromReportEnumValue(parse.getString("report"), parse.getString("output-path")),
+                SelectorEnum.fromSelectorEnumValue(parse.getString("selector"))
         );
     }
 
@@ -60,8 +64,22 @@ public class Options {
         testsList.setRequired(false);
         testsList.setLongFlag("tests-list");
         testsList.setShortFlag('l');
-        testsList.setHelp("[Mandatory] Specify the path to a CSV file that contains the list of tests to be instrumented.");
+        testsList.setHelp("[Optional] Specify the path to a CSV file that contains the list of tests to be instrumented.");
         testsList.setStringParser(JSAP.STRING_PARSER);
+
+        FlaggedOption pathJSONDataFirstVersion = new FlaggedOption("path-data-json-first-version");
+        pathJSONDataFirstVersion.setRequired(false);
+        pathJSONDataFirstVersion.setLongFlag("path-data-json-first-version");
+        pathJSONDataFirstVersion.setShortFlag('f');
+        pathJSONDataFirstVersion.setHelp("TODO");
+        pathJSONDataFirstVersion.setStringParser(JSAP.STRING_PARSER);
+
+        FlaggedOption pathJSONDataSecondVersion = new FlaggedOption("path-data-json-second-version");
+        pathJSONDataSecondVersion.setRequired(false);
+        pathJSONDataSecondVersion.setLongFlag("path-data-json-second-version");
+        pathJSONDataSecondVersion.setShortFlag('s');
+        pathJSONDataSecondVersion.setHelp("TODO");
+        pathJSONDataSecondVersion.setStringParser(JSAP.STRING_PARSER);
 
         FlaggedOption pathToDiff = new FlaggedOption("path-to-diff");
         pathToDiff.setRequired(false);
@@ -75,9 +93,17 @@ public class Options {
         report.setRequired(false);
         report.setLongFlag("report");
         report.setShortFlag('r');
-        report.setDefault("JSONReport");
+        report.setDefault("JSON");
         report.setHelp("TODO");
         report.setStringParser(JSAP.STRING_PARSER);
+
+        FlaggedOption selector = new FlaggedOption("selector");
+        selector.setRequired(false);
+        selector.setLongFlag("selector");
+        selector.setShortFlag('z');
+        selector.setDefault("LargestImpact");
+        selector.setHelp("TODO");
+        selector.setStringParser(JSAP.STRING_PARSER);
 
         FlaggedOption outputPath = new FlaggedOption("output-path");
         outputPath.setRequired(false);
@@ -97,8 +123,12 @@ public class Options {
             jsap.registerParameter(pathDirectoryFirstVersion);
             jsap.registerParameter(pathDirectorySecondVersion);
             jsap.registerParameter(testsList);
+            jsap.registerParameter(pathJSONDataFirstVersion);
+            jsap.registerParameter(pathJSONDataSecondVersion);
+            jsap.registerParameter(testsList);
             jsap.registerParameter(pathToDiff);
             jsap.registerParameter(report);
+            jsap.registerParameter(selector);
             jsap.registerParameter(outputPath);
             jsap.registerParameter(help);
         } catch (JSAPException e) {

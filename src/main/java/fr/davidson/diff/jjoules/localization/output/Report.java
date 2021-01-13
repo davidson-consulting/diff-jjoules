@@ -5,6 +5,9 @@ import java.util.Map;
 
 public interface Report {
 
-    public void output(Map<String, List<Integer>> faultyLines);
+    public void outputSelectedTests(Map<String, List<String>> testsList);
+
+    public void outputSuspectLines(Map<String, List<Integer>> faultyLines);
+
 
 }

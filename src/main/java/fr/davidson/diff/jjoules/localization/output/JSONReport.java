@@ -1,16 +1,16 @@
 package fr.davidson.diff.jjoules.localization.output;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import fr.davidson.diff.jjoules.util.JSONUtils;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.util.List;
 import java.util.Map;
 
 public class JSONReport implements Report {
 
-    public static final String OUTPUT_PATH_NAME = "suspectLines.json";
+    public static final String OUTPUT_PATH_NAME_SELECTED_TESTS = "selectedTests.json";
+
+    public static final String OUTPUT_PATH_NAME_SUSPECT_LINES = "suspectLines.json";
 
     private final String outputPath;
 
@@ -26,13 +26,13 @@ public class JSONReport implements Report {
     }
 
     @Override
-    public void output(Map<String, List<Integer>> faultyLines) {
-        final Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        try (final FileWriter fileWriter = new FileWriter(outputPath + "/" + OUTPUT_PATH_NAME, false)) {
-            fileWriter.write(gson.toJson(faultyLines));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public void outputSelectedTests(Map<String, List<String>> testsList) {
+        JSONUtils.write(outputPath + "/" + OUTPUT_PATH_NAME_SELECTED_TESTS, testsList);
+    }
+
+    @Override
+    public void outputSuspectLines(Map<String, List<Integer>> faultyLines) {
+        JSONUtils.write(outputPath + "/" + OUTPUT_PATH_NAME_SUSPECT_LINES, faultyLines);
     }
 
 }

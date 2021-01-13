@@ -17,8 +17,16 @@ public class Main {
 
     public static void run(Configuration configuration) {
         System.out.println(configuration.toString());
-        final Map<String, Map<String, Map<String, List<Integer>>>> coverageV1 = getCoverage(configuration.pathToFirstVersion, configuration.testsList);
-        final Map<String, Map<String, Map<String, List<Integer>>>> coverageV2 = getCoverage(configuration.pathToSecondVersion, configuration.testsList);
+        final Map<String, List<String>> testsList;
+        if (configuration.mustSelect()) {
+            testsList = configuration.selector.select(configuration.pathToJSONDataFirstVersion, configuration.pathToJSONDataSecondVersion);
+            configuration.report.outputSelectedTests(testsList);
+        } else {
+            testsList = configuration.testsList;
+        }
+        System.out.println(testsList);
+        final Map<String, Map<String, Map<String, List<Integer>>>> coverageV1 = getCoverage(configuration.pathToFirstVersion, testsList);
+        final Map<String, Map<String, Map<String, List<Integer>>>> coverageV2 = getCoverage(configuration.pathToSecondVersion, testsList);
         final CodeFinder finder = new CodeFinder(
                 configuration.pathToFirstVersion,
                 configuration.pathToSecondVersion,
@@ -26,8 +34,8 @@ public class Main {
                 coverageV1,
                 coverageV2
         );
-        final Map<String, List<Integer>> faultyLines = finder.findFaultyLines();
-        configuration.report.output(faultyLines);
+        final Map<String, List<Integer>> suspectLines = finder.findFaultyLines();
+        configuration.report.outputSuspectLines(suspectLines);
     }
 
     private static Map<String, Map<String, Map<String, List<Integer>>>> getCoverage(final String pathToFirstVersion, Map<String, List<String>> tests) {
