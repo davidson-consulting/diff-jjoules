@@ -20,7 +20,7 @@ public class Main {
         final Map<String, List<String>> testsList;
         if (configuration.mustSelect()) {
             testsList = configuration.selector.select(configuration.pathToJSONDataFirstVersion, configuration.pathToJSONDataSecondVersion);
-            configuration.report.outputSelectedTests(testsList, configuration.selector.getDelta(), configuration.selector.getDeltaPerTest());
+            configuration.report.outputSelectedTests(testsList, configuration.selector.getTestRecordPerTestClass());
         } else {
             testsList = configuration.testsList;
         }

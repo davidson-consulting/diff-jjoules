@@ -1,5 +1,6 @@
 package fr.davidson.diff.jjoules.localization.output;
 
+import fr.davidson.diff.jjoules.localization.select.TestRecord;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 
 import java.io.File;
@@ -9,8 +10,6 @@ import java.util.Map;
 public class JSONReport implements Report {
 
     public static final String OUTPUT_PATH_NAME_SELECTED_TESTS = "selectedTests.json";
-
-    public static final String KEY_GLOBAL_DELTA = "global";
 
     public static final String OUTPUT_PATH_NAME_DELTA_PER_TEST = "deltas.json";
 
@@ -30,9 +29,8 @@ public class JSONReport implements Report {
     }
 
     @Override
-    public void outputSelectedTests(Map<String, List<String>> testsList, double delta, Map<String, Double> deltaPerTest) {
-        deltaPerTest.put(KEY_GLOBAL_DELTA, delta);
-        JSONUtils.write(outputPath + "/" + OUTPUT_PATH_NAME_DELTA_PER_TEST, deltaPerTest);
+    public void outputSelectedTests(Map<String, List<String>> testsList, Map<String, List<TestRecord>> testRecordPerTestClass) {
+        JSONUtils.write(outputPath + "/" + OUTPUT_PATH_NAME_DELTA_PER_TEST, testRecordPerTestClass);
         JSONUtils.write(outputPath + "/" + OUTPUT_PATH_NAME_SELECTED_TESTS, testsList);
     }
 

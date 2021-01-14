@@ -28,7 +28,7 @@ public class JSONReportTest {
         final double globalDelta = 20936.0D;
         final Map<String, Double> deltaPerTest = new HashMap<>();
         deltaPerTest.put("com.google.gson.DefaultDateTypeAdapterTest-testDateDeserializationISO8601", -61.0);
-        jsonReport.outputSelectedTests(selection, globalDelta, deltaPerTest);
+        //jsonReport.outputSelectedTests(selection, globalDelta, deltaPerTest); TODO
         assertTrue(new File("target/trash/" + JSONReport.OUTPUT_PATH_NAME_SELECTED_TESTS).exists());
         final Map<String, List<String>>  actual =
                 JSONUtils.read("target/trash/" + JSONReport.OUTPUT_PATH_NAME_SELECTED_TESTS, selection.getClass());
