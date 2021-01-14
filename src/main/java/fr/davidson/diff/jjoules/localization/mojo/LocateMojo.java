@@ -26,24 +26,14 @@ public class LocateMojo extends AbstractMojo {
     /**
      *
      */
-    @Parameter(defaultValue = "", property = "path-data-json-first-version")
+    @Parameter(property = "path-data-json-first-version")
     private String pathJSONDataFirstVersion;
 
     /**
      *
      */
-    @Parameter(defaultValue = "", property = "path-data-json-second-version")
+    @Parameter(property = "path-data-json-second-version")
     private String pathJSONDataSecondVersion;
-
-    /**
-     * [Mandatory] Specify the test used to locate the potential faulty lines
-     * The format must be the following:
-     * my.package.MyTestClass#myTestMethod1+myTestMethod2,my.package.MyTestClass2#myTestMethod3+myTestMethod4
-     * That is to say, the list of test classes separated by a comma ',', and for each test class, the list of test method
-     * separated with a plus '+'. The test class and the list of test method is separated by a sharp '#'
-     */
-    @Parameter(defaultValue = "", property = "test")
-    private String test;
 
     /**
      * [Optional] Specify the path of a diff file. If it is not specified, it will be computed using diff command line.
@@ -84,7 +74,6 @@ public class LocateMojo extends AbstractMojo {
                             this.pathDirSecondVersion + "/" + module,
                             this.pathJSONDataFirstVersion,
                             this.pathJSONDataSecondVersion,
-                            this.test,
                             this.pathToDiff,
                             ReportEnum.fromReportEnumValue(
                                     this.reportType,

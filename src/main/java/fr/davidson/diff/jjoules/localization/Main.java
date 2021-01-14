@@ -17,13 +17,9 @@ public class Main {
 
     public static void run(Configuration configuration) {
         System.out.println(configuration.toString());
-        final Map<String, List<String>> testsList;
-        if (configuration.mustSelect()) {
-            testsList = configuration.selector.select(configuration.pathToJSONDataFirstVersion, configuration.pathToJSONDataSecondVersion);
-            configuration.report.outputSelectedTests(testsList, configuration.selector.getTestRecordPerTestClass());
-        } else {
-            testsList = configuration.testsList;
-        }
+        final Map<String, List<String>> testsList =
+                configuration.selector.select(configuration.pathToJSONDataFirstVersion, configuration.pathToJSONDataSecondVersion);
+        configuration.report.outputSelectedTests(testsList, configuration.selector.getTestRecordPerTestClass());
         System.out.println(testsList);
         final Map<String, Map<String, Map<String, List<Integer>>>> coverageV1 = getCoverage(configuration.pathToFirstVersion, testsList);
         final Map<String, Map<String, Map<String, List<Integer>>>> coverageV2 = getCoverage(configuration.pathToSecondVersion, testsList);
