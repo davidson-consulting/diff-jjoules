@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.localization.select;
+package fr.davidson.diff.jjoules.util;
 
 public class TestRecord {
 

@@ -1,6 +1,8 @@
 package fr.davidson.diff.jjoules.localization.select;
 
 import fr.davidson.diff.jjoules.util.JSONUtils;
+import fr.davidson.diff.jjoules.util.TestRecord;
+import fr.davidson.diff.jjoules.util.Utils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -80,12 +82,12 @@ public class LargestImpactSelector implements Selector {
                     categoryPercentage,
                     currentDelta > 0 ? TestRecord.Category.POSITIVE : TestRecord.Category.NEGATIVE
             );
-            this.addToGivenMap(testClassName, testRecord, this.testRecordPerTestClass);
+            Utils.addToGivenMap(testClassName, testRecord, this.testRecordPerTestClass);
             if (currentDelta > 0 && categoryPercentage > 25) { // TODO
-                this.addToGivenMap(testClassName, testMethodName, selectedTests);
+                Utils.addToGivenMap(testClassName, testMethodName, selectedTests);
             }
         }
-        this.addToGivenMap("global",
+        Utils.addToGivenMap("global",
                 new TestRecord(
                         "",
                         this.globalDelta,
@@ -94,13 +96,6 @@ public class LargestImpactSelector implements Selector {
                         this.globalDelta < 0 ? TestRecord.Category.NEGATIVE : TestRecord.Category.POSITIVE
                 ), this.testRecordPerTestClass);
         return selectedTests;
-    }
-
-    private <T> void addToGivenMap(final String key, T value, Map<String, List<T>> givenMap) {
-        if (!givenMap.containsKey(key)) {
-            givenMap.put(key, new ArrayList<>());
-        }
-        givenMap.get(key).add(value);
     }
 
 }

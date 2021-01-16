@@ -36,7 +36,6 @@ public class Options {
                 parse.getString("path-dir-second-version"),
                 parse.getString("path-data-json-first-version"),
                 parse.getString("path-data-json-second-version"),
-                parse.getString("tests-list"),
                 parse.getString("path-to-diff"),
                 ReportEnum.fromReportEnumValue(parse.getString("report"), parse.getString("output-path")),
                 SelectorEnum.fromSelectorEnumValue(parse.getString("selector"))
@@ -59,13 +58,6 @@ public class Options {
         pathDirectorySecondVersion.setRequired(true);
         pathDirectorySecondVersion.setHelp("[Mandatory] Specify the path to root directory of the project in the second version.");
         pathDirectorySecondVersion.setStringParser(JSAP.STRING_PARSER);
-
-        FlaggedOption testsList = new FlaggedOption("tests-list");
-        testsList.setRequired(false);
-        testsList.setLongFlag("tests-list");
-        testsList.setShortFlag('l');
-        testsList.setHelp("[Optional] Specify the path to a CSV file that contains the list of tests to be instrumented.");
-        testsList.setStringParser(JSAP.STRING_PARSER);
 
         FlaggedOption pathJSONDataFirstVersion = new FlaggedOption("path-data-json-first-version");
         pathJSONDataFirstVersion.setRequired(false);
@@ -122,10 +114,8 @@ public class Options {
         try {
             jsap.registerParameter(pathDirectoryFirstVersion);
             jsap.registerParameter(pathDirectorySecondVersion);
-            jsap.registerParameter(testsList);
             jsap.registerParameter(pathJSONDataFirstVersion);
             jsap.registerParameter(pathJSONDataSecondVersion);
-            jsap.registerParameter(testsList);
             jsap.registerParameter(pathToDiff);
             jsap.registerParameter(report);
             jsap.registerParameter(selector);

@@ -1,7 +1,7 @@
 package fr.davidson.diff.jjoules.localization.output;
 
-import fr.davidson.diff.jjoules.localization.select.TestRecord;
 import fr.davidson.diff.jjoules.util.JSONUtils;
+import fr.davidson.diff.jjoules.util.TestRecord;
 
 import java.io.File;
 import java.util.List;

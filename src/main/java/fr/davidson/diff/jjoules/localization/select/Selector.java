@@ -1,5 +1,7 @@
 package fr.davidson.diff.jjoules.localization.select;
 
+import fr.davidson.diff.jjoules.util.TestRecord;
+
 import java.util.List;
 import java.util.Map;
 
