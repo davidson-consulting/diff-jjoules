@@ -70,8 +70,6 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
                 TEST_FOLDER_PATH + "/" +
                 type.getQualifiedName().replaceAll("\\.", "/") + ".java";
         LOGGER.info("Printing {} to {}", type.getQualifiedName(), fileName);
-        type.getMethods().forEach(method -> LOGGER.info("{}", method.toString()));
-        type.getReferencedTypes().forEach(referencedType -> LOGGER.info("{}", referencedType.getQualifiedName()));
         try (final FileWriter write = new FileWriter(fileName)) {
             write.write(prettyPrinter.printTypes(type));
         } catch (IOException e) {
