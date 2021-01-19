@@ -39,11 +39,11 @@ public class Main {
         final JJoulesProcessor processor = new JJoulesProcessor(configuration.nbDuplication, testsList, configuration.pathToFirstVersion);
         LOGGER.info("Instrument version before commit...");
         Main.run(configuration.pathToFirstVersion, processor, configuration.classpathV1, testsList);
-        Main.inject(configuration.pathToFirstVersion);
+        Main.inject(configuration.pathToFirstVersion, configuration.shouldRandomize);
         processor.setRootPathFolder(configuration.pathToSecondVersion);
         LOGGER.info("Instrument version after commit...");
         Main.run(configuration.pathToSecondVersion, processor, configuration.classpathV2, testsList);
-        Main.inject(configuration.pathToSecondVersion);
+        Main.inject(configuration.pathToSecondVersion, configuration.shouldRandomize);
     }
 
     private static void run(final String rootPathFolder, AbstractProcessor<CtMethod<?>> processor, String[] classpath, Map<String, List<String>> testsList) {
@@ -75,8 +75,8 @@ public class Main {
         }
     }
 
-    private static void inject(final String rootPathFolder) {
-        new JJoulesInjection(rootPathFolder).inject();
+    private static void inject(final String rootPathFolder, boolean randomize) {
+        new JJoulesInjection(rootPathFolder, randomize).inject();
     }
 
 }
