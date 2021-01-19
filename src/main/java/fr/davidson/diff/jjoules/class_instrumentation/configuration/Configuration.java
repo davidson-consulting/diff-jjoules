@@ -10,10 +10,6 @@ import java.util.Arrays;
  */
 public class Configuration {
 
-    public enum JUnitVersion {
-            JUNIT3, JUNIT4, JUNIT5
-    }
-
     public final String pathToFirstVersion;
 
     public final String pathToSecondVersion;
@@ -28,12 +24,15 @@ public class Configuration {
 
     public final int nbDuplication;
 
+    public final boolean shouldRandomize;
+
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
                          String pathToTestListAsCSV,
                          String[] classpath,
                          String[] classpathV2,
-                         int nbDuplication) {
+                         int nbDuplication,
+                         boolean shouldRandomize) {
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
         this.pathToTestListAsCSV = new File(pathToTestListAsCSV).isAbsolute() ? pathToTestListAsCSV : this.pathToFirstVersion + "/" + pathToTestListAsCSV;
@@ -41,6 +40,7 @@ public class Configuration {
         this.classpathV1 = classpath;
         this.classpathV2 = classpathV2;
         this.nbDuplication = nbDuplication;
+        this.shouldRandomize = shouldRandomize;
     }
 
     @Override

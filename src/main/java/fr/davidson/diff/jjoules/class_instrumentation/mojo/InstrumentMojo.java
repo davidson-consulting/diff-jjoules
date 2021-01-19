@@ -52,7 +52,10 @@ public class InstrumentMojo extends AbstractMojo {
     private String classpathPathV2;
 
     @Parameter(property = "nb-duplication", defaultValue = "9")
-    private int nbDuplication;
+    private int nbDuplication = 9;
+
+    @Parameter(property = "randomize", defaultValue = "false")
+    private boolean randomize = false;
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
@@ -77,7 +80,8 @@ public class InstrumentMojo extends AbstractMojo {
                             "--classpath-v1", classpath,
                             "--classpath-v2", classpathV2,
                             junit4 ? "--junit4" : "",
-                            "--nb-duplication", this.nbDuplication + ""
+                            "--nb-duplication", this.nbDuplication + "",
+                            this.randomize ? "--randomize" : ""
                     }
             );
         } catch (Exception e) {

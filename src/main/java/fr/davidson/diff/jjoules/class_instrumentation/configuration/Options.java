@@ -34,7 +34,8 @@ public class Options {
                 parse.getString("tests-list"),
                 parse.getString("classpath-v1").split(":"),
                 parse.getString("classpath-v2").split(":"),
-                parse.getInt("nb-duplication")
+                parse.getInt("nb-duplication"),
+                parse.getBoolean("randomize")
         );
         
     }
@@ -84,6 +85,11 @@ public class Options {
         nbDuplication.setHelp("TODO");
         nbDuplication.setStringParser(JSAP.INTEGER_PARSER);
 
+        Switch randomize = new Switch("randomize");
+        randomize.setLongFlag("randomize");
+        randomize.setDefault("false");
+        randomize.setHelp("TODO");
+
         Switch help = new Switch("help");
         help.setLongFlag("help");
         help.setShortFlag('h');
@@ -97,6 +103,7 @@ public class Options {
             jsap.registerParameter(classpath);
             jsap.registerParameter(classpathV2);
             jsap.registerParameter(nbDuplication);
+            jsap.registerParameter(randomize);
             jsap.registerParameter(help);
         } catch (JSAPException e) {
             e.printStackTrace();

@@ -27,8 +27,11 @@ public class JJoulesInjection {
 
     private final String absolutePathToProjectRoot;
 
-    public JJoulesInjection(String absolutePathToProjectRoot) {
+    private final boolean shouldRandomize;
+
+    public JJoulesInjection(String absolutePathToProjectRoot, boolean shouldRandomize) {
         this.absolutePathToProjectRoot = absolutePathToProjectRoot;
+        this.shouldRandomize = shouldRandomize;
     }
 
     public String inject() {
@@ -40,7 +43,9 @@ public class JJoulesInjection {
             final Node root = Utils.findSpecificNodeFromGivenRoot(document.getFirstChild(), Utils.PROJECT);
 
             this.addJJoulesDependencies(document, root);
-            this.addSurefireRandomRunOrder(document, root);
+            if (this.shouldRandomize) {
+                this.addSurefireRandomRunOrder(document, root);
+            }
 
             final TransformerFactory transformerFactory = TransformerFactory.newInstance();
             final Transformer transformer = transformerFactory.newTransformer();
