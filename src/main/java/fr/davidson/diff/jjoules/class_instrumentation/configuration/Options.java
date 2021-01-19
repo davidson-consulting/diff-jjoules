@@ -33,7 +33,8 @@ public class Options {
                 parse.getString("path-dir-second-version"),
                 parse.getString("tests-list"),
                 parse.getString("classpath-v1").split(":"),
-                parse.getString("classpath-v2").split(":")
+                parse.getString("classpath-v2").split(":"),
+                parse.getInt("nb-duplication")
         );
         
     }
@@ -76,6 +77,13 @@ public class Options {
         classpathV2.setHelp("[Mandatory] Specify the classpath to execute the tests. Should be a single string, separated by ':' (double-dot)");
         classpathV2.setStringParser(JSAP.STRING_PARSER);
 
+        FlaggedOption nbDuplication = new FlaggedOption("nb-duplication");
+        nbDuplication.setRequired(false);
+        nbDuplication.setLongFlag("nb-duplication");
+        nbDuplication.setDefault("9");
+        nbDuplication.setHelp("TODO");
+        nbDuplication.setStringParser(JSAP.INTEGER_PARSER);
+
         Switch help = new Switch("help");
         help.setLongFlag("help");
         help.setShortFlag('h');
@@ -88,6 +96,7 @@ public class Options {
             jsap.registerParameter(pathToDiff);
             jsap.registerParameter(classpath);
             jsap.registerParameter(classpathV2);
+            jsap.registerParameter(nbDuplication);
             jsap.registerParameter(help);
         } catch (JSAPException e) {
             e.printStackTrace();

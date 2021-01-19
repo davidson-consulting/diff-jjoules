@@ -36,7 +36,7 @@ public class Main {
         LOGGER.info("{}", configuration.toString());
         final Map<String, List<String>> testsList = CSVReader.readFile(configuration.pathToTestListAsCSV);
         LOGGER.info("{}", testsList.keySet().stream().map(key -> key + ":" + testsList.get(key)).collect(Collectors.joining("\n")));
-        final JJoulesProcessor processor = new JJoulesProcessor(testsList, configuration.pathToFirstVersion);
+        final JJoulesProcessor processor = new JJoulesProcessor(configuration.nbDuplication, testsList, configuration.pathToFirstVersion);
         LOGGER.info("Instrument version before commit...");
         Main.run(configuration.pathToFirstVersion, processor, configuration.classpathV1, testsList);
         Main.inject(configuration.pathToFirstVersion);

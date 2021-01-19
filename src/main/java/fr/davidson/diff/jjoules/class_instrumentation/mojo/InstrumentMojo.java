@@ -51,6 +51,9 @@ public class InstrumentMojo extends AbstractMojo {
     @Parameter(property = "classpath-path-v2", defaultValue = "classpath")
     private String classpathPathV2;
 
+    @Parameter(property = "nb-duplication", defaultValue = "9")
+    private int nbDuplication;
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         final String classpath;
@@ -73,7 +76,8 @@ public class InstrumentMojo extends AbstractMojo {
                             "--tests-list", this.testsList,
                             "--classpath-v1", classpath,
                             "--classpath-v2", classpathV2,
-                            junit4 ? "--junit4" : ""
+                            junit4 ? "--junit4" : "",
+                            "--nb-duplication", this.nbDuplication + ""
                     }
             );
         } catch (Exception e) {

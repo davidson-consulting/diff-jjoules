@@ -26,17 +26,21 @@ public class Configuration {
 
     public final String[] classpathV2;
 
+    public final int nbDuplication;
+
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
                          String pathToTestListAsCSV,
                          String[] classpath,
-                         String[] classpathV2) {
+                         String[] classpathV2,
+                         int nbDuplication) {
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
         this.pathToTestListAsCSV = new File(pathToTestListAsCSV).isAbsolute() ? pathToTestListAsCSV : this.pathToFirstVersion + "/" + pathToTestListAsCSV;
         this.classpath = classpath;
         this.classpathV1 = classpath;
         this.classpathV2 = classpathV2;
+        this.nbDuplication = nbDuplication;
     }
 
     @Override

@@ -21,8 +21,6 @@ import java.util.*;
  */
 public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
 
-    private final int NB_DUPLICATION_TEST_METHOD = 9;
-
     private static final Logger LOGGER = LoggerFactory.getLogger(JJoulesProcessor.class);
 
     private static final String TEST_FOLDER_PATH = "src/test/java/";
@@ -35,10 +33,13 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
 
     private JUnitVersion jUnitVersion;
 
-    public JJoulesProcessor(final Map<String, List<String>> testsList, String rootPathFolder) {
+    private int nbDuplication;
+
+    public JJoulesProcessor(int nbDuplication, final Map<String, List<String>> testsList, String rootPathFolder) {
         this.instrumentedTypes = new HashSet<>();
         this.testsToBeInstrumented = testsList;
         this.rootPathFolder = rootPathFolder;
+        this.nbDuplication = nbDuplication;
     }
 
     @Override
@@ -110,7 +111,7 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
     }
 
     private void duplicateTestMethodToMeasure(CtMethod<?> ctMethod, CtType<?> testClass) {
-        for (int i = 0; i < NB_DUPLICATION_TEST_METHOD; i++) {
+        for (int i = 0; i < this.nbDuplication ; i++) {
             final CtMethod<?> clone = ctMethod.clone();
             clone.setSimpleName(clone.getSimpleName() + "_" + i);
             testClass.addMethod(clone);

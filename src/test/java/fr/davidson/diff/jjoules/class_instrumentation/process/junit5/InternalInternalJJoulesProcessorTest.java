@@ -221,7 +221,7 @@ public class InternalInternalJJoulesProcessorTest {
                 "}\n");
         final Map<String, List<String>> testsList = new HashMap<>();
         testsList.put("A", Collections.singletonList("testExclusionStrategyWithMode"));
-        final JJoulesProcessor jjoulesProcessor = new JJoulesProcessor(testsList, "");
+        final JJoulesProcessor jjoulesProcessor = new JJoulesProcessor(9 ,testsList, "");
         jjoulesProcessor.process(ctClass.getMethodsByName("testExclusionStrategyWithMode").get(0));
         final CtClass<?> instrumentedCtType = ctClass.getFactory().Class().get(ctClass.getQualifiedName() + "_" + "testExclusionStrategyWithMode");
         System.out.println(instrumentedCtType);
@@ -231,7 +231,7 @@ public class InternalInternalJJoulesProcessorTest {
     void testJUnit3() {
         final Map<String, List<String>> testsList = new HashMap<>();
         testsList.put("A", Collections.singletonList("testToBeProcessed"));
-        final JJoulesProcessor jjoulesProcessor = new JJoulesProcessor(testsList, "");
+        final JJoulesProcessor jjoulesProcessor = new JJoulesProcessor(9, testsList, "");
         final CtClass<?> ctClass = Launcher.parseClass(
                 "class A extends TestCase {" +
                         " void m() {" +
@@ -268,7 +268,7 @@ public class InternalInternalJJoulesProcessorTest {
     void testJUnit45() {
         final Map<String, List<String>> testsList = new HashMap<>();
         testsList.put("A", Collections.singletonList("toBeProcessed"));
-        final JJoulesProcessor jjoulesProcessor = new JJoulesProcessor(testsList, "");
+        final JJoulesProcessor jjoulesProcessor = new JJoulesProcessor(9, testsList, "");
         final CtClass<?> ctClass = Launcher.parseClass(
                 "class A {" +
                         " void m() {" +
