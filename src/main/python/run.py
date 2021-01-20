@@ -133,6 +133,7 @@ DURATION_NS_KEY = 'duration|ns'
 DRAM_MJ_KEY = 'dram|uJ'
 
 def get_energy_data(data):
+    print(data)
     return {
         'energy': data[CPU_MJ_KEY],
         'duration': data[DURATION_NS_KEY],
