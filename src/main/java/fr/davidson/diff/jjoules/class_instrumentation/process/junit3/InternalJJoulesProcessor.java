@@ -30,7 +30,9 @@ public class InternalJJoulesProcessor extends AbstractInternalJJoulesProcessor {
     public Predicate<CtMethod<?>> getPredicateIsTest() {
         return (testMethod) -> {
             final CtType<?> testClass = testMethod.getParent(CtType.class);
-            return testMethod.getSimpleName().startsWith("test") &&
+            return testMethod.getParameters().isEmpty() &&
+                    !testMethod.getModifiers().contains(ModifierKind.PRIVATE) &&
+                    testMethod.getSimpleName().startsWith("test") &&
                     testClass.getSuperclass() != null &&
                     testClass.getSuperclass().getSimpleName().equals("TestCase");
         };

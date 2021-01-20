@@ -26,7 +26,7 @@ public class InternalJJoulesProcessor extends AbstractInternalJJoulesProcessor {
             .stream()
             .anyMatch(ctAnnotation ->
                     ctAnnotation.getType().getQualifiedName().endsWith("Test")
-            );
+            ) && m.getParameters().isEmpty();
 
     public InternalJJoulesProcessor(JUnitVersion jUnitVersion) {
         super(jUnitVersion);
