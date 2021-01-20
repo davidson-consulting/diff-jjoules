@@ -53,8 +53,8 @@ public class LargestImpactSelector implements Selector {
                 final double energyV1;
                 final double energyV2;
                 if (dataV1.get(testName) instanceof Double) {
-                    energyV1 = (double) dataV1.get(testName);
-                    energyV2 = (double) dataV2.get(testName);
+                    energyV1 = new Double(dataV1.get(testName).toString());
+                    energyV2 = new Double(dataV2.get(testName).toString());
                 } else {
                     energyV1 = (double) ((Map)dataV1.get(testName)).get("energy");
                     energyV2 = (double) ((Map)dataV2.get(testName)).get("energy");
