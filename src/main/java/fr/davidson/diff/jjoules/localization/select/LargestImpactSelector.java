@@ -57,16 +57,16 @@ public class LargestImpactSelector implements Selector {
                     energyV2 = (double) dataV2.get(testName);
                 } else {
                     energyV1 = (double) ((Map)dataV1.get(testName)).get("energy");
-                    energyV2 = (double) ((Map)dataV1.get(testName)).get("energy");
+                    energyV2 = (double) ((Map)dataV2.get(testName)).get("energy");
                 }
                 final double currentEnergyDelta = energyV2 - energyV1;
                 if (currentEnergyDelta < 0) {
-                    negativeDelta += currentEnergyDelta;
+                    this.negativeDelta += currentEnergyDelta;
                 } else {
-                    positiveDelta += currentEnergyDelta;
+                    this.positiveDelta += currentEnergyDelta;
                 }
-                globalDelta += currentEnergyDelta;
-                deltaPerTestName.put(testName, currentEnergyDelta);
+                this.globalDelta += currentEnergyDelta;
+                this.deltaPerTestName.put(testName, currentEnergyDelta);
             }
         }
     }
