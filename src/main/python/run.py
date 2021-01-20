@@ -83,8 +83,11 @@ def run_mvn_instrument_jjoules(path_first_version, path_second_version):
     )
 
 CMD_JJOULES_LOCATE = 'fr.davidson:diff-jjoules:locate'
+OPT_DATA_JSON_FIRST_VERSION = '-Dpath-data-json-first-version='
+OPT_DATA_JSON_SECOND_VERSION = '-Dpath-data-json-second-version='
+OPT_OUTPUT = '-Doutput-path='
 
-def run_mvn_locate_jjoules(path_first_version, path_second_version, tests):
+def run_mvn_locate_jjoules(path_first_version, path_second_version, tests, data_first_version_path, data_second_version_path, output):
     run_command(
         ' '.join([
             MVN_CMD,
@@ -92,7 +95,10 @@ def run_mvn_locate_jjoules(path_first_version, path_second_version, tests):
             path_first_version + '/' + MVN_POM_FILE,
             OPT_PATH_DIR_SECOND_VERSION  + path_second_version,
             OPT_TEST + tests,
-            CMD_JJOULES_LOCATE
+            CMD_JJOULES_LOCATE,
+            OPT_DATA_JSON_FIRST_VERSION + data_first_version_path,
+            OPT_DATA_JSON_SECOND_VERSION + data_second_version_path,
+            OPT_OUTPUT + output
         ])
     )
 
@@ -159,7 +165,7 @@ def write_json(path_to_json, data):
     with open(path_to_json, 'w') as outfile:
         outfile.write(json.dumps(data, indent=4))
 
-def run_tests(nb_iteration, first_version_path, second_version_path, tests_to_execute):
+def run_tests(nb_iteration, first_version_path, second_version_path, tests_to_execute, output):
     result_v1 = {}
     result_v2 = {}
     for i in range(nb_iteration):
@@ -171,17 +177,17 @@ def run_tests(nb_iteration, first_version_path, second_version_path, tests_to_ex
         result_v1[test] = sorted(result_v1[test])[int(len(result_v1[test]) / 2)]
     for test in result_v2:
         result_v2[test] = sorted(result_v2[test])[int(len(result_v2[test]) / 2)]
-    write_json('data_v1.json', result_v1)
-    write_json('data_v2.json', result_v2)
+    write_json(output + '/data_v1.json', result_v1)
+    write_json(output + '/data_v2.json', result_v2)
     delta_acc = 0
     for name in result_v1:
         if name in result_v2:
             delta_acc = delta_acc + (result_v2[name] - result_v1[name])
     print(delta_acc)
 
-def select_test_to_locate():
-    data_v1 = read_json('data_v1.json')
-    data_v2 = read_json('data_v2.json')
+def select_test_to_locate(output):
+    data_v1 = read_json(output + '/data_v1.json')
+    data_v2 = read_json(output + '/data_v2.json')
 
     delta_per_test = {}
     delta_acc = 0
@@ -209,6 +215,7 @@ if __name__ == '__main__':
     first_version_path = args.first_version_path
     second_version_path = args.second_version_path
     nb_iteration = args.iteration
+    output = args.output
 
     run_mvn_install(first_version_path)
     run_mvn_install(second_version_path)
@@ -218,9 +225,16 @@ if __name__ == '__main__':
     run_mvn_build_cp(first_version_path)
     run_mvn_build_cp(second_version_path)
     run_mvn_instrument_jjoules(first_version_path, second_version_path)
-    run_tests(nb_iteration, first_version_path, second_version_path, get_tests_to_execute(first_version_path))
+    run_tests(nb_iteration, first_version_path, second_version_path, get_tests_to_execute(first_version_path), output)
 
-    tests = select_test_to_locate()
+    tests = select_test_to_locate(output)
     formatted_tests = ','.join([test_class_name + '#' + '+'.join(tests[test_class_name]) for test_class_name in tests])
     print(formatted_tests)
-    run_mvn_locate_jjoules(first_version_path, second_version_path, formatted_tests)
+    run_mvn_locate_jjoules(
+        first_version_path, 
+        second_version_path, 
+        formatted_tests, 
+        output + '/data_v1.json',
+        output + '/data_v2.json',
+        output
+    )

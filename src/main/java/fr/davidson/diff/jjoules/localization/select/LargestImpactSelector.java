@@ -37,21 +37,28 @@ public class LargestImpactSelector implements Selector {
 
     @Override
     public Map<String, List<String>> select(String pathJSONDataFirstVersion, String pathJSONDataSecondVersion) {
-        final Map<String, Map> dataV1 = JSONUtils.read(pathJSONDataFirstVersion, Map.class);
-        final Map<String, Map> dataV2 = JSONUtils.read(pathJSONDataSecondVersion, Map.class);
+        final Map<String, ?> dataV1 = JSONUtils.read(pathJSONDataFirstVersion, Map.class);
+        final Map<String, ?> dataV2 = JSONUtils.read(pathJSONDataSecondVersion, Map.class);
         this.computeDelta(dataV1, dataV2);
         return _select();
     }
 
-    private void computeDelta(final Map<String, Map> dataV1,
-                              final Map<String, Map> dataV2) {
+    private void computeDelta(final Map<String, ?> dataV1,
+                              final Map<String, ?> dataV2) {
         this.positiveDelta = 0.0D;
         this.negativeDelta = 0.0D;
         this.globalDelta = 0.0D;
         for (String testName : dataV1.keySet()) {
             if (dataV2.containsKey(testName)) {
-                final double energyV1 = (double) dataV1.get(testName).get("energy");
-                final double energyV2 = (double) dataV2.get(testName).get("energy");
+                final double energyV1;
+                final double energyV2;
+                if (dataV1.get(testName) instanceof Double) {
+                    energyV1 = (double) dataV1.get(testName);
+                    energyV2 = (double) dataV2.get(testName);
+                } else {
+                    energyV1 = (double) ((Map)dataV1.get(testName)).get("energy");
+                    energyV2 = (double) ((Map)dataV1.get(testName)).get("energy");
+                }
                 final double currentEnergyDelta = energyV2 - energyV1;
                 if (currentEnergyDelta < 0) {
                     negativeDelta += currentEnergyDelta;

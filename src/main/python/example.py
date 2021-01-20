@@ -59,5 +59,7 @@ if __name__ == '__main__':
         '--second-version-path',
         '/tmp/example_v2',
         '--iteration',
-        '1'
+        '1',
+        '--output',
+        os.path.abspath('./')
     ]))
