@@ -77,7 +77,7 @@ public class LocateMojo extends AbstractMojo {
                             this.pathToDiff,
                             ReportEnum.fromReportEnumValue(
                                     this.reportType,
-                                    this.outputPath.isEmpty() ?
+                                    this.outputPath == null || this.outputPath.isEmpty() ?
                                             this.project.getBasedir().getAbsolutePath() + "/" + defaultOutputPath : this.outputPath),
                             SelectorEnum.fromSelectorEnumValue(this.selectorType)
                     )

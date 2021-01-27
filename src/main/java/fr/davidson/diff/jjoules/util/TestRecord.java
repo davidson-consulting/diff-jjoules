@@ -20,4 +20,14 @@ public class TestRecord {
     public final double categoryPercentage;
     public final Category category;
 
+    @Override
+    public String toString() {
+        return "TestRecord{" +
+                "name='" + name + '\'' +
+                ", delta=" + delta +
+                ", globalPercentage=" + globalPercentage +
+                ", categoryPercentage=" + categoryPercentage +
+                ", category=" + category +
+                '}';
+    }
 }
