@@ -66,14 +66,13 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
     private void printCtType(CtType<?> type) {
         final File directory = new File(this.rootPathFolder + "/" + TEST_FOLDER_PATH);
         type.getFactory().getEnvironment().setSourceOutputDirectory(directory);
-        //final PrettyPrinter prettyPrinter = type.getFactory().getEnvironment().createPrettyPrinter();
+        final PrettyPrinter prettyPrinter = type.getFactory().getEnvironment().createPrettyPrinter();
         final String fileName = this.rootPathFolder + "/" +
                 TEST_FOLDER_PATH + "/" +
                 type.getQualifiedName().replaceAll("\\.", "/") + ".java";
         LOGGER.info("Printing {} to {}", type.getQualifiedName(), fileName);
         try (final FileWriter write = new FileWriter(fileName)) {
-            //write.write(prettyPrinter.printTypes(type));
-            write.write(type.toString());
+            write.write(prettyPrinter.printTypes(type));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -93,26 +92,11 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
         final CtType<?> testClass = originalTestClass.clone();
         originalTestClass.getPackage().addType(testClass);
         testClass.setSimpleName(testClass.getSimpleName() + "_" + ctMethod.getSimpleName());
-        long start = System.currentTimeMillis();
-        NodeManager.replaceAllReferences(originalTestClass, clone, testClass);
-        long elapsedTime = System.currentTimeMillis() - start;
-        System.out.println("replaceAllReference method:" + elapsedTime);
-        start = System.currentTimeMillis();
-        NodeManager.replaceAllReferences(originalTestClass, testClass, testClass);
-        elapsedTime = System.currentTimeMillis() - start;
-        System.out.println("replaceAllReference testClass:" + elapsedTime);
-        start = System.currentTimeMillis();
         NodeManager.removeOtherMethods(ctMethod, testClass, internalProcessor.getPredicateIsTest());
-        elapsedTime = System.currentTimeMillis() - start;
-        System.out.println("remove other methods:" + elapsedTime);
-        start = System.currentTimeMillis();
+        NodeManager.replaceAllReferences(originalTestClass, clone, testClass);
+        NodeManager.replaceAllReferences(originalTestClass, testClass, testClass);
         internalProcessor.processSetupAndTearDown(ctMethod, testClass);
-        elapsedTime = System.currentTimeMillis() - start;
-        System.out.println("processSetupAndTearDown:" + elapsedTime);
-        start = System.currentTimeMillis();
         duplicateTestMethodToMeasure(clone, testClass);
-        elapsedTime = System.currentTimeMillis() - start;
-        System.out.println("duplicate:" + elapsedTime);
         testClass.removeMethod(ctMethod);
         this.instrumentedTypes.add(testClass);
     }

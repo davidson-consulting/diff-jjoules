@@ -34,12 +34,15 @@ public class Main {
         // 1 compute the deltas of the tests : POSITIVE, NEGATIVE and NEUTRAL tests
         final DeltasComputation deltasComputation = new DeltasComputation();
         deltasComputation.compute(dataJsonV1, dataJsonV2);
-        deltasComputation.getDeltaPerTestName();
         final TestDeltaClassifier testDeltaClassifier = new TestDeltaClassifier();
         testDeltaClassifier.classify(deltasComputation);
         // 2 split the sources lines into three sets : positive, negative, unknown
         final LinesDeltaClassifier linesDeltaClassifier = new LinesDeltaClassifier(
-                testDeltaClassifier, configuration.pathToFirstVersion, configuration.pathToSecondVersion, configuration.diff
+                deltasComputation,
+                testDeltaClassifier,
+                configuration.pathToFirstVersion,
+                configuration.pathToSecondVersion,
+                configuration.diff
         );
         linesDeltaClassifier.classify(coverageV1, coverageV2);
         configuration.report.outputTestsClassification(testDeltaClassifier);

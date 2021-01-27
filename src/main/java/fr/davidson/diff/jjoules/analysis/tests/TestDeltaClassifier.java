@@ -43,8 +43,8 @@ public class TestDeltaClassifier {
                 .stream()
                 .filter(testName -> deltaPerTestName.get(testName) < 0)
                 .count();
-        final double sharePerPositiveTest = 100.0D / (double) nbPositiveTest;
-        final double sharePerNegativeTest = 100.0D / (double) nbNegativeTest;
+        final double sharePerPositiveTest = nbPositiveTest > 0 ? 100.0D / (double) nbPositiveTest : 100.0D;
+        final double sharePerNegativeTest = nbNegativeTest > 0 ? 100.0D / (double) nbNegativeTest : 100.0D;
 
         for (String testName : deltaPerTestName.keySet()) {
             final double currentDelta = deltaPerTestName.get(testName);

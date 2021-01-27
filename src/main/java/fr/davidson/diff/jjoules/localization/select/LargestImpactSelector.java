@@ -90,7 +90,7 @@ public class LargestImpactSelector implements Selector {
                     currentDelta > 0 ? TestRecord.Category.POSITIVE : TestRecord.Category.NEGATIVE
             );
             Utils.addToGivenMap(testClassName, testRecord, this.testRecordPerTestClass);
-            if (currentDelta > 0 && categoryPercentage > 25) { // TODO
+            if (currentDelta != 0 && categoryPercentage > 25) { // TODO
                 Utils.addToGivenMap(testClassName, testMethodName, selectedTests);
             }
         }

@@ -2,6 +2,7 @@ package fr.davidson.diff.jjoules.analysis.lines;
 
 import eu.stamp_project.diff_test_selection.diff.ModifiedLinesTool;
 import eu.stamp_project.diff_test_selection.utils.DiffTestSelectionChecker;
+import fr.davidson.diff.jjoules.analysis.tests.DeltasComputation;
 import fr.davidson.diff.jjoules.analysis.tests.TestDeltaClassifier;
 import fr.davidson.diff.jjoules.util.Utils;
 
@@ -25,7 +26,12 @@ public class LinesDeltaClassifier {
     private final Map<String, Double> negativeTests;
     private final Map<String, Double> neutralTests;
 
-    public LinesDeltaClassifier(TestDeltaClassifier testDeltaClassifier,
+    private final double globalDelta;
+    private final double negativeDelta;
+    private final double positiveDelta;
+
+    public LinesDeltaClassifier(DeltasComputation deltasComputation,
+                                TestDeltaClassifier testDeltaClassifier,
                                 String pathToFirstVersion,
                                 String pathToSecondVersion,
                                 String diff) {
@@ -35,7 +41,10 @@ public class LinesDeltaClassifier {
                 testDeltaClassifier.getNeutralTests(),
                 pathToFirstVersion,
                 pathToSecondVersion,
-                diff
+                diff,
+                deltasComputation.getGlobalDelta(),
+                deltasComputation.getNegativeDelta(),
+                deltasComputation.getPositiveDelta()
         );
     }
 
@@ -44,7 +53,11 @@ public class LinesDeltaClassifier {
                                 Map<String, Double> neutralTests,
                                 String pathToFirstVersion,
                                 String pathToSecondVersion,
-                                String diff) {
+                                String diff,
+                                double globalDelta,
+                                double negativeDelta,
+                                double positiveDelta
+    ) {
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
         this.diff = diff;
@@ -54,6 +67,9 @@ public class LinesDeltaClassifier {
         this.positiveTests = positiveTests;
         this.negativeTests = negativeTests;
         this.neutralTests = neutralTests;
+        this.globalDelta = globalDelta;
+        this.negativeDelta = negativeDelta;
+        this.positiveDelta = positiveDelta;
     }
 
     public void classify(Map<String, Map<String, Map<String, List<Integer>>>> coverageV1,
@@ -73,7 +89,7 @@ public class LinesDeltaClassifier {
     }
 
     private void _classify(Map<String, List<Integer>> modifiedLinesPerClassName,
-                          Map<String, Map<String, Map<String, List<Integer>>>> coverage) {
+                           Map<String, Map<String, Map<String, List<Integer>>>> coverage) {
         for (String modifiedClassName : modifiedLinesPerClassName.keySet()) {
             final List<Integer> modifiedLines = modifiedLinesPerClassName.get(modifiedClassName);
             for (String testClassName : coverage.keySet()) {
@@ -86,16 +102,51 @@ public class LinesDeltaClassifier {
                                     .filter(modifiedLines::contains)
                                     .collect(Collectors.toList());
                             final String key = testClassName + '-' + testMethodName;
+                            System.out.println(key);
                             if (this.positiveTests.containsKey(key)) {
-                                Utils.addToGivenMapSet(modifiedClassName, matchingLines, this.positiveLines);
+                                addToMapIfNotInTheOtherOne(
+                                        this.positiveTests.get(key),
+                                        this.negativeDelta,
+                                        this.positiveLines,
+                                        this.negativeLines,
+                                        modifiedClassName,
+                                        matchingLines
+                                );
                             } else if (this.negativeTests.containsKey(key)) {
-                                Utils.addToGivenMapSet(modifiedClassName, matchingLines, this.negativeLines);
+                                addToMapIfNotInTheOtherOne(
+                                        this.negativeTests.get(key),
+                                        this.positiveDelta,
+                                        this.negativeLines,
+                                        this.positiveLines,
+                                        modifiedClassName,
+                                        matchingLines
+                                );
                             } else {
                                 Utils.addToGivenMapSet(modifiedClassName, matchingLines, this.unknownLines);
                             }
                         }
                     }
                 }
+            }
+        }
+    }
+
+    private void addToMapIfNotInTheOtherOne(double deltaTest,
+                                            double deltaOtherCategory,
+                                            final Map<String, Set<Integer>> map,
+                                            final Map<String, Set<Integer>> otherMap,
+                                            String modifiedClassName,
+                                            List<Integer> matchingLines) {
+        if (Math.abs(deltaTest) > Math.abs(deltaOtherCategory)) {
+            if (otherMap.containsKey(modifiedClassName) &&
+                    otherMap.get(modifiedClassName).containsAll(matchingLines)) {
+                otherMap.get(modifiedClassName).removeAll(matchingLines);
+                if (otherMap.get(modifiedClassName).isEmpty()) {
+                    otherMap.remove(modifiedClassName);
+                }
+                Utils.addToGivenMapSet(modifiedClassName, matchingLines, this.unknownLines);
+            } else {
+                Utils.addToGivenMapSet(modifiedClassName, matchingLines, map);
             }
         }
     }
