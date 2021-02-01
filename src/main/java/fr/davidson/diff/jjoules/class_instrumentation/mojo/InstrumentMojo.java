@@ -57,6 +57,9 @@ public class InstrumentMojo extends AbstractMojo {
     @Parameter(property = "randomize", defaultValue = "false")
     private boolean randomize = false;
 
+    @Parameter(property = "exec-time-in-ms", defaultValue = "2000")
+    private int execTimeInMs = 2000;
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         final String classpath;
@@ -81,7 +84,8 @@ public class InstrumentMojo extends AbstractMojo {
                             "--classpath-v2", classpathV2,
                             junit4 ? "--junit4" : "",
                             "--nb-duplication", this.nbDuplication + "",
-                            this.randomize ? "--randomize" : ""
+                            this.randomize ? "--randomize" : "",
+                            "--exec-time-in-ms", this.execTimeInMs + ""
                     }
             );
         } catch (Exception e) {

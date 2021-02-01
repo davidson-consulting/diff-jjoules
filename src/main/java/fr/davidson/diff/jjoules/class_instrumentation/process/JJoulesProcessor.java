@@ -33,13 +33,26 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
 
     private JUnitVersion jUnitVersion;
 
-    private int nbDuplication;
+    private final Map<String, Integer> numberOfDuplicationRequired;
 
-    public JJoulesProcessor(int nbDuplication, final Map<String, List<String>> testsList, String rootPathFolder) {
+    private final int numberOfDuplicationForAll;
+
+    public JJoulesProcessor(int numberOfDuplicationForAll,
+                            final Map<String, List<String>> testsList, String rootPathFolder) {
         this.instrumentedTypes = new HashSet<>();
         this.testsToBeInstrumented = testsList;
         this.rootPathFolder = rootPathFolder;
-        this.nbDuplication = nbDuplication;
+        this.numberOfDuplicationRequired = Collections.emptyMap();
+        this.numberOfDuplicationForAll = numberOfDuplicationForAll;
+    }
+
+    public JJoulesProcessor(final Map<String, Integer> numberOfDuplicationRequired,
+                            final Map<String, List<String>> testsList, String rootPathFolder) {
+        this.instrumentedTypes = new HashSet<>();
+        this.testsToBeInstrumented = testsList;
+        this.rootPathFolder = rootPathFolder;
+        this.numberOfDuplicationRequired = numberOfDuplicationRequired;
+        this.numberOfDuplicationForAll = -1;
     }
 
     @Override
@@ -91,12 +104,15 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
         final CtMethod<?> clone = ctMethod.clone();
         final CtType<?> testClass = originalTestClass.clone();
         originalTestClass.getPackage().addType(testClass);
-        testClass.setSimpleName(testClass.getSimpleName() + "_" + ctMethod.getSimpleName());
+        final String testName = originalTestClass.getQualifiedName() + "#" + clone.getSimpleName();
+        final int numberOfDuplication = this.numberOfDuplicationRequired.isEmpty() ?
+                this.numberOfDuplicationForAll : this.numberOfDuplicationRequired.get(testName);
+        testClass.setSimpleName(testClass.getSimpleName() + "_" + ctMethod.getSimpleName());// + "_" + numberOfDuplication);
         NodeManager.removeOtherMethods(ctMethod, testClass, internalProcessor.getPredicateIsTest());
         NodeManager.replaceAllReferences(originalTestClass, clone, testClass);
         NodeManager.replaceAllReferences(originalTestClass, testClass, testClass);
         internalProcessor.processSetupAndTearDown(ctMethod, testClass);
-        duplicateTestMethodToMeasure(clone, testClass);
+        duplicateTestMethodToMeasure(clone, testClass, numberOfDuplication);
         testClass.removeMethod(ctMethod);
         this.instrumentedTypes.add(testClass);
     }
@@ -110,8 +126,8 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
         return JUnitVersion.JUNIT4;
     }
 
-    private void duplicateTestMethodToMeasure(CtMethod<?> ctMethod, CtType<?> testClass) {
-        for (int i = 0; i < this.nbDuplication ; i++) {
+    private void duplicateTestMethodToMeasure(CtMethod<?> ctMethod, CtType<?> testClass, int numberOfDuplication) {
+        for (int i = 0; i < numberOfDuplication ; i++) {
             final CtMethod<?> clone = ctMethod.clone();
             clone.setSimpleName(clone.getSimpleName() + "_" + i);
             testClass.addMethod(clone);

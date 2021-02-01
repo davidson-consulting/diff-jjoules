@@ -1,7 +1,6 @@
 package fr.davidson.diff.jjoules.class_instrumentation.configuration;
 
 import java.io.File;
-import java.util.Arrays;
 
 /**
  * @author Benjamin DANGLOT
@@ -26,13 +25,16 @@ public class Configuration {
 
     public final boolean shouldRandomize;
 
+    public final int timeOfExecutionToReachInMs;
+
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
                          String pathToTestListAsCSV,
                          String[] classpath,
                          String[] classpathV2,
                          int nbDuplication,
-                         boolean shouldRandomize) {
+                         boolean shouldRandomize,
+                         int timeOfExecutionToReachInMs) {
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
         this.pathToTestListAsCSV = new File(pathToTestListAsCSV).isAbsolute() ? pathToTestListAsCSV : this.pathToFirstVersion + "/" + pathToTestListAsCSV;
@@ -41,6 +43,7 @@ public class Configuration {
         this.classpathV2 = classpathV2;
         this.nbDuplication = nbDuplication;
         this.shouldRandomize = shouldRandomize;
+        this.timeOfExecutionToReachInMs = timeOfExecutionToReachInMs;
     }
 
     @Override
