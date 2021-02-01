@@ -60,10 +60,10 @@ public class Main {
         LOGGER.info("Instrument version before commit...");
         Main.run(configuration.pathToFirstVersion, processor, configuration.classpathV1, testsList);
         Main.inject(configuration.pathToFirstVersion, configuration.shouldRandomize);
-//        processor.setRootPathFolder(configuration.pathToSecondVersion);
-//        LOGGER.info("Instrument version after commit...");
-//        Main.run(configuration.pathToSecondVersion, processor, configuration.classpathV2, testsList);
-//        Main.inject(configuration.pathToSecondVersion, configuration.shouldRandomize);
+        processor.setRootPathFolder(configuration.pathToSecondVersion);
+        LOGGER.info("Instrument version after commit...");
+        Main.run(configuration.pathToSecondVersion, processor, configuration.classpathV2, testsList);
+        Main.inject(configuration.pathToSecondVersion, configuration.shouldRandomize);
     }
 
     @NotNull
