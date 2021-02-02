@@ -7,6 +7,8 @@ import fr.davidson.diff.jjoules.class_instrumentation.duplications.XMLReader;
 import fr.davidson.diff.jjoules.class_instrumentation.maven.JJoulesInjection;
 import fr.davidson.diff.jjoules.class_instrumentation.process.JJoulesProcessor;
 import fr.davidson.diff.jjoules.util.CSVReader;
+import fr.davidson.diff.jjoules.util.JSONUtils;
+import jdk.nashorn.internal.ir.debug.JSONWriter;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +54,7 @@ public class Main {
             } else {
                 final Map<String, Double> timePerTest = XMLReader.readAllXML(configuration.pathToFirstVersion + "target/surefire-reports/");
                 numberOfDuplicationRequired = duplicationManager.computeNumberOfDuplicationRequired(testsList, timePerTest);
+                JSONUtils.write(configuration.pathToFirstVersion + "/duplications.json", numberOfDuplicationRequired);
             }
         } else {
             numberOfDuplicationRequired = getDefaultNBDuplication(configuration, testsList);
