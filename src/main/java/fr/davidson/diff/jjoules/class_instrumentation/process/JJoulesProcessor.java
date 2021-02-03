@@ -2,6 +2,7 @@ package fr.davidson.diff.jjoules.class_instrumentation.process;
 
 import fr.davidson.diff.jjoules.util.Checker;
 import fr.davidson.diff.jjoules.util.NodeManager;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.processing.AbstractProcessor;
@@ -9,10 +10,9 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.visitor.PrettyPrinter;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Benjamin DANGLOT
@@ -73,7 +73,7 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
     @Override
     public void processingDone() {
         LOGGER.info("Processing Done...");
-        this.instrumentedTypes.forEach(this::printCtType);
+//        this.instrumentedTypes.forEach(this::printCtType);
     }
 
     private void printCtType(CtType<?> type) {
@@ -112,9 +112,42 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
         NodeManager.replaceAllReferences(originalTestClass, clone, testClass);
         NodeManager.replaceAllReferences(originalTestClass, testClass, testClass);
         internalProcessor.processSetupAndTearDown(ctMethod, testClass);
-        duplicateTestMethodToMeasure(clone, testClass, numberOfDuplication);
-        testClass.removeMethod(ctMethod);
-        this.instrumentedTypes.add(testClass);
+        final long start = System.currentTimeMillis();
+        this.printCtType(testClass);
+        this.addDuplicationToAlreadyPrintedTestClass(clone, testClass, numberOfDuplication);
+        final long elapsedTime = System.currentTimeMillis() - start;
+        LOGGER.info("Printed {} with {} duplication in {} ms", testName, numberOfDuplication, elapsedTime);
+//        duplicateTestMethodToMeasure(clone, testClass, numberOfDuplication);
+//        this.instrumentedTypes.add(testClass);
+    }
+    
+    private void addDuplicationToAlreadyPrintedTestClass(CtMethod<?> ctMethod, CtType<?> testClass, int numberOfDuplication) {
+        final String fileName = this.rootPathFolder + "/" +
+                TEST_FOLDER_PATH + "/" +
+                testClass.getQualifiedName().replaceAll("\\.", "/") + ".java";
+        final String content = readContentOfTestClass(fileName);
+        ctMethod.setSimpleName(ctMethod.getSimpleName() + "_%s");
+        final String toDuplicate = ctMethod.toString();
+        try (final FileWriter fileWriter = new FileWriter(fileName)) {
+            fileWriter.write(content);
+            for (int i = 0; i < numberOfDuplication; i++) {
+                fileWriter.write(String.format(toDuplicate, i));
+            }
+            fileWriter.write("}");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @NotNull
+    private String readContentOfTestClass(final String fileName) {
+        try (final BufferedReader reader =
+                     new BufferedReader(new FileReader(fileName))) {
+            final String content = reader.lines().collect(Collectors.joining("\n"));
+            return content.substring(0, content.length() - 1);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private JUnitVersion getJUnitVersion(CtMethod<?> ctMethod) {
