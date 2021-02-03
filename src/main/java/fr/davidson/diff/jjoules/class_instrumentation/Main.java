@@ -46,13 +46,13 @@ public class Main {
         final Map<String, Integer> numberOfDuplicationRequired;
         if (configuration.nbDuplication == -1) {
             final DuplicationManager duplicationManager = new DuplicationManager(configuration.timeOfExecutionToReachInMs);
-            if (!new File(configuration.pathToFirstVersion + "target/surefire-reports/").exists()) {
+            if (!new File(configuration.pathToFirstVersion + "/target/surefire-reports/").exists()) {
                 LOGGER.warn("You specified -1 to compute dynamically the number of duplication.");
-                LOGGER.warn("However, the folder {} does not exists.", configuration.pathToFirstVersion + "target/surefire-reports/");
+                LOGGER.warn("However, the folder {} does not exists.", configuration.pathToFirstVersion + "/target/surefire-reports/");
                 LOGGER.warn("Using default value (10) for number of duplication");
                 numberOfDuplicationRequired = getDefaultNBDuplication(configuration, testsList);
             } else {
-                final Map<String, Double> timePerTest = XMLReader.readAllXML(configuration.pathToFirstVersion + "target/surefire-reports/");
+                final Map<String, Double> timePerTest = XMLReader.readAllXML(configuration.pathToFirstVersion + "/target/surefire-reports/");
                 numberOfDuplicationRequired = duplicationManager.computeNumberOfDuplicationRequired(testsList, timePerTest);
                 JSONUtils.write(configuration.pathToFirstVersion + "/duplications.json", numberOfDuplicationRequired);
             }
