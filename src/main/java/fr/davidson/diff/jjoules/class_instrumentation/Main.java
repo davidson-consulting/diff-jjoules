@@ -69,6 +69,7 @@ public class Main {
         Main.run(configuration.pathToFirstVersion, processor, configuration.classpathV1, testsList);
         Main.inject(configuration.pathToFirstVersion, configuration.shouldRandomize);
         processor.setRootPathFolder(configuration.pathToSecondVersion);
+        processor.resetNumberOfTestMethodProcessed();
         LOGGER.info("Instrument version after commit...");
         Main.run(configuration.pathToSecondVersion, processor, configuration.classpathV2, testsList);
         Main.inject(configuration.pathToSecondVersion, configuration.shouldRandomize);

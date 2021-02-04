@@ -106,6 +106,10 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
         this.rootPathFolder = rootPathFolder;
     }
 
+    public void resetNumberOfTestMethodProcessed() {
+        this.currentNumberOfTestMethodProcessed = 0;
+    }
+
     @Override
     public void process(CtMethod<?> ctMethod) {
         if (this.numberOfTestMethodToProcess != -1 && this.currentNumberOfTestMethodProcessed > this.numberOfTestMethodToProcess) {
