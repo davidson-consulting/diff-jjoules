@@ -56,6 +56,10 @@ public class Configuration {
                 "pathToFirstVersion='" + pathToFirstVersion + '\'' +
                 ", pathToSecondVersion='" + pathToSecondVersion + '\'' +
                 ", pathToTestListAsCSV='" + pathToTestListAsCSV + '\'' +
+                ", nbDuplication=" + nbDuplication +
+                ", shouldRandomize=" + shouldRandomize +
+                ", timeOfExecutionToReachInMs=" + timeOfExecutionToReachInMs +
+                ", numberOfMethodToProcess=" + numberOfMethodToProcess +
                 '}';
     }
 }
