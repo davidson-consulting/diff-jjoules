@@ -9,6 +9,7 @@ import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.visitor.PrettyPrinter;
+import sun.rmi.runtime.Log;
 
 import java.io.*;
 import java.util.*;
@@ -37,22 +38,33 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
 
     private final int numberOfDuplicationForAll;
 
+    private final int numberOfTestMethodToProcess;
+
+    private int currentNumberOfTestMethodProcessed;
+
     public JJoulesProcessor(int numberOfDuplicationForAll,
                             final Map<String, List<String>> testsList, String rootPathFolder) {
-        this.instrumentedTypes = new HashSet<>();
-        this.testsToBeInstrumented = testsList;
-        this.rootPathFolder = rootPathFolder;
-        this.numberOfDuplicationRequired = Collections.emptyMap();
-        this.numberOfDuplicationForAll = numberOfDuplicationForAll;
+        this(Collections.emptyMap(), testsList, rootPathFolder);
+
     }
 
     public JJoulesProcessor(final Map<String, Integer> numberOfDuplicationRequired,
-                            final Map<String, List<String>> testsList, String rootPathFolder) {
+                            final Map<String, List<String>> testsList,
+                            String rootPathFolder) {
+        this(numberOfDuplicationRequired, testsList, rootPathFolder, -1);
+    }
+
+    public JJoulesProcessor(final Map<String, Integer> numberOfDuplicationRequired,
+                            final Map<String, List<String>> testsList,
+                            String rootPathFolder,
+                            int numberOfTestMethodToProcess) {
         this.instrumentedTypes = new HashSet<>();
         this.testsToBeInstrumented = testsList;
         this.rootPathFolder = rootPathFolder;
         this.numberOfDuplicationRequired = numberOfDuplicationRequired;
         this.numberOfDuplicationForAll = -1;
+        this.currentNumberOfTestMethodProcessed = 0;
+        this.numberOfTestMethodToProcess = numberOfTestMethodToProcess;
     }
 
     @Override
@@ -73,7 +85,6 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
     @Override
     public void processingDone() {
         LOGGER.info("Processing Done...");
-//        this.instrumentedTypes.forEach(this::printCtType);
     }
 
     private void printCtType(CtType<?> type) {
@@ -97,7 +108,10 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
 
     @Override
     public void process(CtMethod<?> ctMethod) {
-        System.out.println("Processing " + ctMethod.getDeclaringType().getQualifiedName() + "#" + ctMethod.getSimpleName());
+        if (this.numberOfTestMethodToProcess != -1 && this.currentNumberOfTestMethodProcessed > this.numberOfTestMethodToProcess) {
+            return;
+        }
+        LOGGER.info("Processing {}#{}", ctMethod.getDeclaringType().getQualifiedName(), ctMethod.getSimpleName());
         final CtType<?> originalTestClass = ctMethod.getParent(CtType.class);
         this.jUnitVersion = getJUnitVersion(ctMethod);
         final AbstractInternalJJoulesProcessor internalProcessor = this.jUnitVersion.getInternalProcessor();
@@ -117,8 +131,10 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
         this.addDuplicationToAlreadyPrintedTestClass(clone, testClass, numberOfDuplication);
         final long elapsedTime = System.currentTimeMillis() - start;
         LOGGER.info("Printed {} with {} duplication in {} ms", testName, numberOfDuplication, elapsedTime);
-//        duplicateTestMethodToMeasure(clone, testClass, numberOfDuplication);
-//        this.instrumentedTypes.add(testClass);
+        this.currentNumberOfTestMethodProcessed++;
+        if(this.numberOfTestMethodToProcess != -1) {
+            LOGGER.info("{}/{}", this.currentNumberOfTestMethodProcessed, this.numberOfTestMethodToProcess);
+        }
     }
     
     private void addDuplicationToAlreadyPrintedTestClass(CtMethod<?> ctMethod, CtType<?> testClass, int numberOfDuplication) {
@@ -157,14 +173,6 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
             }
         }
         return JUnitVersion.JUNIT4;
-    }
-
-    private void duplicateTestMethodToMeasure(CtMethod<?> ctMethod, CtType<?> testClass, int numberOfDuplication) {
-        for (int i = 0; i < numberOfDuplication ; i++) {
-            final CtMethod<?> clone = ctMethod.clone();
-            clone.setSimpleName(clone.getSimpleName() + "_" + i);
-            testClass.addMethod(clone);
-        }
     }
 
 }

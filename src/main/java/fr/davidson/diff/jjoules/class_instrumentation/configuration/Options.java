@@ -36,7 +36,9 @@ public class Options {
                 parse.getString("classpath-v2").split(":"),
                 parse.getInt("nb-duplication"),
                 parse.getBoolean("randomize"),
-                parse.getInt("exec-time-in-ms"));
+                parse.getInt("exec-time-in-ms"),
+                parse.getInt("nb-method-to-process")
+        );
         
     }
 
@@ -92,6 +94,13 @@ public class Options {
         execTime.setHelp("TODO");
         execTime.setStringParser(JSAP.INTEGER_PARSER);
 
+        FlaggedOption nbMethodToProcess = new FlaggedOption("nb-method-to-process");
+        nbMethodToProcess.setRequired(false);
+        nbMethodToProcess.setLongFlag("nb-method-to-process");
+        nbMethodToProcess.setDefault("-1");
+        nbMethodToProcess.setHelp("TODO");
+        nbMethodToProcess.setStringParser(JSAP.INTEGER_PARSER);
+
         Switch randomize = new Switch("randomize");
         randomize.setLongFlag("randomize");
         randomize.setDefault("false");
@@ -111,6 +120,7 @@ public class Options {
             jsap.registerParameter(classpathV2);
             jsap.registerParameter(nbDuplication);
             jsap.registerParameter(execTime);
+            jsap.registerParameter(nbMethodToProcess);
             jsap.registerParameter(randomize);
             jsap.registerParameter(help);
         } catch (JSAPException e) {

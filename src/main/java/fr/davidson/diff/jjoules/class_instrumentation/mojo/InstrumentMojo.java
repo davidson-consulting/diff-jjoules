@@ -60,6 +60,9 @@ public class InstrumentMojo extends AbstractMojo {
     @Parameter(property = "exec-time-in-ms", defaultValue = "2000")
     private int execTimeInMs = 2000;
 
+    @Parameter(property = "nb-method-to-process", defaultValue = "-1")
+    private int nbMethodToProcess = -1;
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         final String classpath;
@@ -85,7 +88,8 @@ public class InstrumentMojo extends AbstractMojo {
                             junit4 ? "--junit4" : "",
                             "--nb-duplication", this.nbDuplication + "",
                             this.randomize ? "--randomize" : "",
-                            "--exec-time-in-ms", this.execTimeInMs + ""
+                            "--exec-time-in-ms", this.execTimeInMs + "",
+                            "--nb-method-to-process", this.nbMethodToProcess + ""
                     }
             );
         } catch (Exception e) {

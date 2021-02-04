@@ -27,6 +27,8 @@ public class Configuration {
 
     public final int timeOfExecutionToReachInMs;
 
+    public final int numberOfMethodToProcess;
+
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
                          String pathToTestListAsCSV,
@@ -34,7 +36,8 @@ public class Configuration {
                          String[] classpathV2,
                          int nbDuplication,
                          boolean shouldRandomize,
-                         int timeOfExecutionToReachInMs) {
+                         int timeOfExecutionToReachInMs,
+                         int numberOfMethodToProcess) {
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
         this.pathToTestListAsCSV = new File(pathToTestListAsCSV).isAbsolute() ? pathToTestListAsCSV : this.pathToFirstVersion + "/" + pathToTestListAsCSV;
@@ -44,6 +47,7 @@ public class Configuration {
         this.nbDuplication = nbDuplication;
         this.shouldRandomize = shouldRandomize;
         this.timeOfExecutionToReachInMs = timeOfExecutionToReachInMs;
+        this.numberOfMethodToProcess = numberOfMethodToProcess;
     }
 
     @Override
