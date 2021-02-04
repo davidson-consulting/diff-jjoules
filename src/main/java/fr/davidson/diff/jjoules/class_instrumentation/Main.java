@@ -59,7 +59,12 @@ public class Main {
         } else {
             numberOfDuplicationRequired = getDefaultNBDuplication(configuration, testsList);
         }
-        final JJoulesProcessor processor = new JJoulesProcessor(numberOfDuplicationRequired, testsList, configuration.pathToFirstVersion);
+        final JJoulesProcessor processor = new JJoulesProcessor(
+                numberOfDuplicationRequired,
+                testsList,
+                configuration.pathToFirstVersion,
+                configuration.numberOfMethodToProcess
+        );
         LOGGER.info("Instrument version before commit...");
         Main.run(configuration.pathToFirstVersion, processor, configuration.classpathV1, testsList);
         Main.inject(configuration.pathToFirstVersion, configuration.shouldRandomize);
