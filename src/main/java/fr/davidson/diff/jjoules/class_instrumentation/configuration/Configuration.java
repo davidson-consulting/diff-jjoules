@@ -1,5 +1,8 @@
 package fr.davidson.diff.jjoules.class_instrumentation.configuration;
 
+import fr.davidson.diff.jjoules.class_instrumentation.sorter.SorterEnum;
+import fr.davidson.diff.jjoules.class_instrumentation.sorter.TestMethodsSorter;
+
 import java.io.File;
 
 /**
@@ -28,6 +31,8 @@ public class Configuration {
     public final int timeOfExecutionToReachInMs;
 
     public final int numberOfMethodToProcess;
+
+    public final TestMethodsSorter sorter = SorterEnum.SORTER.get();
 
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,

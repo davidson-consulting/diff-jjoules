@@ -56,21 +56,9 @@ public class Main {
         } else {
             numberOfDuplicationRequired = getDefaultNBDuplication(testsList);
         }
-        final Map<String, List<String>> newTestsList = new HashMap<>();
-        final List<String> keys = new ArrayList<>(numberOfDuplicationRequired.keySet());
-        keys.sort(Comparator.comparingInt(numberOfDuplicationRequired::get));
-        for (String testToBeKept : keys.subList(0, configuration.numberOfMethodToProcess)) {
-            final String[] split = testToBeKept.split("#");
-            if (testsList.containsKey(split[0]) && testsList.get(split[0]).contains(split[1])) {
-                if (!newTestsList.containsKey(split[0])) {
-                    newTestsList.put(split[0], new ArrayList<>());
-                }
-                newTestsList.get(split[0]).add(split[1]);
-            }
-        }
         final JJoulesProcessor processor = new JJoulesProcessor(
                 numberOfDuplicationRequired,
-                newTestsList,
+                testsList,
                 configuration.pathToFirstVersion,
                 configuration.numberOfMethodToProcess
         );
