@@ -19,9 +19,7 @@ import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -42,7 +40,6 @@ public class Main {
         }
         LOGGER.info("{}", configuration.toString());
         final Map<String, List<String>> testsList = CSVReader.readFile(configuration.pathToTestListAsCSV);
-        LOGGER.info("{}", testsList.keySet().stream().map(key -> key + ":" + testsList.get(key)).collect(Collectors.joining("\n")));
         final Map<String, Integer> numberOfDuplicationRequired;
         if (configuration.nbDuplication == -1) {
             final DuplicationManager duplicationManager = new DuplicationManager(configuration.timeOfExecutionToReachInMs);
@@ -50,18 +47,30 @@ public class Main {
                 LOGGER.warn("You specified -1 to compute dynamically the number of duplication.");
                 LOGGER.warn("However, the folder {} does not exists.", configuration.pathToFirstVersion + "/target/surefire-reports/");
                 LOGGER.warn("Using default value (10) for number of duplication");
-                numberOfDuplicationRequired = getDefaultNBDuplication(configuration, testsList);
+                numberOfDuplicationRequired = getDefaultNBDuplication(testsList);
             } else {
                 final Map<String, Double> timePerTest = XMLReader.readAllXML(configuration.pathToFirstVersion + "/target/surefire-reports/");
                 numberOfDuplicationRequired = duplicationManager.computeNumberOfDuplicationRequired(testsList, timePerTest);
                 JSONUtils.write(configuration.pathToFirstVersion + "/duplications.json", numberOfDuplicationRequired);
             }
         } else {
-            numberOfDuplicationRequired = getDefaultNBDuplication(configuration, testsList);
+            numberOfDuplicationRequired = getDefaultNBDuplication(testsList);
+        }
+        final Map<String, List<String>> newTestsList = new HashMap<>();
+        final List<String> keys = new ArrayList<>(numberOfDuplicationRequired.keySet());
+        keys.sort(Comparator.comparingInt(numberOfDuplicationRequired::get));
+        for (String testToBeKept : keys.subList(0, configuration.numberOfMethodToProcess)) {
+            final String[] split = testToBeKept.split("#");
+            if (testsList.containsKey(split[0]) && testsList.get(split[0]).contains(split[1])) {
+                if (!newTestsList.containsKey(split[0])) {
+                    newTestsList.put(split[0], new ArrayList<>());
+                }
+                newTestsList.get(split[0]).add(split[1]);
+            }
         }
         final JJoulesProcessor processor = new JJoulesProcessor(
                 numberOfDuplicationRequired,
-                testsList,
+                newTestsList,
                 configuration.pathToFirstVersion,
                 configuration.numberOfMethodToProcess
         );
@@ -76,7 +85,7 @@ public class Main {
     }
 
     @NotNull
-    private static Map<String, Integer> getDefaultNBDuplication(Configuration configuration, Map<String, List<String>> testsList) {
+    private static Map<String, Integer> getDefaultNBDuplication(Map<String, List<String>> testsList) {
         final Map<String, Integer> numberOfDuplicationRequired;
         numberOfDuplicationRequired = new HashMap<>();
         for (String testClassName : testsList.keySet()) {
@@ -100,11 +109,6 @@ public class Main {
         launcher.getEnvironment().setNoClasspath(false);
         launcher.getEnvironment().setAutoImports(false);
         launcher.getEnvironment().setLevel("DEBUG");
-        //final ChangeCollector changeCollector = new ChangeCollector();
-        //changeCollector.attachTo(launcher.getEnvironment());
-        //launcher.getEnvironment().setPrettyPrinterCreator(() ->
-        //        new SniperJavaPrettyPrinter(launcher.getEnvironment())
-        //);
         launcher.addInputResource(rootPathFolder + "/" + TEST_FOLDER_PATH);
 
         launcher.addProcessor(processor);

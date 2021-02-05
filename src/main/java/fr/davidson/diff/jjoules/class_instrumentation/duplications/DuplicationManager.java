@@ -22,7 +22,7 @@ public class DuplicationManager {
                 final String testName = testClassName + "#" + testMethodName;
                 final Double timeInSForTest = timePerTest.get(testName);
                 final double timeInMsForTest = Math.max(1, timeInSForTest * 1000);
-                final int nbDuplication = (int) (timeOfExecutionToReachInMs / timeInMsForTest) + 1;
+                final int nbDuplication = (int) (timeOfExecutionToReachInMs / timeInMsForTest);
                 nbDuplicationPerTest.put(testName, nbDuplication);
             }
         }
