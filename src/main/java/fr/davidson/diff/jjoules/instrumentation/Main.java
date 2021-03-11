@@ -42,10 +42,12 @@ public class Main {
         LOGGER.info("Instrument version before commit...");
         Main.run(configuration.pathToFirstVersion, processor, configuration.classpathV1, testsList);
         Main.inject(configuration.pathToFirstVersion);
-        processor.setRootPathFolder(configuration.pathToSecondVersion);
-        LOGGER.info("Instrument version after commit...");
-        Main.run(configuration.pathToSecondVersion, processor, configuration.classpathV2, testsList);
-        Main.inject(configuration.pathToSecondVersion);
+        if (configuration.pathToSecondVersion != null && !configuration.pathToSecondVersion.isEmpty()) {
+            processor.setRootPathFolder(configuration.pathToSecondVersion);
+            LOGGER.info("Instrument version after commit...");
+            Main.run(configuration.pathToSecondVersion, processor, configuration.classpathV2, testsList);
+            Main.inject(configuration.pathToSecondVersion);
+        }
     }
 
     private static void run(final String rootPathFolder, AbstractProcessor<CtMethod<?>> processor, String[] classpath, Map<String, List<String>> testsList) {

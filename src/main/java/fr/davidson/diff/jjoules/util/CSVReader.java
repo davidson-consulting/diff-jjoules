@@ -16,6 +16,9 @@ public class CSVReader {
 
     public static Map<String, List<String>> readFile(String path) {
         final HashMap<String, List<String>> result = new HashMap<>();
+        if (path == null || path.isEmpty()) {
+            return result;
+        }
         try (final BufferedReader reader = new BufferedReader(new FileReader(path))) {
             reader.lines().forEach(line -> {
                 final String[] split = line.split(";");

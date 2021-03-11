@@ -56,20 +56,20 @@ public class InstrumentMojo extends AbstractMojo {
         final String classpath;
         final String classpathV2;
         try {
-            final String module = this.project.getBasedir().getAbsolutePath().substring(this.pathDirSecondVersion.length());
+            final String module = this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.project.getBasedir().getAbsolutePath().substring(this.pathDirSecondVersion.length());
             getLog().info("Running on:");
             getLog().info(this.project.getBasedir().getAbsolutePath());
             getLog().info(this.pathDirSecondVersion + "/" + module);
             classpath = this.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath);
-            classpathV2 = this.readClasspathFile(this.pathDirSecondVersion + "/" + module + "/" + this.classpathPathV2);
-            final boolean junit4 = classpath.contains("junit-4") || classpath.contains("junit-3");
+            classpathV2 = this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.readClasspathFile(this.pathDirSecondVersion + "/" + module + "/" + this.classpathPathV2);
+            final boolean junit4 = !classpath.contains("junit-jupiter-engine-5") && (classpath.contains("junit-4") || classpath.contains("junit-3"));
             if (junit4) {
                 getLog().info("Enable JUnit4 mode");
             }
             Main.main(
                     new String[]{
                             "--path-dir-first-version", this.project.getBasedir().getAbsolutePath(),
-                            "--path-dir-second-version", this.pathDirSecondVersion + "/" + module,
+                            "--path-dir-second-version", this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.pathDirSecondVersion + "/" + module,
                             "--tests-list", this.testsList,
                             "--classpath-v1", classpath,
                             "--classpath-v2", classpathV2,

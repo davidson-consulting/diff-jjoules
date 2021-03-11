@@ -1,5 +1,7 @@
 package fr.davidson.diff.jjoules.class_instrumentation.process;
 
+import fr.davidson.diff.jjoules.class_instrumentation.sorter.SorterEnum;
+import fr.davidson.diff.jjoules.class_instrumentation.sorter.TestMethodsSorter;
 import fr.davidson.diff.jjoules.util.Checker;
 import fr.davidson.diff.jjoules.util.NodeManager;
 import org.jetbrains.annotations.NotNull;
@@ -42,8 +44,7 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
 
     private int currentNumberOfTestMethodProcessed;
 
-    public JJoulesProcessor(int numberOfDuplicationForAll,
-                            final Map<String, List<String>> testsList, String rootPathFolder) {
+    public JJoulesProcessor(final Map<String, List<String>> testsList, String rootPathFolder) {
         this(Collections.emptyMap(), testsList, rootPathFolder);
 
     }
@@ -58,8 +59,16 @@ public class JJoulesProcessor extends AbstractProcessor<CtMethod<?>> {
                             final Map<String, List<String>> testsList,
                             String rootPathFolder,
                             int numberOfTestMethodToProcess) {
+        this(numberOfDuplicationRequired, testsList, rootPathFolder, numberOfTestMethodToProcess, SorterEnum.SORTER.get());
+    }
+
+    public JJoulesProcessor(final Map<String, Integer> numberOfDuplicationRequired,
+                            final Map<String, List<String>> testsList,
+                            String rootPathFolder,
+                            int numberOfTestMethodToProcess,
+                            TestMethodsSorter sorter) {
         this.instrumentedTypes = new HashSet<>();
-        this.testsToBeInstrumented = testsList;
+        this.testsToBeInstrumented = sorter.sort(numberOfTestMethodToProcess, numberOfDuplicationRequired, testsList);
         this.rootPathFolder = rootPathFolder;
         this.numberOfDuplicationRequired = numberOfDuplicationRequired;
         this.numberOfDuplicationForAll = -1;

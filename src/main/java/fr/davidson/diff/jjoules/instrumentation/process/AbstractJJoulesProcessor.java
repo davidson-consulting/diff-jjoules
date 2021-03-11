@@ -40,7 +40,7 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
 
     @Override
     public boolean isToBeProcessed(CtMethod<?> candidate) {
-        if (this.testsToBeInstrumented.values()
+        if ((!this.testsToBeInstrumented.isEmpty()) && this.testsToBeInstrumented.values()
                 .stream()
                 .noneMatch(tests -> tests.contains(candidate.getSimpleName()))) {
             return false;
@@ -54,10 +54,11 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
     }
 
     private boolean mustInstrument(String testClassQualifiedName, String testMethodName) {
-        return this.testsToBeInstrumented.containsKey(testClassQualifiedName) &&
+        return this.testsToBeInstrumented.isEmpty() || (
+                this.testsToBeInstrumented.containsKey(testClassQualifiedName) &&
                 this.testsToBeInstrumented
                         .get(testClassQualifiedName)
-                        .contains(testMethodName);
+                        .contains(testMethodName));
     }
 
     private boolean checkInheritance(CtMethod<?> candidate) {
