@@ -40,7 +40,7 @@ public class JJoulesInjection {
             final Node root = Utils.findSpecificNodeFromGivenRoot(document.getFirstChild(), Utils.PROJECT);
 
             this.addJJoulesDependencies(document, root);
-            this.addSurefireRandomRunOrder(document, root);
+            this.addSurefireRunOrder(document, root);
 
             final TransformerFactory transformerFactory = TransformerFactory.newInstance();
             final Transformer transformer = transformerFactory.newTransformer();
@@ -66,7 +66,7 @@ public class JJoulesInjection {
         dependencies.appendChild(dependency);
     }
 
-    private void addSurefireRandomRunOrder(Document document, Node root) {
+    private void addSurefireRunOrder(Document document, Node root) {
         final Node build = Utils.findOrCreateGivenNode(document, root, "build");
         final Node plugins = Utils.findOrCreateGivenNode(document, build, "plugins");
         final Node pluginMavenSurefirePlugin =
@@ -81,7 +81,7 @@ public class JJoulesInjection {
                 );
         final Node configuration = Utils.findOrCreateGivenNode(document, pluginMavenSurefirePlugin, "configuration");
         final Node runOrder = Utils.findOrCreateGivenNode(document, configuration, "runOrder");
-        runOrder.setTextContent("random");
+        runOrder.setTextContent("alphabetical");
     }
 
 }
