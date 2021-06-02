@@ -72,34 +72,16 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
 
     @Override
     public void processingDone() {
-       /* for (CtType<?> instrumentedType : this.instrumentedTypes) {
-            this.addWarmupMethods(instrumentedType);
-        }*/
         this.instrumentedTypes.forEach(this::printCtType);
     }
 
-    protected void duplicateMethodForWarmup(CtType<?> testClass, CtMethod<?> method) {
+    /*protected void duplicateMethodForWarmup(CtType<?> testClass, CtMethod<?> method) {
         for (int i = 0; i < 5; i++) {
             final CtMethod<?> clone = method.clone();
             clone.setSimpleName("aaa_" + i + "_" + clone.getSimpleName());
             testClass.addMethod(clone);
         }
-    }
-
-    private void addWarmupMethods(CtType<?> instrumentedType) {
-        final Factory factory = instrumentedType.getFactory();
-        final CtMethod warmup = factory.createMethod();
-
-        warmup.setModifiers(Collections.singleton(ModifierKind.PUBLIC));
-        warmup.addAnnotation(factory.createAnnotation(factory.createReference("org.junit.jupiter.api.Test")));
-        warmup.setType(factory.Type().VOID_PRIMITIVE);
-        for (int i = 0; i < 10; i++) {
-            final CtMethod<?> clone = warmup.clone();
-            clone.setBody(factory.createCodeSnippetStatement("System.out.println(\"warmup" + i + "\")"));
-            clone.setSimpleName("aaaaa_warmup" + i);
-            instrumentedType.addMethod(clone);
-        }
-    }
+    }*/
 
     private void printCtType(CtType<?> type) {
         final File directory = new File(this.rootPathFolder + "/" + TEST_FOLDER_PATH);

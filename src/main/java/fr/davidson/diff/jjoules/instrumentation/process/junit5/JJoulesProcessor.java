@@ -44,7 +44,7 @@ public class JJoulesProcessor extends AbstractJJoulesProcessor {
         //ctMethod.removeAnnotation(testAnnotation);
         //ctMethod.addAnnotation(factory.createAnnotation(reference));
         testAnnotation.replace(factory.createAnnotation(reference));
-        this.duplicateMethodForWarmup(declaringType, ctMethod);
+//        this.duplicateMethodForWarmup(declaringType, ctMethod);
         super.instrumentedTypes.add(declaringType);
     }
 }
