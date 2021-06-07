@@ -2,7 +2,7 @@ package fr.davidson.diff.jjoules.instrumentation;
 
 import fr.davidson.diff.jjoules.instrumentation.configuration.Configuration;
 import fr.davidson.diff.jjoules.instrumentation.configuration.Options;
-import fr.davidson.diff.jjoules.instrumentation.maven.JJoulesInjection;
+import fr.davidson.diff.jjoules.util.maven.JJoulesInjection;
 import fr.davidson.diff.jjoules.instrumentation.process.AbstractJJoulesProcessor;
 import fr.davidson.diff.jjoules.util.CSVReader;
 import org.slf4j.Logger;

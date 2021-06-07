@@ -1,6 +1,6 @@
 package fr.davidson.diff.jjoules.localization.output;
 
-import fr.davidson.diff.jjoules.instrumentation.maven.JJoulesInjection;
+import fr.davidson.diff.jjoules.util.maven.JJoulesInjection;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.TestRecord;
 import org.slf4j.Logger;

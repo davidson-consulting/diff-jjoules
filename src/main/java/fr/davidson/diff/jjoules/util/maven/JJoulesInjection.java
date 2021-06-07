@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.class_instrumentation.maven;
+package fr.davidson.diff.jjoules.util.maven;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,11 +27,8 @@ public class JJoulesInjection {
 
     private final String absolutePathToProjectRoot;
 
-    private final boolean shouldRandomize;
-
-    public JJoulesInjection(String absolutePathToProjectRoot, boolean shouldRandomize) {
+    public JJoulesInjection(String absolutePathToProjectRoot) {
         this.absolutePathToProjectRoot = absolutePathToProjectRoot;
-        this.shouldRandomize = shouldRandomize;
     }
 
     public String inject() {
@@ -43,9 +40,7 @@ public class JJoulesInjection {
             final Node root = Utils.findSpecificNodeFromGivenRoot(document.getFirstChild(), Utils.PROJECT);
 
             this.addJJoulesDependencies(document, root);
-            if (this.shouldRandomize) {
-                this.addSurefireRandomRunOrder(document, root);
-            }
+            this.addSurefireRunOrder(document, root);
 
             final TransformerFactory transformerFactory = TransformerFactory.newInstance();
             final Transformer transformer = transformerFactory.newTransformer();
@@ -71,7 +66,7 @@ public class JJoulesInjection {
         dependencies.appendChild(dependency);
     }
 
-    private void addSurefireRandomRunOrder(Document document, Node root) {
+    private void addSurefireRunOrder(Document document, Node root) {
         final Node build = Utils.findOrCreateGivenNode(document, root, "build");
         final Node plugins = Utils.findOrCreateGivenNode(document, build, "plugins");
         final Node pluginMavenSurefirePlugin =
@@ -86,7 +81,7 @@ public class JJoulesInjection {
                 );
         final Node configuration = Utils.findOrCreateGivenNode(document, pluginMavenSurefirePlugin, "configuration");
         final Node runOrder = Utils.findOrCreateGivenNode(document, configuration, "runOrder");
-        runOrder.setTextContent("random");
+        runOrder.setTextContent("alphabetical");
     }
 
 }

@@ -4,11 +4,10 @@ import fr.davidson.diff.jjoules.class_instrumentation.configuration.Configuratio
 import fr.davidson.diff.jjoules.class_instrumentation.configuration.Options;
 import fr.davidson.diff.jjoules.class_instrumentation.duplications.DuplicationManager;
 import fr.davidson.diff.jjoules.class_instrumentation.duplications.XMLReader;
-import fr.davidson.diff.jjoules.class_instrumentation.maven.JJoulesInjection;
 import fr.davidson.diff.jjoules.class_instrumentation.process.JJoulesProcessor;
 import fr.davidson.diff.jjoules.util.CSVReader;
 import fr.davidson.diff.jjoules.util.JSONUtils;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
+import fr.davidson.diff.jjoules.util.maven.JJoulesInjection;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +19,6 @@ import spoon.reflect.declaration.CtMethod;
 
 import java.io.File;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @author Benjamin DANGLOT
@@ -64,12 +62,12 @@ public class Main {
         );
         LOGGER.info("Instrument version before commit...");
         Main.run(configuration.pathToFirstVersion, processor, configuration.classpathV1, testsList);
-        Main.inject(configuration.pathToFirstVersion, configuration.shouldRandomize);
+        Main.inject(configuration.pathToFirstVersion);
         processor.setRootPathFolder(configuration.pathToSecondVersion);
         processor.resetNumberOfTestMethodProcessed();
         LOGGER.info("Instrument version after commit...");
         Main.run(configuration.pathToSecondVersion, processor, configuration.classpathV2, testsList);
-        Main.inject(configuration.pathToSecondVersion, configuration.shouldRandomize);
+        Main.inject(configuration.pathToSecondVersion);
     }
 
     @NotNull
@@ -109,8 +107,8 @@ public class Main {
         }
     }
 
-    private static void inject(final String rootPathFolder, boolean randomize) {
-        new JJoulesInjection(rootPathFolder, randomize).inject();
+    private static void inject(final String rootPathFolder) {
+        new JJoulesInjection(rootPathFolder).inject();
     }
 
 }

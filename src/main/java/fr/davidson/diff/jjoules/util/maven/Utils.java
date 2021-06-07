@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.instrumentation.maven;
+package fr.davidson.diff.jjoules.util.maven;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
