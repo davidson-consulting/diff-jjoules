@@ -1,9 +1,9 @@
 # Diff-JJoules
 
-**Diff-JJoules** is a project that allows to measure the energy consumption delta
+**Diff-JJoules** is a set of maven plugin to run various procedures that aims at measuring the energy consumption delta 
 between two versions of the same program.
 
-This project can be apply on Maven project in Java and with JUnit.
+This project can be applied on Maven projects in Java and with JUnit.
 
 It relies on the two following projects:
 
@@ -13,15 +13,10 @@ tests methods that execute the lines that changed.
 
 ## Install
 
-First, clone `junit-jjoules` and install it:
+To use Diff-Jjoules, you need to install `junit-jjoules`. Please follow the instruction of the [README]()
+Ensure that you do configure well `junit-jjoules`.
 
-```sh
-git clone https://github.com/davidson-consulting/junit-jjoules
-cd junit-jjoules
-mvn clean install
-```
-
-Then install `diff-jjoules`:
+Then, you can install `diff-jjoules`:
 
 ```sh
 mvn clean install -DskipTest
@@ -47,6 +42,34 @@ optional arguments:
 
 This script will output two json files that contains the average, over the iterations, of the energy consumption for each test that execute the changes, on per version.
 It will also print on the standard output the delta between both versions, test method wise.
+
+# Availaible Maven Plugins
+
+## Instrumentation
+
+## Analysis
+
+## Location
+
+## Mutation
+
+You can to mutate your code in order to increase its energy consumption.
+This is done for research purpose on the energy consumption of Software.
+
+For now, there is one mutation. It injects at the beginning of the targeted methods an invokation to the following methods:
+
+```java
+public static void consumeEnergy(final long energyToConsume) {
+    final EnergySample energySample = RaplDevice.RAPL.recordEnergy();
+    long random = new Random().nextLong();
+    while (energySample.getEnergyReport().get("package|uJ") < energyToConsume) {
+        random += new Random(random).nextLong();
+    }
+    energySample.stop();
+}
+```
+
+Which will loop until a given energy amount has been consumed.
 
 ## Example
 
