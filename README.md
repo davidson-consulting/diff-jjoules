@@ -47,13 +47,80 @@ It will also print on the standard output the delta between both versions, test 
 
 ## Instrumentation
 
+The first maven plugin provided an automatic instrumentation of test methods in order to replace classical JUnit `@Test` by `@EnergyTest` to collect data about energy consumption of an unit test.
+
+### Usage
+
+To use this plugin, you must : 
+
+* Have both versions of your program
+* Compute both classpath for both versions of the program (use `dependency:build-classpath -Dmdep.outputFile=classpath` to compute it)
+* Have a CSV file containing the list of tests to be instrumented with the following format :
+
+```
+fullQualifiedNameTestClass;testMethodName1;testMethodName2;...;testMethodNameN
+```
+
+Then run:
+
+```
+mvn fr.davidson:diff-jjoules:instrument -DclasspathPath=classpath -DclasspathPathV2=../v2/classpath -DpathDirSecondVersion=../v2/ -DtestsList=testsThatExecuteTheChange.csv
+```
+
+You can make collaborate maven plugin for easier usage. For exemple, you can compute the list of tests that execute the changes between you two version of the same program using `dspot-diff-test-selection` maven plugin.
+
+For example:
+
+Considering that `/tmp/v1` and `/tmp/v2` contains respectively the version of the program before the commit and after the commit, run the two subsequents maven command:
+```
+mvn -f /tmp/v2/pom.xml clean install -DskipTests dependency:build-classpath -Dmdep.outputFile=classpath -f /tmp/v2/pom.xml
+mvn -f /tmp/v1/pom.xml clean install -DskipTests dependency:build-classpath -Dmdep.outputFile=classpath  fr.
+eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list -Dpath-dir-second-version=/tmp/v2/ -Dtests-list=testsThatExecuteTheChange.csv
+davidson:diff-jjoules:instrument -Dclasspath-path-v1=classpath -Dclasspath-path-v2=/tmp/v2/classpath
+```
+
+This two command lines will:
+
+1. Build your V2 program and generate its classpath file
+2. Build your V1 program and generate its classpath file
+3. Select the test that execute the code changes between V1 and V2
+4. Instrument the selected tests
+
+This can be done because `dspot-diff-test-selection` and `diff-jjoules:instrument` shares the same options names.
+
+```txt
+diff-jjoules:instrument
+
+  Available parameters:
+
+    classpathPath (Default: classpath)
+      User property: classpath-path-v1
+      [Optional] Specify the path to a file that contains the full classpath of the project. We advise use to use the following goal right before this one : dependency:build-classpath -Dmdep.outputFile=classpath
+
+    classpathPathV2 (Default: classpath)
+      User property: classpath-path-v2
+      [Optional] Specify the path to a file that contains the full classpath of the project. We advise use to use the following goal right before this one : dependency:build-classpath -Dmdep.outputFile=classpath
+
+    pathDirSecondVersion
+      User property: path-dir-second-version
+      [Mandatory] Specify the path to root directory of the project in the second version.
+
+    testsList
+      User property: tests-list
+      [Mandatory] Specify the path to a CSV file that contains the list of tests to be instrumented.
+```
+
 ## Analysis
+
+### Usage
 
 ## Location
 
+### Usage
+
 ## Mutation
 
-You can to mutate your code in order to increase its energy consumption.
+You can mutate your code in order to increase artificially its energy consumption.
 This is done for research purpose on the energy consumption of Software.
 
 For now, there is one mutation. It injects at the beginning of the targeted methods an invokation to the following methods:
@@ -70,6 +137,45 @@ public static void consumeEnergy(final long energyToConsume) {
 ```
 
 Which will loop until a given energy amount has been consumed.
+
+### Usage
+
+To use the mutation of `diff-jjoules`, there is a dedicated maven plugin.
+
+The basic command line is the following:
+```sh
+mvn dependency:build-classpath -Dmdep.outputFile=classpath davidson.fr:diff-jjoules:mutate -DclasspathPath=classpath -DenergyToConsume=10000 -DmethodNamesPerFullQualifiedNames=methodNames.csv
+```
+
+It will instrument all the methods of the file `methodNames.csv` specified with the following format:
+
+```csv
+fullQualifiedNameClass;methodName1;methodName2;...;methodNameN
+```
+
+One line per class.
+
+```txt
+diff-jjoules:mutate
+  
+  Available parameters:
+
+    classpathPath (Default: classpath)
+      User property: classpath
+      [Optional] Specify the path to a file that contains the full classpath of
+      the project. We advise use to use the following goal right before this
+      one : dependency:build-classpath -Dmdep.outputFile=classpath
+
+    energyToConsume (Default: 10000)
+      User property: energy-to-consume
+      [Optional] Specify the amount of energy to be consumed by the mutation.
+
+    methodNamesPerFullQualifiedNames
+      User property: method-names-per-full-qualified-names
+      [Mandatory] Specify the path to a CSV file that contains the list of
+      methods names per full qualified names to be mutated. example :
+      fr.davidson.UntareJjoulesMojo;execute
+```
 
 ## Example
 

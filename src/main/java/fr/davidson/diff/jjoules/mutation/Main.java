@@ -1,8 +1,8 @@
 package fr.davidson.diff.jjoules.mutation;
 
 import fr.davidson.diff.jjoules.util.maven.JJoulesInjection;
-import fr.davidson.diff.jjoules.mutation.configuration.Configuration;
 import fr.davidson.diff.jjoules.mutation.configuration.Options;
+import fr.davidson.diff.jjoules.mutation.configuration.Configuration;
 import fr.davidson.diff.jjoules.mutation.process.UntareJjoulesProcessor;
 import fr.davidson.diff.jjoules.util.CSVReader;
 import org.slf4j.Logger;
