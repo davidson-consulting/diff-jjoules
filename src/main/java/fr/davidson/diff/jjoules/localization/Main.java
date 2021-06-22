@@ -37,7 +37,8 @@ public class Main {
     private static Map<String, Map<String, Map<String, List<Integer>>>> getCoverage(final String pathToFirstVersion, Map<String, List<String>> tests) {
         System.out.println("Computing coverage for " + pathToFirstVersion);
         new CloverExecutor().instrumentAndRunGivenTest(pathToFirstVersion, tests);
-        return new CloverReader().read(pathToFirstVersion);
+        return Collections.emptyMap();
+//        return new CloverReader().read(pathToFirstVersion);
     }
 
 }
