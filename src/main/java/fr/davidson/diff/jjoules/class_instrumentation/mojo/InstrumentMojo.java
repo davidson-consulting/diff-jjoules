@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
  * benjamin.danglot@davidson.fr
  * 26/11/2020
  */
+@Deprecated
 @Mojo(name = "class-instrument")
 public class InstrumentMojo extends AbstractMojo {
 
