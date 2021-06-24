@@ -11,6 +11,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
+@Deprecated
 @Mojo(name = "locate")
 public class LocateMojo extends AbstractMojo {
 

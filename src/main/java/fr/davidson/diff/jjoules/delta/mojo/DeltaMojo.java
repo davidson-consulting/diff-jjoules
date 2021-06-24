@@ -1,6 +1,7 @@
-package fr.davidson.diff.jjoules.class_instrumentation.mojo;
+package fr.davidson.diff.jjoules.delta.mojo;
 
-import fr.davidson.diff.jjoules.class_instrumentation.Main;
+import fr.davidson.diff.jjoules.delta.Main;
+import fr.davidson.diff.jjoules.delta.configuration.Configuration;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -15,11 +16,10 @@ import java.util.stream.Collectors;
 /**
  * @author Benjamin DANGLOT
  * benjamin.danglot@davidson.fr
- * 26/11/2020
+ * on 23/06/2021
  */
-@Deprecated
-@Mojo(name = "class-instrument")
-public class InstrumentMojo extends AbstractMojo {
+@Mojo(name = "delta")
+public class DeltaMojo extends AbstractMojo {
 
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
     private MavenProject project;
@@ -52,46 +52,39 @@ public class InstrumentMojo extends AbstractMojo {
     @Parameter(property = "classpath-path-v2", defaultValue = "classpath")
     private String classpathPathV2;
 
-    @Parameter(property = "nb-duplication", defaultValue = "9")
-    private int nbDuplication = 9;
+    @Parameter(property = "iterations", defaultValue = "5")
+    private int iterations;
 
-    @Parameter(property = "randomize", defaultValue = "false")
-    private boolean randomize = false;
+    /**
+     *
+     */
+    @Parameter(defaultValue = "target/diff-jjoules", property = "output-path")
+    private String outputPath;
 
-    @Parameter(property = "exec-time-in-ms", defaultValue = "2000")
-    private int execTimeInMs = 2000;
-
-    @Parameter(property = "nb-method-to-process", defaultValue = "-1")
-    private int nbMethodToProcess = -1;
+    private static final String defaultOutputPath = "target/diff-jjoules";
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         final String classpath;
         final String classpathV2;
         try {
-            final String module = this.project.getBasedir().getAbsolutePath().substring(this.pathDirSecondVersion.length());
+            // TODO handle modules
+            //final String module = this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.project.getBasedir().getAbsolutePath().substring(this.pathDirSecondVersion.length());
             getLog().info("Running on:");
             getLog().info(this.project.getBasedir().getAbsolutePath());
-            getLog().info(this.pathDirSecondVersion + "/" + module);
+            getLog().info(this.pathDirSecondVersion);
             classpath = this.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath);
-            classpathV2 = this.readClasspathFile(this.pathDirSecondVersion + "/" + module + "/" + this.classpathPathV2);
-            final boolean junit4 = classpath.contains("junit-4") || classpath.contains("junit-3");
-            if (junit4) {
-                getLog().info("Enable JUnit4 mode");
-            }
-            Main.main(
-                    new String[]{
-                            "--path-dir-first-version", this.project.getBasedir().getAbsolutePath(),
-                            "--path-dir-second-version", this.pathDirSecondVersion + "/" + module,
-                            "--tests-list", this.testsList,
-                            "--classpath-v1", classpath,
-                            "--classpath-v2", classpathV2,
-                            junit4 ? "--junit4" : "",
-                            "--nb-duplication", this.nbDuplication + "",
-                            this.randomize ? "--randomize" : "",
-                            "--exec-time-in-ms", this.execTimeInMs + "",
-                            "--nb-method-to-process", this.nbMethodToProcess + ""
-                    }
+            classpathV2 = this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.readClasspathFile(this.pathDirSecondVersion + "/" + this.classpathPathV2);
+            Main.run(
+                    new Configuration(
+                            this.project.getBasedir().getAbsolutePath(),
+                            this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.pathDirSecondVersion,
+                            this.testsList,
+                            classpath,
+                            classpathV2,
+                            this.iterations,
+                            this.outputPath
+                    )
             );
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,4 +99,5 @@ public class InstrumentMojo extends AbstractMojo {
             throw new RuntimeException(e);
         }
     }
+
 }
