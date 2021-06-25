@@ -1,6 +1,6 @@
 package fr.davidson.diff.jjoules.mark.computation;
 
-import fr.davidson.diff.jjoules.mark.Main;
+import fr.davidson.diff.jjoules.delta.Delta;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,14 +46,10 @@ public class Test {
 
     public static Map<String, Double> computeOmegaUpperT(
             final Map<String, Double> omegaT,
-            final Map<String, Double> deltaT
-            ) {
+            final Map<String, Delta> deltaT) {
         final Map<String, Double> omegaUpperT = new HashMap<>();
-        LOGGER.info("{}", omegaT);
-        LOGGER.info("{}", deltaT);
         for (String key : omegaT.keySet()) {
-            LOGGER.info("{}, {} {}", key, deltaT.get(key), key.replaceAll("#", "-"));
-            omegaUpperT.put(key, omegaT.get(key) * deltaT.get(key.replace("#", "-")));
+            omegaUpperT.put(key, omegaT.get(key) * deltaT.get(key).energy);
         }
         return omegaUpperT;
     }

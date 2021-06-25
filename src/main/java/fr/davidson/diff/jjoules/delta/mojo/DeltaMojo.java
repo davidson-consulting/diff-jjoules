@@ -58,10 +58,10 @@ public class DeltaMojo extends AbstractMojo {
     /**
      *
      */
-    @Parameter(defaultValue = "target/diff-jjoules", property = "output-path")
+    @Parameter(defaultValue = "diff-jjoules", property = "output-path")
     private String outputPath;
 
-    private static final String defaultOutputPath = "target/diff-jjoules";
+    private static final String defaultOutputPath = "diff-jjoules";
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {

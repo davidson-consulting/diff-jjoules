@@ -1,5 +1,7 @@
 package fr.davidson.diff.jjoules.delta;
 
+import java.util.Map;
+
 /**
  * @author Benjamin DANGLOT
  * benjamin.danglot@davidson.fr
@@ -21,6 +23,14 @@ public class Data {
         this.energy = energy;
         this.instructions = instructions;
         this.durations = durations;
+    }
+
+    public Data(Map<String, ?> data) {
+        this(
+                Double.parseDouble(data.get("energy").toString()),
+                Double.parseDouble(data.get("instructions").toString()),
+                Double.parseDouble(data.get("durations").toString())
+        );
     }
 
     public double getEnergy() {

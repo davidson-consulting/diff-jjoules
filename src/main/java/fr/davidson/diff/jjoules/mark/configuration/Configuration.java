@@ -22,9 +22,7 @@ public class Configuration {
 
     public final String pathToSecondVersion;
 
-    public final String pathToJSONDataFirstVersion;
-
-    public final String pathToJSONDataSecondVersion;
+    public final String pathToJSONData;
 
     public final String diff;
 
@@ -33,15 +31,13 @@ public class Configuration {
     public Configuration(
             String pathToFirstVersion,
             String pathToSecondVersion,
-            String pathToJSONDataFirstVersion,
-            String pathToJSONDataSecondVersion,
+            String pathToJSONData,
             String pathToDiff,
             String pathToTestListAsCSV
     ) {
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
-        this.pathToJSONDataFirstVersion = pathToJSONDataFirstVersion;
-        this.pathToJSONDataSecondVersion = pathToJSONDataSecondVersion;
+        this.pathToJSONData = pathToJSONData;
         if (pathToDiff == null || pathToDiff.isEmpty()) {
             LOGGER.warn("No path to diff file has been specified.");
             LOGGER.warn("I'll compute a diff file using the UNIX diff command");
@@ -64,8 +60,7 @@ public class Configuration {
         return "Configuration{" +
                 "pathToFirstVersion='" + pathToFirstVersion + '\'' +
                 ", pathToSecondVersion='" + pathToSecondVersion + '\'' +
-                ", pathToJSONDataFirstVersion='" + pathToJSONDataFirstVersion + '\'' +
-                ", pathToJSONDataSecondVersion='" + pathToJSONDataSecondVersion + '\'' +
+                ", pathToJSONData='" + pathToJSONData + '\'' +
                 ", diff='" + diff + '\'' +
                 ", pathToTestListAsCSV='" + pathToTestListAsCSV + '\'' +
                 '}';

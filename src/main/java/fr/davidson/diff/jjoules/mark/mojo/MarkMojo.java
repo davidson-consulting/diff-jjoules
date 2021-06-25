@@ -29,14 +29,8 @@ public class MarkMojo extends AbstractMojo {
     /**
      *
      */
-    @Parameter(property = "path-data-json-first-version")
-    private String pathJSONDataFirstVersion;
-
-    /**
-     *
-     */
-    @Parameter(property = "path-data-json-second-version")
-    private String pathJSONDataSecondVersion;
+    @Parameter(property = "path-data-json")
+    private String pathJSONData;
 
     /**
      * [Mandatory] Specify the path to a CSV file that contains the list of tests to be instrumented.
@@ -53,16 +47,15 @@ public class MarkMojo extends AbstractMojo {
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         try {
-            final String module = this.project.getBasedir().getAbsolutePath().substring(this.pathDirSecondVersion.length());
+//            final String module = this.project.getBasedir().getAbsolutePath().substring(this.pathDirSecondVersion.length());
             getLog().info("Running on:");
             getLog().info(this.project.getBasedir().getAbsolutePath());
-            getLog().info(this.pathDirSecondVersion + "/" + module);
+            getLog().info(this.pathDirSecondVersion);// + "/" + module);
             Main.run(
                     new Configuration(
                             this.project.getBasedir().getAbsolutePath(),
-                            this.pathDirSecondVersion + "/" + module,
-                            this.pathJSONDataFirstVersion,
-                            this.pathJSONDataSecondVersion,
+                            this.pathDirSecondVersion,// + "/" + module,
+                            this.pathJSONData,
                             this.pathToDiff,
                             this.testsList
                     )

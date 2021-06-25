@@ -30,8 +30,7 @@ public class Options {
         return new Configuration(
                 parse.getString("path-dir-first-version"),
                 parse.getString("path-dir-second-version"),
-                parse.getString("path-data-json-first-version"),
-                parse.getString("path-data-json-second-version"),
+                parse.getString("path-data-json"),
                 parse.getString("path-to-diff"),
                 parse.getString("tests-list")
         );

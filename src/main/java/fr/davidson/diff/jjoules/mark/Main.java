@@ -1,6 +1,8 @@
 package fr.davidson.diff.jjoules.mark;
 
+import com.google.gson.Gson;
 import eu.stamp_project.diff_test_selection.coverage.Coverage;
+import fr.davidson.diff.jjoules.delta.Delta;
 import fr.davidson.diff.jjoules.mark.computation.*;
 import fr.davidson.diff.jjoules.mark.configuration.Configuration;
 import fr.davidson.diff.jjoules.mark.configuration.Options;
@@ -29,16 +31,13 @@ public class Main {
     public static void run(Configuration configuration) {
         System.out.println(configuration.toString());
         final Map<String, List<String>> testsListName = CSVReader.readFile(configuration.pathToTestListAsCSV);
-        final Map<String, Map> dataJsonV1 = JSONUtils.read(configuration.pathToJSONDataFirstVersion, Map.class);
-        final Map<String, Map> dataJsonV2 = JSONUtils.read(configuration.pathToJSONDataSecondVersion, Map.class);
-        final Map<String, Double> deltaT = Delta.computeDelta(dataJsonV1, dataJsonV2);
+        final Map<String, Delta> data = Delta.from(JSONUtils.read(configuration.pathToJSONData, Map.class));
 
-        final File file = new File("target/diff-jjoules-mark");
+        final File file = new File("diff-jjoules");
         if (file.exists()) {
             file.delete();
         }
         file.mkdir();
-        JSONUtils.write(file.getAbsolutePath() + "/deltas.json", deltaT);
 
         // 1 Compute coverage
         final Map<String, Coverage> coveragePerTestMethodNameFirstVersion =
@@ -68,7 +67,7 @@ public class Main {
         // 3
         final Map<String, Double> omegaT = Test.computeOmegaT(execLineTestMaps, phiL);
         JSONUtils.write(file.getAbsolutePath() + "/omega.json", omegaT);
-        final Map<String, Double> omegaUpperT = Test.computeOmegaUpperT(omegaT, deltaT);
+        final Map<String, Double> omegaUpperT = Test.computeOmegaUpperT(omegaT, data);
         JSONUtils.write(file.getAbsolutePath() + "/Omega.json", omegaUpperT);
         final Double deltaOmega = omegaUpperT.values().stream().reduce(Double::sum).orElse(0.0D);
 
