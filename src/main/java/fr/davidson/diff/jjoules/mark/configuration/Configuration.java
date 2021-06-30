@@ -52,7 +52,7 @@ public class Configuration {
         } else {
             this.diff = Utils.readFile(pathToDiff);
         }
-        this.pathToTestListAsCSV = pathToTestListAsCSV;
+        this.pathToTestListAsCSV = pathToTestListAsCSV == null || pathToTestListAsCSV.isEmpty() ? "" : new File(pathToTestListAsCSV).isAbsolute() ? pathToTestListAsCSV : this.pathToFirstVersion + "/" + pathToTestListAsCSV;
     }
 
     @Override

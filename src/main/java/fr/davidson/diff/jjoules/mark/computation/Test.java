@@ -1,5 +1,6 @@
 package fr.davidson.diff.jjoules.mark.computation;
 
+import fr.davidson.diff.jjoules.delta.Data;
 import fr.davidson.diff.jjoules.delta.Delta;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,12 +45,21 @@ public class Test {
         }
     }
 
-    public static Map<String, Double> computeOmegaUpperT(
+    public static Map<String, Data> computeOmegaUpperT(
             final Map<String, Double> omegaT,
             final Map<String, Delta> deltaT) {
-        final Map<String, Double> omegaUpperT = new HashMap<>();
+        final Map<String, Data> omegaUpperT = new HashMap<>();
         for (String key : omegaT.keySet()) {
-            omegaUpperT.put(key, omegaT.get(key) * deltaT.get(key).energy);
+            final double energyOmegaUpperT = omegaT.get(key) * deltaT.get(key).energy;
+            final double instructionsOmegaUpperT = omegaT.get(key) * deltaT.get(key).instructions;
+            final double durationsOmegaUpperT = omegaT.get(key) * deltaT.get(key).durations;
+            omegaUpperT.put(key,
+                    new Data(
+                        energyOmegaUpperT,
+                        instructionsOmegaUpperT,
+                        durationsOmegaUpperT
+                )
+            );
         }
         return omegaUpperT;
     }
