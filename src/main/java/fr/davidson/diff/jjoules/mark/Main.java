@@ -1,8 +1,8 @@
 package fr.davidson.diff.jjoules.mark;
 
-import com.google.gson.Gson;
 import eu.stamp_project.diff_test_selection.coverage.Coverage;
-import fr.davidson.diff.jjoules.delta.Delta;
+import fr.davidson.diff.jjoules.delta.Data;
+import fr.davidson.diff.jjoules.delta.Deltas;
 import fr.davidson.diff.jjoules.mark.computation.*;
 import fr.davidson.diff.jjoules.mark.configuration.Configuration;
 import fr.davidson.diff.jjoules.mark.configuration.Options;
@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +33,7 @@ public class Main {
     public static void run(Configuration configuration) {
         System.out.println(configuration.toString());
         final Map<String, List<String>> testsListName = CSVReader.readFile(configuration.pathToTestListAsCSV);
-        final Map<String, Delta> data = Delta.from(JSONUtils.read(configuration.pathToJSONData, Map.class));
+        final Deltas data = JSONUtils.read(configuration.pathToJSONData, Deltas.class);
 
         final File file = new File("diff-jjoules");
         if (file.exists()) {
@@ -67,10 +69,15 @@ public class Main {
         // 3
         final Map<String, Double> omegaT = Test.computeOmegaT(execLineTestMaps, phiL);
         JSONUtils.write(file.getAbsolutePath() + "/omega.json", omegaT);
-        final Map<String, Double> omegaUpperT = Test.computeOmegaUpperT(omegaT, data);
+        final Map<String, Data> omegaUpperT = Test.computeOmegaUpperT(omegaT, data);
         JSONUtils.write(file.getAbsolutePath() + "/Omega.json", omegaUpperT);
-        final Double deltaOmega = omegaUpperT.values().stream().reduce(Double::sum).orElse(0.0D);
 
+        final Data deltaOmega = new Data(
+                omegaUpperT.values().stream().map(d -> d.energy).reduce(Double::sum).orElse(0.0D),
+                omegaUpperT.values().stream().map(d -> d.instructions).reduce(Double::sum).orElse(0.0D),
+                omegaUpperT.values().stream().map(d -> d.durations).reduce(Double::sum).orElse(0.0D)
+        );
+        JSONUtils.write(file.getAbsolutePath() + "/deltaOmega.json", deltaOmega);
         LOGGER.info("DeltaOmega {}", deltaOmega);
     }
 
