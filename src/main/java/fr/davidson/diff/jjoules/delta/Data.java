@@ -53,4 +53,12 @@ public class Data {
         );
     }
 
+    @Override
+    public String toString() {
+        return "Data{" +
+                "energy=" + energy +
+                ", instructions=" + instructions +
+                ", durations=" + durations +
+                '}';
+    }
 }

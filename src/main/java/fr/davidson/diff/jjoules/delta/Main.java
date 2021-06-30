@@ -50,6 +50,7 @@ public class Main {
         final Map<String, List<Data>> dataV2 = new HashMap<>();
         EntryPoint.verbose = true;
         EntryPoint.jUnit5Mode = true;
+        EntryPoint.timeoutInMs = 100000;
         for (int i = 0; i < configuration.iterations; i++) {
             runForVersionAndCollect(
                     configuration.pathToFirstVersion,
@@ -68,15 +69,15 @@ public class Main {
         }
         final Map<String, Data> mediansV1 = computeMedian(dataV1);
         final Map<String, Data> mediansV2 = computeMedian(dataV2);
-        final Map<String, Delta> deltaPerTestMethodName = computeDelta(mediansV1, mediansV2);
+        final Deltas deltaPerTestMethodName = computeDelta(mediansV1, mediansV2);
         JSONUtils.write(configuration.output + "/delta.json", deltaPerTestMethodName);
     }
 
-    private static Map<String, Delta> computeDelta(
+    private static Deltas computeDelta(
             Map<String, Data> mediansV1,
             Map<String, Data> mediansV2
     ) {
-        final Map<String, Delta> deltaPerName = new HashMap<>();
+        final Deltas deltaPerName = new Deltas();
         for (String testMethodName : mediansV1.keySet()) {
             deltaPerName.put(testMethodName, new Delta(mediansV1.get(testMethodName), mediansV2.get(testMethodName)));
         }
@@ -90,8 +91,8 @@ public class Main {
             medianPerTestName.put(testMethodName,
                     new Data(
                             getMedian(data.get(testMethodName), Data::getEnergy),
-                            getMedian(data.get(testMethodName), Data::getEnergy),
-                            getMedian(data.get(testMethodName), Data::getEnergy)
+                            getMedian(data.get(testMethodName), Data::getInstructions),
+                            getMedian(data.get(testMethodName), Data::getDurations)
                     )
             );
         }

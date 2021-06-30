@@ -1,7 +1,6 @@
 package fr.davidson.diff.jjoules.delta.configuration;
 
 import java.io.File;
-import java.util.Arrays;
 
 /**
  * @author Benjamin DANGLOT
@@ -33,7 +32,7 @@ public class Configuration {
                          String output) {
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
-        this.pathToTestListAsCSV = pathToTestListAsCSV;
+        this.pathToTestListAsCSV = pathToTestListAsCSV == null || pathToTestListAsCSV.isEmpty() ? "" : new File(pathToTestListAsCSV).isAbsolute() ? pathToTestListAsCSV : this.pathToFirstVersion + "/" + pathToTestListAsCSV;
         this.classpathV1 = classpathV1 + ":target/classes:target/test-classes";
         this.classpathV2 = classpathV2 + ":target/classes:target/test-classes";
         this.iterations = iterations;
