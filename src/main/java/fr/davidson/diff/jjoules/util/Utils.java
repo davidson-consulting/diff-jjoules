@@ -45,4 +45,12 @@ public class Utils {
         givenMap.get(key).addAll(values);
     }
 
+    public static double computePercentage(double x, double y) {
+        return x / y * 100.0D;
+    }
+
+    public static String computePercentageString(double x, double y) {
+        return String.format("%,.2f", computePercentage(x , y)) + "%";
+    }
+
 }

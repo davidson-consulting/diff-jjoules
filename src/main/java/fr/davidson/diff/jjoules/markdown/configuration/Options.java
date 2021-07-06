@@ -29,7 +29,9 @@ public class Options {
         }
         return new Configuration(
                 parse.getString("path-delta-omega"),
-                parse.getString("path-delta-json")
+                parse.getString("path-delta-json"),
+                parse.getString("path-data-json-first-version"),
+                parse.getString("path-data-json-second-version")
         );
     }
 
@@ -45,9 +47,20 @@ public class Options {
         FlaggedOption pathDeltaJSON = new FlaggedOption("path-delta-json");
         pathDeltaJSON.setRequired(true);
         pathDeltaJSON.setLongFlag("path-delta-json");
-        pathDeltaJSON.setShortFlag('f');
         pathDeltaJSON.setHelp("TODO");
         pathDeltaJSON.setStringParser(JSAP.STRING_PARSER);
+
+        FlaggedOption pathJSONDataFirstVersion = new FlaggedOption("path-data-json-first-version");
+        pathJSONDataFirstVersion.setRequired(true);
+        pathJSONDataFirstVersion.setLongFlag("path-data-json-first-version");
+        pathJSONDataFirstVersion.setHelp("TODO");
+        pathJSONDataFirstVersion.setStringParser(JSAP.STRING_PARSER);
+
+        FlaggedOption pathJSONDataSecondVersion = new FlaggedOption("path-data-json-second-version");
+        pathJSONDataSecondVersion.setRequired(true);
+        pathJSONDataSecondVersion.setLongFlag("path-data-json-second-version");
+        pathJSONDataSecondVersion.setHelp("TODO");
+        pathJSONDataSecondVersion.setStringParser(JSAP.STRING_PARSER);
 
         Switch help = new Switch("help");
         help.setLongFlag("help");
@@ -58,6 +71,8 @@ public class Options {
         try {
             jsap.registerParameter(pathDirectoryFirstVersion);
             jsap.registerParameter(pathDeltaJSON);
+            jsap.registerParameter(pathJSONDataFirstVersion);
+            jsap.registerParameter(pathJSONDataSecondVersion);
             jsap.registerParameter(help);
         } catch (JSAPException e) {
             e.printStackTrace();

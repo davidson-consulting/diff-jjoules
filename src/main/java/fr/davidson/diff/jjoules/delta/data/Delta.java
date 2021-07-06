@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.delta;
+package fr.davidson.diff.jjoules.delta.data;
 
 import java.util.HashMap;
 import java.util.Map;

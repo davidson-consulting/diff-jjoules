@@ -1,8 +1,10 @@
 package fr.davidson.diff.jjoules.mark;
 
 import eu.stamp_project.diff_test_selection.coverage.Coverage;
-import fr.davidson.diff.jjoules.delta.Data;
-import fr.davidson.diff.jjoules.delta.Deltas;
+import fr.davidson.diff.jjoules.delta.data.Data;
+import fr.davidson.diff.jjoules.delta.data.Datas;
+import fr.davidson.diff.jjoules.delta.data.Delta;
+import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.mark.computation.*;
 import fr.davidson.diff.jjoules.mark.configuration.Configuration;
 import fr.davidson.diff.jjoules.mark.configuration.Options;
@@ -12,8 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +33,19 @@ public class Main {
     public static void run(Configuration configuration) {
         System.out.println(configuration.toString());
         final Map<String, List<String>> testsListName = CSVReader.readFile(configuration.pathToTestListAsCSV);
-        final Deltas data = JSONUtils.read(configuration.pathToJSONData, Deltas.class);
+        final Deltas data = JSONUtils.read(configuration.pathToJSONDelta, Deltas.class);
+
+        final Datas dataV1 = JSONUtils.read(configuration.pathToJSONDataV1, Datas.class);
+        final Datas dataV2 = JSONUtils.read(configuration.pathToJSONDataV2, Datas.class);
+        final Map<String, Boolean> emptyIntersectionPerTestMethodName = dataV1.isEmptyIntersectionPerTestMethodName(dataV2);
+
+        final Deltas consideredDeltas = new Deltas();
+        for (String key : data.keySet()) {
+            final Delta delta = data.get(key);
+            if (emptyIntersectionPerTestMethodName.get(key)) {
+                consideredDeltas.put(key, delta);
+            }
+        }
 
         final File file = new File("diff-jjoules");
         if (file.exists()) {
@@ -69,7 +81,7 @@ public class Main {
         // 3
         final Map<String, Double> omegaT = Test.computeOmegaT(execLineTestMaps, phiL);
         JSONUtils.write(file.getAbsolutePath() + "/omega.json", omegaT);
-        final Map<String, Data> omegaUpperT = Test.computeOmegaUpperT(omegaT, data);
+        final Map<String, Data> omegaUpperT = Test.computeOmegaUpperT(omegaT, consideredDeltas);
         JSONUtils.write(file.getAbsolutePath() + "/Omega.json", omegaUpperT);
 
         final Data deltaOmega = new Data(

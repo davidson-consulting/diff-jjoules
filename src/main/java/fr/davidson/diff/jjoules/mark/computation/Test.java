@@ -1,7 +1,7 @@
 package fr.davidson.diff.jjoules.mark.computation;
 
-import fr.davidson.diff.jjoules.delta.Data;
-import fr.davidson.diff.jjoules.delta.Delta;
+import fr.davidson.diff.jjoules.delta.data.Data;
+import fr.davidson.diff.jjoules.delta.data.Delta;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,6 +50,10 @@ public class Test {
             final Map<String, Delta> deltaT) {
         final Map<String, Data> omegaUpperT = new HashMap<>();
         for (String key : omegaT.keySet()) {
+            if (!deltaT.containsKey(key)) {
+                LOGGER.info("WARNING {} is not in delta(t) map!", key);
+                continue;
+            }
             final double energyOmegaUpperT = omegaT.get(key) * deltaT.get(key).energy;
             final double instructionsOmegaUpperT = omegaT.get(key) * deltaT.get(key).instructions;
             final double durationsOmegaUpperT = omegaT.get(key) * deltaT.get(key).durations;

@@ -29,8 +29,20 @@ public class MarkMojo extends AbstractMojo {
     /**
      *
      */
-    @Parameter(property = "path-data-json")
-    private String pathJSONData;
+    @Parameter(property = "path-json-delta")
+    private String pathToJSONDelta;
+
+    /**
+     *
+     */
+    @Parameter(property = "path-json-data-first-version")
+    private String pathToJSONDataV1;
+
+    /**
+     *
+     */
+    @Parameter(property = "path-json-data-second-version")
+    private String pathToJSONDataV2;
 
     /**
      * [Mandatory] Specify the path to a CSV file that contains the list of tests to be instrumented.
@@ -55,7 +67,9 @@ public class MarkMojo extends AbstractMojo {
                     new Configuration(
                             this.project.getBasedir().getAbsolutePath(),
                             this.pathDirSecondVersion,// + "/" + module,
-                            this.pathJSONData,
+                            this.pathToJSONDelta,
+                            this.pathToJSONDataV1,
+                            this.pathToJSONDataV2,
                             this.pathToDiff,
                             this.testsList
                     )

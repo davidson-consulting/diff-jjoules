@@ -31,6 +31,8 @@ public class Options {
                 parse.getString("path-dir-first-version"),
                 parse.getString("path-dir-second-version"),
                 parse.getString("path-data-json"),
+                parse.getString("path-data-json-first-version"),
+                parse.getString("path-data-json-second-version"),
                 parse.getString("path-to-diff"),
                 parse.getString("tests-list")
         );
@@ -53,15 +55,21 @@ public class Options {
         pathDirectorySecondVersion.setHelp("[Mandatory] Specify the path to root directory of the project in the second version.");
         pathDirectorySecondVersion.setStringParser(JSAP.STRING_PARSER);
 
+        FlaggedOption pathJSONDelta = new FlaggedOption("path-json-delta");
+        pathJSONDelta.setRequired(true);
+        pathJSONDelta.setLongFlag("path-json-delta");
+        pathJSONDelta.setHelp("TODO");
+        pathJSONDelta.setStringParser(JSAP.STRING_PARSER);
+
         FlaggedOption pathJSONDataFirstVersion = new FlaggedOption("path-data-json-first-version");
-        pathJSONDataFirstVersion.setRequired(false);
+        pathJSONDataFirstVersion.setRequired(true);
         pathJSONDataFirstVersion.setLongFlag("path-data-json-first-version");
         pathJSONDataFirstVersion.setShortFlag('f');
         pathJSONDataFirstVersion.setHelp("TODO");
         pathJSONDataFirstVersion.setStringParser(JSAP.STRING_PARSER);
 
         FlaggedOption pathJSONDataSecondVersion = new FlaggedOption("path-data-json-second-version");
-        pathJSONDataSecondVersion.setRequired(false);
+        pathJSONDataSecondVersion.setRequired(true);
         pathJSONDataSecondVersion.setLongFlag("path-data-json-second-version");
         pathJSONDataSecondVersion.setShortFlag('s');
         pathJSONDataSecondVersion.setHelp("TODO");
@@ -91,6 +99,7 @@ public class Options {
         try {
             jsap.registerParameter(pathDirectoryFirstVersion);
             jsap.registerParameter(pathDirectorySecondVersion);
+            jsap.registerParameter(pathJSONDelta);
             jsap.registerParameter(pathJSONDataFirstVersion);
             jsap.registerParameter(pathJSONDataSecondVersion);
             jsap.registerParameter(pathToDiff);

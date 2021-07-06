@@ -20,18 +20,29 @@ public class MarkdownMojo extends AbstractMojo {
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
     private MavenProject project;
 
+    /**
+     *
+     */
+    @Parameter(property = "path-json-delta-omega")
+    private String pathToJSONDeltaOmega;
 
     /**
      *
      */
-    @Parameter(property = "path-delta-omega")
-    private String pathToDeltaOmega;
+    @Parameter(property = "path-json-delta")
+    private String pathToJSONDelta;
 
     /**
      *
      */
-    @Parameter(property = "path-delta-json")
-    private String pathDeltaJSON;
+    @Parameter(property = "path-json-data-first-version")
+    private String pathToJSONDataV1;
+
+    /**
+     *
+     */
+    @Parameter(property = "path-json-data-second-version")
+    private String pathToJSONDataV2;
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
@@ -40,8 +51,10 @@ public class MarkdownMojo extends AbstractMojo {
             getLog().info(this.project.getBasedir().getAbsolutePath());
             Main.run(
                     new Configuration(
-                            this.pathToDeltaOmega,
-                            this.pathDeltaJSON
+                            this.pathToJSONDeltaOmega,
+                            this.pathToJSONDelta,
+                            this.pathToJSONDataV1,
+                            this.pathToJSONDataV2
                     )
             );
         } catch (Exception e) {

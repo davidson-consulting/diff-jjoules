@@ -3,6 +3,10 @@ package fr.davidson.diff.jjoules.delta;
 import eu.stamp_project.testrunner.EntryPoint;
 import fr.davidson.diff.jjoules.delta.configuration.Configuration;
 import fr.davidson.diff.jjoules.delta.configuration.Options;
+import fr.davidson.diff.jjoules.delta.data.Data;
+import fr.davidson.diff.jjoules.delta.data.Datas;
+import fr.davidson.diff.jjoules.delta.data.Delta;
+import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.util.CSVReader;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
@@ -46,8 +50,8 @@ public class Main {
                 .toArray(String[]::new);
         LOGGER.info("{}", Arrays.toString(testClassNames));
         LOGGER.info("{}", Arrays.toString(testMethodsNames));
-        final Map<String, List<Data>> dataV1 = new HashMap<>();
-        final Map<String, List<Data>> dataV2 = new HashMap<>();
+        final Datas dataV1 = new Datas();
+        final Datas dataV2 = new Datas();
         EntryPoint.verbose = true;
         EntryPoint.jUnit5Mode = true;
         EntryPoint.timeoutInMs = 100000;
@@ -70,6 +74,8 @@ public class Main {
         final Map<String, Data> mediansV1 = computeMedian(dataV1);
         final Map<String, Data> mediansV2 = computeMedian(dataV2);
         final Deltas deltaPerTestMethodName = computeDelta(mediansV1, mediansV2);
+        JSONUtils.write(configuration.output + "/data_v1.json", dataV1);
+        JSONUtils.write(configuration.output + "/data_v2.json", dataV2);
         JSONUtils.write(configuration.output + "/delta.json", deltaPerTestMethodName);
     }
 
