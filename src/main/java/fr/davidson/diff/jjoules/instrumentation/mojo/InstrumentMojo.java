@@ -32,7 +32,7 @@ public class InstrumentMojo extends AbstractMojo {
     /**
      * [Mandatory] Specify the path to a CSV file that contains the list of tests to be instrumented.
      */
-    @Parameter(property = "tests-list")
+    @Parameter(property = "tests-list", defaultValue = "testsThatExecuteTheChange.csv")
     private String testsList;
 
     /**

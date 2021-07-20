@@ -29,25 +29,25 @@ public class MarkMojo extends AbstractMojo {
     /**
      *
      */
-    @Parameter(property = "path-json-delta")
+    @Parameter(property = "path-json-delta", defaultValue = "diff-jjoules/delta.json")
     private String pathToJSONDelta;
 
     /**
      *
      */
-    @Parameter(property = "path-json-data-first-version")
+    @Parameter(property = "path-json-data-first-version", defaultValue = "diff-jjoules/data_v1.json")
     private String pathToJSONDataV1;
 
     /**
      *
      */
-    @Parameter(property = "path-json-data-second-version")
+    @Parameter(property = "path-json-data-second-version", defaultValue = "diff-jjoules/data_v1.json")
     private String pathToJSONDataV2;
 
     /**
      * [Mandatory] Specify the path to a CSV file that contains the list of tests to be instrumented.
      */
-    @Parameter(property = "tests-list")
+    @Parameter(property = "tests-list", defaultValue = "testsThatExecuteTheChange.csv")
     private String testsList;
 
     /**

@@ -23,25 +23,25 @@ public class MarkdownMojo extends AbstractMojo {
     /**
      *
      */
-    @Parameter(property = "path-json-delta-omega")
+    @Parameter(property = "path-json-delta-omega", defaultValue = "diff-jjoules/deltaOmega.json")
     private String pathToJSONDeltaOmega;
 
     /**
      *
      */
-    @Parameter(property = "path-json-delta")
+    @Parameter(property = "path-json-delta", defaultValue = "diff-jjoules/delta.json")
     private String pathToJSONDelta;
 
     /**
      *
      */
-    @Parameter(property = "path-json-data-first-version")
+    @Parameter(property = "path-json-data-first-version", defaultValue = "diff-jjoules/data_v1.json")
     private String pathToJSONDataV1;
 
     /**
      *
      */
-    @Parameter(property = "path-json-data-second-version")
+    @Parameter(property = "path-json-data-second-version", defaultValue = "diff-jjoules/data_v1.json")
     private String pathToJSONDataV2;
 
     @Override
