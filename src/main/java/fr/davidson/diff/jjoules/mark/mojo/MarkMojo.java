@@ -41,7 +41,7 @@ public class MarkMojo extends AbstractMojo {
     /**
      *
      */
-    @Parameter(property = "path-json-data-second-version", defaultValue = "diff-jjoules/data_v1.json")
+    @Parameter(property = "path-json-data-second-version", defaultValue = "diff-jjoules/data_v2.json")
     private String pathToJSONDataV2;
 
     /**
