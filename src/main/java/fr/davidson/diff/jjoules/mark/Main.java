@@ -87,7 +87,12 @@ public class Main {
         final Data deltaOmega = new Data(
                 omegaUpperT.values().stream().map(d -> d.energy).reduce(Double::sum).orElse(0.0D),
                 omegaUpperT.values().stream().map(d -> d.instructions).reduce(Double::sum).orElse(0.0D),
-                omegaUpperT.values().stream().map(d -> d.durations).reduce(Double::sum).orElse(0.0D)
+                omegaUpperT.values().stream().map(d -> d.durations).reduce(Double::sum).orElse(0.0D),
+                omegaUpperT.values().stream().map(d -> d.cycles).reduce(Double::sum).orElse(0.0D),
+                omegaUpperT.values().stream().map(d -> d.caches).reduce(Double::sum).orElse(0.0D),
+                omegaUpperT.values().stream().map(d -> d.cacheMisses).reduce(Double::sum).orElse(0.0D),
+                omegaUpperT.values().stream().map(d -> d.branches).reduce(Double::sum).orElse(0.0D),
+                omegaUpperT.values().stream().map(d -> d.branchMisses).reduce(Double::sum).orElse(0.0D)
         );
         JSONUtils.write(file.getAbsolutePath() + "/deltaOmega.json", deltaOmega);
         LOGGER.info("DeltaOmega {}", deltaOmega);

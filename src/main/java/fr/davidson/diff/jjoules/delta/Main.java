@@ -1,6 +1,7 @@
 package fr.davidson.diff.jjoules.delta;
 
 import eu.stamp_project.testrunner.EntryPoint;
+import eu.stamp_project.testrunner.listener.TestResult;
 import fr.davidson.diff.jjoules.delta.configuration.Configuration;
 import fr.davidson.diff.jjoules.delta.configuration.Options;
 import fr.davidson.diff.jjoules.delta.data.Data;
@@ -35,6 +36,16 @@ public class Main {
     private static final String KEY_INSTRUCTIONS = "instructions";
 
     private static final String KEY_DURATIONS = "duration|ns";
+
+    private static final String KEY_CYCLES = "cycles";
+
+    private static final String KEY_BRANCHES = "branches";
+
+    private static final String KEY_BRANCH_MISSES = "branch-misses";
+
+    private static final String KEY_CACHES = "cache-reference";
+
+    private static final String KEY_CACHE_MISSES = "cache-misses";
 
     public static void main(String[] args) {
         run(Options.parse(args));
@@ -98,7 +109,12 @@ public class Main {
                     new Data(
                             getMedian(data.get(testMethodName), Data::getEnergy),
                             getMedian(data.get(testMethodName), Data::getInstructions),
-                            getMedian(data.get(testMethodName), Data::getDurations)
+                            getMedian(data.get(testMethodName), Data::getDurations),
+                            getMedian(data.get(testMethodName), Data::getCycles),
+                            getMedian(data.get(testMethodName), Data::getCaches),
+                            getMedian(data.get(testMethodName), Data::getCacheMisses),
+                            getMedian(data.get(testMethodName), Data::getBranches),
+                            getMedian(data.get(testMethodName), Data::getBranchMisses)
                     )
             );
         }
@@ -125,7 +141,7 @@ public class Main {
         try {
             EntryPoint.workingDirectory = new File(pathToVersion);
             LOGGER.info("CWD {}", EntryPoint.workingDirectory.getAbsolutePath());
-            EntryPoint.runTests(
+            final TestResult testResult = EntryPoint.runTests(
                     classpath,
                     testClassNames,
                     testMethodsNames
@@ -146,10 +162,16 @@ public class Main {
             LOGGER.info("{}", jsonFile.getAbsolutePath());
             final String testName = toTestName(jsonFile.getAbsolutePath());
             final Map<String, Double> jjoulesReports = JSONUtils.read(jsonFile.getAbsolutePath(), Map.class);
+            LOGGER.info("{}", jjoulesReports.toString());
             final Data data = new Data(
                     jjoulesReports.get(KEY_ENERGY_CONSUMPTION),
                     jjoulesReports.get(KEY_INSTRUCTIONS),
-                    jjoulesReports.get(KEY_DURATIONS)
+                    jjoulesReports.get(KEY_DURATIONS),
+                    jjoulesReports.get(KEY_CYCLES),
+                    jjoulesReports.get(KEY_CACHES),
+                    jjoulesReports.get(KEY_CACHE_MISSES),
+                    jjoulesReports.get(KEY_BRANCHES),
+                    jjoulesReports.get(KEY_BRANCH_MISSES)
             );
             Utils.addToGivenMap(testName, data, dataPerTest);
         }

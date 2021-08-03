@@ -18,7 +18,12 @@ public class Delta extends Data {
         super(
                 dataV2.energy - dataV1.energy,
                 dataV2.instructions - dataV1.instructions,
-                dataV2.durations - dataV1.durations
+                dataV2.durations - dataV1.durations,
+                dataV2.cycles - dataV1.cycles,
+                dataV2.caches - dataV1.caches,
+                dataV2.cacheMisses - dataV1.cacheMisses,
+                dataV2.branches - dataV1.branches,
+                dataV2.branchMisses - dataV1.branchMisses
         );
         this.dataV1 = dataV1;
         this.dataV2 = dataV2;

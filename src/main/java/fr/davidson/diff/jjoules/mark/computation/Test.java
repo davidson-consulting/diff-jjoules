@@ -54,15 +54,17 @@ public class Test {
                 LOGGER.info("WARNING {} is not in delta(t) map!", key);
                 continue;
             }
-            final double energyOmegaUpperT = omegaT.get(key) * deltaT.get(key).energy;
-            final double instructionsOmegaUpperT = omegaT.get(key) * deltaT.get(key).instructions;
-            final double durationsOmegaUpperT = omegaT.get(key) * deltaT.get(key).durations;
             omegaUpperT.put(key,
                     new Data(
-                        energyOmegaUpperT,
-                        instructionsOmegaUpperT,
-                        durationsOmegaUpperT
-                )
+                        omegaT.get(key) * deltaT.get(key).energy,
+                        omegaT.get(key) * deltaT.get(key).instructions,
+                        omegaT.get(key) * deltaT.get(key).durations,
+                        omegaT.get(key) * deltaT.get(key).cycles,
+                        omegaT.get(key) * deltaT.get(key).caches,
+                        omegaT.get(key) * deltaT.get(key).cacheMisses,
+                        omegaT.get(key) * deltaT.get(key).branches,
+                        omegaT.get(key) * deltaT.get(key).branchMisses
+                    )
             );
         }
         return omegaUpperT;
