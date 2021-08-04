@@ -7,7 +7,6 @@ import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.markdown.configuration.Configuration;
 import fr.davidson.diff.jjoules.markdown.configuration.Options;
 import fr.davidson.diff.jjoules.util.JSONUtils;
-import fr.davidson.diff.jjoules.util.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,6 +43,11 @@ public class Main {
         double rawDeltaEnergy = 0.0D;
         double rawDeltaInstructions = 0.0D;
         double rawDeltaDurations = 0.0D;
+        double rawDeltaCycles = 0.0D;
+        double rawDeltaCaches = 0.0D;
+        double rawDeltaCacheMisses = 0.0D;
+        double rawDeltaBranches = 0.0D;
+        double rawDeltaBranchMisses = 0.0D;
         final Deltas consideredDelta = new Deltas();
         final Deltas unconsideredDelta = new Deltas();
 
@@ -64,6 +68,11 @@ public class Main {
                 rawDeltaEnergy += delta.energy;
                 rawDeltaInstructions += delta.instructions;
                 rawDeltaDurations += delta.durations;
+                rawDeltaCycles += delta.cycles;
+                rawDeltaCaches += delta.caches;
+                rawDeltaCacheMisses += delta.cacheMisses;
+                rawDeltaBranches += delta.branches;
+                rawDeltaBranchMisses += delta.branchMisses;
             } else {
                 unconsideredDelta.put(testMethodName, deltas.get(testMethodName));
             }
@@ -75,7 +84,16 @@ public class Main {
                 report.append(reportPerTestClassPerTestMethod.get(testClassName).get(testMethodName));
             }
         }
-        final Data rawDeltaData = new Data(rawDeltaEnergy, rawDeltaInstructions, rawDeltaDurations);
+        final Data rawDeltaData = new Data(
+                rawDeltaEnergy,
+                rawDeltaInstructions,
+                rawDeltaDurations,
+                rawDeltaCycles,
+                rawDeltaCaches,
+                rawDeltaCacheMisses,
+                rawDeltaBranches,
+                rawDeltaBranchMisses
+        );
         LOGGER.info("{}", report.toString());
         try (FileWriter writer = new FileWriter(".github/workflows/template.md")) {
             writer.write(Markdown.makeAMarkdownRow("Test", "Energy", "Instructions", "Durations"));
@@ -91,7 +109,9 @@ public class Main {
                 final Delta delta = deltas.get(testMethodName);
                 final List<Data> datasV1 = dataV1.get(testMethodName);
                 final List<Data> datasV2 = dataV2.get(testMethodName);
-                writer.write(Markdown.makeAMarkdownRow(testMethodName, delta.instructions + "",
+                writer.write(Markdown.makeAMarkdownRow(
+                        testMethodName,
+                        delta.instructions + "",
                         datasV1.stream().map(d -> d.instructions).sorted().map(Object::toString).collect(Collectors.joining(",")),
                         datasV2.stream().map(d -> d.instructions).sorted().map(Object::toString).collect(Collectors.joining(","))
                         )
