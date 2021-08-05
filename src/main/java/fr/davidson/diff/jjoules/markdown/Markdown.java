@@ -22,6 +22,10 @@ public class Markdown {
         );
     }
 
+    public static String emojiDecision(double value) {
+        return value > 0 ? ":x:" : ":heavy_check_mark:";
+    }
+
     private static String suffixedValue(double value, boolean withEmoji) {
         return value +
                 (withEmoji ? value > 0 ? ":x:" : ":heavy_check_mark:" : "");

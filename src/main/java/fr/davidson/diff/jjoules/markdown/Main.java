@@ -7,6 +7,7 @@ import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.markdown.configuration.Configuration;
 import fr.davidson.diff.jjoules.markdown.configuration.Options;
 import fr.davidson.diff.jjoules.util.JSONUtils;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,51 +33,14 @@ public class Main {
     public static void run(Configuration configuration) {
         final Deltas deltas = JSONUtils.read(configuration.pathToJSONDelta, Deltas.class);
         final Data deltaOmega = JSONUtils.read(configuration.pathToJSONDeltaOmega, Data.class);
-
         final Datas dataV1 = JSONUtils.read(configuration.pathToJSONDataV1, Datas.class);
         final Datas dataV2 = JSONUtils.read(configuration.pathToJSONDataV2, Datas.class);
-
         final Map<String, Boolean> emptyIntersectionPerTestMethodName = dataV1.isEmptyIntersectionPerTestMethodName(dataV2);
-
         final StringBuilder report = new StringBuilder();
         final Map<String, Map<String, String>> reportPerTestClassPerTestMethod = new HashMap<>();
-        double rawDeltaEnergy = 0.0D;
-        double rawDeltaInstructions = 0.0D;
-        double rawDeltaDurations = 0.0D;
-        double rawDeltaCycles = 0.0D;
-        double rawDeltaCaches = 0.0D;
-        double rawDeltaCacheMisses = 0.0D;
-        double rawDeltaBranches = 0.0D;
-        double rawDeltaBranchMisses = 0.0D;
         final Deltas consideredDelta = new Deltas();
         final Deltas unconsideredDelta = new Deltas();
-
-        for (String testMethodName : deltas.keySet()) {
-            final Delta delta = deltas.get(testMethodName);
-            if (emptyIntersectionPerTestMethodName.get(testMethodName)) {
-                final String[] split = testMethodName.split("#");
-                if (!reportPerTestClassPerTestMethod.containsKey(split[0])) {
-                    reportPerTestClassPerTestMethod.put(split[0], new HashMap<>());
-                }
-                consideredDelta.put(testMethodName, deltas.get(testMethodName));
-                reportPerTestClassPerTestMethod.get(split[0]).put(
-                        split[1],
-                        Markdown.toMarkdownRow(delta.dataV1, "Consumption V1") +
-                                Markdown.toMarkdownRow(delta.dataV2, "Consumption V1") +
-                                Markdown.toMarkdownRow(delta, "Delta Consumption", true)
-                );
-                rawDeltaEnergy += delta.energy;
-                rawDeltaInstructions += delta.instructions;
-                rawDeltaDurations += delta.durations;
-                rawDeltaCycles += delta.cycles;
-                rawDeltaCaches += delta.caches;
-                rawDeltaCacheMisses += delta.cacheMisses;
-                rawDeltaBranches += delta.branches;
-                rawDeltaBranchMisses += delta.branchMisses;
-            } else {
-                unconsideredDelta.put(testMethodName, deltas.get(testMethodName));
-            }
-        }
+        final Data rawDeltaData = splitDataAndBuildReport(deltas, emptyIntersectionPerTestMethodName, reportPerTestClassPerTestMethod, consideredDelta, unconsideredDelta);
         for (String testClassName : reportPerTestClassPerTestMethod.keySet()) {
             report.append(Markdown.makeAMarkdownRow(testClassName));
             for (String testMethodName : reportPerTestClassPerTestMethod.get(testClassName).keySet()) {
@@ -84,23 +48,31 @@ public class Main {
                 report.append(reportPerTestClassPerTestMethod.get(testClassName).get(testMethodName));
             }
         }
-        final Data rawDeltaData = new Data(
-                rawDeltaEnergy,
-                rawDeltaInstructions,
-                rawDeltaDurations,
-                rawDeltaCycles,
-                rawDeltaCaches,
-                rawDeltaCacheMisses,
-                rawDeltaBranches,
-                rawDeltaBranchMisses
-        );
         LOGGER.info("{}", report.toString());
+        writeReport(report, rawDeltaData, deltaOmega, unconsideredDelta, deltas, dataV1, dataV2);
+    }
+
+    private static void writeReport(
+            final StringBuilder report,
+            final Data rawDeltaData,
+            final Data deltaOmega,
+            final Deltas unconsideredDelta,
+            final Deltas deltas,
+            final Datas dataV1,
+            final Datas dataV2
+    ) {
         try (FileWriter writer = new FileWriter(".github/workflows/template.md")) {
-            writer.write(Markdown.makeAMarkdownRow("Test", "Energy", "Instructions", "Durations"));
+            writer.write(Markdown.makeAMarkdownRow("Label", "Consumption V1", "Consumption V2", "&Delta;(t)"));
             writer.write(Markdown.makeAMarkdownRow("---", "---", "---", "---"));
             writer.write(report.toString());
-            writer.write(Markdown.toMarkdownRow(rawDeltaData, "RawDeltaCommit", true));
-            writer.write(Markdown.toMarkdownRow(deltaOmega, "DeltaOmega", true));
+            writer.write("\n\n");
+
+            writer.write(Markdown.makeAMarkdownRow("Unit", "&Delta;(&Omega;)", "Raw&Delta;", "Decision"));
+            writer.write(Markdown.makeAMarkdownRow("---", "---", "---", "---"));
+            writer.write(Markdown.makeAMarkdownRow("Energy(&mu;J)", "" + deltaOmega.energy, "" + rawDeltaData.energy, Markdown.emojiDecision(deltaOmega.energy)));
+            writer.write(Markdown.makeAMarkdownRow("Instructions", "" + deltaOmega.instructions, "" + rawDeltaData.instructions, Markdown.emojiDecision(deltaOmega.instructions)));
+            writer.write(Markdown.makeAMarkdownRow("Durations(ms)", "" + deltaOmega.durations, "" + rawDeltaData.durations, Markdown.emojiDecision(deltaOmega.durations)));
+            writer.write(Markdown.makeAMarkdownRow("Cycles", "" + deltaOmega.cycles, "" + rawDeltaData.cycles, Markdown.emojiDecision(deltaOmega.cycles)));
             writer.write("\n\n");
             if (!unconsideredDelta.isEmpty()) {
                 writer.write("### Unconsidered Test Methods\n\n");
@@ -122,6 +94,64 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @NotNull
+    private static Data splitDataAndBuildReport(Deltas deltas,
+                                                Map<String, Boolean> emptyIntersectionPerTestMethodName,
+                                                Map<String, Map<String, String>> reportPerTestClassPerTestMethod,
+                                                Deltas consideredDelta,
+                                                Deltas unconsideredDelta) {
+        double rawDeltaEnergy = 0.0D;
+        double rawDeltaInstructions = 0.0D;
+        double rawDeltaDurations = 0.0D;
+        double rawDeltaCycles = 0.0D;
+        double rawDeltaCaches = 0.0D;
+        double rawDeltaCacheMisses = 0.0D;
+        double rawDeltaBranches = 0.0D;
+        double rawDeltaBranchMisses = 0.0D;
+        for (String testMethodName : deltas.keySet()) {
+            final Delta delta = deltas.get(testMethodName);
+            if (emptyIntersectionPerTestMethodName.get(testMethodName)) {
+                final String[] split = testMethodName.split("#");
+                if (!reportPerTestClassPerTestMethod.containsKey(split[0])) {
+                    reportPerTestClassPerTestMethod.put(split[0], new HashMap<>());
+                }
+                consideredDelta.put(testMethodName, deltas.get(testMethodName));
+                reportPerTestClassPerTestMethod.get(split[0]).put(
+                        split[1],
+                        Markdown.makeAMarkdownRow(
+                        "Energy(&mu;J)", delta.dataV1.energy + "", delta.dataV2.energy + "", delta.energy + ""
+                        ) + Markdown.makeAMarkdownRow(
+                                "Instruction", delta.dataV1.instructions + "", delta.dataV2.instructions + "", delta.instructions + ""
+                        ) + Markdown.makeAMarkdownRow(
+                                "Duration(ms)", delta.dataV1.durations + "", delta.dataV2.durations + "", delta.durations + ""
+                        ) + Markdown.makeAMarkdownRow(
+                                "Cycles", delta.dataV1.cycles + "", delta.dataV2.cycles + "", delta.cycles + ""
+                        )
+                );
+                rawDeltaEnergy += delta.energy;
+                rawDeltaInstructions += delta.instructions;
+                rawDeltaDurations += delta.durations;
+                rawDeltaCycles += delta.cycles;
+                rawDeltaCaches += delta.caches;
+                rawDeltaCacheMisses += delta.cacheMisses;
+                rawDeltaBranches += delta.branches;
+                rawDeltaBranchMisses += delta.branchMisses;
+            } else {
+                unconsideredDelta.put(testMethodName, deltas.get(testMethodName));
+            }
+        }
+        return new Data(
+                rawDeltaEnergy,
+                rawDeltaInstructions,
+                rawDeltaDurations,
+                rawDeltaCycles,
+                rawDeltaCaches,
+                rawDeltaCacheMisses,
+                rawDeltaBranches,
+                rawDeltaBranchMisses
+        );
     }
 
 }
