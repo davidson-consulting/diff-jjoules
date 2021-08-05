@@ -102,20 +102,22 @@ public class Main {
             writer.write(Markdown.toMarkdownRow(rawDeltaData, "RawDeltaCommit", true));
             writer.write(Markdown.toMarkdownRow(deltaOmega, "DeltaOmega", true));
             writer.write("\n\n");
-            writer.write("### Unconsidered Test Methods\n\n");
-            writer.write(Markdown.makeAMarkdownRow("Test", "Delta", "V1", "V2"));
-            writer.write(Markdown.makeAMarkdownRow("---", "---", "---", "---"));
-            for (String testMethodName : unconsideredDelta.keySet()) {
-                final Delta delta = deltas.get(testMethodName);
-                final List<Data> datasV1 = dataV1.get(testMethodName);
-                final List<Data> datasV2 = dataV2.get(testMethodName);
-                writer.write(Markdown.makeAMarkdownRow(
-                        testMethodName,
-                        delta.instructions + "",
-                        datasV1.stream().map(d -> d.instructions).sorted().map(Object::toString).collect(Collectors.joining(",")),
-                        datasV2.stream().map(d -> d.instructions).sorted().map(Object::toString).collect(Collectors.joining(","))
-                        )
-                );
+            if (!unconsideredDelta.isEmpty()) {
+                writer.write("### Unconsidered Test Methods\n\n");
+                writer.write(Markdown.makeAMarkdownRow("Test", "Delta", "V1", "V2"));
+                writer.write(Markdown.makeAMarkdownRow("---", "---", "---", "---"));
+                for (String testMethodName : unconsideredDelta.keySet()) {
+                    final Delta delta = deltas.get(testMethodName);
+                    final List<Data> datasV1 = dataV1.get(testMethodName);
+                    final List<Data> datasV2 = dataV2.get(testMethodName);
+                    writer.write(Markdown.makeAMarkdownRow(
+                            testMethodName,
+                            delta.instructions + "",
+                            datasV1.stream().map(d -> d.instructions).sorted().map(Object::toString).collect(Collectors.joining(",")),
+                            datasV2.stream().map(d -> d.instructions).sorted().map(Object::toString).collect(Collectors.joining(","))
+                            )
+                    );
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
