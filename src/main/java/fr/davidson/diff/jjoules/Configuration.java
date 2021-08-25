@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.util.Arrays;
 
 /**
  * @author Benjamin DANGLOT
@@ -95,4 +96,23 @@ public class Configuration {
         this.pathToJSONDeltaOmega = pathToJSONDeltaOmega;
     }
 
+    @Override
+    public String toString() {
+        return "Configuration{" +
+                "pathToFirstVersion='" + pathToFirstVersion + '\'' +
+                ", pathToSecondVersion='" + pathToSecondVersion + '\'' +
+                ", pathToTestListAsCSV='" + pathToTestListAsCSV + '\'' +
+                ", classpathV1=" + Arrays.toString(classpathV1) +
+                ", classpathV2=" + Arrays.toString(classpathV2) +
+                ", junit4=" + junit4 +
+                ", iterations=" + iterations +
+                ", output='" + output + '\'' +
+                ", pathToJSONDelta='" + pathToJSONDelta + '\'' +
+                ", pathToJSONDataV1='" + pathToJSONDataV1 + '\'' +
+                ", pathToJSONDataV2='" + pathToJSONDataV2 + '\'' +
+                ", diff='" + diff + '\'' +
+                ", pathToDeltaJSON='" + pathToDeltaJSON + '\'' +
+                ", pathToJSONDeltaOmega='" + pathToJSONDeltaOmega + '\'' +
+                '}';
+    }
 }

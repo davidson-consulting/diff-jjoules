@@ -25,7 +25,7 @@ public class FailerMojo extends DiffJJoulesMojo {
 
     @Override
     public void run(Configuration configuration) {
-        getLog().info(configuration.toString());
+        getLog().info("Run Failer - " + configuration.toString());
         final Deltas deltas = JSONUtils.read(configuration.pathToDeltaJSON, Deltas.class);
         final Map<String, List<String>> testsToBeInstrumented = new HashMap<>();
         for (String fullTestMethodName : deltas.keySet()) {

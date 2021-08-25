@@ -25,7 +25,7 @@ public class SuspectMojo extends DiffJJoulesMojo {
 
     @Override
     public void run(Configuration configuration) {
-        getLog().info(configuration.toString());
+        getLog().info("Run Suspect - " + configuration.toString());
         final Set<String> testsList = FullQualifiedName.toSetFullQualifiedNames(CSVReader.readFile(configuration.pathToTestListAsCSV));
         if (testsList.isEmpty()) {
             throw new RuntimeException();

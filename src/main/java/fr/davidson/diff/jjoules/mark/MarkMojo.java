@@ -26,7 +26,7 @@ public class MarkMojo extends DiffJJoulesMojo {
 
     @Override
     public void run(Configuration configuration) {
-        getLog().info(configuration.toString());
+        getLog().info("Run Mark - " + configuration.toString());
         final Map<String, List<String>> testsListName = CSVReader.readFile(configuration.pathToTestListAsCSV);
         final Deltas data = JSONUtils.read(configuration.pathToJSONDelta, Deltas.class);
 

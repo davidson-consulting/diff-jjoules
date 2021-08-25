@@ -54,7 +54,7 @@ public class DeltaMojo extends DiffJJoulesMojo {
 
     @Override
     public void run(Configuration configuration) {
-        getLog().info(configuration.toString());
+        getLog().info("Run Delta - " + configuration.toString());
         final Map<String, List<String>> testsList = CSVReader.readFile(configuration.pathToTestListAsCSV);
         final String[] testClassNames = testsList.keySet().toArray(new String[0]);
         final String[] testMethodsNames = testsList.values()
@@ -144,7 +144,9 @@ public class DeltaMojo extends DiffJJoulesMojo {
             EntryPoint.workingDirectory = new File(pathToVersion);
             getLog().info(EntryPoint.workingDirectory.getAbsolutePath());
             final TestResult testResult = EntryPoint.runTests(
-                    classpath,
+                    classpath +
+                            ":" + pathToVersion + "/target/classes" +
+                            ":" + pathToVersion + "/target/test-classes",
                     testClassNames,
                     testMethodsNames
             );

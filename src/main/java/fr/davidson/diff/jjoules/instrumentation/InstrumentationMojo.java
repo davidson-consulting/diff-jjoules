@@ -26,10 +26,7 @@ public class InstrumentationMojo extends DiffJJoulesMojo {
 
     @Override
     public void run(Configuration configuration) {
-        if (configuration == null) {
-            return;
-        }
-        getLog().info(configuration.toString());
+        getLog().info("Run Instrumentation - " + configuration.toString());
         final Map<String, List<String>> testsList = CSVReader.readFile(configuration.pathToTestListAsCSV);
         getLog().info(testsList.keySet().stream().map(key -> key + ":" + testsList.get(key)).collect(Collectors.joining("\n")));
         final AbstractJJoulesProcessor processor = configuration.junit4 ?

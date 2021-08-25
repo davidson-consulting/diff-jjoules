@@ -32,6 +32,7 @@ public class MarkdownMojo extends DiffJJoulesMojo {
 
     @Override
     public void run(Configuration configuration) {
+        getLog().info("Run Markdown - " + configuration.toString());
         final Deltas deltas = JSONUtils.read(configuration.pathToJSONDelta, Deltas.class);
         final Data deltaOmega = JSONUtils.read(configuration.pathToJSONDeltaOmega, Data.class);
         final Datas dataV1 = JSONUtils.read(configuration.pathToJSONDataV1, Datas.class);

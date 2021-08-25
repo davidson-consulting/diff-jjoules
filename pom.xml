@@ -90,6 +90,7 @@
             <groupId>eu.stamp-project</groupId>
             <artifactId>test-runner</artifactId>
             <version>3.0.0-SNAPSHOT</version>
+            <classifier>jar-with-dependencies</classifier>
         </dependency>
 
         <dependency>
@@ -97,6 +98,19 @@
             <artifactId>flacoco</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <classifier>jar-with-dependencies</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.shared</groupId>
+            <artifactId>maven-invoker</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit -->
+        <dependency>
+            <groupId>org.eclipse.jgit</groupId>
+            <artifactId>org.eclipse.jgit</artifactId>
+            <version>5.12.0.202106070339-r</version>
         </dependency>
 
     </dependencies>
