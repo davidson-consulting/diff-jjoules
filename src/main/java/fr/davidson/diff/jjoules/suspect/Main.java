@@ -1,20 +1,18 @@
 package fr.davidson.diff.jjoules.suspect;
 
-import fr.davidson.diff.jjoules.delta.data.Deltas;
+import fr.davidson.diff.jjoules.mark.computation.ExecLineTestMap;
+import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
 import fr.davidson.diff.jjoules.suspect.configuration.Configuration;
 import fr.davidson.diff.jjoules.suspect.configuration.Options;
-import fr.davidson.diff.jjoules.suspect.processor.MakeTestFailingProcessor;
+import fr.davidson.diff.jjoules.util.CSVReader;
+import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import fr.davidson.diff.jjoules.util.JSONUtils;
+import fr.spoonlabs.flacoco.api.Suspiciousness;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import spoon.Launcher;
-import spoon.OutputType;
-import spoon.SpoonException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Benjamin DANGLOT
@@ -23,8 +21,6 @@ import java.util.Map;
  */
 public class Main {
 
-    public static final String TEST_FOLDER_PATH = "src/test/java/";
-
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
@@ -32,63 +28,56 @@ public class Main {
     }
 
     public static void run(Configuration configuration) {
-        LOGGER.info("{}", configuration.pathToDeltaJSON);
-        final Deltas deltas = JSONUtils.read(configuration.pathToDeltaJSON, Deltas.class);
-        final Map<String, List<String>> testsToBeInstrumented = new HashMap<>();
-        for (String fullTestMethodName : deltas.keySet()) {
-            if (deltas.get(fullTestMethodName).instructions > 0) {
-                final String[] split = fullTestMethodName.split("#");
-                if (!testsToBeInstrumented.containsKey(split[0])) {
-                    testsToBeInstrumented.put(split[0], new ArrayList<>());
+        LOGGER.info("{}", configuration.toString());
+        final Set<String> testsList = FullQualifiedName.toSetFullQualifiedNames(CSVReader.readFile(configuration.pathToTestListAsCSV));
+        if (testsList.isEmpty()) {
+            throw new RuntimeException();
+        }
+        LOGGER.info("{}", String.join("\n", testsList));
+        // execute flacoco
+        final Map<String, Suspiciousness> runV1 = FlacocoRunner.run(
+                String.join(":", configuration.classpathV1),
+                configuration.pathToFirstVersion,
+                testsList
+        );
+        final Map<String, Suspiciousness> runV2 = FlacocoRunner.run(
+                String.join(":", configuration.classpathV2),
+                configuration.pathToSecondVersion,
+                testsList
+        );
+
+        final ExecsLines execLinesAdditions = JSONUtils.read("diff-jjoules/exec_additions.json", ExecsLines.class);
+        final ExecsLines execLinesDeletions = JSONUtils.read("diff-jjoules/exec_deletions.json", ExecsLines.class);
+        final Map<String, Double> suspiciousLinesV1 = getSuspiciousLinesFromDiff(runV1, execLinesDeletions);
+        final Map<String, Double> suspiciousLinesV2 = getSuspiciousLinesFromDiff(runV2, execLinesAdditions);
+
+        LOGGER.info("Suspect Lines in V1");
+        suspiciousLinesV1.keySet()
+                .stream()
+                .sorted((key1, key2) -> -(int)((suspiciousLinesV1.get(key1)*100.0D) - (suspiciousLinesV1.get(key2)*100.0D)))
+                .forEach(key -> LOGGER.info("{}: {}", key, suspiciousLinesV1.get(key)));
+        LOGGER.info("Suspect Lines in V2");
+        suspiciousLinesV2.keySet()
+                .stream()
+                .sorted((key1, key2) -> -(int)((suspiciousLinesV2.get(key1)*100.0D) - (suspiciousLinesV2.get(key2)*100.0D)))
+                .forEach(key -> LOGGER.info("{}: {}", key, suspiciousLinesV2.get(key)));
+        JSONUtils.write("suspicious_v1.json", suspiciousLinesV1);
+        JSONUtils.write("suspicious_v2.json", suspiciousLinesV2);
+    }
+
+    private static Map<String, Double> getSuspiciousLinesFromDiff(Map<String, Suspiciousness> flacocoMap, ExecsLines execLines) {
+        final Map<String, Double> scorePerSuspiciousLine = new HashMap<>();
+        for (ExecLineTestMap execLinesDeletion : execLines) {
+            for (String line : execLinesDeletion.getExecLt().keySet()) {
+                final String[] split = line.split("#");
+                final String className = split[0];
+                final String lineNumber = split[1];
+                final String key = className.replaceAll("\\.", "/") + "@-@" + lineNumber;
+                if (flacocoMap.containsKey(key)) {
+                    scorePerSuspiciousLine.put(line, flacocoMap.get(key).getScore());
                 }
-                testsToBeInstrumented.get(split[0]).add(split[1]);
             }
         }
-
-        // 1 make the delta > 0 test failing
-        runVersion(
-                configuration.pathToFirstVersion,
-                configuration.classpathV1,
-                new MakeTestFailingProcessor(testsToBeInstrumented, configuration.pathToFirstVersion)
-        );
-        runVersion(
-                configuration.pathToSecondVersion,
-                configuration.classpathV2,
-                new MakeTestFailingProcessor(testsToBeInstrumented, configuration.pathToSecondVersion)
-        );
-        // 2 execute flacoco
-        FlacocoRunner.run(String.join(":", configuration.classpathV1), configuration.pathToFirstVersion);
-        FlacocoRunner.run(String.join(":", configuration.classpathV2), configuration.pathToSecondVersion);
+        return scorePerSuspiciousLine;
     }
-
-    private static void runVersion(
-            String rootPathFolder,
-            String[] classpath,
-            MakeTestFailingProcessor processor
-    ) {
-        LOGGER.info("Run on {}", rootPathFolder);
-        Launcher launcher = new Launcher();
-
-        final String[] finalClassPath = new String[classpath.length + 2];
-        finalClassPath[0] = rootPathFolder + "/target/classes";
-        finalClassPath[1] = rootPathFolder + "/target/test-classes";
-        System.arraycopy(classpath, 0, finalClassPath, 2, classpath.length);
-        launcher.getEnvironment().setSourceClasspath(finalClassPath);
-        launcher.getEnvironment().setNoClasspath(false);
-        launcher.getEnvironment().setAutoImports(false);
-        launcher.getEnvironment().setLevel("DEBUG");
-        launcher.addInputResource(rootPathFolder + "/" + TEST_FOLDER_PATH);
-
-        launcher.addProcessor(processor);
-        launcher.getEnvironment().setOutputType(OutputType.NO_OUTPUT);
-        launcher.getEnvironment().setShouldCompile(true);
-        launcher.getEnvironment().setBinaryOutputDirectory(rootPathFolder + "/target/test-classes/");
-        try {
-            launcher.buildModel();
-            launcher.process();
-        } catch (SpoonException sp) {
-            throw new RuntimeException(sp);
-        }
-    }
-
 }

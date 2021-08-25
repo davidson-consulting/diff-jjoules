@@ -1,18 +1,15 @@
-package fr.davidson.diff.jjoules.suspect.processor;
+package fr.davidson.diff.jjoules.failer.processor;
 
 import fr.davidson.diff.jjoules.instrumentation.process.AbstractJJoulesProcessor;
-import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.reflect.code.CtInvocation;
-import spoon.reflect.code.CtLiteral;
 import spoon.reflect.code.CtTypeAccess;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtTypeReference;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 

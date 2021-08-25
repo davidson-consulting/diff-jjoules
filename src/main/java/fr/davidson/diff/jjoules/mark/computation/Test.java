@@ -19,7 +19,7 @@ public class Test {
     private static final Logger LOGGER = LoggerFactory.getLogger(Test.class);
 
     public static Map<String, Double> computeOmegaT(
-            final List<List<ExecLineTestMap>> execLineTestMaps,
+            final List<ExecsLines> execLineTestMaps,
             final Map<String, Double> phiL
             ) {
         final Map<String, Double> omegaT = new HashMap<>();

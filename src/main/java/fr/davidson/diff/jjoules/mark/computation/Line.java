@@ -12,7 +12,7 @@ import java.util.Map;
 public class Line {
 
     public static Map<String, Integer> computeThetaL(
-            List<List<ExecLineTestMap>> execLineTestMaps
+            List<ExecsLines> execLineTestMaps
     ) {
         final Map<String, Integer> thetaL = new HashMap<>();
         for (ExecLineTestMap execLineTestMapDeletion : execLineTestMaps.get(0)) {

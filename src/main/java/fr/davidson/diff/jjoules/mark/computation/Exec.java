@@ -43,15 +43,15 @@ public class Exec {
         return execLineTestMapList;
     }
 
-    public static List<List<ExecLineTestMap>> computeExecLT(
+    public static List<ExecsLines> computeExecLT(
             String pathToFirstVersion,
             String pathToSecondVersion,
             Map<String, Coverage> coveragePerTestMethodNameFirstVersion,
             Map<String, Coverage> coveragePerTestMethodNameSecondVersion,
             String diff
     ) {
-        final List<ExecLineTestMap> execLineTestMapsFirst = new ArrayList<>();
-        final List<ExecLineTestMap> execLineTestMapsSecond = new ArrayList<>();
+        final ExecsLines execLineTestMapsFirst = new ExecsLines();
+        final ExecsLines execLineTestMapsSecond = new ExecsLines();
         final Exec execLtFirstVersion = new Exec(coveragePerTestMethodNameFirstVersion);
         final Exec execLtSecondVersion = new Exec(coveragePerTestMethodNameSecondVersion);
         final String[] lines = diff.split(System.getProperty("line.separator"));

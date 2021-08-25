@@ -1,7 +1,7 @@
-package fr.davidson.diff.jjoules.suspect.mojo;
+package fr.davidson.diff.jjoules.failer.mojo;
 
-import fr.davidson.diff.jjoules.suspect.Main;
-import fr.davidson.diff.jjoules.suspect.configuration.Configuration;
+import fr.davidson.diff.jjoules.failer.Main;
+import fr.davidson.diff.jjoules.failer.configuration.Configuration;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -18,8 +18,8 @@ import java.util.stream.Collectors;
  * benjamin.danglot@davidson.fr
  * on 30/06/2021
  */
-@Mojo(name = "suspect")
-public class SuspectMojo extends AbstractMojo {
+@Mojo(name = "failer")
+public class FailerMojo extends AbstractMojo {
 
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
     private MavenProject project;
@@ -47,10 +47,10 @@ public class SuspectMojo extends AbstractMojo {
     private String classpathPathV2;
 
     /**
-     * [Mandatory] Specify the path to a CSV file that contains the list of tests to be instrumented.
+     *
      */
-    @Parameter(property = "tests-list", defaultValue = "testsThatExecuteTheChange.csv")
-    private String testsList;
+    @Parameter(property = "path-delta-json", defaultValue = "diff-jjoules/delta.json")
+    private String pathDeltaJSON;
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
@@ -74,7 +74,7 @@ public class SuspectMojo extends AbstractMojo {
                             this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.pathDirSecondVersion,
                              classpath.split(":"),
                             classpathV2.split(":"),
-                            this.testsList
+                            this.pathDeltaJSON
                     )
             );
         } catch (Exception e) {

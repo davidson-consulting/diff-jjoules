@@ -50,6 +50,33 @@ public class Main {
         }
         LOGGER.info("{}", report.toString());
         writeReport(report, rawDeltaData, deltaOmega, unconsideredDelta, deltas, dataV1, dataV2);
+        suspiciousLines();
+    }
+
+    private static void suspiciousLines() {
+        final Map<String, Double> scorePerLineV1 = JSONUtils.read("suspicious_v1.json", Map.class);
+        final Map<String, Double> scorePerLineV2 = JSONUtils.read("suspicious_v2.json", Map.class);
+        try (FileWriter writer = new FileWriter(".github/workflows/template.md", true)) {
+            writer.write("## Suspicious Lines\n\n\n");
+            if (!scorePerLineV1.isEmpty()) {
+                writer.write("### V1 and Deletions\n\n\n");
+                writer.write(Markdown.makeAMarkdownRow("Line", "Score"));
+                writer.write(Markdown.makeAMarkdownRow("---", "---"));
+                for (String key : scorePerLineV1.keySet()) {
+                    writer.write(Markdown.makeAMarkdownRow(key, scorePerLineV1.get(key) + ""));
+                }
+            }
+            if (!scorePerLineV2.isEmpty()) {
+                writer.write("### V2 and Additions\n\n\n");
+                writer.write(Markdown.makeAMarkdownRow("Line", "Score"));
+                writer.write(Markdown.makeAMarkdownRow("---", "---"));
+                for (String key : scorePerLineV2.keySet()) {
+                    writer.write(Markdown.makeAMarkdownRow(key, scorePerLineV2.get(key) + ""));
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void writeReport(

@@ -1,5 +1,12 @@
 package fr.davidson.diff.jjoules.util;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 /**
  * @author Benjamin DANGLOT
  * benjamin.danglot@davidson.fr
@@ -20,4 +27,21 @@ public class FullQualifiedName {
         return new FullQualifiedName(split[0], split[1]);
     }
 
+    @Override
+    public String toString() {
+        return this.className + "#" + this.methodName;
+    }
+
+    @NotNull
+    public static Set<String> toSetFullQualifiedNames(Map<String, List<String>> testsList) {
+        return testsList.keySet()
+                .stream()
+                .flatMap(testClassName ->
+                        testsList.get(testClassName)
+                                .stream()
+                                .map(testMethodName ->
+                                        new FullQualifiedName(testClassName, testMethodName).toString()
+                                )
+                ).collect(Collectors.toSet());
+    }
 }

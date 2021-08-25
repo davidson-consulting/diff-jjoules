@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.suspect.configuration;
+package fr.davidson.diff.jjoules.failer.configuration;
 
 import com.martiansoftware.jsap.*;
 import org.slf4j.Logger;
@@ -32,7 +32,7 @@ public class Options {
                 parse.getString("path-dir-second-version"),
                 parse.getString("classpath-v1").split(":"),
                 parse.getString("classpath-v2").split(":"),
-                parse.getString("tests-list")
+                parse.getString("path-delta-json")
         );
 
     }
@@ -54,13 +54,6 @@ public class Options {
         pathDirectorySecondVersion.setHelp("[Mandatory] Specify the path to root directory of the project in the second version.");
         pathDirectorySecondVersion.setStringParser(JSAP.STRING_PARSER);
 
-        FlaggedOption pathToTestList = new FlaggedOption("tests-list");
-        pathToTestList.setRequired(false);
-        pathToTestList.setLongFlag("tests-list");
-        pathToTestList.setShortFlag('l');
-        pathToTestList.setHelp("[Mandatory] Specify the path to a CSV file that contains the list of tests to be instrumented.");
-        pathToTestList.setStringParser(JSAP.STRING_PARSER);
-
         FlaggedOption classpath = new FlaggedOption("classpath-v1");
         classpath.setRequired(true);
         classpath.setLongFlag("classpath-v1");
@@ -74,6 +67,12 @@ public class Options {
         classpathV2.setShortFlag('b');
         classpathV2.setHelp("[Mandatory] Specify the classpath to execute the tests. Should be a single string, separated by ':' (double-dot)");
         classpathV2.setStringParser(JSAP.STRING_PARSER);
+
+        FlaggedOption pathDeltaOmega = new FlaggedOption("path-delta-omega");
+        pathDeltaOmega.setLongFlag("path-delta-omega");
+        pathDeltaOmega.setRequired(true);
+        pathDeltaOmega.setHelp("TODO");
+        pathDeltaOmega.setStringParser(JSAP.STRING_PARSER);
 
         FlaggedOption pathDeltaJSON = new FlaggedOption("path-delta-json");
         pathDeltaJSON.setRequired(true);
@@ -91,9 +90,9 @@ public class Options {
         try {
             jsap.registerParameter(pathDirectoryFirstVersion);
             jsap.registerParameter(pathDirectorySecondVersion);
-            jsap.registerParameter(pathToTestList);
             jsap.registerParameter(classpath);
             jsap.registerParameter(classpathV2);
+            jsap.registerParameter(pathDeltaJSON);
             jsap.registerParameter(pathDeltaJSON);
             jsap.registerParameter(help);
         } catch (JSAPException e) {

@@ -62,7 +62,7 @@ public class Main {
         JSONUtils.write(file.getAbsolutePath() + "/coverage_second.json", coveragePerTestMethodNameSecondVersion);
 
         // Exec(l,t)
-        final List<List<ExecLineTestMap>> execLineTestMaps = Exec.computeExecLT(
+        final List<ExecsLines> execLineTestMaps = Exec.computeExecLT(
                 configuration.pathToFirstVersion,
                 configuration.pathToSecondVersion,
                 coveragePerTestMethodNameFirstVersion,
