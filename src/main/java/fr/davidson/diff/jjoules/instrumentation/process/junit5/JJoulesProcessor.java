@@ -32,7 +32,6 @@ public class JJoulesProcessor extends AbstractJJoulesProcessor {
     @Override
     public void process(CtMethod<?> ctMethod) {
         final CtType<?> declaringType = ctMethod.getDeclaringType();
-        System.out.println("Processing " + declaringType.getQualifiedName() + "#" + ctMethod.getSimpleName());
         final Factory factory = ctMethod.getFactory();
         final CtTypeReference<? extends Annotation> reference = factory.Type().createReference("org.powerapi.jjoules.junit5.EnergyTest");
         final CtAnnotation<? extends Annotation> testAnnotation =
@@ -41,10 +40,7 @@ public class JJoulesProcessor extends AbstractJJoulesProcessor {
                         .filter(ctAnnotation -> ctAnnotation.getType().getQualifiedName().endsWith("Test"))
                         .findAny()
                         .get();
-        //ctMethod.removeAnnotation(testAnnotation);
-        //ctMethod.addAnnotation(factory.createAnnotation(reference));
         testAnnotation.replace(factory.createAnnotation(reference));
-//        this.duplicateMethodForWarmup(declaringType, ctMethod);
         super.instrumentedTypes.add(declaringType);
     }
 }

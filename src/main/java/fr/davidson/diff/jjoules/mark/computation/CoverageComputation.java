@@ -3,14 +3,14 @@ package fr.davidson.diff.jjoules.mark.computation;
 import eu.stamp_project.diff_test_selection.clover.CloverExecutor;
 import eu.stamp_project.diff_test_selection.clover.CloverReader;
 import eu.stamp_project.diff_test_selection.coverage.Coverage;
+import eu.stamp_project.testrunner.EntryPoint;
 import fr.davidson.diff.jjoules.util.Utils;
+import fr.davidson.diff.jjoules.util.maven.MavenRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.TimeoutException;
 
 /**
  * @author Benjamin DANGLOT
@@ -27,9 +27,24 @@ public class CoverageComputation {
     ) {
         final Map<String, Coverage> coveragePerTestMethodName = new HashMap<>();
         final CloverExecutor cloverExecutor = new CloverExecutor();
+        final CloverReader cloverReader = new CloverReader();
+        cloverExecutor.instrument(pathToVersion);
         for (String testClassName: testsListName.keySet()) {
-            for (String testMethodName: testsListName.get(testClassName)) {
-                computeAndCollectCoverage(pathToVersion, coveragePerTestMethodName, cloverExecutor, testClassName, testMethodName);
+            cloverExecutor.instrumentAndRunGivenTest(
+                    pathToVersion,
+                    new HashMap<String, List<String>>() {
+                        {
+                            put(testClassName, new ArrayList<>());
+                            get(testClassName).addAll(testsListName.get(testClassName));
+                        }
+                    }
+            );
+            final Coverage coverage = cloverReader.read(pathToVersion);
+            for (String testMethodName : testsListName.get(testClassName)) {
+                coveragePerTestMethodName.put(
+                        Utils.toFullQualifiedName(testClassName, testMethodName),
+                        coverage
+                );
             }
         }
         return coveragePerTestMethodName;
@@ -39,10 +54,11 @@ public class CoverageComputation {
             String pathToVersion,
             Map<String, Coverage> coveragePerTestMethodName,
             CloverExecutor cloverExecutor,
+            String classpath,
             String testClassName,
             String testMethodName
     ) {
-        cloverExecutor.instrumentAndRunGivenTest(
+       cloverExecutor.instrumentAndRunGivenTest(
                 pathToVersion,
                 new HashMap<String, List<String>>() {
                     {
@@ -52,7 +68,7 @@ public class CoverageComputation {
                 }
         );
         final Coverage coverage = new CloverReader().read(pathToVersion);
-        LOGGER.info("Read From {}, {}", pathToVersion, coverage.toString());
+        LOGGER.info("Read From {}, {}", pathToVersion, coverage.testClassCoverage.size());
         coveragePerTestMethodName.put(
                 Utils.toFullQualifiedName(testClassName, testMethodName),
                 coverage

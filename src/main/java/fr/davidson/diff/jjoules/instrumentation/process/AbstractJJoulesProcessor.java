@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
-import spoon.reflect.declaration.ModifierKind;
-import spoon.reflect.factory.Factory;
 import spoon.reflect.visitor.PrettyPrinter;
 
 import java.io.File;
@@ -73,15 +71,8 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
     @Override
     public void processingDone() {
         this.instrumentedTypes.forEach(this::printCtType);
+        LOGGER.info("{} instrumented test classes have been printed!", this.instrumentedTypes.size());
     }
-
-    /*protected void duplicateMethodForWarmup(CtType<?> testClass, CtMethod<?> method) {
-        for (int i = 0; i < 5; i++) {
-            final CtMethod<?> clone = method.clone();
-            clone.setSimpleName("aaa_" + i + "_" + clone.getSimpleName());
-            testClass.addMethod(clone);
-        }
-    }*/
 
     private void printCtType(CtType<?> type) {
         final File directory = new File(this.rootPathFolder + "/" + TEST_FOLDER_PATH);
@@ -90,7 +81,6 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
         final String fileName = this.rootPathFolder + "/" +
                 TEST_FOLDER_PATH + "/" +
                 type.getQualifiedName().replaceAll("\\.", "/") + ".java";
-        LOGGER.info("Printing {} to {}", type.getQualifiedName(), fileName);
         try (final FileWriter write = new FileWriter(fileName)) {
             write.write(prettyPrinter.printTypes(type));
         } catch (IOException e) {

@@ -4,7 +4,6 @@ import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.DiffJJoulesMojo;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.failer.processor.MakeTestFailingProcessor;
-import fr.davidson.diff.jjoules.util.JSONUtils;
 import org.apache.maven.plugins.annotations.Mojo;
 import spoon.Launcher;
 import spoon.OutputType;
@@ -26,7 +25,7 @@ public class FailerMojo extends DiffJJoulesMojo {
     @Override
     public void run(Configuration configuration) {
         getLog().info("Run Failer - " + configuration.toString());
-        final Deltas deltas = JSONUtils.read(configuration.pathToDeltaJSON, Deltas.class);
+        final Deltas deltas = configuration.getDeltas();
         final Map<String, List<String>> testsToBeInstrumented = new HashMap<>();
         for (String fullTestMethodName : deltas.keySet()) {
             if (deltas.get(fullTestMethodName).instructions > 0) {
@@ -39,12 +38,12 @@ public class FailerMojo extends DiffJJoulesMojo {
         }
         runVersion(
                 configuration.pathToFirstVersion,
-                configuration.classpathV1,
+                configuration.getClasspathV1(),
                 new MakeTestFailingProcessor(testsToBeInstrumented, configuration.pathToFirstVersion)
         );
         runVersion(
                 configuration.pathToSecondVersion,
-                configuration.classpathV2,
+                configuration.getClasspathV2(),
                 new MakeTestFailingProcessor(testsToBeInstrumented, configuration.pathToSecondVersion)
         );
     }

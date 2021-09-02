@@ -24,7 +24,6 @@ public class JJoulesProcessor extends AbstractJJoulesProcessor {
 
     @Override
     public void process(CtMethod<?> ctMethod) {
-        System.out.println("Processing " + ctMethod.getDeclaringType().getQualifiedName() + "#" + ctMethod.getSimpleName());
         final Factory factory = ctMethod.getFactory();
 
         // target

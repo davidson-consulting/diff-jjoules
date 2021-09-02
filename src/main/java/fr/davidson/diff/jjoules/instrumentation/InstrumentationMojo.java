@@ -14,7 +14,6 @@ import spoon.reflect.declaration.CtMethod;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * @author Benjamin DANGLOT
@@ -27,18 +26,17 @@ public class InstrumentationMojo extends DiffJJoulesMojo {
     @Override
     public void run(Configuration configuration) {
         getLog().info("Run Instrumentation - " + configuration.toString());
-        final Map<String, List<String>> testsList = CSVReader.readFile(configuration.pathToTestListAsCSV);
-        getLog().info(testsList.keySet().stream().map(key -> key + ":" + testsList.get(key)).collect(Collectors.joining("\n")));
+        final Map<String, List<String>> testsList = configuration.getTestsList();
         final AbstractJJoulesProcessor processor = configuration.junit4 ?
                 new fr.davidson.diff.jjoules.instrumentation.process.junit4.JJoulesProcessor(testsList, configuration.pathToFirstVersion) :
                 new fr.davidson.diff.jjoules.instrumentation.process.junit5.JJoulesProcessor(testsList, configuration.pathToFirstVersion);
         getLog().info("Instrument version before commit...");
-        this.run(configuration.pathToFirstVersion, processor, configuration.classpathV1, testsList);
+        this.run(configuration.pathToFirstVersion, processor, configuration.getClasspathV1(), testsList);
         this.inject(configuration.pathToFirstVersion);
         if (configuration.pathToSecondVersion != null && !configuration.pathToSecondVersion.isEmpty()) {
             processor.setRootPathFolder(configuration.pathToSecondVersion);
             getLog().info("Instrument version after commit...");
-            this.run(configuration.pathToSecondVersion, processor, configuration.classpathV2, testsList);
+            this.run(configuration.pathToSecondVersion, processor, configuration.getClasspathV2(), testsList);
             this.inject(configuration.pathToSecondVersion);
         }
     }
@@ -55,11 +53,6 @@ public class InstrumentationMojo extends DiffJJoulesMojo {
         launcher.getEnvironment().setNoClasspath(false);
         launcher.getEnvironment().setAutoImports(false);
         launcher.getEnvironment().setLevel("DEBUG");
-        //final ChangeCollector changeCollector = new ChangeCollector();
-        //changeCollector.attachTo(launcher.getEnvironment());
-        //launcher.getEnvironment().setPrettyPrinterCreator(() ->
-        //        new SniperJavaPrettyPrinter(launcher.getEnvironment())
-        //);
         launcher.addInputResource(rootPathFolder + "/" + TEST_FOLDER_PATH);
 
         launcher.addProcessor(processor);

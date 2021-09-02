@@ -33,18 +33,18 @@ public class SuspectMojo extends DiffJJoulesMojo {
         getLog().info(String.join("\n", testsList));
         // execute flacoco
         final Map<String, Suspiciousness> runV1 = FlacocoRunner.run(
-                String.join(":", configuration.classpathV1),
+                configuration.getClasspathV1AsString(),
                 configuration.pathToFirstVersion,
                 testsList
         );
         final Map<String, Suspiciousness> runV2 = FlacocoRunner.run(
-                String.join(":", configuration.classpathV2),
+                configuration.getClasspathV2AsString(),
                 configuration.pathToSecondVersion,
                 testsList
         );
 
-        final ExecsLines execLinesAdditions = JSONUtils.read("diff-jjoules/exec_additions.json", ExecsLines.class);
-        final ExecsLines execLinesDeletions = JSONUtils.read("diff-jjoules/exec_deletions.json", ExecsLines.class);
+        final ExecsLines execLinesAdditions = configuration.getExecLinesAdditions();
+        final ExecsLines execLinesDeletions = configuration.getExecLinesDeletions();
         final Map<String, Double> suspiciousLinesV1 = getSuspiciousLinesFromDiff(runV1, execLinesDeletions);
         final Map<String, Double> suspiciousLinesV2 = getSuspiciousLinesFromDiff(runV2, execLinesAdditions);
 
@@ -58,8 +58,11 @@ public class SuspectMojo extends DiffJJoulesMojo {
                 .stream()
                 .sorted((key1, key2) -> -(int)((suspiciousLinesV2.get(key1)*100.0D) - (suspiciousLinesV2.get(key2)*100.0D)))
                 .forEach(key -> getLog().info(key + ": " + suspiciousLinesV2.get(key)));
-        JSONUtils.write("suspicious_v1.json", suspiciousLinesV1);
-        JSONUtils.write("suspicious_v2.json", suspiciousLinesV2);
+        JSONUtils.write(configuration.pathToJSONSuspiciousV1, suspiciousLinesV1);
+        configuration.setScorePerLineV1(suspiciousLinesV1);
+        JSONUtils.write(configuration.pathToJSONSuspiciousV2, suspiciousLinesV2);
+        configuration.setScorePerLineV2(suspiciousLinesV2);
+
     }
 
     private static Map<String, Double> getSuspiciousLinesFromDiff(Map<String, Suspiciousness> flacocoMap, ExecsLines execLines) {

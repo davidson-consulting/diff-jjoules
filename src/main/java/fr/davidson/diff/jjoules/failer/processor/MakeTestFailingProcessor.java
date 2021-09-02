@@ -28,10 +28,10 @@ public class MakeTestFailingProcessor extends AbstractJJoulesProcessor {
 
     @Override
     public void process(CtMethod<?> ctMethod) {
-        System.out.println("Processing " + ctMethod.getDeclaringType().getQualifiedName() + "#" + ctMethod.getSimpleName());
         final Factory factory = ctMethod.getFactory();
         // target
-        final CtTypeReference<?> assertReference = factory.Type().createReference("org.junit.Assert");
+        // TODO WARNING, we use here JUnit 3 it might be a source of issues
+        final CtTypeReference<?> assertReference = factory.Type().createReference("junit.framework.Assert");
         final CtTypeAccess<?> typeAccess = factory.createTypeAccess(assertReference);
 
         // method to call
@@ -39,10 +39,8 @@ public class MakeTestFailingProcessor extends AbstractJJoulesProcessor {
         fail.setDeclaringType(assertReference);
         fail.setStatic(true);
         fail.setSimpleName("fail");
-
         // Invocations
         final CtInvocation<?> failInvocation = factory.createInvocation(typeAccess, fail);
-
         ctMethod.getBody().insertEnd(failInvocation);
         this.instrumentedTypes.add(ctMethod.getDeclaringType());
     }

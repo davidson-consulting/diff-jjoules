@@ -33,10 +33,10 @@ public class MarkdownMojo extends DiffJJoulesMojo {
     @Override
     public void run(Configuration configuration) {
         getLog().info("Run Markdown - " + configuration.toString());
-        final Deltas deltas = JSONUtils.read(configuration.pathToJSONDelta, Deltas.class);
-        final Data deltaOmega = JSONUtils.read(configuration.pathToJSONDeltaOmega, Data.class);
-        final Datas dataV1 = JSONUtils.read(configuration.pathToJSONDataV1, Datas.class);
-        final Datas dataV2 = JSONUtils.read(configuration.pathToJSONDataV2, Datas.class);
+        final Deltas deltas = configuration.getDeltas();
+        final Data deltaOmega = configuration.getDeltaOmega();
+        final Datas dataV1 = configuration.getDataV1();
+        final Datas dataV2 = configuration.getDataV2();
         final Map<String, Boolean> emptyIntersectionPerTestMethodName = dataV1.isEmptyIntersectionPerTestMethodName(dataV2);
         final StringBuilder report = new StringBuilder();
         final Map<String, Map<String, String>> reportPerTestClassPerTestMethod = new HashMap<>();
@@ -51,13 +51,13 @@ public class MarkdownMojo extends DiffJJoulesMojo {
             }
         }
         getLog().info(report.toString());
-        writeReport(report, rawDeltaData, deltaOmega, unconsideredDelta, deltas, dataV1, dataV2);
-        suspiciousLines();
+        writeReport(report, rawDeltaData, deltaOmega, consideredDelta, unconsideredDelta, deltas, dataV1, dataV2);
+        suspiciousLines(configuration);
     }
 
-    private void suspiciousLines() {
-        final Map<String, Double> scorePerLineV1 = JSONUtils.read("suspicious_v1.json", Map.class);
-        final Map<String, Double> scorePerLineV2 = JSONUtils.read("suspicious_v2.json", Map.class);
+    private void suspiciousLines(Configuration configuration) {
+        final Map<String, Double> scorePerLineV1 = configuration.getScorePerLineV1();
+        final Map<String, Double> scorePerLineV2 = configuration.getScorePerLineV2();
         try (FileWriter writer = new FileWriter(".github/workflows/template.md", true)) {
             writer.write("## Suspicious Lines\n\n\n");
             if (!scorePerLineV1.isEmpty()) {
@@ -85,6 +85,7 @@ public class MarkdownMojo extends DiffJJoulesMojo {
             final StringBuilder report,
             final Data rawDeltaData,
             final Data deltaOmega,
+            final Deltas consideredDelta,
             final Deltas unconsideredDelta,
             final Deltas deltas,
             final Datas dataV1,
@@ -105,19 +106,23 @@ public class MarkdownMojo extends DiffJJoulesMojo {
             writer.write("\n\n");
             if (!unconsideredDelta.isEmpty()) {
                 writer.write("### Unconsidered Test Methods\n\n");
-                writer.write(Markdown.makeAMarkdownRow("Test", "Delta", "V1", "V2"));
-                writer.write(Markdown.makeAMarkdownRow("---", "---", "---", "---"));
-                for (String testMethodName : unconsideredDelta.keySet()) {
-                    final Delta delta = deltas.get(testMethodName);
-                    final List<Data> datasV1 = dataV1.get(testMethodName);
-                    final List<Data> datasV2 = dataV2.get(testMethodName);
-                    writer.write(Markdown.makeAMarkdownRow(
-                            testMethodName,
-                            delta.instructions + "",
-                            datasV1.stream().map(d -> d.instructions).sorted().map(Object::toString).collect(Collectors.joining(",")),
-                            datasV2.stream().map(d -> d.instructions).sorted().map(Object::toString).collect(Collectors.joining(","))
-                            )
-                    );
+                if (unconsideredDelta.size() > 10) {
+                    writer.write(unconsideredDelta.size() + "/" + (consideredDelta.size() + unconsideredDelta.size()) + " have been discarded because of too much variation in the measures.\n");
+                } else {
+                    writer.write(Markdown.makeAMarkdownRow("Test", "Delta", "V1", "V2"));
+                    writer.write(Markdown.makeAMarkdownRow("---", "---", "---", "---"));
+                    for (String testMethodName : unconsideredDelta.keySet()) {
+                        final Delta delta = deltas.get(testMethodName);
+                        final List<Data> datasV1 = dataV1.get(testMethodName);
+                        final List<Data> datasV2 = dataV2.get(testMethodName);
+                        writer.write(Markdown.makeAMarkdownRow(
+                                testMethodName,
+                                delta.instructions + "",
+                                datasV1.stream().map(d -> d.instructions).sorted().map(Object::toString).collect(Collectors.joining(",")),
+                                datasV2.stream().map(d -> d.instructions).sorted().map(Object::toString).collect(Collectors.joining(","))
+                                )
+                        );
+                    }
                 }
             }
         } catch (IOException e) {

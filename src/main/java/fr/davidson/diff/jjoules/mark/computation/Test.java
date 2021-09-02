@@ -51,7 +51,7 @@ public class Test {
         final Map<String, Data> omegaUpperT = new HashMap<>();
         for (String key : omegaT.keySet()) {
             if (!deltaT.containsKey(key)) {
-                LOGGER.info("WARNING {} is not in delta(t) map!", key);
+//                LOGGER.info("WARNING {} is not in delta(t) map!", key);
                 continue;
             }
             omegaUpperT.put(key,

@@ -1,28 +1,28 @@
 package fr.davidson.diff.jjoules;
 
+import eu.stamp_project.testrunner.EntryPoint;
 import fr.davidson.diff.jjoules.delta.DeltaMojo;
 import fr.davidson.diff.jjoules.failer.FailerMojo;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationMojo;
 import fr.davidson.diff.jjoules.mark.MarkMojo;
 import fr.davidson.diff.jjoules.markdown.MarkdownMojo;
 import fr.davidson.diff.jjoules.suspect.SuspectMojo;
+import fr.davidson.diff.jjoules.util.CSVReader;
+import fr.davidson.diff.jjoules.util.Utils;
+import fr.davidson.diff.jjoules.util.maven.MavenRunner;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
-import org.apache.maven.shared.invoker.*;
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.ResetCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Properties;
-import java.util.stream.Collectors;
 
 /**
  * @author Benjamin DANGLOT
@@ -106,31 +106,73 @@ public class DiffJJoulesMojo extends AbstractMojo {
     /**
      *
      */
-    @Parameter(property = "path-delta-json", defaultValue = "diff-jjoules/delta.json")
-    private String pathDeltaJSON;
+    @Parameter(property = "path-json-delta-omega", defaultValue = "diff-jjoules/deltaOmega.json")
+    private String pathToJSONDeltaOmega;
 
     /**
      *
      */
-    @Parameter(property = "path-json-delta-omega", defaultValue = "diff-jjoules/deltaOmega.json")
-    private String pathToJSONDeltaOmega;
+    @Parameter(property = "path-repo-v1")
+    private String pathToRepositoryV1;
 
-    protected Configuration configuration;
+    /**
+     *
+     */
+    @Parameter(property = "path-repo-v2")
+    private String pathToRepositoryV2;
+
+    /**
+     *
+     */
+    @Parameter(property = "path-considered-test-method-names", defaultValue = "diff-jjoules/consideredTestMethods.json")
+    private String pathToJSONConsideredTestMethodNames;
+
+    /**
+     *
+     */
+    @Parameter(property = "path-exec-lines-additions", defaultValue = "diff-jjoules/exec_additions.json")
+    private String pathToExecLinesAdditions;
+
+    /**
+     *
+     */
+    @Parameter(property = "path-exec-lines-deletions", defaultValue = "diff-jjoules/exec_deletions.json")
+    private String pathToExecLinesDeletions;
+
+    /**
+     *
+     */
+    @Parameter(property = "path-json-suspicious-v2", defaultValue = "diff-jjoules/suspicious_v1.json")
+    private String pathToJSONSuspiciousV1;
+
+    /**
+     *
+     */
+    @Parameter(property = "path-json-suspicious-v2", defaultValue = "diff-jjoules/suspicious_v2.json")
+    private String pathToJSONSuspiciousV2;
+
+    private Configuration configuration;
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         final String classpath;
         final String classpathV2;
         try {
-            //final String module = this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.project.getBasedir().getAbsolutePath().substring(this.pathDirSecondVersion.length());
             getLog().info("Running on:");
             getLog().info(this.project.getBasedir().getAbsolutePath());
             getLog().info(this.pathDirSecondVersion);
-            classpath = this.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath);
-            classpathV2 = this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.readClasspathFile(this.pathDirSecondVersion + "/" + this.classpathPathV2);
+            if (this.pathToRepositoryV1 == null || this.pathToRepositoryV1.isEmpty()) {
+                this.pathToRepositoryV1 = this.project.getBasedir().getAbsolutePath();
+            }
+            if (this.pathToRepositoryV2 == null || this.pathToRepositoryV2.isEmpty()) {
+                this.pathToRepositoryV2 = this.pathDirSecondVersion;
+            }
+            classpath = Utils.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath);
+            classpathV2 = this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : Utils.readClasspathFile(this.pathDirSecondVersion + "/" + this.classpathPathV2);
             final boolean junit4 = !classpath.contains("junit-jupiter-engine-5") && (classpath.contains("junit-4") || classpath.contains("junit-3"));
             if (junit4) {
                 getLog().info("Enable JUnit4 mode");
+                EntryPoint.jUnit5Mode = false;
             }
             this.configuration = new Configuration(
                     this.project.getBasedir().getAbsolutePath(),
@@ -145,8 +187,14 @@ public class DiffJJoulesMojo extends AbstractMojo {
                     this.pathToJSONDataV1,
                     this.pathToJSONDataV2,
                     this.pathToDiff,
-                    this.pathDeltaJSON,
-                    this.pathToJSONDeltaOmega
+                    this.pathToJSONDeltaOmega,
+                    this.pathToRepositoryV1,
+                    this.pathToRepositoryV2,
+                    this.pathToJSONConsideredTestMethodNames,
+                    this.pathToExecLinesAdditions,
+                    this.pathToExecLinesDeletions,
+                    this.pathToJSONSuspiciousV1,
+                    this.pathToJSONSuspiciousV2
             );
             this.run(configuration);
         } catch (Exception e) {
@@ -156,80 +204,85 @@ public class DiffJJoulesMojo extends AbstractMojo {
 
     public void run(Configuration configuration) {
         getLog().info("Run DiffJJoules - " + configuration.toString());
-        // diff-test-selection
+        this.resetAndCleanBothVersion();
+        this.testSelection();
+        this.testInstrumentation();
+        this.deltaComputation();
+        this.commitMarking();
+        this.testFailingInstrumentation();
+        this.testSuspicious();
+        this.report();
+    }
+
+    private void testSelection() {
         final Properties properties = new Properties();
         properties.setProperty("path-dir-second-version", this.configuration.pathToSecondVersion);
-        this.runGoals(
+        MavenRunner.runGoals(
                 this.pathToPom,
                 properties,
                 "clean", "eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list"
         );
-        // clean V2
-        this.runCleanAndCompile(this.configuration.pathToSecondVersion + "/pom.xml");
-        // instrumentation
+        MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion + "/pom.xml");
+        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion + "/pom.xml");
+        this.configuration.setTestsList(CSVReader.readFile(this.configuration.pathToTestListAsCSV));
+    }
+
+
+    private void testInstrumentation() {
         new InstrumentationMojo().run(this.configuration);
-        // compile V1 and V2
-        this.runCleanAndCompile(this.configuration.pathToSecondVersion + "/pom.xml");
-        this.runCleanAndCompile(this.pathToPom);
-        // delta
+        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion + "/pom.xml");
+        MavenRunner.runCleanAndCompile(this.pathToPom);
+        this.configuration.setClasspathV1(Utils.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath).split(":"));
+        this.configuration.setClasspathV2(Utils.readClasspathFile(this.pathDirSecondVersion + "/" + this.classpathPathV2).split(":"));
+    }
+
+    private void deltaComputation() {
         new DeltaMojo().run(this.configuration);
-        // checkout !
-        this.gitCheckout(this.configuration.pathToFirstVersion);
-        this.gitCheckout(this.configuration.pathToSecondVersion);
-        // mark
+        this.resetAndCleanBothVersion();
+    }
+
+    private void commitMarking() {
         new MarkMojo().run(this.configuration);
-        // failer
+        MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion + "/pom.xml");
+        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion + "/pom.xml");
+    }
+
+    private void testFailingInstrumentation() {
         new FailerMojo().run(this.configuration);
-        // compile
-        this.runCleanAndCompile(this.pathDirSecondVersion + "/pom.xml");
-        this.runCleanAndCompile(this.pathToPom);
-        // suspect
+        MavenRunner.runCleanAndCompile(this.pathDirSecondVersion + "/pom.xml");
+        MavenRunner.runCleanAndCompile(this.pathToPom);
+
+    }
+
+    private void testSuspicious() {
         new SuspectMojo().run(this.configuration);
+    }
+
+    private void report() {
         // markdown TODO must be optional
         new MarkdownMojo().run(this.configuration);
     }
 
-    private void gitCheckout(String pathToFolder) {
+    private void resetAndCleanBothVersion() {
+        this.gitResetHard(this.configuration.pathToRepositoryV1);
+        this.gitResetHard(this.configuration.pathToRepositoryV2);
+        MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion + "/pom.xml");
+        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion + "/pom.xml");
+        this.configuration.setClasspathV1(Utils.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath).split(":"));
+        this.configuration.setClasspathV2(Utils.readClasspathFile(this.pathDirSecondVersion + "/" + this.classpathPathV2).split(":"));
+    }
+
+    private void gitResetHard(String pathToFolder) {
         try {
             Git.open(new File(pathToFolder))
-                    .checkout()
-                    .addPath(".")
+                    .reset()
+                    .setMode(ResetCommand.ResetType.HARD)
                     .call();
         } catch (GitAPIException | IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void runCleanAndCompile(String pathToPom) {
-        final Properties properties = new Properties();
-        properties.setProperty("mdep.outputFile", "classpath");
-        this.runGoals(pathToPom, properties, "clean", "test", "-DskipTests", "dependency:build-classpath");
-    }
 
-    private void runGoals(String pathToPom, String... goals) {
-        this.runGoals(pathToPom, new Properties(), goals);
-    }
-
-    private void runGoals(String pathToPom, Properties properties, String... goals) {
-        final InvocationRequest invocationRequest = new DefaultInvocationRequest();
-        invocationRequest.setPomFile(new File(pathToPom));
-        invocationRequest.setGoals(Arrays.asList(goals));
-        invocationRequest.setProperties(properties);
-        final Invoker invoker = new DefaultInvoker();
-        try {
-            final InvocationResult invocationResult = invoker.execute(invocationRequest);
-        } catch (MavenInvocationException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private String readClasspathFile(String path) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-            return reader.lines().collect(Collectors.joining(":"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-    }
 
 }

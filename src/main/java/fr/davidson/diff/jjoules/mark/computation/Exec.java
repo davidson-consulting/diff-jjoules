@@ -25,6 +25,7 @@ public class Exec {
     public List<ExecLineTestMap> compute(
             Map<String, List<Integer>> modifiedLinesPerClassName
     ) {
+        System.out.println(modifiedLinesPerClassName);
         final List<ExecLineTestMap> execLineTestMapList = new ArrayList<>();
         for(String className: modifiedLinesPerClassName.keySet()) {
             final ExecLineTestMap execLineTestMap = new ExecLineTestMap();
@@ -60,6 +61,9 @@ public class Exec {
             if (DiffTestSelectionChecker.checkIfDiffLineIsAJavaFileModification(currentLine)) {
                 final ModifiedLinesTool modifiedLinesTool = new ModifiedLinesTool(pathToFirstVersion, pathToSecondVersion);
                 modifiedLinesTool.compute(currentLine, lines[++i]);
+                if (modifiedLinesTool.getDeletionPerQualifiedName() == null || modifiedLinesTool.getAdditionPerQualifiedName() == null) {
+                    continue;
+                }
                 execLineTestMapsFirst.addAll(execLtFirstVersion.compute(modifiedLinesTool.getDeletionPerQualifiedName()));
                 execLineTestMapsSecond.addAll(execLtSecondVersion.compute(modifiedLinesTool.getAdditionPerQualifiedName()));
             }
