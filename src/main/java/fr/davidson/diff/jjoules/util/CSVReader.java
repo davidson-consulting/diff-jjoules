@@ -1,11 +1,10 @@
 package fr.davidson.diff.jjoules.util;
 
+import com.atlassian.clover.recorder.ActivePerTestRecorderOne;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Benjamin DANGLOT
@@ -22,9 +21,11 @@ public class CSVReader {
         try (final BufferedReader reader = new BufferedReader(new FileReader(path))) {
             reader.lines().forEach(line -> {
                 final String[] split = line.split(";");
-                result.put(split[0], new ArrayList<>());
-                for (int i = 1; i < split.length; i++) {
-                    result.get(split[0]).add(split[i]);
+                if (!split[0].toLowerCase(Locale.ROOT).contains("concurrency")) {
+                    result.put(split[0], new ArrayList<>());
+                    for (int i = 1; i < split.length; i++) {
+                        result.get(split[0]).add(split[i]);
+                    }
                 }
             });
             return result;

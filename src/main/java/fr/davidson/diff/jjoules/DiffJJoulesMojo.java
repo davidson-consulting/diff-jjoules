@@ -251,7 +251,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
         new FailerMojo().run(this.configuration);
         MavenRunner.runCleanAndCompile(this.pathDirSecondVersion + "/pom.xml");
         MavenRunner.runCleanAndCompile(this.pathToPom);
-
     }
 
     private void testSuspicious() {

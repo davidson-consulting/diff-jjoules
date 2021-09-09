@@ -1,7 +1,8 @@
 package fr.davidson.diff.jjoules.suspect.fl;
 
 import fr.spoonlabs.flacoco.api.Flacoco;
-import fr.spoonlabs.flacoco.api.Suspiciousness;
+import fr.spoonlabs.flacoco.api.result.Location;
+import fr.spoonlabs.flacoco.api.result.Suspiciousness;
 import fr.spoonlabs.flacoco.core.config.FlacocoConfig;
 import fr.spoonlabs.flacoco.localization.spectrum.SpectrumFormula;
 
@@ -15,20 +16,20 @@ import java.util.Set;
  */
 public class FlacocoRunner {
 
-    public static Map<String, Suspiciousness> run(
+    public static Map<Location, Suspiciousness> run(
             String classpath,
             String rootPathDirectory,
             Set<String> testsToBeRun
     ) {
-        Flacoco flacoco = new Flacoco();
-        FlacocoConfig config = FlacocoConfig.getInstance();
+        FlacocoConfig config = new FlacocoConfig();
         config.setTestRunnerVerbose(true);
-
         config.setProjectPath(rootPathDirectory);
         config.setClasspath(classpath);
         config.setFamily(FlacocoConfig.FaultLocalizationFamily.SPECTRUM_BASED);
         config.setSpectrumFormula(SpectrumFormula.OCHIAI);
-        config.setjUnit5Tests(testsToBeRun);
-        return flacoco.runDefault();
+        config.setjUnit4Tests(testsToBeRun);
+
+        Flacoco flacoco = new Flacoco(config);
+        return flacoco.run().getDefaultSuspiciousnessMap();
     }
 }

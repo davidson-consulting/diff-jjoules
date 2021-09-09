@@ -40,19 +40,13 @@ public class DeltaMojo extends DiffJJoulesMojo {
     public void run(Configuration configuration) {
         getLog().info("Run Delta - " + configuration.toString());
         final Map<String, List<String>> testsList = configuration.getTestsList();
-        final String[] testClassNames = testsList.keySet().toArray(new String[0]);
-        final String[] testMethodsNames = testsList.values()
-                .stream()
-                .flatMap(Collection::stream)
-                .toArray(String[]::new);
         final Datas dataV1 = new Datas();
         final Datas dataV2 = new Datas();
         MeasureEnergyConsumption.measureEnergyConsumptionForBothVersion(
                 configuration,
-                testClassNames,
-                testMethodsNames,
                 dataV1,
-                dataV2
+                dataV2,
+                testsList
         );
         final Map<String, Data> mediansV1 = Computation.computeMedian(dataV1);
         final Map<String, Data> mediansV2 = Computation.computeMedian(dataV2);

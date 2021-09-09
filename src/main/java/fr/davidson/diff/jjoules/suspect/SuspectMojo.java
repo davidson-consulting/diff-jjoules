@@ -8,7 +8,8 @@ import fr.davidson.diff.jjoules.suspect.fl.FlacocoRunner;
 import fr.davidson.diff.jjoules.util.CSVReader;
 import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import fr.davidson.diff.jjoules.util.JSONUtils;
-import fr.spoonlabs.flacoco.api.Suspiciousness;
+import fr.spoonlabs.flacoco.api.result.Location;
+import fr.spoonlabs.flacoco.api.result.Suspiciousness;
 import org.apache.maven.plugins.annotations.Mojo;
 
 import java.util.HashMap;
@@ -30,14 +31,13 @@ public class SuspectMojo extends DiffJJoulesMojo {
         if (testsList.isEmpty()) {
             throw new RuntimeException();
         }
-        getLog().info(String.join("\n", testsList));
         // execute flacoco
-        final Map<String, Suspiciousness> runV1 = FlacocoRunner.run(
+        final Map<Location, Suspiciousness> runV1 = FlacocoRunner.run(
                 configuration.getClasspathV1AsString(),
                 configuration.pathToFirstVersion,
                 testsList
         );
-        final Map<String, Suspiciousness> runV2 = FlacocoRunner.run(
+        final Map<Location, Suspiciousness> runV2 = FlacocoRunner.run(
                 configuration.getClasspathV2AsString(),
                 configuration.pathToSecondVersion,
                 testsList
@@ -65,14 +65,14 @@ public class SuspectMojo extends DiffJJoulesMojo {
 
     }
 
-    private static Map<String, Double> getSuspiciousLinesFromDiff(Map<String, Suspiciousness> flacocoMap, ExecsLines execLines) {
+    private static Map<String, Double> getSuspiciousLinesFromDiff(Map<Location, Suspiciousness> flacocoMap, ExecsLines execLines) {
         final Map<String, Double> scorePerSuspiciousLine = new HashMap<>();
         for (ExecLineTestMap execLinesDeletion : execLines) {
             for (String line : execLinesDeletion.getExecLt().keySet()) {
                 final String[] split = line.split("#");
                 final String className = split[0];
                 final String lineNumber = split[1];
-                final String key = className.replaceAll("\\.", "/") + "@-@" + lineNumber;
+                final Location key = new Location(className, Integer.parseInt(lineNumber));
                 if (flacocoMap.containsKey(key)) {
                     scorePerSuspiciousLine.put(line, flacocoMap.get(key).getScore());
                 }
