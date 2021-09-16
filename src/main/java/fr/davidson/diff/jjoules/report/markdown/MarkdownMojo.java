@@ -51,7 +51,7 @@ public class MarkdownMojo extends DiffJJoulesMojo {
     }
 
     private void writeReport(StringBuilder report, Configuration configuration) {
-        try (FileWriter writer = new FileWriter(configuration.pathToReport, true)) {
+        try (FileWriter writer = new FileWriter(configuration.pathToReport, false)) {
             writer.write(report.toString());
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -75,16 +75,20 @@ public class MarkdownMojo extends DiffJJoulesMojo {
         report.append(Markdown.makeAMarkdownRow("Step", "Energy(&mu;J)", "Instruction", "Durations(ms)"));
         report.append(Markdown.makeAMarkdownRow("---", "---", "---", "---"));
         final Map<String, Map<String, Long>> ownConsumptionReports = configuration.getOwnConsumptionReports();
+        long totalEnergyConsumption = 0L;
+        long totalInstructions = 0L;
+        long totalDurations = 0L;
         for (String key : ownConsumptionReports.keySet()) {
             final Map<String, Long> consumptionReport = ownConsumptionReports.get(key);
-            report.append(Markdown.makeAMarkdownRow(
-                    key,
-                    "" + consumptionReport.get(MeasureEnergyConsumption.KEY_ENERGY_CONSUMPTION),
-                    "" + consumptionReport.get(MeasureEnergyConsumption.KEY_INSTRUCTIONS),
-                    "" + consumptionReport.get(MeasureEnergyConsumption.KEY_DURATIONS)
-                    )
-            );
+            final Long durations = consumptionReport.get(MeasureEnergyConsumption.KEY_DURATIONS);
+            final Long instructions = consumptionReport.get(MeasureEnergyConsumption.KEY_INSTRUCTIONS);
+            final Long energyConsumption = consumptionReport.get(MeasureEnergyConsumption.KEY_ENERGY_CONSUMPTION);
+            report.append(Markdown.makeAMarkdownRow(key, "" + energyConsumption, "" + instructions, "" + durations));
+            totalDurations += durations;
+            totalEnergyConsumption += energyConsumption;
+            totalInstructions += instructions;
         }
+        report.append(Markdown.makeAMarkdownRow("Diff-Jjoules", "" + totalEnergyConsumption, "" + totalInstructions, "" + totalDurations));
     }
 
     private void suspiciousLines(Configuration configuration, StringBuilder report) {

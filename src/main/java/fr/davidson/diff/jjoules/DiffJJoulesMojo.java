@@ -206,7 +206,7 @@ public class DiffJJoulesMojo extends AbstractMojo {
                     this.pathToJSONSuspiciousV2,
                     this.pathToReport
             );
-            this.run(configuration);
+            this._run(configuration);
             this.report();
         } catch (Exception e) {
             e.printStackTrace();
@@ -228,11 +228,7 @@ public class DiffJJoulesMojo extends AbstractMojo {
     }
 
     private void stopMonitoring(Configuration configuration, String reportPathName) {
-        this.stopMonitoring(configuration, reportPathName, true);
-    }
-
-    private void stopMonitoring(Configuration configuration, String reportPathName, boolean shouldStop) {
-        final Map<String, Long> report = shouldStop ? this.energySample.stop() : this.energySample.getEnergyReport();
+        final Map<String, Long> report = this.energySample.stop();
         JSONUtils.write(configuration.output + "/" + reportPathName + ".json", report);
         configuration.addReport(reportPathName, report);
     }
@@ -263,7 +259,7 @@ public class DiffJJoulesMojo extends AbstractMojo {
                 properties,
                 "clean", "eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list"
         );
-        stopMonitoring(this.configuration, "selection", false);
+        stopMonitoring(this.configuration, "selection");
         MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion + "/pom.xml");
         MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion + "/pom.xml");
         this.configuration.setTestsList(CSVReader.readFile(this.configuration.pathToTestListAsCSV));
