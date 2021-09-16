@@ -181,7 +181,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
             final boolean junit4 = !classpath.contains("junit-jupiter-engine-5") && (classpath.contains("junit-4") || classpath.contains("junit-3"));
             if (junit4) {
                 getLog().info("Enable JUnit4 mode");
-                EntryPoint.jUnit5Mode = false;
             }
             this.configuration = new Configuration(
                     this.project.getBasedir().getAbsolutePath(),

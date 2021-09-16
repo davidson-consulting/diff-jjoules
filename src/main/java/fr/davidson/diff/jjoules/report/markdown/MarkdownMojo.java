@@ -12,9 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -94,20 +92,28 @@ public class MarkdownMojo extends DiffJJoulesMojo {
     private void suspiciousLines(Configuration configuration, StringBuilder report) {
         final Map<String, Double> scorePerLineV1 = configuration.getScorePerLineV1();
         final Map<String, Double> scorePerLineV2 = configuration.getScorePerLineV2();
+        final List<String> keysV1 = scorePerLineV1.keySet()
+                .stream()
+                .sorted((o1, o2) -> (int) (scorePerLineV1.get(o1) - scorePerLineV1.get(o2)))
+                .collect(Collectors.toList());
         report.append("## Suspicious Lines\n\n\n");
         if (!scorePerLineV1.isEmpty()) {
             report.append("### V1 and Deletions\n\n\n");
             report.append(Markdown.makeAMarkdownRow("Line", "Score"));
             report.append(Markdown.makeAMarkdownRow("---", "---"));
-            for (String key : scorePerLineV1.keySet()) {
+            for (String key : keysV1) {
                 report.append(Markdown.makeAMarkdownRow(key, scorePerLineV1.get(key) + ""));
             }
         }
         if (!scorePerLineV2.isEmpty()) {
+            final List<String> keysV2 = scorePerLineV2.keySet()
+                    .stream()
+                    .sorted((o1, o2) -> (int) (scorePerLineV2.get(o1) - scorePerLineV2.get(o2)))
+                    .collect(Collectors.toList());
             report.append("### V2 and Additions\n\n\n");
             report.append(Markdown.makeAMarkdownRow("Line", "Score"));
             report.append(Markdown.makeAMarkdownRow("---", "---"));
-            for (String key : scorePerLineV2.keySet()) {
+            for (String key : keysV2) {
                 report.append(Markdown.makeAMarkdownRow(key, scorePerLineV2.get(key) + ""));
             }
         }

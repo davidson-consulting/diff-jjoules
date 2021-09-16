@@ -37,16 +37,17 @@ public class SuspectMojo extends DiffJJoulesMojo {
         }
         // execute flacoco
         final Map<Location, Suspiciousness> runV1 = FlacocoRunner.run(
+                configuration.junit4,
                 configuration.getClasspathV1AsString(),
                 configuration.pathToFirstVersion,
                 testsList
         );
         final Map<Location, Suspiciousness> runV2 = FlacocoRunner.run(
+                configuration.junit4,
                 configuration.getClasspathV2AsString(),
                 configuration.pathToSecondVersion,
                 testsList
         );
-
         final ExecsLines execLinesAdditions = configuration.getExecLinesAdditions();
         final ExecsLines execLinesDeletions = configuration.getExecLinesDeletions();
         final Map<String, Double> suspiciousLinesV1 = getSuspiciousLinesFromDiff(runV1, execLinesDeletions);

@@ -2,6 +2,7 @@ package fr.davidson.diff.jjoules.delta;
 
 import eu.stamp_project.testrunner.EntryPoint;
 import eu.stamp_project.testrunner.listener.TestResult;
+import eu.stamp_project.testrunner.runner.Failure;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
@@ -52,13 +53,15 @@ public class MeasureEnergyConsumption {
                     configuration.pathToFirstVersion,
                     configuration.getClasspathV1AsString(),
                     dataV1,
-                    testsList
+                    testsList,
+                    configuration.junit4
             );
             runForVersionAndCollect(
                     configuration.pathToSecondVersion,
                     configuration.getClasspathV2AsString(),
                     dataV2,
-                    testsList
+                    testsList,
+                    configuration.junit4
             );
         }
     }
@@ -67,8 +70,10 @@ public class MeasureEnergyConsumption {
             final String pathToVersion,
             final String classpath,
             final Map<String, List<Data>> data,
-            Map<String, List<String>> testsList) {
-            EntryPoint.jUnit5Mode = true;
+            Map<String, List<String>> testsList,
+            boolean junit4
+    ) {
+            EntryPoint.jUnit5Mode = !junit4;
             EntryPoint.verbose = true;
             EntryPoint.timeoutInMs = 100000;
             try {
