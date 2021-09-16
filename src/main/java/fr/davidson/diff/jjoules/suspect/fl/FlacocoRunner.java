@@ -27,7 +27,8 @@ public class FlacocoRunner {
         config.setClasspath(classpath);
         config.setFamily(FlacocoConfig.FaultLocalizationFamily.SPECTRUM_BASED);
         config.setSpectrumFormula(SpectrumFormula.OCHIAI);
-        config.setjUnit4Tests(testsToBeRun);
+        //config.setjUnit4Tests(testsToBeRun);
+        config.setjUnit5Tests(testsToBeRun);
 
         Flacoco flacoco = new Flacoco(config);
         return flacoco.run().getDefaultSuspiciousnessMap();

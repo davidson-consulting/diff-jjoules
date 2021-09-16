@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.markdown;
+package fr.davidson.diff.jjoules.report.markdown;
 
 import fr.davidson.diff.jjoules.delta.data.Data;
 

@@ -22,8 +22,12 @@ import java.util.Map;
 @Mojo(name = "failer")
 public class FailerMojo extends DiffJJoulesMojo {
 
+    protected String getReportPathname() {
+        return "failer";
+    }
+
     @Override
-    public void run(Configuration configuration) {
+    protected void _run(Configuration configuration) {
         getLog().info("Run Failer - " + configuration.toString());
         final Deltas deltas = configuration.getDeltas();
         final Map<String, List<String>> testsToBeInstrumented = new HashMap<>();

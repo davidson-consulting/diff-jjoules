@@ -5,9 +5,10 @@ import fr.davidson.diff.jjoules.delta.DeltaMojo;
 import fr.davidson.diff.jjoules.failer.FailerMojo;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationMojo;
 import fr.davidson.diff.jjoules.mark.MarkMojo;
-import fr.davidson.diff.jjoules.markdown.MarkdownMojo;
+import fr.davidson.diff.jjoules.report.markdown.MarkdownMojo;
 import fr.davidson.diff.jjoules.suspect.SuspectMojo;
 import fr.davidson.diff.jjoules.util.CSVReader;
+import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.maven.MavenRunner;
 import org.apache.maven.plugin.AbstractMojo;
@@ -19,9 +20,12 @@ import org.apache.maven.project.MavenProject;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.ResetCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.powerapi.jjoules.EnergySample;
+import org.powerapi.jjoules.rapl.RaplDevice;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -82,19 +86,19 @@ public class DiffJJoulesMojo extends AbstractMojo {
     /**
      *
      */
-    @Parameter(property = "path-json-delta", defaultValue = "diff-jjoules/delta.json")
+    @Parameter(property = "path-json-delta", defaultValue = "deltas.json")
     private String pathToJSONDelta;
 
     /**
      *
      */
-    @Parameter(property = "path-json-data-first-version", defaultValue = "diff-jjoules/data_v1.json")
+    @Parameter(property = "path-json-data-first-version", defaultValue = "data_v1.json")
     private String pathToJSONDataV1;
 
     /**
      *
      */
-    @Parameter(property = "path-json-data-second-version", defaultValue = "diff-jjoules/data_v2.json")
+    @Parameter(property = "path-json-data-second-version", defaultValue = "data_v2.json")
     private String pathToJSONDataV2;
 
     /**
@@ -106,7 +110,7 @@ public class DiffJJoulesMojo extends AbstractMojo {
     /**
      *
      */
-    @Parameter(property = "path-json-delta-omega", defaultValue = "diff-jjoules/deltaOmega.json")
+    @Parameter(property = "path-json-delta-omega", defaultValue = "deltaOmega.json")
     private String pathToJSONDeltaOmega;
 
     /**
@@ -124,32 +128,37 @@ public class DiffJJoulesMojo extends AbstractMojo {
     /**
      *
      */
-    @Parameter(property = "path-considered-test-method-names", defaultValue = "diff-jjoules/consideredTestMethods.json")
+    @Parameter(property = "path-considered-test-method-names", defaultValue = "consideredTestMethods.json")
     private String pathToJSONConsideredTestMethodNames;
 
     /**
      *
      */
-    @Parameter(property = "path-exec-lines-additions", defaultValue = "diff-jjoules/exec_additions.json")
+    @Parameter(property = "path-exec-lines-additions", defaultValue = "exec_additions.json")
     private String pathToExecLinesAdditions;
 
     /**
      *
      */
-    @Parameter(property = "path-exec-lines-deletions", defaultValue = "diff-jjoules/exec_deletions.json")
+    @Parameter(property = "path-exec-lines-deletions", defaultValue = "exec_deletions.json")
     private String pathToExecLinesDeletions;
 
     /**
      *
      */
-    @Parameter(property = "path-json-suspicious-v2", defaultValue = "diff-jjoules/suspicious_v1.json")
+    @Parameter(property = "path-json-suspicious-v2", defaultValue = "suspicious_v1.json")
     private String pathToJSONSuspiciousV1;
 
     /**
      *
      */
-    @Parameter(property = "path-json-suspicious-v2", defaultValue = "diff-jjoules/suspicious_v2.json")
+    @Parameter(property = "path-json-suspicious-v2", defaultValue = "suspicious_v2.json")
     private String pathToJSONSuspiciousV2;
+
+    // TODO should depend on the report we want to output
+    // For now I set by default the path to the template.md for MarkdownMojo
+    @Parameter(property = "path-to-report", defaultValue = ".github/workflows/template.md")
+    private String pathToReport;
 
     private Configuration configuration;
 
@@ -194,15 +203,47 @@ public class DiffJJoulesMojo extends AbstractMojo {
                     this.pathToExecLinesAdditions,
                     this.pathToExecLinesDeletions,
                     this.pathToJSONSuspiciousV1,
-                    this.pathToJSONSuspiciousV2
+                    this.pathToJSONSuspiciousV2,
+                    this.pathToReport
             );
             this.run(configuration);
+            this.report();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    protected String getReportPathname() {
+        return "diff_jjoules";
+    }
+
+    private EnergySample energySample;
+
+    private void startMonitoring() {
+        this.energySample = RaplDevice.RAPL.recordEnergy();
+    }
+
+    private void stopMonitoring(Configuration configuration) {
+        this.stopMonitoring(configuration, this.getReportPathname());
+    }
+
+    private void stopMonitoring(Configuration configuration, String reportPathName) {
+        this.stopMonitoring(configuration, reportPathName, true);
+    }
+
+    private void stopMonitoring(Configuration configuration, String reportPathName, boolean shouldStop) {
+        final Map<String, Long> report = shouldStop ? this.energySample.stop() : this.energySample.getEnergyReport();
+        JSONUtils.write(configuration.output + "/" + reportPathName + ".json", report);
+        configuration.addReport(reportPathName, report);
+    }
+
     public void run(Configuration configuration) {
+        startMonitoring();
+        _run(configuration);
+        stopMonitoring(configuration);
+    }
+
+    protected void _run(Configuration configuration) {
         getLog().info("Run DiffJJoules - " + configuration.toString());
         this.resetAndCleanBothVersion();
         this.testSelection();
@@ -211,17 +252,18 @@ public class DiffJJoulesMojo extends AbstractMojo {
         this.commitMarking();
         this.testFailingInstrumentation();
         this.testSuspicious();
-        this.report();
     }
 
     private void testSelection() {
         final Properties properties = new Properties();
         properties.setProperty("path-dir-second-version", this.configuration.pathToSecondVersion);
+        startMonitoring();
         MavenRunner.runGoals(
                 this.pathToPom,
                 properties,
                 "clean", "eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list"
         );
+        stopMonitoring(this.configuration, "selection", false);
         MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion + "/pom.xml");
         MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion + "/pom.xml");
         this.configuration.setTestsList(CSVReader.readFile(this.configuration.pathToTestListAsCSV));

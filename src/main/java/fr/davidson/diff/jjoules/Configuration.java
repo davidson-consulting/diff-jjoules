@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -63,6 +64,8 @@ public class Configuration {
 
     public final String pathToJSONSuspiciousV2;
 
+    public final String pathToReport;
+
     private String[] classpathV1;
 
     private String[] classpathV2;
@@ -91,6 +94,8 @@ public class Configuration {
 
     private Map<String, Double> scorePerLineV2;
 
+    private Map<String, Map<String, Long>> ownConsumptionReports;
+
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
                          String pathToTestListAsCSV,
@@ -110,8 +115,10 @@ public class Configuration {
                          String pathToExecLinesAdditions,
                          String pathToExecLinesDeletions,
                          String pathToJSONSuspiciousV1,
-                         String pathToJSONSuspiciousV2
-    ) {
+                         String pathToJSONSuspiciousV2,
+                         String pathToReport) {
+        this.pathToReport = pathToReport;
+        this.ownConsumptionReports = new LinkedHashMap<>();
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
         this.pathToTestListAsCSV = pathToTestListAsCSV == null || pathToTestListAsCSV.isEmpty() ? "" : new File(pathToTestListAsCSV).isAbsolute() ? pathToTestListAsCSV : this.pathToFirstVersion + "/" + pathToTestListAsCSV;
@@ -121,7 +128,16 @@ public class Configuration {
         this.classpathV2 = classpathV2;
         this.classpathV2AsString = String.join(":", classpathV2);
         this.iterations = iterations;
-        this.output = output;
+        if (new File(output).isAbsolute()) {
+            this.output = output;
+        } else {
+            this.output = this.pathToFirstVersion + "/" + output;
+        }
+        final File outputDirectory = new File(this.output);
+        if (outputDirectory.exists()) {
+            outputDirectory.delete();
+        }
+        outputDirectory.mkdir();
         this.pathToRepositoryV1 = pathToRepositoryV1;
         this.pathToRepositoryV2 = pathToRepositoryV2;
         this.pathToJSONConsideredTestMethodNames = pathToJSONConsideredTestMethodNames;
@@ -129,11 +145,6 @@ public class Configuration {
         this.pathToExecLinesDeletions = pathToExecLinesDeletions;
         this.pathToJSONSuspiciousV1 = pathToJSONSuspiciousV1;
         this.pathToJSONSuspiciousV2 = pathToJSONSuspiciousV2;
-        final File outputDirectory = new File(this.output);
-        if (outputDirectory.exists()) {
-            outputDirectory.delete();
-        }
-        outputDirectory.mkdir();
         this.pathToJSONDelta = pathToJSONDelta;
         this.pathToJSONDataV1 = pathToJSONDataV1;
         this.pathToJSONDataV2 = pathToJSONDataV2;
@@ -296,8 +307,6 @@ public class Configuration {
                 "pathToFirstVersion='" + pathToFirstVersion + '\'' +
                 ", pathToSecondVersion='" + pathToSecondVersion + '\'' +
                 ", pathToTestListAsCSV='" + pathToTestListAsCSV + '\'' +
-                ", classpathV1=" + Arrays.toString(classpathV1) +
-                ", classpathV2=" + Arrays.toString(classpathV2) +
                 ", junit4=" + junit4 +
                 ", iterations=" + iterations +
                 ", output='" + output + '\'' +
@@ -306,6 +315,37 @@ public class Configuration {
                 ", pathToJSONDataV2='" + pathToJSONDataV2 + '\'' +
                 ", diff='" + diff + '\'' +
                 ", pathToJSONDeltaOmega='" + pathToJSONDeltaOmega + '\'' +
+                ", pathToRepositoryV1='" + pathToRepositoryV1 + '\'' +
+                ", pathToRepositoryV2='" + pathToRepositoryV2 + '\'' +
+                ", pathToJSONConsideredTestMethodNames='" + pathToJSONConsideredTestMethodNames + '\'' +
+                ", pathToExecLinesAdditions='" + pathToExecLinesAdditions + '\'' +
+                ", pathToExecLinesDeletions='" + pathToExecLinesDeletions + '\'' +
+                ", pathToJSONSuspiciousV1='" + pathToJSONSuspiciousV1 + '\'' +
+                ", pathToJSONSuspiciousV2='" + pathToJSONSuspiciousV2 + '\'' +
+                ", pathToReport='" + pathToReport + '\'' +
+                ", classpathV1=" + Arrays.toString(classpathV1) +
+                ", classpathV2=" + Arrays.toString(classpathV2) +
+                ", classpathV1AsString='" + classpathV1AsString + '\'' +
+                ", classpathV2AsString='" + classpathV2AsString + '\'' +
+                ", testsList=" + testsList +
+                ", dataV1=" + dataV1 +
+                ", dataV2=" + dataV2 +
+                ", deltas=" + deltas +
+                ", consideredTestsNames=" + consideredTestsNames +
+                ", execLinesAdditions=" + execLinesAdditions +
+                ", execLinesDeletions=" + execLinesDeletions +
+                ", deltaOmega=" + deltaOmega +
+                ", scorePerLineV1=" + scorePerLineV1 +
+                ", scorePerLineV2=" + scorePerLineV2 +
+                ", ownConsumptionReports=" + ownConsumptionReports +
                 '}';
+    }
+
+    public Map<String, Map<String, Long>> getOwnConsumptionReports() {
+        return this.ownConsumptionReports;
+    }
+
+    public void addReport(String reportPathname, Map<String, Long> report) {
+        this.ownConsumptionReports.put(reportPathname, report);
     }
 }

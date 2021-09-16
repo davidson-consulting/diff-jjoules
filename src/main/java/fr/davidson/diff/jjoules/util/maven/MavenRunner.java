@@ -21,9 +21,7 @@ public class MavenRunner {
     public static void runCleanAndCompile(String pathToPom) {
         final Properties properties = new Properties();
         properties.setProperty("mdep.outputFile", "classpath");
-        runGoals(pathToPom, properties, "clean", "test", "-DskipTests", "dependency:build-classpath"
-                ,"--quiet"
-        );
+        runGoals(pathToPom, properties, "clean", "test", "-DskipTests", "dependency:build-classpath", "--quiet");
     }
 
     public static void runGoals(String pathToPom, String... goals) {

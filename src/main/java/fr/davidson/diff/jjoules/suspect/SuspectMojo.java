@@ -24,8 +24,12 @@ import java.util.Set;
 @Mojo(name = "suspect")
 public class SuspectMojo extends DiffJJoulesMojo {
 
+    protected String getReportPathname() {
+        return "suspect";
+    }
+
     @Override
-    public void run(Configuration configuration) {
+    protected void _run(Configuration configuration) {
         getLog().info("Run Suspect - " + configuration.toString());
         final Set<String> testsList = FullQualifiedName.toSetFullQualifiedNames(CSVReader.readFile(configuration.pathToTestListAsCSV));
         if (testsList.isEmpty()) {
@@ -58,9 +62,9 @@ public class SuspectMojo extends DiffJJoulesMojo {
                 .stream()
                 .sorted((key1, key2) -> -(int)((suspiciousLinesV2.get(key1)*100.0D) - (suspiciousLinesV2.get(key2)*100.0D)))
                 .forEach(key -> getLog().info(key + ": " + suspiciousLinesV2.get(key)));
-        JSONUtils.write(configuration.pathToJSONSuspiciousV1, suspiciousLinesV1);
+        JSONUtils.write(configuration.output + "/" + configuration.pathToJSONSuspiciousV1, suspiciousLinesV1);
         configuration.setScorePerLineV1(suspiciousLinesV1);
-        JSONUtils.write(configuration.pathToJSONSuspiciousV2, suspiciousLinesV2);
+        JSONUtils.write(configuration.output + "/" + configuration.pathToJSONSuspiciousV2, suspiciousLinesV2);
         configuration.setScorePerLineV2(suspiciousLinesV2);
 
     }

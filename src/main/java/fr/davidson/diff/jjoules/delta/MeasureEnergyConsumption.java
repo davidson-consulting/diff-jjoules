@@ -22,23 +22,23 @@ import java.util.stream.Collectors;
  */
 public class MeasureEnergyConsumption {
 
-    private static final String PATH_TO_JJOULES_REPORT = "/target/jjoules-reports/";
+    public static final String PATH_TO_JJOULES_REPORT = "/target/jjoules-reports/";
 
-    private static final String KEY_ENERGY_CONSUMPTION = "package|uJ";
+    public static final String KEY_ENERGY_CONSUMPTION = "package|uJ";
 
-    private static final String KEY_INSTRUCTIONS = "instructions";
+    public static final String KEY_INSTRUCTIONS = "instructions";
 
-    private static final String KEY_DURATIONS = "duration|ns";
+    public static final String KEY_DURATIONS = "duration|ns";
 
-    private static final String KEY_CYCLES = "cycles";
+    public static final String KEY_CYCLES = "cycles";
 
-    private static final String KEY_BRANCHES = "branches";
+    public static final String KEY_BRANCHES = "branches";
 
-    private static final String KEY_BRANCH_MISSES = "branch-misses";
+    public static final String KEY_BRANCH_MISSES = "branch-misses";
 
-    private static final String KEY_CACHES = "cache-reference";
+    public static final String KEY_CACHES = "cache-reference";
 
-    private static final String KEY_CACHE_MISSES = "cache-misses";
+    public static final String KEY_CACHE_MISSES = "cache-misses";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MeasureEnergyConsumption.class);
 
@@ -68,8 +68,8 @@ public class MeasureEnergyConsumption {
             final String classpath,
             final Map<String, List<Data>> data,
             Map<String, List<String>> testsList) {
-            EntryPoint.jUnit5Mode = false;
-            EntryPoint.verbose = false;
+            EntryPoint.jUnit5Mode = true;
+            EntryPoint.verbose = true;
             EntryPoint.timeoutInMs = 100000;
             try {
                 final String[] testClassNames = testsList.keySet().toArray(new String[0]);

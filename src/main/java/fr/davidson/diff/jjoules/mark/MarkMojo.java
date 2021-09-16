@@ -21,8 +21,12 @@ import java.util.*;
 @Mojo(name = "mark")
 public class MarkMojo extends DiffJJoulesMojo {
 
+    protected String getReportPathname() {
+        return "mark";
+    }
+
     @Override
-    public void run(Configuration configuration) {
+    protected void _run(Configuration configuration) {
         getLog().info("Run Mark - " + configuration.toString());
         final Map<String, List<String>> consideredTestsNames = configuration.getConsideredTestsNames();
         final Deltas deltas = configuration.getDeltas();
