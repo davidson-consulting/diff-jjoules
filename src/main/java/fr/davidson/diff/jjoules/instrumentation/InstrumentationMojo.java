@@ -53,8 +53,10 @@ public class InstrumentationMojo extends DiffJJoulesMojo {
         finalClassPath[1] = rootPathFolder + "/target/test-classes";
         System.arraycopy(classpath, 0, finalClassPath, 2, classpath.length);
         launcher.getEnvironment().setSourceClasspath(finalClassPath);
-        launcher.getEnvironment().setNoClasspath(false);
-        launcher.getEnvironment().setAutoImports(false);
+//        launcher.getEnvironment().setNoClasspath(false);
+//        launcher.getEnvironment().setAutoImports(false);
+        launcher.getEnvironment().setNoClasspath(true);
+        launcher.getEnvironment().setAutoImports(true);
         launcher.getEnvironment().setLevel("DEBUG");
         launcher.addInputResource(rootPathFolder + "/" + TEST_FOLDER_PATH);
 

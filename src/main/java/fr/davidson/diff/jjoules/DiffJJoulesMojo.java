@@ -5,6 +5,7 @@ import fr.davidson.diff.jjoules.delta.DeltaMojo;
 import fr.davidson.diff.jjoules.failer.FailerMojo;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationMojo;
 import fr.davidson.diff.jjoules.mark.MarkMojo;
+import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.report.markdown.MarkdownMojo;
 import fr.davidson.diff.jjoules.suspect.SuspectMojo;
 import fr.davidson.diff.jjoules.util.CSVReader;
@@ -25,8 +26,13 @@ import org.powerapi.jjoules.rapl.RaplDevice;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Properties;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Benjamin DANGLOT
@@ -160,6 +166,12 @@ public class DiffJJoulesMojo extends AbstractMojo {
     @Parameter(property = "path-to-report", defaultValue = ".github/workflows/template.md")
     private String pathToReport;
 
+    @Parameter(property = "suspect", defaultValue = "true")
+    private boolean shouldSuspect;
+
+    @Parameter(property = "report", defaultValue = "MARKDOWN")
+    private String reportType;
+
     private Configuration configuration;
 
     @Override
@@ -203,7 +215,8 @@ public class DiffJJoulesMojo extends AbstractMojo {
                     this.pathToExecLinesDeletions,
                     this.pathToJSONSuspiciousV1,
                     this.pathToJSONSuspiciousV2,
-                    this.pathToReport
+                    this.pathToReport,
+                    ReportEnum.valueOf(this.reportType)
             );
             this._run(configuration);
             this.report();
@@ -245,8 +258,10 @@ public class DiffJJoulesMojo extends AbstractMojo {
         this.testInstrumentation();
         this.deltaComputation();
         this.commitMarking();
-        this.testFailingInstrumentation();
-        this.testSuspicious();
+        if (this.shouldSuspect) {
+            this.testFailingInstrumentation();
+            this.testSuspicious();
+        }
     }
 
     private void testSelection() {
@@ -254,20 +269,20 @@ public class DiffJJoulesMojo extends AbstractMojo {
         properties.setProperty("path-dir-second-version", this.configuration.pathToSecondVersion);
         startMonitoring();
         MavenRunner.runGoals(
-                this.pathToPom,
+                this.project.getBasedir().getAbsolutePath(),
                 properties,
                 "clean", "eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list"
         );
         stopMonitoring(this.configuration, "selection");
-        MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion + "/pom.xml");
-        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion + "/pom.xml");
+        MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion);
+        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion);
         this.configuration.setTestsList(CSVReader.readFile(this.configuration.pathToTestListAsCSV));
     }
 
 
     private void testInstrumentation() {
         new InstrumentationMojo().run(this.configuration);
-        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion + "/pom.xml");
+        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion);
         MavenRunner.runCleanAndCompile(this.pathToPom);
         this.configuration.setClasspathV1(Utils.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath).split(":"));
         this.configuration.setClasspathV2(Utils.readClasspathFile(this.pathDirSecondVersion + "/" + this.classpathPathV2).split(":"));
@@ -280,13 +295,13 @@ public class DiffJJoulesMojo extends AbstractMojo {
 
     private void commitMarking() {
         new MarkMojo().run(this.configuration);
-        MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion + "/pom.xml");
-        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion + "/pom.xml");
+        MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion);
+        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion);
     }
 
     private void testFailingInstrumentation() {
         new FailerMojo().run(this.configuration);
-        MavenRunner.runCleanAndCompile(this.pathDirSecondVersion + "/pom.xml");
+        MavenRunner.runCleanAndCompile(this.pathDirSecondVersion);
         MavenRunner.runCleanAndCompile(this.pathToPom);
     }
 
@@ -295,15 +310,14 @@ public class DiffJJoulesMojo extends AbstractMojo {
     }
 
     private void report() {
-        // markdown TODO must be optional
-        new MarkdownMojo().run(this.configuration);
+        this.configuration.getReportEnum().get().run(configuration);
     }
 
     private void resetAndCleanBothVersion() {
         this.gitResetHard(this.configuration.pathToRepositoryV1);
         this.gitResetHard(this.configuration.pathToRepositoryV2);
-        MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion + "/pom.xml");
-        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion + "/pom.xml");
+        MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion);
+        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion);
         this.configuration.setClasspathV1(Utils.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath).split(":"));
         this.configuration.setClasspathV2(Utils.readClasspathFile(this.pathDirSecondVersion + "/" + this.classpathPathV2).split(":"));
     }
@@ -314,6 +328,11 @@ public class DiffJJoulesMojo extends AbstractMojo {
                     .reset()
                     .setMode(ResetCommand.ResetType.HARD)
                     .call();
+            // must delete module-info.java
+            try (Stream<Path> walk = Files.walk(Paths.get(pathToFolder))) {
+                walk.filter(path -> path.endsWith("module-info.java"))
+                        .forEach(path -> path.toFile().delete());
+            }
         } catch (GitAPIException | IOException e) {
             throw new RuntimeException(e);
         }

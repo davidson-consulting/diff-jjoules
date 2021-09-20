@@ -1,10 +1,13 @@
 package fr.davidson.diff.jjoules;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import eu.stamp_project.diff_test_selection.diff.DiffComputer;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
+import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.util.CSVReader;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
@@ -96,6 +99,12 @@ public class Configuration {
 
     private Map<String, Map<String, Long>> ownConsumptionReports;
 
+    private ReportEnum reportEnum;
+
+    public ReportEnum getReportEnum() {
+        return reportEnum;
+    }
+
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
                          String pathToTestListAsCSV,
@@ -116,7 +125,9 @@ public class Configuration {
                          String pathToExecLinesDeletions,
                          String pathToJSONSuspiciousV1,
                          String pathToJSONSuspiciousV2,
-                         String pathToReport) {
+                         String pathToReport,
+                         ReportEnum reportEnum) {
+        this.reportEnum = reportEnum;
         this.pathToReport = pathToReport;
         this.ownConsumptionReports = new LinkedHashMap<>();
         this.pathToFirstVersion = pathToFirstVersion;
@@ -338,6 +349,7 @@ public class Configuration {
                 ", scorePerLineV1=" + scorePerLineV1 +
                 ", scorePerLineV2=" + scorePerLineV2 +
                 ", ownConsumptionReports=" + ownConsumptionReports +
+                ", reportEnum=" + reportEnum +
                 '}';
     }
 

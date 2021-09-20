@@ -90,6 +90,9 @@ public class MarkdownMojo extends DiffJJoulesMojo {
     }
 
     private void suspiciousLines(Configuration configuration, StringBuilder report) {
+        if (configuration.getScorePerLineV1() == null) {
+            return;
+        }
         final Map<String, Double> scorePerLineV1 = configuration.getScorePerLineV1();
         final Map<String, Double> scorePerLineV2 = configuration.getScorePerLineV2();
         final List<String> keysV1 = scorePerLineV1.keySet()

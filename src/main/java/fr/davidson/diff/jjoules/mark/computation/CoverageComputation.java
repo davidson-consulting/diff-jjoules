@@ -28,7 +28,6 @@ public class CoverageComputation {
         final Map<String, Coverage> coveragePerTestMethodName = new HashMap<>();
         final CloverExecutor cloverExecutor = new CloverExecutor();
         final CloverReader cloverReader = new CloverReader();
-        cloverExecutor.instrument(pathToVersion);
         for (String testClassName: testsListName.keySet()) {
             cloverExecutor.instrumentAndRunGivenTest(
                     pathToVersion,
@@ -54,11 +53,10 @@ public class CoverageComputation {
             String pathToVersion,
             Map<String, Coverage> coveragePerTestMethodName,
             CloverExecutor cloverExecutor,
-            String classpath,
             String testClassName,
             String testMethodName
     ) {
-       cloverExecutor.instrumentAndRunGivenTest(
+       cloverExecutor.runInstrumentedTest(
                 pathToVersion,
                 new HashMap<String, List<String>>() {
                     {

@@ -18,29 +18,38 @@ public class MavenRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MavenRunner.class);
 
-    public static void runCleanAndCompile(String pathToPom) {
+    public static void runCleanAndCompile(String pathToRootDir) {
         final Properties properties = new Properties();
         properties.setProperty("mdep.outputFile", "classpath");
-        runGoals(pathToPom, properties, "clean", "test", "-DskipTests", "dependency:build-classpath", "--quiet");
+        runGoals(pathToRootDir, properties, "clean", "test", "-DskipTests", "dependency:build-classpath", "--quiet");
     }
 
-    public static void runGoals(String pathToPom, String... goals) {
-        runGoals(pathToPom, new Properties(), goals);
-    }
-
-    public static void runGoals(String pathToPom, Properties properties, String... goals) {
+    public static void runGoals(String pathToRootDir, Properties properties, String... goals) {
         final InvocationRequest invocationRequest = new DefaultInvocationRequest();
-        invocationRequest.setPomFile(new File(pathToPom));
+        invocationRequest.setPomFile(new File(pathToRootDir + "/pom.xml"));
         invocationRequest.setGoals(Arrays.asList(goals));
+
+        properties.setProperty("enforcer.skip", "true");
+        properties.setProperty("checkstyle.skip", "true");
+        properties.setProperty("cobertura.skip", "true");
+        properties.setProperty("skipITs", "true");
+        properties.setProperty("rat.skip", "true");
+        properties.setProperty("license.skip", "true");
+        properties.setProperty("findbugs.skip", "true");
+        properties.setProperty("gpg.skip", "true");
+        properties.setProperty("jacoco.skip", "true");
+        properties.setProperty("animal.sniffer.skip", "true");
+        properties.setProperty("proguard.skip", "true");
+
         invocationRequest.setProperties(properties);
         LOGGER.info("mvn -f {} {} {}",
-                pathToPom,
+                pathToRootDir,
                 String.join(" ", invocationRequest.getGoals()),
                 invocationRequest.getProperties()
                         .keySet()
                         .stream()
                         .map(key -> "-D" + key + "=" + invocationRequest.getProperties().get(key))
-                        .collect(Collectors.joining(""))
+                        .collect(Collectors.joining(" "))
         );
         final Invoker invoker = new DefaultInvoker();
         invoker.setMavenHome(new File("/usr/share/maven"));
