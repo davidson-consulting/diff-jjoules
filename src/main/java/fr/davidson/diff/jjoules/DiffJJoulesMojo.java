@@ -25,10 +25,13 @@ import org.powerapi.jjoules.EnergySample;
 import org.powerapi.jjoules.rapl.RaplDevice;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.stream.Collectors;
@@ -264,6 +267,14 @@ public class DiffJJoulesMojo extends AbstractMojo {
         }
     }
 
+    private void runDiffJJoulesStep(DiffJJoulesMojo step, String messageInCaseOfFailure) {
+        try {
+            step.run(this.configuration);
+        } catch (Exception e) {
+            this.end(messageInCaseOfFailure, e);
+        }
+    }
+
     private void testSelection() {
         final Properties properties = new Properties();
         properties.setProperty("path-dir-second-version", this.configuration.pathToSecondVersion);
@@ -274,14 +285,17 @@ public class DiffJJoulesMojo extends AbstractMojo {
                 "clean", "eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list"
         );
         stopMonitoring(this.configuration, "selection");
+        final Map<String, List<String>> testsList = CSVReader.readFile(this.configuration.pathToTestListAsCSV);
+        if (testsList.isEmpty()) {
+            this.end("No test could be selected");
+        }
         MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion);
         MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion);
-        this.configuration.setTestsList(CSVReader.readFile(this.configuration.pathToTestListAsCSV));
+        this.configuration.setTestsList(testsList);
     }
 
-
     private void testInstrumentation() {
-        new InstrumentationMojo().run(this.configuration);
+        this.runDiffJJoulesStep(new InstrumentationMojo(),"Something went wrong during test instrumentation.");
         MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion);
         MavenRunner.runCleanAndCompile(this.pathToPom);
         this.configuration.setClasspathV1(Utils.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath).split(":"));
@@ -289,24 +303,24 @@ public class DiffJJoulesMojo extends AbstractMojo {
     }
 
     private void deltaComputation() {
-        new DeltaMojo().run(this.configuration);
+        this.runDiffJJoulesStep(new DeltaMojo(), "Something went wrong during delta.");
         this.resetAndCleanBothVersion();
     }
 
     private void commitMarking() {
-        new MarkMojo().run(this.configuration);
+        this.runDiffJJoulesStep(new MarkMojo(), "Something went wrong during marking.");
         MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion);
         MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion);
     }
 
     private void testFailingInstrumentation() {
-        new FailerMojo().run(this.configuration);
+        this.runDiffJJoulesStep(new FailerMojo(), "Something went wrong during failing instrumentation.");
         MavenRunner.runCleanAndCompile(this.pathDirSecondVersion);
         MavenRunner.runCleanAndCompile(this.pathToPom);
     }
 
     private void testSuspicious() {
-        new SuspectMojo().run(this.configuration);
+        this.runDiffJJoulesStep(new SuspectMojo(), "Something went wrong during suspect");
     }
 
     private void report() {
@@ -336,6 +350,25 @@ public class DiffJJoulesMojo extends AbstractMojo {
         } catch (GitAPIException | IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void end(String reason) {
+        this.end(reason, null);
+    }
+
+    private void end(String reason, Exception exception) {
+        try (final FileWriter writer = new FileWriter(
+                this.configuration.output + "/end.txt", false)) {
+            writer.write(reason + "\n");
+            if (exception != null) {
+                for (StackTraceElement stackTraceElement : exception.getStackTrace()) {
+                    writer.write(stackTraceElement.toString() + "\n");
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.exit(0);
     }
 
 
