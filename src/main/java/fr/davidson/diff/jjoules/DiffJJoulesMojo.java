@@ -309,6 +309,9 @@ public class DiffJJoulesMojo extends AbstractMojo {
 
     private void commitMarking() {
         this.runDiffJJoulesStep(new MarkMojo(), "Something went wrong during marking.");
+        if (this.configuration.getConsideredTestsNames().isEmpty()) {
+            this.end("The energy consumption are too unstable, no method could be considered.");
+        }
         MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion);
         MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion);
     }
@@ -357,6 +360,7 @@ public class DiffJJoulesMojo extends AbstractMojo {
     }
 
     private void end(String reason, Exception exception) {
+        this.stopMonitoring(this.configuration);
         try (final FileWriter writer = new FileWriter(
                 this.configuration.output + "/end.txt", false)) {
             writer.write(reason + "\n");
@@ -368,7 +372,7 @@ public class DiffJJoulesMojo extends AbstractMojo {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.exit(0);
+        System.exit(1);
     }
 
 
