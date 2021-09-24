@@ -28,17 +28,4 @@ public class Delta extends Data {
         this.dataV1 = dataV1;
         this.dataV2 = dataV2;
     }
-
-    public static Map<String, Delta> from(Map read) {
-        final Map<String, Delta> map = new HashMap<>();
-        for (Object key : read.keySet()) {
-            final Map<String, ?> current = (Map<String, ?>)read.get(key);
-            map.put(key.toString(),
-                    new Delta(
-                            new Data((Map<String, ?>)current.get("dataV1")),
-                            new Data((Map<String, ?>)current.get("dataV2"))
-                    ));
-        }
-        return map;
-    }
 }
