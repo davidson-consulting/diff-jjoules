@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Benjamin DANGLOT
@@ -18,6 +18,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ComputationTest {
 
     public static final String DATA_V_1_JSON = "src/test/resources/json/data_v1.json";
+
+    public static final String DATA_V_2_JSON = "src/test/resources/json/data_v2.json";
+
+    @Test
+    void testIsEmptyIntersectionPerTestMethodName() {
+        final Datas datas1 = JSONUtils.read(DATA_V_1_JSON, Datas.class);
+        final Datas datas2 = JSONUtils.read(DATA_V_2_JSON, Datas.class);
+        final Map<String, Boolean> emptyIntersectionPerTestMethodName = datas1.isEmptyIntersectionPerTestMethodName(datas2);
+        assertTrue(emptyIntersectionPerTestMethodName.get("com.google.gson.functional.JsonAdapterAnnotationOnFieldsTest#testJsonAdapterInvokedOnlyForAnnotatedFields"));
+        assertTrue(emptyIntersectionPerTestMethodName.get("com.google.gson.functional.CustomTypeAdaptersTest#testCustomTypeAdapterDoesNotAppliesToSubClasses"));
+        assertFalse(emptyIntersectionPerTestMethodName.get("com.google.gson.CommentsTest#testParseComments"));
+        assertFalse(emptyIntersectionPerTestMethodName.get("com.google.gson.functional.ThrowableFunctionalTest#testSerializedNameOnExceptionFields"));
+    }
 
     @Test
     void testComputeMedian() {
