@@ -1,7 +1,5 @@
 package fr.davidson.diff.jjoules;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import eu.stamp_project.diff_test_selection.diff.DiffComputer;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;

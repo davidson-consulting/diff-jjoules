@@ -1,12 +1,10 @@
 package fr.davidson.diff.jjoules;
 
-import eu.stamp_project.testrunner.EntryPoint;
 import fr.davidson.diff.jjoules.delta.DeltaMojo;
 import fr.davidson.diff.jjoules.failer.FailerMojo;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationMojo;
 import fr.davidson.diff.jjoules.mark.MarkMojo;
 import fr.davidson.diff.jjoules.report.ReportEnum;
-import fr.davidson.diff.jjoules.report.markdown.MarkdownMojo;
 import fr.davidson.diff.jjoules.suspect.SuspectMojo;
 import fr.davidson.diff.jjoules.util.CSVReader;
 import fr.davidson.diff.jjoules.util.JSONUtils;
@@ -30,11 +28,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
