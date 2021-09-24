@@ -51,38 +51,41 @@ public class DiffJJoulesMojo extends AbstractMojo {
     protected MavenProject project;
 
     /**
-     * [Mandatory] Specify the path to root directory of the project in the second version.
+     * Specify the path to root directory of the project in the second version.
      */
     @Parameter(property = "path-dir-second-version")
     protected String pathDirSecondVersion;
 
     /**
-     * [Mandatory] Specify the path to a CSV file that contains the list of tests to be instrumented.
+     * Specify the path to a CSV file that contains the list of tests to be instrumented.
      */
     @Parameter(property = "tests-list", defaultValue = "testsThatExecuteTheChange.csv")
     protected String testsList;
 
     /**
-     * [Optional] Specify the path to a file that contains the full classpath of the project.
-     * We advise use to use the following goal right before this one :
+     * Specify the path to a file that contains the full classpath of the project for the version before the code changes.
+     * We advise use to use the following goal to generate it :
      * dependency:build-classpath -Dmdep.outputFile=classpath
      */
     @Parameter(property = "classpath-path-v1", defaultValue = "classpath")
     protected String classpathPath;
 
     /**
-     * [Optional] Specify the path to a file that contains the full classpath of the project.
-     * We advise use to use the following goal right before this one :
+     * Specify the path to a file that contains the full classpath of the project for the version after the code changes.
+     * We advise use to use the following goal to generate it :
      * dependency:build-classpath -Dmdep.outputFile=classpath
      */
     @Parameter(property = "classpath-path-v2", defaultValue = "classpath")
     protected String classpathPathV2;
 
+    /**
+     * Number of execution to do to measure the energy consumption of tests.
+     */
     @Parameter(property = "iterations", defaultValue = "5")
     protected int iterations;
 
     /**
-     *
+     *  Specify the path to output the files that produces this plugin
      */
     @Parameter(property = "output-path", defaultValue = "diff-jjoules")
     protected String outputPath;
@@ -90,85 +93,98 @@ public class DiffJJoulesMojo extends AbstractMojo {
     private static final String DEFAULT_OUTPUT_PATH = "diff-jjoules";
 
     /**
-     *
+     *  Specify the path to a json file that contains the deltas per test
      */
     @Parameter(property = "path-json-delta", defaultValue = "deltas.json")
     private String pathToJSONDelta;
 
     /**
-     *
+     *  Specify the path to a json file that contains the measure of the energy consumption of tests for the version
+     *  before the code changes.
      */
     @Parameter(property = "path-json-data-first-version", defaultValue = "data_v1.json")
     private String pathToJSONDataV1;
 
     /**
-     *
+     *  Specify the path to a json file that contains the measure of the energy consumption of tests for the version
+     *  after the code changes.
      */
     @Parameter(property = "path-json-data-second-version", defaultValue = "data_v2.json")
     private String pathToJSONDataV2;
 
     /**
-     * [Optional] Specify the path of a diff file. If it is not specified, it will be computed using diff command line.
+     * Specify the path of a diff file. If it is not specified, it will be computed using diff command line.
      */
     @Parameter(defaultValue = "", property = "path-to-diff")
     private String pathToDiff;
 
     /**
-     *
+     *  Specify the path to a json file that contains the delta omega to decide to pass or fail the build
      */
     @Parameter(property = "path-json-delta-omega", defaultValue = "deltaOmega.json")
     private String pathToJSONDeltaOmega;
 
     /**
-     *
+     *  Specify the path to the root directory of the project before applying the commit.
+     *  This is useful when it is used on multi-modules project.
      */
     @Parameter(property = "path-repo-v1")
     private String pathToRepositoryV1;
 
     /**
-     *
+     *  Specify the path to the root directory of the project after applying the commit.
+     *  This is useful when it is used on multi-modules project.
      */
     @Parameter(property = "path-repo-v2")
     private String pathToRepositoryV2;
 
     /**
-     *
+     *  Specify the path to a json file that contains the list of test methods that is considered to compute the delta omega.
      */
     @Parameter(property = "path-considered-test-method-names", defaultValue = "consideredTestMethods.json")
     private String pathToJSONConsideredTestMethodNames;
 
     /**
-     *
+     *  Specify the path to a json file that contains the list of test methods that are executing the additions of the commit.
      */
     @Parameter(property = "path-exec-lines-additions", defaultValue = "exec_additions.json")
     private String pathToExecLinesAdditions;
 
     /**
-     *
+     *  Specify the path to a json file that contains the list of test methods that are executing the deletions of the commit.
      */
     @Parameter(property = "path-exec-lines-deletions", defaultValue = "exec_deletions.json")
     private String pathToExecLinesDeletions;
 
     /**
-     *
+     *  Specify the path to a json file that contains the list of test methods that are suspicious regarding the version before the commit.
      */
     @Parameter(property = "path-json-suspicious-v2", defaultValue = "suspicious_v1.json")
     private String pathToJSONSuspiciousV1;
 
     /**
-     *
+     *  Specify the path to a json file that contains the list of test methods that are suspicious regarding the version after the commit.
      */
     @Parameter(property = "path-json-suspicious-v2", defaultValue = "suspicious_v2.json")
     private String pathToJSONSuspiciousV2;
 
     // TODO should depend on the report we want to output
     // For now I set by default the path to the template.md for MarkdownMojo
+    /**
+     * Specify the path to output the report
+     */
     @Parameter(property = "path-to-report", defaultValue = ".github/workflows/template.md")
     private String pathToReport;
 
+    /**
+     * Enable or disable the suspect (and failer) goals when running diff-jjoules
+     */
     @Parameter(property = "suspect", defaultValue = "true")
     private boolean shouldSuspect;
 
+    /**
+     * Specify the type of report to generate
+     */
     @Parameter(property = "report", defaultValue = "MARKDOWN")
     private String reportType;
 

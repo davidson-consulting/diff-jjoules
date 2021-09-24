@@ -1,20 +1,10 @@
 # Diff-JJoules
 
-**Diff-JJoules** is a set of maven plugin to run various procedures that aims at measuring the energy consumption delta 
-between two versions of the same program.
-
-This project can be applied on Maven projects in Java and with JUnit.
-
-It relies on the two following projects:
-
-1. https://github.com/davidson-consulting/junit-jjoules to measure the energy consumption
-2. https://github.com/STAMP-project/dspot/tree/master/dspot-diff-test-selection to select
-tests methods that execute the lines that changed.
+`diff-jjoules` is a set of maven plugins that measures the impact of commits on the energy consumption of the program.
 
 ## Install
 
-To use Diff-Jjoules, you need to install `junit-jjoules`. Please follow the instruction of the [README]()
-Ensure that you do configure well `junit-jjoules`.
+To use Diff-JJoules, you need to install [JJoules](https://github.com/davidson-consulting/j-joules), [JUnit-JJoules](https://github.com/davidson-consulting/junit-jjoules) and [Diff-Test-Selection](https://github.com/STAMP-project/dspot/tree/master/dspot-diff-test-selection).
 
 Then, you can install `diff-jjoules`:
 
@@ -24,99 +14,153 @@ mvn clean install -DskipTest
 
 ## Usage
 
-To use easily `diff-jjoules`, we provide python scripts that use maven plugins.
+The easiest way to use `diff-jjoules`, we need to clone your project twice: one for the version before applying the commit, and one for the version after applying the commit. 
+It the following, we consider **path/v1** as the path to the version of the program before applying the commit, and **path/v2** as the path to the version of the program after applying the commit.
 
-```sh
-$ python3 src/main/python/run.py --help                              
-usage: run.py [-h] [-f FIRST_VERSION_PATH] [-s SECOND_VERSION_PATH] [-i ITERATION]
+You can run `diff-jjoules` with the following command line, from **path/v1**, where your `pom.xml` is:
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -f FIRST_VERSION_PATH, --first-version-path FIRST_VERSION_PATH
-                        Specify the path to the folder of the first version of the program, i.e. before the commit.
-  -s SECOND_VERSION_PATH, --second-version-path SECOND_VERSION_PATH
-                        Specify the path to the folder of the second version of the program, i.e. after the commit.
-  -i ITERATION, --iteration ITERATION
-                        Specify the number of time tests will be executed for measuring the energy consumption.
+```shell
+mvn fr.davidson:diff-jjoules:diff-jjoules -Dpath-dir-second-version=path/v2
 ```
 
-This script will output two json files that contains the average, over the iterations, of the energy consumption for each test that execute the changes, on per version.
-It will also print on the standard output the delta between both versions, test method wise.
+Calling this maven plugin will apply the whole process as follow:
 
-# Availaible Maven Plugins
+1. `test-selection`: select the tests that execute the code changes (this is done by `diff-test-selection`;
+2. `instrumention`: instrument the selected tests with probes to measure their energy consumption;
+3. `delta`: computation of the energy consumption delta test-wise (&Delta;SEC(t) = SEC(v2,t) - SEC(v1,t));
+4. `mark`: apply a strategy to mark as passing :heavy_check_mark: or failing :x: the commit;
+5. `failer`: instrument the tests that have a positive &Delta, meaning that are consuming energy after applying the commit; 
+6. `suspect`: run fault localization to rate the modified line according to their suspiciousness;
+7. `report`: generate a readable report;
 
-## Instrumentation
+## Plugins
 
-The first maven plugin provided an automatic instrumentation of test methods in order to replace classical JUnit `@Test` by `@EnergyTest` to collect data about energy consumption of an unit test.
+### Instrument
 
-### Usage
+### Delta
 
-To use this plugin, you must : 
+### Mark
 
-* Have both versions of your program
-* Compute both classpath for both versions of the program (use `dependency:build-classpath -Dmdep.outputFile=classpath` to compute it)
-* Have a CSV file containing the list of tests to be instrumented with the following format :
+### Failer
 
-```
-fullQualifiedNameTestClass;testMethodName1;testMethodName2;...;testMethodNameN
-```
+### Suspect
 
-Then run:
+### Report
 
-```
-mvn fr.davidson:diff-jjoules:instrument -DclasspathPath=classpath -DclasspathPathV2=../v2/classpath -DpathDirSecondVersion=../v2/ -DtestsList=testsThatExecuteTheChange.csv
-```
+## Detailed Usage
 
-You can make collaborate maven plugin for easier usage. For exemple, you can compute the list of tests that execute the changes between you two version of the same program using `dspot-diff-test-selection` maven plugin.
+### Parameters 
 
-For example:
+```text
+Diff-JJoules is a maven plugin that measure the impact of commits on the
+  energy consumption of the program.
 
-Considering that `/tmp/v1` and `/tmp/v2` contains respectively the version of the program before the commit and after the commit, run the two subsequents maven command:
-```
-mvn -f /tmp/v2/pom.xml clean install -DskipTests dependency:build-classpath -Dmdep.outputFile=classpath -f /tmp/v2/pom.xml
-mvn -f /tmp/v1/pom.xml clean install -DskipTests dependency:build-classpath -Dmdep.outputFile=classpath  fr.
-eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list -Dpath-dir-second-version=/tmp/v2/ -Dtests-list=testsThatExecuteTheChange.csv
-davidson:diff-jjoules:instrument -Dclasspath-path-v1=classpath -Dclasspath-path-v2=/tmp/v2/classpath
-```
-
-This two command lines will:
-
-1. Build your V2 program and generate its classpath file
-2. Build your V1 program and generate its classpath file
-3. Select the test that execute the code changes between V1 and V2
-4. Instrument the selected tests
-
-This can be done because `dspot-diff-test-selection` and `diff-jjoules:instrument` shares the same options names.
-
-```txt
-diff-jjoules:instrument
+diff-jjoules:diff-jjoules
 
   Available parameters:
 
     classpathPath (Default: classpath)
+      Specify the path to a file that contains the full classpath of the project
+      for the version before the code changes. We advise use to use the
+      following goal to generate it : dependency:build-classpath
+      -Dmdep.outputFile=classpath
       User property: classpath-path-v1
-      [Optional] Specify the path to a file that contains the full classpath of the project. We advise use to use the following goal right before this one : dependency:build-classpath -Dmdep.outputFile=classpath
 
     classpathPathV2 (Default: classpath)
+      Specify the path to a file that contains the full classpath of the project
+      for the version after the code changes. We advise use to use the following
+      goal to generate it : dependency:build-classpath
+      -Dmdep.outputFile=classpath
       User property: classpath-path-v2
-      [Optional] Specify the path to a file that contains the full classpath of the project. We advise use to use the following goal right before this one : dependency:build-classpath -Dmdep.outputFile=classpath
+
+    iterations (Default: 5)
+      Number of execution to do to measure the energy consumption of tests.
+      User property: iterations
+
+    outputPath (Default: diff-jjoules)
+      Specify the path to output the files that produces this plugin
+      User property: output-path
 
     pathDirSecondVersion
+      Specify the path to root directory of the project in the second version.
       User property: path-dir-second-version
-      [Mandatory] Specify the path to root directory of the project in the second version.
 
-    testsList
+    pathToDiff (Default: )
+      Specify the path of a diff file. If it is not specified, it will be
+      computed using diff command line.
+      User property: path-to-diff
+
+    pathToExecLinesAdditions (Default: exec_additions.json)
+      Specify the path to a json file that contains the list of test methods
+      that are executing the additions of the commit.
+      User property: path-exec-lines-additions
+
+    pathToExecLinesDeletions (Default: exec_deletions.json)
+      Specify the path to a json file that contains the list of test methods
+      that are executing the deletions of the commit.
+      User property: path-exec-lines-deletions
+
+    pathToJSONConsideredTestMethodNames (Default: consideredTestMethods.json)
+      Specify the path to a json file that contains the list of test methods
+      that is considered to compute the delta omega.
+      User property: path-considered-test-method-names
+
+    pathToJSONDataV1 (Default: data_v1.json)
+      Specify the path to a json file that contains the measure of the energy
+      consumption of tests for the version before the code changes.
+      User property: path-json-data-first-version
+
+    pathToJSONDataV2 (Default: data_v2.json)
+      Specify the path to a json file that contains the measure of the energy
+      consumption of tests for the version after the code changes.
+      User property: path-json-data-second-version
+
+    pathToJSONDelta (Default: deltas.json)
+      Specify the path to a json file that contains the deltas per test
+      User property: path-json-delta
+
+    pathToJSONDeltaOmega (Default: deltaOmega.json)
+      Specify the path to a json file that contains the delta omega to decide to
+      pass or fail the build
+      User property: path-json-delta-omega
+
+    pathToJSONSuspiciousV1 (Default: suspicious_v1.json)
+      Specify the path to a json file that contains the list of test methods
+      that are suspicious regarding the version before the commit.
+      User property: path-json-suspicious-v2
+
+    pathToJSONSuspiciousV2 (Default: suspicious_v2.json)
+      Specify the path to a json file that contains the list of test methods
+      that are suspicious regarding the version after the commit.
+      User property: path-json-suspicious-v2
+
+    pathToReport (Default: .github/workflows/template.md)
+      Specify the path to output the report
+      User property: path-to-report
+
+    pathToRepositoryV1
+      Specify the path to the root directory of the project before applying the
+      commit. This is useful when it is used on multi-modules project.
+      User property: path-repo-v1
+
+    pathToRepositoryV2
+      Specify the path to the root directory of the project after applying the
+      commit. This is useful when it is used on multi-modules project.
+      User property: path-repo-v2
+
+    reportType (Default: MARKDOWN)
+      Specify the type of report to generate
+      User property: report
+
+    shouldSuspect (Default: true)
+      Enable or disable the suspect (and failer) goals when running diff-jjoules
+      User property: suspect
+
+    testsList (Default: testsThatExecuteTheChange.csv)
+      Specify the path to a CSV file that contains the list of tests to be
+      instrumented.
       User property: tests-list
-      [Mandatory] Specify the path to a CSV file that contains the list of tests to be instrumented.
 ```
-
-## Analysis
-
-### Usage
-
-## Location
-
-### Usage
 
 ## Mutation
 
@@ -176,33 +220,3 @@ diff-jjoules:mutate
       methods names per full qualified names to be mutated. example :
       fr.davidson.UntareJjoulesMojo;execute
 ```
-
-## Example
-
-We provide an example to run `diff-jjoules`. This is `google/gson`, which an open-source project avalaible on GitHub.
-
-To run this example, you can use the following python script:
-
-```sh
-python3 src/main/python/example.py
-```
-
-This script will:
-
-1. clone twice `google/gson` in `/tmp/example_v1`, `/tmp/example_v2`.
-2. set these folder to specific commits, that we know `diff-jjoules` works, _i.e._ the delta between the versions is measurable.
-3. run the provided script `src/main/python/run.py` with the correct parameters:
-    `$ python3 src/main/python/run.py --first-version-path /tmp/example_v1 --second-version-path /tmp/example_v2 --iteration 1`
-
-At the end of the execution, you will have the delta between both versions, test method wise, printed on the stdout.
-And two json files `avg_v1.json` and `avg_v2.json` that contains the average, over the iterations, of the energy consumption for each test that execute the changes, on per version.
-
-## Detail behind the script `src/main/python/run.py`
-
-The script `src/main/python/run.py` performs the following steps:
-
-1. It runs `mvn clean install -DskipTests` on both versions.
-2. It runs `dspot-diff-test-selection` maven plugin to select test methods that execute the lines that changed.
-3. It runs `diff-jjoules` maven plugin to instrument the test methods selected at the previous step. It also inject some dependencies in the `pom.xml` of both versions.
-4. It runs X times the tests, and compute the average of the energy consumption and the duration for each test methods.
-5. It computes the delta of the energy consumption between both versions, test method wise.
