@@ -1,6 +1,7 @@
 package fr.davidson.diff.jjoules.delta;
 
 import fr.davidson.diff.jjoules.delta.data.Data;
+import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Delta;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 
@@ -29,7 +30,7 @@ public class Computation {
     }
 
     // TODO asking my self : should we take the medians separately or should we take the medians over the 3 measures ?
-    static Map<String, Data> computeMedian(final Map<String, List<Data>> data) {
+    static Map<String, Data> computeMedian(final Datas data) {
         final Map<String, Data> medianPerTestName = new HashMap<>();
         for (String testMethodName : data.keySet()) {
             medianPerTestName.put(testMethodName,
