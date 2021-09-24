@@ -19,6 +19,8 @@ import java.util.*;
  */
 public abstract class AbstractProcessorTest {
 
+    public static final String ABSTRACT_TEST_CLASS_NAME = "AbstractTestClassName";
+
     public static final String TEST_CLASS_NAME = "TestClassName";
 
     public static final String TEST_METHOD_NAME = "testMethodName";
@@ -82,13 +84,13 @@ public abstract class AbstractProcessorTest {
 
     protected CtClass<?> getJUnit4TestClass() {
         return Launcher.parseClass(
-                "public class TestClassName { @org.junit.Test\npublic void testMethodName() {} }"
+                "public class " + TEST_CLASS_NAME + " { @org.junit.Test\npublic void "+ TEST_METHOD_NAME +"() {} }"
         );
     }
 
     protected CtClass<?> getJUnit5TestClass() {
         return Launcher.parseClass(
-                "public class TestClassName { @org.junit.jupiter.api.Test\npublic void testMethodName() {} }"
+                "public class " + TEST_CLASS_NAME + " { @org.junit.jupiter.api.Test\npublic void "+ TEST_METHOD_NAME +"() {} }"
         );
     }
 
