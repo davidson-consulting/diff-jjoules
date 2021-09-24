@@ -38,6 +38,7 @@ public abstract class AbstractProcessorTest {
 
     private void cleanUp() {
         final File outputDir = new File(FULL_OUTPUT_DIR_PATH);
+        new File(FULL_OUTPUT_DIR_PATH + TEST_CLASS_NAME + JAVA_EXTENSION).delete();
         if (outputDir.exists()) {
             outputDir.delete();
         }

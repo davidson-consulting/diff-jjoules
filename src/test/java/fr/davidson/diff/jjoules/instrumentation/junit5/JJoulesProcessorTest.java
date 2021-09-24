@@ -7,13 +7,11 @@ import spoon.Launcher;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.declaration.ModifierKind;
-import spoon.reflect.factory.Factory;
 
+import java.io.File;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Benjamin DANGLOT
@@ -52,9 +50,6 @@ public class JJoulesProcessorTest extends AbstractProcessorTest {
                         ROOT_OUTPUT_DIR_PATH
                 )
         );
-        Launcher launcher = new Launcher();
-        launcher.addInputResource(FULL_OUTPUT_DIR_PATH + TEST_CLASS_NAME + JAVA_EXTENSION);
-        launcher.buildModel();
-        assertNull(launcher.getFactory().Class().get(TEST_CLASS_NAME));
+        assertFalse(new File(FULL_OUTPUT_DIR_PATH + TEST_CLASS_NAME + JAVA_EXTENSION).exists());
     }
 }
