@@ -2,7 +2,6 @@ package fr.davidson.diff.jjoules.delta;
 
 import eu.stamp_project.testrunner.EntryPoint;
 import eu.stamp_project.testrunner.listener.TestResult;
-import eu.stamp_project.testrunner.runner.Failure;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
@@ -43,33 +42,32 @@ public class MeasureEnergyConsumption {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MeasureEnergyConsumption.class);
 
-    static void measureEnergyConsumptionForBothVersion(
+    public void measureEnergyConsumptionForBothVersion(
             final Configuration configuration,
             final Datas dataV1,
             final Datas dataV2,
             Map<String, List<String>> testsList) {
         for (int i = 0; i < configuration.iterations; i++) {
-            runForVersionAndCollect(
+            runForVersion(
                     configuration.pathToFirstVersion,
                     configuration.getClasspathV1AsString(),
-                    dataV1,
                     testsList,
                     configuration.junit4
             );
-            runForVersionAndCollect(
+            readAllJSonFiles(configuration.pathToFirstVersion, dataV1);
+            runForVersion(
                     configuration.pathToSecondVersion,
                     configuration.getClasspathV2AsString(),
-                    dataV2,
                     testsList,
                     configuration.junit4
             );
+            readAllJSonFiles(configuration.pathToSecondVersion, dataV2);
         }
     }
 
-    private static void runForVersionAndCollect(
+    protected void runForVersion(
             final String pathToVersion,
             final String classpath,
-            final Map<String, List<Data>> data,
             Map<String, List<String>> testsList,
             boolean junit4
     ) {
@@ -94,10 +92,9 @@ public class MeasureEnergyConsumption {
             } catch (TimeoutException | java.lang.RuntimeException e) {
                 throw new RuntimeException(e);
             }
-        readAllJSonFiles(pathToVersion, data);
     }
 
-    private static void readAllJSonFiles(
+    private void readAllJSonFiles(
             final String pathToVersion,
             final Map<String, List<Data>> dataPerTest
     ) {
@@ -126,7 +123,7 @@ public class MeasureEnergyConsumption {
         }
     }
 
-    private static String toTestName(String path) {
+    private String toTestName(String path) {
         final String[] split = path.split("/");
         return split[split.length - 1].split("\\.json")[0].replace("-", "#");
     }

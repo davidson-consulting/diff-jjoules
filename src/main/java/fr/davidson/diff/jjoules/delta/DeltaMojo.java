@@ -28,7 +28,7 @@ public class DeltaMojo extends DiffJJoulesMojo {
         final Map<String, List<String>> testsList = configuration.getTestsList();
         final Datas dataV1 = new Datas();
         final Datas dataV2 = new Datas();
-        MeasureEnergyConsumption.measureEnergyConsumptionForBothVersion(
+        new MeasureEnergyConsumption().measureEnergyConsumptionForBothVersion(
                 configuration,
                 dataV1,
                 dataV2,
