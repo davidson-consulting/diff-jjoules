@@ -17,7 +17,6 @@ import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Benjamin DANGLOT
@@ -45,8 +44,6 @@ public class MeasureEnergyConsumptionTest {
         }
     }
 
-    private String[] classpath;
-
     @BeforeEach
     void setUp() throws IOException {
         // compile
@@ -55,15 +52,12 @@ public class MeasureEnergyConsumptionTest {
         Path dst = Paths.get("src/test/resources/diff-jjoules-demo/target/jjoules-reports/com.google.gson.CommentsTest-testParseComments.json");
         Path src = Paths.get("src/test/resources/json/v1/com.google.gson.CommentsTest-testParseComments.json");
         Files.copy(src, dst, StandardCopyOption.REPLACE_EXISTING);
-        this.classpath = Utils.readClasspathFile("src/test/resources/diff-jjoules-demo/classpath").split(":");
     }
 
     @Test
     void test() {
         final Datas dataV1 = new Datas();
         final Datas dataV2 = new Datas();
-        assertTrue(dataV1.isEmpty());
-        assertTrue(dataV2.isEmpty());
         new MeasureEnergyConsumption().measureEnergyConsumptionForBothVersion(
                 new MockConfiguration(),
                 dataV1,
