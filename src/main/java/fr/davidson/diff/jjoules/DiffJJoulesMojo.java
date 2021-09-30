@@ -256,9 +256,11 @@ public class DiffJJoulesMojo extends AbstractMojo {
     }
 
     private void stopMonitoring(Configuration configuration, String reportPathName) {
-        final Map<String, Long> report = this.energySample.stop();
-        JSONUtils.write(configuration.output + "/" + reportPathName + ".json", report);
-        configuration.addReport(reportPathName, report);
+        if (this.energySample != null) {
+            final Map<String, Long> report = this.energySample.stop();
+            JSONUtils.write(configuration.output + "/" + reportPathName + ".json", report);
+            configuration.addReport(reportPathName, report);
+        }
     }
 
     public void run(Configuration configuration) {
