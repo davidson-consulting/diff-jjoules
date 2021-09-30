@@ -3,15 +3,12 @@ package fr.davidson.diff.jjoules.mark;
 import eu.stamp_project.diff_test_selection.coverage.Coverage;
 import fr.davidson.diff.jjoules.mark.computation.CoverageComputation;
 import fr.davidson.diff.jjoules.util.JSONUtils;
-import fr.davidson.diff.jjoules.util.Utils;
-import fr.davidson.diff.jjoules.util.maven.MavenRunner;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Benjamin DANGLOT
@@ -42,4 +39,6 @@ public class CoverageComputationTest {
         final Coverage expected = JSONUtils.read(absolutePath + "/coverage.json", Coverage.class);
         assertEquals(expected.toString(), actual.toString());
     }
+
+
 }
