@@ -1,0 +1,216 @@
+{
+  "testClassCoverage": {
+    "fr.davidson.diff_jjoules_demo.InternalListTest": {
+      "testClassName": "fr.davidson.diff_jjoules_demo.InternalListTest",
+      "testMethodsCoverage": {
+        "testMapOneElement": {
+          "testMethodName": "testMapOneElement",
+          "classCoverageList": {
+            "fr.davidson.diff_jjoules_demo.InternalList": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalList",
+              "coverages": [
+                {
+                  "line": 17,
+                  "hitCount": 5
+                },
+                {
+                  "line": 21,
+                  "hitCount": 3
+                },
+                {
+                  "line": 22,
+                  "hitCount": 3
+                },
+                {
+                  "line": 23,
+                  "hitCount": 5
+                },
+                {
+                  "line": 25,
+                  "hitCount": 3
+                }
+              ]
+            },
+            "fr.davidson.diff_jjoules_demo.InternalListTest": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalListTest",
+              "coverages": [
+                {
+                  "line": 25,
+                  "hitCount": 1
+                },
+                {
+                  "line": 26,
+                  "hitCount": 1
+                },
+                {
+                  "line": 27,
+                  "hitCount": 1
+                },
+                {
+                  "line": 28,
+                  "hitCount": 1
+                }
+              ]
+            }
+          }
+        },
+        "testCount": {
+          "testMethodName": "testCount",
+          "classCoverageList": {
+            "fr.davidson.diff_jjoules_demo.InternalList": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalList",
+              "coverages": [
+                {
+                  "line": 17,
+                  "hitCount": 5
+                },
+                {
+                  "line": 29,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "fr.davidson.diff_jjoules_demo.InternalListTest": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalListTest",
+              "coverages": [
+                {
+                  "line": 41,
+                  "hitCount": 1
+                },
+                {
+                  "line": 42,
+                  "hitCount": 1
+                }
+              ]
+            }
+          }
+        },
+        "testMapMultipleElement": {
+          "testMethodName": "testMapMultipleElement",
+          "classCoverageList": {
+            "fr.davidson.diff_jjoules_demo.InternalList": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalList",
+              "coverages": [
+                {
+                  "line": 17,
+                  "hitCount": 5
+                },
+                {
+                  "line": 21,
+                  "hitCount": 3
+                },
+                {
+                  "line": 22,
+                  "hitCount": 3
+                },
+                {
+                  "line": 23,
+                  "hitCount": 5
+                },
+                {
+                  "line": 25,
+                  "hitCount": 3
+                }
+              ]
+            },
+            "fr.davidson.diff_jjoules_demo.InternalListTest": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalListTest",
+              "coverages": [
+                {
+                  "line": 33,
+                  "hitCount": 1
+                },
+                {
+                  "line": 34,
+                  "hitCount": 1
+                },
+                {
+                  "line": 35,
+                  "hitCount": 1
+                },
+                {
+                  "line": 36,
+                  "hitCount": 1
+                }
+              ]
+            }
+          }
+        },
+        "testMapEmptyList": {
+          "testMethodName": "testMapEmptyList",
+          "classCoverageList": {
+            "fr.davidson.diff_jjoules_demo.InternalList": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalList",
+              "coverages": [
+                {
+                  "line": 17,
+                  "hitCount": 5
+                },
+                {
+                  "line": 21,
+                  "hitCount": 3
+                },
+                {
+                  "line": 22,
+                  "hitCount": 3
+                },
+                {
+                  "line": 25,
+                  "hitCount": 3
+                }
+              ]
+            },
+            "fr.davidson.diff_jjoules_demo.InternalListTest": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalListTest",
+              "coverages": [
+                {
+                  "line": 18,
+                  "hitCount": 1
+                },
+                {
+                  "line": 19,
+                  "hitCount": 1
+                },
+                {
+                  "line": 20,
+                  "hitCount": 1
+                }
+              ]
+            }
+          }
+        },
+        "testCount2": {
+          "testMethodName": "testCount2",
+          "classCoverageList": {
+            "fr.davidson.diff_jjoules_demo.InternalList": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalList",
+              "coverages": [
+                {
+                  "line": 17,
+                  "hitCount": 5
+                },
+                {
+                  "line": 33,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "fr.davidson.diff_jjoules_demo.InternalListTest": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalListTest",
+              "coverages": [
+                {
+                  "line": 47,
+                  "hitCount": 1
+                },
+                {
+                  "line": 48,
+                  "hitCount": 1
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

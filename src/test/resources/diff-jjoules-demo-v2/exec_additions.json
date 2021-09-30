@@ -1,0 +1,27 @@
+[
+  {
+    "execLt": {
+      "fr.davidson.diff_jjoules_demo.InternalList#24": {
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testMapEmptyList": 0,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount2": 0,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testMapMultipleElement": 5,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testMapOneElement": 5,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount": 0
+      },
+      "fr.davidson.diff_jjoules_demo.InternalList#22": {
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testMapEmptyList": 3,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount2": 0,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testMapMultipleElement": 3,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testMapOneElement": 3,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount": 0
+      },
+      "fr.davidson.diff_jjoules_demo.InternalList#23": {
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testMapEmptyList": 0,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount2": 0,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testMapMultipleElement": 5,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testMapOneElement": 5,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount": 0
+      }
+    }
+  }
+]

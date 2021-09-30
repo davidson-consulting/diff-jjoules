@@ -19,8 +19,9 @@ public class InternalList<T> {
 
     public List<T> map(Function<T, T> operator) {
         final List<T> mappedList = new ArrayList<>();
-        for (T t : this.internalList) {
-            mappedList.add(operator.apply(t));
+        for (int i = 0 ; i < this.internalList.size() ; i++) {
+            final T current = this.internalList.get(i);
+            mappedList.add(operator.apply(current));
         }
         return mappedList;
     }
