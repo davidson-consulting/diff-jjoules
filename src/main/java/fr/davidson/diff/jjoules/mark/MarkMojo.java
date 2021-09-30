@@ -38,24 +38,24 @@ public class MarkMojo extends DiffJJoulesMojo {
             }
         }
         // 1 Compute coverage
-        final Map<String, Coverage> coveragePerTestMethodNameFirstVersion =
+        final Coverage coverageFirstVersion =
                 CoverageComputation.computeCoverageForGivenVersionOfTests(
                         consideredTestsNames,
                         configuration.pathToFirstVersion
                 );
-        final Map<String, Coverage> coveragePerTestMethodNameSecondVersion =
+        final Coverage coverageSecondVersion =
                 CoverageComputation.computeCoverageForGivenVersionOfTests(
                         consideredTestsNames,
                         configuration.pathToSecondVersion
                 );
-        JSONUtils.write(configuration.output + "/coverage_first.json", coveragePerTestMethodNameFirstVersion);
-        JSONUtils.write(configuration.output + "/coverage_second.json", coveragePerTestMethodNameSecondVersion);
+        JSONUtils.write(configuration.output + "/coverage_first.json", coverageFirstVersion);
+        JSONUtils.write(configuration.output + "/coverage_second.json", coverageSecondVersion);
         // Exec(l,t)
         final List<ExecsLines> execLineTestMaps = Exec.computeExecLT(
                 configuration.pathToFirstVersion,
                 configuration.pathToSecondVersion,
-                coveragePerTestMethodNameFirstVersion,
-                coveragePerTestMethodNameSecondVersion,
+                coverageFirstVersion,
+                coverageSecondVersion,
                 configuration.diff
         );
         JSONUtils.write(configuration.output + "/exec_deletions.json", execLineTestMaps.get(0));
