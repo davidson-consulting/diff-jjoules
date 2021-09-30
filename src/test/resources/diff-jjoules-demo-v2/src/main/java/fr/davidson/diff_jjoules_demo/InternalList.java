@@ -30,7 +30,10 @@ public class InternalList<T> {
         return this.internalList.size();
     }
 
-    public int count2() {
+    public int count2(boolean failing) {
+        if (failing) {
+            return 10;
+        }
         return this.internalList.size();
     }
 
