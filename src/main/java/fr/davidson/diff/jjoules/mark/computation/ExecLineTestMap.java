@@ -31,4 +31,9 @@ public class ExecLineTestMap {
     public Map<String, Map<String, Integer>> getExecLt() {
         return execLt;
     }
+
+    @Override
+    public String toString() {
+        return this.execLt.toString();
+    }
 }
