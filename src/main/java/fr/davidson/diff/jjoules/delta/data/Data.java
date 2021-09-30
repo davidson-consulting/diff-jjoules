@@ -76,4 +76,17 @@ public class Data {
         return branchMisses;
     }
 
+    @Override
+    public String toString() {
+        return "Data{" +
+                "energy=" + energy +
+                ", instructions=" + instructions +
+                ", durations=" + durations +
+                ", cycles=" + cycles +
+                ", caches=" + caches +
+                ", cacheMisses=" + cacheMisses +
+                ", branches=" + branches +
+                ", branchMisses=" + branchMisses +
+                '}';
+    }
 }
