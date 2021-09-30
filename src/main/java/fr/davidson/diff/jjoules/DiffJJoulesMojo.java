@@ -260,6 +260,7 @@ public class DiffJJoulesMojo extends AbstractMojo {
             final Map<String, Long> report = this.energySample.stop();
             JSONUtils.write(configuration.output + "/" + reportPathName + ".json", report);
             configuration.addReport(reportPathName, report);
+            this.energySample = null;
         }
     }
 
