@@ -66,7 +66,7 @@ public class InstrumentationMojo extends DiffJJoulesMojo {
             launcher.buildModel();
             launcher.process();
         } catch (SpoonException sp) {
-            sp.printStackTrace();
+            throw new RuntimeException(sp);
         }
     }
 
