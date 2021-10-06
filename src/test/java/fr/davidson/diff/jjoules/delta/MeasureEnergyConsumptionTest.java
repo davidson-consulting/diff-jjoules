@@ -25,27 +25,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
  */
 public class MeasureEnergyConsumptionTest {
 
-    private class MockConfiguration extends Configuration {
-        public MockConfiguration() {
-            super(
-                    new File("src/test/resources/diff-jjoules-demo/").getAbsolutePath(),
-                    new File("src/test/resources/diff-jjoules-demo/").getAbsolutePath(),
-                    "",
-                    "src/test/resources/diff-jjoules-demo/classpath",
-                    "src/test/resources/diff-jjoules-demo/classpath",
-                    Utils.readClasspathFile("src/test/resources/diff-jjoules-demo/classpath").split(":"),
-                    Utils.readClasspathFile("src/test/resources/diff-jjoules-demo/classpath").split(":"),
-                    false,
-                    5,
-                    "", "", "", "",
-                    "src/test/java/fr/davidson/diff/jjoules/delta/MeasureEnergyConsumptionTest.java",
-                    "", "", "",
-                    "", "", "",
-                    "", "", "", true, ReportEnum.NONE
-            );
-        }
-    }
-
     @BeforeEach
     void setUp() throws IOException {
         // compile
@@ -61,7 +40,32 @@ public class MeasureEnergyConsumptionTest {
         final Datas dataV1 = new Datas();
         final Datas dataV2 = new Datas();
         new MeasureEnergyConsumption().measureEnergyConsumptionForBothVersion(
-                new MockConfiguration(),
+                new Configuration(
+                        new File("src/test/resources/diff-jjoules-demo/").getAbsolutePath(),
+                        new File("src/test/resources/diff-jjoules-demo/").getAbsolutePath(),
+                        "",
+                        "src/test/resources/diff-jjoules-demo/classpath",
+                        "src/test/resources/diff-jjoules-demo/classpath",
+                        Utils.readClasspathFile("src/test/resources/diff-jjoules-demo/classpath").split(":"),
+                        Utils.readClasspathFile("src/test/resources/diff-jjoules-demo/classpath").split(":"),
+                        false,
+                        5,
+                        "src/test/resources/diff-jjoules/demo/target/diff-jjoules",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        true, ReportEnum.NONE
+                ),
                 dataV1,
                 dataV2,
                 new HashMap<String, List<String>>() {
