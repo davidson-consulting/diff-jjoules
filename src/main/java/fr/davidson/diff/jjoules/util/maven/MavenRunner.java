@@ -18,6 +18,8 @@ public class MavenRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MavenRunner.class);
 
+    public static final String POM_XML = "/pom.xml";
+
     public static void runCleanAndCompile(String pathToRootDir) {
         final Properties properties = new Properties();
         properties.setProperty("mdep.outputFile", "classpath");
@@ -26,7 +28,7 @@ public class MavenRunner {
 
     public static void runGoals(String pathToRootDir, Properties properties, String... goals) {
         final InvocationRequest invocationRequest = new DefaultInvocationRequest();
-        invocationRequest.setPomFile(new File(pathToRootDir + "/pom.xml"));
+        invocationRequest.setPomFile(new File(pathToRootDir + POM_XML));
         invocationRequest.setGoals(Arrays.asList(goals));
 
         properties.setProperty("enforcer.skip", "true");

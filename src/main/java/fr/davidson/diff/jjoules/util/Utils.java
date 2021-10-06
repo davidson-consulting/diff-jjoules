@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 public class Utils {
 
+    public static final String SRC_FOLDER_PATH = "src/main/java/";
+
     public static final String TEST_FOLDER_PATH = "src/test/java/";
 
     public static String readClasspathFile(String path) {
