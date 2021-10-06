@@ -2,17 +2,7 @@ package fr.davidson.diff.jjoules.delta;
 
 import fr.davidson.diff.jjoules.AbstractDiffJJoulesStepTest;
 import fr.davidson.diff.jjoules.Configuration;
-import fr.davidson.diff.jjoules.util.Utils;
-import fr.davidson.diff.jjoules.util.maven.MavenRunner;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * benjamin.danglot@davidson.fr
  * on 06/10/2021
  */
-public absclass DeltaStepTest extends AbstractDiffJJoulesStepTest {
+public class DeltaStepTest extends AbstractDiffJJoulesStepTest {
 
 
 
