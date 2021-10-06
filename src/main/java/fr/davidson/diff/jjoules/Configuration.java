@@ -13,10 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Benjamin DANGLOT
@@ -107,6 +104,45 @@ public class Configuration {
 
     public ReportEnum getReportEnum() {
         return reportEnum;
+    }
+
+    public Configuration(String pathToFirstVersion,
+                         String pathToSecondVersion,
+                         String pathToTestListAsCSV,
+                         String classpathPathV1,
+                         String classpathPathV2,
+                         String[] classpathV1,
+                         String[] classpathV2,
+                         boolean junit4,
+                         int iterations
+    ) {
+        this(
+                pathToFirstVersion,
+                pathToSecondVersion,
+                pathToTestListAsCSV,
+                classpathPathV1,
+                classpathPathV2,
+                classpathV1,
+                classpathV2,
+                junit4,
+                iterations,
+                "diff-jjoules",
+                "deltas.json",
+                "data_v1.json",
+                "data_v2.json",
+                "",
+                "deltaOmega.json",
+                "",
+                "",
+                "consideredTestMethods.json",
+                "exec_additions.json",
+                "exec_deletions.json",
+                "suspicious_v1.json",
+                "suspicious_v2.json",
+                ".github/workflows/template.md",
+                true,
+                ReportEnum.NONE
+        );
     }
 
     public Configuration(String pathToFirstVersion,
@@ -225,7 +261,11 @@ public class Configuration {
 
     public Datas getDataV1() {
         if (this.dataV1 == null) {
-            this.dataV1 = JSONUtils.read(this.pathToJSONDataV1, Datas.class);
+            try {
+                this.dataV1 = JSONUtils.read(this.pathToJSONDataV1, Datas.class);
+            } catch (Exception e) {
+                return new Datas();
+            }
         }
         return dataV1;
     }
@@ -235,8 +275,12 @@ public class Configuration {
     }
 
     public Datas getDataV2() {
-        if (this.dataV1 == null) {
-            this.dataV1 = JSONUtils.read(this.pathToJSONDataV2, Datas.class);
+        if (this.dataV2 == null) {
+            try {
+                this.dataV2 = JSONUtils.read(this.pathToJSONDataV2, Datas.class);
+            } catch (Exception e) {
+                return new Datas();
+            }
         }
         return dataV2;
     }
@@ -247,7 +291,11 @@ public class Configuration {
 
     public Deltas getDeltas() {
         if (this.deltas == null) {
-            this.deltas = JSONUtils.read(this.pathToJSONDelta, Deltas.class);
+            try {
+                this.deltas = JSONUtils.read(this.pathToJSONDelta, Deltas.class);
+            } catch (Exception e) {
+                return new Deltas();
+            }
         }
         return deltas;
     }
@@ -258,7 +306,12 @@ public class Configuration {
 
     public Map<String, List<String>> getConsideredTestsNames() {
         if (this.consideredTestsNames == null) {
-            this.consideredTestsNames = JSONUtils.read(this.pathToJSONConsideredTestMethodNames, Map.class);
+            try {
+                this.consideredTestsNames = JSONUtils.read(this.pathToJSONConsideredTestMethodNames, Map.class);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return Collections.emptyMap();
+            }
         }
         return consideredTestsNames;
     }
