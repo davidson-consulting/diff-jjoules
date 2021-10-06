@@ -1,38 +1,13 @@
 package fr.davidson.diff.jjoules;
 
-import fr.davidson.diff.jjoules.delta.DeltaMojo;
-import fr.davidson.diff.jjoules.failer.FailerMojo;
-import fr.davidson.diff.jjoules.instrumentation.InstrumentationMojo;
-import fr.davidson.diff.jjoules.mark.MarkMojo;
 import fr.davidson.diff.jjoules.report.ReportEnum;
-import fr.davidson.diff.jjoules.suspect.SuspectMojo;
-import fr.davidson.diff.jjoules.util.CSVReader;
-import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
-import fr.davidson.diff.jjoules.util.maven.MavenRunner;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
-import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.ResetCommand;
-import org.eclipse.jgit.api.errors.GitAPIException;
-import org.powerapi.jjoules.EnergySample;
-import org.powerapi.jjoules.rapl.RaplDevice;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.stream.Stream;
 
 /**
  * @author Benjamin DANGLOT
@@ -188,8 +163,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
     @Parameter(property = "report", defaultValue = "MARKDOWN")
     private String reportType;
 
-    private Configuration configuration;
-
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         final String classpath;
@@ -210,10 +183,12 @@ public class DiffJJoulesMojo extends AbstractMojo {
             if (junit4) {
                 getLog().info("Enable JUnit4 mode");
             }
-            this.configuration = new Configuration(
+            Configuration configuration = new Configuration(
                     this.project.getBasedir().getAbsolutePath(),
                     this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.pathDirSecondVersion,
                     this.testsList,
+                    this.classpathPath,
+                    this.classpathPathV2,
                     classpath.split(":"),
                     classpathV2.split(":"),
                     junit4,
@@ -232,165 +207,18 @@ public class DiffJJoulesMojo extends AbstractMojo {
                     this.pathToJSONSuspiciousV1,
                     this.pathToJSONSuspiciousV2,
                     this.pathToReport,
+                    this.shouldSuspect,
                     ReportEnum.valueOf(this.reportType)
             );
-            this._run(configuration);
-            this.report();
+            final DiffJJoulesStep diffJJoulesStep = this.getStep();
+            diffJJoulesStep.run(configuration);
+            diffJJoulesStep.report();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    protected String getReportPathname() {
-        return "diff_jjoules";
+    protected DiffJJoulesStep getStep() {
+        return new DiffJJoulesStep();
     }
-
-    private EnergySample energySample;
-
-    private void startMonitoring() {
-        this.energySample = RaplDevice.RAPL.recordEnergy();
-    }
-
-    private void stopMonitoring(Configuration configuration) {
-        this.stopMonitoring(configuration, this.getReportPathname());
-    }
-
-    private void stopMonitoring(Configuration configuration, String reportPathName) {
-        if (this.energySample != null) {
-            final Map<String, Long> report = this.energySample.stop();
-            JSONUtils.write(configuration.output + "/" + reportPathName + ".json", report);
-            configuration.addReport(reportPathName, report);
-            this.energySample = null;
-        }
-    }
-
-    public void run(Configuration configuration) {
-        startMonitoring();
-        _run(configuration);
-        stopMonitoring(configuration);
-    }
-
-    protected void _run(Configuration configuration) {
-        getLog().info("Run DiffJJoules - " + configuration.toString());
-        this.resetAndCleanBothVersion();
-        this.testSelection();
-        this.testInstrumentation();
-        this.deltaComputation();
-        this.commitMarking();
-        if (this.shouldSuspect) {
-            this.testFailingInstrumentation();
-            this.testSuspicious();
-        }
-    }
-
-    private void runDiffJJoulesStep(DiffJJoulesMojo step, String messageInCaseOfFailure) {
-        try {
-            step.run(this.configuration);
-        } catch (Exception e) {
-            this.end(messageInCaseOfFailure, e);
-        }
-    }
-
-    private void testSelection() {
-        final Properties properties = new Properties();
-        properties.setProperty("path-dir-second-version", this.configuration.pathToSecondVersion);
-        startMonitoring();
-        MavenRunner.runGoals(
-                this.project.getBasedir().getAbsolutePath(),
-                properties,
-                "clean", "eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list"
-        );
-        stopMonitoring(this.configuration, "selection");
-        final Map<String, List<String>> testsList = CSVReader.readFile(this.configuration.pathToTestListAsCSV);
-        if (testsList.isEmpty()) {
-            this.end("No test could be selected");
-        }
-        MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion);
-        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion);
-        this.configuration.setTestsList(testsList);
-    }
-
-    private void testInstrumentation() {
-        this.runDiffJJoulesStep(new InstrumentationMojo(),"Something went wrong during test instrumentation.");
-        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion);
-        MavenRunner.runCleanAndCompile(this.pathToPom);
-        this.configuration.setClasspathV1(Utils.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath).split(":"));
-        this.configuration.setClasspathV2(Utils.readClasspathFile(this.pathDirSecondVersion + "/" + this.classpathPathV2).split(":"));
-    }
-
-    private void deltaComputation() {
-        this.runDiffJJoulesStep(new DeltaMojo(), "Something went wrong during delta.");
-        this.resetAndCleanBothVersion();
-    }
-
-    private void commitMarking() {
-        this.runDiffJJoulesStep(new MarkMojo(), "Something went wrong during marking.");
-        if (this.configuration.getConsideredTestsNames().isEmpty()) {
-            this.end("The energy consumption are too unstable, no method could be considered.");
-        }
-        MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion);
-        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion);
-    }
-
-    private void testFailingInstrumentation() {
-        this.runDiffJJoulesStep(new FailerMojo(), "Something went wrong during failing instrumentation.");
-        MavenRunner.runCleanAndCompile(this.pathDirSecondVersion);
-        MavenRunner.runCleanAndCompile(this.pathToPom);
-    }
-
-    private void testSuspicious() {
-        this.runDiffJJoulesStep(new SuspectMojo(), "Something went wrong during suspect");
-    }
-
-    private void report() {
-        this.configuration.getReportEnum().get().run(configuration);
-    }
-
-    private void resetAndCleanBothVersion() {
-        this.gitResetHard(this.configuration.pathToRepositoryV1);
-        this.gitResetHard(this.configuration.pathToRepositoryV2);
-        MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion);
-        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion);
-        this.configuration.setClasspathV1(Utils.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath).split(":"));
-        this.configuration.setClasspathV2(Utils.readClasspathFile(this.pathDirSecondVersion + "/" + this.classpathPathV2).split(":"));
-    }
-
-    private void gitResetHard(String pathToFolder) {
-        try {
-            Git.open(new File(pathToFolder))
-                    .reset()
-                    .setMode(ResetCommand.ResetType.HARD)
-                    .call();
-            // must delete module-info.java
-            try (Stream<Path> walk = Files.walk(Paths.get(pathToFolder))) {
-                walk.filter(path -> path.endsWith("module-info.java"))
-                        .forEach(path -> path.toFile().delete());
-            }
-        } catch (GitAPIException | IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void end(String reason) {
-        this.end(reason, null);
-    }
-
-    private void end(String reason, Exception exception) {
-        this.stopMonitoring(this.configuration);
-        try (final FileWriter writer = new FileWriter(
-                this.configuration.output + "/end.txt", false)) {
-            writer.write(reason + "\n");
-            if (exception != null) {
-                for (StackTraceElement stackTraceElement : exception.getStackTrace()) {
-                    writer.write(stackTraceElement.toString() + "\n");
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        System.exit(1);
-    }
-
-
-
 }

@@ -67,6 +67,12 @@ public class Configuration {
 
     public final String pathToReport;
 
+    public final boolean shouldSuspect;
+
+    public final String classpathPathV1;
+
+    public final String classpathPathV2;
+
     private String[] classpathV1;
 
     private String[] classpathV2;
@@ -106,6 +112,8 @@ public class Configuration {
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
                          String pathToTestListAsCSV,
+                         String classpathPathV1,
+                         String classpathPathV2,
                          String[] classpathV1,
                          String[] classpathV2,
                          boolean junit4,
@@ -124,7 +132,11 @@ public class Configuration {
                          String pathToJSONSuspiciousV1,
                          String pathToJSONSuspiciousV2,
                          String pathToReport,
+                         boolean shouldSuspect,
                          ReportEnum reportEnum) {
+        this.classpathPathV1 = classpathPathV1;
+        this.classpathPathV2 = classpathPathV2;
+        this.shouldSuspect = shouldSuspect;
         this.reportEnum = reportEnum;
         this.pathToReport = pathToReport;
         this.ownConsumptionReports = new LinkedHashMap<>();

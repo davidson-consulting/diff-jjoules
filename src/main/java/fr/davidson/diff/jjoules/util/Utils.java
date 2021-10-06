@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 public class Utils {
 
+    public static final String TEST_FOLDER_PATH = "src/test/java/";
+
     public static String readClasspathFile(String path) {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             return reader.lines().collect(Collectors.joining(":"));
