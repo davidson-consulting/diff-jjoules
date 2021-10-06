@@ -32,13 +32,18 @@ public abstract class AbstractDiffJJoulesStepTest {
     public static final String JJOULES_REPORT_PATH_V2 = TARGET_FOLDER_PATH_V2 + "/jjoules-reports/";
 
     public static final String DIFF_JJOULES_FOLDER_PATH = ROOT_PATH_V1 + "/diff-jjoules";
-    public static final String SIMPLE_NAME_TEST_CLASS = "InternalListTest";
-    public static final String PACKAGE_TEST_CLASS = "fr.davidson.diff_jjoules_demo";
-    public static final String FULL_QUALIFIED_NAME_TEST_CLASS = PACKAGE_TEST_CLASS + "." + SIMPLE_NAME_TEST_CLASS;
-    public static final String TEST_COUNT = "testCount";
     public static final String JAVA_EXTENSION = ".java";
+    public static final String PACKAGE_NAME = "fr.davidson.diff_jjoules_demo";
     public static final String PACKAGE_PATH = "/fr/davidson/diff_jjoules_demo/";
+
+    public static final String SIMPLE_NAME_CLASS = "InternalList";
+    public static final String FULL_QUALIFIED_NAME_CLASS = PACKAGE_NAME + "." + SIMPLE_NAME_CLASS;
+    public static final String CLASS_PATH = PACKAGE_PATH + SIMPLE_NAME_CLASS + JAVA_EXTENSION;
+
+    public static final String SIMPLE_NAME_TEST_CLASS = "InternalListTest";
+    public static final String FULL_QUALIFIED_NAME_TEST_CLASS = PACKAGE_NAME + "." + SIMPLE_NAME_TEST_CLASS;
     public static final String TEST_CLASS_PATH = PACKAGE_PATH + SIMPLE_NAME_TEST_CLASS + JAVA_EXTENSION;
+    public static final String TEST_COUNT = "testCount";
 
     protected Configuration getConfiguration() {
         final Configuration configuration = new Configuration(
