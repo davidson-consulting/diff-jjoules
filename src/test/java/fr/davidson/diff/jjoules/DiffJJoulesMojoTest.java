@@ -1,7 +1,5 @@
-package fr.davidson.diff.jjoules.delta;
+package fr.davidson.diff.jjoules;
 
-import fr.davidson.diff.jjoules.Configuration;
-import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.maven.MavenRunner;
@@ -14,22 +12,20 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
  * @author Benjamin DANGLOT
  * benjamin.danglot@davidson.fr
- * on 25/09/2021
+ * on 30/09/2021
  */
-public class MeasureEnergyConsumptionTest {
+public class DiffJJoulesMojoTest {
 
     private class MockConfiguration extends Configuration {
         public MockConfiguration() {
             super(
                     new File("src/test/resources/diff-jjoules-demo/").getAbsolutePath(),
-                    new File("src/test/resources/diff-jjoules-demo/").getAbsolutePath(),
+                    new File("src/test/resources/diff-jjoules-demo-v2/").getAbsolutePath(),
                     "",
                     "src/test/resources/diff-jjoules-demo/classpath",
                     "src/test/resources/diff-jjoules-demo/classpath",
@@ -58,20 +54,6 @@ public class MeasureEnergyConsumptionTest {
 
     @Test
     void test() {
-        final Datas dataV1 = new Datas();
-        final Datas dataV2 = new Datas();
-        new MeasureEnergyConsumption().measureEnergyConsumptionForBothVersion(
-                new MockConfiguration(),
-                dataV1,
-                dataV2,
-                new HashMap<String, List<String>>() {
-                    {
-                        put("fr.davidson.diff_jjoules_demo.InternalListTest", new ArrayList<>());
-                        get("fr.davidson.diff_jjoules_demo.InternalListTest").addAll(Arrays.asList("testMapEmptyList"));
-                    }
-                }
-        );
-        assertFalse(dataV1.isEmpty());
-        assertFalse(dataV2.isEmpty());
+        final DiffJJoulesMojo diffJJoulesMojo = new DiffJJoulesMojo();
     }
 }
