@@ -42,6 +42,7 @@ public class MavenRunner {
         properties.setProperty("jacoco.skip", "true");
         properties.setProperty("animal.sniffer.skip", "true");
         properties.setProperty("proguard.skip", "true");
+        properties.setProperty("java.locale.providers", "COMPAT,CLDR,SPI");
 
         invocationRequest.setProperties(properties);
         LOGGER.info("mvn -f {} {} {}",
