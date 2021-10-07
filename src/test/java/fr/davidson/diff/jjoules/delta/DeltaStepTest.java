@@ -30,7 +30,7 @@ public class DeltaStepTest extends AbstractDiffJJoulesStepTest {
         assertTrue(configuration.getDataV2().isEmpty());
         assertTrue(configuration.getDeltas().isEmpty());
         assertTrue(configuration.getConsideredTestsNames().isEmpty());
-        new DeltaStep().run(configuration);
+        new DeltaStep()._run(configuration);
         assertFalse(configuration.getDataV1().isEmpty());
         assertFalse(configuration.getDataV2().isEmpty());
         assertFalse(configuration.getDeltas().isEmpty());

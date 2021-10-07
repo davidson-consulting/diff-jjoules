@@ -31,6 +31,7 @@ public class TestTest {
                         put("fr.davidson.diff_jjoules_demo.InternalList#25", 0.23684210526315788);
                         put("fr.davidson.diff_jjoules_demo.InternalList#22", 0.23684210526315788);
                         put("fr.davidson.diff_jjoules_demo.InternalList#23", 0.2631578947368421);
+                        put("fr.davidson.diff_jjoules_demo.InternalList#30", 0.2631578947368421);
                     }
                 };
         final List<ExecsLines> execLineList = new ArrayList<>();
@@ -46,7 +47,7 @@ public class TestTest {
                         put("fr.davidson.diff_jjoules_demo.InternalListTest#testCount2", 0.0);
                         put("fr.davidson.diff_jjoules_demo.InternalListTest#testMapMultipleElement", 6.078947368421052);
                         put("fr.davidson.diff_jjoules_demo.InternalListTest#testMapOneElement", 6.078947368421052);
-                        put("fr.davidson.diff_jjoules_demo.InternalListTest#testCount", 0.0);
+                        put("fr.davidson.diff_jjoules_demo.InternalListTest#testCount", 0.2631578947368421);
                     }
                 };
         for (String expectedKey : oracle.keySet()) {

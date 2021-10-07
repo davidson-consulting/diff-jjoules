@@ -30,7 +30,7 @@ public class InstrumentationStepTest extends AbstractStepCleanTest {
         try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
             assertFalse(reader.lines().collect(Collectors.joining("\n")).contains("@EnergyTest"));
         }
-        instrumentationStep.run(this.getConfiguration());
+        instrumentationStep._run(this.getConfiguration());
         try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
             assertTrue(reader.lines().collect(Collectors.joining("\n")).contains("@EnergyTest"));
         }
