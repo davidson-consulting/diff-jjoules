@@ -32,7 +32,7 @@ public class MarkStep extends DiffJJoulesStep {
     @Override
     public void run(Configuration configuration) {
         this.configuration = configuration;
-        LOGGER.info("Run Mark - {}", configuration.toString());
+        LOGGER.info("Run Mark");
         final Map<String, List<String>> consideredTestsNames = configuration.getConsideredTestsNames();
         final Deltas deltas = configuration.getDeltas();
         final Map<String, Delta> consideredDeltas = new HashMap<>();
@@ -89,7 +89,6 @@ public class MarkStep extends DiffJJoulesStep {
         );
         JSONUtils.write(configuration.output + "/deltaOmega.json", deltaOmega);
         configuration.setDeltaOmega(deltaOmega);
-        LOGGER.info("DeltaOmega {}", deltaOmega);
     }
 
 }

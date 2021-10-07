@@ -33,7 +33,7 @@ public class InstrumentationStep extends DiffJJoulesStep {
     @Override
     public void run(Configuration configuration) {
         this.configuration = configuration;
-        LOGGER.info("Run Instrumentation - {}",configuration.toString());
+        LOGGER.info("Run Instrumentation");
         final Map<String, List<String>> testsList = configuration.getTestsList();
         final AbstractJJoulesProcessor processor = configuration.junit4 ?
                 new fr.davidson.diff.jjoules.instrumentation.process.junit4.JJoulesProcessor(testsList, configuration.pathToFirstVersion) :

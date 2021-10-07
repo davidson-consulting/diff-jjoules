@@ -30,7 +30,7 @@ public class DeltaStep extends DiffJJoulesStep {
     @Override
     public void run(Configuration configuration) {
         this.configuration = configuration;
-        LOGGER.info("Run Delta - {}", configuration.toString());
+        LOGGER.info("Run Delta");
         final Map<String, List<String>> testsList = configuration.getTestsList();
         final Datas dataV1 = new Datas();
         final Datas dataV2 = new Datas();

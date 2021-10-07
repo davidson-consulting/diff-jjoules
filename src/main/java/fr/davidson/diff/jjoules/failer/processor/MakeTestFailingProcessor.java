@@ -20,8 +20,6 @@ import java.util.Map;
  */
 public class MakeTestFailingProcessor extends AbstractJJoulesProcessor {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MakeTestFailingProcessor.class);
-
     public MakeTestFailingProcessor(Map<String, List<String>> testsToBeInstrumented, String rootPathFolder) {
         super(testsToBeInstrumented, rootPathFolder);
     }
