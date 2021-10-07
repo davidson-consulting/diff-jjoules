@@ -31,7 +31,7 @@ public class SuspectStep extends DiffJJoulesStep {
     }
 
     @Override
-    public void run(Configuration configuration) {
+    protected void _run(Configuration configuration) {
         this.configuration = configuration;
         LOGGER.info("Run Suspect - {}", configuration.toString());
         final Set<String> testsList = FullQualifiedName.toSetFullQualifiedNames(CSVReader.readFile(configuration.pathToTestListAsCSV));

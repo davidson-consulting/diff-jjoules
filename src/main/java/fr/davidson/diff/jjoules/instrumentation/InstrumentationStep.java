@@ -31,7 +31,7 @@ public class InstrumentationStep extends DiffJJoulesStep {
     }
 
     @Override
-    public void run(Configuration configuration) {
+    protected void _run(Configuration configuration) {
         this.configuration = configuration;
         LOGGER.info("Run Instrumentation");
         final Map<String, List<String>> testsList = configuration.getTestsList();

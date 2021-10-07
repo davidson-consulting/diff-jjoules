@@ -33,7 +33,7 @@ public class MarkdownStep extends DiffJJoulesStep {
     }
 
     @Override
-    public void run(Configuration configuration) {
+    protected void _run(Configuration configuration) {
         this.configuration = configuration;
         LOGGER.info("Run Markdown - {}", configuration.toString());
         final Deltas deltas = configuration.getDeltas();

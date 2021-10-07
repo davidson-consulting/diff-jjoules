@@ -28,7 +28,7 @@ public class DeltaStep extends DiffJJoulesStep {
     }
 
     @Override
-    public void run(Configuration configuration) {
+    protected void _run(Configuration configuration) {
         this.configuration = configuration;
         LOGGER.info("Run Delta");
         final Map<String, List<String>> testsList = configuration.getTestsList();

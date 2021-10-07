@@ -30,7 +30,7 @@ public class FailerStep extends DiffJJoulesStep {
     }
 
     @Override
-    public void run(Configuration configuration) {
+    protected void _run(Configuration configuration) {
         LOGGER.info("Run Failer");
         final Deltas deltas = configuration.getDeltas();
         final Map<String, List<String>> testsToBeInstrumented = new HashMap<>();

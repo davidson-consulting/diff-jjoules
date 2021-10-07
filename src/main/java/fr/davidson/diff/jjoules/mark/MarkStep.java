@@ -30,7 +30,7 @@ public class MarkStep extends DiffJJoulesStep {
     }
 
     @Override
-    public void run(Configuration configuration) {
+    protected void _run(Configuration configuration) {
         this.configuration = configuration;
         LOGGER.info("Run Mark");
         final Map<String, List<String>> consideredTestsNames = configuration.getConsideredTestsNames();

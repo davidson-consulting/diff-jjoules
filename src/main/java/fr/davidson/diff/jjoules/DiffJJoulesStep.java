@@ -59,7 +59,7 @@ public class DiffJJoulesStep {
         return "diff_jjoules";
     }
 
-    private void _run(Configuration configuration) {
+    protected void _run(Configuration configuration) {
         LOGGER.info("Run DiffJJoules - {}", configuration.toString());
         this.resetAndCleanBothVersion();
         this.testSelection();
