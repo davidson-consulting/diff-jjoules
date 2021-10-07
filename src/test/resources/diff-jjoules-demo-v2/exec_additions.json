@@ -1,6 +1,13 @@
 [
   {
     "execLt": {
+      "fr.davidson.diff_jjoules_demo.InternalList#30": {
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testMapEmptyList": 0,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount2": 0,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testMapMultipleElement": 0,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testMapOneElement": 0,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount": 1
+      },
       "fr.davidson.diff_jjoules_demo.InternalList#24": {
         "fr.davidson.diff_jjoules_demo.InternalListTest#testMapEmptyList": 0,
         "fr.davidson.diff_jjoules_demo.InternalListTest#testCount2": 0,
