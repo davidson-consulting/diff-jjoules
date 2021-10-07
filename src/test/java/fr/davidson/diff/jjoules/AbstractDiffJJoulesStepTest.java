@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
@@ -73,7 +74,9 @@ public abstract class AbstractDiffJJoulesStepTest {
         // compile
         MavenRunner.runCleanAndCompile(ROOT_PATH_V1);
         MavenRunner.runCleanAndCompile(ROOT_PATH_V2);
-        new File(DIFF_JJOULES_FOLDER_PATH).delete();
+        Files.walk(Paths.get(DIFF_JJOULES_FOLDER_PATH))
+                .map(Path::toFile)
+                .forEach(File::delete);
         new File(JJOULES_REPORT_PATH_V1).mkdirs();
         new File(JJOULES_REPORT_PATH_V2).mkdirs();
         Files.copy(
