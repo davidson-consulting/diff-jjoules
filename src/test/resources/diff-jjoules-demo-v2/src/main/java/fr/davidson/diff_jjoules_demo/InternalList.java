@@ -27,6 +27,7 @@ public class InternalList<T> {
     }
 
     public int count() {
+        System.out.println("This is a modification");
         return this.internalList.size();
     }
 
