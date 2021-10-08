@@ -33,8 +33,8 @@ public class SuspectStep extends DiffJJoulesStep {
     @Override
     protected void _run(Configuration configuration) {
         this.configuration = configuration;
-        LOGGER.info("Run Suspect - {}", configuration.toString());
-        final Set<String> testsList = FullQualifiedName.toSetFullQualifiedNames(CSVReader.readFile(configuration.pathToTestListAsCSV));
+        LOGGER.info("Run Suspect");
+        final Set<String> testsList = FullQualifiedName.toSetFullQualifiedNames(configuration.getTestsList());
         if (testsList.isEmpty()) {
             throw new RuntimeException();
         }
@@ -70,7 +70,6 @@ public class SuspectStep extends DiffJJoulesStep {
         configuration.setScorePerLineV1(suspiciousLinesV1);
         JSONUtils.write(configuration.output + "/" + configuration.pathToJSONSuspiciousV2, suspiciousLinesV2);
         configuration.setScorePerLineV2(suspiciousLinesV2);
-
     }
 
     private static Map<String, Double> getSuspiciousLinesFromDiff(Map<Location, Suspiciousness> flacocoMap, ExecsLines execLines) {

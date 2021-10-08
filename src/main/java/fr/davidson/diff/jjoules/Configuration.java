@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
@@ -322,7 +323,7 @@ public class Configuration {
 
     public ExecsLines getExecLinesAdditions() {
         if (this.execLinesAdditions == null) {
-            this.execLinesAdditions = JSONUtils.read(this.pathToExecLinesAdditions, ExecsLines .class);
+            this.execLinesAdditions = JSONUtils.read(this.pathToExecLinesAdditions, ExecsLines.class);
         }
         return execLinesAdditions;
     }
@@ -355,7 +356,11 @@ public class Configuration {
 
     public Map<String, Double> getScorePerLineV1() {
         if (this.scorePerLineV1 == null) {
-            this.scorePerLineV1 = JSONUtils.read(this.pathToJSONSuspiciousV1, Map.class);
+            try {
+                this.scorePerLineV1 = JSONUtils.read(this.pathToJSONSuspiciousV1, Map.class);
+            } catch (Exception e) {
+                return Collections.emptyMap();
+            }
         }
         return scorePerLineV1;
     }
@@ -366,7 +371,11 @@ public class Configuration {
 
     public Map<String, Double> getScorePerLineV2() {
         if (this.scorePerLineV2 == null) {
-            this.scorePerLineV2 = JSONUtils.read(this.pathToJSONSuspiciousV2, Map.class);
+            try {
+                this.scorePerLineV2 = JSONUtils.read(this.pathToJSONSuspiciousV2, Map.class);
+            } catch (Exception e) {
+                return Collections.emptyMap();
+            }
         }
         return scorePerLineV2;
     }
