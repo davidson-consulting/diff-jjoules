@@ -32,6 +32,8 @@ public class TestTest {
                         put("fr.davidson.diff_jjoules_demo.InternalList#22", 0.23684210526315788);
                         put("fr.davidson.diff_jjoules_demo.InternalList#23", 0.2631578947368421);
                         put("fr.davidson.diff_jjoules_demo.InternalList#30", 0.2631578947368421);
+                        put("fr.davidson.diff_jjoules_demo.InternalList#37", 0.2631578947368421);
+                        put("fr.davidson.diff_jjoules_demo.InternalList#35", 0.2631578947368421);
                     }
                 };
         final List<ExecsLines> execLineList = new ArrayList<>();
