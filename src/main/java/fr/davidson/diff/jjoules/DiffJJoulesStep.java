@@ -81,14 +81,22 @@ public class DiffJJoulesStep {
     }
 
     private void testSelection() {
-        final Properties properties = new Properties();
-        properties.setProperty("path-dir-second-version", this.configuration.pathToSecondVersion);
+//        final Properties properties = new Properties();
+//        properties.setProperty("path-dir-second-version", this.configuration.pathToSecondVersion);
         this.energyMonitor.startMonitoring();
-        MavenRunner.runGoals(
+        eu.stamp_project.diff_test_selection.Main.run(new eu.stamp_project.diff_test_selection.configuration.Configuration(
                 this.configuration.pathToFirstVersion,
-                properties,
-                "clean", "eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list"
-        );
+                this.configuration.pathToSecondVersion,
+                "",
+                "CSV",
+                "",
+                true
+        ));
+//        MavenRunner.runGoals(
+//                this.configuration.pathToFirstVersion,
+//                properties,
+//                "clean", "eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list"
+//        );
         this.energyMonitor.stopMonitoring("selection");
         final Map<String, List<String>> testsList = CSVReader.readFile(this.configuration.pathToTestListAsCSV);
         if (testsList.isEmpty()) {
