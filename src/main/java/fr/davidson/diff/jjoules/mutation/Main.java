@@ -4,7 +4,7 @@ import fr.davidson.diff.jjoules.util.maven.JJoulesInjection;
 import fr.davidson.diff.jjoules.mutation.configuration.Options;
 import fr.davidson.diff.jjoules.mutation.configuration.Configuration;
 import fr.davidson.diff.jjoules.mutation.process.UntareJjoulesProcessor;
-import fr.davidson.diff.jjoules.util.CSVReader;
+import fr.davidson.diff.jjoules.util.CSVFileManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.Launcher;
@@ -36,7 +36,7 @@ public class Main {
             return;
         }
         LOGGER.info("{}", configuration.toString());
-        final Map<String, List<String>> methodNamesPerFullQualifiedName = CSVReader.readFile(configuration.pathToMethodNames);
+        final Map<String, List<String>> methodNamesPerFullQualifiedName = CSVFileManager.readFile(configuration.pathToMethodNames);
         LOGGER.info("{}", methodNamesPerFullQualifiedName.keySet()
                 .stream()
                 .map(key ->

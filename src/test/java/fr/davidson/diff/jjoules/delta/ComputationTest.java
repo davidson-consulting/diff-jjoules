@@ -22,6 +22,29 @@ public class ComputationTest {
     public static final String DATA_V_2_JSON = "src/test/resources/json/data_v2.json";
 
     @Test
+    void test() {
+        Datas d1 = new Datas();
+        d1.put("key", new ArrayList<>());
+        d1.get("key").add(new Data(0, 0, 0, 0, 0, 0, 0, 0));
+        d1.get("key").add(new Data(50, 50, 50, 50, 50, 50, 50, 50));
+
+        Datas d2 = new Datas();
+        d2.put("key", new ArrayList<>());
+
+        d2.get("key").add(new Data(10, 10, 10, 10, 10, 10, 10, 10));
+        System.out.println(d1.isEmptyIntersectionPerTestMethodName(d2));
+
+        d2.get("key").clear();
+        d2.get("key").add(new Data(-1, -1, -1, -1, -1, -1, -1, -1));
+        System.out.println(d1.isEmptyIntersectionPerTestMethodName(d2));
+
+        d2.get("key").clear();
+        d2.get("key").add(new Data(10, 10, 10, 10, 10, 10, 10, 10));
+        d2.get("key").add(new Data(-1, -1, -1, -1, -1, -1, -1, -1));
+        System.out.println(d1.isEmptyIntersectionPerTestMethodName(d2));
+    }
+
+    @Test
     void testIsEmptyIntersectionPerTestMethodName() {
         final Datas datas1 = JSONUtils.read(DATA_V_1_JSON, Datas.class);
         final Datas datas2 = JSONUtils.read(DATA_V_2_JSON, Datas.class);
@@ -46,16 +69,16 @@ public class ComputationTest {
         final Map<String, Data> medians1 = new HashMap<String, Data>() {
             {
                 put("test", new Data(
-                        0.0D,10.0D,10.0D,10.0D,
-                        0.0D,-10.0D,-10.0D,-10.0D)
+                        0.0D, 10.0D, 10.0D, 10.0D,
+                        0.0D, -10.0D, -10.0D, -10.0D)
                 );
             }
         };
         final Map<String, Data> medians2 = new HashMap<String, Data>() {
             {
                 put("test", new Data(
-                        0.0D,-10.0D,-10.0D,-10.0D,
-                        0.0D,10.0D,10.0D,10.0D)
+                        0.0D, -10.0D, -10.0D, -10.0D,
+                        0.0D, 10.0D, 10.0D, 10.0D)
                 );
             }
         };

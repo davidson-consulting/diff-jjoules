@@ -30,7 +30,7 @@ public class Datas extends HashMap<String, List<Data>> {
                             .stream()
                             .map(data -> data.instructions)
                             .noneMatch(value ->
-                                    sortedValuesV1.get(0) <= value && sortedValuesV1.get(sortedValuesV1.size() - 1) >= value
+                                    sortedValuesV1.get(0) < value && value < sortedValuesV1.get(sortedValuesV1.size() - 1)
                             )
             );
         }

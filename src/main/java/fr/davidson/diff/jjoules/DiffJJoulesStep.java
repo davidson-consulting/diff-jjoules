@@ -1,25 +1,17 @@
 package fr.davidson.diff.jjoules;
 
-import fr.davidson.diff.jjoules.delta.DeltaMojo;
 import fr.davidson.diff.jjoules.delta.DeltaStep;
 import fr.davidson.diff.jjoules.energy.EnergyMonitor;
-import fr.davidson.diff.jjoules.failer.FailerMojo;
 import fr.davidson.diff.jjoules.failer.FailerStep;
-import fr.davidson.diff.jjoules.instrumentation.InstrumentationMojo;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationStep;
-import fr.davidson.diff.jjoules.mark.MarkMojo;
 import fr.davidson.diff.jjoules.mark.MarkStep;
-import fr.davidson.diff.jjoules.suspect.SuspectMojo;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
-import fr.davidson.diff.jjoules.util.CSVReader;
-import fr.davidson.diff.jjoules.util.JSONUtils;
+import fr.davidson.diff.jjoules.util.CSVFileManager;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.maven.MavenRunner;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.ResetCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.powerapi.jjoules.EnergySample;
-import org.powerapi.jjoules.rapl.RaplDevice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,9 +21,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.stream.Stream;
 
 /**
@@ -98,7 +90,7 @@ public class DiffJJoulesStep {
 //                "clean", "eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list"
 //        );
         this.energyMonitor.stopMonitoring("selection");
-        final Map<String, List<String>> testsList = CSVReader.readFile(this.configuration.pathToTestListAsCSV);
+        final Map<String, List<String>> testsList = CSVFileManager.readFile(this.configuration.pathToTestListAsCSV);
         if (testsList.isEmpty()) {
             this.end("No test could be selected");
         }
@@ -107,7 +99,7 @@ public class DiffJJoulesStep {
     }
 
     private void testInstrumentation() {
-        this.runDiffJJoulesStep(new InstrumentationStep(),"Something went wrong during test instrumentation.");
+        this.runDiffJJoulesStep(new InstrumentationStep(), "Something went wrong during test instrumentation.");
         this.cleanCompileAndBuildClasspath();
     }
 

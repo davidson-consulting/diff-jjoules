@@ -5,7 +5,6 @@ import fr.davidson.diff.jjoules.DiffJJoulesStep;
 import fr.davidson.diff.jjoules.mark.computation.ExecLineTestMap;
 import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
 import fr.davidson.diff.jjoules.suspect.fl.FlacocoRunner;
-import fr.davidson.diff.jjoules.util.CSVReader;
 import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.spoonlabs.flacoco.api.result.Location;

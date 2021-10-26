@@ -6,14 +6,13 @@ import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
 import fr.davidson.diff.jjoules.report.ReportEnum;
-import fr.davidson.diff.jjoules.util.CSVReader;
+import fr.davidson.diff.jjoules.util.CSVFileManager;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
@@ -229,7 +228,7 @@ public class Configuration {
 
     public Map<String, List<String>> getTestsList() {
         if (this.testsList == null) {
-            this.testsList = CSVReader.readFile(this.pathToTestListAsCSV);
+            this.testsList = CSVFileManager.readFile(this.pathToTestListAsCSV);
         }
         return testsList;
     }
