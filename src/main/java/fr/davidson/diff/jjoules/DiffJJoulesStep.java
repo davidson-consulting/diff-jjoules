@@ -57,10 +57,12 @@ public class DiffJJoulesStep {
         this.testSelection();
         this.testInstrumentation();
         this.deltaComputation();
-        this.commitMarking();
-        if (this.configuration.shouldSuspect) {
-            this.testFailingInstrumentation();
-            this.testSuspicious();
+        if (this.configuration.shouldMark) {
+            this.commitMarking();
+            if (this.configuration.shouldSuspect) {
+                this.testFailingInstrumentation();
+                this.testSuspicious();
+            }
         }
     }
 
@@ -73,8 +75,6 @@ public class DiffJJoulesStep {
     }
 
     private void testSelection() {
-//        final Properties properties = new Properties();
-//        properties.setProperty("path-dir-second-version", this.configuration.pathToSecondVersion);
         this.energyMonitor.startMonitoring();
         eu.stamp_project.diff_test_selection.Main.run(new eu.stamp_project.diff_test_selection.configuration.Configuration(
                 this.configuration.pathToFirstVersion,
@@ -84,11 +84,6 @@ public class DiffJJoulesStep {
                 "",
                 true
         ));
-//        MavenRunner.runGoals(
-//                this.configuration.pathToFirstVersion,
-//                properties,
-//                "clean", "eu.stamp-project:dspot-diff-test-selection:3.1.1-SNAPSHOT:list"
-//        );
         this.energyMonitor.stopMonitoring("selection");
         final Map<String, List<String>> testsList = CSVFileManager.readFile(this.configuration.pathToTestListAsCSV);
         if (testsList.isEmpty()) {

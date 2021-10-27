@@ -158,6 +158,12 @@ public class DiffJJoulesMojo extends AbstractMojo {
     private boolean shouldSuspect;
 
     /**
+     * Enable or disable the mark (and the suspect and the failer) goals when running diff-jjoules
+     */
+    @Parameter(property = "mark", defaultValue = "true")
+    private boolean shouldMark;
+
+    /**
      * Specify the type of report to generate
      */
     @Parameter(property = "report", defaultValue = "MARKDOWN")
@@ -208,6 +214,7 @@ public class DiffJJoulesMojo extends AbstractMojo {
                     this.pathToJSONSuspiciousV2,
                     this.pathToReport,
                     this.shouldSuspect,
+                    this.shouldMark,
                     ReportEnum.valueOf(this.reportType)
             );
             final DiffJJoulesStep diffJJoulesStep = this.getStep();

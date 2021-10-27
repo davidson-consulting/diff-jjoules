@@ -37,7 +37,7 @@ public class DiffJJoulesMojoTest {
                     "src/test/java/fr/davidson/diff/jjoules/delta/MeasureEnergyConsumptionTest.java",
                     "", "", "",
                     "", "", "",
-                    "", "", "", true, ReportEnum.NONE
+                    "", "", "", true, true, ReportEnum.NONE
             );
         }
     }

@@ -66,6 +66,8 @@ public class Configuration {
 
     public final boolean shouldSuspect;
 
+    public final boolean shouldMark;
+
     public final String classpathPathV1;
 
     public final String classpathPathV2;
@@ -114,8 +116,8 @@ public class Configuration {
                          String[] classpathV1,
                          String[] classpathV2,
                          boolean junit4,
-                         int iterations
-    ) {
+                         int iterations,
+                         boolean shouldMark) {
         this(
                 pathToFirstVersion,
                 pathToSecondVersion,
@@ -141,6 +143,7 @@ public class Configuration {
                 "suspicious_v2.json",
                 ".github/workflows/template.md",
                 true,
+                shouldMark,
                 ReportEnum.NONE
         );
     }
@@ -169,10 +172,12 @@ public class Configuration {
                          String pathToJSONSuspiciousV2,
                          String pathToReport,
                          boolean shouldSuspect,
+                         boolean shouldMark,
                          ReportEnum reportEnum) {
         this.classpathPathV1 = classpathPathV1;
         this.classpathPathV2 = classpathPathV2;
         this.shouldSuspect = shouldSuspect;
+        this.shouldMark = shouldMark;
         this.reportEnum = reportEnum;
         this.pathToReport = pathToReport;
         this.ownConsumptionReports = new LinkedHashMap<>();

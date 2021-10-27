@@ -56,7 +56,8 @@ public abstract class AbstractDiffJJoulesStepTest {
                 Utils.readClasspathFile(CLASSPATH_PATH_V1).split(":"),
                 Utils.readClasspathFile(CLASSPATH_PATH_V1).split(":"),
                 false,
-                5
+                5,
+                true
         );
         configuration.setTestsList(
                 new HashMap<String, List<String>>() {
