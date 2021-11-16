@@ -25,17 +25,21 @@ public class InstrumentationStepTest extends AbstractStepCleanTest {
          */
         final InstrumentationStep instrumentationStep = new InstrumentationStep();
         try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
-            assertFalse(reader.lines().collect(Collectors.joining("\n")).contains("@EnergyTest"));
+            final String content = reader.lines().collect(Collectors.joining("\n"));
+            assertFalse(content.contains("EnergyTest"), content);
         }
         try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
-            assertFalse(reader.lines().collect(Collectors.joining("\n")).contains("@EnergyTest"));
+            final String content = reader.lines().collect(Collectors.joining("\n"));
+            assertFalse(content.contains("EnergyTest"), content);
         }
         instrumentationStep._run(this.getConfiguration());
         try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
-            assertTrue(reader.lines().collect(Collectors.joining("\n")).contains("@EnergyTest"));
+            final String content = reader.lines().collect(Collectors.joining("\n"));
+            assertTrue(content.contains("EnergyTest"), content);
         }
         try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
-            assertTrue(reader.lines().collect(Collectors.joining("\n")).contains("@EnergyTest"));
+            final String content = reader.lines().collect(Collectors.joining("\n"));
+            assertTrue(content.contains("EnergyTest"), content);
         }
     }
 }
