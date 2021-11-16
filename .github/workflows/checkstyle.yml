@@ -23,7 +23,5 @@ jobs:
         run: mvn clean install -DskipTests -f j-joules/pom.xml
       - name: Install JUnit-JJoules
         run: mvn clean install -DskipTests -f junit-jjoules/pom.xml
-      - name: Build with Maven
-        run: mvn install -DskipTests
       - name: Checkstyle with Maven
-        run: mvn checkstyle:checkstyle
+        run: mvn checkstyle:checkstyle -DskipTests
