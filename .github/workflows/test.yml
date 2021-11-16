@@ -19,10 +19,16 @@ jobs:
         with:
           repository: 'davidson-consulting/junit-jjoules'
           path: './junit-jjoules'
+      - uses: actions/checkout@v2
+        with:
+          repository: 'STAMP-project/dspot'
+          path: './dspot'
       - name: Install JJoules
         run: mvn clean install -DskipTests -f j-joules/pom.xml
       - name: Install JUnit-JJoules
         run: mvn clean install -DskipTests -f junit-jjoules/pom.xml
+      - name: Install DSpot
+        run: mvn clean install -DskipTests -f dspot/pom.xml
       - name: Build and run tests
         run: mvn --batch-mode clean test
       - name: Codecov
