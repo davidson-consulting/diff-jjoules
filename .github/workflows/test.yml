@@ -1,0 +1,29 @@
+name: Test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          repository: 'davidson-consulting/j-joules'
+          path: './j-joules'
+      - uses: actions/checkout@v2
+        with:
+          repository: 'davidson-consulting/junit-jjoules'
+          path: './junit-jjoules'
+      - name: Install JJoules
+        run: mvn clean install -DskipTests -f j-joules/pom.xml
+      - name: Install JUnit-JJoules
+        run: mvn clean install -DskipTests -f junit-jjoules/pom.xml
+      - name: Build and run tests
+        run: mvn --batch-mode clean test
+      - name: Codecov
+        uses: codecov/codecov-action@v1.5.2
