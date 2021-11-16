@@ -1,8 +1,6 @@
 package fr.davidson.diff.jjoules.failer.processor;
 
 import fr.davidson.diff.jjoules.instrumentation.process.AbstractJJoulesProcessor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtTypeAccess;
 import spoon.reflect.declaration.CtMethod;

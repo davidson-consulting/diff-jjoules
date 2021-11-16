@@ -34,7 +34,6 @@ public class Options {
                 parse.getString("classpath").split(":"),
                 parse.getLong("energy-to-consume")
         );
-        
     }
 
     private static JSAP initJSAP() {

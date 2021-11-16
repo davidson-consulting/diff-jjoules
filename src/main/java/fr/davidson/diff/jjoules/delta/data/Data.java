@@ -1,7 +1,5 @@
 package fr.davidson.diff.jjoules.delta.data;
 
-import java.util.Map;
-
 /**
  * @author Benjamin DANGLOT
  * benjamin.danglot@davidson.fr
