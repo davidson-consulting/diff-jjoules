@@ -26,9 +26,9 @@ public class ExecTest {
         final String absolutePathFirstVersion = new File("src/test/resources/diff-jjoules-demo").getAbsolutePath();
         final String absolutePathSecondVersion = new File("src/test/resources/diff-jjoules-demo-v2").getAbsolutePath();
         final Coverage coverageFirstVersion =
-                JSONUtils.read("/home/benjamin/workspace/diff-jjoules/src/test/resources/diff-jjoules-demo/coverage.json", Coverage.class);
+                JSONUtils.read("src/test/resources/diff-jjoules-demo/coverage.json", Coverage.class);
         final Coverage coverageSecondVersion =
-                JSONUtils.read("/home/benjamin/workspace/diff-jjoules/src/test/resources/diff-jjoules-demo-v2/coverage.json", Coverage.class);
+                JSONUtils.read("src/test/resources/diff-jjoules-demo-v2/coverage.json", Coverage.class);
         final String diff = "--- src/main/java/fr/davidson/diff_jjoules_demo/InternalList.java\t2021-09-30 14:31:45.199926959 +0200\n" +
                 "+++ ../diff-jjoules-demo-v2/src/main/java/fr/davidson/diff_jjoules_demo/InternalList.java\t2021-09-30 14:51:34.126384267 +0200\n" +
                 "@@ -19,8 +19,9 @@\n" +
