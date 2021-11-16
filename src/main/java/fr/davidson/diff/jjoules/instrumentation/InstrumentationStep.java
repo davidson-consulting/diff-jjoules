@@ -2,7 +2,6 @@ package fr.davidson.diff.jjoules.instrumentation;
 
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.DiffJJoulesStep;
-import fr.davidson.diff.jjoules.failer.FailerStep;
 import fr.davidson.diff.jjoules.instrumentation.process.AbstractJJoulesProcessor;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.maven.JJoulesInjection;

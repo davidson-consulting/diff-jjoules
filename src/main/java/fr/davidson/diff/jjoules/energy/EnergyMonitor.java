@@ -1,7 +1,6 @@
 package fr.davidson.diff.jjoules.energy;
 
 import fr.davidson.diff.jjoules.Configuration;
-import fr.davidson.diff.jjoules.mutation.Main;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import org.powerapi.jjoules.EnergySample;
 import org.powerapi.jjoules.NoSuchDomainException;

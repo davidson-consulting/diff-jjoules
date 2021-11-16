@@ -15,7 +15,7 @@ public class Configuration {
     public final String pathToMethodNames;
 
     public final String[] classpath;
-    
+
     public final long energyToConsume;
 
     public Configuration(String rootPathDir,
