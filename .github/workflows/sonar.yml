@@ -24,7 +24,7 @@ jobs:
         run: mvn clean install -DskipTests -f junit-jjoules/pom.xml
       - uses: actions/checkout@v2
       - name: SonarCloud Scan
-        run: mvn clean test -DskipTests org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=davidson-consulting -Dsonar.projectKey=davidson-consulting_diff-jjoules -Dsonar.branch=master -Dsonar.sources=src/main/java/ -Dsonar.language=java -Dsonar.java.binaries=**/target/classes
+        run: mvn clean test -DskipTests org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=davidson-consulting -Dsonar.projectKey=davidson-consulting_diff-jjoules -Dsonar.branch=master -Dsonar.sources=src/main/java/ -Dsonar.language=java -Dsonar.java.binaries=target/classes
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
