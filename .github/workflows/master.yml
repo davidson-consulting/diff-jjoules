@@ -1,9 +1,7 @@
-name: Test
+name: Master CI
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 jobs:
@@ -25,5 +23,10 @@ jobs:
         run: mvn clean install -DskipTests -f junit-jjoules/pom.xml
       - name: Build and run tests
         run: export MAVEN_HOME=`mvn --version | grep 'Maven home' | sed -e 's/Maven h.* //'` && echo "🎉 ${MAVEN_HOME}" && mvn --batch-mode clean test
+      - name: SonarCloud Scan
+        run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=davidson-consulting -Dsonar.projectKey=davidson-consulting_diff-jjoules -Dsonar.branch=master -Dsonar.sources=src/main/java/ -Dsonar.language=java -Dsonar.java.binaries=target/classes
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Codecov
         uses: codecov/codecov-action@v1.5.2
