@@ -5,6 +5,7 @@ import fr.davidson.diff.jjoules.delta.DeltaStep;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
+import fr.davidson.diff.jjoules.mark.MarkStep;
 import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
 import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.util.CSVFileManager;
@@ -41,15 +42,9 @@ public class Configuration {
 
     public final String diff;
 
-    public final String pathToJSONDeltaOmega;
-
     public final String pathToRepositoryV1;
 
     public final String pathToRepositoryV2;
-
-    public final String pathToExecLinesAdditions;
-
-    public final String pathToExecLinesDeletions;
 
     public final String pathToJSONSuspiciousV1;
 
@@ -123,11 +118,8 @@ public class Configuration {
                 iterations,
                 "diff-jjoules",
                 "",
-                "deltaOmega.json",
                 "",
                 "",
-                "exec_additions.json",
-                "exec_deletions.json",
                 "suspicious_v1.json",
                 "suspicious_v2.json",
                 ".github/workflows/template.md",
@@ -148,11 +140,8 @@ public class Configuration {
                          int iterations,
                          String output,
                          String pathToDiff,
-                         String pathToJSONDeltaOmega,
                          String pathToRepositoryV1,
                          String pathToRepositoryV2,
-                         String pathToExecLinesAdditions,
-                         String pathToExecLinesDeletions,
                          String pathToJSONSuspiciousV1,
                          String pathToJSONSuspiciousV2,
                          String pathToReport,
@@ -187,8 +176,6 @@ public class Configuration {
         outputDirectory.mkdir();
         this.pathToRepositoryV1 = pathToRepositoryV1;
         this.pathToRepositoryV2 = pathToRepositoryV2;
-        this.pathToExecLinesAdditions = pathToExecLinesAdditions;
-        this.pathToExecLinesDeletions = pathToExecLinesDeletions;
         this.pathToJSONSuspiciousV1 = pathToJSONSuspiciousV1;
         this.pathToJSONSuspiciousV2 = pathToJSONSuspiciousV2;
         if (pathToDiff == null || pathToDiff.isEmpty()) {
@@ -205,7 +192,6 @@ public class Configuration {
         } else {
             this.diff = Utils.readFile(pathToDiff);
         }
-        this.pathToJSONDeltaOmega = pathToJSONDeltaOmega;
     }
 
     public void setTestsList(Map<String, List<String>> testsList) {
@@ -308,7 +294,7 @@ public class Configuration {
 
     public ExecsLines getExecLinesAdditions() {
         if (this.execLinesAdditions == null) {
-            this.execLinesAdditions = JSONUtils.read(this.pathToExecLinesAdditions, ExecsLines.class);
+            this.execLinesAdditions = JSONUtils.read(MarkStep.PATH_TO_JSON_EXEC_ADDITIONS, ExecsLines.class);
         }
         return execLinesAdditions;
     }
@@ -319,7 +305,7 @@ public class Configuration {
 
     public ExecsLines getExecLinesDeletions() {
         if (this.execLinesDeletions == null) {
-            JSONUtils.read(this.pathToExecLinesDeletions, ExecsLines.class);
+            JSONUtils.read(MarkStep.PATH_TO_JSON_EXEC_DELETION, ExecsLines.class);
         }
         return execLinesDeletions;
     }
@@ -330,7 +316,7 @@ public class Configuration {
 
     public Data getDeltaOmega() {
         if (this.deltaOmega == null) {
-            this.deltaOmega = JSONUtils.read(this.pathToJSONDeltaOmega, Data.class);
+            this.deltaOmega = JSONUtils.read(MarkStep.PATH_TO_JSON_DELTA_OMEGA, Data.class);
         }
         return deltaOmega;
     }
@@ -379,11 +365,8 @@ public class Configuration {
                 ", iterations=" + iterations +
                 ", output='" + output + '\'' +
                 ", diff='" + diff + '\'' +
-                ", pathToJSONDeltaOmega='" + pathToJSONDeltaOmega + '\'' +
                 ", pathToRepositoryV1='" + pathToRepositoryV1 + '\'' +
                 ", pathToRepositoryV2='" + pathToRepositoryV2 + '\'' +
-                ", pathToExecLinesAdditions='" + pathToExecLinesAdditions + '\'' +
-                ", pathToExecLinesDeletions='" + pathToExecLinesDeletions + '\'' +
                 ", pathToJSONSuspiciousV1='" + pathToJSONSuspiciousV1 + '\'' +
                 ", pathToJSONSuspiciousV2='" + pathToJSONSuspiciousV2 + '\'' +
                 ", pathToReport='" + pathToReport + '\'' +

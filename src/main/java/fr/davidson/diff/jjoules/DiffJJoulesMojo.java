@@ -74,12 +74,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
     private String pathToDiff;
 
     /**
-     *  Specify the path to a json file that contains the delta omega to decide to pass or fail the build
-     */
-    @Parameter(property = "path-json-delta-omega", defaultValue = "deltaOmega.json")
-    private String pathToJSONDeltaOmega;
-
-    /**
      *  Specify the path to the root directory of the project before applying the commit.
      *  This is useful when it is used on multi-modules project.
      */
@@ -92,18 +86,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
      */
     @Parameter(property = "path-repo-v2")
     private String pathToRepositoryV2;
-
-    /**
-     *  Specify the path to a json file that contains the list of test methods that are executing the additions of the commit.
-     */
-    @Parameter(property = "path-exec-lines-additions", defaultValue = "exec_additions.json")
-    private String pathToExecLinesAdditions;
-
-    /**
-     *  Specify the path to a json file that contains the list of test methods that are executing the deletions of the commit.
-     */
-    @Parameter(property = "path-exec-lines-deletions", defaultValue = "exec_deletions.json")
-    private String pathToExecLinesDeletions;
 
     /**
      *  Specify the path to a json file that contains the list of test methods that are suspicious regarding the version before the commit.
@@ -175,11 +157,8 @@ public class DiffJJoulesMojo extends AbstractMojo {
                     this.iterations,
                     this.outputPath,
                     this.pathToDiff,
-                    this.pathToJSONDeltaOmega,
                     this.pathToRepositoryV1,
                     this.pathToRepositoryV2,
-                    this.pathToExecLinesAdditions,
-                    this.pathToExecLinesDeletions,
                     this.pathToJSONSuspiciousV1,
                     this.pathToJSONSuspiciousV2,
                     this.pathToReport,
