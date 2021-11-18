@@ -33,8 +33,6 @@ public class Configuration {
 
     public final String pathToSecondVersion;
 
-    public final String pathToTestListAsCSV;
-
     public final boolean junit4;
 
     public final int iterations;
@@ -95,7 +93,6 @@ public class Configuration {
 
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
-                         String pathToTestListAsCSV,
                          String classpathPathV1,
                          String classpathPathV2,
                          String[] classpathV1,
@@ -106,7 +103,6 @@ public class Configuration {
         this(
                 pathToFirstVersion,
                 pathToSecondVersion,
-                pathToTestListAsCSV,
                 classpathPathV1,
                 classpathPathV2,
                 classpathV1,
@@ -126,7 +122,6 @@ public class Configuration {
 
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
-                         String pathToTestListAsCSV,
                          String classpathPathV1,
                          String classpathPathV2,
                          String[] classpathV1,
@@ -150,7 +145,6 @@ public class Configuration {
         this.ownConsumptionReports = new LinkedHashMap<>();
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
-        this.pathToTestListAsCSV = pathToTestListAsCSV == null || pathToTestListAsCSV.isEmpty() ? "" : new File(pathToTestListAsCSV).isAbsolute() ? pathToTestListAsCSV : this.pathToFirstVersion + "/" + pathToTestListAsCSV;
         this.junit4 = junit4;
         this.classpathV1 = classpathV1;
         this.classpathV1AsString = String.join(":", classpathV1);
@@ -191,7 +185,7 @@ public class Configuration {
 
     public Map<String, List<String>> getTestsList() {
         if (this.testsList == null) {
-            this.testsList = CSVFileManager.readFile(this.pathToTestListAsCSV);
+            this.testsList = CSVFileManager.readFile(this.pathToFirstVersion + "/" + DiffJJoulesStep.PATH_TO_CSV_TESTS_EXEC_CHANGES);
         }
         return testsList;
     }
@@ -351,7 +345,6 @@ public class Configuration {
         return "Configuration{" +
                 "pathToFirstVersion='" + pathToFirstVersion + '\'' +
                 ", pathToSecondVersion='" + pathToSecondVersion + '\'' +
-                ", pathToTestListAsCSV='" + pathToTestListAsCSV + '\'' +
                 ", junit4=" + junit4 +
                 ", iterations=" + iterations +
                 ", output='" + output + '\'' +

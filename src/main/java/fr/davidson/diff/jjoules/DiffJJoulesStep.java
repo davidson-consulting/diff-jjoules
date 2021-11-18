@@ -73,6 +73,8 @@ public class DiffJJoulesStep {
         }
     }
 
+    public static final String PATH_TO_CSV_TESTS_EXEC_CHANGES = "testsThatExecuteTheChange.csv";
+
     private void testSelection() {
         this.energyMonitor.startMonitoring();
         eu.stamp_project.diff_test_selection.Main.run(new eu.stamp_project.diff_test_selection.configuration.Configuration(
@@ -84,7 +86,7 @@ public class DiffJJoulesStep {
                 true
         ));
         this.energyMonitor.stopMonitoring("selection");
-        final Map<String, List<String>> testsList = CSVFileManager.readFile(this.configuration.pathToTestListAsCSV);
+        final Map<String, List<String>> testsList = CSVFileManager.readFile(this.configuration.pathToFirstVersion + "/" + PATH_TO_CSV_TESTS_EXEC_CHANGES);
         if (testsList.isEmpty()) {
             this.end("No test could be selected");
         }

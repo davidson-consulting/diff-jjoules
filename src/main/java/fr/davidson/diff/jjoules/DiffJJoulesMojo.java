@@ -32,12 +32,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
     protected String pathDirSecondVersion;
 
     /**
-     * Specify the path to a CSV file that contains the list of tests to be instrumented.
-     */
-    @Parameter(property = "tests-list", defaultValue = "testsThatExecuteTheChange.csv")
-    protected String testsList;
-
-    /**
      * Specify the path to a file that contains the full classpath of the project for the version before the code changes.
      * We advise use to use the following goal to generate it :
      * dependency:build-classpath -Dmdep.outputFile=classpath
@@ -136,7 +130,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
             Configuration configuration = new Configuration(
                     this.project.getBasedir().getAbsolutePath(),
                     this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.pathDirSecondVersion,
-                    this.testsList,
                     this.classpathPath,
                     this.classpathPathV2,
                     classpath.split(":"),

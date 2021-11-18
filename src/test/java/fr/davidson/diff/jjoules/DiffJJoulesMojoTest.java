@@ -26,7 +26,6 @@ public class DiffJJoulesMojoTest {
             super(
                     new File("src/test/resources/diff-jjoules-demo/").getAbsolutePath(),
                     new File("src/test/resources/diff-jjoules-demo-v2/").getAbsolutePath(),
-                    "",
                     "src/test/resources/diff-jjoules-demo/classpath",
                     "src/test/resources/diff-jjoules-demo/classpath",
                     Utils.readClasspathFile("src/test/resources/diff-jjoules-demo/classpath").split(":"),
