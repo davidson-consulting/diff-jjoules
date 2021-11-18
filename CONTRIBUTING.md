@@ -1,7 +1,5 @@
 # Contributing
 
-----------------------------
-
 For contributing, we favor the creation of pull request (PR) on GitHub.
 
 ## Guidelines for all pull-requests

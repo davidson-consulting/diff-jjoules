@@ -1,7 +1,5 @@
 # Diff-JJoules · [![tests](https://github.com/davidson-consulting/diff-jjoules/actions/workflows/master.yml/badge.svg)](https://github.com/davidson-consulting/diff-jjoules/actions/workflows/master.yml)  [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=davidson-consulting_diff-jjoules&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=davidson-consulting_diff-jjoules) [![codecov](https://codecov.io/gh/davidson-consulting/diff-jjoules/branch/master/graph/badge.svg?token=XH4Q36YMME)](https://codecov.io/gh/davidson-consulting/diff-jjoules)
 
-------------------------------
-
 `diff-jjoules` is a set of maven plugins that measures the impact of commits on the energy consumption of the program.
 
 ## Install
