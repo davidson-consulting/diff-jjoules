@@ -8,6 +8,7 @@ import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.mark.MarkStep;
 import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
 import fr.davidson.diff.jjoules.report.ReportEnum;
+import fr.davidson.diff.jjoules.suspect.SuspectStep;
 import fr.davidson.diff.jjoules.util.CSVFileManager;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
@@ -45,10 +46,6 @@ public class Configuration {
     public final String pathToRepositoryV1;
 
     public final String pathToRepositoryV2;
-
-    public final String pathToJSONSuspiciousV1;
-
-    public final String pathToJSONSuspiciousV2;
 
     public final String pathToReport;
 
@@ -120,8 +117,6 @@ public class Configuration {
                 "",
                 "",
                 "",
-                "suspicious_v1.json",
-                "suspicious_v2.json",
                 ".github/workflows/template.md",
                 true,
                 shouldMark,
@@ -142,8 +137,6 @@ public class Configuration {
                          String pathToDiff,
                          String pathToRepositoryV1,
                          String pathToRepositoryV2,
-                         String pathToJSONSuspiciousV1,
-                         String pathToJSONSuspiciousV2,
                          String pathToReport,
                          boolean shouldSuspect,
                          boolean shouldMark,
@@ -176,8 +169,6 @@ public class Configuration {
         outputDirectory.mkdir();
         this.pathToRepositoryV1 = pathToRepositoryV1;
         this.pathToRepositoryV2 = pathToRepositoryV2;
-        this.pathToJSONSuspiciousV1 = pathToJSONSuspiciousV1;
-        this.pathToJSONSuspiciousV2 = pathToJSONSuspiciousV2;
         if (pathToDiff == null || pathToDiff.isEmpty()) {
             LOGGER.warn("No path to diff file has been specified.");
             LOGGER.warn("I'll compute a diff file using the UNIX diff command");
@@ -328,7 +319,7 @@ public class Configuration {
     public Map<String, Double> getScorePerLineV1() {
         if (this.scorePerLineV1 == null) {
             try {
-                this.scorePerLineV1 = JSONUtils.read(this.pathToJSONSuspiciousV1, Map.class);
+                this.scorePerLineV1 = JSONUtils.read(SuspectStep.PATH_TO_JSON_SUSPICIOUS_V1, Map.class);
             } catch (Exception e) {
                 return Collections.emptyMap();
             }
@@ -343,7 +334,7 @@ public class Configuration {
     public Map<String, Double> getScorePerLineV2() {
         if (this.scorePerLineV2 == null) {
             try {
-                this.scorePerLineV2 = JSONUtils.read(this.pathToJSONSuspiciousV2, Map.class);
+                this.scorePerLineV2 = JSONUtils.read(SuspectStep.PATH_TO_JSON_SUSPICIOUS_V2, Map.class);
             } catch (Exception e) {
                 return Collections.emptyMap();
             }
@@ -367,8 +358,6 @@ public class Configuration {
                 ", diff='" + diff + '\'' +
                 ", pathToRepositoryV1='" + pathToRepositoryV1 + '\'' +
                 ", pathToRepositoryV2='" + pathToRepositoryV2 + '\'' +
-                ", pathToJSONSuspiciousV1='" + pathToJSONSuspiciousV1 + '\'' +
-                ", pathToJSONSuspiciousV2='" + pathToJSONSuspiciousV2 + '\'' +
                 ", pathToReport='" + pathToReport + '\'' +
                 ", classpathV1=" + Arrays.toString(classpathV1) +
                 ", classpathV2=" + Arrays.toString(classpathV2) +

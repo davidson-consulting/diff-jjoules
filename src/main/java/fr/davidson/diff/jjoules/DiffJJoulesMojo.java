@@ -87,18 +87,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
     @Parameter(property = "path-repo-v2")
     private String pathToRepositoryV2;
 
-    /**
-     *  Specify the path to a json file that contains the list of test methods that are suspicious regarding the version before the commit.
-     */
-    @Parameter(property = "path-json-suspicious-v2", defaultValue = "suspicious_v1.json")
-    private String pathToJSONSuspiciousV1;
-
-    /**
-     *  Specify the path to a json file that contains the list of test methods that are suspicious regarding the version after the commit.
-     */
-    @Parameter(property = "path-json-suspicious-v2", defaultValue = "suspicious_v2.json")
-    private String pathToJSONSuspiciousV2;
-
     // TODO should depend on the report we want to output
     // For now I set by default the path to the template.md for MarkdownMojo
     /**
@@ -159,8 +147,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
                     this.pathToDiff,
                     this.pathToRepositoryV1,
                     this.pathToRepositoryV2,
-                    this.pathToJSONSuspiciousV1,
-                    this.pathToJSONSuspiciousV2,
                     this.pathToReport,
                     this.shouldSuspect,
                     this.shouldMark,

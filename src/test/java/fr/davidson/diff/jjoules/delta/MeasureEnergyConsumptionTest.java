@@ -55,8 +55,6 @@ public class MeasureEnergyConsumptionTest {
                         "",
                         "",
                         "",
-                        "",
-                        "",
                         true, true, ReportEnum.NONE
                 ),
                 dataV1,
