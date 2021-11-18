@@ -5,7 +5,7 @@ preferred-citation:
   type: article
   journal: "ArXiv e-prints"
   status: "preprint"
-  https://arxiv.org/abs/2108.05691
+  url: "https://arxiv.org/abs/2108.05691"
   authors:
     - family-names: Danglot
       given-names: Benjamin
