@@ -33,9 +33,9 @@ public class DiffJJoulesMojoTest {
                     Utils.readClasspathFile("src/test/resources/diff-jjoules-demo/classpath").split(":"),
                     false,
                     5,
-                    "", "", "", "",
+                    "",
                     "src/test/java/fr/davidson/diff/jjoules/delta/MeasureEnergyConsumptionTest.java",
-                    "", "", "",
+                    "", "",
                     "", "", "",
                     "", "", "", true, true, ReportEnum.NONE
             );

@@ -68,26 +68,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
     private static final String DEFAULT_OUTPUT_PATH = "diff-jjoules";
 
     /**
-     *  Specify the path to a json file that contains the deltas per test
-     */
-    @Parameter(property = "path-json-delta", defaultValue = "deltas.json")
-    private String pathToJSONDelta;
-
-    /**
-     *  Specify the path to a json file that contains the measure of the energy consumption of tests for the version
-     *  before the code changes.
-     */
-    @Parameter(property = "path-json-data-first-version", defaultValue = "data_v1.json")
-    private String pathToJSONDataV1;
-
-    /**
-     *  Specify the path to a json file that contains the measure of the energy consumption of tests for the version
-     *  after the code changes.
-     */
-    @Parameter(property = "path-json-data-second-version", defaultValue = "data_v2.json")
-    private String pathToJSONDataV2;
-
-    /**
      * Specify the path of a diff file. If it is not specified, it will be computed using diff command line.
      */
     @Parameter(defaultValue = "", property = "path-to-diff")
@@ -112,12 +92,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
      */
     @Parameter(property = "path-repo-v2")
     private String pathToRepositoryV2;
-
-    /**
-     *  Specify the path to a json file that contains the list of test methods that is considered to compute the delta omega.
-     */
-    @Parameter(property = "path-considered-test-method-names", defaultValue = "consideredTestMethods.json")
-    private String pathToJSONConsideredTestMethodNames;
 
     /**
      *  Specify the path to a json file that contains the list of test methods that are executing the additions of the commit.
@@ -200,14 +174,10 @@ public class DiffJJoulesMojo extends AbstractMojo {
                     junit4,
                     this.iterations,
                     this.outputPath,
-                    this.pathToJSONDelta,
-                    this.pathToJSONDataV1,
-                    this.pathToJSONDataV2,
                     this.pathToDiff,
                     this.pathToJSONDeltaOmega,
                     this.pathToRepositoryV1,
                     this.pathToRepositoryV2,
-                    this.pathToJSONConsideredTestMethodNames,
                     this.pathToExecLinesAdditions,
                     this.pathToExecLinesDeletions,
                     this.pathToJSONSuspiciousV1,

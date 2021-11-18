@@ -1,6 +1,7 @@
 package fr.davidson.diff.jjoules;
 
 import eu.stamp_project.diff_test_selection.diff.DiffComputer;
+import fr.davidson.diff.jjoules.delta.DeltaStep;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
@@ -38,12 +39,6 @@ public class Configuration {
 
     public final String output;
 
-    public final String pathToJSONDelta;
-
-    public final String pathToJSONDataV1;
-
-    public final String pathToJSONDataV2;
-
     public final String diff;
 
     public final String pathToJSONDeltaOmega;
@@ -51,8 +46,6 @@ public class Configuration {
     public final String pathToRepositoryV1;
 
     public final String pathToRepositoryV2;
-
-    public final String pathToJSONConsideredTestMethodNames;
 
     public final String pathToExecLinesAdditions;
 
@@ -129,14 +122,10 @@ public class Configuration {
                 junit4,
                 iterations,
                 "diff-jjoules",
-                "deltas.json",
-                "data_v1.json",
-                "data_v2.json",
                 "",
                 "deltaOmega.json",
                 "",
                 "",
-                "consideredTestMethods.json",
                 "exec_additions.json",
                 "exec_deletions.json",
                 "suspicious_v1.json",
@@ -158,14 +147,10 @@ public class Configuration {
                          boolean junit4,
                          int iterations,
                          String output,
-                         String pathToJSONDelta,
-                         String pathToJSONDataV1,
-                         String pathToJSONDataV2,
                          String pathToDiff,
                          String pathToJSONDeltaOmega,
                          String pathToRepositoryV1,
                          String pathToRepositoryV2,
-                         String pathToJSONConsideredTestMethodNames,
                          String pathToExecLinesAdditions,
                          String pathToExecLinesDeletions,
                          String pathToJSONSuspiciousV1,
@@ -202,14 +187,10 @@ public class Configuration {
         outputDirectory.mkdir();
         this.pathToRepositoryV1 = pathToRepositoryV1;
         this.pathToRepositoryV2 = pathToRepositoryV2;
-        this.pathToJSONConsideredTestMethodNames = pathToJSONConsideredTestMethodNames;
         this.pathToExecLinesAdditions = pathToExecLinesAdditions;
         this.pathToExecLinesDeletions = pathToExecLinesDeletions;
         this.pathToJSONSuspiciousV1 = pathToJSONSuspiciousV1;
         this.pathToJSONSuspiciousV2 = pathToJSONSuspiciousV2;
-        this.pathToJSONDelta = pathToJSONDelta;
-        this.pathToJSONDataV1 = pathToJSONDataV1;
-        this.pathToJSONDataV2 = pathToJSONDataV2;
         if (pathToDiff == null || pathToDiff.isEmpty()) {
             LOGGER.warn("No path to diff file has been specified.");
             LOGGER.warn("I'll compute a diff file using the UNIX diff command");
@@ -267,7 +248,7 @@ public class Configuration {
     public Datas getDataV1() {
         if (this.dataV1 == null) {
             try {
-                this.dataV1 = JSONUtils.read(this.pathToJSONDataV1, Datas.class);
+                this.dataV1 = JSONUtils.read(DeltaStep.PATH_TO_JSON_DATA_V1, Datas.class);
             } catch (Exception e) {
                 return new Datas();
             }
@@ -282,7 +263,7 @@ public class Configuration {
     public Datas getDataV2() {
         if (this.dataV2 == null) {
             try {
-                this.dataV2 = JSONUtils.read(this.pathToJSONDataV2, Datas.class);
+                this.dataV2 = JSONUtils.read(DeltaStep.PATH_TO_JSON_DATA_V2, Datas.class);
             } catch (Exception e) {
                 return new Datas();
             }
@@ -297,7 +278,7 @@ public class Configuration {
     public Deltas getDeltas() {
         if (this.deltas == null) {
             try {
-                this.deltas = JSONUtils.read(this.pathToJSONDelta, Deltas.class);
+                this.deltas = JSONUtils.read(DeltaStep.PATH_TO_JSON_DELTA, Deltas.class);
             } catch (Exception e) {
                 return new Deltas();
             }
@@ -312,7 +293,7 @@ public class Configuration {
     public Map<String, List<String>> getConsideredTestsNames() {
         if (this.consideredTestsNames == null) {
             try {
-                this.consideredTestsNames = JSONUtils.read(this.pathToJSONConsideredTestMethodNames, Map.class);
+                this.consideredTestsNames = JSONUtils.read(DeltaStep.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME, Map.class);
             } catch (Exception e) {
                 e.printStackTrace();
                 return Collections.emptyMap();
@@ -397,14 +378,10 @@ public class Configuration {
                 ", junit4=" + junit4 +
                 ", iterations=" + iterations +
                 ", output='" + output + '\'' +
-                ", pathToJSONDelta='" + pathToJSONDelta + '\'' +
-                ", pathToJSONDataV1='" + pathToJSONDataV1 + '\'' +
-                ", pathToJSONDataV2='" + pathToJSONDataV2 + '\'' +
                 ", diff='" + diff + '\'' +
                 ", pathToJSONDeltaOmega='" + pathToJSONDeltaOmega + '\'' +
                 ", pathToRepositoryV1='" + pathToRepositoryV1 + '\'' +
                 ", pathToRepositoryV2='" + pathToRepositoryV2 + '\'' +
-                ", pathToJSONConsideredTestMethodNames='" + pathToJSONConsideredTestMethodNames + '\'' +
                 ", pathToExecLinesAdditions='" + pathToExecLinesAdditions + '\'' +
                 ", pathToExecLinesDeletions='" + pathToExecLinesDeletions + '\'' +
                 ", pathToJSONSuspiciousV1='" + pathToJSONSuspiciousV1 + '\'' +
