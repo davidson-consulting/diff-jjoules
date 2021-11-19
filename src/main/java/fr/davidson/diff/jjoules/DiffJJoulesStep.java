@@ -7,7 +7,6 @@ import fr.davidson.diff.jjoules.instrumentation.InstrumentationStep;
 import fr.davidson.diff.jjoules.mark.MarkStep;
 import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
-import fr.davidson.diff.jjoules.util.CSVFileManager;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.maven.MavenRunner;
 import org.eclipse.jgit.api.Git;
@@ -22,8 +21,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
