@@ -25,6 +25,22 @@ public class MarkStep extends DiffJJoulesStep {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MarkStep.class);
 
+    public static final String PATH_TO_JSON_COVERAGE_FIRST = "coverage_first.json";
+
+    public static final String PATH_TO_JSON_COVERAGE_SECOND = "coverage_second.json";
+
+    public static final String PATH_TO_JSON_EXEC_DELETION = "exec_deletions.json";
+
+    public static final String PATH_TO_JSON_EXEC_ADDITIONS = "exec_additions.json";
+
+    public static final String PATH_TO_JSON_THETA = "theta.json";
+
+    public static final String PATH_TO_JSON_OMEGA = "omega.json";
+
+    public static final String PATH_TO_JSON_OMEGA_UPPER = "Omega.json";
+
+    public static final String PATH_TO_JSON_DELTA_OMEGA = "deltaOmega.json";
+
     protected String getReportPathname() {
         return "mark";
     }
@@ -53,8 +69,8 @@ public class MarkStep extends DiffJJoulesStep {
                         consideredTestsNames,
                         configuration.pathToSecondVersion
                 );
-        JSONUtils.write(configuration.output + "/coverage_first.json", coverageFirstVersion);
-        JSONUtils.write(configuration.output + "/coverage_second.json", coverageSecondVersion);
+        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_COVERAGE_FIRST, coverageFirstVersion);
+        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_COVERAGE_SECOND, coverageSecondVersion);
         // Exec(l,t)
         final List<ExecsLines> execLineTestMaps = Exec.computeExecLT(
                 configuration.pathToFirstVersion,
@@ -63,20 +79,20 @@ public class MarkStep extends DiffJJoulesStep {
                 coverageSecondVersion,
                 configuration.diff
         );
-        JSONUtils.write(configuration.output + "/exec_deletions.json", execLineTestMaps.get(0));
+        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_EXEC_DELETION, execLineTestMaps.get(0));
         configuration.setExecLinesAdditions(execLineTestMaps.get(0));
-        JSONUtils.write(configuration.output + "/exec_additions.json", execLineTestMaps.get(1));
+        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_EXEC_ADDITIONS, execLineTestMaps.get(1));
         configuration.setExecLinesDeletions(execLineTestMaps.get(1));
 
         // 2 Compute line values
         final Map<String, Integer> thetaL = Line.computeThetaL(execLineTestMaps);
-        JSONUtils.write(configuration.output + "/theta.json", thetaL);
+        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_THETA, thetaL);
         final Map<String, Double> phiL = Line.computePhiL(Line.computeTheta(thetaL), thetaL);
         // 3
         final Map<String, Double> omegaT = Test.computeOmegaT(execLineTestMaps, phiL);
-        JSONUtils.write(configuration.output + "/omega.json", omegaT);
+        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_OMEGA, omegaT);
         final Map<String, Data> omegaUpperT = Test.computeOmegaUpperT(omegaT, consideredDeltas);
-        JSONUtils.write(configuration.output + "/Omega.json", omegaUpperT);
+        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_OMEGA_UPPER, omegaUpperT);
         final Data deltaOmega = new Data(
                 omegaUpperT.values().stream().map(d -> d.energy).reduce(Double::sum).orElse(0.0D),
                 omegaUpperT.values().stream().map(d -> d.instructions).reduce(Double::sum).orElse(0.0D),
@@ -87,7 +103,7 @@ public class MarkStep extends DiffJJoulesStep {
                 omegaUpperT.values().stream().map(d -> d.branches).reduce(Double::sum).orElse(0.0D),
                 omegaUpperT.values().stream().map(d -> d.branchMisses).reduce(Double::sum).orElse(0.0D)
         );
-        JSONUtils.write(configuration.output + "/deltaOmega.json", deltaOmega);
+        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_DELTA_OMEGA, deltaOmega);
         configuration.setDeltaOmega(deltaOmega);
     }
 

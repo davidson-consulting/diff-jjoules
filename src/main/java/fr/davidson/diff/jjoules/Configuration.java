@@ -1,14 +1,16 @@
 package fr.davidson.diff.jjoules;
 
 import eu.stamp_project.diff_test_selection.diff.DiffComputer;
+import fr.davidson.diff.jjoules.delta.DeltaStep;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
+import fr.davidson.diff.jjoules.mark.MarkStep;
 import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
 import fr.davidson.diff.jjoules.report.ReportEnum;
+import fr.davidson.diff.jjoules.suspect.SuspectStep;
 import fr.davidson.diff.jjoules.util.CSVFileManager;
 import fr.davidson.diff.jjoules.util.JSONUtils;
-import fr.davidson.diff.jjoules.util.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +24,8 @@ import java.util.*;
  */
 public class Configuration {
 
+    public static final String CLASSPATH = "classpath";
+
     private static final Logger LOGGER = LoggerFactory.getLogger(Configuration.class);
 
     private static final String SRC_FOLDER = "src";
@@ -30,47 +34,23 @@ public class Configuration {
 
     public final String pathToSecondVersion;
 
-    public final String pathToTestListAsCSV;
-
     public final boolean junit4;
 
     public final int iterations;
 
     public final String output;
 
-    public final String pathToJSONDelta;
-
-    public final String pathToJSONDataV1;
-
-    public final String pathToJSONDataV2;
-
     public final String diff;
-
-    public final String pathToJSONDeltaOmega;
 
     public final String pathToRepositoryV1;
 
     public final String pathToRepositoryV2;
-
-    public final String pathToJSONConsideredTestMethodNames;
-
-    public final String pathToExecLinesAdditions;
-
-    public final String pathToExecLinesDeletions;
-
-    public final String pathToJSONSuspiciousV1;
-
-    public final String pathToJSONSuspiciousV2;
 
     public final String pathToReport;
 
     public final boolean shouldSuspect;
 
     public final boolean shouldMark;
-
-    public final String classpathPathV1;
-
-    public final String classpathPathV2;
 
     private String[] classpathV1;
 
@@ -110,37 +90,21 @@ public class Configuration {
 
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
-                         String pathToTestListAsCSV,
-                         String classpathPathV1,
-                         String classpathPathV2,
-                         String[] classpathV1,
-                         String[] classpathV2,
+                         String classpathV1,
+                         String classpathV2,
                          boolean junit4,
                          int iterations,
                          boolean shouldMark) {
         this(
                 pathToFirstVersion,
                 pathToSecondVersion,
-                pathToTestListAsCSV,
-                classpathPathV1,
-                classpathPathV2,
                 classpathV1,
                 classpathV2,
                 junit4,
                 iterations,
                 "diff-jjoules",
-                "deltas.json",
-                "data_v1.json",
-                "data_v2.json",
-                "",
-                "deltaOmega.json",
                 "",
                 "",
-                "consideredTestMethods.json",
-                "exec_additions.json",
-                "exec_deletions.json",
-                "suspicious_v1.json",
-                "suspicious_v2.json",
                 ".github/workflows/template.md",
                 true,
                 shouldMark,
@@ -150,32 +114,17 @@ public class Configuration {
 
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
-                         String pathToTestListAsCSV,
-                         String classpathPathV1,
-                         String classpathPathV2,
-                         String[] classpathV1,
-                         String[] classpathV2,
+                         String classpathV1,
+                         String classpathV2,
                          boolean junit4,
                          int iterations,
                          String output,
-                         String pathToJSONDelta,
-                         String pathToJSONDataV1,
-                         String pathToJSONDataV2,
-                         String pathToDiff,
-                         String pathToJSONDeltaOmega,
                          String pathToRepositoryV1,
                          String pathToRepositoryV2,
-                         String pathToJSONConsideredTestMethodNames,
-                         String pathToExecLinesAdditions,
-                         String pathToExecLinesDeletions,
-                         String pathToJSONSuspiciousV1,
-                         String pathToJSONSuspiciousV2,
                          String pathToReport,
                          boolean shouldSuspect,
                          boolean shouldMark,
                          ReportEnum reportEnum) {
-        this.classpathPathV1 = classpathPathV1;
-        this.classpathPathV2 = classpathPathV2;
         this.shouldSuspect = shouldSuspect;
         this.shouldMark = shouldMark;
         this.reportEnum = reportEnum;
@@ -183,12 +132,11 @@ public class Configuration {
         this.ownConsumptionReports = new LinkedHashMap<>();
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
-        this.pathToTestListAsCSV = pathToTestListAsCSV == null || pathToTestListAsCSV.isEmpty() ? "" : new File(pathToTestListAsCSV).isAbsolute() ? pathToTestListAsCSV : this.pathToFirstVersion + "/" + pathToTestListAsCSV;
         this.junit4 = junit4;
-        this.classpathV1 = classpathV1;
-        this.classpathV1AsString = String.join(":", classpathV1);
-        this.classpathV2 = classpathV2;
-        this.classpathV2AsString = String.join(":", classpathV2);
+        this.classpathV1AsString = classpathV1;
+        this.classpathV2AsString = classpathV2;
+        this.classpathV1 = this.classpathV1AsString.split(":");
+        this.classpathV2 = this.classpathV2AsString.split(":");
         this.iterations = iterations;
         if (new File(output).isAbsolute()) {
             this.output = output;
@@ -202,29 +150,16 @@ public class Configuration {
         outputDirectory.mkdir();
         this.pathToRepositoryV1 = pathToRepositoryV1;
         this.pathToRepositoryV2 = pathToRepositoryV2;
-        this.pathToJSONConsideredTestMethodNames = pathToJSONConsideredTestMethodNames;
-        this.pathToExecLinesAdditions = pathToExecLinesAdditions;
-        this.pathToExecLinesDeletions = pathToExecLinesDeletions;
-        this.pathToJSONSuspiciousV1 = pathToJSONSuspiciousV1;
-        this.pathToJSONSuspiciousV2 = pathToJSONSuspiciousV2;
-        this.pathToJSONDelta = pathToJSONDelta;
-        this.pathToJSONDataV1 = pathToJSONDataV1;
-        this.pathToJSONDataV2 = pathToJSONDataV2;
-        if (pathToDiff == null || pathToDiff.isEmpty()) {
-            LOGGER.warn("No path to diff file has been specified.");
-            LOGGER.warn("I'll compute a diff file using the UNIX diff command");
-            LOGGER.warn("You may encounter troubles.");
-            LOGGER.warn("If so, please specify a path to a correct diff file");
-            LOGGER.warn("or implement a new way to compute a diff file.");
-            this.diff = new DiffComputer()
-                    .computeDiffWithDiffCommand(
-                            new File(pathToFirstVersion + "/" + SRC_FOLDER),
-                            new File(pathToSecondVersion + "/" + SRC_FOLDER)
-                    );
-        } else {
-            this.diff = Utils.readFile(pathToDiff);
-        }
-        this.pathToJSONDeltaOmega = pathToJSONDeltaOmega;
+        LOGGER.warn("No path to diff file has been specified.");
+        LOGGER.warn("I'll compute a diff file using the UNIX diff command");
+        LOGGER.warn("You may encounter troubles.");
+        LOGGER.warn("If so, please specify a path to a correct diff file");
+        LOGGER.warn("or implement a new way to compute a diff file.");
+        this.diff = new DiffComputer()
+                .computeDiffWithDiffCommand(
+                        new File(pathToFirstVersion + "/" + SRC_FOLDER),
+                        new File(pathToSecondVersion + "/" + SRC_FOLDER)
+                );
     }
 
     public void setTestsList(Map<String, List<String>> testsList) {
@@ -233,7 +168,7 @@ public class Configuration {
 
     public Map<String, List<String>> getTestsList() {
         if (this.testsList == null) {
-            this.testsList = CSVFileManager.readFile(this.pathToTestListAsCSV);
+            this.testsList = CSVFileManager.readFile(this.pathToFirstVersion + "/" + DiffJJoulesStep.PATH_TO_CSV_TESTS_EXEC_CHANGES);
         }
         return testsList;
     }
@@ -267,7 +202,7 @@ public class Configuration {
     public Datas getDataV1() {
         if (this.dataV1 == null) {
             try {
-                this.dataV1 = JSONUtils.read(this.pathToJSONDataV1, Datas.class);
+                this.dataV1 = JSONUtils.read(DeltaStep.PATH_TO_JSON_DATA_V1, Datas.class);
             } catch (Exception e) {
                 return new Datas();
             }
@@ -282,7 +217,7 @@ public class Configuration {
     public Datas getDataV2() {
         if (this.dataV2 == null) {
             try {
-                this.dataV2 = JSONUtils.read(this.pathToJSONDataV2, Datas.class);
+                this.dataV2 = JSONUtils.read(DeltaStep.PATH_TO_JSON_DATA_V2, Datas.class);
             } catch (Exception e) {
                 return new Datas();
             }
@@ -297,7 +232,7 @@ public class Configuration {
     public Deltas getDeltas() {
         if (this.deltas == null) {
             try {
-                this.deltas = JSONUtils.read(this.pathToJSONDelta, Deltas.class);
+                this.deltas = JSONUtils.read(DeltaStep.PATH_TO_JSON_DELTA, Deltas.class);
             } catch (Exception e) {
                 return new Deltas();
             }
@@ -312,7 +247,7 @@ public class Configuration {
     public Map<String, List<String>> getConsideredTestsNames() {
         if (this.consideredTestsNames == null) {
             try {
-                this.consideredTestsNames = JSONUtils.read(this.pathToJSONConsideredTestMethodNames, Map.class);
+                this.consideredTestsNames = JSONUtils.read(DeltaStep.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME, Map.class);
             } catch (Exception e) {
                 e.printStackTrace();
                 return Collections.emptyMap();
@@ -327,7 +262,7 @@ public class Configuration {
 
     public ExecsLines getExecLinesAdditions() {
         if (this.execLinesAdditions == null) {
-            this.execLinesAdditions = JSONUtils.read(this.pathToExecLinesAdditions, ExecsLines.class);
+            this.execLinesAdditions = JSONUtils.read(MarkStep.PATH_TO_JSON_EXEC_ADDITIONS, ExecsLines.class);
         }
         return execLinesAdditions;
     }
@@ -338,7 +273,7 @@ public class Configuration {
 
     public ExecsLines getExecLinesDeletions() {
         if (this.execLinesDeletions == null) {
-            JSONUtils.read(this.pathToExecLinesDeletions, ExecsLines.class);
+            JSONUtils.read(MarkStep.PATH_TO_JSON_EXEC_DELETION, ExecsLines.class);
         }
         return execLinesDeletions;
     }
@@ -349,7 +284,7 @@ public class Configuration {
 
     public Data getDeltaOmega() {
         if (this.deltaOmega == null) {
-            this.deltaOmega = JSONUtils.read(this.pathToJSONDeltaOmega, Data.class);
+            this.deltaOmega = JSONUtils.read(MarkStep.PATH_TO_JSON_DELTA_OMEGA, Data.class);
         }
         return deltaOmega;
     }
@@ -361,7 +296,7 @@ public class Configuration {
     public Map<String, Double> getScorePerLineV1() {
         if (this.scorePerLineV1 == null) {
             try {
-                this.scorePerLineV1 = JSONUtils.read(this.pathToJSONSuspiciousV1, Map.class);
+                this.scorePerLineV1 = JSONUtils.read(SuspectStep.PATH_TO_JSON_SUSPICIOUS_V1, Map.class);
             } catch (Exception e) {
                 return Collections.emptyMap();
             }
@@ -376,7 +311,7 @@ public class Configuration {
     public Map<String, Double> getScorePerLineV2() {
         if (this.scorePerLineV2 == null) {
             try {
-                this.scorePerLineV2 = JSONUtils.read(this.pathToJSONSuspiciousV2, Map.class);
+                this.scorePerLineV2 = JSONUtils.read(SuspectStep.PATH_TO_JSON_SUSPICIOUS_V2, Map.class);
             } catch (Exception e) {
                 return Collections.emptyMap();
             }
@@ -393,22 +328,12 @@ public class Configuration {
         return "Configuration{" +
                 "pathToFirstVersion='" + pathToFirstVersion + '\'' +
                 ", pathToSecondVersion='" + pathToSecondVersion + '\'' +
-                ", pathToTestListAsCSV='" + pathToTestListAsCSV + '\'' +
                 ", junit4=" + junit4 +
                 ", iterations=" + iterations +
                 ", output='" + output + '\'' +
-                ", pathToJSONDelta='" + pathToJSONDelta + '\'' +
-                ", pathToJSONDataV1='" + pathToJSONDataV1 + '\'' +
-                ", pathToJSONDataV2='" + pathToJSONDataV2 + '\'' +
                 ", diff='" + diff + '\'' +
-                ", pathToJSONDeltaOmega='" + pathToJSONDeltaOmega + '\'' +
                 ", pathToRepositoryV1='" + pathToRepositoryV1 + '\'' +
                 ", pathToRepositoryV2='" + pathToRepositoryV2 + '\'' +
-                ", pathToJSONConsideredTestMethodNames='" + pathToJSONConsideredTestMethodNames + '\'' +
-                ", pathToExecLinesAdditions='" + pathToExecLinesAdditions + '\'' +
-                ", pathToExecLinesDeletions='" + pathToExecLinesDeletions + '\'' +
-                ", pathToJSONSuspiciousV1='" + pathToJSONSuspiciousV1 + '\'' +
-                ", pathToJSONSuspiciousV2='" + pathToJSONSuspiciousV2 + '\'' +
                 ", pathToReport='" + pathToReport + '\'' +
                 ", classpathV1=" + Arrays.toString(classpathV1) +
                 ", classpathV2=" + Arrays.toString(classpathV2) +

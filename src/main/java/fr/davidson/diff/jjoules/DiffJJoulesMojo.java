@@ -1,7 +1,6 @@
 package fr.davidson.diff.jjoules;
 
 import fr.davidson.diff.jjoules.report.ReportEnum;
-import fr.davidson.diff.jjoules.util.Utils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -17,41 +16,20 @@ import org.apache.maven.project.MavenProject;
 @Mojo(name = "diff-jjoules")
 public class DiffJJoulesMojo extends AbstractMojo {
 
-    protected static final String TEST_FOLDER_PATH = "src/test/java/";
-
-    @Parameter(defaultValue = "${basedir}/pom.xml")
-    private String pathToPom;
-
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
     protected MavenProject project;
 
     /**
      * Specify the path to root directory of the project in the second version.
      */
-    @Parameter(property = "path-dir-second-version")
+    @Parameter(property = "path-dir-second-version", required = true)
     protected String pathDirSecondVersion;
 
-    /**
-     * Specify the path to a CSV file that contains the list of tests to be instrumented.
-     */
-    @Parameter(property = "tests-list", defaultValue = "testsThatExecuteTheChange.csv")
-    protected String testsList;
+    @Parameter(property = "classpath-v1", required = true)
+    protected String classpathV1;
 
-    /**
-     * Specify the path to a file that contains the full classpath of the project for the version before the code changes.
-     * We advise use to use the following goal to generate it :
-     * dependency:build-classpath -Dmdep.outputFile=classpath
-     */
-    @Parameter(property = "classpath-path-v1", defaultValue = "classpath")
-    protected String classpathPath;
-
-    /**
-     * Specify the path to a file that contains the full classpath of the project for the version after the code changes.
-     * We advise use to use the following goal to generate it :
-     * dependency:build-classpath -Dmdep.outputFile=classpath
-     */
-    @Parameter(property = "classpath-path-v2", defaultValue = "classpath")
-    protected String classpathPathV2;
+    @Parameter(property = "classpath-v2", required = true)
+    protected String classpathV2;
 
     /**
      * Number of execution to do to measure the energy consumption of tests.
@@ -60,96 +38,18 @@ public class DiffJJoulesMojo extends AbstractMojo {
     protected int iterations;
 
     /**
-     *  Specify the path to output the files that produces this plugin
-     */
-    @Parameter(property = "output-path", defaultValue = "diff-jjoules")
-    protected String outputPath;
-
-    private static final String DEFAULT_OUTPUT_PATH = "diff-jjoules";
-
-    /**
-     *  Specify the path to a json file that contains the deltas per test
-     */
-    @Parameter(property = "path-json-delta", defaultValue = "deltas.json")
-    private String pathToJSONDelta;
-
-    /**
-     *  Specify the path to a json file that contains the measure of the energy consumption of tests for the version
-     *  before the code changes.
-     */
-    @Parameter(property = "path-json-data-first-version", defaultValue = "data_v1.json")
-    private String pathToJSONDataV1;
-
-    /**
-     *  Specify the path to a json file that contains the measure of the energy consumption of tests for the version
-     *  after the code changes.
-     */
-    @Parameter(property = "path-json-data-second-version", defaultValue = "data_v2.json")
-    private String pathToJSONDataV2;
-
-    /**
-     * Specify the path of a diff file. If it is not specified, it will be computed using diff command line.
-     */
-    @Parameter(defaultValue = "", property = "path-to-diff")
-    private String pathToDiff;
-
-    /**
-     *  Specify the path to a json file that contains the delta omega to decide to pass or fail the build
-     */
-    @Parameter(property = "path-json-delta-omega", defaultValue = "deltaOmega.json")
-    private String pathToJSONDeltaOmega;
-
-    /**
      *  Specify the path to the root directory of the project before applying the commit.
      *  This is useful when it is used on multi-modules project.
      */
-    @Parameter(property = "path-repo-v1")
+    @Parameter(property = "path-repo-v1", defaultValue = "")
     private String pathToRepositoryV1;
 
     /**
      *  Specify the path to the root directory of the project after applying the commit.
      *  This is useful when it is used on multi-modules project.
      */
-    @Parameter(property = "path-repo-v2")
+    @Parameter(property = "path-repo-v2", defaultValue = "")
     private String pathToRepositoryV2;
-
-    /**
-     *  Specify the path to a json file that contains the list of test methods that is considered to compute the delta omega.
-     */
-    @Parameter(property = "path-considered-test-method-names", defaultValue = "consideredTestMethods.json")
-    private String pathToJSONConsideredTestMethodNames;
-
-    /**
-     *  Specify the path to a json file that contains the list of test methods that are executing the additions of the commit.
-     */
-    @Parameter(property = "path-exec-lines-additions", defaultValue = "exec_additions.json")
-    private String pathToExecLinesAdditions;
-
-    /**
-     *  Specify the path to a json file that contains the list of test methods that are executing the deletions of the commit.
-     */
-    @Parameter(property = "path-exec-lines-deletions", defaultValue = "exec_deletions.json")
-    private String pathToExecLinesDeletions;
-
-    /**
-     *  Specify the path to a json file that contains the list of test methods that are suspicious regarding the version before the commit.
-     */
-    @Parameter(property = "path-json-suspicious-v2", defaultValue = "suspicious_v1.json")
-    private String pathToJSONSuspiciousV1;
-
-    /**
-     *  Specify the path to a json file that contains the list of test methods that are suspicious regarding the version after the commit.
-     */
-    @Parameter(property = "path-json-suspicious-v2", defaultValue = "suspicious_v2.json")
-    private String pathToJSONSuspiciousV2;
-
-    // TODO should depend on the report we want to output
-    // For now I set by default the path to the template.md for MarkdownMojo
-    /**
-     * Specify the path to output the report
-     */
-    @Parameter(property = "path-to-report", defaultValue = ".github/workflows/template.md")
-    private String pathToReport;
 
     /**
      * Enable or disable the suspect (and failer) goals when running diff-jjoules
@@ -164,15 +64,27 @@ public class DiffJJoulesMojo extends AbstractMojo {
     private boolean shouldMark;
 
     /**
+     *  Specify the path to output the files that produces this plugin
+     */
+    @Parameter(property = "output-path", defaultValue = "diff-jjoules")
+    protected String outputPath;
+
+    /**
      * Specify the type of report to generate
      */
     @Parameter(property = "report", defaultValue = "MARKDOWN")
     private String reportType;
 
+    // TODO should depend on the report we want to output
+    // For now I set by default the path to the template.md for MarkdownMojo
+    /**
+     * Specify the path to output the report
+     */
+    @Parameter(property = "path-to-report", defaultValue = ".github/workflows/template.md")
+    private String pathToReport;
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        final String classpath;
-        final String classpathV2;
         try {
             getLog().info("Running on:");
             getLog().info(this.project.getBasedir().getAbsolutePath());
@@ -183,35 +95,20 @@ public class DiffJJoulesMojo extends AbstractMojo {
             if (this.pathToRepositoryV2 == null || this.pathToRepositoryV2.isEmpty()) {
                 this.pathToRepositoryV2 = this.pathDirSecondVersion;
             }
-            classpath = Utils.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath);
-            classpathV2 = this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : Utils.readClasspathFile(this.pathDirSecondVersion + "/" + this.classpathPathV2);
-            final boolean junit4 = !classpath.contains("junit-jupiter-engine-5") && (classpath.contains("junit-4") || classpath.contains("junit-3"));
+            final boolean junit4 = !classpathV1.contains("junit-jupiter-engine-5") && (classpathV1.contains("junit-4") || classpathV1.contains("junit-3"));
             if (junit4) {
                 getLog().info("Enable JUnit4 mode");
             }
             Configuration configuration = new Configuration(
                     this.project.getBasedir().getAbsolutePath(),
                     this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.pathDirSecondVersion,
-                    this.testsList,
-                    this.classpathPath,
-                    this.classpathPathV2,
-                    classpath.split(":"),
-                    classpathV2.split(":"),
+                    classpathV1,
+                    classpathV2,
                     junit4,
                     this.iterations,
                     this.outputPath,
-                    this.pathToJSONDelta,
-                    this.pathToJSONDataV1,
-                    this.pathToJSONDataV2,
-                    this.pathToDiff,
-                    this.pathToJSONDeltaOmega,
                     this.pathToRepositoryV1,
                     this.pathToRepositoryV2,
-                    this.pathToJSONConsideredTestMethodNames,
-                    this.pathToExecLinesAdditions,
-                    this.pathToExecLinesDeletions,
-                    this.pathToJSONSuspiciousV1,
-                    this.pathToJSONSuspiciousV2,
                     this.pathToReport,
                     this.shouldSuspect,
                     this.shouldMark,

@@ -21,6 +21,14 @@ import java.util.Map;
  */
 public class DeltaStep extends DiffJJoulesStep {
 
+    public static final String PATH_TO_JSON_DATA_V1 = "data_v1.json";
+
+    public static final String PATH_TO_JSON_DATA_V2 = "data_v2.json";
+
+    public static final String PATH_TO_JSON_DELTA = "deltas.json";
+
+    public static final String PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME = "consideredTestMethods.json";
+
     private static final Logger LOGGER = LoggerFactory.getLogger(DeltaStep.class);
 
     protected String getReportPathname() {
@@ -43,11 +51,11 @@ public class DeltaStep extends DiffJJoulesStep {
         final Map<String, Data> mediansV1 = Computation.computeMedian(dataV1);
         final Map<String, Data> mediansV2 = Computation.computeMedian(dataV2);
         final Deltas deltas = Computation.computeDelta(mediansV1, mediansV2);
-        JSONUtils.write(configuration.output + "/" + configuration.pathToJSONDataV1, dataV1);
+        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_DATA_V1, dataV1);
         configuration.setDataV1(dataV1);
-        JSONUtils.write(configuration.output + "/" + configuration.pathToJSONDataV2, dataV2);
+        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_DATA_V2, dataV2);
         configuration.setDataV2(dataV2);
-        JSONUtils.write(configuration.output + "/" + configuration.pathToJSONDelta, deltas);
+        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_DELTA, deltas);
         configuration.setDeltas(deltas);
         filterTestMethods(configuration, dataV1, dataV2, deltas);
     }
@@ -65,7 +73,7 @@ public class DeltaStep extends DiffJJoulesStep {
             }
         }
         JSONUtils.write(
-                configuration.output + "/" + configuration.pathToJSONConsideredTestMethodNames,
+                configuration.output + "/" + PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME,
                 consideredTestsNames
         );
         configuration.setConsideredTestsNames(consideredTestsNames);

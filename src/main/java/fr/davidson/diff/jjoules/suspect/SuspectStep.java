@@ -23,6 +23,10 @@ import java.util.Set;
  */
 public class SuspectStep extends DiffJJoulesStep {
 
+    public static final String PATH_TO_JSON_SUSPICIOUS_V1 = "suspicious_v1.json";
+
+    public static final String PATH_TO_JSON_SUSPICIOUS_V2 = "suspicious_v2.json";
+
     private static final Logger LOGGER = LoggerFactory.getLogger(SuspectStep.class);
 
     protected String getReportPathname() {
@@ -65,9 +69,9 @@ public class SuspectStep extends DiffJJoulesStep {
                 .stream()
                 .sorted((key1, key2) -> -(int)((suspiciousLinesV2.get(key1)*100.0D) - (suspiciousLinesV2.get(key2)*100.0D)))
                 .forEach(key -> LOGGER.info("{}: {}", key, suspiciousLinesV2.get(key)));
-        JSONUtils.write(configuration.output + "/" + configuration.pathToJSONSuspiciousV1, suspiciousLinesV1);
+        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_SUSPICIOUS_V1, suspiciousLinesV1);
         configuration.setScorePerLineV1(suspiciousLinesV1);
-        JSONUtils.write(configuration.output + "/" + configuration.pathToJSONSuspiciousV2, suspiciousLinesV2);
+        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_SUSPICIOUS_V2, suspiciousLinesV2);
         configuration.setScorePerLineV2(suspiciousLinesV2);
     }
 
