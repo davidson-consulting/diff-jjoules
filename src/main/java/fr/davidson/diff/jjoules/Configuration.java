@@ -24,6 +24,8 @@ import java.util.*;
  */
 public class Configuration {
 
+    public static final String CLASSPATH = "classpath";
+
     private static final Logger LOGGER = LoggerFactory.getLogger(Configuration.class);
 
     private static final String SRC_FOLDER = "src";
@@ -49,10 +51,6 @@ public class Configuration {
     public final boolean shouldSuspect;
 
     public final boolean shouldMark;
-
-    public final String classpathPathV1;
-
-    public final String classpathPathV2;
 
     private String[] classpathV1;
 
@@ -92,18 +90,14 @@ public class Configuration {
 
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
-                         String classpathPathV1,
-                         String classpathPathV2,
-                         String[] classpathV1,
-                         String[] classpathV2,
+                         String classpathV1,
+                         String classpathV2,
                          boolean junit4,
                          int iterations,
                          boolean shouldMark) {
         this(
                 pathToFirstVersion,
                 pathToSecondVersion,
-                classpathPathV1,
-                classpathPathV2,
                 classpathV1,
                 classpathV2,
                 junit4,
@@ -120,10 +114,8 @@ public class Configuration {
 
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
-                         String classpathPathV1,
-                         String classpathPathV2,
-                         String[] classpathV1,
-                         String[] classpathV2,
+                         String classpathV1,
+                         String classpathV2,
                          boolean junit4,
                          int iterations,
                          String output,
@@ -133,8 +125,6 @@ public class Configuration {
                          boolean shouldSuspect,
                          boolean shouldMark,
                          ReportEnum reportEnum) {
-        this.classpathPathV1 = classpathPathV1;
-        this.classpathPathV2 = classpathPathV2;
         this.shouldSuspect = shouldSuspect;
         this.shouldMark = shouldMark;
         this.reportEnum = reportEnum;
@@ -143,10 +133,10 @@ public class Configuration {
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
         this.junit4 = junit4;
-        this.classpathV1 = classpathV1;
-        this.classpathV1AsString = String.join(":", classpathV1);
-        this.classpathV2 = classpathV2;
-        this.classpathV2AsString = String.join(":", classpathV2);
+        this.classpathV1AsString = classpathV1;
+        this.classpathV2AsString = classpathV2;
+        this.classpathV1 = this.classpathV1AsString.split(":");
+        this.classpathV2 = this.classpathV2AsString.split(":");
         this.iterations = iterations;
         if (new File(output).isAbsolute()) {
             this.output = output;

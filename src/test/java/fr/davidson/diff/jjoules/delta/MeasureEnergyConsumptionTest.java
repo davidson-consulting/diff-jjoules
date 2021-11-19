@@ -43,10 +43,8 @@ public class MeasureEnergyConsumptionTest {
                 new Configuration(
                         new File("src/test/resources/diff-jjoules-demo/").getAbsolutePath(),
                         new File("src/test/resources/diff-jjoules-demo/").getAbsolutePath(),
-                        "src/test/resources/diff-jjoules-demo/classpath",
-                        "src/test/resources/diff-jjoules-demo/classpath",
-                        Utils.readClasspathFile("src/test/resources/diff-jjoules-demo/classpath").split(":"),
-                        Utils.readClasspathFile("src/test/resources/diff-jjoules-demo/classpath").split(":"),
+                        Utils.readClasspathFile("src/test/resources/diff-jjoules-demo/classpath"),
+                        Utils.readClasspathFile("src/test/resources/diff-jjoules-demo/classpath"),
                         false,
                         5,
                         "src/test/resources/diff-jjoules/demo/target/diff-jjoules",

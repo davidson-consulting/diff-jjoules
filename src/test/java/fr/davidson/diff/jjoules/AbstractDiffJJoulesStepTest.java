@@ -50,10 +50,8 @@ public abstract class AbstractDiffJJoulesStepTest {
         final Configuration configuration = new Configuration(
                 new File(ROOT_PATH_V1).getAbsolutePath(),
                 new File(ROOT_PATH_V2).getAbsolutePath(),
-                CLASSPATH_PATH_V1,
-                CLASSPATH_PATH_V2,
-                Utils.readClasspathFile(CLASSPATH_PATH_V1).split(":"),
-                Utils.readClasspathFile(CLASSPATH_PATH_V1).split(":"),
+                Utils.readClasspathFile(CLASSPATH_PATH_V1),
+                Utils.readClasspathFile(CLASSPATH_PATH_V1),
                 false,
                 5,
                 true

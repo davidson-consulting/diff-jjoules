@@ -31,21 +31,11 @@ public class DiffJJoulesMojo extends AbstractMojo {
     @Parameter(property = "path-dir-second-version")
     protected String pathDirSecondVersion;
 
-    /**
-     * Specify the path to a file that contains the full classpath of the project for the version before the code changes.
-     * We advise use to use the following goal to generate it :
-     * dependency:build-classpath -Dmdep.outputFile=classpath
-     */
-    @Parameter(property = "classpath-path-v1", defaultValue = "classpath")
-    protected String classpathPath;
+    @Parameter(property = "classpath-v1", defaultValue = "classpath")
+    protected String classpathV1;
 
-    /**
-     * Specify the path to a file that contains the full classpath of the project for the version after the code changes.
-     * We advise use to use the following goal to generate it :
-     * dependency:build-classpath -Dmdep.outputFile=classpath
-     */
-    @Parameter(property = "classpath-path-v2", defaultValue = "classpath")
-    protected String classpathPathV2;
+    @Parameter(property = "classpath-v2", defaultValue = "classpath")
+    protected String classpathV2;
 
     /**
      * Number of execution to do to measure the energy consumption of tests.
@@ -103,8 +93,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        final String classpath;
-        final String classpathV2;
         try {
             getLog().info("Running on:");
             getLog().info(this.project.getBasedir().getAbsolutePath());
@@ -115,19 +103,15 @@ public class DiffJJoulesMojo extends AbstractMojo {
             if (this.pathToRepositoryV2 == null || this.pathToRepositoryV2.isEmpty()) {
                 this.pathToRepositoryV2 = this.pathDirSecondVersion;
             }
-            classpath = Utils.readClasspathFile(this.project.getBasedir().getAbsolutePath() + "/" + this.classpathPath);
-            classpathV2 = this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : Utils.readClasspathFile(this.pathDirSecondVersion + "/" + this.classpathPathV2);
-            final boolean junit4 = !classpath.contains("junit-jupiter-engine-5") && (classpath.contains("junit-4") || classpath.contains("junit-3"));
+            final boolean junit4 = !classpathV1.contains("junit-jupiter-engine-5") && (classpathV1.contains("junit-4") || classpathV1.contains("junit-3"));
             if (junit4) {
                 getLog().info("Enable JUnit4 mode");
             }
             Configuration configuration = new Configuration(
                     this.project.getBasedir().getAbsolutePath(),
                     this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.pathDirSecondVersion,
-                    this.classpathPath,
-                    this.classpathPathV2,
-                    classpath.split(":"),
-                    classpathV2.split(":"),
+                    classpathV1,
+                    classpathV2,
                     junit4,
                     this.iterations,
                     this.outputPath,

@@ -134,10 +134,10 @@ public class DiffJJoulesStep {
     private void cleanCompileAndBuildClasspath() {
         cleanAndCompile();
         this.configuration.setClasspathV1(Utils.readClasspathFile(
-                this.configuration.pathToFirstVersion + "/" + this.configuration.classpathPathV1
+                this.configuration.pathToFirstVersion + "/" + Configuration.CLASSPATH
         ).split(":"));
         this.configuration.setClasspathV2(Utils.readClasspathFile(
-                this.configuration.pathToSecondVersion + "/" + this.configuration.classpathPathV2
+                this.configuration.pathToSecondVersion + "/" + Configuration.CLASSPATH
         ).split(":"));
     }
 
