@@ -8,6 +8,7 @@ import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.mark.MarkStep;
 import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
 import fr.davidson.diff.jjoules.report.ReportEnum;
+import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
 import fr.davidson.diff.jjoules.util.CSVFileManager;
 import fr.davidson.diff.jjoules.util.JSONUtils;
@@ -168,7 +169,7 @@ public class Configuration {
 
     public Map<String, List<String>> getTestsList() {
         if (this.testsList == null) {
-            this.testsList = CSVFileManager.readFile(this.pathToFirstVersion + "/" + DiffJJoulesStep.PATH_TO_CSV_TESTS_EXEC_CHANGES);
+            this.testsList = CSVFileManager.readFile(this.pathToFirstVersion + "/" + SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES);
         }
         return testsList;
     }
