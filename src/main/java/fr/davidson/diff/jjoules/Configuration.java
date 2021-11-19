@@ -112,7 +112,6 @@ public class Configuration {
                 "diff-jjoules",
                 "",
                 "",
-                "",
                 ".github/workflows/template.md",
                 true,
                 shouldMark,
@@ -129,7 +128,6 @@ public class Configuration {
                          boolean junit4,
                          int iterations,
                          String output,
-                         String pathToDiff,
                          String pathToRepositoryV1,
                          String pathToRepositoryV2,
                          String pathToReport,
@@ -163,20 +161,16 @@ public class Configuration {
         outputDirectory.mkdir();
         this.pathToRepositoryV1 = pathToRepositoryV1;
         this.pathToRepositoryV2 = pathToRepositoryV2;
-        if (pathToDiff == null || pathToDiff.isEmpty()) {
-            LOGGER.warn("No path to diff file has been specified.");
-            LOGGER.warn("I'll compute a diff file using the UNIX diff command");
-            LOGGER.warn("You may encounter troubles.");
-            LOGGER.warn("If so, please specify a path to a correct diff file");
-            LOGGER.warn("or implement a new way to compute a diff file.");
-            this.diff = new DiffComputer()
-                    .computeDiffWithDiffCommand(
-                            new File(pathToFirstVersion + "/" + SRC_FOLDER),
-                            new File(pathToSecondVersion + "/" + SRC_FOLDER)
-                    );
-        } else {
-            this.diff = Utils.readFile(pathToDiff);
-        }
+        LOGGER.warn("No path to diff file has been specified.");
+        LOGGER.warn("I'll compute a diff file using the UNIX diff command");
+        LOGGER.warn("You may encounter troubles.");
+        LOGGER.warn("If so, please specify a path to a correct diff file");
+        LOGGER.warn("or implement a new way to compute a diff file.");
+        this.diff = new DiffComputer()
+                .computeDiffWithDiffCommand(
+                        new File(pathToFirstVersion + "/" + SRC_FOLDER),
+                        new File(pathToSecondVersion + "/" + SRC_FOLDER)
+                );
     }
 
     public void setTestsList(Map<String, List<String>> testsList) {

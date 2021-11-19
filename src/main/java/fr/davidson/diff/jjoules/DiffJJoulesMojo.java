@@ -62,12 +62,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
     private static final String DEFAULT_OUTPUT_PATH = "diff-jjoules";
 
     /**
-     * Specify the path of a diff file. If it is not specified, it will be computed using diff command line.
-     */
-    @Parameter(defaultValue = "", property = "path-to-diff")
-    private String pathToDiff;
-
-    /**
      *  Specify the path to the root directory of the project before applying the commit.
      *  This is useful when it is used on multi-modules project.
      */
@@ -137,7 +131,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
                     junit4,
                     this.iterations,
                     this.outputPath,
-                    this.pathToDiff,
                     this.pathToRepositoryV1,
                     this.pathToRepositoryV2,
                     this.pathToReport,
