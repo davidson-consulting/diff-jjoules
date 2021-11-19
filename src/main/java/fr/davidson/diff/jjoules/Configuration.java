@@ -11,7 +11,6 @@ import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
 import fr.davidson.diff.jjoules.util.CSVFileManager;
 import fr.davidson.diff.jjoules.util.JSONUtils;
-import fr.davidson.diff.jjoules.util.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
