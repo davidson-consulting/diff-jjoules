@@ -5,6 +5,7 @@ import fr.davidson.diff.jjoules.energy.EnergyMonitor;
 import fr.davidson.diff.jjoules.failer.FailerStep;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationStep;
 import fr.davidson.diff.jjoules.mark.MarkStep;
+import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
 import fr.davidson.diff.jjoules.util.CSVFileManager;
 import fr.davidson.diff.jjoules.util.Utils;
@@ -73,25 +74,13 @@ public class DiffJJoulesStep {
         }
     }
 
-    public static final String PATH_TO_CSV_TESTS_EXEC_CHANGES = "testsThatExecuteTheChange.csv";
 
     private void testSelection() {
-        this.energyMonitor.startMonitoring();
-        eu.stamp_project.diff_test_selection.Main.run(new eu.stamp_project.diff_test_selection.configuration.Configuration(
-                this.configuration.pathToFirstVersion,
-                this.configuration.pathToSecondVersion,
-                "",
-                "CSV",
-                "",
-                true
-        ));
-        this.energyMonitor.stopMonitoring("selection");
-        final Map<String, List<String>> testsList = CSVFileManager.readFile(this.configuration.pathToFirstVersion + "/" + PATH_TO_CSV_TESTS_EXEC_CHANGES);
-        if (testsList.isEmpty()) {
+        this.runDiffJJoulesStep(new SelectionStep(), "Something went wrong during test selection.");
+        if (this.configuration.getTestsList().isEmpty()) {
             this.end("No test could be selected");
         }
-        cleanAndCompile();
-        this.configuration.setTestsList(testsList);
+        this.cleanAndCompile();
     }
 
     private void testInstrumentation() {
