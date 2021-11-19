@@ -1,7 +1,6 @@
 package fr.davidson.diff.jjoules;
 
 import fr.davidson.diff.jjoules.report.ReportEnum;
-import fr.davidson.diff.jjoules.util.Utils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -17,24 +16,19 @@ import org.apache.maven.project.MavenProject;
 @Mojo(name = "diff-jjoules")
 public class DiffJJoulesMojo extends AbstractMojo {
 
-    protected static final String TEST_FOLDER_PATH = "src/test/java/";
-
-    @Parameter(defaultValue = "${basedir}/pom.xml")
-    private String pathToPom;
-
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
     protected MavenProject project;
 
     /**
      * Specify the path to root directory of the project in the second version.
      */
-    @Parameter(property = "path-dir-second-version")
+    @Parameter(property = "path-dir-second-version", required = true)
     protected String pathDirSecondVersion;
 
-    @Parameter(property = "classpath-v1", defaultValue = "classpath")
+    @Parameter(property = "classpath-v1", required = true)
     protected String classpathV1;
 
-    @Parameter(property = "classpath-v2", defaultValue = "classpath")
+    @Parameter(property = "classpath-v2", required = true)
     protected String classpathV2;
 
     /**
@@ -44,34 +38,18 @@ public class DiffJJoulesMojo extends AbstractMojo {
     protected int iterations;
 
     /**
-     *  Specify the path to output the files that produces this plugin
-     */
-    @Parameter(property = "output-path", defaultValue = "diff-jjoules")
-    protected String outputPath;
-
-    private static final String DEFAULT_OUTPUT_PATH = "diff-jjoules";
-
-    /**
      *  Specify the path to the root directory of the project before applying the commit.
      *  This is useful when it is used on multi-modules project.
      */
-    @Parameter(property = "path-repo-v1")
+    @Parameter(property = "path-repo-v1", defaultValue = "")
     private String pathToRepositoryV1;
 
     /**
      *  Specify the path to the root directory of the project after applying the commit.
      *  This is useful when it is used on multi-modules project.
      */
-    @Parameter(property = "path-repo-v2")
+    @Parameter(property = "path-repo-v2", defaultValue = "")
     private String pathToRepositoryV2;
-
-    // TODO should depend on the report we want to output
-    // For now I set by default the path to the template.md for MarkdownMojo
-    /**
-     * Specify the path to output the report
-     */
-    @Parameter(property = "path-to-report", defaultValue = ".github/workflows/template.md")
-    private String pathToReport;
 
     /**
      * Enable or disable the suspect (and failer) goals when running diff-jjoules
@@ -86,10 +64,24 @@ public class DiffJJoulesMojo extends AbstractMojo {
     private boolean shouldMark;
 
     /**
+     *  Specify the path to output the files that produces this plugin
+     */
+    @Parameter(property = "output-path", defaultValue = "diff-jjoules")
+    protected String outputPath;
+
+    /**
      * Specify the type of report to generate
      */
     @Parameter(property = "report", defaultValue = "MARKDOWN")
     private String reportType;
+
+    // TODO should depend on the report we want to output
+    // For now I set by default the path to the template.md for MarkdownMojo
+    /**
+     * Specify the path to output the report
+     */
+    @Parameter(property = "path-to-report", defaultValue = ".github/workflows/template.md")
+    private String pathToReport;
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
