@@ -13,7 +13,6 @@ import spoon.SpoonException;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 

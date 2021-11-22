@@ -2,7 +2,6 @@ package fr.davidson.diff.jjoules.util;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
