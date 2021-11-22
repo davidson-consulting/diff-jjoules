@@ -69,6 +69,11 @@ public abstract class AbstractDiffJJoulesStepTest {
         // compile
         MavenRunner.runCleanAndCompile(ROOT_PATH_V1);
         MavenRunner.runCleanAndCompile(ROOT_PATH_V2);
+        final File diffJJoulesFolderFd = new File(DIFF_JJOULES_FOLDER_PATH);
+        if (diffJJoulesFolderFd.exists()) {
+            diffJJoulesFolderFd.delete();
+        }
+        diffJJoulesFolderFd.mkdir();
         Files.walk(Paths.get(DIFF_JJOULES_FOLDER_PATH))
                 .map(Path::toFile)
                 .forEach(File::delete);
