@@ -33,7 +33,6 @@
             <groupId>eu.stamp-project</groupId>
             <artifactId>test-runner</artifactId>
             <version>3.1.3</version>
-            <classifier>jar-with-dependencies</classifier>
         </dependency>
 
         <dependency>
@@ -45,7 +44,7 @@
         <dependency>
             <groupId>fr.inria.gforge.spoon</groupId>
             <artifactId>spoon-core</artifactId>
-            <version>9.2.0-beta-5</version>
+            <version>10.0.1-beta-1</version>
         </dependency>
 
         <dependency>
