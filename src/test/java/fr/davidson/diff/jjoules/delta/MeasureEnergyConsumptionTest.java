@@ -55,9 +55,9 @@ public class MeasureEnergyConsumptionTest {
                 ),
                 dataV1,
                 dataV2,
-                new HashMap<String, List<String>>() {
+                new HashMap<String, Set<String>>() {
                     {
-                        put("fr.davidson.diff_jjoules_demo.InternalListTest", new ArrayList<>());
+                        put("fr.davidson.diff_jjoules_demo.InternalListTest", new HashSet<>());
                         get("fr.davidson.diff_jjoules_demo.InternalListTest").addAll(Arrays.asList("testMapEmptyList"));
                     }
                 }

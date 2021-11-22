@@ -13,8 +13,8 @@ import spoon.SpoonException;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
 
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Benjamin DANGLOT
@@ -33,7 +33,7 @@ public class InstrumentationStep extends DiffJJoulesStep {
     protected void _run(Configuration configuration) {
         this.configuration = configuration;
         LOGGER.info("Run Instrumentation");
-        final Map<String, List<String>> testsList = configuration.getTestsList();
+        final Map<String, Set<String>> testsList = configuration.getTestsList();
         final AbstractJJoulesProcessor processor = configuration.junit4 ?
                 new fr.davidson.diff.jjoules.instrumentation.process.junit4.JJoulesProcessor(testsList, configuration.pathToFirstVersion) :
                 new fr.davidson.diff.jjoules.instrumentation.process.junit5.JJoulesProcessor(testsList, configuration.pathToFirstVersion);
@@ -48,7 +48,7 @@ public class InstrumentationStep extends DiffJJoulesStep {
         }
     }
 
-    public void instrument(final String rootPathFolder, AbstractProcessor<CtMethod<?>> processor, String[] classpath, Map<String, List<String>> testsList) {
+    public void instrument(final String rootPathFolder, AbstractProcessor<CtMethod<?>> processor, String[] classpath, Map<String, Set<String>> testsList) {
         LOGGER.info("Run on {}", rootPathFolder);
         Launcher launcher = new Launcher();
 

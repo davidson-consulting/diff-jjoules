@@ -61,7 +61,7 @@ public class Configuration {
 
     private String classpathV2AsString;
 
-    private Map<String, List<String>> testsList;
+    private Map<String, Set<String>> testsList;
 
     private Datas dataV1;
 
@@ -69,7 +69,7 @@ public class Configuration {
 
     private Deltas deltas;
 
-    private Map<String, List<String>> consideredTestsNames;
+    private Map<String, Set<String>> consideredTestsNames;
 
     private ExecsLines execLinesAdditions;
 
@@ -151,11 +151,6 @@ public class Configuration {
         outputDirectory.mkdir();
         this.pathToRepositoryV1 = pathToRepositoryV1;
         this.pathToRepositoryV2 = pathToRepositoryV2;
-        LOGGER.warn("No path to diff file has been specified.");
-        LOGGER.warn("I'll compute a diff file using the UNIX diff command");
-        LOGGER.warn("You may encounter troubles.");
-        LOGGER.warn("If so, please specify a path to a correct diff file");
-        LOGGER.warn("or implement a new way to compute a diff file.");
         this.diff = new DiffComputer()
                 .computeDiffWithDiffCommand(
                         new File(pathToFirstVersion + "/" + SRC_FOLDER),
@@ -163,11 +158,11 @@ public class Configuration {
                 );
     }
 
-    public void setTestsList(Map<String, List<String>> testsList) {
+    public void setTestsList(Map<String, Set<String>> testsList) {
         this.testsList = testsList;
     }
 
-    public Map<String, List<String>> getTestsList() {
+    public Map<String, Set<String>> getTestsList() {
         if (this.testsList == null) {
             this.testsList = CSVFileManager.readFile(this.pathToFirstVersion + "/" + SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES);
         }
@@ -245,7 +240,7 @@ public class Configuration {
         this.deltas = deltas;
     }
 
-    public Map<String, List<String>> getConsideredTestsNames() {
+    public Map<String, Set<String>> getConsideredTestsNames() {
         if (this.consideredTestsNames == null) {
             try {
                 this.consideredTestsNames = JSONUtils.read(DeltaStep.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME, Map.class);
@@ -257,7 +252,7 @@ public class Configuration {
         return consideredTestsNames;
     }
 
-    public void setConsideredTestsNames(Map<String, List<String>> consideredTestsNames) {
+    public void setConsideredTestsNames(Map<String, Set<String>> consideredTestsNames) {
         this.consideredTestsNames = consideredTestsNames;
     }
 

@@ -1,5 +1,6 @@
 package fr.davidson.diff.jjoules.instrumentation.junit5;
 
+import clover.it.unimi.dsi.fastutil.Hash;
 import fr.davidson.diff.jjoules.AbstractProcessorTest;
 import fr.davidson.diff.jjoules.instrumentation.process.junit5.JJoulesProcessor;
 import org.junit.jupiter.api.Test;
@@ -41,9 +42,9 @@ public class JJoulesProcessorTest extends AbstractProcessorTest {
         final CtClass<?> aClass = this.getJUnit5TestClass();
         aClass.getFactory().getModel().processWith(
                 new JJoulesProcessor(
-                        new HashMap<String, List<String>>() {
+                        new HashMap<String, Set<String>>() {
                             {
-                                put(TEST_CLASS_NAME + "2", new ArrayList<>());
+                                put(TEST_CLASS_NAME + "2", new HashSet<>());
                                 get(TEST_CLASS_NAME + "2").addAll(Arrays.asList(TEST_METHOD_NAME));
                             }
                         },

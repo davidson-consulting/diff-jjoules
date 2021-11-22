@@ -9,12 +9,12 @@ import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.mark.computation.*;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
+import fr.davidson.diff.jjoules.util.coverage.CoverageComputation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Benjamin DANGLOT
@@ -49,7 +49,7 @@ public class MarkStep extends DiffJJoulesStep {
     protected void _run(Configuration configuration) {
         this.configuration = configuration;
         LOGGER.info("Run Mark");
-        final Map<String, List<String>> consideredTestsNames = configuration.getConsideredTestsNames();
+        final Map<String, Set<String>> consideredTestsNames = configuration.getConsideredTestsNames();
         final Deltas deltas = configuration.getDeltas();
         final Map<String, Delta> consideredDeltas = new HashMap<>();
         for (String key : deltas.keySet()) {
@@ -59,16 +59,26 @@ public class MarkStep extends DiffJJoulesStep {
             }
         }
         // 1 Compute coverage
-        final Coverage coverageFirstVersion =
-                CoverageComputation.computeCoverageForGivenVersionOfTests(
-                        consideredTestsNames,
-                        configuration.pathToFirstVersion
-                );
-        final Coverage coverageSecondVersion =
-                CoverageComputation.computeCoverageForGivenVersionOfTests(
-                        consideredTestsNames,
-                        configuration.pathToSecondVersion
-                );
+        final List<String> allFullQualifiedNameTestClasses = new ArrayList<>(consideredTestsNames.keySet());
+        final List<String> testMethodNames = consideredTestsNames.values().stream().flatMap(Collection::stream).collect(Collectors.toList());
+        final Coverage coverageFirstVersion = CoverageComputation.convert(
+                CoverageComputation.getCoverage(
+                        this.configuration.pathToFirstVersion,
+                        this.configuration.getClasspathV1AsString(),
+                        this.configuration.junit4,
+                        allFullQualifiedNameTestClasses,
+                        testMethodNames
+                )
+        );
+        final Coverage coverageSecondVersion = CoverageComputation.convert(
+                CoverageComputation.getCoverage(
+                        this.configuration.pathToSecondVersion,
+                        this.configuration.getClasspathV2AsString(),
+                        this.configuration.junit4,
+                        allFullQualifiedNameTestClasses,
+                        testMethodNames
+                )
+        );
         JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_COVERAGE_FIRST, coverageFirstVersion);
         JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_COVERAGE_SECOND, coverageSecondVersion);
         // Exec(l,t)

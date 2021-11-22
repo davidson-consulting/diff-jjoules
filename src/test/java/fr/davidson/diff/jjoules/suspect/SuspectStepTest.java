@@ -26,9 +26,9 @@ public class SuspectStepTest extends AbstractDiffJJoulesStepTest {
         configuration.setExecLinesDeletions(execDeletions);
         configuration.setExecLinesAdditions(execAdditions);
         configuration.setTestsList(
-                new HashMap<String, List<String>>() {
+                new HashMap<String, Set<String>>() {
                     {
-                        put(FULL_QUALIFIED_NAME_TEST_CLASS, new ArrayList<>());
+                        put(FULL_QUALIFIED_NAME_TEST_CLASS, new HashSet<>());
                         get(FULL_QUALIFIED_NAME_TEST_CLASS).addAll(
                                 Arrays.asList("testCount", "testCount2Failing")
                         );

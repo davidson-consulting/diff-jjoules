@@ -27,7 +27,7 @@ public class UntareJjoulesProcessor extends AbstractProcessor<CtMethod<?>> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UntareJjoulesProcessor.class);
 
-    private Map<String, List<String>> methodNamePerClassFullQualifiedName;
+    private Map<String, Set<String>> methodNamePerClassFullQualifiedName;
     private long energyToConsume;
     private Set<CtType<?>> mutatedTypes;
 
@@ -35,7 +35,7 @@ public class UntareJjoulesProcessor extends AbstractProcessor<CtMethod<?>> {
     private String outputPathFolder;
 
     public UntareJjoulesProcessor(
-            Map<String, List<String>> methodNamePerClassFullQualifiedName,
+            Map<String, Set<String>> methodNamePerClassFullQualifiedName,
             long energyToConsume,
             String outputPathFolder) {
         this.methodNamePerClassFullQualifiedName = methodNamePerClassFullQualifiedName;
