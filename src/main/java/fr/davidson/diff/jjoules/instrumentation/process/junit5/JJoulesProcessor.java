@@ -10,6 +10,7 @@ import spoon.reflect.reference.CtTypeReference;
 import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Benjamin DANGLOT
@@ -18,7 +19,7 @@ import java.util.Map;
  */
 public class JJoulesProcessor extends AbstractJJoulesProcessor {
 
-    public JJoulesProcessor(Map<String, List<String>> testsList, String rootPathFolder) {
+    public JJoulesProcessor(Map<String, Set<String>> testsList, String rootPathFolder) {
         super(testsList, rootPathFolder);
     }
 

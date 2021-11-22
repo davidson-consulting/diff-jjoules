@@ -46,7 +46,7 @@ public class MeasureEnergyConsumption {
             final Configuration configuration,
             final Datas dataV1,
             final Datas dataV2,
-            Map<String, List<String>> testsList) {
+            Map<String, Set<String>> testsList) {
         for (int i = 0; i < configuration.iterations; i++) {
             runForVersion(
                     configuration.pathToFirstVersion,
@@ -68,7 +68,7 @@ public class MeasureEnergyConsumption {
     protected void runForVersion(
             final String pathToVersion,
             final String classpath,
-            Map<String, List<String>> testsList,
+            Map<String, Set<String>> testsList,
             boolean junit4
     ) {
             EntryPoint.jUnit5Mode = !junit4;

@@ -33,7 +33,7 @@ public class FullQualifiedName {
     }
 
     @NotNull
-    public static Set<String> toSetFullQualifiedNames(Map<String, List<String>> testsList) {
+    public static Set<String> toSetFullQualifiedNames(Map<String, Set<String>> testsList) {
         return testsList.keySet()
                 .stream()
                 .flatMap(testClassName ->

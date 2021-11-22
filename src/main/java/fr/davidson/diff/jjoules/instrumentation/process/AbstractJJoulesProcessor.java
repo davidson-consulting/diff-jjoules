@@ -23,13 +23,13 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
 
     protected final Set<CtType<?>> instrumentedTypes;
 
-    protected final Map<String, List<String>> testsToBeInstrumented;
+    protected final Map<String, Set<String>> testsToBeInstrumented;
 
     protected String rootPathFolder;
 
     private static final String TEST_FOLDER_PATH = "src/test/java/";
 
-    public AbstractJJoulesProcessor(final Map<String, List<String>> testsList, String rootPathFolder) {
+    public AbstractJJoulesProcessor(final Map<String, Set<String>> testsList, String rootPathFolder) {
         this.instrumentedTypes = new HashSet<>();
         this.testsToBeInstrumented = testsList;
         this.rootPathFolder = rootPathFolder;

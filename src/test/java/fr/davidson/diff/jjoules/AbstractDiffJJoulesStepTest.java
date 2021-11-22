@@ -10,10 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Benjamin DANGLOT
@@ -57,9 +54,9 @@ public abstract class AbstractDiffJJoulesStepTest {
                 true
         );
         configuration.setTestsList(
-                new HashMap<String, List<String>>() {
+                new HashMap<String, java.util.Set<String>>() {
                     {
-                        put(FULL_QUALIFIED_NAME_TEST_CLASS, new ArrayList<>());
+                        put(FULL_QUALIFIED_NAME_TEST_CLASS, new HashSet<>());
                         get(FULL_QUALIFIED_NAME_TEST_CLASS).addAll(Collections.singletonList(TEST_COUNT));
                     }
                 }

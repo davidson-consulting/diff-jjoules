@@ -10,6 +10,7 @@ import spoon.reflect.reference.CtTypeReference;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Benjamin DANGLOT
@@ -18,7 +19,7 @@ import java.util.Map;
  */
 public class MakeTestFailingProcessor extends AbstractJJoulesProcessor {
 
-    public MakeTestFailingProcessor(Map<String, List<String>> testsToBeInstrumented, String rootPathFolder) {
+    public MakeTestFailingProcessor(Map<String, Set<String>> testsToBeInstrumented, String rootPathFolder) {
         super(testsToBeInstrumented, rootPathFolder);
     }
 

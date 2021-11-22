@@ -29,9 +29,9 @@ public class CoverageComputationTest {
                 "testCount2"
         );
         final Coverage actual = CoverageComputation.computeCoverageForGivenVersionOfTests(
-                new HashMap<String, List<String>>() {
+                new HashMap<String, Set<String>>() {
                     {
-                        put(testClassName, new ArrayList<>());
+                        put(testClassName, new HashSet<>());
                         get(testClassName).addAll(testMethodNames);
                     }
                 }, absolutePath

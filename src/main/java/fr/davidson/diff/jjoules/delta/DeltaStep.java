@@ -9,10 +9,7 @@ import fr.davidson.diff.jjoules.util.JSONUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Benjamin DANGLOT
@@ -39,7 +36,7 @@ public class DeltaStep extends DiffJJoulesStep {
     protected void _run(Configuration configuration) {
         this.configuration = configuration;
         LOGGER.info("Run Delta");
-        final Map<String, List<String>> testsList = configuration.getTestsList();
+        final Map<String, Set<String>> testsList = configuration.getTestsList();
         final Datas dataV1 = new Datas();
         final Datas dataV2 = new Datas();
         new MeasureEnergyConsumption().measureEnergyConsumptionForBothVersion(
@@ -62,12 +59,12 @@ public class DeltaStep extends DiffJJoulesStep {
 
     private void filterTestMethods(Configuration configuration, Datas dataV1, Datas dataV2, Deltas deltaPerTestMethodName) {
         final Map<String, Boolean> emptyIntersectionPerTestMethodName = dataV1.isEmptyIntersectionPerTestMethodName(dataV2);
-        final Map<String, List<String>> consideredTestsNames = new HashMap<>();
+        final Map<String, Set<String>> consideredTestsNames = new HashMap<>();
         for (String key : deltaPerTestMethodName.keySet()) {
             if (emptyIntersectionPerTestMethodName.get(key)) {
                 final String[] split = key.split("#");
                 if (!consideredTestsNames.containsKey(split[0])) {
-                    consideredTestsNames.put(split[0], new ArrayList<>());
+                    consideredTestsNames.put(split[0], new HashSet<>());
                 }
                 consideredTestsNames.get(split[0]).add(split[1]);
             }

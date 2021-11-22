@@ -14,7 +14,7 @@ import java.util.*;
 public class CoverageComputation {
 
     public static Coverage computeCoverageForGivenVersionOfTests(
-            final Map<String, List<String>> testsListName,
+            final Map<String, Set<String>> testsListName,
             String pathToVersion
     ) {
         final Coverage coverage = new Coverage();

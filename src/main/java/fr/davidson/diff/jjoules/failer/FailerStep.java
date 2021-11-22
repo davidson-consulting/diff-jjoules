@@ -11,10 +11,7 @@ import spoon.Launcher;
 import spoon.OutputType;
 import spoon.SpoonException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Benjamin DANGLOT
@@ -33,12 +30,12 @@ public class FailerStep extends DiffJJoulesStep {
     protected void _run(Configuration configuration) {
         LOGGER.info("Run Failer");
         final Deltas deltas = configuration.getDeltas();
-        final Map<String, List<String>> testsToBeInstrumented = new HashMap<>();
+        final Map<String, Set<String>> testsToBeInstrumented = new HashMap<>();
         for (String fullTestMethodName : deltas.keySet()) {
             if (deltas.get(fullTestMethodName).instructions > 0) {
                 final String[] split = fullTestMethodName.split("#");
                 if (!testsToBeInstrumented.containsKey(split[0])) {
-                    testsToBeInstrumented.put(split[0], new ArrayList<>());
+                    testsToBeInstrumented.put(split[0], new HashSet<>());
                 }
                 testsToBeInstrumented.get(split[0]).add(split[1]);
             }

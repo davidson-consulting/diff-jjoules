@@ -74,10 +74,10 @@ public abstract class AbstractProcessorTest {
 
     protected abstract AbstractProcessor<?> getProcessor();
 
-    protected Map<String, List<String>> getTestToBeProcessed() {
-        return new HashMap<String, List<String>>() {
+    protected Map<String, Set<String>> getTestToBeProcessed() {
+        return new HashMap<String, Set<String>>() {
             {
-                put(TEST_CLASS_NAME, new ArrayList<>());
+                put(TEST_CLASS_NAME, new HashSet<>());
                 get(TEST_CLASS_NAME).addAll(Arrays.asList(TEST_METHOD_NAME));
             }
         };

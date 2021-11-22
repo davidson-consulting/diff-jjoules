@@ -18,7 +18,7 @@ import java.util.*;
  */
 public class JJoulesProcessor extends AbstractJJoulesProcessor {
 
-    public JJoulesProcessor(final Map<String, List<String>> testsList, String rootPathFolder) {
+    public JJoulesProcessor(final Map<String, Set<String>> testsList, String rootPathFolder) {
         super(testsList, rootPathFolder);
     }
 

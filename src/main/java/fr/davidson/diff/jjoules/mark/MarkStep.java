@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Benjamin DANGLOT
@@ -49,7 +50,7 @@ public class MarkStep extends DiffJJoulesStep {
     protected void _run(Configuration configuration) {
         this.configuration = configuration;
         LOGGER.info("Run Mark");
-        final Map<String, List<String>> consideredTestsNames = configuration.getConsideredTestsNames();
+        final Map<String, Set<String>> consideredTestsNames = configuration.getConsideredTestsNames();
         final Deltas deltas = configuration.getDeltas();
         final Map<String, Delta> consideredDeltas = new HashMap<>();
         for (String key : deltas.keySet()) {

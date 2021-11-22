@@ -15,6 +15,7 @@ import spoon.reflect.declaration.CtMethod;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -36,7 +37,7 @@ public class Main {
             return;
         }
         LOGGER.info("{}", configuration.toString());
-        final Map<String, List<String>> methodNamesPerFullQualifiedName = CSVFileManager.readFile(configuration.pathToMethodNames);
+        final Map<String, Set<String>> methodNamesPerFullQualifiedName = CSVFileManager.readFile(configuration.pathToMethodNames);
         LOGGER.info("{}", methodNamesPerFullQualifiedName.keySet()
                 .stream()
                 .map(key ->
