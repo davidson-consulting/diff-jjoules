@@ -1,5 +1,6 @@
-package fr.davidson.diff.jjoules.selection.detection;
+package fr.davidson.diff.jjoules.utils.detection;
 
+import fr.davidson.diff.jjoules.util.coverage.detection.TestDetector;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

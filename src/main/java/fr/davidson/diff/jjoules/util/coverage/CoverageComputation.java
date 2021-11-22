@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.selection;
+package fr.davidson.diff.jjoules.util.coverage;
 
 import eu.stamp_project.diff_test_selection.coverage.Coverage;
 import eu.stamp_project.testrunner.EntryPoint;
@@ -25,6 +25,29 @@ public class CoverageComputation {
             String pathToRootOfProject,
             String classpath,
             boolean junit4,
+            List<String> allFullQualifiedNameTestClasses,
+            List<String> testMethodNames) {
+        try {
+            EntryPoint.coverageDetail = ParserOptions.CoverageTransformerDetail.DETAIL_COMPRESSED;
+            EntryPoint.workingDirectory = new File(pathToRootOfProject);
+            EntryPoint.verbose = true;
+            EntryPoint.jUnit5Mode = !junit4;
+            return EntryPoint.runOnlineCoveredTestResultPerTestMethods(
+                    classpath + PATH_SEPARATOR + PATH_TO_BINARIES,
+                    PATH_TO_BINARIES,
+                    allFullQualifiedNameTestClasses.toArray(new String[0]),
+                    testMethodNames.toArray(new String[0])
+            );
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public static CoveredTestResultPerTestMethod getCoverage(
+            String pathToRootOfProject,
+            String classpath,
+            boolean junit4,
             List<String> allFullQualifiedNameTestClasses) {
         try {
             EntryPoint.coverageDetail = ParserOptions.CoverageTransformerDetail.DETAIL_COMPRESSED;
@@ -45,7 +68,7 @@ public class CoverageComputation {
         Coverage coverage = new Coverage();
         for (String fullQualifiedNameTestMethod : coveredTestResultPerTestMethod.getCoverageResultsMap().keySet()) {
             final String[] split = fullQualifiedNameTestMethod.split("#");
-            final eu.stamp_project.testrunner.listener.impl.CoverageDetailed coverageOf = (CoverageDetailed) coveredTestResultPerTestMethod.getCoverageOf(fullQualifiedNameTestMethod);
+            final CoverageDetailed coverageOf = (CoverageDetailed) coveredTestResultPerTestMethod.getCoverageOf(fullQualifiedNameTestMethod);
             for (String pathName : coverageOf.getDetailedCoverage().keySet()) {
                 final CoverageFromClass coverageFromClass = coverageOf.getDetailedCoverage().get(pathName);
                 final String fullQualifiedNameClass = pathName.replaceAll("/", ".");

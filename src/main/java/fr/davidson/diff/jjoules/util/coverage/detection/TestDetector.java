@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.selection.detection;
+package fr.davidson.diff.jjoules.util.coverage.detection;
 
 import eu.stamp_project.testrunner.test_framework.TestFramework;
 import spoon.Launcher;

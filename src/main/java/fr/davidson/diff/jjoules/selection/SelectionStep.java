@@ -5,8 +5,9 @@ import eu.stamp_project.diff_test_selection.coverage.DiffCoverage;
 import eu.stamp_project.diff_test_selection.selector.EnhancedDiffTestSelection;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.DiffJJoulesStep;
-import fr.davidson.diff.jjoules.selection.detection.TestDetector;
 import fr.davidson.diff.jjoules.util.Utils;
+import fr.davidson.diff.jjoules.util.coverage.CoverageComputation;
+import fr.davidson.diff.jjoules.util.coverage.detection.TestDetector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
