@@ -7,6 +7,9 @@ import fr.davidson.diff.jjoules.AbstractDiffJJoulesStepTest;
 import fr.davidson.diff.jjoules.Configuration;
 import org.junit.jupiter.api.Test;
 
+
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -22,7 +25,8 @@ public class CoverageComputationTest extends AbstractDiffJJoulesStepTest {
         final CoveredTestResultPerTestMethod coverage = CoverageComputation.getCoverage(
                 configuration.pathToFirstVersion,
                 configuration.getClasspathV1AsString(),
-                configuration.junit4
+                configuration.junit4,
+                Collections.singletonList("fr.davidson.diff_jjoules_demo.InternalListTest")
         );
         assertEquals(6, coverage.getCoverageResultsMap().size());
         final Coverage testCoverage = coverage.getCoverageResultsMap().get("fr.davidson.diff_jjoules_demo.InternalListTest#testMapEmptyList");
@@ -37,10 +41,10 @@ public class CoverageComputationTest extends AbstractDiffJJoulesStepTest {
         final CoveredTestResultPerTestMethod coverage = CoverageComputation.getCoverage(
                 configuration.pathToFirstVersion,
                 configuration.getClasspathV1AsString(),
-                configuration.junit4
+                configuration.junit4,
+                Collections.singletonList("fr.davidson.diff_jjoules_demo.InternalListTest")
         );
         final eu.stamp_project.diff_test_selection.coverage.Coverage convert = CoverageComputation.convert(coverage);
-        assertEquals(1, convert.testClassCoverage.size());
         assertEquals(6, convert.testClassCoverage.get("fr.davidson.diff_jjoules_demo.InternalListTest").testMethodsCoverage.size());
         assertEquals(8, convert.testClassCoverage.get("fr.davidson.diff_jjoules_demo.InternalListTest").testMethodsCoverage.get("testMapOneElement").classCoverageList.get("fr.davidson.diff_jjoules_demo.InternalList").coverages.size());
     }

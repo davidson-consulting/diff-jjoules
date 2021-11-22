@@ -8,6 +8,7 @@ import eu.stamp_project.testrunner.listener.impl.CoverageFromClass;
 import eu.stamp_project.testrunner.runner.ParserOptions;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * @author Benjamin DANGLOT
@@ -20,16 +21,11 @@ public class CoverageComputation {
 
     public static final String PATH_TO_BINARIES = "target/classes" + PATH_SEPARATOR + "target/test-classes";
 
-    private String mainPackageName;
-
-    public CoverageComputation(String mainPackageName) {
-        this.mainPackageName = mainPackageName;
-    }
-
     public static CoveredTestResultPerTestMethod getCoverage(
             String pathToRootOfProject,
             String classpath,
-            boolean junit4) {
+            boolean junit4,
+            List<String> allFullQualifiedNameTestClasses) {
         try {
             EntryPoint.coverageDetail = ParserOptions.CoverageTransformerDetail.DETAIL_COMPRESSED;
             EntryPoint.workingDirectory = new File(pathToRootOfProject);
@@ -38,7 +34,7 @@ public class CoverageComputation {
             return EntryPoint.runOnlineCoveredTestResultPerTestMethods(
                     classpath + PATH_SEPARATOR + PATH_TO_BINARIES,
                     PATH_TO_BINARIES,
-                    "fr.davidson.diff_jjoules_demo.InternalListTest"
+                    allFullQualifiedNameTestClasses.toArray(new String[0])
             );
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -51,13 +47,11 @@ public class CoverageComputation {
             final String[] split = fullQualifiedNameTestMethod.split("#");
             final eu.stamp_project.testrunner.listener.impl.CoverageDetailed coverageOf = (CoverageDetailed) coveredTestResultPerTestMethod.getCoverageOf(fullQualifiedNameTestMethod);
             for (String pathName : coverageOf.getDetailedCoverage().keySet()) {
-                if (pathName.startsWith("fr/davidson/")) {
-                    final CoverageFromClass coverageFromClass = coverageOf.getDetailedCoverage().get(pathName);
-                    final String fullQualifiedNameClass = pathName.replaceAll("/", ".");
-                    for (Integer line : coverageFromClass.getCov().keySet()) {
-                        if (coverageFromClass.getCov().get(line) > 0) {
-                            coverage.addCoverage(split[0], split[1], fullQualifiedNameClass, line, 1);
-                        }
+                final CoverageFromClass coverageFromClass = coverageOf.getDetailedCoverage().get(pathName);
+                final String fullQualifiedNameClass = pathName.replaceAll("/", ".");
+                for (Integer line : coverageFromClass.getCov().keySet()) {
+                    if (coverageFromClass.getCov().get(line) > 0) {
+                        coverage.addCoverage(split[0], split[1], fullQualifiedNameClass, line, 1);
                     }
                 }
             }
