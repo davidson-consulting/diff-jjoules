@@ -12,6 +12,8 @@ import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
 import fr.davidson.diff.jjoules.util.CSVFileManager;
 import fr.davidson.diff.jjoules.util.JSONUtils;
+import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
+import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -83,10 +85,16 @@ public class Configuration {
 
     private Map<String, Map<String, Long>> ownConsumptionReports;
 
+    private Wrapper wrapper;
+
     private ReportEnum reportEnum;
 
     public ReportEnum getReportEnum() {
         return reportEnum;
+    }
+
+    public Wrapper getWrapper() {
+        return this.wrapper;
     }
 
     public Configuration(String pathToFirstVersion,
@@ -109,7 +117,8 @@ public class Configuration {
                 ".github/workflows/template.md",
                 true,
                 shouldMark,
-                ReportEnum.NONE
+                ReportEnum.NONE,
+                WrapperEnum.MAVEN
         );
     }
 
@@ -125,7 +134,9 @@ public class Configuration {
                          String pathToReport,
                          boolean shouldSuspect,
                          boolean shouldMark,
-                         ReportEnum reportEnum) {
+                         ReportEnum reportEnum,
+                         WrapperEnum wrapperEnum
+    ) {
         this.shouldSuspect = shouldSuspect;
         this.shouldMark = shouldMark;
         this.reportEnum = reportEnum;
@@ -156,6 +167,7 @@ public class Configuration {
                         new File(pathToFirstVersion + "/" + SRC_FOLDER),
                         new File(pathToSecondVersion + "/" + SRC_FOLDER)
                 );
+        this.wrapper = wrapperEnum.getWrapper();
     }
 
     public void setTestsList(Map<String, Set<String>> testsList) {

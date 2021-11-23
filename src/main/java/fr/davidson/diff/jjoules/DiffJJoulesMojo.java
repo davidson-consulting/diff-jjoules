@@ -1,6 +1,7 @@
 package fr.davidson.diff.jjoules;
 
 import fr.davidson.diff.jjoules.report.ReportEnum;
+import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -112,7 +113,8 @@ public class DiffJJoulesMojo extends AbstractMojo {
                     this.pathToReport,
                     this.shouldSuspect,
                     this.shouldMark,
-                    ReportEnum.valueOf(this.reportType)
+                    ReportEnum.valueOf(this.reportType),
+                    WrapperEnum.MAVEN
             );
             final DiffJJoulesStep diffJJoulesStep = this.getStep();
             diffJJoulesStep.run(configuration);
