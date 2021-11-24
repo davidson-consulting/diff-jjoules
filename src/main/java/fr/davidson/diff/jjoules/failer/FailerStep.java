@@ -4,7 +4,7 @@ import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.DiffJJoulesStep;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.failer.processor.MakeTestFailingProcessor;
-import fr.davidson.diff.jjoules.util.Utils;
+import fr.davidson.diff.jjoules.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.Launcher;
@@ -61,19 +61,19 @@ public class FailerStep extends DiffJJoulesStep {
         Launcher launcher = new Launcher();
 
         final String[] finalClassPath = new String[classpath.length + 2];
-        finalClassPath[0] = rootPathFolder + "/target/classes";
-        finalClassPath[1] = rootPathFolder + "/target/test-classes";
+        finalClassPath[0] = rootPathFolder + Constants.PATH_SEPARATOR + this.configuration.getWrapper().getPathToBinFolder();
+        finalClassPath[1] = rootPathFolder + Constants.PATH_SEPARATOR + this.configuration.getWrapper().getPathToBinTestFolder();
         System.arraycopy(classpath, 0, finalClassPath, 2, classpath.length);
         launcher.getEnvironment().setSourceClasspath(finalClassPath);
         launcher.getEnvironment().setNoClasspath(false);
         launcher.getEnvironment().setAutoImports(false);
         launcher.getEnvironment().setLevel("DEBUG");
-        launcher.addInputResource(rootPathFolder + "/" + Utils.TEST_FOLDER_PATH);
+        launcher.addInputResource(rootPathFolder + Constants.PATH_SEPARATOR + this.configuration.getWrapper().getPathToTestFolder());
 
         launcher.addProcessor(processor);
         launcher.getEnvironment().setOutputType(OutputType.NO_OUTPUT);
         launcher.getEnvironment().setShouldCompile(true);
-        launcher.getEnvironment().setBinaryOutputDirectory(rootPathFolder + "/target/test-classes/");
+        launcher.getEnvironment().setBinaryOutputDirectory(rootPathFolder + Constants.PATH_SEPARATOR + this.configuration.getWrapper().getPathToBinTestFolder());
         try {
             launcher.buildModel();
             launcher.process();

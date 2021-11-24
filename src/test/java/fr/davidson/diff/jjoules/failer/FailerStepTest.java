@@ -24,17 +24,17 @@ public class FailerStepTest extends AbstractStepCleanTest {
             After applying the FailerStep, the test should contains 6 calls to junit.framework.Assert.fail();
          */
         final FailerStep failerStep = new FailerStep();
-        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + TEST_PATH + TEST_CLASS_PATH))) {
             assertFalse(reader.lines().collect(Collectors.joining("\n")).contains("junit.framework.Assert.fail();"));
         }
-        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + TEST_PATH + TEST_CLASS_PATH))) {
             assertFalse(reader.lines().collect(Collectors.joining("\n")).contains("junit.framework.Assert.fail();"));
         }
         failerStep._run(this.getConfiguration());
-        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + TEST_PATH + TEST_CLASS_PATH))) {
             assertEquals(6L, reader.lines().filter(line -> line.contains("junit.framework.Assert.fail();")).count());
         }
-        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + TEST_PATH + TEST_CLASS_PATH))) {
             assertEquals(6L, reader.lines().filter(line -> line.contains("junit.framework.Assert.fail();")).count());
         }
     }

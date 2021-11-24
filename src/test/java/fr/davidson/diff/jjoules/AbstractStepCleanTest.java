@@ -22,12 +22,12 @@ public class AbstractStepCleanTest extends AbstractDiffJJoulesStepTest {
     protected void setUp() throws IOException {
         super.setUp();
         Files.copy(
-                Paths.get(ROOT_PATH_V1 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH),
+                Paths.get(ROOT_PATH_V1 + TEST_PATH + TEST_CLASS_PATH),
                 Paths.get(TARGET_FOLDER_PATH_V1 + SIMPLE_NAME_TEST_CLASS + JAVA_EXTENSION),
                 StandardCopyOption.REPLACE_EXISTING
         );
         Files.copy(
-                Paths.get(ROOT_PATH_V2 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH),
+                Paths.get(ROOT_PATH_V2 + TEST_PATH + TEST_CLASS_PATH),
                 Paths.get(TARGET_FOLDER_PATH_V2 + SIMPLE_NAME_TEST_CLASS + JAVA_EXTENSION),
                 StandardCopyOption.REPLACE_EXISTING
         );
@@ -47,12 +47,12 @@ public class AbstractStepCleanTest extends AbstractDiffJJoulesStepTest {
     void tearDown() throws IOException {
         Files.copy(
                 Paths.get(TARGET_FOLDER_PATH_V1 + SIMPLE_NAME_TEST_CLASS + JAVA_EXTENSION),
-                Paths.get(ROOT_PATH_V1 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH),
+                Paths.get(ROOT_PATH_V1 + TEST_PATH + TEST_CLASS_PATH),
                 StandardCopyOption.REPLACE_EXISTING
         );
         Files.copy(
                 Paths.get(TARGET_FOLDER_PATH_V2 + SIMPLE_NAME_TEST_CLASS + JAVA_EXTENSION),
-                Paths.get(ROOT_PATH_V2 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH),
+                Paths.get(ROOT_PATH_V2 + TEST_PATH + TEST_CLASS_PATH),
                 StandardCopyOption.REPLACE_EXISTING
         );
         Files.copy(
