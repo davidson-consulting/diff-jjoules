@@ -15,6 +15,7 @@ import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
+import picocli.CommandLine;
 
 import java.io.File;
 import java.util.*;
@@ -28,27 +29,36 @@ public class Configuration {
 
     private static final String SRC_FOLDER = "src";
 
+    @CommandLine.Option(names = {"-f", "--path-first-version"}, description = "Path to the first version of the program.", required = true)
     public final String pathToFirstVersion;
 
+    @CommandLine.Option(names = {"-s", "--path-second-version"}, description = "Path to the second version of the program.", required = true)
     public final String pathToSecondVersion;
 
+    @CommandLine.Option(names = {"--junit4"}, description = "Enable junit4 tests", defaultValue = "false")
     public final boolean junit4;
 
+    @CommandLine.Option(names = {"-i", "--iteration"}, description = "Number of test executions to measure their energy consumption.", defaultValue = "10")
     public final int iterations;
 
+    @CommandLine.Option(names = {"-o", "--output"}, description = "Path to the output folder.", defaultValue = "diff-jjoules")
     public final String output;
 
-    public final String diff;
-
+    @CommandLine.Option(names = {"--path-repository-v1"}, description = "Path to the first version of the program that contains .git (this is used for multi-module projects)", defaultValue = "")
     public final String pathToRepositoryV1;
 
+    @CommandLine.Option(names = {"--path-repository-v2"}, description = "Path to the second version of the program that contains .git (this is used for multi-module projects)", defaultValue = "")
     public final String pathToRepositoryV2;
+
+    @CommandLine.Option(names = {"--mark"}, description = "Enable mark step.", defaultValue = "false")
+    public final boolean shouldMark;
+
+    @CommandLine.Option(names = {"--suspect"}, description = "Enable suspect step.", defaultValue = "false")
+    public final boolean shouldSuspect;
 
     public final String pathToReport;
 
-    public final boolean shouldSuspect;
-
-    public final boolean shouldMark;
+    public final String diff;
 
     private String[] classpathV1;
 
