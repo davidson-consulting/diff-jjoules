@@ -3,6 +3,7 @@ package fr.davidson.diff.jjoules;
 import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.maven.MavenRunner;
+import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,12 +27,10 @@ public class DiffJJoulesMojoTest {
             super(
                     new File("src/test/resources/diff-jjoules-demo/").getAbsolutePath(),
                     new File("src/test/resources/diff-jjoules-demo-v2/").getAbsolutePath(),
-                    Utils.readClasspathFile("src/test/resources/diff-jjoules-demo/classpath"),
-                    Utils.readClasspathFile("src/test/resources/diff-jjoules-demo/classpath"),
-                    false,
                     5,
                     "src/test/java/fr/davidson/diff/jjoules/delta/MeasureEnergyConsumptionTest.java",
-                    "", "", "", true, true, ReportEnum.NONE
+                    "", "", "", true, true,
+                    ReportEnum.NONE, WrapperEnum.MAVEN
             );
         }
     }

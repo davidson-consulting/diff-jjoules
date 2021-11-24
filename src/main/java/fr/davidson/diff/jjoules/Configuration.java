@@ -27,10 +27,6 @@ import java.util.*;
  */
 public class Configuration {
 
-    public static final String CLASSPATH = "classpath";
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(Configuration.class);
-
     private static final String SRC_FOLDER = "src";
 
     public final String pathToFirstVersion;
@@ -99,17 +95,11 @@ public class Configuration {
 
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
-                         String classpathV1,
-                         String classpathV2,
-                         boolean junit4,
                          int iterations,
                          boolean shouldMark) {
         this(
                 pathToFirstVersion,
                 pathToSecondVersion,
-                classpathV1,
-                classpathV2,
-                junit4,
                 iterations,
                 "diff-jjoules",
                 "",
@@ -124,9 +114,6 @@ public class Configuration {
 
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
-                         String classpathV1,
-                         String classpathV2,
-                         boolean junit4,
                          int iterations,
                          String output,
                          String pathToRepositoryV1,
@@ -144,11 +131,6 @@ public class Configuration {
         this.ownConsumptionReports = new LinkedHashMap<>();
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
-        this.junit4 = junit4;
-        this.classpathV1AsString = classpathV1;
-        this.classpathV2AsString = classpathV2;
-        this.classpathV1 = this.classpathV1AsString.split(":");
-        this.classpathV2 = this.classpathV2AsString.split(":");
         this.iterations = iterations;
         if (new File(output).isAbsolute()) {
             this.output = output;
@@ -168,6 +150,11 @@ public class Configuration {
                         new File(pathToSecondVersion + "/" + SRC_FOLDER)
                 );
         this.wrapper = wrapperEnum.getWrapper();
+        this.classpathV1AsString = this.wrapper.buildClasspath(this.pathToFirstVersion);
+        this.classpathV2AsString = this.wrapper.buildClasspath(this.pathToSecondVersion);
+        this.classpathV1 = this.classpathV1AsString.split(":");
+        this.classpathV2 = this.classpathV2AsString.split(":");
+        this.junit4 = !classpathV1AsString.contains("junit-jupiter-engine-5") && (classpathV1AsString.contains("junit-4") || classpathV1AsString.contains("junit-3"));
     }
 
     public void setTestsList(Map<String, Set<String>> testsList) {

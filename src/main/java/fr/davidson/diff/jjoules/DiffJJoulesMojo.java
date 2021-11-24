@@ -26,12 +26,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
     @Parameter(property = "path-dir-second-version", required = true)
     protected String pathDirSecondVersion;
 
-    @Parameter(property = "classpath-v1", required = true)
-    protected String classpathV1;
-
-    @Parameter(property = "classpath-v2", required = true)
-    protected String classpathV2;
-
     /**
      * Number of execution to do to measure the energy consumption of tests.
      */
@@ -96,16 +90,9 @@ public class DiffJJoulesMojo extends AbstractMojo {
             if (this.pathToRepositoryV2 == null || this.pathToRepositoryV2.isEmpty()) {
                 this.pathToRepositoryV2 = this.pathDirSecondVersion;
             }
-            final boolean junit4 = !classpathV1.contains("junit-jupiter-engine-5") && (classpathV1.contains("junit-4") || classpathV1.contains("junit-3"));
-            if (junit4) {
-                getLog().info("Enable JUnit4 mode");
-            }
             Configuration configuration = new Configuration(
                     this.project.getBasedir().getAbsolutePath(),
                     this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.pathDirSecondVersion,
-                    classpathV1,
-                    classpathV2,
-                    junit4,
                     this.iterations,
                     this.outputPath,
                     this.pathToRepositoryV1,
