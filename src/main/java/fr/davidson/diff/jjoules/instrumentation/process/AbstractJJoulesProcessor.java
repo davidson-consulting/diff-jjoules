@@ -77,7 +77,7 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
     }
 
     private void printCtType(CtType<?> type) {
-        final File directory = new File(this.rootPathFolder + Constants.FILE_SEPARATOR + testFolderPath);
+        final File directory = new File(this.rootPathFolder + Constants.FILE_SEPARATOR + this.testFolderPath);
         type.getFactory().getEnvironment().setSourceOutputDirectory(directory);
         final PrettyPrinter prettyPrinter = type.getFactory().getEnvironment().createPrettyPrinter();
         final String fileName = this.rootPathFolder +  Constants.FILE_SEPARATOR  +

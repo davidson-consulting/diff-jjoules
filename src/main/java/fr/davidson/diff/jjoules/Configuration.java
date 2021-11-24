@@ -11,6 +11,7 @@ import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
 import fr.davidson.diff.jjoules.util.CSVFileManager;
+import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
@@ -133,7 +134,7 @@ public class Configuration {
         if (new File(output).isAbsolute()) {
             this.output = output;
         } else {
-            this.output = this.pathToFirstVersion + "/" + output;
+            this.output = this.pathToFirstVersion + Constants.FILE_SEPARATOR + output;
         }
         final File outputDirectory = new File(this.output);
         if (outputDirectory.exists()) {
@@ -144,14 +145,14 @@ public class Configuration {
         this.pathToRepositoryV2 = pathToRepositoryV2;
         this.diff = new DiffComputer()
                 .computeDiffWithDiffCommand(
-                        new File(pathToFirstVersion + "/" + SRC_FOLDER),
-                        new File(pathToSecondVersion + "/" + SRC_FOLDER)
+                        new File(pathToFirstVersion + Constants.FILE_SEPARATOR + SRC_FOLDER),
+                        new File(pathToSecondVersion + Constants.FILE_SEPARATOR + SRC_FOLDER)
                 );
         this.wrapper = wrapperEnum.getWrapper();
         this.classpathV1AsString = this.wrapper.buildClasspath(this.pathToFirstVersion);
         this.classpathV2AsString = this.wrapper.buildClasspath(this.pathToSecondVersion);
-        this.classpathV1 = this.classpathV1AsString.split(":");
-        this.classpathV2 = this.classpathV2AsString.split(":");
+        this.classpathV1 = this.classpathV1AsString.split(Constants.PATH_SEPARATOR);
+        this.classpathV2 = this.classpathV2AsString.split(Constants.PATH_SEPARATOR);
         this.junit4 = !classpathV1AsString.contains("junit-jupiter-engine-5") && (classpathV1AsString.contains("junit-4") || classpathV1AsString.contains("junit-3"));
     }
 
@@ -161,19 +162,19 @@ public class Configuration {
 
     public Map<String, Set<String>> getTestsList() {
         if (this.testsList == null) {
-            this.testsList = CSVFileManager.readFile(this.pathToFirstVersion + "/" + SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES);
+            this.testsList = CSVFileManager.readFile(this.pathToFirstVersion + Constants.FILE_SEPARATOR + SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES);
         }
         return testsList;
     }
 
     public void setClasspathV1(String[] classpathV1) {
         this.classpathV1 = classpathV1;
-        this.classpathV1AsString = String.join(":", classpathV1);
+        this.classpathV1AsString = String.join(Constants.PATH_SEPARATOR, classpathV1);
     }
 
     public void setClasspathV2(String[] classpathV2) {
         this.classpathV2 = classpathV2;
-        this.classpathV2AsString = String.join(":", classpathV2);
+        this.classpathV2AsString = String.join(Constants.PATH_SEPARATOR, classpathV2);
     }
 
     public String[] getClasspathV1() {

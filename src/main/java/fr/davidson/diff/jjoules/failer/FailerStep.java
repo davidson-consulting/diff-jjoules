@@ -28,8 +28,9 @@ public class FailerStep extends DiffJJoulesStep {
 
     @Override
     protected void _run(Configuration configuration) {
+        this.configuration = configuration;
         LOGGER.info("Run Failer");
-        final Deltas deltas = configuration.getDeltas();
+        final Deltas deltas = this.configuration.getDeltas();
         final Map<String, Set<String>> testsToBeInstrumented = new HashMap<>();
         for (String fullTestMethodName : deltas.keySet()) {
             if (deltas.get(fullTestMethodName).instructions > 0) {
@@ -41,21 +42,21 @@ public class FailerStep extends DiffJJoulesStep {
             }
         }
         makeFailVersion(
-                configuration.pathToFirstVersion,
-                configuration.getClasspathV1(),
+                this.configuration.pathToFirstVersion,
+                this.configuration.getClasspathV1(),
                 new MakeTestFailingProcessor(
                         testsToBeInstrumented,
-                        configuration.pathToFirstVersion,
-                        configuration.getWrapper().getBinaries()
+                        this.configuration.pathToFirstVersion,
+                        this.configuration.getWrapper().getPathToTestFolder()
                 )
         );
         makeFailVersion(
-                configuration.pathToSecondVersion,
-                configuration.getClasspathV2(),
+                this.configuration.pathToSecondVersion,
+                this.configuration.getClasspathV2(),
                 new MakeTestFailingProcessor(
                         testsToBeInstrumented,
-                        configuration.pathToSecondVersion,
-                        configuration.getWrapper().getBinaries()
+                        this.configuration.pathToSecondVersion,
+                        this.configuration.getWrapper().getPathToTestFolder()
                 )
         );
     }
