@@ -29,7 +29,7 @@ public class MakeTestFailingProcessorTest extends AbstractProcessorTest {
         return new MakeTestFailingProcessor(
                 this.getTestToBeProcessed(),
                 ROOT_OUTPUT_DIR_PATH,
-                BIN_PATH + Constants.PATH_SEPARATOR + BIN_TEST_PATH
+                TEST_PATH
         );
     }
 }

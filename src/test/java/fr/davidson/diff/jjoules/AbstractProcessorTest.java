@@ -10,6 +10,10 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.factory.Factory;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 /**
@@ -31,9 +35,11 @@ public abstract class AbstractProcessorTest {
 
     public static final String SRC_PATH = "src/main/java/";
 
-    public static final String FULL_OUTPUT_DIR_PATH = ROOT_OUTPUT_DIR_PATH + SRC_PATH;
+    public static final String ROOT_RESOURCE_PROJECT_PATH = "src/test/resources/diff-jjoules-demo/";
 
     public static final String TEST_PATH = "src/test/java/";
+
+    public static final String FULL_OUTPUT_DIR_PATH = ROOT_OUTPUT_DIR_PATH + TEST_PATH;
 
     public static final String BIN_PATH = "target/classes/";
 
@@ -86,7 +92,7 @@ public abstract class AbstractProcessorTest {
         return new HashMap<String, Set<String>>() {
             {
                 put(TEST_CLASS_NAME, new HashSet<>());
-                get(TEST_CLASS_NAME).addAll(Arrays.asList(TEST_METHOD_NAME));
+                get(TEST_CLASS_NAME).addAll(Collections.singletonList(TEST_METHOD_NAME));
             }
         };
     }

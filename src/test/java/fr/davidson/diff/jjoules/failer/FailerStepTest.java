@@ -1,7 +1,6 @@
 package fr.davidson.diff.jjoules.failer;
 
 import fr.davidson.diff.jjoules.AbstractStepCleanTest;
-import fr.davidson.diff.jjoules.util.Utils;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
