@@ -1,10 +1,8 @@
 package fr.davidson.diff.jjoules.instrumentation.junit5;
 
-import clover.it.unimi.dsi.fastutil.Hash;
 import fr.davidson.diff.jjoules.AbstractProcessorTest;
 import fr.davidson.diff.jjoules.instrumentation.process.junit5.JJoulesProcessor;
 import org.junit.jupiter.api.Test;
-import spoon.Launcher;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
@@ -33,7 +31,8 @@ public class JJoulesProcessorTest extends AbstractProcessorTest {
     protected AbstractProcessor<?> getProcessor() {
         return new JJoulesProcessor(
                 this.getTestToBeProcessed(),
-                ROOT_OUTPUT_DIR_PATH
+                ROOT_OUTPUT_DIR_PATH,
+                TEST_PATH
         );
     }
 
@@ -48,7 +47,8 @@ public class JJoulesProcessorTest extends AbstractProcessorTest {
                                 get(TEST_CLASS_NAME + "2").addAll(Arrays.asList(TEST_METHOD_NAME));
                             }
                         },
-                        ROOT_OUTPUT_DIR_PATH
+                        ROOT_OUTPUT_DIR_PATH,
+                        TEST_PATH
                 )
         );
         assertFalse(new File(FULL_OUTPUT_DIR_PATH + TEST_CLASS_NAME + JAVA_EXTENSION).exists());

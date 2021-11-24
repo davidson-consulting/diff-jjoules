@@ -3,7 +3,7 @@ package fr.davidson.diff.jjoules.instrumentation;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.DiffJJoulesStep;
 import fr.davidson.diff.jjoules.instrumentation.process.AbstractJJoulesProcessor;
-import fr.davidson.diff.jjoules.util.Utils;
+import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.maven.JJoulesInjection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,8 +35,8 @@ public class InstrumentationStep extends DiffJJoulesStep {
         LOGGER.info("Run Instrumentation");
         final Map<String, Set<String>> testsList = configuration.getTestsList();
         final AbstractJJoulesProcessor processor = configuration.junit4 ?
-                new fr.davidson.diff.jjoules.instrumentation.process.junit4.JJoulesProcessor(testsList, configuration.pathToFirstVersion) :
-                new fr.davidson.diff.jjoules.instrumentation.process.junit5.JJoulesProcessor(testsList, configuration.pathToFirstVersion);
+                new fr.davidson.diff.jjoules.instrumentation.process.junit4.JJoulesProcessor(testsList, configuration.pathToFirstVersion, configuration.getWrapper().getPathToTestFolder()) :
+                new fr.davidson.diff.jjoules.instrumentation.process.junit5.JJoulesProcessor(testsList, configuration.pathToFirstVersion, configuration.getWrapper().getPathToTestFolder());
         LOGGER.info("Instrument version before commit...");
         this.instrument(configuration.pathToFirstVersion, processor, configuration.getClasspathV1(), testsList);
         this.inject(configuration.pathToFirstVersion);
@@ -53,16 +53,14 @@ public class InstrumentationStep extends DiffJJoulesStep {
         Launcher launcher = new Launcher();
 
         final String[] finalClassPath = new String[classpath.length + 2];
-        finalClassPath[0] = rootPathFolder + "/target/classes";
-        finalClassPath[1] = rootPathFolder + "/target/test-classes";
+        finalClassPath[0] = rootPathFolder + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToBinFolder();
+        finalClassPath[1] = rootPathFolder + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToBinTestFolder();
         System.arraycopy(classpath, 0, finalClassPath, 2, classpath.length);
         launcher.getEnvironment().setSourceClasspath(finalClassPath);
         launcher.getEnvironment().setNoClasspath(false);
         launcher.getEnvironment().setAutoImports(false);
-//        launcher.getEnvironment().setNoClasspath(true);
-//        launcher.getEnvironment().setAutoImports(true);
         launcher.getEnvironment().setLevel("DEBUG");
-        launcher.addInputResource(rootPathFolder + "/" + Utils.TEST_FOLDER_PATH);
+        launcher.addInputResource(rootPathFolder + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToTestFolder());
 
         launcher.addProcessor(processor);
         launcher.getEnvironment().setOutputType(OutputType.NO_OUTPUT);

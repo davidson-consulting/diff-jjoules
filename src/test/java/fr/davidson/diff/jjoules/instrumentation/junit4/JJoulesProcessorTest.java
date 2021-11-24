@@ -2,6 +2,7 @@ package fr.davidson.diff.jjoules.instrumentation.junit4;
 
 import fr.davidson.diff.jjoules.AbstractProcessorTest;
 import fr.davidson.diff.jjoules.instrumentation.process.junit4.JJoulesProcessor;
+import fr.davidson.diff.jjoules.util.Constants;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
 
@@ -27,7 +28,8 @@ public class JJoulesProcessorTest  extends AbstractProcessorTest {
     protected AbstractProcessor<?> getProcessor() {
         return new JJoulesProcessor(
                 this.getTestToBeProcessed(),
-                ROOT_OUTPUT_DIR_PATH
+                ROOT_OUTPUT_DIR_PATH,
+                TEST_PATH
         );
     }
 }

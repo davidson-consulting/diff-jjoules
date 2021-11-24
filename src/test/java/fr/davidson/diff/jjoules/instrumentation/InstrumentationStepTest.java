@@ -24,20 +24,20 @@ public class InstrumentationStepTest extends AbstractStepCleanTest {
             After the Instrumentation Step, the test class should contains the JUnit-JJoules annotation: @EnergyTest
          */
         final InstrumentationStep instrumentationStep = new InstrumentationStep();
-        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + TEST_PATH + TEST_CLASS_PATH))) {
             final String content = reader.lines().collect(Collectors.joining("\n"));
             assertFalse(content.contains("EnergyTest"), content);
         }
-        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + TEST_PATH + TEST_CLASS_PATH))) {
             final String content = reader.lines().collect(Collectors.joining("\n"));
             assertFalse(content.contains("EnergyTest"), content);
         }
         instrumentationStep._run(this.getConfiguration());
-        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + TEST_PATH + TEST_CLASS_PATH))) {
             final String content = reader.lines().collect(Collectors.joining("\n"));
             assertTrue(content.contains("EnergyTest"), content);
         }
-        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + Utils.TEST_FOLDER_PATH + TEST_CLASS_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + TEST_PATH + TEST_CLASS_PATH))) {
             final String content = reader.lines().collect(Collectors.joining("\n"));
             assertTrue(content.contains("EnergyTest"), content);
         }

@@ -5,6 +5,7 @@ import eu.stamp_project.testrunner.listener.CoveredTestResultPerTestMethod;
 import eu.stamp_project.testrunner.listener.impl.CoverageDetailed;
 import fr.davidson.diff.jjoules.AbstractDiffJJoulesStepTest;
 import fr.davidson.diff.jjoules.Configuration;
+import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.coverage.CoverageComputation;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,8 @@ public class CoverageComputationTest extends AbstractDiffJJoulesStepTest {
                 configuration.getClasspathV1AsString(),
                 configuration.junit4,
                 Collections.singletonList("fr.davidson.diff_jjoules_demo.InternalListTest"),
-                Arrays.stream(new String[]{"testCount", "testCount2"}).collect(Collectors.toList())
+                Arrays.stream(new String[]{"testCount", "testCount2"}).collect(Collectors.toList()),
+                BIN_PATH + Constants.PATH_SEPARATOR + BIN_TEST_PATH
         );
         assertEquals(2, coverage.getCoverageResultsMap().size());
         final Coverage testCoverage = coverage.getCoverageResultsMap().get("fr.davidson.diff_jjoules_demo.InternalListTest#testCount");
@@ -47,7 +49,8 @@ public class CoverageComputationTest extends AbstractDiffJJoulesStepTest {
                 configuration.pathToFirstVersion,
                 configuration.getClasspathV1AsString(),
                 configuration.junit4,
-                Collections.singletonList("fr.davidson.diff_jjoules_demo.InternalListTest")
+                Collections.singletonList("fr.davidson.diff_jjoules_demo.InternalListTest"),
+                BIN_PATH + Constants.PATH_SEPARATOR + BIN_TEST_PATH
         );
         assertEquals(6, coverage.getCoverageResultsMap().size());
         final Coverage testCoverage = coverage.getCoverageResultsMap().get("fr.davidson.diff_jjoules_demo.InternalListTest#testMapEmptyList");
@@ -63,7 +66,8 @@ public class CoverageComputationTest extends AbstractDiffJJoulesStepTest {
                 configuration.pathToFirstVersion,
                 configuration.getClasspathV1AsString(),
                 configuration.junit4,
-                Collections.singletonList("fr.davidson.diff_jjoules_demo.InternalListTest")
+                Collections.singletonList("fr.davidson.diff_jjoules_demo.InternalListTest"),
+                BIN_PATH + Constants.PATH_SEPARATOR + BIN_TEST_PATH
         );
         final eu.stamp_project.diff_test_selection.coverage.Coverage convert = CoverageComputation.convert(coverage);
         assertEquals(6, convert.testClassCoverage.get("fr.davidson.diff_jjoules_demo.InternalListTest").testMethodsCoverage.size());

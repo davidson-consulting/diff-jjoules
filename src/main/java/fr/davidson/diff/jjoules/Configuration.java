@@ -11,9 +11,10 @@ import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
 import fr.davidson.diff.jjoules.util.CSVFileManager;
+import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
+import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 
 import java.io.File;
 import java.util.*;
@@ -24,10 +25,6 @@ import java.util.*;
  * on 25/08/2021
  */
 public class Configuration {
-
-    public static final String CLASSPATH = "classpath";
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(Configuration.class);
 
     private static final String SRC_FOLDER = "src";
 
@@ -83,25 +80,25 @@ public class Configuration {
 
     private Map<String, Map<String, Long>> ownConsumptionReports;
 
+    private Wrapper wrapper;
+
     private ReportEnum reportEnum;
 
     public ReportEnum getReportEnum() {
         return reportEnum;
     }
 
+    public Wrapper getWrapper() {
+        return this.wrapper;
+    }
+
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
-                         String classpathV1,
-                         String classpathV2,
-                         boolean junit4,
                          int iterations,
                          boolean shouldMark) {
         this(
                 pathToFirstVersion,
                 pathToSecondVersion,
-                classpathV1,
-                classpathV2,
-                junit4,
                 iterations,
                 "diff-jjoules",
                 "",
@@ -109,15 +106,13 @@ public class Configuration {
                 ".github/workflows/template.md",
                 true,
                 shouldMark,
-                ReportEnum.NONE
+                ReportEnum.NONE,
+                WrapperEnum.MAVEN
         );
     }
 
     public Configuration(String pathToFirstVersion,
                          String pathToSecondVersion,
-                         String classpathV1,
-                         String classpathV2,
-                         boolean junit4,
                          int iterations,
                          String output,
                          String pathToRepositoryV1,
@@ -125,7 +120,9 @@ public class Configuration {
                          String pathToReport,
                          boolean shouldSuspect,
                          boolean shouldMark,
-                         ReportEnum reportEnum) {
+                         ReportEnum reportEnum,
+                         WrapperEnum wrapperEnum
+    ) {
         this.shouldSuspect = shouldSuspect;
         this.shouldMark = shouldMark;
         this.reportEnum = reportEnum;
@@ -133,16 +130,11 @@ public class Configuration {
         this.ownConsumptionReports = new LinkedHashMap<>();
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
-        this.junit4 = junit4;
-        this.classpathV1AsString = classpathV1;
-        this.classpathV2AsString = classpathV2;
-        this.classpathV1 = this.classpathV1AsString.split(":");
-        this.classpathV2 = this.classpathV2AsString.split(":");
         this.iterations = iterations;
         if (new File(output).isAbsolute()) {
             this.output = output;
         } else {
-            this.output = this.pathToFirstVersion + "/" + output;
+            this.output = this.pathToFirstVersion + Constants.FILE_SEPARATOR + output;
         }
         final File outputDirectory = new File(this.output);
         if (outputDirectory.exists()) {
@@ -153,9 +145,15 @@ public class Configuration {
         this.pathToRepositoryV2 = pathToRepositoryV2;
         this.diff = new DiffComputer()
                 .computeDiffWithDiffCommand(
-                        new File(pathToFirstVersion + "/" + SRC_FOLDER),
-                        new File(pathToSecondVersion + "/" + SRC_FOLDER)
+                        new File(pathToFirstVersion + Constants.FILE_SEPARATOR + SRC_FOLDER),
+                        new File(pathToSecondVersion + Constants.FILE_SEPARATOR + SRC_FOLDER)
                 );
+        this.wrapper = wrapperEnum.getWrapper();
+        this.classpathV1AsString = this.wrapper.buildClasspath(this.pathToFirstVersion);
+        this.classpathV2AsString = this.wrapper.buildClasspath(this.pathToSecondVersion);
+        this.classpathV1 = this.classpathV1AsString.split(Constants.PATH_SEPARATOR);
+        this.classpathV2 = this.classpathV2AsString.split(Constants.PATH_SEPARATOR);
+        this.junit4 = !classpathV1AsString.contains("junit-jupiter-engine-5") && (classpathV1AsString.contains("junit-4") || classpathV1AsString.contains("junit-3"));
     }
 
     public void setTestsList(Map<String, Set<String>> testsList) {
@@ -164,19 +162,19 @@ public class Configuration {
 
     public Map<String, Set<String>> getTestsList() {
         if (this.testsList == null) {
-            this.testsList = CSVFileManager.readFile(this.pathToFirstVersion + "/" + SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES);
+            this.testsList = CSVFileManager.readFile(this.pathToFirstVersion + Constants.FILE_SEPARATOR + SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES);
         }
         return testsList;
     }
 
     public void setClasspathV1(String[] classpathV1) {
         this.classpathV1 = classpathV1;
-        this.classpathV1AsString = String.join(":", classpathV1);
+        this.classpathV1AsString = String.join(Constants.PATH_SEPARATOR, classpathV1);
     }
 
     public void setClasspathV2(String[] classpathV2) {
         this.classpathV2 = classpathV2;
-        this.classpathV2AsString = String.join(":", classpathV2);
+        this.classpathV2AsString = String.join(Constants.PATH_SEPARATOR, classpathV2);
     }
 
     public String[] getClasspathV1() {

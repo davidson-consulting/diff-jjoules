@@ -18,8 +18,8 @@ import java.util.*;
  */
 public class JJoulesProcessor extends AbstractJJoulesProcessor {
 
-    public JJoulesProcessor(final Map<String, Set<String>> testsList, String rootPathFolder) {
-        super(testsList, rootPathFolder);
+    public JJoulesProcessor(final Map<String, Set<String>> testsList, String rootPathFolder, String testFolderPath) {
+        super(testsList, rootPathFolder, testFolderPath);
     }
 
     @Override

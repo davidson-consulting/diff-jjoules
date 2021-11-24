@@ -24,4 +24,4 @@ jobs:
       - name: Build and run tests
         run: export MAVEN_HOME=`mvn --version | grep 'Maven home' | sed -e 's/Maven h.* //'` && echo "🎉 ${MAVEN_HOME}" && mvn --batch-mode clean test
       - name: Codecov
-        uses: codecov/codecov-action@v1.5.2
+        uses: codecov/codecov-action@v2

@@ -1,18 +1,16 @@
 package fr.davidson.diff.jjoules;
 
+import fr.davidson.diff.jjoules.util.Constants;
 import org.junit.jupiter.api.Test;
-import spoon.Launcher;
-import spoon.reflect.declaration.CtField;
-import spoon.reflect.declaration.CtType;
-import spoon.reflect.declaration.ModifierKind;
-import spoon.reflect.factory.Factory;
-import spoon.reflect.reference.CtTypeReference;
-
-import java.util.*;
 
 public class Playground {
+    @Test
+    void test() {
+        System.out.println(Constants.FILE_SEPARATOR);
+        System.out.println(Constants.PATH_SEPARATOR);
+    }
 
-//    @Test
+    //    @Test
 //    void test() {
 //        Launcher launcher = new Launcher();
 //        launcher.addInputResource("src/test/java/fr/davidson/diff/jjoules/Playground.java");

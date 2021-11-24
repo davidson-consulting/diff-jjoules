@@ -2,6 +2,7 @@ package fr.davidson.diff.jjoules.failer;
 
 import fr.davidson.diff.jjoules.AbstractProcessorTest;
 import fr.davidson.diff.jjoules.failer.processor.MakeTestFailingProcessor;
+import fr.davidson.diff.jjoules.util.Constants;
 import org.junit.jupiter.api.Assertions;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
@@ -25,6 +26,10 @@ public class MakeTestFailingProcessorTest extends AbstractProcessorTest {
 
     @Override
     protected AbstractProcessor<?> getProcessor() {
-        return new MakeTestFailingProcessor(this.getTestToBeProcessed(), ROOT_OUTPUT_DIR_PATH);
+        return new MakeTestFailingProcessor(
+                this.getTestToBeProcessed(),
+                ROOT_OUTPUT_DIR_PATH,
+                TEST_PATH
+        );
     }
 }

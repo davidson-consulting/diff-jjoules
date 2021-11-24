@@ -7,8 +7,6 @@ import fr.davidson.diff.jjoules.instrumentation.InstrumentationStep;
 import fr.davidson.diff.jjoules.mark.MarkStep;
 import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
-import fr.davidson.diff.jjoules.util.Utils;
-import fr.davidson.diff.jjoules.util.maven.MavenRunner;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.ResetCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -118,18 +116,14 @@ public class DiffJJoulesStep {
     }
 
     private void cleanCompileAndBuildClasspath() {
-        cleanAndCompile();
-        this.configuration.setClasspathV1(Utils.readClasspathFile(
-                this.configuration.pathToFirstVersion + "/" + Configuration.CLASSPATH
-        ).split(":"));
-        this.configuration.setClasspathV2(Utils.readClasspathFile(
-                this.configuration.pathToSecondVersion + "/" + Configuration.CLASSPATH
-        ).split(":"));
+        this.cleanAndCompile();
+        this.configuration.setClasspathV1(this.configuration.getWrapper().buildClasspath(this.configuration.pathToFirstVersion).split(":"));
+        this.configuration.setClasspathV2(this.configuration.getWrapper().buildClasspath(this.configuration.pathToSecondVersion).split(":"));
     }
 
     private void cleanAndCompile() {
-        MavenRunner.runCleanAndCompile(this.configuration.pathToFirstVersion);
-        MavenRunner.runCleanAndCompile(this.configuration.pathToSecondVersion);
+        this.configuration.getWrapper().cleanAndCompile(this.configuration.pathToFirstVersion);
+        this.configuration.getWrapper().cleanAndCompile(this.configuration.pathToSecondVersion);
     }
 
     private void gitResetHard(String pathToFolder) {

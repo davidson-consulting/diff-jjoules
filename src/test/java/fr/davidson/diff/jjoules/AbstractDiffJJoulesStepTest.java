@@ -29,6 +29,14 @@ public abstract class AbstractDiffJJoulesStepTest {
     public static final String TARGET_FOLDER_PATH_V2 = ROOT_PATH_V2 + "/target/";
     public static final String JJOULES_REPORT_PATH_V2 = TARGET_FOLDER_PATH_V2 + "/jjoules-reports/";
 
+    public static final String SRC_PATH = "src/main/java/";
+
+    public static final String TEST_PATH = "src/test/java/";
+
+    public static final String BIN_PATH = "target/classes/";
+
+    public static final String BIN_TEST_PATH = "target/test-classes/";
+
     public static final String DIFF_JJOULES_FOLDER_PATH = ROOT_PATH_V1 + "/diff-jjoules";
     public static final String JAVA_EXTENSION = ".java";
     public static final String PACKAGE_NAME = "fr.davidson.diff_jjoules_demo";
@@ -47,9 +55,6 @@ public abstract class AbstractDiffJJoulesStepTest {
         final Configuration configuration = new Configuration(
                 new File(ROOT_PATH_V1).getAbsolutePath(),
                 new File(ROOT_PATH_V2).getAbsolutePath(),
-                Utils.readClasspathFile(CLASSPATH_PATH_V1),
-                Utils.readClasspathFile(CLASSPATH_PATH_V1),
-                false,
                 5,
                 true
         );
