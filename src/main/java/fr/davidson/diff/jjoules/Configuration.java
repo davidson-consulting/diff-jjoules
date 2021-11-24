@@ -25,6 +25,7 @@ import java.util.*;
  * benjamin.danglot@davidson.fr
  * on 25/08/2021
  */
+@CommandLine.Command(name = "fr.davidson.diff.jjoules.Main", mixinStandardHelpOptions = true)
 public class Configuration {
 
     private static final String SRC_FOLDER = "src";
