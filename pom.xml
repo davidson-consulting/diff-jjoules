@@ -121,6 +121,13 @@
             <version>5.12.0.202106070339-r</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.stefanbirkner</groupId>
+            <artifactId>system-rules</artifactId>
+            <version>1.19.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
