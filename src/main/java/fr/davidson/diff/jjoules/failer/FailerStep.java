@@ -43,12 +43,20 @@ public class FailerStep extends DiffJJoulesStep {
         makeFailVersion(
                 configuration.pathToFirstVersion,
                 configuration.getClasspathV1(),
-                new MakeTestFailingProcessor(testsToBeInstrumented, configuration.pathToFirstVersion)
+                new MakeTestFailingProcessor(
+                        testsToBeInstrumented,
+                        configuration.pathToFirstVersion,
+                        configuration.getWrapper().getBinaries()
+                )
         );
         makeFailVersion(
                 configuration.pathToSecondVersion,
                 configuration.getClasspathV2(),
-                new MakeTestFailingProcessor(testsToBeInstrumented, configuration.pathToSecondVersion)
+                new MakeTestFailingProcessor(
+                        testsToBeInstrumented,
+                        configuration.pathToSecondVersion,
+                        configuration.getWrapper().getBinaries()
+                )
         );
     }
 
@@ -61,19 +69,19 @@ public class FailerStep extends DiffJJoulesStep {
         Launcher launcher = new Launcher();
 
         final String[] finalClassPath = new String[classpath.length + 2];
-        finalClassPath[0] = rootPathFolder + Constants.PATH_SEPARATOR + this.configuration.getWrapper().getPathToBinFolder();
-        finalClassPath[1] = rootPathFolder + Constants.PATH_SEPARATOR + this.configuration.getWrapper().getPathToBinTestFolder();
+        finalClassPath[0] = rootPathFolder + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToBinFolder();
+        finalClassPath[1] = rootPathFolder + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToBinTestFolder();
         System.arraycopy(classpath, 0, finalClassPath, 2, classpath.length);
         launcher.getEnvironment().setSourceClasspath(finalClassPath);
         launcher.getEnvironment().setNoClasspath(false);
         launcher.getEnvironment().setAutoImports(false);
         launcher.getEnvironment().setLevel("DEBUG");
-        launcher.addInputResource(rootPathFolder + Constants.PATH_SEPARATOR + this.configuration.getWrapper().getPathToTestFolder());
+        launcher.addInputResource(rootPathFolder + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToTestFolder());
 
         launcher.addProcessor(processor);
         launcher.getEnvironment().setOutputType(OutputType.NO_OUTPUT);
         launcher.getEnvironment().setShouldCompile(true);
-        launcher.getEnvironment().setBinaryOutputDirectory(rootPathFolder + Constants.PATH_SEPARATOR + this.configuration.getWrapper().getPathToBinTestFolder());
+        launcher.getEnvironment().setBinaryOutputDirectory(rootPathFolder + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToBinTestFolder());
         try {
             launcher.buildModel();
             launcher.process();

@@ -7,6 +7,7 @@ import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Delta;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.mark.computation.*;
+import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.coverage.CoverageComputation;
@@ -67,7 +68,8 @@ public class MarkStep extends DiffJJoulesStep {
                         this.configuration.getClasspathV1AsString(),
                         this.configuration.junit4,
                         allFullQualifiedNameTestClasses,
-                        testMethodNames
+                        testMethodNames,
+                        this.configuration.getWrapper().getBinaries()
                 )
         );
         final Coverage coverageSecondVersion = CoverageComputation.convert(
@@ -76,11 +78,12 @@ public class MarkStep extends DiffJJoulesStep {
                         this.configuration.getClasspathV2AsString(),
                         this.configuration.junit4,
                         allFullQualifiedNameTestClasses,
-                        testMethodNames
+                        testMethodNames,
+                        this.configuration.getWrapper().getBinaries()
                 )
         );
-        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_COVERAGE_FIRST, coverageFirstVersion);
-        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_COVERAGE_SECOND, coverageSecondVersion);
+        JSONUtils.write(configuration.output + Constants.FILE_SEPARATOR + PATH_TO_JSON_COVERAGE_FIRST, coverageFirstVersion);
+        JSONUtils.write(configuration.output + Constants.FILE_SEPARATOR + PATH_TO_JSON_COVERAGE_SECOND, coverageSecondVersion);
         // Exec(l,t)
         final List<ExecsLines> execLineTestMaps = Exec.computeExecLT(
                 configuration.pathToFirstVersion,

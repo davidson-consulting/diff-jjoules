@@ -29,7 +29,15 @@ public abstract class AbstractProcessorTest {
 
     public static final String ROOT_OUTPUT_DIR_PATH = "target/trash/";
 
-    public static final String FULL_OUTPUT_DIR_PATH = ROOT_OUTPUT_DIR_PATH + "src/test/java/";
+    public static final String SRC_PATH = "src/main/java/";
+
+    public static final String FULL_OUTPUT_DIR_PATH = ROOT_OUTPUT_DIR_PATH + SRC_PATH;
+
+    public static final String TEST_PATH = "src/test/java/";
+
+    public static final String BIN_PATH = "target/classes/";
+
+    public static final String BIN_TEST_PATH = "target/test-classes/";
 
     @BeforeEach
     void setUp() {

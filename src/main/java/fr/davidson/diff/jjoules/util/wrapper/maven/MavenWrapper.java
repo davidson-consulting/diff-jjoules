@@ -1,5 +1,6 @@
 package fr.davidson.diff.jjoules.util.wrapper.maven;
 
+import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
 import org.apache.maven.shared.invoker.*;
@@ -112,6 +113,11 @@ public class MavenWrapper implements Wrapper {
     @Override
     public String getPathToBinTestFolder() {
         return BIN_TEST_PATH;
+    }
+
+    @Override
+    public String getBinaries() {
+        return this.getPathToBinFolder() + Constants.PATH_SEPARATOR + this.getPathToBinTestFolder();
     }
 
     public void runGoals(String pathToRootDir, String... goals) {

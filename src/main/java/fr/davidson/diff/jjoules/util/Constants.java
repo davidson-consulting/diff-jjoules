@@ -11,6 +11,8 @@ public class Constants {
 
     public static final String PATH_SEPARATOR = System.getProperty("path.separator");
 
+    public static final String FILE_SEPARATOR = System.getProperty("file.separator");
+
     public static final String CVS_SEPARATOR = ";";
 
 }

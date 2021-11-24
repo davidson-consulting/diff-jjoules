@@ -1,5 +1,6 @@
 package fr.davidson.diff.jjoules.instrumentation.process;
 
+import fr.davidson.diff.jjoules.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.processing.AbstractProcessor;
@@ -27,12 +28,13 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
 
     protected String rootPathFolder;
 
-    private static final String TEST_FOLDER_PATH = "src/test/java/";
+    protected String testFolderPath;
 
-    public AbstractJJoulesProcessor(final Map<String, Set<String>> testsList, String rootPathFolder) {
+    public AbstractJJoulesProcessor(final Map<String, Set<String>> testsList, String rootPathFolder, String testFolderPath) {
         this.instrumentedTypes = new HashSet<>();
         this.testsToBeInstrumented = testsList;
         this.rootPathFolder = rootPathFolder;
+        this.testFolderPath = testFolderPath;
     }
 
     @Override
@@ -75,12 +77,12 @@ public abstract class AbstractJJoulesProcessor extends AbstractProcessor<CtMetho
     }
 
     private void printCtType(CtType<?> type) {
-        final File directory = new File(this.rootPathFolder + "/" + TEST_FOLDER_PATH);
+        final File directory = new File(this.rootPathFolder + Constants.FILE_SEPARATOR + testFolderPath);
         type.getFactory().getEnvironment().setSourceOutputDirectory(directory);
         final PrettyPrinter prettyPrinter = type.getFactory().getEnvironment().createPrettyPrinter();
-        final String fileName = this.rootPathFolder + "/" +
-                TEST_FOLDER_PATH + "/" +
-                type.getQualifiedName().replaceAll("\\.", "/") + ".java";
+        final String fileName = this.rootPathFolder +  Constants.FILE_SEPARATOR  +
+                testFolderPath +  Constants.FILE_SEPARATOR  +
+                type.getQualifiedName().replaceAll("\\.",  Constants.FILE_SEPARATOR ) + ".java";
         try (final FileWriter write = new FileWriter(fileName)) {
             write.write(prettyPrinter.printTypes(type));
         } catch (IOException e) {

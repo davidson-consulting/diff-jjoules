@@ -35,8 +35,8 @@ public class InstrumentationStep extends DiffJJoulesStep {
         LOGGER.info("Run Instrumentation");
         final Map<String, Set<String>> testsList = configuration.getTestsList();
         final AbstractJJoulesProcessor processor = configuration.junit4 ?
-                new fr.davidson.diff.jjoules.instrumentation.process.junit4.JJoulesProcessor(testsList, configuration.pathToFirstVersion) :
-                new fr.davidson.diff.jjoules.instrumentation.process.junit5.JJoulesProcessor(testsList, configuration.pathToFirstVersion);
+                new fr.davidson.diff.jjoules.instrumentation.process.junit4.JJoulesProcessor(testsList, configuration.pathToFirstVersion, configuration.getWrapper().getPathToTestFolder()) :
+                new fr.davidson.diff.jjoules.instrumentation.process.junit5.JJoulesProcessor(testsList, configuration.pathToFirstVersion, configuration.getWrapper().getPathToTestFolder());
         LOGGER.info("Instrument version before commit...");
         this.instrument(configuration.pathToFirstVersion, processor, configuration.getClasspathV1(), testsList);
         this.inject(configuration.pathToFirstVersion);
@@ -53,14 +53,14 @@ public class InstrumentationStep extends DiffJJoulesStep {
         Launcher launcher = new Launcher();
 
         final String[] finalClassPath = new String[classpath.length + 2];
-        finalClassPath[0] = rootPathFolder + Constants.PATH_SEPARATOR + this.configuration.getWrapper().getPathToBinFolder();
-        finalClassPath[1] = rootPathFolder + Constants.PATH_SEPARATOR + this.configuration.getWrapper().getPathToBinTestFolder();
+        finalClassPath[0] = rootPathFolder + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToBinFolder();
+        finalClassPath[1] = rootPathFolder + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToBinTestFolder();
         System.arraycopy(classpath, 0, finalClassPath, 2, classpath.length);
         launcher.getEnvironment().setSourceClasspath(finalClassPath);
         launcher.getEnvironment().setNoClasspath(false);
         launcher.getEnvironment().setAutoImports(false);
         launcher.getEnvironment().setLevel("DEBUG");
-        launcher.addInputResource(rootPathFolder + Constants.PATH_SEPARATOR + this.configuration.getWrapper().getPathToTestFolder());
+        launcher.addInputResource(rootPathFolder + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToTestFolder());
 
         launcher.addProcessor(processor);
         launcher.getEnvironment().setOutputType(OutputType.NO_OUTPUT);

@@ -35,10 +35,10 @@ public class SelectionStep extends DiffJJoulesStep {
         this.configuration = configuration;
         LOGGER.info("Run Selection");
         final List<String> allFullQualifiedNameTestClassesV1 = new TestDetector(
-                configuration.pathToFirstVersion + Constants.PATH_SEPARATOR + this.configuration.getWrapper().getPathToTestFolder()
+                configuration.pathToFirstVersion + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToTestFolder()
         ).getAllFullQualifiedNameTestClasses();
         final List<String> allFullQualifiedNameTestClassesV2 = new TestDetector(
-                configuration.pathToSecondVersion + Constants.PATH_SEPARATOR + this.configuration.getWrapper().getPathToTestFolder()
+                configuration.pathToSecondVersion + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToTestFolder()
         ).getAllFullQualifiedNameTestClasses();
 
         final Coverage coverageV1 = CoverageComputation.convert(
@@ -46,7 +46,8 @@ public class SelectionStep extends DiffJJoulesStep {
                         this.configuration.pathToFirstVersion,
                         this.configuration.getClasspathV1AsString(),
                         this.configuration.junit4,
-                        allFullQualifiedNameTestClassesV1
+                        allFullQualifiedNameTestClassesV1,
+                        this.configuration.getWrapper().getBinaries()
                 )
         );
         final Coverage coverageV2 = CoverageComputation.convert(
@@ -54,7 +55,8 @@ public class SelectionStep extends DiffJJoulesStep {
                         this.configuration.pathToSecondVersion,
                         this.configuration.getClasspathV2AsString(),
                         this.configuration.junit4,
-                        allFullQualifiedNameTestClassesV2
+                        allFullQualifiedNameTestClassesV2,
+                        this.configuration.getWrapper().getBinaries()
                 )
         );
         final DiffCoverage coverage = new DiffCoverage();
@@ -69,6 +71,4 @@ public class SelectionStep extends DiffJJoulesStep {
         final Map<String, Set<String>> testsList = enhancedDiffTestSelection.selectTests();
         this.configuration.setTestsList(testsList);
     }
-
-
 }

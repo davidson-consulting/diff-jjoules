@@ -18,8 +18,8 @@ import java.util.Set;
  */
 public class MakeTestFailingProcessor extends AbstractJJoulesProcessor {
 
-    public MakeTestFailingProcessor(Map<String, Set<String>> testsToBeInstrumented, String rootPathFolder) {
-        super(testsToBeInstrumented, rootPathFolder);
+    public MakeTestFailingProcessor(Map<String, Set<String>> testsToBeInstrumented, String rootPathFolder, String testFolderPath) {
+        super(testsToBeInstrumented, rootPathFolder, testFolderPath);
     }
 
     @Override

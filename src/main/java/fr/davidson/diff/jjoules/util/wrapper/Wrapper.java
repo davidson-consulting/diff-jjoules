@@ -23,4 +23,6 @@ public interface Wrapper {
 
     public String getPathToBinTestFolder();
 
+    public String getBinaries();
+
 }
