@@ -7,6 +7,7 @@ import fr.davidson.diff.jjoules.instrumentation.InstrumentationStep;
 import fr.davidson.diff.jjoules.mark.MarkStep;
 import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
+import fr.davidson.diff.jjoules.util.Constants;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.ResetCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -117,8 +118,14 @@ public class DiffJJoulesStep {
 
     private void cleanCompileAndBuildClasspath() {
         this.cleanAndCompile();
-        this.configuration.setClasspathV1(this.configuration.getWrapper().buildClasspath(this.configuration.pathToFirstVersion).split(":"));
-        this.configuration.setClasspathV2(this.configuration.getWrapper().buildClasspath(this.configuration.pathToSecondVersion).split(":"));
+        this.configuration.setClasspathV1(
+                this.configuration.getWrapper()
+                        .buildClasspath(this.configuration.pathToFirstVersion).split(Constants.PATH_SEPARATOR)
+        );
+        this.configuration.setClasspathV2(
+                this.configuration.getWrapper()
+                        .buildClasspath(this.configuration.pathToSecondVersion).split(Constants.PATH_SEPARATOR)
+        );
     }
 
     private void cleanAndCompile() {
@@ -132,7 +139,7 @@ public class DiffJJoulesStep {
                     .reset()
                     .setMode(ResetCommand.ResetType.HARD)
                     .call();
-            // must delete module-info.java
+            // must delete module-info.java TODO checkout this
             try (Stream<Path> walk = Files.walk(Paths.get(pathToFolder))) {
                 walk.filter(path -> path.endsWith("module-info.java"))
                         .forEach(path -> path.toFile().delete());
