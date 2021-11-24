@@ -1,7 +1,6 @@
 package fr.davidson.diff.jjoules.util.wrapper.maven;
 
 import fr.davidson.diff.jjoules.util.Utils;
-import fr.davidson.diff.jjoules.util.maven.MavenRunner;
 import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
 import org.apache.maven.shared.invoker.*;
 import org.slf4j.Logger;

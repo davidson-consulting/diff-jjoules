@@ -7,8 +7,6 @@ import fr.davidson.diff.jjoules.instrumentation.InstrumentationStep;
 import fr.davidson.diff.jjoules.mark.MarkStep;
 import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
-import fr.davidson.diff.jjoules.util.Utils;
-import fr.davidson.diff.jjoules.util.maven.MavenRunner;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.ResetCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
