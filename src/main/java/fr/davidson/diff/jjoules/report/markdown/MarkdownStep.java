@@ -50,12 +50,12 @@ public class MarkdownStep extends DiffJJoulesStep {
         addDeltaOmega(report, rawDeltaData, deltaOmega, consideredDelta, unconsideredDelta, deltas, dataV1, dataV2);
         suspiciousLines(configuration, report);
         ownConsumption(configuration, report);
-        LOGGER.info("{}", report.toString());
+        LOGGER.info("{}", report);
         writeReport(report, configuration);
     }
 
     private void writeReport(StringBuilder report, Configuration configuration) {
-        try (FileWriter writer = new FileWriter(configuration.pathToReport, false)) {
+        try (FileWriter writer = new FileWriter(configuration.getPathToReport(), false)) {
             writer.write(report.toString());
         } catch (IOException e) {
             throw new RuntimeException(e);

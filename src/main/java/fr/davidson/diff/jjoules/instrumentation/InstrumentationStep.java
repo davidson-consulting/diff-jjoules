@@ -34,17 +34,17 @@ public class InstrumentationStep extends DiffJJoulesStep {
         this.configuration = configuration;
         LOGGER.info("Run Instrumentation");
         final Map<String, Set<String>> testsList = configuration.getTestsList();
-        final AbstractJJoulesProcessor processor = configuration.junit4 ?
-                new fr.davidson.diff.jjoules.instrumentation.process.junit4.JJoulesProcessor(testsList, configuration.pathToFirstVersion, configuration.getWrapper().getPathToTestFolder()) :
-                new fr.davidson.diff.jjoules.instrumentation.process.junit5.JJoulesProcessor(testsList, configuration.pathToFirstVersion, configuration.getWrapper().getPathToTestFolder());
+        final AbstractJJoulesProcessor processor = configuration.isJunit4() ?
+                new fr.davidson.diff.jjoules.instrumentation.process.junit4.JJoulesProcessor(testsList, configuration.getPathToFirstVersion(), configuration.getWrapper().getPathToTestFolder()) :
+                new fr.davidson.diff.jjoules.instrumentation.process.junit5.JJoulesProcessor(testsList, configuration.getPathToFirstVersion(), configuration.getWrapper().getPathToTestFolder());
         LOGGER.info("Instrument version before commit...");
-        this.instrument(configuration.pathToFirstVersion, processor, configuration.getClasspathV1(), testsList);
-        this.inject(configuration.pathToFirstVersion);
-        if (configuration.pathToSecondVersion != null && !configuration.pathToSecondVersion.isEmpty()) {
-            processor.setRootPathFolder(configuration.pathToSecondVersion);
+        this.instrument(configuration.getPathToFirstVersion(), processor, configuration.getClasspathV1(), testsList);
+        this.inject(configuration.getPathToFirstVersion());
+        if (configuration.getPathToSecondVersion() != null && !configuration.getPathToSecondVersion().isEmpty()) {
+            processor.setRootPathFolder(configuration.getPathToSecondVersion());
             LOGGER.info("Instrument version after commit...");
-            this.instrument(configuration.pathToSecondVersion, processor, configuration.getClasspathV2(), testsList);
-            this.inject(configuration.pathToSecondVersion);
+            this.instrument(configuration.getPathToSecondVersion(), processor, configuration.getClasspathV2(), testsList);
+            this.inject(configuration.getPathToSecondVersion());
         }
     }
 

@@ -30,35 +30,54 @@ public class Configuration {
     private static final String SRC_FOLDER = "src";
 
     @CommandLine.Option(names = {"-f", "--path-first-version"}, description = "Path to the first version of the program.", required = true)
-    public final String pathToFirstVersion;
+    private String pathToFirstVersion;
 
     @CommandLine.Option(names = {"-s", "--path-second-version"}, description = "Path to the second version of the program.", required = true)
-    public final String pathToSecondVersion;
+    private String pathToSecondVersion;
 
     @CommandLine.Option(names = {"--junit4"}, description = "Enable junit4 tests", defaultValue = "false")
-    public final boolean junit4;
+    private boolean junit4;
 
     @CommandLine.Option(names = {"-i", "--iteration"}, description = "Number of test executions to measure their energy consumption.", defaultValue = "10")
-    public final int iterations;
+    private int iterations;
 
     @CommandLine.Option(names = {"-o", "--output"}, description = "Path to the output folder.", defaultValue = "diff-jjoules")
-    public final String output;
+    private String output;
 
     @CommandLine.Option(names = {"--path-repository-v1"}, description = "Path to the first version of the program that contains .git (this is used for multi-module projects)", defaultValue = "")
-    public final String pathToRepositoryV1;
+    private String pathToRepositoryV1;
 
     @CommandLine.Option(names = {"--path-repository-v2"}, description = "Path to the second version of the program that contains .git (this is used for multi-module projects)", defaultValue = "")
-    public final String pathToRepositoryV2;
+    private String pathToRepositoryV2;
 
     @CommandLine.Option(names = {"--mark"}, description = "Enable mark step.", defaultValue = "false")
-    public final boolean shouldMark;
+    private boolean shouldMark;
 
     @CommandLine.Option(names = {"--suspect"}, description = "Enable suspect step.", defaultValue = "false")
-    public final boolean shouldSuspect;
+    private boolean shouldSuspect;
 
-    public final String pathToReport;
+    @CommandLine.Option(names = {"--path-report-file"}, description = "Path to report file to produce.", defaultValue = "diff-jjoules/diff-jjoules.report")
+    private String pathToReport;
 
-    public final String diff;
+    @CommandLine.Option(
+            names = "--wrapper",
+            defaultValue = "MAVEN",
+            description = "Specify the wrapper to be used." +
+                    "Valid values: ${COMPLETION-CANDIDATES}" +
+                    " Default value: ${DEFAULT-VALUE}"
+    )
+    private WrapperEnum wrapperEnum;
+
+    @CommandLine.Option(
+            names = "--report",
+            defaultValue = "TXT",
+            description = "Specify the report type to produce." +
+                    "Valid values: ${COMPLETION-CANDIDATES}" +
+                    " Default value: ${DEFAULT-VALUE}"
+    )
+    private ReportEnum reportEnum;
+
+    private String diff;
 
     private String[] classpathV1;
 
@@ -92,14 +111,8 @@ public class Configuration {
 
     private Wrapper wrapper;
 
-    private ReportEnum reportEnum;
+    public Configuration() {
 
-    public ReportEnum getReportEnum() {
-        return reportEnum;
-    }
-
-    public Wrapper getWrapper() {
-        return this.wrapper;
     }
 
     public Configuration(String pathToFirstVersion,
@@ -137,22 +150,26 @@ public class Configuration {
         this.shouldMark = shouldMark;
         this.reportEnum = reportEnum;
         this.pathToReport = pathToReport;
-        this.ownConsumptionReports = new LinkedHashMap<>();
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
         this.iterations = iterations;
-        if (new File(output).isAbsolute()) {
-            this.output = output;
-        } else {
-            this.output = this.pathToFirstVersion + Constants.FILE_SEPARATOR + output;
-        }
-        final File outputDirectory = new File(this.output);
-        if (outputDirectory.exists()) {
-            outputDirectory.delete();
-        }
-        outputDirectory.mkdir();
+        this.output = output;
         this.pathToRepositoryV1 = pathToRepositoryV1;
         this.pathToRepositoryV2 = pathToRepositoryV2;
+        this.wrapperEnum = wrapperEnum;
+        init();
+    }
+
+    public void init() {
+        this.ownConsumptionReports = new LinkedHashMap<>();
+        final File outputFd = new File(this.output);
+        if (!outputFd.isAbsolute()) {
+            this.output = this.pathToFirstVersion + Constants.FILE_SEPARATOR + output;
+        }
+        if (outputFd.exists()) {
+            outputFd.delete();
+        }
+        outputFd.mkdir();
         this.diff = new DiffComputer()
                 .computeDiffWithDiffCommand(
                         new File(pathToFirstVersion + Constants.FILE_SEPARATOR + SRC_FOLDER),
@@ -164,6 +181,62 @@ public class Configuration {
         this.classpathV1 = this.classpathV1AsString.split(Constants.PATH_SEPARATOR);
         this.classpathV2 = this.classpathV2AsString.split(Constants.PATH_SEPARATOR);
         this.junit4 = !classpathV1AsString.contains("junit-jupiter-engine-5") && (classpathV1AsString.contains("junit-4") || classpathV1AsString.contains("junit-3"));
+    }
+
+    public String getPathToFirstVersion() {
+        return pathToFirstVersion;
+    }
+
+    public String getPathToSecondVersion() {
+        return pathToSecondVersion;
+    }
+
+    public boolean isJunit4() {
+        return junit4;
+    }
+
+    public int getIterations() {
+        return iterations;
+    }
+
+    public String getOutput() {
+        return output;
+    }
+
+    public String getPathToRepositoryV1() {
+        return pathToRepositoryV1;
+    }
+
+    public String getPathToRepositoryV2() {
+        return pathToRepositoryV2;
+    }
+
+    public boolean isShouldMark() {
+        return shouldMark;
+    }
+
+    public boolean isShouldSuspect() {
+        return shouldSuspect;
+    }
+
+    public String getPathToReport() {
+        return pathToReport;
+    }
+
+    public WrapperEnum getWrapperEnum() {
+        return wrapperEnum;
+    }
+
+    public String getDiff() {
+        return diff;
+    }
+
+    public ReportEnum getReportEnum() {
+        return reportEnum;
+    }
+
+    public Wrapper getWrapper() {
+        return this.wrapper;
     }
 
     public void setTestsList(Map<String, Set<String>> testsList) {

@@ -5,6 +5,7 @@ import fr.davidson.diff.jjoules.DiffJJoulesStep;
 import fr.davidson.diff.jjoules.mark.computation.ExecLineTestMap;
 import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
 import fr.davidson.diff.jjoules.suspect.fl.FlacocoRunner;
+import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.spoonlabs.flacoco.api.result.Location;
@@ -43,15 +44,15 @@ public class SuspectStep extends DiffJJoulesStep {
         }
         // execute flacoco
         final Map<Location, Suspiciousness> runV1 = FlacocoRunner.run(
-                configuration.junit4,
+                configuration.isJunit4(),
                 configuration.getClasspathV1AsString(),
-                configuration.pathToFirstVersion,
+                configuration.getPathToFirstVersion(),
                 testsList
         );
         final Map<Location, Suspiciousness> runV2 = FlacocoRunner.run(
-                configuration.junit4,
+                configuration.isJunit4(),
                 configuration.getClasspathV2AsString(),
-                configuration.pathToSecondVersion,
+                configuration.getPathToSecondVersion(),
                 testsList
         );
         final ExecsLines execLinesAdditions = configuration.getExecLinesAdditions();
@@ -69,9 +70,9 @@ public class SuspectStep extends DiffJJoulesStep {
                 .stream()
                 .sorted((key1, key2) -> -(int)((suspiciousLinesV2.get(key1)*100.0D) - (suspiciousLinesV2.get(key2)*100.0D)))
                 .forEach(key -> LOGGER.info("{}: {}", key, suspiciousLinesV2.get(key)));
-        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_SUSPICIOUS_V1, suspiciousLinesV1);
+        JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_SUSPICIOUS_V1, suspiciousLinesV1);
         configuration.setScorePerLineV1(suspiciousLinesV1);
-        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_SUSPICIOUS_V2, suspiciousLinesV2);
+        JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_SUSPICIOUS_V2, suspiciousLinesV2);
         configuration.setScorePerLineV2(suspiciousLinesV2);
     }
 

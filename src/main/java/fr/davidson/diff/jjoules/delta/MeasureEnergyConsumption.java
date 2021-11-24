@@ -5,6 +5,7 @@ import eu.stamp_project.testrunner.listener.TestResult;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
+import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
 import org.slf4j.Logger;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
  */
 public class MeasureEnergyConsumption {
 
+    // TODO
     public static final String PATH_TO_JJOULES_REPORT = "/target/jjoules-reports/";
 
     public static final String KEY_ENERGY_CONSUMPTION = "package|uJ";
@@ -47,21 +49,25 @@ public class MeasureEnergyConsumption {
             final Datas dataV1,
             final Datas dataV2,
             Map<String, Set<String>> testsList) {
-        for (int i = 0; i < configuration.iterations; i++) {
+        for (int i = 0; i < configuration.getIterations(); i++) {
             runForVersion(
-                    configuration.pathToFirstVersion,
-                    configuration.getClasspathV1AsString(),
+                    configuration.getPathToFirstVersion(),
+                    configuration.getClasspathV1AsString() +
+                            Constants.PATH_SEPARATOR +
+                            configuration.getWrapper().getBinaries(),
                     testsList,
-                    configuration.junit4
+                    configuration.isJunit4()
             );
-            readAllJSonFiles(configuration.pathToFirstVersion, dataV1);
+            readAllJSonFiles(configuration.getPathToFirstVersion(), dataV1);
             runForVersion(
-                    configuration.pathToSecondVersion,
-                    configuration.getClasspathV2AsString(),
+                    configuration.getPathToSecondVersion(),
+                    configuration.getClasspathV2AsString() +
+                            Constants.PATH_SEPARATOR +
+                            configuration.getWrapper().getBinaries(),
                     testsList,
-                    configuration.junit4
+                    configuration.isJunit4()
             );
-            readAllJSonFiles(configuration.pathToSecondVersion, dataV2);
+            readAllJSonFiles(configuration.getPathToSecondVersion(), dataV2);
         }
     }
 
@@ -71,27 +77,25 @@ public class MeasureEnergyConsumption {
             Map<String, Set<String>> testsList,
             boolean junit4
     ) {
-            EntryPoint.jUnit5Mode = !junit4;
-            EntryPoint.verbose = true;
-            EntryPoint.timeoutInMs = 100000;
-            try {
-                final String[] testClassNames = testsList.keySet().toArray(new String[0]);
-                final String[] testMethodsNames = testsList.values()
-                        .stream()
-                        .flatMap(Collection::stream)
-                        .toArray(String[]::new);
-                EntryPoint.workingDirectory = new File(pathToVersion);
-                LOGGER.info("{}", EntryPoint.workingDirectory.getAbsolutePath());
-                final TestResult testResult = EntryPoint.runTests(
-                        classpath +
-                                ":" + pathToVersion + "/target/classes" +
-                                ":" + pathToVersion + "/target/test-classes",
-                        testClassNames,
-                        testMethodsNames
-                );
-            } catch (TimeoutException | java.lang.RuntimeException e) {
-                throw new RuntimeException(e);
-            }
+        EntryPoint.jUnit5Mode = !junit4;
+        EntryPoint.verbose = true;
+        EntryPoint.timeoutInMs = 100000;
+        try {
+            final String[] testClassNames = testsList.keySet().toArray(new String[0]);
+            final String[] testMethodsNames = testsList.values()
+                    .stream()
+                    .flatMap(Collection::stream)
+                    .toArray(String[]::new);
+            EntryPoint.workingDirectory = new File(pathToVersion);
+            LOGGER.info("{}", EntryPoint.workingDirectory.getAbsolutePath());
+            final TestResult testResult = EntryPoint.runTests(
+                    classpath,
+                    testClassNames,
+                    testMethodsNames
+            );
+        } catch (TimeoutException | java.lang.RuntimeException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void readAllJSonFiles(
@@ -124,7 +128,7 @@ public class MeasureEnergyConsumption {
     }
 
     private String toTestName(String path) {
-        final String[] split = path.split("/");
+        final String[] split = path.split(Constants.FILE_SEPARATOR);
         return split[split.length - 1].split("\\.json")[0].replace("-", "#");
     }
 
