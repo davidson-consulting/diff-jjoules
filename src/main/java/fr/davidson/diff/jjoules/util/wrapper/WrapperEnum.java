@@ -1,6 +1,7 @@
 package fr.davidson.diff.jjoules.util.wrapper;
 
 import fr.davidson.diff.jjoules.util.wrapper.maven.MavenWrapper;
+import fr.davidson.diff.jjoules.util.wrapper.properties.PropertiesWrapper;
 
 /**
  * @author Benjamin DANGLOT
@@ -13,6 +14,12 @@ public enum WrapperEnum {
         @Override
         public Wrapper getWrapper() {
             return new MavenWrapper();
+        }
+    },
+    PROPERTIES() {
+        @Override
+        public Wrapper getWrapper() {
+            return new PropertiesWrapper();
         }
     };
 
