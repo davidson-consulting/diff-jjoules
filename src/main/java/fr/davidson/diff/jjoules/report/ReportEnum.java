@@ -10,6 +10,17 @@ import fr.davidson.diff.jjoules.report.markdown.MarkdownStep;
  * on 17/09/2021
  */
 public enum ReportEnum {
+    TXT() {
+        @Override
+        public DiffJJoulesStep get() {
+            return new DiffJJoulesStep() {
+                @Override
+                public void run(Configuration configuration) {
+                    // TODO to be implemented
+                }
+            };
+        }
+    },
     MARKDOWN() {
         @Override
         public DiffJJoulesStep get() {

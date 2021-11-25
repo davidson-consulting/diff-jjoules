@@ -15,6 +15,7 @@ import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
+import picocli.CommandLine;
 
 import java.io.File;
 import java.util.*;
@@ -24,31 +25,68 @@ import java.util.*;
  * benjamin.danglot@davidson.fr
  * on 25/08/2021
  */
+@CommandLine.Command(name = "fr.davidson.diff.jjoules.Main", mixinStandardHelpOptions = true, version = "Configuration 0.0.1")
 public class Configuration {
 
     private static final String SRC_FOLDER = "src";
 
-    public final String pathToFirstVersion;
+    @CommandLine.Option(names = {"-f", "--path-first-version"}, description = "Path to the first version of the program.", required = true)
+    private String pathToFirstVersion;
 
-    public final String pathToSecondVersion;
+    @CommandLine.Option(names = {"-s", "--path-second-version"}, description = "Path to the second version of the program.", required = true)
+    private String pathToSecondVersion;
 
-    public final boolean junit4;
+    @CommandLine.Option(names = {"--junit4"}, description = "Enable junit4 tests", defaultValue = "false")
+    private boolean junit4;
 
-    public final int iterations;
+    @CommandLine.Option(names = {"-i", "--iteration"}, description = "Number of test executions to measure their energy consumption.", defaultValue = "10")
+    private int iterations;
 
-    public final String output;
+    @CommandLine.Option(names = {"-o", "--output"}, description = "Path to the output folder.", defaultValue = "diff-jjoules")
+    private String output;
 
-    public final String diff;
+    @CommandLine.Option(names = {"--path-repository-v1"}, description = "Path to the first version of the program that contains .git (this is used for multi-module projects)", defaultValue = "")
+    private String pathToRepositoryV1;
 
-    public final String pathToRepositoryV1;
+    @CommandLine.Option(names = {"--path-repository-v2"}, description = "Path to the second version of the program that contains .git (this is used for multi-module projects)", defaultValue = "")
+    private String pathToRepositoryV2;
 
-    public final String pathToRepositoryV2;
+    @CommandLine.Option(names = {"--mark"}, description = "Enable mark step.", defaultValue = "false")
+    private boolean shouldMark;
 
-    public final String pathToReport;
+    @CommandLine.Option(names = {"--suspect"}, description = "Enable suspect step.", defaultValue = "false")
+    private boolean shouldSuspect;
 
-    public final boolean shouldSuspect;
+    @CommandLine.Option(names = {"--path-report-file"}, description = "Path to report file to produce.", defaultValue = "diff-jjoules/diff-jjoules.report")
+    private String pathToReport;
 
-    public final boolean shouldMark;
+    @CommandLine.Option(
+            names = "--wrapper",
+            defaultValue = "MAVEN",
+            description = "Specify the wrapper to be used." +
+                    "Valid values: ${COMPLETION-CANDIDATES}" +
+                    " Default value: ${DEFAULT-VALUE}"
+    )
+    private WrapperEnum wrapperEnum;
+
+    @CommandLine.Option(
+            names = "--report",
+            defaultValue = "TXT",
+            description = "Specify the report type to produce." +
+                    "Valid values: ${COMPLETION-CANDIDATES}" +
+                    " Default value: ${DEFAULT-VALUE}"
+    )
+    private ReportEnum reportEnum;
+
+    @CommandLine.Option(
+            names = "--measure",
+            defaultValue = "false",
+            description = "Enable the energy consumption measurements of Diff-JJoules" +
+                    " Default value: ${DEFAULT-VALUE}"
+    )
+    private boolean measureEnergyConsumption;
+
+    private String diff;
 
     private String[] classpathV1;
 
@@ -82,14 +120,8 @@ public class Configuration {
 
     private Wrapper wrapper;
 
-    private ReportEnum reportEnum;
+    public Configuration() {
 
-    public ReportEnum getReportEnum() {
-        return reportEnum;
-    }
-
-    public Wrapper getWrapper() {
-        return this.wrapper;
     }
 
     public Configuration(String pathToFirstVersion,
@@ -107,7 +139,8 @@ public class Configuration {
                 true,
                 shouldMark,
                 ReportEnum.NONE,
-                WrapperEnum.MAVEN
+                WrapperEnum.MAVEN,
+                false
         );
     }
 
@@ -121,39 +154,111 @@ public class Configuration {
                          boolean shouldSuspect,
                          boolean shouldMark,
                          ReportEnum reportEnum,
-                         WrapperEnum wrapperEnum
+                         WrapperEnum wrapperEnum,
+                         boolean measureEnergyConsumption
     ) {
         this.shouldSuspect = shouldSuspect;
         this.shouldMark = shouldMark;
         this.reportEnum = reportEnum;
         this.pathToReport = pathToReport;
-        this.ownConsumptionReports = new LinkedHashMap<>();
         this.pathToFirstVersion = pathToFirstVersion;
         this.pathToSecondVersion = pathToSecondVersion;
         this.iterations = iterations;
-        if (new File(output).isAbsolute()) {
-            this.output = output;
-        } else {
-            this.output = this.pathToFirstVersion + Constants.FILE_SEPARATOR + output;
-        }
-        final File outputDirectory = new File(this.output);
-        if (outputDirectory.exists()) {
-            outputDirectory.delete();
-        }
-        outputDirectory.mkdir();
+        this.output = output;
         this.pathToRepositoryV1 = pathToRepositoryV1;
         this.pathToRepositoryV2 = pathToRepositoryV2;
+        this.wrapperEnum = wrapperEnum;
+        this.measureEnergyConsumption = measureEnergyConsumption;
+        init();
+    }
+
+    public void init() {
+        this.ownConsumptionReports = new LinkedHashMap<>();
+        final File outputFd = new File(this.output);
+        if (!outputFd.isAbsolute()) {
+            this.output = this.pathToFirstVersion + Constants.FILE_SEPARATOR + output;
+        }
+        if (outputFd.exists()) {
+            outputFd.delete();
+        }
+        outputFd.mkdir();
         this.diff = new DiffComputer()
                 .computeDiffWithDiffCommand(
                         new File(pathToFirstVersion + Constants.FILE_SEPARATOR + SRC_FOLDER),
                         new File(pathToSecondVersion + Constants.FILE_SEPARATOR + SRC_FOLDER)
                 );
+        if (this.pathToRepositoryV1.isEmpty()) {
+            this.pathToRepositoryV1 = this.pathToFirstVersion;
+        }
+        if (this.pathToRepositoryV2.isEmpty()) {
+            this.pathToRepositoryV2 = this.pathToSecondVersion;
+        }
         this.wrapper = wrapperEnum.getWrapper();
         this.classpathV1AsString = this.wrapper.buildClasspath(this.pathToFirstVersion);
         this.classpathV2AsString = this.wrapper.buildClasspath(this.pathToSecondVersion);
         this.classpathV1 = this.classpathV1AsString.split(Constants.PATH_SEPARATOR);
         this.classpathV2 = this.classpathV2AsString.split(Constants.PATH_SEPARATOR);
         this.junit4 = !classpathV1AsString.contains("junit-jupiter-engine-5") && (classpathV1AsString.contains("junit-4") || classpathV1AsString.contains("junit-3"));
+    }
+
+    public String getPathToFirstVersion() {
+        return pathToFirstVersion;
+    }
+
+    public String getPathToSecondVersion() {
+        return pathToSecondVersion;
+    }
+
+    public boolean isJunit4() {
+        return junit4;
+    }
+
+    public int getIterations() {
+        return iterations;
+    }
+
+    public String getOutput() {
+        return output;
+    }
+
+    public String getPathToRepositoryV1() {
+        return pathToRepositoryV1;
+    }
+
+    public String getPathToRepositoryV2() {
+        return pathToRepositoryV2;
+    }
+
+    public boolean isShouldMark() {
+        return shouldMark;
+    }
+
+    public boolean isShouldSuspect() {
+        return shouldSuspect;
+    }
+
+    public String getPathToReport() {
+        return pathToReport;
+    }
+
+    public WrapperEnum getWrapperEnum() {
+        return wrapperEnum;
+    }
+
+    public String getDiff() {
+        return diff;
+    }
+
+    public ReportEnum getReportEnum() {
+        return reportEnum;
+    }
+
+    public Wrapper getWrapper() {
+        return this.wrapper;
+    }
+
+    public boolean isMeasureEnergyConsumption() {
+        return measureEnergyConsumption;
     }
 
     public void setTestsList(Map<String, Set<String>> testsList) {

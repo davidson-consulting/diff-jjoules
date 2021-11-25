@@ -42,20 +42,20 @@ public class FailerStep extends DiffJJoulesStep {
             }
         }
         makeFailVersion(
-                this.configuration.pathToFirstVersion,
+                this.configuration.getPathToFirstVersion(),
                 this.configuration.getClasspathV1(),
                 new MakeTestFailingProcessor(
                         testsToBeInstrumented,
-                        this.configuration.pathToFirstVersion,
+                        this.configuration.getPathToFirstVersion(),
                         this.configuration.getWrapper().getPathToTestFolder()
                 )
         );
         makeFailVersion(
-                this.configuration.pathToSecondVersion,
+                this.configuration.getPathToSecondVersion(),
                 this.configuration.getClasspathV2(),
                 new MakeTestFailingProcessor(
                         testsToBeInstrumented,
-                        this.configuration.pathToSecondVersion,
+                        this.configuration.getPathToSecondVersion(),
                         this.configuration.getWrapper().getPathToTestFolder()
                 )
         );

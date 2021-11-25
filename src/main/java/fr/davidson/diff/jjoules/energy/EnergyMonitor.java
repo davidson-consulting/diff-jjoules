@@ -1,6 +1,7 @@
 package fr.davidson.diff.jjoules.energy;
 
 import fr.davidson.diff.jjoules.Configuration;
+import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import org.powerapi.jjoules.EnergySample;
 import org.powerapi.jjoules.NoSuchDomainException;
@@ -40,7 +41,7 @@ public class EnergyMonitor {
     public void stopMonitoring(String reportPathName) {
         if (this.energySample != null) {
             final Map<String, Long> report = this.energySample.stop();
-            JSONUtils.write(this.configuration.output + "/" + reportPathName + ".json", report);
+            JSONUtils.write(this.configuration.getOutput() + Constants.FILE_SEPARATOR + reportPathName + ".json", report);
             this.configuration.addReport(reportPathName, report);
             this.energySample = null;
         }

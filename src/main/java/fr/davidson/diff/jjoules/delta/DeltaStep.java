@@ -5,6 +5,7 @@ import fr.davidson.diff.jjoules.DiffJJoulesStep;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
+import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,11 +49,11 @@ public class DeltaStep extends DiffJJoulesStep {
         final Map<String, Data> mediansV1 = Computation.computeMedian(dataV1);
         final Map<String, Data> mediansV2 = Computation.computeMedian(dataV2);
         final Deltas deltas = Computation.computeDelta(mediansV1, mediansV2);
-        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_DATA_V1, dataV1);
+        JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_DATA_V1, dataV1);
         configuration.setDataV1(dataV1);
-        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_DATA_V2, dataV2);
+        JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_DATA_V2, dataV2);
         configuration.setDataV2(dataV2);
-        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_DELTA, deltas);
+        JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_DELTA, deltas);
         configuration.setDeltas(deltas);
         filterTestMethods(configuration, dataV1, dataV2, deltas);
     }
@@ -70,7 +71,7 @@ public class DeltaStep extends DiffJJoulesStep {
             }
         }
         JSONUtils.write(
-                configuration.output + "/" + PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME,
+                configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME,
                 consideredTestsNames
         );
         configuration.setConsideredTestsNames(consideredTestsNames);

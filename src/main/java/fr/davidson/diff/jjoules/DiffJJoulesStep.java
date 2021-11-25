@@ -37,10 +37,14 @@ public class DiffJJoulesStep {
 
     public void run(Configuration configuration) {
         this.configuration = configuration;
-        this.energyMonitor = new EnergyMonitor(this.configuration);
-        this.energyMonitor.startMonitoring();
+        if (this.configuration.isMeasureEnergyConsumption()) {
+            this.energyMonitor = new EnergyMonitor(this.configuration);
+            this.energyMonitor.startMonitoring();
+        }
         _run(configuration);
-        this.energyMonitor.stopMonitoring(this.getReportPathname());
+        if (this.configuration.isMeasureEnergyConsumption()) {
+            this.energyMonitor.stopMonitoring(this.getReportPathname());
+        }
     }
 
     protected String getReportPathname() {
@@ -53,9 +57,9 @@ public class DiffJJoulesStep {
         this.testSelection();
         this.testInstrumentation();
         this.deltaComputation();
-        if (this.configuration.shouldMark) {
+        if (this.configuration.isShouldMark()) {
             this.commitMarking();
-            if (this.configuration.shouldSuspect) {
+            if (this.configuration.isShouldSuspect()) {
                 this.testFailingInstrumentation();
                 this.testSuspicious();
             }
@@ -111,8 +115,8 @@ public class DiffJJoulesStep {
     }
 
     private void resetAndCleanBothVersion() {
-        this.gitResetHard(this.configuration.pathToRepositoryV1);
-        this.gitResetHard(this.configuration.pathToRepositoryV2);
+        this.gitResetHard(this.configuration.getPathToRepositoryV1());
+        this.gitResetHard(this.configuration.getPathToRepositoryV2());
         cleanCompileAndBuildClasspath();
     }
 
@@ -120,17 +124,17 @@ public class DiffJJoulesStep {
         this.cleanAndCompile();
         this.configuration.setClasspathV1(
                 this.configuration.getWrapper()
-                        .buildClasspath(this.configuration.pathToFirstVersion).split(Constants.PATH_SEPARATOR)
+                        .buildClasspath(this.configuration.getPathToFirstVersion()).split(Constants.PATH_SEPARATOR)
         );
         this.configuration.setClasspathV2(
                 this.configuration.getWrapper()
-                        .buildClasspath(this.configuration.pathToSecondVersion).split(Constants.PATH_SEPARATOR)
+                        .buildClasspath(this.configuration.getPathToSecondVersion()).split(Constants.PATH_SEPARATOR)
         );
     }
 
     private void cleanAndCompile() {
-        this.configuration.getWrapper().cleanAndCompile(this.configuration.pathToFirstVersion);
-        this.configuration.getWrapper().cleanAndCompile(this.configuration.pathToSecondVersion);
+        this.configuration.getWrapper().cleanAndCompile(this.configuration.getPathToFirstVersion());
+        this.configuration.getWrapper().cleanAndCompile(this.configuration.getPathToSecondVersion());
     }
 
     private void gitResetHard(String pathToFolder) {
@@ -156,11 +160,11 @@ public class DiffJJoulesStep {
     private void end(String reason, Exception exception) {
         this.energyMonitor.stopMonitoring(this.getReportPathname());
         try (final FileWriter writer = new FileWriter(
-                this.configuration.output + "/end.txt", false)) {
-            writer.write(reason + "\n");
+                this.configuration.getOutput() + Constants.FILE_SEPARATOR + "end.txt", false)) {
+            writer.write(reason + Constants.NEW_LINE);
             if (exception != null) {
                 for (StackTraceElement stackTraceElement : exception.getStackTrace()) {
-                    writer.write(stackTraceElement.toString() + "\n");
+                    writer.write(stackTraceElement.toString() + Constants.NEW_LINE);
                 }
             }
         } catch (IOException e) {

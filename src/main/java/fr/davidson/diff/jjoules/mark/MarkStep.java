@@ -64,9 +64,9 @@ public class MarkStep extends DiffJJoulesStep {
         final List<String> testMethodNames = consideredTestsNames.values().stream().flatMap(Collection::stream).collect(Collectors.toList());
         final Coverage coverageFirstVersion = CoverageComputation.convert(
                 CoverageComputation.getCoverage(
-                        this.configuration.pathToFirstVersion,
+                        this.configuration.getPathToFirstVersion(),
                         this.configuration.getClasspathV1AsString(),
-                        this.configuration.junit4,
+                        this.configuration.isJunit4(),
                         allFullQualifiedNameTestClasses,
                         testMethodNames,
                         this.configuration.getWrapper().getBinaries()
@@ -74,38 +74,38 @@ public class MarkStep extends DiffJJoulesStep {
         );
         final Coverage coverageSecondVersion = CoverageComputation.convert(
                 CoverageComputation.getCoverage(
-                        this.configuration.pathToSecondVersion,
+                        this.configuration.getPathToSecondVersion(),
                         this.configuration.getClasspathV2AsString(),
-                        this.configuration.junit4,
+                        this.configuration.isJunit4(),
                         allFullQualifiedNameTestClasses,
                         testMethodNames,
                         this.configuration.getWrapper().getBinaries()
                 )
         );
-        JSONUtils.write(configuration.output + Constants.FILE_SEPARATOR + PATH_TO_JSON_COVERAGE_FIRST, coverageFirstVersion);
-        JSONUtils.write(configuration.output + Constants.FILE_SEPARATOR + PATH_TO_JSON_COVERAGE_SECOND, coverageSecondVersion);
+        JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_COVERAGE_FIRST, coverageFirstVersion);
+        JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_COVERAGE_SECOND, coverageSecondVersion);
         // Exec(l,t)
         final List<ExecsLines> execLineTestMaps = Exec.computeExecLT(
-                configuration.pathToFirstVersion,
-                configuration.pathToSecondVersion,
+                configuration.getPathToFirstVersion(),
+                configuration.getPathToSecondVersion(),
                 coverageFirstVersion,
                 coverageSecondVersion,
-                configuration.diff
+                configuration.getDiff()
         );
-        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_EXEC_DELETION, execLineTestMaps.get(0));
+        JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_EXEC_DELETION, execLineTestMaps.get(0));
         configuration.setExecLinesAdditions(execLineTestMaps.get(0));
-        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_EXEC_ADDITIONS, execLineTestMaps.get(1));
+        JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_EXEC_ADDITIONS, execLineTestMaps.get(1));
         configuration.setExecLinesDeletions(execLineTestMaps.get(1));
 
         // 2 Compute line values
         final Map<String, Integer> thetaL = Line.computeThetaL(execLineTestMaps);
-        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_THETA, thetaL);
+        JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_THETA, thetaL);
         final Map<String, Double> phiL = Line.computePhiL(Line.computeTheta(thetaL), thetaL);
         // 3
         final Map<String, Double> omegaT = Test.computeOmegaT(execLineTestMaps, phiL);
-        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_OMEGA, omegaT);
+        JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_OMEGA, omegaT);
         final Map<String, Data> omegaUpperT = Test.computeOmegaUpperT(omegaT, consideredDeltas);
-        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_OMEGA_UPPER, omegaUpperT);
+        JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_OMEGA_UPPER, omegaUpperT);
         final Data deltaOmega = new Data(
                 omegaUpperT.values().stream().map(d -> d.energy).reduce(Double::sum).orElse(0.0D),
                 omegaUpperT.values().stream().map(d -> d.instructions).reduce(Double::sum).orElse(0.0D),
@@ -116,7 +116,7 @@ public class MarkStep extends DiffJJoulesStep {
                 omegaUpperT.values().stream().map(d -> d.branches).reduce(Double::sum).orElse(0.0D),
                 omegaUpperT.values().stream().map(d -> d.branchMisses).reduce(Double::sum).orElse(0.0D)
         );
-        JSONUtils.write(configuration.output + "/" + PATH_TO_JSON_DELTA_OMEGA, deltaOmega);
+        JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_DELTA_OMEGA, deltaOmega);
         configuration.setDeltaOmega(deltaOmega);
     }
 

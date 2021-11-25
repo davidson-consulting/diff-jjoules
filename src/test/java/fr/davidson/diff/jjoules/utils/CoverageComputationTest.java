@@ -27,9 +27,9 @@ public class CoverageComputationTest extends AbstractDiffJJoulesStepTest {
     void testGetCoverageForSpecificTestMethods() {
         final Configuration configuration = this.getConfiguration();
         final CoveredTestResultPerTestMethod coverage = CoverageComputation.getCoverage(
-                configuration.pathToFirstVersion,
+                configuration.getPathToFirstVersion(),
                 configuration.getClasspathV1AsString(),
-                configuration.junit4,
+                configuration.isJunit4(),
                 Collections.singletonList("fr.davidson.diff_jjoules_demo.InternalListTest"),
                 Arrays.stream(new String[]{"testCount", "testCount2"}).collect(Collectors.toList()),
                 BIN_PATH + Constants.PATH_SEPARATOR + BIN_TEST_PATH
@@ -46,9 +46,9 @@ public class CoverageComputationTest extends AbstractDiffJJoulesStepTest {
     void testGetCoverage() {
         final Configuration configuration = this.getConfiguration();
         final CoveredTestResultPerTestMethod coverage = CoverageComputation.getCoverage(
-                configuration.pathToFirstVersion,
+                configuration.getPathToFirstVersion(),
                 configuration.getClasspathV1AsString(),
-                configuration.junit4,
+                configuration.isJunit4(),
                 Collections.singletonList("fr.davidson.diff_jjoules_demo.InternalListTest"),
                 BIN_PATH + Constants.PATH_SEPARATOR + BIN_TEST_PATH
         );
@@ -63,9 +63,9 @@ public class CoverageComputationTest extends AbstractDiffJJoulesStepTest {
     void testConvert() {
         final Configuration configuration = this.getConfiguration();
         final CoveredTestResultPerTestMethod coverage = CoverageComputation.getCoverage(
-                configuration.pathToFirstVersion,
+                configuration.getPathToFirstVersion(),
                 configuration.getClasspathV1AsString(),
-                configuration.junit4,
+                configuration.isJunit4(),
                 Collections.singletonList("fr.davidson.diff_jjoules_demo.InternalListTest"),
                 BIN_PATH + Constants.PATH_SEPARATOR + BIN_TEST_PATH
         );
