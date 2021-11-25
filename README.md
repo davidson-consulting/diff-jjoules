@@ -50,8 +50,8 @@ In this section, we list the options that are configurables.
 :construction:
 
 ```text
-Usage: fr.davidson.diff.jjoules.Main [-hV] [--junit4] [--mark] [--suspect] -f=<pathToFirstVersion> [-i=<iterations>]
-                                     [-o=<output>] [--path-report-file=<pathToReport>]
+Usage: fr.davidson.diff.jjoules.Main [-hV] [--junit4] [--mark] [--measure] [--suspect] -f=<pathToFirstVersion>
+                                     [-i=<iterations>] [-o=<output>] [--path-report-file=<pathToReport>]
                                      [--path-repository-v1=<pathToRepositoryV1>]
                                      [--path-repository-v2=<pathToRepositoryV2>] [--report=<reportEnum>]
                                      -s=<pathToSecondVersion> [--wrapper=<wrapperEnum>]
@@ -62,14 +62,15 @@ Usage: fr.davidson.diff.jjoules.Main [-hV] [--junit4] [--mark] [--suspect] -f=<p
                           Number of test executions to measure their energy consumption.
       --junit4            Enable junit4 tests
       --mark              Enable mark step.
+      --measure           Enable the energy consumption measurements of Diff-JJoules Default value: false
   -o, --output=<output>   Path to the output folder.
       --path-report-file=<pathToReport>
                           Path to report file to produce.
       --path-repository-v1=<pathToRepositoryV1>
-                          Path to the first version of the program that contains .git (this is used for multi-module
+                          Path to the first version of the program that contains .git (this is used for multi-modu
                             projects)
       --path-repository-v2=<pathToRepositoryV2>
-                          Path to the second version of the program that contains .git (this is used for multi-module
+                          Path to the second version of the program that contains .git (this is used for multi-mod
                             projects)
       --report=<reportEnum>
                           Specify the report type to produce.Valid values: TXT, MARKDOWN, NONE Default value: TXT
