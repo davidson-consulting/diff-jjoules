@@ -187,6 +187,12 @@ public class Configuration {
                         new File(pathToFirstVersion + Constants.FILE_SEPARATOR + SRC_FOLDER),
                         new File(pathToSecondVersion + Constants.FILE_SEPARATOR + SRC_FOLDER)
                 );
+        if (this.pathToRepositoryV1.isEmpty()) {
+            this.pathToRepositoryV1 = this.pathToFirstVersion;
+        }
+        if (this.pathToRepositoryV2.isEmpty()) {
+            this.pathToRepositoryV2 = this.pathToSecondVersion;
+        }
         this.wrapper = wrapperEnum.getWrapper();
         this.classpathV1AsString = this.wrapper.buildClasspath(this.pathToFirstVersion);
         this.classpathV2AsString = this.wrapper.buildClasspath(this.pathToSecondVersion);
