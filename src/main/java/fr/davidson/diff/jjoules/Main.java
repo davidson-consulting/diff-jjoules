@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         final Configuration configuration = parse(args);
         final DiffJJoulesStep diffJJoulesStep = new DiffJJoulesStep();
-        //diffJJoulesStep.run(configuration);
+        diffJJoulesStep.run(configuration);
         diffJJoulesStep.report();
     }
 
