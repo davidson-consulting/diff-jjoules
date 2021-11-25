@@ -29,7 +29,7 @@ public class MeasureEnergyConsumptionTest {
     @BeforeEach
     void setUp() throws IOException {
         // compile
-        MavenRunner.runCleanAndCompile("src/test/resources/diff-jjoules-demo");
+        WrapperEnum.MAVEN.getWrapper().cleanAndCompile("src/test/resources/diff-jjoules-demo");
         new File("src/test/resources/diff-jjoules-demo/target/jjoules-reports/").mkdirs();
         Path dst = Paths.get("src/test/resources/diff-jjoules-demo/target/jjoules-reports/com.google.gson.CommentsTest-testParseComments.json");
         Path src = Paths.get("src/test/resources/json/v1/com.google.gson.CommentsTest-testParseComments.json");

@@ -3,6 +3,7 @@ package fr.davidson.diff.jjoules.suspect;
 import fr.davidson.diff.jjoules.suspect.fl.FlacocoRunner;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.maven.MavenRunner;
+import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import fr.spoonlabs.flacoco.api.result.Location;
 import fr.spoonlabs.flacoco.api.result.Suspiciousness;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ public class FlacocoRunnerTest {
     @Test
     void test() {
         final String absolutePath = new File("src/test/resources/diff-jjoules-demo").getAbsolutePath();
-        MavenRunner.runCleanAndCompile(absolutePath);
+        WrapperEnum.MAVEN.getWrapper().cleanAndCompile(absolutePath);
         final String classpath = Utils.readClasspathFile(absolutePath + "/classpath");
         final String testClassName = "fr.davidson.diff_jjoules_demo.InternalListTest";
         final List<String> testMethodNames = Arrays.asList(
