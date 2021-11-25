@@ -120,6 +120,11 @@ public class MavenWrapper implements Wrapper {
         return this.getPathToBinFolder() + Constants.PATH_SEPARATOR + this.getPathToBinTestFolder();
     }
 
+    @Override
+    public void injectJJoulesDependencies(String pathToRootDir) {
+        new JJoulesInjection(pathToRootDir).inject();
+    }
+
     public void runGoals(String pathToRootDir, String... goals) {
         runGoals(pathToRootDir, new Properties(), goals);
     }
