@@ -49,7 +49,8 @@ public class MeasureEnergyConsumptionTest {
                         "",
                         "",
                         "",
-                        true, true, ReportEnum.NONE, WrapperEnum.MAVEN
+                        true, true, ReportEnum.NONE, WrapperEnum.MAVEN,
+                        false
                 ),
                 dataV1,
                 dataV2,

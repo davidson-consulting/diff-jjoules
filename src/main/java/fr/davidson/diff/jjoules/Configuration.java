@@ -78,6 +78,14 @@ public class Configuration {
     )
     private ReportEnum reportEnum;
 
+    @CommandLine.Option(
+            names = "--measure",
+            defaultValue = "false",
+            description = "Enable the energy consumption measurements of Diff-JJoules" +
+                    " Default value: ${DEFAULT-VALUE}"
+    )
+    private boolean measureEnergyConsumption;
+
     private String diff;
 
     private String[] classpathV1;
@@ -131,7 +139,8 @@ public class Configuration {
                 true,
                 shouldMark,
                 ReportEnum.NONE,
-                WrapperEnum.MAVEN
+                WrapperEnum.MAVEN,
+                false
         );
     }
 
@@ -145,7 +154,8 @@ public class Configuration {
                          boolean shouldSuspect,
                          boolean shouldMark,
                          ReportEnum reportEnum,
-                         WrapperEnum wrapperEnum
+                         WrapperEnum wrapperEnum,
+                         boolean measureEnergyConsumption
     ) {
         this.shouldSuspect = shouldSuspect;
         this.shouldMark = shouldMark;
@@ -158,6 +168,7 @@ public class Configuration {
         this.pathToRepositoryV1 = pathToRepositoryV1;
         this.pathToRepositoryV2 = pathToRepositoryV2;
         this.wrapperEnum = wrapperEnum;
+        this.measureEnergyConsumption = measureEnergyConsumption;
         init();
     }
 
@@ -238,6 +249,10 @@ public class Configuration {
 
     public Wrapper getWrapper() {
         return this.wrapper;
+    }
+
+    public boolean isMeasureEnergyConsumption() {
+        return measureEnergyConsumption;
     }
 
     public void setTestsList(Map<String, Set<String>> testsList) {

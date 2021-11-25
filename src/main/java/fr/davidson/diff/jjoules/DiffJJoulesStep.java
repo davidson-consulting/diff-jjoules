@@ -37,10 +37,14 @@ public class DiffJJoulesStep {
 
     public void run(Configuration configuration) {
         this.configuration = configuration;
-        this.energyMonitor = new EnergyMonitor(this.configuration);
-        this.energyMonitor.startMonitoring();
+        if (this.configuration.isMeasureEnergyConsumption()) {
+            this.energyMonitor = new EnergyMonitor(this.configuration);
+            this.energyMonitor.startMonitoring();
+        }
         _run(configuration);
-        this.energyMonitor.stopMonitoring(this.getReportPathname());
+        if (this.configuration.isMeasureEnergyConsumption()) {
+            this.energyMonitor.stopMonitoring(this.getReportPathname());
+        }
     }
 
     protected String getReportPathname() {

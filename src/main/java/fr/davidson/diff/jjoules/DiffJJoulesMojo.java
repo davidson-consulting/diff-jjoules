@@ -78,6 +78,9 @@ public class DiffJJoulesMojo extends AbstractMojo {
     @Parameter(property = "path-to-report", defaultValue = ".github/workflows/template.md")
     private String pathToReport;
 
+    @Parameter(property = "measure", defaultValue = "false")
+    private boolean measureEnergyConsumption;
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         try {
@@ -101,7 +104,8 @@ public class DiffJJoulesMojo extends AbstractMojo {
                     this.shouldSuspect,
                     this.shouldMark,
                     ReportEnum.valueOf(this.reportType),
-                    WrapperEnum.MAVEN
+                    WrapperEnum.MAVEN,
+                    measureEnergyConsumption
             );
             final DiffJJoulesStep diffJJoulesStep = this.getStep();
             diffJJoulesStep.run(configuration);
