@@ -1,5 +1,6 @@
 package fr.davidson.diff.jjoules;
 
+import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.junit.jupiter.api.BeforeEach;
