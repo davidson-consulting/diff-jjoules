@@ -6,12 +6,10 @@ import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
 import org.powerapi.jjoules.junit5.EnergyTest;
 import spoon.Launcher;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Properties;
-import java.util.stream.Collectors;
 
 /**
  * @author Benjamin DANGLOT
