@@ -1,7 +1,6 @@
 package fr.davidson.diff.jjoules;
 
-import fr.davidson.diff.jjoules.util.Utils;
-import fr.davidson.diff.jjoules.util.maven.MavenRunner;
+import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.io.File;
@@ -72,8 +71,8 @@ public abstract class AbstractDiffJJoulesStepTest {
     @BeforeEach
     protected void setUp() throws IOException {
         // compile
-        MavenRunner.runCleanAndCompile(ROOT_PATH_V1);
-        MavenRunner.runCleanAndCompile(ROOT_PATH_V2);
+        WrapperEnum.MAVEN.getWrapper().cleanAndCompile(ROOT_PATH_V1);
+        WrapperEnum.MAVEN.getWrapper().cleanAndCompile(ROOT_PATH_V2);
         final File diffJJoulesFolderFd = new File(DIFF_JJOULES_FOLDER_PATH);
         if (diffJJoulesFolderFd.exists()) {
             Files.walk(Paths.get(DIFF_JJOULES_FOLDER_PATH))

@@ -3,10 +3,12 @@ package fr.davidson.diff.jjoules.util.wrapper.properties;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
+import org.powerapi.jjoules.junit5.EnergyTest;
 import spoon.Launcher;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.Properties;
 
 /**
@@ -126,5 +128,21 @@ public class PropertiesWrapper implements Wrapper {
     @Override
     public String getBinaries() {
         return this.getPathToBinFolder() + Constants.PATH_SEPARATOR + this.getPathToBinTestFolder();
+    }
+
+    @Override
+    public void injectJJoulesDependencies(String pathToRootDir) {
+        final String pathToClasspathFile = pathToRootDir + Constants.FILE_SEPARATOR + this.properties.getProperty(PATH_TO_CLASSPATH_FILE_KEY);
+        try (final FileWriter writer = new FileWriter(pathToClasspathFile, true)) {
+            final String pathToJUnitJJoulesJar = new File(
+                    EnergyTest.class.getProtectionDomain()
+                            .getCodeSource()
+                            .getLocation()
+                            .toURI()
+            ).getAbsolutePath();
+            writer.append(Constants.PATH_SEPARATOR).append(pathToJUnitJJoulesJar);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

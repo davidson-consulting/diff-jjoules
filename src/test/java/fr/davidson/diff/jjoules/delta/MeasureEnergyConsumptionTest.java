@@ -3,8 +3,6 @@ package fr.davidson.diff.jjoules.delta;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.report.ReportEnum;
-import fr.davidson.diff.jjoules.util.Utils;
-import fr.davidson.diff.jjoules.util.maven.MavenRunner;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +27,7 @@ public class MeasureEnergyConsumptionTest {
     @BeforeEach
     void setUp() throws IOException {
         // compile
-        MavenRunner.runCleanAndCompile("src/test/resources/diff-jjoules-demo");
+        WrapperEnum.MAVEN.getWrapper().cleanAndCompile("src/test/resources/diff-jjoules-demo");
         new File("src/test/resources/diff-jjoules-demo/target/jjoules-reports/").mkdirs();
         Path dst = Paths.get("src/test/resources/diff-jjoules-demo/target/jjoules-reports/com.google.gson.CommentsTest-testParseComments.json");
         Path src = Paths.get("src/test/resources/json/v1/com.google.gson.CommentsTest-testParseComments.json");

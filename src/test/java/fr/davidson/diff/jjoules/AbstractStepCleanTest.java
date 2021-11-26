@@ -1,6 +1,5 @@
 package fr.davidson.diff.jjoules;
 
-import fr.davidson.diff.jjoules.util.maven.MavenRunner;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -31,13 +30,13 @@ public class AbstractStepCleanTest extends AbstractDiffJJoulesStepTest {
                 StandardCopyOption.REPLACE_EXISTING
         );
         Files.copy(
-                Paths.get(ROOT_PATH_V1 + MavenRunner.POM_XML),
-                Paths.get(TARGET_FOLDER_PATH_V1 + MavenRunner.POM_XML),
+                Paths.get(ROOT_PATH_V1 + "pom.xml"),
+                Paths.get(TARGET_FOLDER_PATH_V1 + "pom.xml"),
                 StandardCopyOption.REPLACE_EXISTING
         );
         Files.copy(
-                Paths.get(ROOT_PATH_V2 + MavenRunner.POM_XML),
-                Paths.get(TARGET_FOLDER_PATH_V2 + MavenRunner.POM_XML),
+                Paths.get(ROOT_PATH_V2 + "pom.xml"),
+                Paths.get(TARGET_FOLDER_PATH_V2 + "pom.xml"),
                 StandardCopyOption.REPLACE_EXISTING
         );
     }
@@ -55,13 +54,13 @@ public class AbstractStepCleanTest extends AbstractDiffJJoulesStepTest {
                 StandardCopyOption.REPLACE_EXISTING
         );
         Files.copy(
-                Paths.get(TARGET_FOLDER_PATH_V1 + MavenRunner.POM_XML),
-                Paths.get(ROOT_PATH_V1 + MavenRunner.POM_XML),
+                Paths.get(TARGET_FOLDER_PATH_V1 + "pom.xml"),
+                Paths.get(ROOT_PATH_V1 + "pom.xml"),
                 StandardCopyOption.REPLACE_EXISTING
         );
         Files.copy(
-                Paths.get(TARGET_FOLDER_PATH_V2 + MavenRunner.POM_XML),
-                Paths.get(ROOT_PATH_V2 + MavenRunner.POM_XML),
+                Paths.get(TARGET_FOLDER_PATH_V2 + "pom.xml"),
+                Paths.get(ROOT_PATH_V2 + "pom.xml"),
                 StandardCopyOption.REPLACE_EXISTING
         );
     }

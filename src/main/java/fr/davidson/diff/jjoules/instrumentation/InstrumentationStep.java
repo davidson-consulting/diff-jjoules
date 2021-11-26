@@ -4,7 +4,6 @@ import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.DiffJJoulesStep;
 import fr.davidson.diff.jjoules.instrumentation.process.AbstractJJoulesProcessor;
 import fr.davidson.diff.jjoules.util.Constants;
-import fr.davidson.diff.jjoules.util.maven.JJoulesInjection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.Launcher;
@@ -73,7 +72,7 @@ public class InstrumentationStep extends DiffJJoulesStep {
     }
 
     private void inject(final String rootPathFolder) {
-        new JJoulesInjection(rootPathFolder).inject();
+        this.configuration.getWrapper().injectJJoulesDependencies(rootPathFolder);
     }
 
 }

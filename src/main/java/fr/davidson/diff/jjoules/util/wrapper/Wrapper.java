@@ -25,4 +25,6 @@ public interface Wrapper {
 
     public String getBinaries();
 
+    public void injectJJoulesDependencies(String pathToRootDir);
+
 }
