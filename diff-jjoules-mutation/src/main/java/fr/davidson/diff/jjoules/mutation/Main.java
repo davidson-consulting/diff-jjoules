@@ -1,10 +1,8 @@
 package fr.davidson.diff.jjoules.mutation;
 
-import fr.davidson.diff.jjoules.util.wrapper.maven.JJoulesInjection;
-import fr.davidson.diff.jjoules.mutation.configuration.Options;
 import fr.davidson.diff.jjoules.mutation.configuration.Configuration;
+import fr.davidson.diff.jjoules.mutation.configuration.Options;
 import fr.davidson.diff.jjoules.mutation.process.UntareJjoulesProcessor;
-import fr.davidson.diff.jjoules.util.CSVFileManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.Launcher;
@@ -36,7 +34,7 @@ public class Main {
             return;
         }
         LOGGER.info("{}", configuration.toString());
-        final Map<String, Set<String>> methodNamesPerFullQualifiedName = CSVFileManager.readFile(configuration.pathToMethodNames);
+        final Map<String, Set<String>> methodNamesPerFullQualifiedName = Utils.readFile(configuration.pathToMethodNames);
         LOGGER.info("{}", methodNamesPerFullQualifiedName.keySet()
                 .stream()
                 .map(key ->

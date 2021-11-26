@@ -7,10 +7,6 @@
     <groupId>fr.davidson</groupId>
     <artifactId>diff-jjoules</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <modules>
-        <module>diff-jjoules-maven</module>
-    </modules>
-    <packaging>pom</packaging>
 
     <name>Diff-JJoules</name>
     <description>

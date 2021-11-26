@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.davidson</groupId>
-    <artifactId>diff-jjoules-maven</artifactId>
+    <artifactId>diff-jjoules-mutation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
 
-    <name>Diff-JJoules - Maven</name>
+    <name>Diff-JJoules - Mutation</name>
     <description>
-        Diff-JJoules - Maven is maven plugin wrapper to run Diff-JJoules easily on maven projects.
+        Diff-JJoules - Mutation.
     </description>
 
     <properties>
@@ -21,15 +21,12 @@
         <maven.compiler.target>11</maven.compiler.target>
         <maven.plugin.version>3.5.4</maven.plugin.version>
         <maven.plugin.annotations>3.5</maven.plugin.annotations>
+        <slf4j.version>1.7.25</slf4j.version>
+        <junit.jupiter.version>5.8.1</junit.jupiter.version>
+        <junit.platform.version>1.8.1</junit.platform.version>
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>fr.davidson</groupId>
-            <artifactId>diff-jjoules</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
 
         <dependency>
             <groupId>org.apache.maven</groupId>
@@ -48,6 +45,36 @@
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-core</artifactId>
             <version>${maven.plugin.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>fr.inria.gforge.spoon</groupId>
+            <artifactId>spoon-core</artifactId>
+            <version>10.0.1-beta-1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>${junit.platform.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.powerapi.jjoules</groupId>
+            <artifactId>j-joules</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.powerapi.jjoules</groupId>
+            <artifactId>junit-jjoules</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
     </dependencies>

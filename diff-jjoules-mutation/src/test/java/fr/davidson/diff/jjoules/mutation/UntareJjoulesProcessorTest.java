@@ -1,6 +1,5 @@
 package fr.davidson.diff.jjoules.mutation;
 
-import fr.davidson.diff.jjoules.AbstractProcessorTest;
 import fr.davidson.diff.jjoules.mutation.process.UntareJjoulesProcessor;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtMethod;
