@@ -2,7 +2,6 @@ package fr.davidson.diff.jjoules.suspect;
 
 import fr.davidson.diff.jjoules.suspect.fl.FlacocoRunner;
 import fr.davidson.diff.jjoules.util.Utils;
-import fr.davidson.diff.jjoules.util.maven.MavenRunner;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import fr.spoonlabs.flacoco.api.result.Location;
 import fr.spoonlabs.flacoco.api.result.Suspiciousness;

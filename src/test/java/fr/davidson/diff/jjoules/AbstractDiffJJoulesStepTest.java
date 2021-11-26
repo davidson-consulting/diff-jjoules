@@ -1,10 +1,6 @@
 package fr.davidson.diff.jjoules;
 
-import fr.davidson.diff.jjoules.util.Utils;
-import fr.davidson.diff.jjoules.util.maven.MavenRunner;
-import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
-import fr.davidson.diff.jjoules.util.wrapper.maven.MavenWrapper;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.io.File;
