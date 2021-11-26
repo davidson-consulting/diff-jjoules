@@ -135,7 +135,7 @@ public class Configuration {
                 "diff-jjoules",
                 "",
                 "",
-                ".github/workflows/template.md",
+                "target/report.md",
                 true,
                 shouldMark,
                 ReportEnum.NONE,
