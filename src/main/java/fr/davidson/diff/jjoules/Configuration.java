@@ -180,9 +180,9 @@ public class Configuration {
             this.output = this.pathToFirstVersion + Constants.FILE_SEPARATOR + output;
         }
         try {
-        	Files.deleteIfExists(outputFd.toPath());
+            Files.deleteIfExists(outputFd.toPath());
         } catch (Exception e) {
-        	throw new RuntimeException(String.format("Something went wrong when trying to delete the folder %s, please check your configuration", outputFd.toString()), e);
+            throw new RuntimeException(String.format("Something went wrong when trying to delete the folder %s, please check your configuration", outputFd.toString()), e);
         }
         outputFd.mkdir();
         this.diff = new DiffComputer()
