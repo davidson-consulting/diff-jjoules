@@ -18,6 +18,7 @@ import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import picocli.CommandLine;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.util.*;
 
 /**
@@ -178,8 +179,10 @@ public class Configuration {
         if (!outputFd.isAbsolute()) {
             this.output = this.pathToFirstVersion + Constants.FILE_SEPARATOR + output;
         }
-        if (outputFd.exists()) {
-            outputFd.delete();
+        try {
+        	Files.deleteIfExists(outputFd.toPath());
+        } catch (Exception e) {
+        	throw new RuntimeException(String.format("Something went wrong when trying to delete the folder %s, please check your configuration", outputFd.toString()), e);
         }
         outputFd.mkdir();
         this.diff = new DiffComputer()
