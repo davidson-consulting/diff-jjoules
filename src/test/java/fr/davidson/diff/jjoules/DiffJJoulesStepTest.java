@@ -31,16 +31,16 @@ public class DiffJJoulesStepTest {
     }
 
     @AfterEach
-    public void tearDown() {
+    public void tearDown() throws IOException {
         remote.close();
+        FileUtils.deleteDirectory(remoteDir);
     }
 
     @Test
-    void testGitResetHard() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
+    void testGitResetHard() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         DiffJJoulesStep diffJJoulesStep = new DiffJJoulesStep();
         Method method = DiffJJoulesStep.class.getDeclaredMethod("gitResetHard", String.class);
         method.setAccessible(true);
         assertDoesNotThrow(() -> method.invoke(diffJJoulesStep, remoteDir.getAbsolutePath()));
-        FileUtils.deleteDirectory(remoteDir);
     }
 }
