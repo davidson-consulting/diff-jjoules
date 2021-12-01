@@ -136,10 +136,10 @@ public class PropertiesWrapper implements Wrapper {
         try (final FileWriter writer = new FileWriter(pathToClasspathFile, true)) {
             final String pathToJUnitJJoulesJar = new File(
                     EnergyTest.class.getProtectionDomain()
-                    .getCodeSource()
-                    .getLocation()
-                    .toURI()
-                    ).getAbsolutePath();
+                            .getCodeSource()
+                            .getLocation()
+                            .toURI()
+            ).getAbsolutePath();
             writer.append(Constants.PATH_SEPARATOR).append(pathToJUnitJJoulesJar);
         } catch (Exception e) {
             throw new RuntimeException(e);
