@@ -56,6 +56,13 @@ public class ComputationTest {
     }
 
     @Test
+    void testGetMedian() {
+        assertEquals(30.0D, Computation.getMedian(Arrays.asList(10.0D, 50.0D)));
+        assertEquals(30.0D, Computation.getMedian(Arrays.asList(10.0D, 30.0D, 50.0D)));
+        assertEquals(50.0D, Computation.getMedian(Arrays.asList(10.0D, 25.0D, 75.0D, 100.0D)));
+    }
+
+    @Test
     void testComputeMedian() {
         final Datas datas = JSONUtils.read(DATA_V_1_JSON, Datas.class);
         final Map<String, Data> medians = Computation.computeMedian(datas);
