@@ -29,8 +29,7 @@ public class Computation {
         return deltaPerName;
     }
 
-    // TODO asking my self : should we take the medians separately or should we take the medians over the 3 measures ?
-    static Map<String, Data> computeMedian(final Datas data) {
+    public static Map<String, Data> computeMedian(final Datas data) {
         final Map<String, Data> medianPerTestName = new HashMap<>();
         for (String testMethodName : data.keySet()) {
             medianPerTestName.put(testMethodName,
@@ -53,10 +52,18 @@ public class Computation {
         return getMedian(values.stream().map(getter).sorted().collect(Collectors.toList()));
     }
 
-    static double getMedian(List<Double> values) {
-        return values.size() % 2 == 0 ?
-                values.get(values.size() / 2) + values.get((values.size() + 1) / 2) :
-                values.get(values.size() / 2);
-    }
+    public static double getMedian(List<Double> values) {
+        if (values.size() == 2) {
+            return (values.get(0) + values.get(1)) / 2;
+        }
+        final int middleCursor = values.size() / 2;
+        if (values.size() % 2 == 0) {
+            final double valueA = values.get(middleCursor - 1);
+            final double valueB = values.get(middleCursor);
+            return (valueA + valueB) / 2;
 
+        } else {
+            return values.get(middleCursor);
+        }
+    }
 }
