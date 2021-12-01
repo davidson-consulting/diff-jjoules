@@ -34,8 +34,8 @@ public class PropertiesWrapper implements Wrapper {
 
     public PropertiesWrapper() {
         this.properties = new Properties();
-        try {
-            this.properties.load(new FileReader(PATH_PROPERTIES_FILE));
+        try (FileReader file = new FileReader(PATH_PROPERTIES_FILE)) {
+            this.properties.load(file);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -136,10 +136,10 @@ public class PropertiesWrapper implements Wrapper {
         try (final FileWriter writer = new FileWriter(pathToClasspathFile, true)) {
             final String pathToJUnitJJoulesJar = new File(
                     EnergyTest.class.getProtectionDomain()
-                            .getCodeSource()
-                            .getLocation()
-                            .toURI()
-            ).getAbsolutePath();
+                    .getCodeSource()
+                    .getLocation()
+                    .toURI()
+                    ).getAbsolutePath();
             writer.append(Constants.PATH_SEPARATOR).append(pathToJUnitJJoulesJar);
         } catch (Exception e) {
             throw new RuntimeException(e);
