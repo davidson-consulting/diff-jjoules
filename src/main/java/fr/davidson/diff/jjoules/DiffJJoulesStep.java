@@ -138,11 +138,8 @@ public class DiffJJoulesStep {
     }
 
     private void gitResetHard(String pathToFolder) {
-        try {
-            Git.open(new File(pathToFolder))
-                    .reset()
-                    .setMode(ResetCommand.ResetType.HARD)
-                    .call();
+        try (Git git = Git.open(new File(pathToFolder))) {
+            git.reset().setMode(ResetCommand.ResetType.HARD).call();
             // must delete module-info.java TODO checkout this
             try (Stream<Path> walk = Files.walk(Paths.get(pathToFolder))) {
                 walk.filter(path -> path.endsWith("module-info.java"))
