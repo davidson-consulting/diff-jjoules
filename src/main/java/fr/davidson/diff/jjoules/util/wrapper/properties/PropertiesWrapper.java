@@ -34,8 +34,8 @@ public class PropertiesWrapper implements Wrapper {
 
     public PropertiesWrapper() {
         this.properties = new Properties();
-        try {
-            this.properties.load(new FileReader(PATH_PROPERTIES_FILE));
+        try (FileReader file = new FileReader(PATH_PROPERTIES_FILE)) {
+            this.properties.load(file);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
