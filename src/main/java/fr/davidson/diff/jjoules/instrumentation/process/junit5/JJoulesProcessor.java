@@ -1,7 +1,6 @@
 package fr.davidson.diff.jjoules.instrumentation.process.junit5;
 
 import fr.davidson.diff.jjoules.instrumentation.process.AbstractJJoulesProcessor;
-import spoon.reflect.declaration.CtAnnotation;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.factory.Factory;
@@ -34,13 +33,11 @@ public class JJoulesProcessor extends AbstractJJoulesProcessor {
         final CtType<?> declaringType = ctMethod.getDeclaringType();
         final Factory factory = ctMethod.getFactory();
         final CtTypeReference<? extends Annotation> reference = factory.Type().createReference("org.powerapi.jjoules.junit5.EnergyTest");
-        final CtAnnotation<? extends Annotation> testAnnotation =
-                ctMethod.getAnnotations()
-                        .stream()
-                        .filter(ctAnnotation -> ctAnnotation.getType().getQualifiedName().endsWith("Test"))
-                        .findAny()
-                        .get();
-        testAnnotation.replace(factory.createAnnotation(reference));
+        ctMethod.getAnnotations()
+                .stream()
+                .filter(ctAnnotation -> ctAnnotation.getType().getQualifiedName().endsWith("Test"))
+                .findAny()
+                .ifPresent(ctAnnotation -> ctAnnotation.replace(factory.createAnnotation(reference)));
         super.instrumentedTypes.add(declaringType);
     }
 }
