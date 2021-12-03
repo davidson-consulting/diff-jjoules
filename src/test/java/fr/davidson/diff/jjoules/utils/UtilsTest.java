@@ -1,6 +1,6 @@
 package fr.davidson.diff.jjoules.utils;
 
-import fr.davidson.diff.jjoules.DiffJJoulesStep;
+import fr.davidson.diff.jjoules.util.Utils;
 import org.apache.maven.surefire.shared.io.FileUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -12,8 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public class UtilsTest {
 
@@ -38,10 +36,7 @@ public class UtilsTest {
     }
 
     @Test
-    void testGitResetHard() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-        DiffJJoulesStep diffJJoulesStep = new DiffJJoulesStep();
-        Method method = DiffJJoulesStep.class.getDeclaredMethod("gitResetHard", String.class);
-        method.setAccessible(true);
-        assertDoesNotThrow(() -> method.invoke(diffJJoulesStep, remoteDir.getAbsolutePath()));
+    void testGitResetHard() {
+        assertDoesNotThrow(() -> Utils.gitResetHard(remoteDir.getAbsolutePath()));
     }
 }
