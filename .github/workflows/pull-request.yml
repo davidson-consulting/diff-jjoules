@@ -8,6 +8,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: "ls  /proc/"
+        run: ls /proc/
+      - name: "ls  /proc/sys/"
+        run: ls /proc/sys/
+      - name: "ls  /proc/sys/kernel/"
+        run: ls /proc/sys/kernel/
+      - name: "cat  /proc/sys/kernel/perf_event_paranoid"
+        run: cat /proc/sys/kernel/perf_event_paranoid
+      - name: Setup permission for perf
+        run: sudo -i && echo -1 > /proc/sys/kernel/perf_event_paranoid && exit
+      - name: Setup permission for RAPL
+        run: lscpu
       - uses: actions/checkout@v2
       - uses: actions/checkout@v2
         with:
@@ -21,10 +33,6 @@ jobs:
         run: mvn clean install -DskipTests -f j-joules/pom.xml
       - name: Install JUnit-JJoules
         run: mvn clean install -DskipTests -f junit-jjoules/pom.xml
-      - name: Setup permission for RAPL
-        run: sudo chmod -R 777 /sys/devices/virtual/powercap/intel-rapl/intel-rapl:*
-      - name: Setup permission for perf
-        run: sudo echo -1 > /proc/sys/kernel/perf_event_paranoid
       - name: Build and run tests
         run: export MAVEN_HOME=`mvn --version | grep 'Maven home' | sed -e 's/Maven h.* //'` && echo "🎉 ${MAVEN_HOME}" && mvn --batch-mode clean install -Dcheckstyle.skip=true
       - name: Codecov
