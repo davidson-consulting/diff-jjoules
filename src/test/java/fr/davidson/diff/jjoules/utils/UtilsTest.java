@@ -1,5 +1,6 @@
-package fr.davidson.diff.jjoules;
+package fr.davidson.diff.jjoules.utils;
 
+import fr.davidson.diff.jjoules.DiffJJoulesStep;
 import org.apache.maven.surefire.shared.io.FileUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class DiffJJoulesStepTest {
+public class UtilsTest {
 
     @TempDir
     File tempDir;

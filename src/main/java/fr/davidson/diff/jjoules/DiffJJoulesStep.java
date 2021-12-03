@@ -8,6 +8,7 @@ import fr.davidson.diff.jjoules.mark.MarkStep;
 import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
 import fr.davidson.diff.jjoules.util.Constants;
+import fr.davidson.diff.jjoules.util.Utils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.ResetCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -115,8 +116,8 @@ public class DiffJJoulesStep {
     }
 
     private void resetAndCleanBothVersion() {
-        this.gitResetHard(this.configuration.getPathToRepositoryV1());
-        this.gitResetHard(this.configuration.getPathToRepositoryV2());
+        Utils.gitResetHard(this.configuration.getPathToRepositoryV1());
+        Utils.gitResetHard(this.configuration.getPathToRepositoryV2());
         cleanCompileAndBuildClasspath();
     }
 
@@ -135,19 +136,6 @@ public class DiffJJoulesStep {
     private void cleanAndCompile() {
         this.configuration.getWrapper().cleanAndCompile(this.configuration.getPathToFirstVersion());
         this.configuration.getWrapper().cleanAndCompile(this.configuration.getPathToSecondVersion());
-    }
-
-    private void gitResetHard(String pathToFolder) {
-        try (Git git = Git.open(new File(pathToFolder))) {
-            git.reset().setMode(ResetCommand.ResetType.HARD).call();
-            // must delete module-info.java TODO checkout this
-            try (Stream<Path> walk = Files.walk(Paths.get(pathToFolder))) {
-                walk.filter(path -> path.endsWith("module-info.java"))
-                        .forEach(path -> path.toFile().delete());
-            }
-        } catch (GitAPIException | IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     private void end(String reason) {
