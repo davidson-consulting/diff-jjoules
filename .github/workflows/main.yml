@@ -21,10 +21,14 @@ jobs:
         run: mvn clean install -DskipTests -f j-joules/pom.xml
       - name: Install JUnit-JJoules
         run: mvn clean install -DskipTests -f junit-jjoules/pom.xml
+      - name: Setup permission for RAPL
+        run: sudo chmod -R 777 /sys/devices/virtual/powercap/intel-rapl/intel-rapl:*
+      - name: Setup permission for perf
+        run: sudo echo -1 > /proc/sys/kernel/perf_event_paranoid
       - name: Build and run tests
         run: export MAVEN_HOME=`mvn --version | grep 'Maven home' | sed -e 's/Maven h.* //'` && echo "🎉 ${MAVEN_HOME}" && mvn --batch-mode clean install
       - name: SonarCloud Scan
-        run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=davidson-consulting -Dsonar.projectKey=davidson-consulting_diff-jjoules -Dsonar.branch=main -Dsonar.sources=src/main/java/ -Dsonar.language=java -Dsonar.java.binaries=target/classes
+        run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=davidson-consulting -Dsonar.projectKey=davidson-consulting_diff-jjoules -Dsonar.branch=main -Dsonar.sources=src/main/java/ -Dsonar.language=java -Dsonar.java.binaries=target/classes -Dcheckstyle.skip=true
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
