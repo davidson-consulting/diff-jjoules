@@ -26,6 +26,12 @@
     <dependencies>
 
         <dependency>
+            <groupId>fr.davidson</groupId>
+            <artifactId>j.tlpc.sensor</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>eu.stamp-project</groupId>
             <artifactId>test-runner</artifactId>
             <version>3.1.3</version>
