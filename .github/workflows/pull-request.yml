@@ -11,17 +11,23 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/checkout@v2
         with:
+          repository: 'davidson-consulting/tlpc-sensor'
+          path: './tlpc-sensor'
+      - uses: actions/checkout@v2
+        with:
           repository: 'davidson-consulting/j-joules'
           path: './j-joules'
       - uses: actions/checkout@v2
         with:
           repository: 'davidson-consulting/junit-jjoules'
           path: './junit-jjoules'
+      - name: Install TLPC-Sensor Java adapter
+        run: mvn clean install -DskipTests -f tlpc-sensor/examples/tlpc-sensor/pom.xml
       - name: Install JJoules
         run: mvn clean install -DskipTests -f j-joules/pom.xml
       - name: Install JUnit-JJoules
         run: mvn clean install -DskipTests -f junit-jjoules/pom.xml
       - name: Build and run tests
-        run: export MAVEN_HOME=`mvn --version | grep 'Maven home' | sed -e 's/Maven h.* //'` && echo "🎉 ${MAVEN_HOME}" && mvn --batch-mode clean install
+        run: export MAVEN_HOME=`mvn --version | grep 'Maven home' | sed -e 's/Maven h.* //'` && echo "🎉 ${MAVEN_HOME}" && mvn --batch-mode clean install -Dcheckstyle.skip=true
       - name: Codecov
         uses: codecov/codecov-action@v2
