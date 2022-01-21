@@ -27,7 +27,7 @@
 
         <dependency>
             <groupId>fr.davidson</groupId>
-            <artifactId>j.tlpc.sensor</artifactId>
+            <artifactId>tlpc.sensor</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
