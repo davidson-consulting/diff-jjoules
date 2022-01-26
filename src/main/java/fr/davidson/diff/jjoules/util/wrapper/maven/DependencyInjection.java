@@ -19,27 +19,27 @@ import java.io.File;
  * benjamin.danglot@davidson.fr
  * 30/11/2020
  */
-public class JJoulesInjection {
+public class DependencyInjection {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(JJoulesInjection.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DependencyInjection.class);
 
     private static final String POM_FILE = "pom.xml";
 
     private final String absolutePathToProjectRoot;
 
-    public JJoulesInjection(String absolutePathToProjectRoot) {
+    public DependencyInjection(String absolutePathToProjectRoot) {
         this.absolutePathToProjectRoot = absolutePathToProjectRoot;
     }
 
     public String inject() {
-        LOGGER.info("Injecting JUnit-Jjoules in {}", this.absolutePathToProjectRoot + "/" + POM_FILE);
+        LOGGER.info("Injecting Dependencies in {}", this.absolutePathToProjectRoot + "/" + POM_FILE);
         try {
             final DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             final DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             final Document document = docBuilder.parse(this.absolutePathToProjectRoot + "/" + POM_FILE);
             final Node root = Utils.findSpecificNodeFromGivenRoot(document.getFirstChild(), Utils.PROJECT);
 
-            this.addJJoulesDependencies(document, root);
+            this.addDependencies(document, root);
             this.addSurefireRunOrder(document, root);
 
             final TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -56,12 +56,12 @@ public class JJoulesInjection {
         }
     }
 
-    private void addJJoulesDependencies(Document document, Node root) {
+    private void addDependencies(Document document, Node root) {
         final Node dependencies = Utils.findOrCreateGivenNode(document, root, Utils.DEPENDENCIES);
         final Element dependency = Utils.createDependency(document,
-                "org.powerapi.jjoules",
-                "junit-jjoules",
-                "1.0-SNAPSHOT"
+                "fr.davidson",
+                "tlpc.sensor",
+                "0.0.1-SNAPSHOT"
         );
         dependencies.appendChild(dependency);
     }

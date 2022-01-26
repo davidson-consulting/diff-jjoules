@@ -2,7 +2,6 @@ package fr.davidson.diff.jjoules.instrumentation;
 
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.DiffJJoulesStep;
-import fr.davidson.diff.jjoules.instrumentation.process.AbstractJJoulesProcessor;
 import fr.davidson.diff.jjoules.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,10 +32,11 @@ public class InstrumentationStep extends DiffJJoulesStep {
         this.configuration = configuration;
         LOGGER.info("Run Instrumentation");
         final Map<String, Set<String>> testsList = configuration.getTestsList();
-//        final AbstractJJoulesProcessor processor = configuration.isJunit4() ?
-//                new fr.davidson.diff.jjoules.instrumentation.process.junit4.JJoulesProcessor(testsList, configuration.getPathToFirstVersion(), configuration.getWrapper().getPathToTestFolder()) :
-//                new fr.davidson.diff.jjoules.instrumentation.process.junit5.JJoulesProcessor(testsList, configuration.getPathToFirstVersion(), configuration.getWrapper().getPathToTestFolder());
-        final InstrumentationProcessor processor = new InstrumentationProcessor(testsList, configuration.getPathToFirstVersion(), configuration.getWrapper().getPathToTestFolder());
+        final InstrumentationProcessor processor = new InstrumentationProcessor(
+                testsList,
+                configuration.getPathToFirstVersion(),
+                configuration.getWrapper().getPathToTestFolder()
+        );
         LOGGER.info("Instrument version before commit...");
         this.instrument(configuration.getPathToFirstVersion(), processor, configuration.getClasspathV1(), testsList);
         this.inject(configuration.getPathToFirstVersion());

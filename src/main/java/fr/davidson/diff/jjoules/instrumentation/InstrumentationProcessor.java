@@ -37,7 +37,10 @@ public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
 
     protected String testFolderPath;
 
-    public InstrumentationProcessor(final Map<String, Set<String>> testsList, String rootPathFolder, String testFolderPath) {
+    public InstrumentationProcessor(
+            final Map<String, Set<String>> testsList,
+            String rootPathFolder,
+            String testFolderPath) {
         this.instrumentedTypes = new HashSet<>();
         this.testsToBeInstrumented = testsList;
         this.rootPathFolder = rootPathFolder;

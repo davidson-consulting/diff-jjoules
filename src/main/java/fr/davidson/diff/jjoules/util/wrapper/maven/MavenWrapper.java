@@ -122,7 +122,7 @@ public class MavenWrapper implements Wrapper {
 
     @Override
     public void injectJJoulesDependencies(String pathToRootDir) {
-        new JJoulesInjection(pathToRootDir).inject();
+        new DependencyInjection(pathToRootDir).inject();
     }
 
     public void runGoals(String pathToRootDir, String... goals) {
