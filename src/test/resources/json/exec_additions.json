@@ -11,7 +11,8 @@
         "fr.davidson.diff_jjoules_demo.InternalListTest#testCount": 0
       },
       "fr.davidson.diff_jjoules_demo.InternalList#30": {
-        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount": 1
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount": 1,
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCountFailing": 1
       }
     }
   }

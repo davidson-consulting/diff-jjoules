@@ -47,4 +47,11 @@ public class InternalListTest {
         final InternalList<Integer> emptyList = new InternalList<>(1, 1, 1, 1);
         assertEquals(4, emptyList.count2());
     }
+
+    @Test
+    void testCountFailing() {
+        final InternalList<Integer> emptyList = new InternalList<>(1, 1, 1, 1);
+        assertEquals(4, emptyList.count());
+        fail();
+    }
 }

@@ -1,6 +1,7 @@
 package fr.davidson.diff.jjoules.suspect;
 
 import fr.davidson.diff.jjoules.suspect.fl.FlacocoRunner;
+import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import fr.spoonlabs.flacoco.api.result.Location;
@@ -21,7 +22,7 @@ public class FlacocoRunnerTest {
 
     @Test
     void test() {
-        final String absolutePath = new File("src/test/resources/diff-jjoules-demo").getAbsolutePath();
+        final String absolutePath = new File("src/test/resources/v1/").getAbsolutePath() + Constants.FILE_SEPARATOR;
         WrapperEnum.MAVEN.getWrapper().cleanAndCompile(absolutePath);
         final String classpath = Utils.readClasspathFile(absolutePath + "/classpath");
         final String testClassName = "fr.davidson.diff_jjoules_demo.InternalListTest";
@@ -31,7 +32,7 @@ public class FlacocoRunnerTest {
                 "testMapMultipleElement",
                 "testCount",
                 "testCount2",
-                "testCount2Failing"
+                "testCountFailing"
         );
         final Set<String> testMethodsToRun = new HashSet<>();
         for (String testMethodName : testMethodNames) {
