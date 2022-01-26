@@ -1,7 +1,6 @@
 package fr.davidson.diff.jjoules.instrumentation;
 
 import fr.davidson.diff.jjoules.util.Constants;
-import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -138,12 +137,11 @@ public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
     @Override
     public void process(CtMethod<?> ctMethod) {
         final Factory factory = ctMethod.getFactory();
-        final String fullQualifiedTestMethodName = new FullQualifiedName(ctMethod.getDeclaringType().getQualifiedName(), ctMethod.getSimpleName()).toString();
         ctMethod.getBody().insertBegin(
                 factory.createCodeSnippetStatement("new fr.davidson.tlpc.sensor.TLPCSensor().start()")
         );
         ctMethod.getBody().insertEnd(
-                factory.createCodeSnippetStatement("new fr.davidson.tlpc.sensor.TLPCSensor().stop(\"" + fullQualifiedTestMethodName + "\")")
+                factory.createCodeSnippetStatement("new fr.davidson.tlpc.sensor.TLPCSensor().stop(\"" + ctMethod.getSimpleName() + "\")")
         );
         this.instrumentedTypes.add(ctMethod.getDeclaringType());
     }

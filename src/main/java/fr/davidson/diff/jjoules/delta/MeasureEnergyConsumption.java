@@ -5,6 +5,7 @@ import eu.stamp_project.testrunner.listener.TestResult;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
+import fr.davidson.diff.jjoules.instrumentation.InstrumentationProcessor;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import fr.davidson.diff.jjoules.util.JSONUtils;
@@ -99,9 +100,8 @@ public class MeasureEnergyConsumption {
             final String pathToVersion,
             final Map<String, List<Data>> dataPerTest
     ) {
-        final File directory = new File(pathToVersion);
+        final File directory = new File(pathToVersion + Constants.FILE_SEPARATOR + InstrumentationProcessor.FOLDER_MEASURES_PATH);
         Arrays.stream(Objects.requireNonNull(directory.listFiles()))
-                .filter(file -> file.getAbsolutePath().endsWith(".json"))
                 .forEach(file -> {
                     final String testClassName = this.toTestName(file.getName());
                     final Map<String, Map<String, Double>> tlpcReport = JSONUtils.read(file.getAbsolutePath(), Map.class);
