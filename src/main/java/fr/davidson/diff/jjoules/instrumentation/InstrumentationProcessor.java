@@ -2,6 +2,7 @@ package fr.davidson.diff.jjoules.instrumentation;
 
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.FullQualifiedName;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.processing.AbstractProcessor;
@@ -26,6 +27,8 @@ import java.util.Set;
  * on 18/01/2022
  */
 public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
+
+    public static final String FOLDER_MEASURES_PATH = "diff-jjoules-measurements";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(InstrumentationProcessor.class);
 
@@ -92,12 +95,23 @@ public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
         anonymousExecutable.setBody(factory.createCodeSnippetStatement(
                 "Runtime.getRuntime().addShutdownHook(new Thread(() ->" +
                         "new fr.davidson.tlpc.sensor.TLPCSensor().report(\"" +
-                        this.rootPathFolder + Constants.FILE_SEPARATOR + type.getQualifiedName() + ".json\"" +
+                        this.rootPathFolder + Constants.FILE_SEPARATOR +
+                        FOLDER_MEASURES_PATH + Constants.FILE_SEPARATOR +
+                        type.getQualifiedName() + ".json\"" +
                         ")" +
                     ")" +
                 ")"
             )
         );
+        final File outputMeasureFd = new File(this.rootPathFolder + Constants.FILE_SEPARATOR + FOLDER_MEASURES_PATH + Constants.FILE_SEPARATOR);
+        if (outputMeasureFd.exists()) {
+            try {
+                FileUtils.deleteDirectory(outputMeasureFd);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        outputMeasureFd.mkdir();
         anonymousExecutable.setModifiers(Collections.singleton(ModifierKind.STATIC));
         type.addTypeMember(anonymousExecutable);
         this.printCtType(type);

@@ -108,10 +108,10 @@ public class MeasureEnergyConsumption {
                     for (String testMethodName : tlpcReport.keySet()) {
                         final Map<String, Double> tlpcReportTest = tlpcReport.get(testMethodName);
                         final Data data = new Data(
-                                tlpcReportTest.get("RAPL_ENERGY_PKG"),
-                                tlpcReportTest.get("INSTRUCTIONS_RETIRED"),
+                                tlpcReportTest.get(KEY_ENERGY_CONSUMPTION),
+                                tlpcReportTest.get(KEY_INSTRUCTIONS),
                                 0,
-                                tlpcReportTest.get("CYCLES"),
+                                tlpcReportTest.get(KEY_CYCLES),
                                 tlpcReportTest.get("LLC_MISSES"),
                                 0, 0, 0
                         );
