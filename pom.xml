@@ -161,14 +161,14 @@
                     <consoleOutput>true</consoleOutput>
                     <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
                 </configuration>
-                <executions>
+                <!--<executions>
                     <execution>
                         <phase>verify</phase>
                         <goals>
                             <goal>checkstyle</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions>-->
             </plugin>
 
             <plugin>
