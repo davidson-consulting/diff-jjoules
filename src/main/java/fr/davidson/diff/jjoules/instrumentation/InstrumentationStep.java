@@ -73,7 +73,7 @@ public class InstrumentationStep extends DiffJJoulesStep {
     }
 
     private void inject(final String rootPathFolder) {
-        this.configuration.getWrapper().injectJJoulesDependencies(rootPathFolder);
+        this.configuration.getWrapper().injectDependencies(rootPathFolder);
     }
 
 }

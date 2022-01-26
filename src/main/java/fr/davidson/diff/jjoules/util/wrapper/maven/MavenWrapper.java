@@ -121,7 +121,7 @@ public class MavenWrapper implements Wrapper {
     }
 
     @Override
-    public void injectJJoulesDependencies(String pathToRootDir) {
+    public void injectDependencies(String pathToRootDir) {
         new DependencyInjection(pathToRootDir).inject();
     }
 
