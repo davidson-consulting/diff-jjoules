@@ -66,7 +66,7 @@ public class MarkStepTest extends AbstractDiffJJoulesStepTest {
         assertTrue(new File(DIFF_JJOULES_FOLDER_PATH + "/deltaOmega.json").exists());
         assertTrue(new File(DIFF_JJOULES_FOLDER_PATH + "/coverage_first.json").exists());
         assertFalse(configuration.getExecLinesAdditions().isEmpty());
-        assertFalse(configuration.getExecLinesDeletions().isEmpty());
+        assertTrue(configuration.getExecLinesDeletions().isEmpty());
         assertNotNull(configuration.getDeltas());
     }
 }

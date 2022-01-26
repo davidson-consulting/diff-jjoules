@@ -93,9 +93,9 @@ public class MarkStep extends DiffJJoulesStep {
                 configuration.getDiff()
         );
         JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_EXEC_DELETION, execLineTestMaps.get(0));
-        configuration.setExecLinesAdditions(execLineTestMaps.get(0));
+        configuration.setExecLinesDeletions(execLineTestMaps.get(0));
         JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_EXEC_ADDITIONS, execLineTestMaps.get(1));
-        configuration.setExecLinesDeletions(execLineTestMaps.get(1));
+        configuration.setExecLinesAdditions(execLineTestMaps.get(1));
 
         // 2 Compute line values
         final Map<String, Integer> thetaL = Line.computeThetaL(execLineTestMaps);
