@@ -222,6 +222,10 @@ public class Configuration {
         return iterations;
     }
 
+    public void setIterations(int iterations) {
+        this.iterations = iterations;
+    }
+
     public String getOutput() {
         return output;
     }

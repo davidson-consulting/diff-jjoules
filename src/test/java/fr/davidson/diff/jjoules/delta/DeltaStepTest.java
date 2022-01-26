@@ -14,8 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class DeltaStepTest extends AbstractDiffJJoulesStepTest {
 
-
-
     @Test
     void test() {
         /*
@@ -26,6 +24,7 @@ public class DeltaStepTest extends AbstractDiffJJoulesStepTest {
                 - The list of methods to be considered
          */
         final Configuration configuration = this.getConfiguration();
+        configuration.setIterations(1);
         assertTrue(configuration.getDataV1().isEmpty());
         assertTrue(configuration.getDataV2().isEmpty());
         assertTrue(configuration.getDeltas().isEmpty());
