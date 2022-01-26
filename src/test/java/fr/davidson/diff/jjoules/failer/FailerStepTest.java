@@ -31,10 +31,10 @@ public class FailerStepTest extends AbstractStepCleanTest {
         }
         failerStep._run(this.getConfiguration());
         try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + TEST_PATH + TEST_CLASS_PATH))) {
-            assertEquals(6L, reader.lines().filter(line -> line.contains("junit.framework.Assert.fail();")).count());
+            assertEquals(5L, reader.lines().filter(line -> line.contains("junit.framework.Assert.fail();")).count());
         }
         try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + TEST_PATH + TEST_CLASS_PATH))) {
-            assertEquals(6L, reader.lines().filter(line -> line.contains("junit.framework.Assert.fail();")).count());
+            assertEquals(5L, reader.lines().filter(line -> line.contains("junit.framework.Assert.fail();")).count());
         }
     }
 
