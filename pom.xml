@@ -179,8 +179,8 @@
                         <fileset>
                             <directory>src/test/resources/</directory>
                             <includes>
-                                <include>diff-jjoules-demo/target/</include>
-                                <include>diff-jjoules-demo-v2/target/</include>
+                                <include>v1/target/</include>
+                                <include>v2/target/</include>
                             </includes>
                             <followSymlinks>false</followSymlinks>
                         </fileset>
