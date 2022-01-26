@@ -1,6 +1,6 @@
 package fr.davidson.diff.jjoules.failer.processor;
 
-import fr.davidson.diff.jjoules.instrumentation.process.AbstractJJoulesProcessor;
+import fr.davidson.diff.jjoules.instrumentation.InstrumentationProcessor;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtTypeAccess;
 import spoon.reflect.declaration.CtMethod;
@@ -16,7 +16,7 @@ import java.util.Set;
  * benjamin.danglot@davidson.fr
  * on 30/06/2021
  */
-public class MakeTestFailingProcessor extends AbstractJJoulesProcessor {
+public class MakeTestFailingProcessor extends InstrumentationProcessor {
 
     public MakeTestFailingProcessor(Map<String, Set<String>> testsToBeInstrumented, String rootPathFolder, String testFolderPath) {
         super(testsToBeInstrumented, rootPathFolder, testFolderPath);
