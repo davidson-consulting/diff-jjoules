@@ -49,7 +49,7 @@ public class PropertiesWrapperInjectionTest extends AbstractPropertiesWrapperTes
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        wrapper.injectJJoulesDependencies("src/test/resources/diff-jjoules-demo/");
+        wrapper.injectDependencies("src/test/resources/diff-jjoules-demo/");
         try (final BufferedReader reader = new BufferedReader(new FileReader(("src/test/resources/diff-jjoules-demo/classpath")))) {
             assertTrue(reader.lines().anyMatch(line -> line.contains("junit-jjoules")));
         } catch (Exception e) {
