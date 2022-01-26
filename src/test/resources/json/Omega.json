@@ -1,0 +1,12 @@
+{
+  "fr.davidson.diff_jjoules_demo.InternalListTest#testCount": {
+    "energy": 2.6595426304E11,
+    "instructions": 18828.0,
+    "durations": 0.0,
+    "cycles": 1121817.0,
+    "caches": 51403.0,
+    "cacheMisses": 0.0,
+    "branches": 0.0,
+    "branchMisses": 0.0
+  }
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "execLt": {
+      "fr.davidson.diff_jjoules_demo.InternalList#29": {
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount": 0
+      },
+      "fr.davidson.diff_jjoules_demo.InternalList#31": {
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount": 0
+      },
+      "fr.davidson.diff_jjoules_demo.InternalList#32": {
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount": 0
+      },
+      "fr.davidson.diff_jjoules_demo.InternalList#30": {
+        "fr.davidson.diff_jjoules_demo.InternalListTest#testCount": 1
+      }
+    }
+  }
+]
