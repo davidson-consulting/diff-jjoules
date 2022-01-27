@@ -1,9 +1,5 @@
 package fr.davidson.diff_jjoules_demo;
 
-import org.powerapi.jjoules.EnergySample;
-import org.powerapi.jjoules.jni.Perf;
-import org.powerapi.jjoules.rapl.RaplDevice;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
