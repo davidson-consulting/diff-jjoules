@@ -20,7 +20,7 @@ public class InstrumentationProcessorTest extends AbstractProcessorTest {
                 testMethod.getBody().getStatement(0).toString()
         );
         assertEquals(
-                "new fr.davidson.tlpc.sensor.TLPCSensor().stop(\"" + TEST_CLASS_NAME + "#" + TEST_METHOD_NAME + "\")",
+                "new fr.davidson.tlpc.sensor.TLPCSensor().stop(\"" + TEST_METHOD_NAME + "\")",
                 testMethod.getBody().getLastStatement().toString()
         );
     }
