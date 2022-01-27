@@ -83,18 +83,6 @@ public abstract class AbstractDiffJJoulesStepTest {
             diffJJoulesFolderFd.delete();
         }
         diffJJoulesFolderFd.mkdir();
-     /*   new File(JJOULES_REPORT_PATH_V1).mkdirs();
-        new File(JJOULES_REPORT_PATH_V2).mkdirs();
-        Files.copy(
-                Paths.get(ROOT_PATH_V1 + "fr.davidson.diff_jjoules_demo.InternalListTest#testCount_v1.json"),
-                Paths.get(JJOULES_REPORT_PATH_V1 + "fr.davidson.diff_jjoules_demo.InternalListTest#testCount.json"),
-                StandardCopyOption.REPLACE_EXISTING
-        );
-        Files.copy(
-                Paths.get(ROOT_PATH_V1 + "fr.davidson.diff_jjoules_demo.InternalListTest#testCount_v2.json"),
-                Paths.get(JJOULES_REPORT_PATH_V2 + "fr.davidson.diff_jjoules_demo.InternalListTest#testCount.json"),
-                StandardCopyOption.REPLACE_EXISTING
-        );*/
     }
 
 }

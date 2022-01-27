@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
 
+import static fr.davidson.diff.jjoules.AbstractDiffJJoulesStepTest.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
@@ -27,11 +28,13 @@ public class MeasureEnergyConsumptionTest {
     @BeforeEach
     void setUp() throws IOException {
         // compile
-        WrapperEnum.MAVEN.getWrapper().cleanAndCompile("src/test/resources/diff-jjoules-demo");
-        new File("src/test/resources/diff-jjoules-demo/target/jjoules-reports/").mkdirs();
-        Path dst = Paths.get("src/test/resources/diff-jjoules-demo/target/jjoules-reports/com.google.gson.CommentsTest-testParseComments.json");
-        Path src = Paths.get("src/test/resources/json/v1/com.google.gson.CommentsTest-testParseComments.json");
-        Files.copy(src, dst, StandardCopyOption.REPLACE_EXISTING);
+        WrapperEnum.MAVEN.getWrapper().cleanAndCompile("src/test/resources/v1/");
+        new File(ROOT_PATH_V1 + PATH_DIFF_JJOULES_MEASUREMENTS).mkdir();
+        Files.copy(
+                Paths.get(TEST_RESOURCES_JSON_PATH + "v1/" + PATH_DIFF_JJOULES_MEASUREMENTS + "/fr.davidson.diff_jjoules_demo.InternalListTest.json"),
+                Paths.get(ROOT_PATH_V1 + PATH_DIFF_JJOULES_MEASUREMENTS + "/fr.davidson.diff_jjoules_demo.InternalListTest.json"),
+                StandardCopyOption.REPLACE_EXISTING
+        );
     }
 
     @Test
@@ -40,10 +43,10 @@ public class MeasureEnergyConsumptionTest {
         final Datas dataV2 = new Datas();
         new MeasureEnergyConsumption().measureEnergyConsumptionForBothVersion(
                 new Configuration(
-                        new File("src/test/resources/diff-jjoules-demo/").getAbsolutePath(),
-                        new File("src/test/resources/diff-jjoules-demo/").getAbsolutePath(),
+                        new File("src/test/resources/v1/").getAbsolutePath(),
+                        new File("src/test/resources/v1/").getAbsolutePath(),
                         5,
-                        "src/test/resources/diff-jjoules/demo/target/diff-jjoules",
+                        "src/test/resources/v1/demo/target/diff-jjoules",
                         "",
                         "",
                         "",
@@ -55,7 +58,7 @@ public class MeasureEnergyConsumptionTest {
                 new HashMap<String, Set<String>>() {
                     {
                         put("fr.davidson.diff_jjoules_demo.InternalListTest", new HashSet<>());
-                        get("fr.davidson.diff_jjoules_demo.InternalListTest").addAll(Arrays.asList("testMapEmptyList"));
+                        get("fr.davidson.diff_jjoules_demo.InternalListTest").addAll(Arrays.asList("testCount"));
                     }
                 }
         );
