@@ -30,7 +30,7 @@ public class PropertiesWrapperTest extends AbstractPropertiesWrapperTest {
     void setUp() throws IOException {
         super.setUp();
         try {
-            Files.walk(Paths.get("src/test/resources/diff-jjoules-demo/target"))
+            Files.walk(Paths.get("src/test/resources/v1/target"))
                     .map(Path::toFile)
                     .forEach(File::delete);
         } catch (NoSuchFileException ignored) {
@@ -41,33 +41,33 @@ public class PropertiesWrapperTest extends AbstractPropertiesWrapperTest {
     @Test
     void testCleanAndCompile() {
         final Wrapper wrapper = WrapperEnum.PROPERTIES.getWrapper();
-        wrapper.cleanAndCompile("src/test/resources/diff-jjoules-demo/");
-        assertTrue(new File("src/test/resources/diff-jjoules-demo/target/classes/").exists());
-        assertTrue(new File("src/test/resources/diff-jjoules-demo/target/test-classes/").exists());
+        wrapper.cleanAndCompile("src/test/resources/v1/");
+        assertTrue(new File("src/test/resources/v1/target/classes/").exists());
+        assertTrue(new File("src/test/resources/v1/target/test-classes/").exists());
     }
 
     @Test
     void testClean() {
         final Wrapper wrapper = WrapperEnum.PROPERTIES.getWrapper();
-        wrapper.clean("src/test/resources/diff-jjoules-demo/");
-        assertFalse(new File("src/test/resources/diff-jjoules-demo/target/classes/").exists());
-        assertFalse(new File("src/test/resources/diff-jjoules-demo/target/test-classes/").exists());
+        wrapper.clean("src/test/resources/v1/");
+        assertFalse(new File("src/test/resources/v1/target/classes/").exists());
+        assertFalse(new File("src/test/resources/v1/target/test-classes/").exists());
     }
 
     @Test
     void testCompile() {
         final Wrapper wrapper = WrapperEnum.PROPERTIES.getWrapper();
-        wrapper.compile("src/test/resources/diff-jjoules-demo/");
-        assertTrue(new File("src/test/resources/diff-jjoules-demo/target").exists());
+        wrapper.compile("src/test/resources/v1/");
+        assertTrue(new File("src/test/resources/v1/target").exists());
     }
 
     @Test
     void testBuildClasspath() {
         final Wrapper wrapper = WrapperEnum.PROPERTIES.getWrapper();
-        String classpath = wrapper.buildClasspath("src/test/resources/diff-jjoules-demo/");
-        assertTrue(classpath.contains("org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar"));
-        classpath = wrapper.buildClasspath("src/test/resources/diff-jjoules-demo");
-        assertTrue(classpath.contains("org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar"));
+        String classpath = wrapper.buildClasspath("src/test/resources/v1/");
+        assertTrue(classpath.contains("org/junit/jupiter/junit-jupiter-api/"));
+        classpath = wrapper.buildClasspath("src/test/resources/v1");
+        assertTrue(classpath.contains("org/junit/jupiter/junit-jupiter-api/"));
     }
 
     @Test

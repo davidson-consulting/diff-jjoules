@@ -30,7 +30,7 @@ public class AbstractPropertiesWrapperTest {
 
     @BeforeEach
     void setUp() throws IOException {
-        try (final FileWriter write = new FileWriter("src/test/resources/diff-jjoules-demo/classpath", false)) {
+        try (final FileWriter write = new FileWriter("src/test/resources/v1/classpath", false)) {
             final String mavenHome = System.getProperty("user.home") + "/.m2/repository/";
             write.write(
                     Arrays.stream(CLASSPATH_ELEMENTS)
