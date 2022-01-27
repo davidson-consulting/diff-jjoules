@@ -27,29 +27,23 @@ public class TestTest {
         final Map<String, Double> phiL =
                 new HashMap<String, Double>() {
                     {
-                        put("fr.davidson.diff_jjoules_demo.InternalList#24", 0.2631578947368421);
-                        put("fr.davidson.diff_jjoules_demo.InternalList#25", 0.23684210526315788);
-                        put("fr.davidson.diff_jjoules_demo.InternalList#22", 0.23684210526315788);
-                        put("fr.davidson.diff_jjoules_demo.InternalList#23", 0.2631578947368421);
-                        put("fr.davidson.diff_jjoules_demo.InternalList#30", 0.2631578947368421);
-                        put("fr.davidson.diff_jjoules_demo.InternalList#37", 0.2631578947368421);
-                        put("fr.davidson.diff_jjoules_demo.InternalList#35", 0.2631578947368421);
+                        put("fr.davidson.diff_jjoules_demo.InternalList#29", 0.0);
+                        put("fr.davidson.diff_jjoules_demo.InternalList#31", 0.0);
+                        put("fr.davidson.diff_jjoules_demo.InternalList#32", 0.0);
+                        put("fr.davidson.diff_jjoules_demo.InternalList#30", 1.0);
                     }
                 };
         final List<ExecsLines> execLineList = new ArrayList<>();
-        execLineList.add(JSONUtils.read("src/test/resources/diff-jjoules-demo/exec_deletions.json", ExecsLines.class));
-        execLineList.add(JSONUtils.read("src/test/resources/diff-jjoules-demo-v2/exec_additions.json", ExecsLines.class));
+        execLineList.add(JSONUtils.read("src/test/resources/json/exec_deletions.json", ExecsLines.class));
+        execLineList.add(JSONUtils.read("src/test/resources/json/exec_additions.json", ExecsLines.class));
 
         final Map<String, Double> actual = fr.davidson.diff.jjoules.mark.computation.Test.computeOmegaT(execLineList, phiL);
 
         final Map<String, Double> oracle =
                 new HashMap<String, Double>() {
                     {
-                        put("fr.davidson.diff_jjoules_demo.InternalListTest#testMapEmptyList", 2.1315789473684212);
-                        put("fr.davidson.diff_jjoules_demo.InternalListTest#testCount2", 0.0);
-                        put("fr.davidson.diff_jjoules_demo.InternalListTest#testMapMultipleElement", 6.078947368421052);
-                        put("fr.davidson.diff_jjoules_demo.InternalListTest#testMapOneElement", 6.078947368421052);
-                        put("fr.davidson.diff_jjoules_demo.InternalListTest#testCount", 0.2631578947368421);
+                        put("fr.davidson.diff_jjoules_demo.InternalListTest#testCountFailing", 1.0);
+                        put("fr.davidson.diff_jjoules_demo.InternalListTest#testCount", 1.0);
                     }
                 };
         for (String expectedKey : oracle.keySet()) {
