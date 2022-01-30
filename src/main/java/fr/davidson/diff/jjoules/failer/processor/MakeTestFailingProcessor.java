@@ -1,23 +1,15 @@
 package fr.davidson.diff.jjoules.failer.processor;
 
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationProcessor;
-import fr.davidson.diff.jjoules.util.Constants;
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtTypeAccess;
-import spoon.reflect.declaration.CtAnonymousExecutable;
 import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.declaration.CtType;
-import spoon.reflect.declaration.ModifierKind;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtTypeReference;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
