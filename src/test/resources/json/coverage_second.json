@@ -1,0 +1,2225 @@
+{
+  "testClassCoverage": {
+    "fr.davidson.diff_jjoules_demo.InternalListTest": {
+      "testClassName": "fr.davidson.diff_jjoules_demo.InternalListTest",
+      "testMethodsCoverage": {
+        "testCount": {
+          "testMethodName": "testCount",
+          "classCoverageList": {
+            "org.jacoco.core.tools.ExecFileLoader": {
+              "className": "org.jacoco.core.tools.ExecFileLoader",
+              "coverages": [
+                {
+                  "line": 42,
+                  "hitCount": 1
+                },
+                {
+                  "line": 43,
+                  "hitCount": 1
+                },
+                {
+                  "line": 44,
+                  "hitCount": 1
+                },
+                {
+                  "line": 45,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.launcher.TestPlan": {
+              "className": "org.junit.platform.launcher.TestPlan",
+              "coverages": [
+                {
+                  "line": 163,
+                  "hitCount": 1
+                },
+                {
+                  "line": 164,
+                  "hitCount": 1
+                },
+                {
+                  "line": 166,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.ThrowableCollector": {
+              "className": "org.junit.platform.engine.support.hierarchical.ThrowableCollector",
+              "coverages": [
+                {
+                  "line": 162,
+                  "hitCount": 1
+                },
+                {
+                  "line": 132,
+                  "hitCount": 1
+                },
+                {
+                  "line": 54,
+                  "hitCount": 1
+                },
+                {
+                  "line": 55,
+                  "hitCount": 1
+                },
+                {
+                  "line": 72,
+                  "hitCount": 1
+                },
+                {
+                  "line": 57,
+                  "hitCount": 1
+                },
+                {
+                  "line": 77,
+                  "hitCount": 1
+                },
+                {
+                  "line": 78,
+                  "hitCount": 1
+                },
+                {
+                  "line": 174,
+                  "hitCount": 1
+                },
+                {
+                  "line": 159,
+                  "hitCount": 1
+                },
+                {
+                  "line": 175,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.TestDescriptor$Type": {
+              "className": "org.junit.platform.engine.TestDescriptor$Type",
+              "coverages": [
+                {
+                  "line": 293,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "fr.davidson.diff_jjoules_demo.InternalListTest": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalListTest",
+              "coverages": [
+                {
+                  "line": 41,
+                  "hitCount": 1
+                },
+                {
+                  "line": 42,
+                  "hitCount": 1
+                },
+                {
+                  "line": 43,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.descriptor.MethodExtensionContext": {
+              "className": "org.junit.jupiter.engine.descriptor.MethodExtensionContext",
+              "coverages": [
+                {
+                  "line": 63,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "eu.stamp_project.testrunner.listener.junit5.OnlineCoveredTestResultsPerJUnit5TestMethod": {
+              "className": "eu.stamp_project.testrunner.listener.junit5.OnlineCoveredTestResultsPerJUnit5TestMethod",
+              "coverages": [
+                {
+                  "line": 36,
+                  "hitCount": 1
+                },
+                {
+                  "line": 37,
+                  "hitCount": 1
+                },
+                {
+                  "line": 39,
+                  "hitCount": 1
+                },
+                {
+                  "line": 43,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.api.extension.ExtensionContext": {
+              "className": "org.junit.jupiter.api.extension.ExtensionContext",
+              "coverages": [
+                {
+                  "line": 178,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.TestExecutionResult": {
+              "className": "org.junit.platform.engine.TestExecutionResult",
+              "coverages": [
+                {
+                  "line": 69,
+                  "hitCount": 1
+                },
+                {
+                  "line": 92,
+                  "hitCount": 1
+                },
+                {
+                  "line": 93,
+                  "hitCount": 1
+                },
+                {
+                  "line": 94,
+                  "hitCount": 1
+                },
+                {
+                  "line": 95,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.descriptor.JupiterTestDescriptor": {
+              "className": "org.junit.jupiter.engine.descriptor.JupiterTestDescriptor",
+              "coverages": [
+                {
+                  "line": 202,
+                  "hitCount": 1
+                },
+                {
+                  "line": 203,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.jacoco.core.data.SessionInfoStore": {
+              "className": "org.jacoco.core.data.SessionInfoStore",
+              "coverages": [
+                {
+                  "line": 26,
+                  "hitCount": 1
+                },
+                {
+                  "line": 28,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.jacoco.core.data.ExecutionDataStore": {
+              "className": "org.jacoco.core.data.ExecutionDataStore",
+              "coverages": [
+                {
+                  "line": 32,
+                  "hitCount": 1
+                },
+                {
+                  "line": 34,
+                  "hitCount": 1
+                },
+                {
+                  "line": 30,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.Node$SkipResult": {
+              "className": "org.junit.platform.engine.support.hierarchical.Node$SkipResult",
+              "coverages": [
+                {
+                  "line": 202,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.descriptor.MethodBasedTestDescriptor": {
+              "className": "org.junit.jupiter.engine.descriptor.MethodBasedTestDescriptor",
+              "coverages": [
+                {
+                  "line": 75,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.execution.JupiterEngineExecutionContext": {
+              "className": "org.junit.jupiter.engine.execution.JupiterEngineExecutionContext",
+              "coverages": [
+                {
+                  "line": 50,
+                  "hitCount": 1
+                },
+                {
+                  "line": 51,
+                  "hitCount": 1
+                },
+                {
+                  "line": 83,
+                  "hitCount": 1
+                },
+                {
+                  "line": 53,
+                  "hitCount": 1
+                },
+                {
+                  "line": 58,
+                  "hitCount": 1
+                },
+                {
+                  "line": 75,
+                  "hitCount": 1
+                },
+                {
+                  "line": 60,
+                  "hitCount": 1
+                },
+                {
+                  "line": 79,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor": {
+              "className": "org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor",
+              "coverages": [
+                {
+                  "line": 163,
+                  "hitCount": 1
+                },
+                {
+                  "line": 171,
+                  "hitCount": 1
+                },
+                {
+                  "line": 142,
+                  "hitCount": 1
+                },
+                {
+                  "line": 143,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.extension.ExtensionRegistry": {
+              "className": "org.junit.jupiter.engine.extension.ExtensionRegistry",
+              "coverages": [
+                {
+                  "line": 144,
+                  "hitCount": 1
+                },
+                {
+                  "line": 176,
+                  "hitCount": 1
+                },
+                {
+                  "line": 145,
+                  "hitCount": 1
+                },
+                {
+                  "line": 161,
+                  "hitCount": 1
+                },
+                {
+                  "line": 162,
+                  "hitCount": 1
+                },
+                {
+                  "line": 147,
+                  "hitCount": 1
+                },
+                {
+                  "line": 163,
+                  "hitCount": 1
+                },
+                {
+                  "line": 188,
+                  "hitCount": 1
+                },
+                {
+                  "line": 189,
+                  "hitCount": 1
+                },
+                {
+                  "line": 190,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.jacoco.agent.rt.RT": {
+              "className": "org.jacoco.agent.rt.RT",
+              "coverages": [
+                {
+                  "line": 33,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.Node": {
+              "className": "org.junit.platform.engine.support.hierarchical.Node",
+              "coverages": [
+                {
+                  "line": 83,
+                  "hitCount": 1
+                },
+                {
+                  "line": 121,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.UniqueIdFormat": {
+              "className": "org.junit.platform.engine.UniqueIdFormat",
+              "coverages": [
+                {
+                  "line": 128,
+                  "hitCount": 1
+                },
+                {
+                  "line": 129,
+                  "hitCount": 1
+                },
+                {
+                  "line": 134,
+                  "hitCount": 1
+                },
+                {
+                  "line": 135,
+                  "hitCount": 1
+                },
+                {
+                  "line": 139,
+                  "hitCount": 1
+                },
+                {
+                  "line": 140,
+                  "hitCount": 1
+                },
+                {
+                  "line": 141,
+                  "hitCount": 1
+                },
+                {
+                  "line": 142,
+                  "hitCount": 1
+                },
+                {
+                  "line": 143,
+                  "hitCount": 1
+                },
+                {
+                  "line": 144,
+                  "hitCount": 1
+                },
+                {
+                  "line": 148,
+                  "hitCount": 1
+                },
+                {
+                  "line": 127,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.launcher.core.TestExecutionListenerRegistry": {
+              "className": "org.junit.platform.launcher.core.TestExecutionListenerRegistry",
+              "coverages": [
+                {
+                  "line": 64,
+                  "hitCount": 1
+                },
+                {
+                  "line": 59,
+                  "hitCount": 1
+                },
+                {
+                  "line": 60,
+                  "hitCount": 1
+                },
+                {
+                  "line": 63,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.launcher.core.ExecutionListenerAdapter": {
+              "className": "org.junit.platform.launcher.core.ExecutionListenerAdapter",
+              "coverages": [
+                {
+                  "line": 65,
+                  "hitCount": 1
+                },
+                {
+                  "line": 46,
+                  "hitCount": 1
+                },
+                {
+                  "line": 47,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.api.AssertEquals": {
+              "className": "org.junit.jupiter.api.AssertEquals",
+              "coverages": [
+                {
+                  "line": 147,
+                  "hitCount": 1
+                },
+                {
+                  "line": 148,
+                  "hitCount": 1
+                },
+                {
+                  "line": 151,
+                  "hitCount": 1
+                },
+                {
+                  "line": 154,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.NodeTestTaskContext": {
+              "className": "org.junit.platform.engine.support.hierarchical.NodeTestTaskContext",
+              "coverages": [
+                {
+                  "line": 34,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.descriptor.MethodSource": {
+              "className": "org.junit.platform.engine.support.descriptor.MethodSource",
+              "coverages": [
+                {
+                  "line": 130,
+                  "hitCount": 1
+                },
+                {
+                  "line": 123,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.commons.util.Preconditions": {
+              "className": "org.junit.platform.commons.util.Preconditions",
+              "coverages": [
+                {
+                  "line": 53,
+                  "hitCount": 1
+                },
+                {
+                  "line": 54,
+                  "hitCount": 1
+                },
+                {
+                  "line": 294,
+                  "hitCount": 1
+                },
+                {
+                  "line": 279,
+                  "hitCount": 1
+                },
+                {
+                  "line": 248,
+                  "hitCount": 1
+                },
+                {
+                  "line": 249,
+                  "hitCount": 1
+                },
+                {
+                  "line": 297,
+                  "hitCount": 1
+                },
+                {
+                  "line": 282,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.execution.ExecutableInvoker": {
+              "className": "org.junit.jupiter.engine.execution.ExecutableInvoker",
+              "coverages": [
+                {
+                  "line": 160,
+                  "hitCount": 1
+                },
+                {
+                  "line": 161,
+                  "hitCount": 1
+                },
+                {
+                  "line": 162,
+                  "hitCount": 1
+                },
+                {
+                  "line": 166,
+                  "hitCount": 1
+                },
+                {
+                  "line": 135,
+                  "hitCount": 1
+                },
+                {
+                  "line": 172,
+                  "hitCount": 1
+                },
+                {
+                  "line": 176,
+                  "hitCount": 1
+                },
+                {
+                  "line": 113,
+                  "hitCount": 1
+                },
+                {
+                  "line": 114,
+                  "hitCount": 1
+                },
+                {
+                  "line": 115,
+                  "hitCount": 1
+                },
+                {
+                  "line": 116,
+                  "hitCount": 1
+                },
+                {
+                  "line": 158,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor": {
+              "className": "org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor",
+              "coverages": [
+                {
+                  "line": 129,
+                  "hitCount": 1
+                },
+                {
+                  "line": 131,
+                  "hitCount": 1
+                },
+                {
+                  "line": 134,
+                  "hitCount": 1
+                },
+                {
+                  "line": 135,
+                  "hitCount": 1
+                },
+                {
+                  "line": 138,
+                  "hitCount": 1
+                },
+                {
+                  "line": 204,
+                  "hitCount": 1
+                },
+                {
+                  "line": 141,
+                  "hitCount": 1
+                },
+                {
+                  "line": 207,
+                  "hitCount": 1
+                },
+                {
+                  "line": 144,
+                  "hitCount": 1
+                },
+                {
+                  "line": 210,
+                  "hitCount": 1
+                },
+                {
+                  "line": 211,
+                  "hitCount": 1
+                },
+                {
+                  "line": 150,
+                  "hitCount": 1
+                },
+                {
+                  "line": 214,
+                  "hitCount": 1
+                },
+                {
+                  "line": 151,
+                  "hitCount": 1
+                },
+                {
+                  "line": 152,
+                  "hitCount": 1
+                },
+                {
+                  "line": 217,
+                  "hitCount": 1
+                },
+                {
+                  "line": 154,
+                  "hitCount": 1
+                },
+                {
+                  "line": 219,
+                  "hitCount": 1
+                },
+                {
+                  "line": 224,
+                  "hitCount": 1
+                },
+                {
+                  "line": 161,
+                  "hitCount": 1
+                },
+                {
+                  "line": 225,
+                  "hitCount": 1
+                },
+                {
+                  "line": 226,
+                  "hitCount": 1
+                },
+                {
+                  "line": 164,
+                  "hitCount": 1
+                },
+                {
+                  "line": 228,
+                  "hitCount": 1
+                },
+                {
+                  "line": 165,
+                  "hitCount": 1
+                },
+                {
+                  "line": 167,
+                  "hitCount": 1
+                },
+                {
+                  "line": 232,
+                  "hitCount": 1
+                },
+                {
+                  "line": 105,
+                  "hitCount": 1
+                },
+                {
+                  "line": 169,
+                  "hitCount": 1
+                },
+                {
+                  "line": 170,
+                  "hitCount": 1
+                },
+                {
+                  "line": 171,
+                  "hitCount": 1
+                },
+                {
+                  "line": 108,
+                  "hitCount": 1
+                },
+                {
+                  "line": 109,
+                  "hitCount": 1
+                },
+                {
+                  "line": 110,
+                  "hitCount": 1
+                },
+                {
+                  "line": 111,
+                  "hitCount": 1
+                },
+                {
+                  "line": 175,
+                  "hitCount": 1
+                },
+                {
+                  "line": 112,
+                  "hitCount": 1
+                },
+                {
+                  "line": 176,
+                  "hitCount": 1
+                },
+                {
+                  "line": 113,
+                  "hitCount": 1
+                },
+                {
+                  "line": 177,
+                  "hitCount": 1
+                },
+                {
+                  "line": 114,
+                  "hitCount": 1
+                },
+                {
+                  "line": 116,
+                  "hitCount": 1
+                },
+                {
+                  "line": 118,
+                  "hitCount": 1
+                },
+                {
+                  "line": 120,
+                  "hitCount": 1
+                },
+                {
+                  "line": 123,
+                  "hitCount": 1
+                },
+                {
+                  "line": 125,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "eu.stamp_project.testrunner.listener.junit5.JUnit5TestResult": {
+              "className": "eu.stamp_project.testrunner.listener.junit5.JUnit5TestResult",
+              "coverages": [
+                {
+                  "line": 24,
+                  "hitCount": 1
+                },
+                {
+                  "line": 25,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.commons.util.StringUtils": {
+              "className": "org.junit.platform.commons.util.StringUtils",
+              "coverages": [
+                {
+                  "line": 59,
+                  "hitCount": 1
+                },
+                {
+                  "line": 47,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.OpenTest4JAwareThrowableCollector": {
+              "className": "org.junit.platform.engine.support.hierarchical.OpenTest4JAwareThrowableCollector",
+              "coverages": [
+                {
+                  "line": 29,
+                  "hitCount": 1
+                },
+                {
+                  "line": 30,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.descriptor.AbstractExtensionContext": {
+              "className": "org.junit.jupiter.engine.descriptor.AbstractExtensionContext",
+              "coverages": [
+                {
+                  "line": 73,
+                  "hitCount": 1
+                },
+                {
+                  "line": 74,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "eu.stamp_project.testrunner.listener.impl.OnlineCoveredTestResultPerTestMethodImpl": {
+              "className": "eu.stamp_project.testrunner.listener.impl.OnlineCoveredTestResultPerTestMethodImpl",
+              "coverages": [
+                {
+                  "line": 100,
+                  "hitCount": 1
+                },
+                {
+                  "line": 69,
+                  "hitCount": 1
+                },
+                {
+                  "line": 70,
+                  "hitCount": 1
+                },
+                {
+                  "line": 60,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.UniqueId": {
+              "className": "org.junit.platform.engine.UniqueId",
+              "coverages": [
+                {
+                  "line": 121,
+                  "hitCount": 1
+                },
+                {
+                  "line": 205,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.commons.util.ReflectionUtils": {
+              "className": "org.junit.platform.commons.util.ReflectionUtils",
+              "coverages": [
+                {
+                  "line": 528,
+                  "hitCount": 1
+                },
+                {
+                  "line": 532,
+                  "hitCount": 1
+                },
+                {
+                  "line": 1356,
+                  "hitCount": 1
+                },
+                {
+                  "line": 1357,
+                  "hitCount": 1
+                },
+                {
+                  "line": 527,
+                  "hitCount": 1
+                },
+                {
+                  "line": 1359,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.NodeTestTask": {
+              "className": "org.junit.platform.engine.support.hierarchical.NodeTestTask",
+              "coverages": [
+                {
+                  "line": 96,
+                  "hitCount": 1
+                },
+                {
+                  "line": 98,
+                  "hitCount": 1
+                },
+                {
+                  "line": 130,
+                  "hitCount": 1
+                },
+                {
+                  "line": 100,
+                  "hitCount": 1
+                },
+                {
+                  "line": 101,
+                  "hitCount": 1
+                },
+                {
+                  "line": 134,
+                  "hitCount": 1
+                },
+                {
+                  "line": 102,
+                  "hitCount": 1
+                },
+                {
+                  "line": 105,
+                  "hitCount": 1
+                },
+                {
+                  "line": 74,
+                  "hitCount": 1
+                },
+                {
+                  "line": 107,
+                  "hitCount": 1
+                },
+                {
+                  "line": 76,
+                  "hitCount": 1
+                },
+                {
+                  "line": 108,
+                  "hitCount": 1
+                },
+                {
+                  "line": 77,
+                  "hitCount": 1
+                },
+                {
+                  "line": 110,
+                  "hitCount": 1
+                },
+                {
+                  "line": 115,
+                  "hitCount": 1
+                },
+                {
+                  "line": 116,
+                  "hitCount": 1
+                },
+                {
+                  "line": 118,
+                  "hitCount": 1
+                },
+                {
+                  "line": 119,
+                  "hitCount": 1
+                },
+                {
+                  "line": 122,
+                  "hitCount": 1
+                },
+                {
+                  "line": 126,
+                  "hitCount": 1
+                },
+                {
+                  "line": 95,
+                  "hitCount": 1
+                },
+                {
+                  "line": 127,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.launcher.TestIdentifier": {
+              "className": "org.junit.platform.launcher.TestIdentifier",
+              "coverages": [
+                {
+                  "line": 145,
+                  "hitCount": 1
+                },
+                {
+                  "line": 177,
+                  "hitCount": 1
+                },
+                {
+                  "line": 156,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.execution.ExtensionValuesStore": {
+              "className": "org.junit.jupiter.engine.execution.ExtensionValuesStore",
+              "coverages": [
+                {
+                  "line": 64,
+                  "hitCount": 1
+                },
+                {
+                  "line": 55,
+                  "hitCount": 1
+                },
+                {
+                  "line": 56,
+                  "hitCount": 1
+                },
+                {
+                  "line": 63,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.descriptor.AbstractTestDescriptor": {
+              "className": "org.junit.platform.engine.support.descriptor.AbstractTestDescriptor",
+              "coverages": [
+                {
+                  "line": 125,
+                  "hitCount": 1
+                },
+                {
+                  "line": 95,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "fr.davidson.diff_jjoules_demo.InternalList": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalList",
+              "coverages": [
+                {
+                  "line": 16,
+                  "hitCount": 1
+                },
+                {
+                  "line": 17,
+                  "hitCount": 1
+                },
+                {
+                  "line": 33,
+                  "hitCount": 1
+                },
+                {
+                  "line": 18,
+                  "hitCount": 1
+                },
+                {
+                  "line": 35,
+                  "hitCount": 1
+                },
+                {
+                  "line": 30,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.api.Assertions": {
+              "className": "org.junit.jupiter.api.Assertions",
+              "coverages": [
+                {
+                  "line": 327,
+                  "hitCount": 1
+                },
+                {
+                  "line": 328,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.UniqueId$Segment": {
+              "className": "org.junit.platform.engine.UniqueId$Segment",
+              "coverages": [
+                {
+                  "line": 245,
+                  "hitCount": 1
+                },
+                {
+                  "line": 238,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.launcher.core.TestExecutionListenerRegistry$CompositeTestExecutionListener": {
+              "className": "org.junit.platform.launcher.core.TestExecutionListenerRegistry$CompositeTestExecutionListener",
+              "coverages": [
+                {
+                  "line": 85,
+                  "hitCount": 1
+                },
+                {
+                  "line": 86,
+                  "hitCount": 1
+                },
+                {
+                  "line": 90,
+                  "hitCount": 1
+                }
+              ]
+            }
+          }
+        },
+        "testCountFailing": {
+          "testMethodName": "testCountFailing",
+          "classCoverageList": {
+            "org.jacoco.core.tools.ExecFileLoader": {
+              "className": "org.jacoco.core.tools.ExecFileLoader",
+              "coverages": [
+                {
+                  "line": 42,
+                  "hitCount": 1
+                },
+                {
+                  "line": 43,
+                  "hitCount": 1
+                },
+                {
+                  "line": 44,
+                  "hitCount": 1
+                },
+                {
+                  "line": 45,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.launcher.TestPlan": {
+              "className": "org.junit.platform.launcher.TestPlan",
+              "coverages": [
+                {
+                  "line": 163,
+                  "hitCount": 1
+                },
+                {
+                  "line": 164,
+                  "hitCount": 1
+                },
+                {
+                  "line": 166,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.ThrowableCollector": {
+              "className": "org.junit.platform.engine.support.hierarchical.ThrowableCollector",
+              "coverages": [
+                {
+                  "line": 162,
+                  "hitCount": 1
+                },
+                {
+                  "line": 132,
+                  "hitCount": 1
+                },
+                {
+                  "line": 54,
+                  "hitCount": 1
+                },
+                {
+                  "line": 55,
+                  "hitCount": 1
+                },
+                {
+                  "line": 72,
+                  "hitCount": 1
+                },
+                {
+                  "line": 57,
+                  "hitCount": 1
+                },
+                {
+                  "line": 77,
+                  "hitCount": 1
+                },
+                {
+                  "line": 78,
+                  "hitCount": 1
+                },
+                {
+                  "line": 174,
+                  "hitCount": 1
+                },
+                {
+                  "line": 159,
+                  "hitCount": 1
+                },
+                {
+                  "line": 175,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.TestDescriptor$Type": {
+              "className": "org.junit.platform.engine.TestDescriptor$Type",
+              "coverages": [
+                {
+                  "line": 293,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "fr.davidson.diff_jjoules_demo.InternalListTest": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalListTest",
+              "coverages": [
+                {
+                  "line": 41,
+                  "hitCount": 1
+                },
+                {
+                  "line": 42,
+                  "hitCount": 1
+                },
+                {
+                  "line": 43,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.descriptor.MethodExtensionContext": {
+              "className": "org.junit.jupiter.engine.descriptor.MethodExtensionContext",
+              "coverages": [
+                {
+                  "line": 63,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "eu.stamp_project.testrunner.listener.junit5.OnlineCoveredTestResultsPerJUnit5TestMethod": {
+              "className": "eu.stamp_project.testrunner.listener.junit5.OnlineCoveredTestResultsPerJUnit5TestMethod",
+              "coverages": [
+                {
+                  "line": 36,
+                  "hitCount": 1
+                },
+                {
+                  "line": 37,
+                  "hitCount": 1
+                },
+                {
+                  "line": 39,
+                  "hitCount": 1
+                },
+                {
+                  "line": 43,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.api.extension.ExtensionContext": {
+              "className": "org.junit.jupiter.api.extension.ExtensionContext",
+              "coverages": [
+                {
+                  "line": 178,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.TestExecutionResult": {
+              "className": "org.junit.platform.engine.TestExecutionResult",
+              "coverages": [
+                {
+                  "line": 69,
+                  "hitCount": 1
+                },
+                {
+                  "line": 92,
+                  "hitCount": 1
+                },
+                {
+                  "line": 93,
+                  "hitCount": 1
+                },
+                {
+                  "line": 94,
+                  "hitCount": 1
+                },
+                {
+                  "line": 95,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.descriptor.JupiterTestDescriptor": {
+              "className": "org.junit.jupiter.engine.descriptor.JupiterTestDescriptor",
+              "coverages": [
+                {
+                  "line": 202,
+                  "hitCount": 1
+                },
+                {
+                  "line": 203,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.jacoco.core.data.SessionInfoStore": {
+              "className": "org.jacoco.core.data.SessionInfoStore",
+              "coverages": [
+                {
+                  "line": 26,
+                  "hitCount": 1
+                },
+                {
+                  "line": 28,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.jacoco.core.data.ExecutionDataStore": {
+              "className": "org.jacoco.core.data.ExecutionDataStore",
+              "coverages": [
+                {
+                  "line": 32,
+                  "hitCount": 1
+                },
+                {
+                  "line": 34,
+                  "hitCount": 1
+                },
+                {
+                  "line": 30,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.Node$SkipResult": {
+              "className": "org.junit.platform.engine.support.hierarchical.Node$SkipResult",
+              "coverages": [
+                {
+                  "line": 202,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.descriptor.MethodBasedTestDescriptor": {
+              "className": "org.junit.jupiter.engine.descriptor.MethodBasedTestDescriptor",
+              "coverages": [
+                {
+                  "line": 75,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.execution.JupiterEngineExecutionContext": {
+              "className": "org.junit.jupiter.engine.execution.JupiterEngineExecutionContext",
+              "coverages": [
+                {
+                  "line": 50,
+                  "hitCount": 1
+                },
+                {
+                  "line": 51,
+                  "hitCount": 1
+                },
+                {
+                  "line": 83,
+                  "hitCount": 1
+                },
+                {
+                  "line": 53,
+                  "hitCount": 1
+                },
+                {
+                  "line": 58,
+                  "hitCount": 1
+                },
+                {
+                  "line": 75,
+                  "hitCount": 1
+                },
+                {
+                  "line": 60,
+                  "hitCount": 1
+                },
+                {
+                  "line": 79,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor": {
+              "className": "org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor",
+              "coverages": [
+                {
+                  "line": 163,
+                  "hitCount": 1
+                },
+                {
+                  "line": 171,
+                  "hitCount": 1
+                },
+                {
+                  "line": 142,
+                  "hitCount": 1
+                },
+                {
+                  "line": 143,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.extension.ExtensionRegistry": {
+              "className": "org.junit.jupiter.engine.extension.ExtensionRegistry",
+              "coverages": [
+                {
+                  "line": 144,
+                  "hitCount": 1
+                },
+                {
+                  "line": 176,
+                  "hitCount": 1
+                },
+                {
+                  "line": 145,
+                  "hitCount": 1
+                },
+                {
+                  "line": 161,
+                  "hitCount": 1
+                },
+                {
+                  "line": 162,
+                  "hitCount": 1
+                },
+                {
+                  "line": 147,
+                  "hitCount": 1
+                },
+                {
+                  "line": 163,
+                  "hitCount": 1
+                },
+                {
+                  "line": 188,
+                  "hitCount": 1
+                },
+                {
+                  "line": 189,
+                  "hitCount": 1
+                },
+                {
+                  "line": 190,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.jacoco.agent.rt.RT": {
+              "className": "org.jacoco.agent.rt.RT",
+              "coverages": [
+                {
+                  "line": 33,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.Node": {
+              "className": "org.junit.platform.engine.support.hierarchical.Node",
+              "coverages": [
+                {
+                  "line": 83,
+                  "hitCount": 1
+                },
+                {
+                  "line": 121,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.UniqueIdFormat": {
+              "className": "org.junit.platform.engine.UniqueIdFormat",
+              "coverages": [
+                {
+                  "line": 128,
+                  "hitCount": 1
+                },
+                {
+                  "line": 129,
+                  "hitCount": 1
+                },
+                {
+                  "line": 134,
+                  "hitCount": 1
+                },
+                {
+                  "line": 135,
+                  "hitCount": 1
+                },
+                {
+                  "line": 139,
+                  "hitCount": 1
+                },
+                {
+                  "line": 140,
+                  "hitCount": 1
+                },
+                {
+                  "line": 141,
+                  "hitCount": 1
+                },
+                {
+                  "line": 142,
+                  "hitCount": 1
+                },
+                {
+                  "line": 143,
+                  "hitCount": 1
+                },
+                {
+                  "line": 144,
+                  "hitCount": 1
+                },
+                {
+                  "line": 148,
+                  "hitCount": 1
+                },
+                {
+                  "line": 127,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.launcher.core.TestExecutionListenerRegistry": {
+              "className": "org.junit.platform.launcher.core.TestExecutionListenerRegistry",
+              "coverages": [
+                {
+                  "line": 64,
+                  "hitCount": 1
+                },
+                {
+                  "line": 59,
+                  "hitCount": 1
+                },
+                {
+                  "line": 60,
+                  "hitCount": 1
+                },
+                {
+                  "line": 63,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.launcher.core.ExecutionListenerAdapter": {
+              "className": "org.junit.platform.launcher.core.ExecutionListenerAdapter",
+              "coverages": [
+                {
+                  "line": 65,
+                  "hitCount": 1
+                },
+                {
+                  "line": 46,
+                  "hitCount": 1
+                },
+                {
+                  "line": 47,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.api.AssertEquals": {
+              "className": "org.junit.jupiter.api.AssertEquals",
+              "coverages": [
+                {
+                  "line": 147,
+                  "hitCount": 1
+                },
+                {
+                  "line": 148,
+                  "hitCount": 1
+                },
+                {
+                  "line": 151,
+                  "hitCount": 1
+                },
+                {
+                  "line": 154,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.NodeTestTaskContext": {
+              "className": "org.junit.platform.engine.support.hierarchical.NodeTestTaskContext",
+              "coverages": [
+                {
+                  "line": 34,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.descriptor.MethodSource": {
+              "className": "org.junit.platform.engine.support.descriptor.MethodSource",
+              "coverages": [
+                {
+                  "line": 130,
+                  "hitCount": 1
+                },
+                {
+                  "line": 123,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.commons.util.Preconditions": {
+              "className": "org.junit.platform.commons.util.Preconditions",
+              "coverages": [
+                {
+                  "line": 53,
+                  "hitCount": 1
+                },
+                {
+                  "line": 54,
+                  "hitCount": 1
+                },
+                {
+                  "line": 294,
+                  "hitCount": 1
+                },
+                {
+                  "line": 279,
+                  "hitCount": 1
+                },
+                {
+                  "line": 248,
+                  "hitCount": 1
+                },
+                {
+                  "line": 249,
+                  "hitCount": 1
+                },
+                {
+                  "line": 297,
+                  "hitCount": 1
+                },
+                {
+                  "line": 282,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.execution.ExecutableInvoker": {
+              "className": "org.junit.jupiter.engine.execution.ExecutableInvoker",
+              "coverages": [
+                {
+                  "line": 160,
+                  "hitCount": 1
+                },
+                {
+                  "line": 161,
+                  "hitCount": 1
+                },
+                {
+                  "line": 162,
+                  "hitCount": 1
+                },
+                {
+                  "line": 166,
+                  "hitCount": 1
+                },
+                {
+                  "line": 135,
+                  "hitCount": 1
+                },
+                {
+                  "line": 172,
+                  "hitCount": 1
+                },
+                {
+                  "line": 176,
+                  "hitCount": 1
+                },
+                {
+                  "line": 113,
+                  "hitCount": 1
+                },
+                {
+                  "line": 114,
+                  "hitCount": 1
+                },
+                {
+                  "line": 115,
+                  "hitCount": 1
+                },
+                {
+                  "line": 116,
+                  "hitCount": 1
+                },
+                {
+                  "line": 158,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor": {
+              "className": "org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor",
+              "coverages": [
+                {
+                  "line": 129,
+                  "hitCount": 1
+                },
+                {
+                  "line": 131,
+                  "hitCount": 1
+                },
+                {
+                  "line": 134,
+                  "hitCount": 1
+                },
+                {
+                  "line": 135,
+                  "hitCount": 1
+                },
+                {
+                  "line": 138,
+                  "hitCount": 1
+                },
+                {
+                  "line": 204,
+                  "hitCount": 1
+                },
+                {
+                  "line": 141,
+                  "hitCount": 1
+                },
+                {
+                  "line": 207,
+                  "hitCount": 1
+                },
+                {
+                  "line": 144,
+                  "hitCount": 1
+                },
+                {
+                  "line": 210,
+                  "hitCount": 1
+                },
+                {
+                  "line": 211,
+                  "hitCount": 1
+                },
+                {
+                  "line": 150,
+                  "hitCount": 1
+                },
+                {
+                  "line": 214,
+                  "hitCount": 1
+                },
+                {
+                  "line": 151,
+                  "hitCount": 1
+                },
+                {
+                  "line": 152,
+                  "hitCount": 1
+                },
+                {
+                  "line": 217,
+                  "hitCount": 1
+                },
+                {
+                  "line": 154,
+                  "hitCount": 1
+                },
+                {
+                  "line": 219,
+                  "hitCount": 1
+                },
+                {
+                  "line": 224,
+                  "hitCount": 1
+                },
+                {
+                  "line": 161,
+                  "hitCount": 1
+                },
+                {
+                  "line": 225,
+                  "hitCount": 1
+                },
+                {
+                  "line": 226,
+                  "hitCount": 1
+                },
+                {
+                  "line": 164,
+                  "hitCount": 1
+                },
+                {
+                  "line": 228,
+                  "hitCount": 1
+                },
+                {
+                  "line": 165,
+                  "hitCount": 1
+                },
+                {
+                  "line": 167,
+                  "hitCount": 1
+                },
+                {
+                  "line": 232,
+                  "hitCount": 1
+                },
+                {
+                  "line": 105,
+                  "hitCount": 1
+                },
+                {
+                  "line": 169,
+                  "hitCount": 1
+                },
+                {
+                  "line": 170,
+                  "hitCount": 1
+                },
+                {
+                  "line": 171,
+                  "hitCount": 1
+                },
+                {
+                  "line": 108,
+                  "hitCount": 1
+                },
+                {
+                  "line": 109,
+                  "hitCount": 1
+                },
+                {
+                  "line": 110,
+                  "hitCount": 1
+                },
+                {
+                  "line": 111,
+                  "hitCount": 1
+                },
+                {
+                  "line": 175,
+                  "hitCount": 1
+                },
+                {
+                  "line": 112,
+                  "hitCount": 1
+                },
+                {
+                  "line": 176,
+                  "hitCount": 1
+                },
+                {
+                  "line": 113,
+                  "hitCount": 1
+                },
+                {
+                  "line": 177,
+                  "hitCount": 1
+                },
+                {
+                  "line": 114,
+                  "hitCount": 1
+                },
+                {
+                  "line": 116,
+                  "hitCount": 1
+                },
+                {
+                  "line": 118,
+                  "hitCount": 1
+                },
+                {
+                  "line": 120,
+                  "hitCount": 1
+                },
+                {
+                  "line": 123,
+                  "hitCount": 1
+                },
+                {
+                  "line": 125,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "eu.stamp_project.testrunner.listener.junit5.JUnit5TestResult": {
+              "className": "eu.stamp_project.testrunner.listener.junit5.JUnit5TestResult",
+              "coverages": [
+                {
+                  "line": 24,
+                  "hitCount": 1
+                },
+                {
+                  "line": 25,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.commons.util.StringUtils": {
+              "className": "org.junit.platform.commons.util.StringUtils",
+              "coverages": [
+                {
+                  "line": 59,
+                  "hitCount": 1
+                },
+                {
+                  "line": 47,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.OpenTest4JAwareThrowableCollector": {
+              "className": "org.junit.platform.engine.support.hierarchical.OpenTest4JAwareThrowableCollector",
+              "coverages": [
+                {
+                  "line": 29,
+                  "hitCount": 1
+                },
+                {
+                  "line": 30,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.descriptor.AbstractExtensionContext": {
+              "className": "org.junit.jupiter.engine.descriptor.AbstractExtensionContext",
+              "coverages": [
+                {
+                  "line": 73,
+                  "hitCount": 1
+                },
+                {
+                  "line": 74,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "eu.stamp_project.testrunner.listener.impl.OnlineCoveredTestResultPerTestMethodImpl": {
+              "className": "eu.stamp_project.testrunner.listener.impl.OnlineCoveredTestResultPerTestMethodImpl",
+              "coverages": [
+                {
+                  "line": 100,
+                  "hitCount": 1
+                },
+                {
+                  "line": 69,
+                  "hitCount": 1
+                },
+                {
+                  "line": 70,
+                  "hitCount": 1
+                },
+                {
+                  "line": 60,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.UniqueId": {
+              "className": "org.junit.platform.engine.UniqueId",
+              "coverages": [
+                {
+                  "line": 121,
+                  "hitCount": 1
+                },
+                {
+                  "line": 205,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.commons.util.ReflectionUtils": {
+              "className": "org.junit.platform.commons.util.ReflectionUtils",
+              "coverages": [
+                {
+                  "line": 528,
+                  "hitCount": 1
+                },
+                {
+                  "line": 532,
+                  "hitCount": 1
+                },
+                {
+                  "line": 1356,
+                  "hitCount": 1
+                },
+                {
+                  "line": 1357,
+                  "hitCount": 1
+                },
+                {
+                  "line": 527,
+                  "hitCount": 1
+                },
+                {
+                  "line": 1359,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.hierarchical.NodeTestTask": {
+              "className": "org.junit.platform.engine.support.hierarchical.NodeTestTask",
+              "coverages": [
+                {
+                  "line": 96,
+                  "hitCount": 1
+                },
+                {
+                  "line": 98,
+                  "hitCount": 1
+                },
+                {
+                  "line": 130,
+                  "hitCount": 1
+                },
+                {
+                  "line": 100,
+                  "hitCount": 1
+                },
+                {
+                  "line": 101,
+                  "hitCount": 1
+                },
+                {
+                  "line": 134,
+                  "hitCount": 1
+                },
+                {
+                  "line": 102,
+                  "hitCount": 1
+                },
+                {
+                  "line": 105,
+                  "hitCount": 1
+                },
+                {
+                  "line": 74,
+                  "hitCount": 1
+                },
+                {
+                  "line": 107,
+                  "hitCount": 1
+                },
+                {
+                  "line": 76,
+                  "hitCount": 1
+                },
+                {
+                  "line": 108,
+                  "hitCount": 1
+                },
+                {
+                  "line": 77,
+                  "hitCount": 1
+                },
+                {
+                  "line": 110,
+                  "hitCount": 1
+                },
+                {
+                  "line": 115,
+                  "hitCount": 1
+                },
+                {
+                  "line": 116,
+                  "hitCount": 1
+                },
+                {
+                  "line": 118,
+                  "hitCount": 1
+                },
+                {
+                  "line": 119,
+                  "hitCount": 1
+                },
+                {
+                  "line": 122,
+                  "hitCount": 1
+                },
+                {
+                  "line": 126,
+                  "hitCount": 1
+                },
+                {
+                  "line": 95,
+                  "hitCount": 1
+                },
+                {
+                  "line": 127,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.launcher.TestIdentifier": {
+              "className": "org.junit.platform.launcher.TestIdentifier",
+              "coverages": [
+                {
+                  "line": 145,
+                  "hitCount": 1
+                },
+                {
+                  "line": 177,
+                  "hitCount": 1
+                },
+                {
+                  "line": 156,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.engine.execution.ExtensionValuesStore": {
+              "className": "org.junit.jupiter.engine.execution.ExtensionValuesStore",
+              "coverages": [
+                {
+                  "line": 64,
+                  "hitCount": 1
+                },
+                {
+                  "line": 55,
+                  "hitCount": 1
+                },
+                {
+                  "line": 56,
+                  "hitCount": 1
+                },
+                {
+                  "line": 63,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.support.descriptor.AbstractTestDescriptor": {
+              "className": "org.junit.platform.engine.support.descriptor.AbstractTestDescriptor",
+              "coverages": [
+                {
+                  "line": 125,
+                  "hitCount": 1
+                },
+                {
+                  "line": 95,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "fr.davidson.diff_jjoules_demo.InternalList": {
+              "className": "fr.davidson.diff_jjoules_demo.InternalList",
+              "coverages": [
+                {
+                  "line": 33,
+                  "hitCount": 1
+                },
+                {
+                  "line": 20,
+                  "hitCount": 1
+                },
+                {
+                  "line": 21,
+                  "hitCount": 1
+                },
+                {
+                  "line": 22,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.jupiter.api.Assertions": {
+              "className": "org.junit.jupiter.api.Assertions",
+              "coverages": [
+                {
+                  "line": 327,
+                  "hitCount": 1
+                },
+                {
+                  "line": 328,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.engine.UniqueId$Segment": {
+              "className": "org.junit.platform.engine.UniqueId$Segment",
+              "coverages": [
+                {
+                  "line": 245,
+                  "hitCount": 1
+                },
+                {
+                  "line": 238,
+                  "hitCount": 1
+                }
+              ]
+            },
+            "org.junit.platform.launcher.core.TestExecutionListenerRegistry$CompositeTestExecutionListener": {
+              "className": "org.junit.platform.launcher.core.TestExecutionListenerRegistry$CompositeTestExecutionListener",
+              "coverages": [
+                {
+                  "line": 85,
+                  "hitCount": 1
+                },
+                {
+                  "line": 86,
+                  "hitCount": 1
+                },
+                {
+                  "line": 90,
+                  "hitCount": 1
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

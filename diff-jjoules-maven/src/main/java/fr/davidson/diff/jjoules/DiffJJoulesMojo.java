@@ -94,7 +94,7 @@ public class DiffJJoulesMojo extends AbstractMojo {
                 this.pathToRepositoryV2 = this.pathDirSecondVersion;
             }
             Configuration configuration = new Configuration(
-                    this.project.getBasedir().getAbsolutePath(),
+                    this.project.getBasedir().getAbsolutePath() + "/",
                     this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.pathDirSecondVersion,
                     this.iterations,
                     this.outputPath,

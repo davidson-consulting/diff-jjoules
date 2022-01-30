@@ -40,7 +40,7 @@ public class CSVFileManagerTest {
 
     @Test
     void test() {
-        final Map<String, Set<String>> testList = CSVFileManager.readFile("src/test/resources/diff-jjoules-demo/testsList.csv");
+        final Map<String, Set<String>> testList = CSVFileManager.readFile("src/test/resources/json/testsList.csv");
         assertTrue(testList.containsKey("fr.davidson.TestClass"));
         assertTrue(testList.containsKey("fr.davidson.subpackage.TestClass"));
         assertEquals(2, testList.get("fr.davidson.subpackage.TestClass").size());

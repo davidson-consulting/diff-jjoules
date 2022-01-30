@@ -21,25 +21,25 @@ public class InstrumentationStepTest extends AbstractStepCleanTest {
     @Test
     void test() throws Exception {
         /*
-            After the Instrumentation Step, the test class should contains the JUnit-JJoules annotation: @EnergyTest
+            After the Instrumentation Step, the test class should contains method calls to TLPCSensor
          */
         final InstrumentationStep instrumentationStep = new InstrumentationStep();
         try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + TEST_PATH + TEST_CLASS_PATH))) {
             final String content = reader.lines().collect(Collectors.joining("\n"));
-            assertFalse(content.contains("EnergyTest"), content);
+            assertFalse(content.contains("TLPCSensor"), content);
         }
         try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + TEST_PATH + TEST_CLASS_PATH))) {
             final String content = reader.lines().collect(Collectors.joining("\n"));
-            assertFalse(content.contains("EnergyTest"), content);
+            assertFalse(content.contains("TLPCSensor"), content);
         }
         instrumentationStep._run(this.getConfiguration());
         try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V1 + TEST_PATH + TEST_CLASS_PATH))) {
             final String content = reader.lines().collect(Collectors.joining("\n"));
-            assertTrue(content.contains("EnergyTest"), content);
+            assertTrue(content.contains("TLPCSensor"), content);
         }
         try (BufferedReader reader = new BufferedReader(new FileReader(ROOT_PATH_V2 + TEST_PATH + TEST_CLASS_PATH))) {
             final String content = reader.lines().collect(Collectors.joining("\n"));
-            assertTrue(content.contains("EnergyTest"), content);
+            assertTrue(content.contains("TLPCSensor"), content);
         }
     }
 }

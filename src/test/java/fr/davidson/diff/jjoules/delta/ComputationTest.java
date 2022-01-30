@@ -49,10 +49,7 @@ public class ComputationTest {
         final Datas datas1 = JSONUtils.read(DATA_V_1_JSON, Datas.class);
         final Datas datas2 = JSONUtils.read(DATA_V_2_JSON, Datas.class);
         final Map<String, Boolean> emptyIntersectionPerTestMethodName = datas1.isEmptyIntersectionPerTestMethodName(datas2);
-        assertTrue(emptyIntersectionPerTestMethodName.get("com.google.gson.functional.JsonAdapterAnnotationOnFieldsTest#testJsonAdapterInvokedOnlyForAnnotatedFields"));
-        assertTrue(emptyIntersectionPerTestMethodName.get("com.google.gson.functional.CustomTypeAdaptersTest#testCustomTypeAdapterDoesNotAppliesToSubClasses"));
-        assertFalse(emptyIntersectionPerTestMethodName.get("com.google.gson.CommentsTest#testParseComments"));
-        assertFalse(emptyIntersectionPerTestMethodName.get("com.google.gson.functional.ThrowableFunctionalTest#testSerializedNameOnExceptionFields"));
+        assertTrue(emptyIntersectionPerTestMethodName.get("fr.davidson.diff_jjoules_demo.InternalListTest#testCount"));
     }
 
     @Test
@@ -66,9 +63,9 @@ public class ComputationTest {
     void testComputeMedian() {
         final Datas datas = JSONUtils.read(DATA_V_1_JSON, Datas.class);
         final Map<String, Data> medians = Computation.computeMedian(datas);
-        final String testName = "com.google.gson.functional.ObjectTest#testClassWithTransientFieldsSerialization";
+        final String testName = "fr.davidson.diff_jjoules_demo.InternalListTest#testCount";
         final Data data = medians.get(testName);
-        assertEquals(16479.0, data.energy);
+        assertEquals(1.31596288E8, data.energy);
     }
 
     @Test

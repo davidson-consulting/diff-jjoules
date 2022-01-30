@@ -26,8 +26,8 @@ public class PropertiesWrapperInjectionTest extends AbstractPropertiesWrapperTes
     @BeforeEach
     void setUp() throws IOException {
         Files.copy(
-                Paths.get("src/test/resources/diff-jjoules-demo/classpath"),
-                Paths.get("src/test/resources/diff-jjoules-demo/classpath.backup"),
+                Paths.get("src/test/resources/v1/classpath"),
+                Paths.get("src/test/resources/v1/classpath.backup"),
                 StandardCopyOption.REPLACE_EXISTING
         );
     }
@@ -35,8 +35,8 @@ public class PropertiesWrapperInjectionTest extends AbstractPropertiesWrapperTes
     @AfterEach
     void tearDown() throws IOException {
         Files.copy(
-                Paths.get("src/test/resources/diff-jjoules-demo/classpath.backup"),
-                Paths.get("src/test/resources/diff-jjoules-demo/classpath"),
+                Paths.get("src/test/resources/v1/classpath.backup"),
+                Paths.get("src/test/resources/v1/classpath"),
                 StandardCopyOption.REPLACE_EXISTING
         );
     }
@@ -44,13 +44,13 @@ public class PropertiesWrapperInjectionTest extends AbstractPropertiesWrapperTes
     @Test
     void testInjection() {
         final Wrapper wrapper = WrapperEnum.PROPERTIES.getWrapper();
-        try (final BufferedReader reader = new BufferedReader(new FileReader(("src/test/resources/diff-jjoules-demo/classpath")))) {
+        try (final BufferedReader reader = new BufferedReader(new FileReader(("src/test/resources/v1/classpath")))) {
             assertFalse(reader.lines().anyMatch(line -> line.contains("junit-jjoules")));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        wrapper.injectJJoulesDependencies("src/test/resources/diff-jjoules-demo/");
-        try (final BufferedReader reader = new BufferedReader(new FileReader(("src/test/resources/diff-jjoules-demo/classpath")))) {
+        wrapper.injectDependencies("src/test/resources/v1/");
+        try (final BufferedReader reader = new BufferedReader(new FileReader(("src/test/resources/v1/classpath")))) {
             assertTrue(reader.lines().anyMatch(line -> line.contains("junit-jjoules")));
         } catch (Exception e) {
             throw new RuntimeException(e);

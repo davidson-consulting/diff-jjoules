@@ -26,8 +26,8 @@ public class MavenWrapperInjectionTest {
     @BeforeEach
     void setUp() throws IOException {
         Files.copy(
-                Paths.get("src/test/resources/diff-jjoules-demo/pom.xml"),
-                Paths.get("src/test/resources/diff-jjoules-demo/pom.xml.backup"),
+                Paths.get("src/test/resources/v1/pom.xml"),
+                Paths.get("src/test/resources/v1/pom.xml.backup"),
                 StandardCopyOption.REPLACE_EXISTING
         );
     }
@@ -35,8 +35,8 @@ public class MavenWrapperInjectionTest {
     @AfterEach
     void tearDown() throws IOException {
         Files.copy(
-                Paths.get("src/test/resources/diff-jjoules-demo/pom.xml.backup"),
-                Paths.get("src/test/resources/diff-jjoules-demo/pom.xml"),
+                Paths.get("src/test/resources/v1/pom.xml.backup"),
+                Paths.get("src/test/resources/v1/pom.xml"),
                 StandardCopyOption.REPLACE_EXISTING
         );
     }
@@ -44,14 +44,14 @@ public class MavenWrapperInjectionTest {
     @Test
     void testInjection() {
         final Wrapper wrapper = WrapperEnum.MAVEN.getWrapper();
-        try (final BufferedReader reader = new BufferedReader(new FileReader(("src/test/resources/diff-jjoules-demo/pom.xml")))) {
-            assertFalse(reader.lines().anyMatch(line -> line.contains("junit-jjoules")));
+        try (final BufferedReader reader = new BufferedReader(new FileReader(("src/test/resources/v1/pom.xml")))) {
+            assertFalse(reader.lines().anyMatch(line -> line.contains("tlpc.sensor")));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        wrapper.injectJJoulesDependencies("src/test/resources/diff-jjoules-demo/");
-        try (final BufferedReader reader = new BufferedReader(new FileReader(("src/test/resources/diff-jjoules-demo/pom.xml")))) {
-            assertTrue(reader.lines().anyMatch(line -> line.contains("junit-jjoules")));
+        wrapper.injectDependencies("src/test/resources/v1/");
+        try (final BufferedReader reader = new BufferedReader(new FileReader(("src/test/resources/v1/pom.xml")))) {
+            assertTrue(reader.lines().anyMatch(line -> line.contains("tlpc.sensor")));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

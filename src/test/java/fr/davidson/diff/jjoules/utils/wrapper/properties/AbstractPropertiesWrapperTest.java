@@ -16,21 +16,20 @@ import java.util.stream.Collectors;
 public class AbstractPropertiesWrapperTest {
 
     private final String[] CLASSPATH_ELEMENTS = new String[]{
-            "org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar",
-            "org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar",
-            "org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar",
-            "org/junit/platform/junit-platform-commons/1.5.2/junit-platform-commons-1.5.2.jar",
-            "org/junit/jupiter/junit-jupiter-engine/5.5.2/junit-jupiter-engine-5.5.2.jar",
-            "org/junit/platform/junit-platform-engine/1.5.2/junit-platform-engine-1.5.2.jar",
-            "org/junit/platform/junit-platform-runner/1.3.2/junit-platform-runner-1.3.2.jar",
-            "org/junit/platform/junit-platform-launcher/1.3.2/junit-platform-launcher-1.3.2.jar",
-            "org/junit/platform/junit-platform-suite-api/1.3.2/junit-platform-suite-api-1.3.2.jar",
-            "junit/junit/4.12/junit-4.12.jar", "org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"
+            "junit/junit/4.13/junit-4.13.jar",
+            "org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar",
+            "org/junit/jupiter/junit-jupiter-api/5.3.2/junit-jupiter-api-5.3.2.jar",
+            "org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar",
+            "org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar",
+            "org/junit/platform/junit-platform-commons/1.3.2/junit-platform-commons-1.3.2.jar",
+            "org/junit/jupiter/junit-jupiter-engine/5.3.2/junit-jupiter-engine-5.3.2.jar",
+            "org/junit/platform/junit-platform-engine/1.3.2/junit-platform-engine-1.3.2.jar",
+            "org/junit/platform/junit-platform-launcher/1.3.2/junit-platform-launcher-1.3.2.jar"
     };
 
     @BeforeEach
     void setUp() throws IOException {
-        try (final FileWriter write = new FileWriter("src/test/resources/diff-jjoules-demo/classpath", false)) {
+        try (final FileWriter write = new FileWriter("src/test/resources/v1/classpath", false)) {
             final String mavenHome = System.getProperty("user.home") + "/.m2/repository/";
             write.write(
                     Arrays.stream(CLASSPATH_ELEMENTS)

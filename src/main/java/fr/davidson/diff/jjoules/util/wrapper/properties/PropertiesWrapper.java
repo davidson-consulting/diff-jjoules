@@ -131,7 +131,7 @@ public class PropertiesWrapper implements Wrapper {
     }
 
     @Override
-    public void injectJJoulesDependencies(String pathToRootDir) {
+    public void injectDependencies(String pathToRootDir) {
         final String pathToClasspathFile = pathToRootDir + Constants.FILE_SEPARATOR + this.properties.getProperty(PATH_TO_CLASSPATH_FILE_KEY);
         try (final FileWriter writer = new FileWriter(pathToClasspathFile, true)) {
             final String pathToJUnitJJoulesJar = new File(

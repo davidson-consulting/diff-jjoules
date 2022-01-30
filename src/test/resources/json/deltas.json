@@ -1,0 +1,32 @@
+{
+  "fr.davidson.diff_jjoules_demo.InternalListTest#testCount": {
+    "dataV1": {
+      "energy": 1.31596288E8,
+      "instructions": 5106918.0,
+      "durations": 0.0,
+      "cycles": 5065916.0,
+      "caches": 95355.0,
+      "cacheMisses": 0.0,
+      "branches": 0.0,
+      "branchMisses": 0.0
+    },
+    "dataV2": {
+      "energy": 2.66085859328E11,
+      "instructions": 5125746.0,
+      "durations": 0.0,
+      "cycles": 6187733.0,
+      "caches": 146758.0,
+      "cacheMisses": 0.0,
+      "branches": 0.0,
+      "branchMisses": 0.0
+    },
+    "energy": 2.6595426304E11,
+    "instructions": 18828.0,
+    "durations": 0.0,
+    "cycles": 1121817.0,
+    "caches": 51403.0,
+    "cacheMisses": 0.0,
+    "branches": 0.0,
+    "branchMisses": 0.0
+  }
+}

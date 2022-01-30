@@ -23,14 +23,14 @@ public class ExecTest {
 
     @Test
     void test() {
-        final String absolutePathFirstVersion = new File("src/test/resources/diff-jjoules-demo").getAbsolutePath();
-        final String absolutePathSecondVersion = new File("src/test/resources/diff-jjoules-demo-v2").getAbsolutePath();
+        final String absolutePathFirstVersion = new File("src/test/resources/v1").getAbsolutePath();
+        final String absolutePathSecondVersion = new File("src/test/resources/v2").getAbsolutePath();
         final Coverage coverageFirstVersion =
-                JSONUtils.read("src/test/resources/diff-jjoules-demo/coverage.json", Coverage.class);
+                JSONUtils.read("src/test/resources/json/coverage_first.json", Coverage.class);
         final Coverage coverageSecondVersion =
-                JSONUtils.read("src/test/resources/diff-jjoules-demo-v2/coverage.json", Coverage.class);
+                JSONUtils.read("src/test/resources/json/coverage_second.json", Coverage.class);
         final String diff = "--- src/main/java/fr/davidson/diff_jjoules_demo/InternalList.java\t2021-09-30 14:31:45.199926959 +0200\n" +
-                "+++ ../diff-jjoules-demo-v2/src/main/java/fr/davidson/diff_jjoules_demo/InternalList.java\t2021-09-30 14:51:34.126384267 +0200\n" +
+                "+++ ../v2/src/main/java/fr/davidson/diff_jjoules_demo/InternalList.java\t2021-09-30 14:51:34.126384267 +0200\n" +
                 "@@ -19,8 +19,9 @@\n" +
                 " \n" +
                 "     public List<T> map(Function<T, T> operator) {\n" +
@@ -50,11 +50,6 @@ public class ExecTest {
                 coverageSecondVersion,
                 diff
         );
-        final ExecsLines deletionsExecLines =
-                JSONUtils.read(absolutePathFirstVersion + "/exec_deletions.json", ExecsLines.class);
-        final ExecsLines additionsExecLines =
-                JSONUtils.read(absolutePathSecondVersion + "/exec_additions.json", ExecsLines.class);
-        assertEquals(deletionsExecLines.toString(), execsLines.get(0).toString());
-        assertEquals(additionsExecLines.toString(), execsLines.get(1).toString());
+        assertEquals("[{fr.davidson.diff_jjoules_demo.InternalList#29={fr.davidson.diff_jjoules_demo.InternalListTest#testCountFailing=0, fr.davidson.diff_jjoules_demo.InternalListTest#testCount=0}, fr.davidson.diff_jjoules_demo.InternalList#31={fr.davidson.diff_jjoules_demo.InternalListTest#testCountFailing=0, fr.davidson.diff_jjoules_demo.InternalListTest#testCount=0}, fr.davidson.diff_jjoules_demo.InternalList#32={fr.davidson.diff_jjoules_demo.InternalListTest#testCountFailing=0, fr.davidson.diff_jjoules_demo.InternalListTest#testCount=0}, fr.davidson.diff_jjoules_demo.InternalList#30={fr.davidson.diff_jjoules_demo.InternalListTest#testCountFailing=0, fr.davidson.diff_jjoules_demo.InternalListTest#testCount=1}}]", execsLines.get(1).toString());
     }
 }

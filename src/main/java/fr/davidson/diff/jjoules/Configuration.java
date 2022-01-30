@@ -15,10 +15,10 @@ import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
+import org.apache.commons.io.FileUtils;
 import picocli.CommandLine;
 
 import java.io.File;
-import java.nio.file.Files;
 import java.util.*;
 
 /**
@@ -180,7 +180,9 @@ public class Configuration {
             this.output = this.pathToFirstVersion + Constants.FILE_SEPARATOR + output;
         }
         try {
-            Files.deleteIfExists(outputFd.toPath());
+            if (outputFd.exists()) {
+                FileUtils.deleteDirectory(outputFd);
+            }
         } catch (Exception e) {
             throw new RuntimeException(String.format("Something went wrong when trying to delete the folder %s, please check your configuration", outputFd.toString()), e);
         }
@@ -218,6 +220,10 @@ public class Configuration {
 
     public int getIterations() {
         return iterations;
+    }
+
+    public void setIterations(int iterations) {
+        this.iterations = iterations;
     }
 
     public String getOutput() {

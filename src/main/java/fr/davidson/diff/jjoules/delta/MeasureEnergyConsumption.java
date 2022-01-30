@@ -5,7 +5,9 @@ import eu.stamp_project.testrunner.listener.TestResult;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
+import fr.davidson.diff.jjoules.instrumentation.InstrumentationProcessor;
 import fr.davidson.diff.jjoules.util.Constants;
+import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
 import org.slf4j.Logger;
@@ -14,7 +16,6 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.util.*;
 import java.util.concurrent.TimeoutException;
-import java.util.stream.Collectors;
 
 /**
  * @author Benjamin DANGLOT
@@ -23,20 +24,17 @@ import java.util.stream.Collectors;
  */
 public class MeasureEnergyConsumption {
 
-    // TODO
-    public static final String PATH_TO_JJOULES_REPORT = "/target/jjoules-reports/";
+    public static final String KEY_ENERGY_CONSUMPTION = "RAPL_ENERGY_PKG";
 
-    public static final String KEY_ENERGY_CONSUMPTION = "package|uJ";
-
-    public static final String KEY_INSTRUCTIONS = "instructions";
+    public static final String KEY_INSTRUCTIONS = "INSTRUCTIONS_RETIRED";
 
     public static final String KEY_DURATIONS = "duration|ns";
 
-    public static final String KEY_CYCLES = "cycles";
+    public static final String KEY_CYCLES = "CYCLES";
 
     public static final String KEY_BRANCHES = "branches";
 
-    public static final String KEY_BRANCH_MISSES = "branch-misses";
+    public static final String KEY_BRANCH_MISSES = "LLC_MISSES";
 
     public static final String KEY_CACHES = "cache-reference";
 
@@ -102,29 +100,24 @@ public class MeasureEnergyConsumption {
             final String pathToVersion,
             final Map<String, List<Data>> dataPerTest
     ) {
-        final File jjoulesReportDirectory = new File(pathToVersion + PATH_TO_JJOULES_REPORT);
-        LOGGER.info("Reading json file from {}({})", jjoulesReportDirectory.getAbsolutePath(),
-                (jjoulesReportDirectory.listFiles() != null ?
-                        Arrays.stream(jjoulesReportDirectory.listFiles())
-                                .map(File::getAbsolutePath)
-                                .collect(Collectors.joining(",")) : ""
-                )
-        );
-        for (File jsonFile : jjoulesReportDirectory.listFiles()) {
-            final String testName = toTestName(jsonFile.getAbsolutePath());
-            final Map<String, Double> jjoulesReports = JSONUtils.read(jsonFile.getAbsolutePath(), Map.class);
-            final Data data = new Data(
-                    jjoulesReports.get(KEY_ENERGY_CONSUMPTION),
-                    jjoulesReports.get(KEY_INSTRUCTIONS),
-                    jjoulesReports.get(KEY_DURATIONS),
-                    jjoulesReports.get(KEY_CYCLES),
-                    jjoulesReports.get(KEY_CACHES),
-                    jjoulesReports.get(KEY_CACHE_MISSES),
-                    jjoulesReports.get(KEY_BRANCHES),
-                    jjoulesReports.get(KEY_BRANCH_MISSES)
-            );
-            Utils.addToGivenMap(testName, data, dataPerTest);
-        }
+        final File directory = new File(pathToVersion + Constants.FILE_SEPARATOR + InstrumentationProcessor.FOLDER_MEASURES_PATH);
+        Arrays.stream(Objects.requireNonNull(directory.listFiles()))
+                .forEach(file -> {
+                    final String testClassName = this.toTestName(file.getName());
+                    final Map<String, Map<String, Double>> tlpcReport = JSONUtils.read(file.getAbsolutePath(), Map.class);
+                    for (String testMethodName : tlpcReport.keySet()) {
+                        final Map<String, Double> tlpcReportTest = tlpcReport.get(testMethodName);
+                        final Data data = new Data(
+                                tlpcReportTest.get(KEY_ENERGY_CONSUMPTION),
+                                tlpcReportTest.get(KEY_INSTRUCTIONS),
+                                0,
+                                tlpcReportTest.get(KEY_CYCLES),
+                                tlpcReportTest.get("LLC_MISSES"),
+                                0, 0, 0
+                        );
+                        Utils.addToGivenMap(new FullQualifiedName(testClassName, testMethodName).toString() , data, dataPerTest);
+                    }
+                });
     }
 
     private String toTestName(String path) {
