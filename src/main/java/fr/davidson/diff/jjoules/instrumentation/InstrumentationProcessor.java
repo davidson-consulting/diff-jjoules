@@ -1,5 +1,6 @@
 package fr.davidson.diff.jjoules.instrumentation;
 
+import eu.stamp_project.testrunner.test_framework.TestFramework;
 import fr.davidson.diff.jjoules.util.Constants;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -60,8 +61,12 @@ public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
         if (declaringType == null) {
             return false;
         }
-        return this.mustInstrument(declaringType.getQualifiedName(), candidate.getSimpleName()) ||
-                this.checkInheritance(candidate);
+        TestFramework.init(candidate.getFactory());
+        return (TestFramework.isJUnit4(candidate) || TestFramework.isJUnit5(candidate)) &&
+                (
+                        this.mustInstrument(declaringType.getQualifiedName(), candidate.getSimpleName()) ||
+                        this.checkInheritance(candidate)
+                );
     }
 
     private boolean mustInstrument(String testClassQualifiedName, String testMethodName) {
@@ -116,7 +121,7 @@ public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
         this.printCtType(type);
     }
 
-    private void printCtType(CtType<?> type) {
+    protected void printCtType(CtType<?> type) {
         final File directory = new File(this.rootPathFolder + Constants.FILE_SEPARATOR + this.testFolderPath);
         type.getFactory().getEnvironment().setSourceOutputDirectory(directory);
         final PrettyPrinter prettyPrinter = type.getFactory().getEnvironment().createPrettyPrinter();
