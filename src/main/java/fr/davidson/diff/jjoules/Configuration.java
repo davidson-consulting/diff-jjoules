@@ -17,6 +17,8 @@ import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
 
 import java.io.File;
@@ -176,18 +178,21 @@ public class Configuration {
 
     public void init() {
         this.ownConsumptionReports = new LinkedHashMap<>();
-        final File outputFd = new File(this.output);
+        File outputFd = new File(this.output);
         if (!outputFd.isAbsolute()) {
             this.output = this.pathToFirstVersion + Constants.FILE_SEPARATOR + output;
+            outputFd = new File(this.output);
         }
         try {
             if (outputFd.exists()) {
                 FileUtils.deleteDirectory(outputFd);
             }
+            if (!outputFd.mkdir() || !outputFd.exists()) {
+                throw new RuntimeException(String.format("Something went wrong when trying to delete the folder %s, please check your configuration", outputFd.toString()));
+            }
         } catch (Exception e) {
             throw new RuntimeException(String.format("Something went wrong when trying to delete the folder %s, please check your configuration", outputFd.toString()), e);
         }
-        outputFd.mkdir();
         this.diff = new DiffComputer()
                 .computeDiffWithDiffCommand(
                         new File(pathToFirstVersion + Constants.FILE_SEPARATOR + SRC_FOLDER),
