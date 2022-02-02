@@ -186,7 +186,7 @@ public class Configuration {
                 FileUtils.deleteDirectory(outputFd);
             }
             if (!outputFd.mkdir() || !outputFd.exists()) {
-                throw new RuntimeException(String.format("Something went wrong when trying to delete the folder %s, please check your configuration", outputFd.toString()));
+                throw new RuntimeException(String.format("Something went wrong when trying to create the folder %s, please check your configuration", outputFd.toString()));
             }
         } catch (Exception e) {
             throw new RuntimeException(String.format("Something went wrong when trying to delete the folder %s, please check your configuration", outputFd.toString()), e);
