@@ -13,6 +13,7 @@ import fr.davidson.diff.jjoules.suspect.SuspectStep;
 import fr.davidson.diff.jjoules.util.CSVFileManager;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
+import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.apache.commons.io.FileUtils;
@@ -162,12 +163,12 @@ public class Configuration {
         this.shouldMark = shouldMark;
         this.reportEnum = reportEnum;
         this.pathToReport = pathToReport;
-        this.pathToFirstVersion = pathToFirstVersion;
-        this.pathToSecondVersion = pathToSecondVersion;
+        this.pathToFirstVersion = Utils.correctPath(pathToFirstVersion);
+        this.pathToSecondVersion = Utils.correctPath(pathToSecondVersion);
         this.iterations = iterations;
         this.output = output;
-        this.pathToRepositoryV1 = pathToRepositoryV1;
-        this.pathToRepositoryV2 = pathToRepositoryV2;
+        this.pathToRepositoryV1 = Utils.correctPath(pathToRepositoryV1);
+        this.pathToRepositoryV2 = Utils.correctPath(pathToRepositoryV2);
         this.wrapperEnum = wrapperEnum;
         this.measureEnergyConsumption = measureEnergyConsumption;
         init();
@@ -175,18 +176,21 @@ public class Configuration {
 
     public void init() {
         this.ownConsumptionReports = new LinkedHashMap<>();
-        final File outputFd = new File(this.output);
+        File outputFd = new File(this.output);
         if (!outputFd.isAbsolute()) {
             this.output = this.pathToFirstVersion + Constants.FILE_SEPARATOR + output;
+            outputFd = new File(this.output);
         }
         try {
             if (outputFd.exists()) {
                 FileUtils.deleteDirectory(outputFd);
             }
+            if (!outputFd.mkdir() || !outputFd.exists()) {
+                throw new RuntimeException(String.format("Something went wrong when trying to create the folder %s, please check your configuration", outputFd.toString()));
+            }
         } catch (Exception e) {
             throw new RuntimeException(String.format("Something went wrong when trying to delete the folder %s, please check your configuration", outputFd.toString()), e);
         }
-        outputFd.mkdir();
         this.diff = new DiffComputer()
                 .computeDiffWithDiffCommand(
                         new File(pathToFirstVersion + Constants.FILE_SEPARATOR + SRC_FOLDER),

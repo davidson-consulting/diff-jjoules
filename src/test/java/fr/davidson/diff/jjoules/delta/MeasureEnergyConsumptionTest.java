@@ -46,7 +46,7 @@ public class MeasureEnergyConsumptionTest {
                         new File("src/test/resources/v1/").getAbsolutePath(),
                         new File("src/test/resources/v1/").getAbsolutePath(),
                         5,
-                        "src/test/resources/v1/demo/target/diff-jjoules",
+                        "target/diff-jjoules",
                         "",
                         "",
                         "",

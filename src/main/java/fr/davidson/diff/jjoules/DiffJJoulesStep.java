@@ -74,7 +74,6 @@ public class DiffJJoulesStep {
         }
     }
 
-
     private void testSelection() {
         this.runDiffJJoulesStep(new SelectionStep(), "Something went wrong during test selection.");
         if (this.configuration.getTestsList().isEmpty()) {
@@ -155,7 +154,14 @@ public class DiffJJoulesStep {
     }
 
     private void end(String reason, Exception exception) {
-        this.energyMonitor.stopMonitoring(this.getReportPathname());
+        //this.energyMonitor.stopMonitoring(this.getReportPathname());
+        LOGGER.error("Aborting ({})", this.configuration.getOutput() + Constants.FILE_SEPARATOR + "end.txt");
+        LOGGER.error("{}", reason);
+        if (exception != null) {
+            for (StackTraceElement stackTraceElement : exception.getStackTrace()) {
+                LOGGER.error("{}", stackTraceElement.toString());
+            }
+        }
         try (final FileWriter writer = new FileWriter(
                 this.configuration.getOutput() + Constants.FILE_SEPARATOR + "end.txt", false)) {
             writer.write(reason + Constants.NEW_LINE);

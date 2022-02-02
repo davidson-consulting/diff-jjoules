@@ -7,6 +7,10 @@ import java.util.stream.Collectors;
 
 public class Utils {
 
+    public static String correctPath(String path) {
+        return path.endsWith(Constants.FILE_SEPARATOR) ? path : path + Constants.FILE_SEPARATOR;
+    }
+
     public static String readClasspathFile(String path) {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             return reader.lines().collect(Collectors.joining(Constants.PATH_SEPARATOR));
