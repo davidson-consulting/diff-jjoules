@@ -39,7 +39,7 @@ public class DiffJJoulesStep {
         this.configuration = configuration;
         if (this.configuration.isMeasureEnergyConsumption()) {
             this.energyMonitor = new EnergyMonitor(this.configuration);
-            this.energyMonitor.startMonitoring();
+            this.energyMonitor.startMonitoring(this.getReportPathname());
         }
         _run(configuration);
         if (this.configuration.isMeasureEnergyConsumption()) {
@@ -154,10 +154,13 @@ public class DiffJJoulesStep {
     }
 
     private void end(String reason, Exception exception) {
-        //this.energyMonitor.stopMonitoring(this.getReportPathname());
+        if (this.configuration.isMeasureEnergyConsumption()) {
+            this.energyMonitor.stopMonitoring(this.getReportPathname());
+        }
         LOGGER.error("Aborting ({})", this.configuration.getOutput() + Constants.FILE_SEPARATOR + "end.txt");
         LOGGER.error("{}", reason);
         if (exception != null) {
+            LOGGER.error("{}", exception.getMessage());
             for (StackTraceElement stackTraceElement : exception.getStackTrace()) {
                 LOGGER.error("{}", stackTraceElement.toString());
             }

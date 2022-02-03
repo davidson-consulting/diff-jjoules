@@ -3,7 +3,7 @@ package fr.davidson.diff.jjoules.util.wrapper.properties;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
-import org.powerapi.jjoules.junit5.EnergyTest;
+import fr.davidson.tlpc.sensor.TLPCSensor;
 import spoon.Launcher;
 
 import java.io.File;
@@ -135,7 +135,7 @@ public class PropertiesWrapper implements Wrapper {
         final String pathToClasspathFile = pathToRootDir + Constants.FILE_SEPARATOR + this.properties.getProperty(PATH_TO_CLASSPATH_FILE_KEY);
         try (final FileWriter writer = new FileWriter(pathToClasspathFile, true)) {
             final String pathToJUnitJJoulesJar = new File(
-                    EnergyTest.class.getProtectionDomain()
+                    TLPCSensor.class.getProtectionDomain()
                             .getCodeSource()
                             .getLocation()
                             .toURI()

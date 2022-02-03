@@ -1,12 +1,13 @@
 package fr.davidson.diff.jjoules.energy;
 
 import fr.davidson.diff.jjoules.Configuration;
+import fr.davidson.diff.jjoules.DiffJJoulesStep;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
+import fr.davidson.tlpc.sensor.TLPCSensor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.util.Map;
 
 /**
@@ -20,32 +21,23 @@ public class EnergyMonitor {
 
     private Configuration configuration;
 
-
-    private boolean started;
+    private TLPCSensor sensor;
 
     public EnergyMonitor(Configuration configuration) {
         this.configuration = configuration;
-        this.started = false;
+        this.sensor = new TLPCSensor();
     }
 
-    public void startMonitoring() {
-        if (!this.started) {
-            try {
-                this.started = true;
-            } catch (Exception e) {
-                e.printStackTrace();
-                LOGGER.error("Something went wrong when starting energy monitoring.");
-                LOGGER.error("Please, check the permissions on RAPL files.");
-            }
-        }
+    public void startMonitoring(String identifier) {
+        this.sensor.start(identifier);
     }
 
-    public void stopMonitoring(String reportPathName) {
-        if (this.started) {
-            final Map<String, Long> report = JSONUtils.read(new File(".").getAbsolutePath() + Constants.FILE_SEPARATOR + "/report.json", Map.class);
-            this.configuration.addReport(reportPathName, report);
-            this.started = false;
-        }
+    public void stopMonitoring(String identifier) {
+        this.sensor.stop(identifier);
+        final String reportPathname = this.configuration.getOutput() + Constants.FILE_SEPARATOR + identifier + ".json";
+        this.sensor.report(reportPathname);
+        final Map<String, Long> report = JSONUtils.read(reportPathname, Map.class);
+        this.configuration.addReport(identifier, report);
     }
 
 }
