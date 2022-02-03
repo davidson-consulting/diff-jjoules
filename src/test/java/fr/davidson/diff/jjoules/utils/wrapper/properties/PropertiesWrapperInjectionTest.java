@@ -45,13 +45,13 @@ public class PropertiesWrapperInjectionTest extends AbstractPropertiesWrapperTes
     void testInjection() {
         final Wrapper wrapper = WrapperEnum.PROPERTIES.getWrapper();
         try (final BufferedReader reader = new BufferedReader(new FileReader(("src/test/resources/v1/classpath")))) {
-            assertFalse(reader.lines().anyMatch(line -> line.contains("junit-jjoules")));
+            assertFalse(reader.lines().anyMatch(line -> line.contains("tlpc.sensor")));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         wrapper.injectDependencies("src/test/resources/v1/");
         try (final BufferedReader reader = new BufferedReader(new FileReader(("src/test/resources/v1/classpath")))) {
-            assertTrue(reader.lines().anyMatch(line -> line.contains("junit-jjoules")));
+            assertTrue(reader.lines().anyMatch(line -> line.contains("tlpc.sensor")));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
