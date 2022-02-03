@@ -143,7 +143,7 @@ public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
     public void process(CtMethod<?> ctMethod) {
         final Factory factory = ctMethod.getFactory();
         ctMethod.getBody().insertBegin(
-                factory.createCodeSnippetStatement("new fr.davidson.tlpc.sensor.TLPCSensor().start()")
+                factory.createCodeSnippetStatement("new fr.davidson.tlpc.sensor.TLPCSensor().start(\"" + ctMethod.getSimpleName() + "\")")
         );
         ctMethod.getBody().insertEnd(
                 factory.createCodeSnippetStatement("new fr.davidson.tlpc.sensor.TLPCSensor().stop(\"" + ctMethod.getSimpleName() + "\")")
