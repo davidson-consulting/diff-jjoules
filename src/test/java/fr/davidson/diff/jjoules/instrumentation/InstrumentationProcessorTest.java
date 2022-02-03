@@ -16,7 +16,7 @@ public class InstrumentationProcessorTest extends AbstractProcessorTest {
     @Override
     protected void oracle(CtMethod<?> testMethod) {
         assertEquals(
-                "new fr.davidson.tlpc.sensor.TLPCSensor().start()",
+                "new fr.davidson.tlpc.sensor.TLPCSensor().start(\"" + TEST_METHOD_NAME + "\")",
                 testMethod.getBody().getStatement(0).toString()
         );
         assertEquals(
