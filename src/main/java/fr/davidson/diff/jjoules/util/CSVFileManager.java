@@ -2,7 +2,9 @@ package fr.davidson.diff.jjoules.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Benjamin DANGLOT
@@ -10,6 +12,22 @@ import java.util.*;
  * 27/11/2020
  */
 public class CSVFileManager {
+
+    public static final String CSV_SEPARATOR = ";";
+
+    public static List<String> formatTestListsToCSVLines(Map<String, Set<String>> testsList) {
+        return testsList.keySet()
+                .stream()
+                .map(testClassName -> testClassName + CSV_SEPARATOR + String.join(CSV_SEPARATOR, testsList.get(testClassName)))
+                .collect(Collectors.toList());
+    }
+    public static void writeFile(String path, List<String> lines) {
+        try (final FileWriter writer = new FileWriter(path)) {
+            writer.write(Constants.joinLines(lines));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static Map<String, Set<String>> readFile(String path) {
         final HashMap<String, Set<String>> result = new HashMap<>();
