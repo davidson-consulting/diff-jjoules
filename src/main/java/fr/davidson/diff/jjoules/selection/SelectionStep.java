@@ -5,6 +5,7 @@ import eu.stamp_project.diff_test_selection.coverage.DiffCoverage;
 import eu.stamp_project.diff_test_selection.selector.EnhancedDiffTestSelection;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.DiffJJoulesStep;
+import fr.davidson.diff.jjoules.util.CSVFileManager;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.coverage.CoverageComputation;
 import fr.davidson.diff.jjoules.util.coverage.detection.TestDetector;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author Benjamin DANGLOT
@@ -70,5 +72,11 @@ public class SelectionStep extends DiffJJoulesStep {
         );
         final Map<String, Set<String>> testsList = enhancedDiffTestSelection.selectTests();
         this.configuration.setTestsList(testsList);
+        CSVFileManager.writeFile(
+                Constants.joinFiles(this.configuration.getOutput(), SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES),
+                CSVFileManager.formatTestListsToCSVLines(testsList)
+        );
     }
+
+
 }
