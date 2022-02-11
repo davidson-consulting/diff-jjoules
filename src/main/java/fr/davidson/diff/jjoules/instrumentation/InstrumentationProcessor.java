@@ -97,12 +97,12 @@ public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
         final Factory factory = type.getFactory();
         final CtAnonymousExecutable anonymousExecutable = factory.createAnonymousExecutable();
         anonymousExecutable.setBody(factory.createCodeSnippetStatement(
-                "Runtime.getRuntime().addShutdownHook(new Thread(() ->" +
+                "Runtime.getRuntime().addShutdownHook(new Thread() { @Override public void run() {" +
                         "new fr.davidson.tlpc.sensor.TLPCSensor().report(\"" +
                         this.rootPathFolder + Constants.FILE_SEPARATOR +
                         FOLDER_MEASURES_PATH + Constants.FILE_SEPARATOR +
                         type.getQualifiedName() + ".json\"" +
-                        ")" +
+                        "}})" +
                     ")" +
                 ")"
             )

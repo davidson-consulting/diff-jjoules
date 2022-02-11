@@ -53,11 +53,11 @@ public class InstrumentationStep extends DiffJJoulesStep {
         Launcher launcher = new Launcher();
 
         final String[] finalClassPath = new String[classpath.length + 2];
-        finalClassPath[0] = rootPathFolder + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToBinFolder();
-        finalClassPath[1] = rootPathFolder + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToBinTestFolder();
+        finalClassPath[0] = Constants.joinFiles(rootPathFolder, this.configuration.getWrapper().getPathToBinFolder());
+        finalClassPath[1] = Constants.joinFiles(rootPathFolder, this.configuration.getWrapper().getPathToBinTestFolder());
         System.arraycopy(classpath, 0, finalClassPath, 2, classpath.length);
         launcher.getEnvironment().setSourceClasspath(finalClassPath);
-        launcher.getEnvironment().setNoClasspath(false);
+        launcher.getEnvironment().setNoClasspath(true);
         launcher.getEnvironment().setAutoImports(false);
         launcher.getEnvironment().setLevel("DEBUG");
         launcher.addInputResource(rootPathFolder + Constants.FILE_SEPARATOR + this.configuration.getWrapper().getPathToTestFolder());
