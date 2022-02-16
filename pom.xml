@@ -23,6 +23,16 @@
         <junit.platform.version>1.8.2</junit.platform.version>
     </properties>
 
+
+    <developers>
+        <developer>
+            <name>Benjamin Danglot</name>
+            <email>benjamin.danglot@davidson.fr</email>
+            <organization>Davidson consulting</organization>
+            <organizationUrl>https://www.davidson.group/</organizationUrl>
+        </developer>
+    </developers>
+
     <dependencies>
 
         <dependency>
@@ -34,7 +44,7 @@
         <dependency>
             <groupId>eu.stamp-project</groupId>
             <artifactId>test-runner</artifactId>
-            <version>3.1.3</version>
+            <version>4.6</version>
         </dependency>
 
         <dependency>

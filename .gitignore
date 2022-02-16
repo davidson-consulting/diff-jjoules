@@ -6,3 +6,10 @@ src/test/resources/example/
 src/test/resources/example-refactor/
 
 **/**.pyc
+classpath
+report.json
+report_java.json
+src/test/resources/v1/classpath
+src/test/resources/v1/srcpatch.diff
+src/test/resources/v2/classpath
+srcpatch.diff

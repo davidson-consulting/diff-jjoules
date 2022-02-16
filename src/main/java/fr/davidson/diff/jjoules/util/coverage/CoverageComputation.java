@@ -30,6 +30,8 @@ public class CoverageComputation {
             EntryPoint.workingDirectory = new File(pathToRootOfProject);
             EntryPoint.verbose = true;
             EntryPoint.jUnit5Mode = !junit4;
+            EntryPoint.nbFailingLoadClass = 5;
+            EntryPoint.timeoutInMs = 100000;
             return EntryPoint.runOnlineCoveredTestResultPerTestMethods(
                     classpath + Constants.PATH_SEPARATOR + pathToBinaries,
                     pathToBinaries,
@@ -41,18 +43,19 @@ public class CoverageComputation {
         }
     }
 
-
     public static CoveredTestResultPerTestMethod getCoverage(
             String pathToRootOfProject,
             String classpath,
             boolean junit4,
             List<String> allFullQualifiedNameTestClasses,
-            String  pathToBinaries) {
+            String pathToBinaries) {
         try {
             EntryPoint.coverageDetail = ParserOptions.CoverageTransformerDetail.DETAIL_COMPRESSED;
             EntryPoint.workingDirectory = new File(pathToRootOfProject);
             EntryPoint.verbose = true;
             EntryPoint.jUnit5Mode = !junit4;
+            EntryPoint.nbFailingLoadClass = 5;
+            EntryPoint.timeoutInMs = 100000;
             return EntryPoint.runOnlineCoveredTestResultPerTestMethods(
                     classpath + Constants.PATH_SEPARATOR + pathToBinaries,
                     pathToBinaries,

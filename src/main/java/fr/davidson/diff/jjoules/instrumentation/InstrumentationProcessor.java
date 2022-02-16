@@ -2,14 +2,12 @@ package fr.davidson.diff.jjoules.instrumentation;
 
 import eu.stamp_project.testrunner.test_framework.TestFramework;
 import fr.davidson.diff.jjoules.util.Constants;
+import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.processing.AbstractProcessor;
-import spoon.reflect.declaration.CtAnonymousExecutable;
-import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.declaration.CtType;
-import spoon.reflect.declaration.ModifierKind;
+import spoon.reflect.declaration.*;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.visitor.PrettyPrinter;
 
@@ -29,6 +27,8 @@ import java.util.Set;
 public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
 
     public static final String FOLDER_MEASURES_PATH = "diff-jjoules-measurements";
+
+    public static final String OUTPUT_FILE_NAME = "measurements.json";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(InstrumentationProcessor.class);
 
@@ -89,24 +89,13 @@ public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
 
     @Override
     public void processingDone() {
+        this.addShutdownHookToReport(this.instrumentedTypes.stream().findFirst().get());
         this.instrumentedTypes.forEach(this::processingDone);
         LOGGER.info("{} instrumented test classes have been printed!", this.instrumentedTypes.size());
     }
 
     private void processingDone(CtType<?> type) {
-        final Factory factory = type.getFactory();
-        final CtAnonymousExecutable anonymousExecutable = factory.createAnonymousExecutable();
-        anonymousExecutable.setBody(factory.createCodeSnippetStatement(
-                "Runtime.getRuntime().addShutdownHook(new Thread(() ->" +
-                        "new fr.davidson.tlpc.sensor.TLPCSensor().report(\"" +
-                        this.rootPathFolder + Constants.FILE_SEPARATOR +
-                        FOLDER_MEASURES_PATH + Constants.FILE_SEPARATOR +
-                        type.getQualifiedName() + ".json\"" +
-                        ")" +
-                    ")" +
-                ")"
-            )
-        );
+        this.printCtType(type);
         final File outputMeasureFd = new File(this.rootPathFolder + Constants.FILE_SEPARATOR + FOLDER_MEASURES_PATH + Constants.FILE_SEPARATOR);
         if (outputMeasureFd.exists()) {
             try {
@@ -116,9 +105,27 @@ public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
             }
         }
         outputMeasureFd.mkdir();
+    }
+
+    private void addShutdownHookToReport(CtType<?> type) {
+        LOGGER.info("addShutdownHookToReport {}", type.getQualifiedName());
+        final Factory factory = type.getFactory();
+        final CtAnonymousExecutable anonymousExecutable = factory.createAnonymousExecutable();
+        final String outputPathname = Constants.joinFiles(this.rootPathFolder, FOLDER_MEASURES_PATH, OUTPUT_FILE_NAME);
+        anonymousExecutable.setBody(factory.createCodeSnippetStatement(
+                        "   java.lang.Runtime.getRuntime().addShutdownHook(" +
+                        "       new java.lang.Thread() {" +
+                        "           @java.lang.Override" +
+                        "           public void run() {" +
+                        "               fr.davidson.tlpc.sensor.TLPCSensor.report(" +
+                        "                   \"" + outputPathname + "\"" +
+                        "               );" +
+                        "           }" +
+                        "       }" +
+                        "   )"
+        ));
         anonymousExecutable.setModifiers(Collections.singleton(ModifierKind.STATIC));
         type.addTypeMember(anonymousExecutable);
-        this.printCtType(type);
     }
 
     protected void printCtType(CtType<?> type) {
@@ -142,11 +149,13 @@ public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
     @Override
     public void process(CtMethod<?> ctMethod) {
         final Factory factory = ctMethod.getFactory();
+        final CtClass<?> parentClass = ctMethod.getParent(CtClass.class);
+        final String identifier = new FullQualifiedName(parentClass.getQualifiedName(), ctMethod.getSimpleName()).toString();
         ctMethod.getBody().insertBegin(
-                factory.createCodeSnippetStatement("new fr.davidson.tlpc.sensor.TLPCSensor().start(\"" + ctMethod.getSimpleName() + "\")")
+                factory.createCodeSnippetStatement("fr.davidson.tlpc.sensor.TLPCSensor.start(\"" + identifier + "\")")
         );
         ctMethod.getBody().insertEnd(
-                factory.createCodeSnippetStatement("new fr.davidson.tlpc.sensor.TLPCSensor().stop(\"" + ctMethod.getSimpleName() + "\")")
+                factory.createCodeSnippetStatement("fr.davidson.tlpc.sensor.TLPCSensor.stop(\"" + identifier + "\")")
         );
         this.instrumentedTypes.add(ctMethod.getDeclaringType());
     }

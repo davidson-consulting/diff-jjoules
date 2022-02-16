@@ -1,5 +1,8 @@
 package fr.davidson.diff.jjoules.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,6 +16,8 @@ import java.util.stream.Collectors;
  */
 public class CSVFileManager {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CSVFileManager.class);
+
     public static final String CSV_SEPARATOR = ";";
 
     public static List<String> formatTestListsToCSVLines(Map<String, Set<String>> testsList) {
@@ -22,6 +27,7 @@ public class CSVFileManager {
                 .collect(Collectors.toList());
     }
     public static void writeFile(String path, List<String> lines) {
+        LOGGER.info("Writing CSV file to {}", path);
         try (final FileWriter writer = new FileWriter(path)) {
             writer.write(Constants.joinLines(lines));
         } catch (Exception e) {

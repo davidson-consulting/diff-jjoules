@@ -2,9 +2,9 @@ package fr.davidson.diff.jjoules.energy;
 
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.util.Constants;
-import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.tlpc.sensor.TLPCSensor;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -20,18 +20,17 @@ public class EnergyMonitor {
 
     public EnergyMonitor(Configuration configuration) {
         this.configuration = configuration;
-        this.sensor = new TLPCSensor();
     }
 
     public void startMonitoring(String identifier) {
-        this.sensor.start(identifier);
+//        this.sensor.start(identifier);
     }
 
     public void stopMonitoring(String identifier) {
-        this.sensor.stop(identifier);
+//        this.sensor.stop(identifier);
         final String reportPathname = this.configuration.getOutput() + Constants.FILE_SEPARATOR + identifier + ".json";
-        this.sensor.report(reportPathname);
-        final Map<String, Long> report = JSONUtils.read(reportPathname, Map.class);
+//        this.sensor.report(reportPathname);
+        final Map<String, Long> report = new HashMap<>();//JSONUtils.read(reportPathname, Map.class);
         this.configuration.addReport(identifier, report);
     }
 
