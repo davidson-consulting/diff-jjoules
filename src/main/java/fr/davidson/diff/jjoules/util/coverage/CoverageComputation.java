@@ -10,8 +10,6 @@ import fr.davidson.diff.jjoules.util.Constants;
 
 import java.io.File;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author Benjamin DANGLOT

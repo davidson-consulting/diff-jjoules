@@ -4,7 +4,6 @@ import eu.stamp_project.testrunner.test_framework.TestFramework;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import org.apache.commons.io.FileUtils;
-import org.junit.AfterClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.processing.AbstractProcessor;

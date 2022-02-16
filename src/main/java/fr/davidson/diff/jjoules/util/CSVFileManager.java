@@ -1,6 +1,5 @@
 package fr.davidson.diff.jjoules.util;
 
-import fr.davidson.diff.jjoules.selection.SelectionStep;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

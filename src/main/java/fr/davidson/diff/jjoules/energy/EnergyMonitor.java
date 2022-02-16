@@ -2,7 +2,6 @@ package fr.davidson.diff.jjoules.energy;
 
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.util.Constants;
-import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.tlpc.sensor.TLPCSensor;
 
 import java.util.HashMap;
