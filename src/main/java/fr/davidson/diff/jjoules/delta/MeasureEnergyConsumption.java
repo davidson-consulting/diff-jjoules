@@ -24,22 +24,6 @@ import java.util.concurrent.TimeoutException;
  */
 public class MeasureEnergyConsumption {
 
-    public static final String KEY_ENERGY_CONSUMPTION = "RAPL_ENERGY_PKG";
-
-    public static final String KEY_INSTRUCTIONS = "INSTRUCTIONS_RETIRED";
-
-    public static final String KEY_DURATIONS = "duration";
-
-    public static final String KEY_CYCLES = "CYCLES";
-
-    public static final String KEY_BRANCHES = "branches";
-
-    public static final String KEY_BRANCH_MISSES = "LLC_MISSES";
-
-    public static final String KEY_CACHES = "cache-reference";
-
-    public static final String KEY_CACHE_MISSES = "cache-misses";
-
     private static final Logger LOGGER = LoggerFactory.getLogger(MeasureEnergyConsumption.class);
 
     public void measureEnergyConsumptionForBothVersion(
@@ -108,12 +92,14 @@ public class MeasureEnergyConsumption {
         for (String fullQualifiedNameTestMethod : tlpcReport.keySet()) {
             final IndicatorPerLabel indicatorPerLabel = tlpcReport.get(fullQualifiedNameTestMethod);
             final Data data = new Data(
-                    indicatorPerLabel.get(KEY_ENERGY_CONSUMPTION),
-                    indicatorPerLabel.get(KEY_INSTRUCTIONS),
-                    indicatorPerLabel.get(KEY_DURATIONS),
-                    indicatorPerLabel.get(KEY_CYCLES),
-                    indicatorPerLabel.get(KEY_BRANCH_MISSES),
-                    0, 0, 0
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_ENERGY_CONSUMPTION),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_INSTRUCTIONS),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_DURATION),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_CYCLES),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_CACHES),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_CACHE_MISSES),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_BRANCHES),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_BRANCH_MISSES)
             );
             Utils.addToGivenMap(fullQualifiedNameTestMethod , data, dataPerTest);
         }
