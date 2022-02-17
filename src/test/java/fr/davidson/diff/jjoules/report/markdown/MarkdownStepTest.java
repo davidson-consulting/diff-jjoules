@@ -8,6 +8,7 @@ import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Delta;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.tlpc.sensor.IndicatorPerLabel;
+import fr.davidson.tlpc.sensor.TLPCSensor;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
@@ -69,11 +70,11 @@ public class MarkdownStepTest extends AbstractDiffJJoulesStepTest {
         final Data deltaOmega = new Data(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5);
         configuration.setDeltaOmega(deltaOmega);
 
-        final Map<String, Long> report = new HashMap<>();
+        final IndicatorPerLabel report = new IndicatorPerLabel();
         report.put(IndicatorPerLabel.KEY_ENERGY_CONSUMPTION, 100000L);
         report.put(IndicatorPerLabel.KEY_INSTRUCTIONS, 100000L);
         report.put(IndicatorPerLabel.KEY_DURATION, 100000L);
-        configuration.addReport("ownConsumptionReport", report);
+        TLPCSensor.getIndicatorsPerIdentifier().put("ownConsumptionReport", report);
         final Map<String, Double> scorePerLineV1 = new HashMap<>();
         scorePerLineV1.put("fr.davidson.Example#exampleMethod#5", 0.5);
         scorePerLineV1.put("fr.davidson.Example#exampleMethod#10", 1.0);
