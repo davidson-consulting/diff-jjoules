@@ -92,6 +92,7 @@ public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
         this.addShutdownHookToReport(this.instrumentedTypes.stream().findFirst().get());
         this.instrumentedTypes.forEach(this::processingDone);
         LOGGER.info("{} instrumented test classes have been printed!", this.instrumentedTypes.size());
+        this.instrumentedTypes.clear();
     }
 
     private void processingDone(CtType<?> type) {

@@ -2,7 +2,9 @@ package fr.davidson.diff.jjoules.delta;
 
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Datas;
+import fr.davidson.diff.jjoules.instrumentation.InstrumentationProcessor;
 import fr.davidson.diff.jjoules.report.ReportEnum;
+import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,10 +31,10 @@ public class MeasureEnergyConsumptionTest {
     void setUp() throws IOException {
         // compile
         WrapperEnum.MAVEN.getWrapper().cleanAndCompile("src/test/resources/v1/");
-        new File(ROOT_PATH_V1 + PATH_DIFF_JJOULES_MEASUREMENTS).mkdir();
+        new File(ROOT_PATH_V1 + InstrumentationProcessor.FOLDER_MEASURES_PATH).mkdir();
         Files.copy(
-                Paths.get(TEST_RESOURCES_JSON_PATH + "v1/" + PATH_DIFF_JJOULES_MEASUREMENTS + "/fr.davidson.diff_jjoules_demo.InternalListTest.json"),
-                Paths.get(ROOT_PATH_V1 + PATH_DIFF_JJOULES_MEASUREMENTS + "/fr.davidson.diff_jjoules_demo.InternalListTest.json"),
+                Paths.get(Constants.joinFiles(TEST_RESOURCES_JSON_PATH, "v1", InstrumentationProcessor.FOLDER_MEASURES_PATH, InstrumentationProcessor.OUTPUT_FILE_NAME)),
+                Paths.get(Constants.joinFiles(ROOT_PATH_V1, InstrumentationProcessor.FOLDER_MEASURES_PATH, InstrumentationProcessor.OUTPUT_FILE_NAME)),
                 StandardCopyOption.REPLACE_EXISTING
         );
     }

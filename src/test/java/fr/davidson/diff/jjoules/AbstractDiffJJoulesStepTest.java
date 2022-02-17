@@ -20,8 +20,6 @@ public abstract class AbstractDiffJJoulesStepTest {
 
     public static final String TEST_RESOURCES_JSON_PATH = "src/test/resources/json/";
 
-    public static final String PATH_DIFF_JJOULES_MEASUREMENTS = "diff-jjoules-measurements";
-
     public static final String ROOT_PATH_V1 = "src/test/resources/v1/";
     public static final String TARGET_FOLDER_PATH_V1 = ROOT_PATH_V1 + "/target/";
     public static final String CLASSPATH_PATH_V1 = ROOT_PATH_V1 + "/classpath";

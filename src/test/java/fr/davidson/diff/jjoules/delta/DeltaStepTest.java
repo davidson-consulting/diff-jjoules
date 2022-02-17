@@ -2,6 +2,8 @@ package fr.davidson.diff.jjoules.delta;
 
 import fr.davidson.diff.jjoules.AbstractDiffJJoulesStepTest;
 import fr.davidson.diff.jjoules.Configuration;
+import fr.davidson.diff.jjoules.instrumentation.InstrumentationProcessor;
+import fr.davidson.diff.jjoules.util.Constants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -39,17 +41,17 @@ public class DeltaStepTest extends AbstractDiffJJoulesStepTest {
          */
         final Configuration configuration = this.getConfiguration();
 
-        new File(ROOT_PATH_V1 + PATH_DIFF_JJOULES_MEASUREMENTS).mkdir();
-        new File(ROOT_PATH_V2 + PATH_DIFF_JJOULES_MEASUREMENTS).mkdir();
+        new File(ROOT_PATH_V1 + InstrumentationProcessor.FOLDER_MEASURES_PATH).mkdir();
+        new File(ROOT_PATH_V2 + InstrumentationProcessor.FOLDER_MEASURES_PATH).mkdir();
 
         Files.copy(
-                Paths.get(TEST_RESOURCES_JSON_PATH + "v1/" + PATH_DIFF_JJOULES_MEASUREMENTS + "/fr.davidson.diff_jjoules_demo.InternalListTest.json"),
-                Paths.get(ROOT_PATH_V1 + PATH_DIFF_JJOULES_MEASUREMENTS + "/fr.davidson.diff_jjoules_demo.InternalListTest.json"),
+                Paths.get(Constants.joinFiles(TEST_RESOURCES_JSON_PATH, "v1", InstrumentationProcessor.FOLDER_MEASURES_PATH, InstrumentationProcessor.OUTPUT_FILE_NAME)),
+                Paths.get(Constants.joinFiles(ROOT_PATH_V1, InstrumentationProcessor.FOLDER_MEASURES_PATH, InstrumentationProcessor.OUTPUT_FILE_NAME)),
                 StandardCopyOption.REPLACE_EXISTING
         );
         Files.copy(
-                Paths.get(TEST_RESOURCES_JSON_PATH + "v2/" + PATH_DIFF_JJOULES_MEASUREMENTS + "/fr.davidson.diff_jjoules_demo.InternalListTest.json"),
-                Paths.get(ROOT_PATH_V2 + PATH_DIFF_JJOULES_MEASUREMENTS + "/fr.davidson.diff_jjoules_demo.InternalListTest.json"),
+                Paths.get(Constants.joinFiles(TEST_RESOURCES_JSON_PATH, "v2", InstrumentationProcessor.FOLDER_MEASURES_PATH, InstrumentationProcessor.OUTPUT_FILE_NAME)),
+                Paths.get(Constants.joinFiles(ROOT_PATH_V2, InstrumentationProcessor.FOLDER_MEASURES_PATH, InstrumentationProcessor.OUTPUT_FILE_NAME)),
                 StandardCopyOption.REPLACE_EXISTING
         );
 

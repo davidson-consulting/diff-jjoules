@@ -1,15 +1,15 @@
 package fr.davidson.diff.jjoules.delta;
 
 import eu.stamp_project.testrunner.EntryPoint;
-import eu.stamp_project.testrunner.listener.TestResult;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationProcessor;
 import fr.davidson.diff.jjoules.util.Constants;
-import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
+import fr.davidson.tlpc.sensor.IndicatorPerLabel;
+import fr.davidson.tlpc.sensor.IndicatorsPerIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,22 +23,6 @@ import java.util.concurrent.TimeoutException;
  * on 02/09/2021
  */
 public class MeasureEnergyConsumption {
-
-    public static final String KEY_ENERGY_CONSUMPTION = "RAPL_ENERGY_PKG";
-
-    public static final String KEY_INSTRUCTIONS = "INSTRUCTIONS_RETIRED";
-
-    public static final String KEY_DURATIONS = "duration|ns";
-
-    public static final String KEY_CYCLES = "CYCLES";
-
-    public static final String KEY_BRANCHES = "branches";
-
-    public static final String KEY_BRANCH_MISSES = "LLC_MISSES";
-
-    public static final String KEY_CACHES = "cache-reference";
-
-    public static final String KEY_CACHE_MISSES = "cache-misses";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MeasureEnergyConsumption.class);
 
@@ -86,7 +70,7 @@ public class MeasureEnergyConsumption {
                     .toArray(String[]::new);
             EntryPoint.workingDirectory = new File(pathToVersion);
             LOGGER.info("{}", EntryPoint.workingDirectory.getAbsolutePath());
-            final TestResult testResult = EntryPoint.runTests(
+            EntryPoint.runTests(
                     classpath,
                     testClassNames,
                     testMethodsNames
@@ -100,29 +84,24 @@ public class MeasureEnergyConsumption {
             final String pathToVersion,
             final Map<String, List<Data>> dataPerTest
     ) {
-        final File directory = new File(pathToVersion + Constants.FILE_SEPARATOR + InstrumentationProcessor.FOLDER_MEASURES_PATH);
-        Arrays.stream(Objects.requireNonNull(directory.listFiles()))
-                .forEach(file -> {
-                    final String testClassName = this.toTestName(file.getName());
-                    final Map<String, Map<String, Double>> tlpcReport = JSONUtils.read(file.getAbsolutePath(), Map.class);
-                    for (String testMethodName : tlpcReport.keySet()) {
-                        final Map<String, Double> tlpcReportTest = tlpcReport.get(testMethodName);
-                        final Data data = new Data(
-                                tlpcReportTest.get(KEY_ENERGY_CONSUMPTION),
-                                tlpcReportTest.get(KEY_INSTRUCTIONS),
-                                0,
-                                tlpcReportTest.get(KEY_CYCLES),
-                                tlpcReportTest.get("LLC_MISSES"),
-                                0, 0, 0
-                        );
-                        Utils.addToGivenMap(new FullQualifiedName(testClassName, testMethodName).toString() , data, dataPerTest);
-                    }
-                });
+        final IndicatorsPerIdentifier tlpcReport =
+                JSONUtils.read(
+                        Constants.joinFiles(pathToVersion, InstrumentationProcessor.FOLDER_MEASURES_PATH, InstrumentationProcessor.OUTPUT_FILE_NAME),
+                        IndicatorsPerIdentifier.class
+                );
+        for (String fullQualifiedNameTestMethod : tlpcReport.keySet()) {
+            final IndicatorPerLabel indicatorPerLabel = tlpcReport.get(fullQualifiedNameTestMethod);
+            final Data data = new Data(
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_ENERGY_CONSUMPTION),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_INSTRUCTIONS),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_DURATION),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_CYCLES),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_CACHES),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_CACHE_MISSES),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_BRANCHES),
+                    indicatorPerLabel.get(IndicatorPerLabel.KEY_BRANCH_MISSES)
+            );
+            Utils.addToGivenMap(fullQualifiedNameTestMethod , data, dataPerTest);
+        }
     }
-
-    private String toTestName(String path) {
-        final String[] split = path.split(Constants.FILE_SEPARATOR);
-        return split[split.length - 1].split("\\.json")[0].replace("-", "#");
-    }
-
 }
