@@ -1,13 +1,13 @@
 package fr.davidson.diff.jjoules;
 
 import fr.davidson.diff.jjoules.delta.DeltaStep;
-import fr.davidson.diff.jjoules.energy.EnergyMonitor;
 import fr.davidson.diff.jjoules.failer.FailerStep;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationStep;
 import fr.davidson.diff.jjoules.mark.MarkStep;
 import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
 import fr.davidson.diff.jjoules.util.Constants;
+import fr.davidson.tlpc.sensor.TLPCSensor;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.ResetCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -33,17 +33,14 @@ public class DiffJJoulesStep {
 
     protected Configuration configuration;
 
-    private EnergyMonitor energyMonitor;
-
     public void run(Configuration configuration) {
         this.configuration = configuration;
         if (this.configuration.isMeasureEnergyConsumption()) {
-            this.energyMonitor = new EnergyMonitor(this.configuration);
-            this.energyMonitor.startMonitoring(this.getReportPathname());
+            TLPCSensor.start(this.getReportPathname());
         }
         _run(configuration);
         if (this.configuration.isMeasureEnergyConsumption()) {
-            this.energyMonitor.stopMonitoring(this.getReportPathname());
+            TLPCSensor.stop(this.getReportPathname());
         }
     }
 
@@ -155,7 +152,7 @@ public class DiffJJoulesStep {
 
     private void end(String reason, Exception exception) {
         if (this.configuration.isMeasureEnergyConsumption()) {
-            this.energyMonitor.stopMonitoring(this.getReportPathname());
+            TLPCSensor.stop(this.getReportPathname());
         }
         LOGGER.error("Aborting ({})", this.configuration.getOutput() + Constants.FILE_SEPARATOR + "end.txt");
         LOGGER.error("{}", reason);

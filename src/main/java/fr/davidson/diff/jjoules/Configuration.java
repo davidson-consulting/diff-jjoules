@@ -118,8 +118,6 @@ public class Configuration {
 
     private Map<String, Double> scorePerLineV2;
 
-    private Map<String, Map<String, Long>> ownConsumptionReports;
-
     private Wrapper wrapper;
 
     public Configuration() {
@@ -175,7 +173,6 @@ public class Configuration {
     }
 
     public void init() {
-        this.ownConsumptionReports = new LinkedHashMap<>();
         File outputFd = new File(this.output);
         if (!outputFd.isAbsolute()) {
             this.output = this.pathToFirstVersion + Constants.FILE_SEPARATOR + output;
@@ -443,10 +440,15 @@ public class Configuration {
                 ", junit4=" + junit4 +
                 ", iterations=" + iterations +
                 ", output='" + output + '\'' +
-                ", diff='" + diff + '\'' +
                 ", pathToRepositoryV1='" + pathToRepositoryV1 + '\'' +
                 ", pathToRepositoryV2='" + pathToRepositoryV2 + '\'' +
+                ", shouldMark=" + shouldMark +
+                ", shouldSuspect=" + shouldSuspect +
                 ", pathToReport='" + pathToReport + '\'' +
+                ", wrapperEnum=" + wrapperEnum +
+                ", reportEnum=" + reportEnum +
+                ", measureEnergyConsumption=" + measureEnergyConsumption +
+                ", diff='" + diff + '\'' +
                 ", classpathV1=" + Arrays.toString(classpathV1) +
                 ", classpathV2=" + Arrays.toString(classpathV2) +
                 ", classpathV1AsString='" + classpathV1AsString + '\'' +
@@ -461,16 +463,7 @@ public class Configuration {
                 ", deltaOmega=" + deltaOmega +
                 ", scorePerLineV1=" + scorePerLineV1 +
                 ", scorePerLineV2=" + scorePerLineV2 +
-                ", ownConsumptionReports=" + ownConsumptionReports +
-                ", reportEnum=" + reportEnum +
+                ", wrapper=" + wrapper +
                 '}';
-    }
-
-    public Map<String, Map<String, Long>> getOwnConsumptionReports() {
-        return this.ownConsumptionReports;
-    }
-
-    public void addReport(String reportPathname, Map<String, Long> report) {
-        this.ownConsumptionReports.put(reportPathname, report);
     }
 }

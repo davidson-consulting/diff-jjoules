@@ -8,6 +8,8 @@ import fr.davidson.diff.jjoules.delta.data.Delta;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationStep;
 import fr.davidson.tlpc.sensor.IndicatorPerLabel;
+import fr.davidson.tlpc.sensor.IndicatorsPerIdentifier;
+import fr.davidson.tlpc.sensor.TLPCSensor;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,12 +80,12 @@ public class MarkdownStep extends DiffJJoulesStep {
         report.append("\n\n## Diff-JJoules Consumption\n\n\n");
         report.append(Markdown.makeAMarkdownRow("Step", "Energy(&mu;J)", "Instruction", "Durations(ms)"));
         report.append(Markdown.makeAMarkdownRow("---", "---", "---", "---"));
-        final Map<String, Map<String, Long>> ownConsumptionReports = configuration.getOwnConsumptionReports();
+        final IndicatorsPerIdentifier indicatorsPerIdentifier = TLPCSensor.getIndicatorsPerIdentifier();
         long totalEnergyConsumption = 0L;
         long totalInstructions = 0L;
         long totalDurations = 0L;
-        for (String key : ownConsumptionReports.keySet()) {
-            final Map<String, Long> consumptionReport = ownConsumptionReports.get(key);
+        for (String key : indicatorsPerIdentifier.keySet()) {
+            final Map<String, Long> consumptionReport = indicatorsPerIdentifier.get(key);
             final Long durations = consumptionReport.get(IndicatorPerLabel.KEY_DURATION);
             final Long instructions = consumptionReport.get(IndicatorPerLabel.KEY_INSTRUCTIONS);
             final Long energyConsumption = consumptionReport.get(IndicatorPerLabel.KEY_ENERGY_CONSUMPTION);
