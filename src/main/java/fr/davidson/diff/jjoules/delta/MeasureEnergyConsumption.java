@@ -1,13 +1,11 @@
 package fr.davidson.diff.jjoules.delta;
 
 import eu.stamp_project.testrunner.EntryPoint;
-import eu.stamp_project.testrunner.listener.TestResult;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationProcessor;
 import fr.davidson.diff.jjoules.util.Constants;
-import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.tlpc.sensor.IndicatorPerLabel;
