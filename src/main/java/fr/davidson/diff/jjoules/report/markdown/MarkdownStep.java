@@ -86,7 +86,7 @@ public class MarkdownStep extends DiffJJoulesStep {
             final Map<String, Long> consumptionReport = ownConsumptionReports.get(key);
             final Long durations = consumptionReport.get(IndicatorPerLabel.KEY_DURATION);
             final Long instructions = consumptionReport.get(IndicatorPerLabel.KEY_INSTRUCTIONS);
-            final Long energyConsumption = consumptionReport.get(IndicatorPerLabel.KEY_CYCLES);
+            final Long energyConsumption = consumptionReport.get(IndicatorPerLabel.KEY_ENERGY_CONSUMPTION);
             report.append(Markdown.makeAMarkdownRow(key, "" + energyConsumption, "" + instructions, "" + durations));
             totalDurations += durations;
             totalEnergyConsumption += energyConsumption;
