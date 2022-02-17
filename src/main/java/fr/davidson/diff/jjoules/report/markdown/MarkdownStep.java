@@ -2,7 +2,6 @@ package fr.davidson.diff.jjoules.report.markdown;
 
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.DiffJJoulesStep;
-import fr.davidson.diff.jjoules.delta.MeasureEnergyConsumption;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Delta;
