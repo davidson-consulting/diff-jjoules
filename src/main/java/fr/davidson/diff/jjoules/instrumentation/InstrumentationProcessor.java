@@ -61,6 +61,9 @@ public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
         if (declaringType == null) {
             return false;
         }
+        if (candidate.getModifiers().contains(ModifierKind.PRIVATE) || !candidate.getParameters().isEmpty()) {
+            return false;
+        }
         TestFramework.init(candidate.getFactory());
         return (TestFramework.isJUnit4(candidate) || TestFramework.isJUnit5(candidate)) &&
                 (
@@ -95,7 +98,7 @@ public class InstrumentationProcessor extends AbstractProcessor<CtMethod<?>> {
         this.instrumentedTypes.clear();
     }
 
-    private void processingDone(CtType<?> type) {
+    protected void processingDone(CtType<?> type) {
         this.printCtType(type);
         final File outputMeasureFd = new File(this.rootPathFolder + Constants.FILE_SEPARATOR + FOLDER_MEASURES_PATH + Constants.FILE_SEPARATOR);
         if (outputMeasureFd.exists()) {
