@@ -1,6 +1,8 @@
 package fr.davidson.diff.jjoules.delta;
 
 import eu.stamp_project.testrunner.EntryPoint;
+import eu.stamp_project.testrunner.listener.TestResult;
+import eu.stamp_project.testrunner.runner.Failure;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
@@ -34,18 +36,14 @@ public class MeasureEnergyConsumption {
         for (int i = 0; i < configuration.getIterations(); i++) {
             runForVersion(
                     configuration.getPathToFirstVersion(),
-                    configuration.getClasspathV1AsString() +
-                            Constants.PATH_SEPARATOR +
-                            configuration.getWrapper().getBinaries(),
+                    Constants.joinPaths(configuration.getWrapper().getBinaries(), configuration.getClasspathV1AsString()),
                     testsList,
                     configuration.isJunit4()
             );
             readAllJSonFiles(configuration.getPathToFirstVersion(), dataV1);
             runForVersion(
                     configuration.getPathToSecondVersion(),
-                    configuration.getClasspathV2AsString() +
-                            Constants.PATH_SEPARATOR +
-                            configuration.getWrapper().getBinaries(),
+                    Constants.joinPaths(configuration.getWrapper().getBinaries(), configuration.getClasspathV2AsString()),
                     testsList,
                     configuration.isJunit4()
             );
@@ -69,7 +67,6 @@ public class MeasureEnergyConsumption {
                     .flatMap(Collection::stream)
                     .toArray(String[]::new);
             EntryPoint.workingDirectory = new File(pathToVersion);
-            LOGGER.info("{}", EntryPoint.workingDirectory.getAbsolutePath());
             EntryPoint.runTests(
                     classpath,
                     testClassNames,
