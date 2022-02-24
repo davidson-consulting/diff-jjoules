@@ -1,6 +1,5 @@
 package fr.davidson.diff.jjoules.delta;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import eu.stamp_project.testrunner.EntryPoint;
 import eu.stamp_project.testrunner.listener.TestResult;
@@ -14,8 +13,6 @@ import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.tlpc.sensor.IndicatorPerLabel;
 import fr.davidson.tlpc.sensor.IndicatorsPerIdentifier;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileWriter;
