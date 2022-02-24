@@ -87,6 +87,7 @@ public class SelectionStep extends DiffJJoulesStep {
                 Constants.joinFiles(this.configuration.getOutput(), SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES),
                 CSVFileManager.formatTestListsToCSVLines(testsList)
         );
+        this.configuration.setTestsList(testsList);
     }
 
     private void outputFailures(final Set<Failure> failures) {
