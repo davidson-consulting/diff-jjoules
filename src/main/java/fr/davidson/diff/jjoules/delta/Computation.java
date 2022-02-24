@@ -24,7 +24,9 @@ public class Computation {
     ) {
         final Deltas deltaPerName = new Deltas();
         for (String testMethodName : mediansV1.keySet()) {
-            deltaPerName.put(testMethodName, new Delta(mediansV1.get(testMethodName), mediansV2.get(testMethodName)));
+            if (mediansV2.containsKey(testMethodName)) {
+                deltaPerName.put(testMethodName, new Delta(mediansV1.get(testMethodName), mediansV2.get(testMethodName)));
+            }
         }
         return deltaPerName;
     }

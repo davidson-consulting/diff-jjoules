@@ -1,6 +1,9 @@
 package fr.davidson.diff.jjoules.delta;
 
+import com.google.gson.GsonBuilder;
 import eu.stamp_project.testrunner.EntryPoint;
+import eu.stamp_project.testrunner.listener.TestResult;
+import eu.stamp_project.testrunner.runner.Failure;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
@@ -10,10 +13,10 @@ import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.tlpc.sensor.IndicatorPerLabel;
 import fr.davidson.tlpc.sensor.IndicatorsPerIdentifier;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeoutException;
 
@@ -24,7 +27,13 @@ import java.util.concurrent.TimeoutException;
  */
 public class MeasureEnergyConsumption {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MeasureEnergyConsumption.class);
+    private Set<Failure> failures;
+
+    private static final String JSON_REPORT_FAILURE_PATHNAME = "test_failures.json";
+
+    public MeasureEnergyConsumption() {
+        this.failures = new HashSet<>();
+    }
 
     public void measureEnergyConsumptionForBothVersion(
             final Configuration configuration,
@@ -34,22 +43,28 @@ public class MeasureEnergyConsumption {
         for (int i = 0; i < configuration.getIterations(); i++) {
             runForVersion(
                     configuration.getPathToFirstVersion(),
-                    configuration.getClasspathV1AsString() +
-                            Constants.PATH_SEPARATOR +
-                            configuration.getWrapper().getBinaries(),
+                    Constants.joinPaths(configuration.getWrapper().getBinaries(), configuration.getClasspathV1AsString()),
                     testsList,
                     configuration.isJunit4()
             );
             readAllJSonFiles(configuration.getPathToFirstVersion(), dataV1);
             runForVersion(
                     configuration.getPathToSecondVersion(),
-                    configuration.getClasspathV2AsString() +
-                            Constants.PATH_SEPARATOR +
-                            configuration.getWrapper().getBinaries(),
+                    Constants.joinPaths(configuration.getWrapper().getBinaries(), configuration.getClasspathV2AsString()),
                     testsList,
                     configuration.isJunit4()
             );
             readAllJSonFiles(configuration.getPathToSecondVersion(), dataV2);
+        }
+        outputFailures(configuration);
+    }
+
+    private void outputFailures(Configuration configuration) {
+        try (final FileWriter writer = new FileWriter(
+                Constants.joinFiles(configuration.getOutput(), JSON_REPORT_FAILURE_PATHNAME))) {
+            writer.write(new GsonBuilder().setPrettyPrinting().create().toJson(this.failures));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -69,12 +84,12 @@ public class MeasureEnergyConsumption {
                     .flatMap(Collection::stream)
                     .toArray(String[]::new);
             EntryPoint.workingDirectory = new File(pathToVersion);
-            LOGGER.info("{}", EntryPoint.workingDirectory.getAbsolutePath());
-            EntryPoint.runTests(
+            final TestResult testResult = EntryPoint.runTests(
                     classpath,
                     testClassNames,
                     testMethodsNames
             );
+            failures.addAll(testResult.getFailingTests());
         } catch (TimeoutException | java.lang.RuntimeException e) {
             throw new RuntimeException(e);
         }
@@ -101,7 +116,7 @@ public class MeasureEnergyConsumption {
                     indicatorPerLabel.get(IndicatorPerLabel.KEY_BRANCHES),
                     indicatorPerLabel.get(IndicatorPerLabel.KEY_BRANCH_MISSES)
             );
-            Utils.addToGivenMap(fullQualifiedNameTestMethod , data, dataPerTest);
+            Utils.addToGivenMap(fullQualifiedNameTestMethod, data, dataPerTest);
         }
     }
 }
