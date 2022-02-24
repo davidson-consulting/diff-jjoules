@@ -277,7 +277,9 @@ public class Configuration {
 
     public Map<String, Set<String>> getTestsList() {
         if (this.testsList == null) {
-            this.testsList = CSVFileManager.readFile(this.pathToFirstVersion + Constants.FILE_SEPARATOR + SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES);
+            this.testsList = CSVFileManager.readFile(
+                    Constants.joinFiles(this.output,  SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES)
+            );
         }
         return testsList;
     }

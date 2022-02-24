@@ -1,9 +1,7 @@
 package fr.davidson.diff.jjoules.delta;
 
-import com.google.gson.GsonBuilder;
 import eu.stamp_project.testrunner.EntryPoint;
 import eu.stamp_project.testrunner.listener.TestResult;
-import eu.stamp_project.testrunner.runner.Failure;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
@@ -15,8 +13,6 @@ import fr.davidson.tlpc.sensor.IndicatorPerLabel;
 import fr.davidson.tlpc.sensor.IndicatorsPerIdentifier;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeoutException;
 
@@ -27,12 +23,8 @@ import java.util.concurrent.TimeoutException;
  */
 public class MeasureEnergyConsumption {
 
-    private Set<Failure> failures;
-
-    private static final String JSON_REPORT_FAILURE_PATHNAME = "test_failures.json";
-
     public MeasureEnergyConsumption() {
-        this.failures = new HashSet<>();
+
     }
 
     public void measureEnergyConsumptionForBothVersion(
@@ -56,16 +48,6 @@ public class MeasureEnergyConsumption {
             );
             readAllJSonFiles(configuration.getPathToSecondVersion(), dataV2);
         }
-        outputFailures(configuration);
-    }
-
-    private void outputFailures(Configuration configuration) {
-        try (final FileWriter writer = new FileWriter(
-                Constants.joinFiles(configuration.getOutput(), JSON_REPORT_FAILURE_PATHNAME))) {
-            writer.write(new GsonBuilder().setPrettyPrinting().create().toJson(this.failures));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     protected void runForVersion(
@@ -84,12 +66,14 @@ public class MeasureEnergyConsumption {
                     .flatMap(Collection::stream)
                     .toArray(String[]::new);
             EntryPoint.workingDirectory = new File(pathToVersion);
+            EntryPoint.nbFailingLoadClass = 5;
+            EntryPoint.timeoutInMs = 100000;
+            EntryPoint.JVMArgs = "-Djava.locale.providers=COMPAT,CLDR,SPI";
             final TestResult testResult = EntryPoint.runTests(
                     classpath,
                     testClassNames,
                     testMethodsNames
             );
-            failures.addAll(testResult.getFailingTests());
         } catch (TimeoutException | java.lang.RuntimeException e) {
             throw new RuntimeException(e);
         }
