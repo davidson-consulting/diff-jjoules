@@ -80,7 +80,9 @@ public class SelectionStep extends DiffJJoulesStep {
         final Set<Failure> failures = coverage1.getFailingTests();
         failures.addAll(coverage2.getFailingTests());
         for (Failure failure : failures) {
-            testsList.get(failure.testClassName).remove(FullQualifiedName.fromString(failure.testCaseName).methodName);
+            if (testsList.containsKey(failure.testClassName)) {
+                testsList.get(failure.testClassName).remove(FullQualifiedName.fromString(failure.testCaseName).methodName);
+            }
         }
         outputFailures(failures);
         CSVFileManager.writeFile(
