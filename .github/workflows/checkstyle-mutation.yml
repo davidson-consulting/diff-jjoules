@@ -1,0 +1,25 @@
+name: Checkstyle CI Diff-JJoules-Mutation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          repository: 'davidson-consulting/tlpc-sensor'
+          path: './tlpc-sensor'
+      - name: Install TLPC-Sensor Java adapter
+        run: mvn clean install -DskipTests -f tlpc-sensor/examples/tlpc-sensor/pom.xml
+      - name: Install Diff-JJoules
+        run: mvn clean install -Dcheckstyle.skip=true -DskipTests
+      - name: Build Diff-JJoules-Mutation
+        run: mvn clean install -Dcheckstyle.skip=true -DskipTests -f diff-jjoules-mutation/pom.xml
+      - name: Checkstyle with Maven
+        run: mvn checkstyle:checkstyle -DskipTests -f diff-jjoules-mutation/pom.xml

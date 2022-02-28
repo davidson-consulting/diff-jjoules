@@ -35,4 +35,20 @@ public class TestDetector {
         return this.getAllTestClasses().stream().map(CtType::getQualifiedName).collect(Collectors.toList());
     }
 
+    public List<String> getAllFullQualifiedNameTestClassesJUnit4() {
+        return this.getAllTestClasses()
+                .stream()
+                .filter(ctType -> ctType.getMethods().stream().anyMatch(TestFramework::isJUnit4))
+                .map(CtType::getQualifiedName)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getAllFullQualifiedNameTestClassesJUnit5() {
+        return this.getAllTestClasses()
+                .stream()
+                .filter(ctType -> ctType.getMethods().stream().anyMatch(TestFramework::isJUnit5))
+                .map(CtType::getQualifiedName)
+                .collect(Collectors.toList());
+    }
+
 }

@@ -1,86 +1,81 @@
 package fr.davidson.diff.jjoules.mutation;
 
-import fr.davidson.diff.jjoules.mutation.configuration.Configuration;
-import fr.davidson.diff.jjoules.mutation.configuration.Options;
-import fr.davidson.diff.jjoules.mutation.process.UntareJjoulesProcessor;
+import fr.davidson.diff.jjoules.mutation.processor.DiffJJoulesMutationProcessor;
+import fr.davidson.diff.jjoules.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import picocli.CommandLine;
 import spoon.Launcher;
 import spoon.OutputType;
 import spoon.SpoonException;
-import spoon.processing.AbstractProcessor;
-import spoon.reflect.declaration.CtMethod;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * @author Benjamin DANGLOT
  * benjamin.danglot@davidson.fr
- * on 26/05/2021
+ * on 18/02/2022
  */
 public class Main {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
-    private static final String MAIN_FOLDER_PATH = "src/main/java/";
-
-    private static final String TEST_FOLDER_PATH = "src/test/java/";
-
     public static void main(String[] args) {
-        final Configuration configuration = Options.parse(args);
-        if (configuration == null) {
-            return;
-        }
-        LOGGER.info("{}", configuration.toString());
-        final Map<String, Set<String>> methodNamesPerFullQualifiedName = Utils.readFile(configuration.pathToMethodNames);
-        LOGGER.info("{}", methodNamesPerFullQualifiedName.keySet()
-                .stream()
-                .map(key ->
-                        key + ":" + methodNamesPerFullQualifiedName.get(key)
-                ).collect(Collectors.joining("\n")));
-        final UntareJjoulesProcessor processor = new UntareJjoulesProcessor(
-                methodNamesPerFullQualifiedName,
-                configuration.energyToConsume,
-                configuration.rootPathDir + "/" + MAIN_FOLDER_PATH
-        );
-        Main.run(configuration.rootPathDir, processor, configuration.classpath);
-        Main.inject(configuration.rootPathDir);
+        final Configuration configuration = parse(args);
+        run(configuration);
     }
 
-    private static void run(
-            final String rootPathFolder,
-            AbstractProcessor<CtMethod<?>> processor,
-            String[] classpath
-    ) {
-        LOGGER.info("Run on {}", rootPathFolder);
+    public static void run(Configuration configuration) {
+        LOGGER.info("Running diff-jjoules-mutation with {}", configuration.toString());
+        final DiffJJoulesMutationProcessor processor = new DiffJJoulesMutationProcessor(
+                configuration.getTestList(),
+                configuration.getRootPathFolder(),
+                configuration.getSrcPathFolder(),
+                configuration.getConsumption()
+        );
         Launcher launcher = new Launcher();
-
+        final String[] classpath = configuration.getWrapper().buildClasspath(configuration.getRootPathFolder()).split(Constants.PATH_SEPARATOR);
         final String[] finalClassPath = new String[classpath.length + 2];
-        finalClassPath[0] = rootPathFolder + "/target/classes";
-        finalClassPath[1] = rootPathFolder + "/target/test-classes";
+        finalClassPath[0] = Constants.joinFiles(configuration.getRootPathFolder(), configuration.getWrapper().getPathToBinFolder());
+        finalClassPath[1] = Constants.joinFiles(configuration.getRootPathFolder(), configuration.getWrapper().getPathToBinTestFolder());
         System.arraycopy(classpath, 0, finalClassPath, 2, classpath.length);
         launcher.getEnvironment().setSourceClasspath(finalClassPath);
-        launcher.getEnvironment().setNoClasspath(false);
+        launcher.getEnvironment().setNoClasspath(true);
         launcher.getEnvironment().setAutoImports(false);
         launcher.getEnvironment().setLevel("DEBUG");
-        launcher.addInputResource(rootPathFolder + "/" + MAIN_FOLDER_PATH);
-
+        launcher.addInputResource(Constants.joinPaths(configuration.getRootPathFolder(), configuration.getSrcPathFolder()));
         launcher.addProcessor(processor);
         launcher.getEnvironment().setOutputType(OutputType.NO_OUTPUT);
         try {
             launcher.buildModel();
             launcher.process();
         } catch (SpoonException sp) {
-            sp.printStackTrace();
+            throw new RuntimeException(sp);
         }
+        LOGGER.info("Injecting TLPC-sensor dependency to {}", configuration.getRootPathFolder());
+        configuration.getWrapper().injectDependencies(configuration.getRootPathFolder());
     }
 
-    private static void inject(final String rootPathFolder) {
-        new JJoulesInjection(rootPathFolder).inject();
+    public static Configuration parse(String[] args) {
+        Configuration configuration = new Configuration();
+        final CommandLine commandLine = new CommandLine(configuration);
+        commandLine.setUsageHelpWidth(120);
+        try {
+            commandLine.parseArgs(args);
+        } catch (Exception e) {
+            e.printStackTrace();
+            commandLine.usage(System.err);
+            System.exit(-1);
+        }
+        if (commandLine.isUsageHelpRequested()) {
+            commandLine.usage(System.out);
+            System.exit(0);
+        }
+        if (commandLine.isVersionHelpRequested()) {
+            commandLine.printVersionHelp(System.out);
+            System.exit(0);
+        }
+        configuration.init();
+        return configuration;
     }
-
-
 
 }

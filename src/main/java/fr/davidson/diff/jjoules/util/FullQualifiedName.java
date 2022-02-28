@@ -1,7 +1,5 @@
 package fr.davidson.diff.jjoules.util;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -31,7 +29,6 @@ public class FullQualifiedName {
         return this.className + "#" + this.methodName;
     }
 
-    @NotNull
     public static Set<String> toSetFullQualifiedNames(Map<String, Set<String>> testsList) {
         return testsList.keySet()
                 .stream()
