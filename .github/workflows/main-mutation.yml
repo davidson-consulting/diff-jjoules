@@ -1,4 +1,4 @@
-name: [Main CI] Diff-JJoules-Mutation
+name: Main CI Diff-JJoules-Mutation
 
 on:
   push:
