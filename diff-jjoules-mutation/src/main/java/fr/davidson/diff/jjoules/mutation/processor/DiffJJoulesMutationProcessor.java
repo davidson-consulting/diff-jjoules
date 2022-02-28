@@ -1,8 +1,6 @@
 package fr.davidson.diff.jjoules.mutation.processor;
 
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationProcessor;
-import fr.davidson.tlpc.sensor.IndicatorPerLabel;
-import fr.davidson.tlpc.sensor.TLPCSensor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spoon.reflect.declaration.CtClass;
