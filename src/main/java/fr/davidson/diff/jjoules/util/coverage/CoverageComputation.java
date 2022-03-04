@@ -32,7 +32,7 @@ public class CoverageComputation {
             EntryPoint.jUnit5Mode = !junit4;
             EntryPoint.nbFailingLoadClass = 5;
             EntryPoint.timeoutInMs = 100000;
-            EntryPoint.JVMArgs = "-Djava.locale.providers=COMPAT,CLDR,SPI";
+            //EntryPoint.JVMArgs = "-Djava.locale.providers=COMPAT,CLDR,SPI";
             return EntryPoint.runOnlineCoveredTestResultPerTestMethods(
                     classpath + Constants.PATH_SEPARATOR + pathToBinaries,
                     pathToBinaries,
@@ -57,7 +57,7 @@ public class CoverageComputation {
             EntryPoint.jUnit5Mode = !junit4;
             EntryPoint.nbFailingLoadClass = 5;
             EntryPoint.timeoutInMs = 100000;
-            EntryPoint.JVMArgs = "-Djava.locale.providers=COMPAT,CLDR,SPI";
+            //EntryPoint.JVMArgs = "-Djava.locale.providers=COMPAT,CLDR,SPI";
             return EntryPoint.runOnlineCoveredTestResultPerTestMethods(
                     classpath + Constants.PATH_SEPARATOR + pathToBinaries,
                     pathToBinaries,

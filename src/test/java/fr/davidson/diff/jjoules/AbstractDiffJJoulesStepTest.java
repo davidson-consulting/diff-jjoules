@@ -1,5 +1,6 @@
 package fr.davidson.diff.jjoules;
 
+import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -58,7 +59,7 @@ public abstract class AbstractDiffJJoulesStepTest {
                 true
         );
         configuration.setTestsList(
-                new HashMap<String, java.util.Set<String>>() {
+                new MethodNamesPerClassNames() {
                     {
                         put(FULL_QUALIFIED_NAME_TEST_CLASS, new HashSet<>());
                         get(FULL_QUALIFIED_NAME_TEST_CLASS).addAll(Collections.singletonList(TEST_COUNT));

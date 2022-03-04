@@ -1,14 +1,11 @@
 package fr.davidson.diff.jjoules.mutation.processor;
 
-import fr.davidson.diff.jjoules.instrumentation.InstrumentationProcessor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import spoon.reflect.declaration.CtClass;
+import spoon.processing.AbstractProcessor;
+import spoon.reflect.code.CtCodeSnippetStatement;
 import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.declaration.ModifierKind;
+import spoon.reflect.declaration.CtType;
 import spoon.reflect.factory.Factory;
 
-import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,71 +14,40 @@ import java.util.Set;
  * benjamin.danglot@davidson.fr
  * on 18/02/2022
  */
-public class DiffJJoulesMutationProcessor extends InstrumentationProcessor {
+public class DiffJJoulesMutationProcessor extends AbstractProcessor<CtMethod<?>> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(InstrumentationProcessor.class);
+    private static final String FULL_QUALIFIED_NAME_CONSUME_METHOD_NAME = "fr.davidson.tlpc.sensor.TLPCSensor.consume";
+
+    private static final String FULL_QUALIFIED_NAME_KEY_ENERGY_CONSUMPTION = "fr.davidson.tlpc.sensor.IndicatorPerLabel.KEY_ENERGY_CONSUMPTION";
 
     private long consumption;
 
-    public DiffJJoulesMutationProcessor(
-            Map<String, Set<String>> testsList,
-            String rootPathFolder,
-            String testFolderPath,
-            long consumption
-    ) {
-        super(testsList, rootPathFolder, testFolderPath);
+    private Map<String, Set<String>> methodsToMutate;
+
+    public DiffJJoulesMutationProcessor(Map<String, Set<String>> methodsToMutate, long consumption) {
+        this.methodsToMutate = methodsToMutate;
         this.consumption = consumption;
     }
 
     @Override
-    public void processingDone() {
-        this.instrumentedTypes.forEach(this::processingDone);
-        LOGGER.info("{} mutated classes have been printed!", this.instrumentedTypes.size());
-        this.instrumentedTypes.clear();
+    public boolean isToBeProcessed(CtMethod<?> candidate) {
+        final CtType<?> declaringType = candidate.getDeclaringType();
+        if (declaringType == null) {
+            return false;
+        }
+        return this.methodsToMutate.isEmpty() || (
+                this.methodsToMutate.containsKey(declaringType.getQualifiedName()) &&
+                        this.methodsToMutate
+                                .get(declaringType.getQualifiedName())
+                                .contains(candidate.getSimpleName()));
     }
 
     @Override
     public void process(CtMethod<?> ctMethod) {
         final Factory factory = ctMethod.getFactory();
-        final CtClass<?> parentClass = ctMethod.getParent(CtClass.class);
-        if (!this.instrumentedTypes.contains(parentClass)) {
-            this.addConsumeMethodDeclaration(parentClass);
-        }
-        ctMethod.getBody().insertBegin(factory.createCodeSnippetStatement("consume(" + this.consumption + ")"));
-        this.instrumentedTypes.add(ctMethod.getDeclaringType());
+        final CtCodeSnippetStatement consumeStatement = factory.createCodeSnippetStatement(
+                FULL_QUALIFIED_NAME_CONSUME_METHOD_NAME + "(" + this.consumption + ", " + FULL_QUALIFIED_NAME_KEY_ENERGY_CONSUMPTION + ")"
+        );
+        ctMethod.getBody().insertBegin(consumeStatement);
     }
-
-    private void addConsumeMethodDeclaration(CtClass<?> parentClass) {
-        final Factory factory = parentClass.getFactory();
-        final CtMethod method = factory.createMethod();
-        method.setType(factory.Type().VOID_PRIMITIVE);
-        method.setSimpleName("consume");
-        method.setParameters(Collections.singletonList(
-                factory.createParameter(method, factory.Type().LONG_PRIMITIVE, "consumption")
-        ));
-        method.setModifiers(Collections.singleton(ModifierKind.STATIC));
-        method.setBody(factory.createCodeSnippetStatement("TLPCSensor.reset(identifier)"));
-        method.getBody().insertBegin(
-                factory.createCodeSnippetStatement("TLPCSensor.stop(identifier)")
-        );
-        method.getBody().insertBegin(
-                factory.createCodeSnippetStatement("while (TLPCSensor.read(identifier).get(IndicatorPerLabel.KEY_ENERGY_CONSUMPTION) < consumption);")
-        );
-        method.getBody().insertBegin(
-                factory.createCodeSnippetStatement("TLPCSensor.start(identifier)")
-        );
-        method.getBody().insertBegin(
-                factory.createCodeSnippetStatement("final String identifier = \"diff-jjoules-mutation\"")
-        );
-        parentClass.addMethod(method);
-    }
-
-    /*static void consume(final long consumption) {
-        final String identifier = "diff-jjoules-mutation";
-        TLPCSensor.start(identifier);
-        while (TLPCSensor.read(identifier).get(IndicatorPerLabel.KEY_ENERGY_CONSUMPTION) < consumption);
-        TLPCSensor.stop(identifier);
-        TLPCSensor.reset(identifier);
-    }*/
-
 }

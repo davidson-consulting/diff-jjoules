@@ -7,6 +7,7 @@ import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
+import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +38,7 @@ public class DeltaStep extends DiffJJoulesStep {
     protected void _run(Configuration configuration) {
         this.configuration = configuration;
         LOGGER.info("Run Delta");
-        final Map<String, Set<String>> testsList = configuration.getTestsList();
+        final MethodNamesPerClassNames testsList = configuration.getTestsList();
         final Datas dataV1 = new Datas();
         final Datas dataV2 = new Datas();
         new MeasureEnergyConsumption().measureEnergyConsumptionForBothVersion(

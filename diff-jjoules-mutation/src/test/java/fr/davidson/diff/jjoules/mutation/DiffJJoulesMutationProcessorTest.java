@@ -38,8 +38,6 @@ public class DiffJJoulesMutationProcessorTest {
                                 get("SrcClass").addAll(Collections.singletonList("method"));
                             }
                         },
-                        "target/trash",
-                        "",
                         100000L
                 )
         );

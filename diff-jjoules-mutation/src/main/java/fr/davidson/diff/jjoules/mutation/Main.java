@@ -8,6 +8,9 @@ import picocli.CommandLine;
 import spoon.Launcher;
 import spoon.OutputType;
 import spoon.SpoonException;
+import spoon.support.sniper.SniperJavaPrettyPrinter;
+
+import java.io.File;
 
 
 /**
@@ -26,28 +29,23 @@ public class Main {
 
     public static void run(Configuration configuration) {
         LOGGER.info("Running diff-jjoules-mutation with {}", configuration.toString());
-        final DiffJJoulesMutationProcessor processor = new DiffJJoulesMutationProcessor(
-                configuration.getTestList(),
-                configuration.getRootPathFolder(),
-                configuration.getSrcPathFolder(),
-                configuration.getConsumption()
-        );
+        final DiffJJoulesMutationProcessor processor = new DiffJJoulesMutationProcessor(configuration.getMethodList(), configuration.getConsumption());
         Launcher launcher = new Launcher();
         final String[] classpath = configuration.getWrapper().buildClasspath(configuration.getRootPathFolder()).split(Constants.PATH_SEPARATOR);
         final String[] finalClassPath = new String[classpath.length + 2];
         finalClassPath[0] = Constants.joinFiles(configuration.getRootPathFolder(), configuration.getWrapper().getPathToBinFolder());
         finalClassPath[1] = Constants.joinFiles(configuration.getRootPathFolder(), configuration.getWrapper().getPathToBinTestFolder());
         System.arraycopy(classpath, 0, finalClassPath, 2, classpath.length);
+        launcher.getEnvironment().setPrettyPrinterCreator(() -> new SniperJavaPrettyPrinter(launcher.getEnvironment()));
         launcher.getEnvironment().setSourceClasspath(finalClassPath);
         launcher.getEnvironment().setNoClasspath(true);
-        launcher.getEnvironment().setAutoImports(false);
-        launcher.getEnvironment().setLevel("DEBUG");
-        launcher.addInputResource(Constants.joinPaths(configuration.getRootPathFolder(), configuration.getSrcPathFolder()));
+        launcher.getEnvironment().setAutoImports(true);
+        launcher.addInputResource(Constants.joinFiles(configuration.getRootPathFolder(), configuration.getSrcPathFolder()));
         launcher.addProcessor(processor);
-        launcher.getEnvironment().setOutputType(OutputType.NO_OUTPUT);
+        launcher.getEnvironment().setSourceOutputDirectory(new File(Constants.joinFiles(configuration.getRootPathFolder(), configuration.getSrcPathFolder())));
+        launcher.getEnvironment().setOutputType(OutputType.CLASSES);
         try {
-            launcher.buildModel();
-            launcher.process();
+            launcher.run();
         } catch (SpoonException sp) {
             throw new RuntimeException(sp);
         }

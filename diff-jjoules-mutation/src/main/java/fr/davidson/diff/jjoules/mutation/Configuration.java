@@ -2,7 +2,7 @@ package fr.davidson.diff.jjoules.mutation;
 
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
-import fr.davidson.diff.jjoules.util.TestList;
+import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import picocli.CommandLine;
@@ -24,7 +24,7 @@ public class Configuration {
     @CommandLine.Option(names = {"-m", "--method-list-path"}, description = "Path to the JSON file containing the method full qualified names to mutate.", required = true)
     private String methodListFilePath;
 
-    private TestList methodList;
+    private MethodNamesPerClassNames methodList;
 
     @CommandLine.Option(names = {"-c", "--consumption"}, description = "Specify the amount to consume by the mutation.", defaultValue = "10000")
     private long consumption;
@@ -56,7 +56,7 @@ public class Configuration {
     }
 
     public void init() {
-        this.methodList = JSONUtils.read(Constants.joinFiles(this.rootPathFolder, methodListFilePath), TestList.class);
+        this.methodList = JSONUtils.read(Constants.joinFiles(this.rootPathFolder, methodListFilePath), MethodNamesPerClassNames.class);
         this.wrapper = this.wrapperEnum.getWrapper();
         this.srcPathFolder = this.wrapper.getPathToSrcFolder();
     }
@@ -65,7 +65,7 @@ public class Configuration {
         return rootPathFolder;
     }
 
-    public TestList getMethodList() {
+    public MethodNamesPerClassNames getMethodList() {
         return methodList;
     }
 

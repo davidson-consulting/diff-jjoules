@@ -5,6 +5,7 @@ import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationProcessor;
 import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.util.Constants;
+import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -57,7 +58,7 @@ public class MeasureEnergyConsumptionTest {
                 ),
                 dataV1,
                 dataV2,
-                new HashMap<String, Set<String>>() {
+                new MethodNamesPerClassNames() {
                     {
                         put("fr.davidson.diff_jjoules_demo.InternalListTest", new HashSet<>());
                         get("fr.davidson.diff_jjoules_demo.InternalListTest").addAll(Arrays.asList("testCount"));

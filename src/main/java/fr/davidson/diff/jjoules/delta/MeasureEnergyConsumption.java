@@ -8,9 +8,12 @@ import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationProcessor;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
+import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.tlpc.sensor.IndicatorPerLabel;
 import fr.davidson.tlpc.sensor.IndicatorsPerIdentifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.*;
@@ -23,6 +26,8 @@ import java.util.concurrent.TimeoutException;
  */
 public class MeasureEnergyConsumption {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(MeasureEnergyConsumption.class);
+
     public MeasureEnergyConsumption() {
 
     }
@@ -31,7 +36,7 @@ public class MeasureEnergyConsumption {
             final Configuration configuration,
             final Datas dataV1,
             final Datas dataV2,
-            Map<String, Set<String>> testsList) {
+            MethodNamesPerClassNames testsList) {
         for (int i = 0; i < configuration.getIterations(); i++) {
             runForVersion(
                     configuration.getPathToFirstVersion(),
@@ -53,27 +58,33 @@ public class MeasureEnergyConsumption {
     protected void runForVersion(
             final String pathToVersion,
             final String classpath,
-            Map<String, Set<String>> testsList,
+            final MethodNamesPerClassNames testsList,
             boolean junit4
     ) {
         EntryPoint.jUnit5Mode = !junit4;
         EntryPoint.verbose = true;
         EntryPoint.timeoutInMs = 100000;
+        EntryPoint.workingDirectory = new File(pathToVersion);
+        EntryPoint.nbFailingLoadClass = 5;
         try {
-            final String[] testClassNames = testsList.keySet().toArray(new String[0]);
-            final String[] testMethodsNames = testsList.values()
-                    .stream()
-                    .flatMap(Collection::stream)
-                    .toArray(String[]::new);
-            EntryPoint.workingDirectory = new File(pathToVersion);
-            EntryPoint.nbFailingLoadClass = 5;
-            EntryPoint.timeoutInMs = 100000;
-            EntryPoint.JVMArgs = "-Djava.locale.providers=COMPAT,CLDR,SPI";
-            final TestResult testResult = EntryPoint.runTests(
-                    classpath,
-                    testClassNames,
-                    testMethodsNames
-            );
+            if (junit4) {
+                final String[] testClassNames = testsList.keySet().toArray(new String[0]);
+                final String[] testMethodsNames = testsList.values()
+                        .stream()
+                        .flatMap(Collection::stream)
+                        .toArray(String[]::new);
+                final TestResult testResult = EntryPoint.runTests(
+                        classpath,
+                        testClassNames,
+                        testMethodsNames
+                );
+            } else {
+                final TestResult testResult = EntryPoint.runTests(
+                        classpath,
+                        new String[0],
+                        testsList.toFullQualifiedNameMethods()
+                );
+            }
         } catch (TimeoutException | java.lang.RuntimeException e) {
             throw new RuntimeException(e);
         }
