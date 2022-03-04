@@ -15,14 +15,14 @@ import org.apache.maven.project.MavenProject;
  * benjamin.danglot@davidson.fr
  * on 28/02/2022
  */
-@Mojo(name = "mutation")
+@Mojo(name = "mutate")
 public class DiffJJoulesMutationMojo extends AbstractMojo {
 
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
     protected MavenProject project;
 
-    @Parameter(property = "test-list-path", required = true)
-    private String testListsFilePath;
+    @Parameter(property = "method-list-path", required = true)
+    private String methodListFilePath;
 
     @Parameter(property = "consumption", defaultValue = "10000")
     private long consumption;
@@ -32,7 +32,7 @@ public class DiffJJoulesMutationMojo extends AbstractMojo {
         Main.run(
                 new Configuration(
                     this.project.getBasedir().getAbsolutePath(),
-                    this.testListsFilePath,
+                    this.methodListFilePath,
                     this.consumption,
                     WrapperEnum.MAVEN
             )
