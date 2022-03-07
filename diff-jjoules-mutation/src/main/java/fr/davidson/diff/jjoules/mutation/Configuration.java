@@ -1,7 +1,8 @@
 package fr.davidson.diff.jjoules.mutation;
 
+import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
-import fr.davidson.diff.jjoules.util.TestList;
+import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import picocli.CommandLine;
@@ -20,10 +21,10 @@ public class Configuration {
     @CommandLine.Option(names = {"-s", "--src-path-folder"}, description = "Path to the src folder of the program.", defaultValue = "src/main/java")
     private String srcPathFolder;
 
-    @CommandLine.Option(names = {"-t", "--test-list-path"}, description = "Path to the JSON file containing the test names to mutate.", required = true)
-    private String testListsFilePath;
+    @CommandLine.Option(names = {"-m", "--method-list-path"}, description = "Path to the JSON file containing the method full qualified names to mutate.", required = true)
+    private String methodListFilePath;
 
-    private TestList testList;
+    private MethodNamesPerClassNames methodList;
 
     @CommandLine.Option(names = {"-c", "--consumption"}, description = "Specify the amount to consume by the mutation.", defaultValue = "10000")
     private long consumption;
@@ -44,18 +45,18 @@ public class Configuration {
     }
 
     public Configuration(String rootPathFolder,
-                         String testListsFilePath,
+                         String methodListFilePath,
                          long consumption,
                          WrapperEnum wrapperEnum) {
         this.rootPathFolder = rootPathFolder;
-        this.testListsFilePath = testListsFilePath;
+        this.methodListFilePath = methodListFilePath;
         this.consumption = consumption;
         this.wrapperEnum = wrapperEnum;
         this.init();
     }
 
     public void init() {
-        this.testList = JSONUtils.read(testListsFilePath, TestList.class);
+        this.methodList = JSONUtils.read(Constants.joinFiles(this.rootPathFolder, methodListFilePath), MethodNamesPerClassNames.class);
         this.wrapper = this.wrapperEnum.getWrapper();
         this.srcPathFolder = this.wrapper.getPathToSrcFolder();
     }
@@ -64,8 +65,8 @@ public class Configuration {
         return rootPathFolder;
     }
 
-    public TestList getTestList() {
-        return testList;
+    public MethodNamesPerClassNames getMethodList() {
+        return methodList;
     }
 
     public long getConsumption() {
@@ -78,5 +79,16 @@ public class Configuration {
 
     public Wrapper getWrapper() {
         return wrapper;
+    }
+
+    @Override
+    public String toString() {
+        return "Configuration{" +
+                "rootPathFolder='" + rootPathFolder + '\'' +
+                ", srcPathFolder='" + srcPathFolder + '\'' +
+                ", methodList=" + methodList +
+                ", consumption=" + consumption +
+                ", wrapperEnum=" + wrapperEnum +
+                '}';
     }
 }

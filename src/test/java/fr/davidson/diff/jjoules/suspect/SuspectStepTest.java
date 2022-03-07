@@ -4,6 +4,7 @@ import fr.davidson.diff.jjoules.AbstractDiffJJoulesStepTest;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
 import fr.davidson.diff.jjoules.util.JSONUtils;
+import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -27,7 +28,7 @@ public class SuspectStepTest extends AbstractDiffJJoulesStepTest {
         configuration.setExecLinesAdditions(execAdditions);
 
         configuration.setTestsList(
-                new HashMap<String, Set<String>>() {
+                new MethodNamesPerClassNames() {
                     {
                         put(FULL_QUALIFIED_NAME_TEST_CLASS, new HashSet<>());
                         get(FULL_QUALIFIED_NAME_TEST_CLASS).addAll(

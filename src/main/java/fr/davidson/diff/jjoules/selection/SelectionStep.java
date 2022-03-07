@@ -8,9 +8,7 @@ import eu.stamp_project.testrunner.listener.CoveredTestResultPerTestMethod;
 import eu.stamp_project.testrunner.runner.Failure;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.DiffJJoulesStep;
-import fr.davidson.diff.jjoules.util.CSVFileManager;
-import fr.davidson.diff.jjoules.util.Constants;
-import fr.davidson.diff.jjoules.util.FullQualifiedName;
+import fr.davidson.diff.jjoules.util.*;
 import fr.davidson.diff.jjoules.util.coverage.CoverageComputation;
 import fr.davidson.diff.jjoules.util.coverage.detection.TestDetector;
 import org.slf4j.Logger;
@@ -19,7 +17,6 @@ import org.slf4j.LoggerFactory;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -75,8 +72,9 @@ public class SelectionStep extends DiffJJoulesStep {
                 coverage,
                 coverageV2
         );
-
-        final Map<String, Set<String>> testsList = enhancedDiffTestSelection.selectTests();
+        JSONUtils.write(Constants.joinFiles(this.configuration.getOutput(), "coverage_v1.json"), coverageV1);
+        JSONUtils.write(Constants.joinFiles(this.configuration.getOutput(), "coverage_v2.json"), coverageV2);
+        final MethodNamesPerClassNames testsList = MethodNamesPerClassNames.from(enhancedDiffTestSelection.selectTests());
         final Set<Failure> failures = coverage1.getFailingTests();
         failures.addAll(coverage2.getFailingTests());
         for (Failure failure : failures) {

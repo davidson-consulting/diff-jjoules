@@ -35,8 +35,8 @@ public class CSVFileManager {
         }
     }
 
-    public static Map<String, Set<String>> readFile(String path) {
-        final HashMap<String, Set<String>> result = new HashMap<>();
+    public static MethodNamesPerClassNames readFile(String path) {
+        final MethodNamesPerClassNames result = new MethodNamesPerClassNames();
         if (path == null || path.isEmpty()) {
             return result;
         }

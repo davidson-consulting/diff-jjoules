@@ -10,10 +10,7 @@ import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
 import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
-import fr.davidson.diff.jjoules.util.CSVFileManager;
-import fr.davidson.diff.jjoules.util.Constants;
-import fr.davidson.diff.jjoules.util.JSONUtils;
-import fr.davidson.diff.jjoules.util.Utils;
+import fr.davidson.diff.jjoules.util.*;
 import fr.davidson.diff.jjoules.util.wrapper.Wrapper;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.apache.commons.io.FileUtils;
@@ -98,7 +95,7 @@ public class Configuration {
 
     private String classpathV2AsString;
 
-    private Map<String, Set<String>> testsList;
+    private MethodNamesPerClassNames testsList;
 
     private Datas dataV1;
 
@@ -271,11 +268,11 @@ public class Configuration {
         return measureEnergyConsumption;
     }
 
-    public void setTestsList(Map<String, Set<String>> testsList) {
+    public void setTestsList(MethodNamesPerClassNames testsList) {
         this.testsList = testsList;
     }
 
-    public Map<String, Set<String>> getTestsList() {
+    public MethodNamesPerClassNames getTestsList() {
         if (this.testsList == null) {
             this.testsList = CSVFileManager.readFile(
                     Constants.joinFiles(this.output,  SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES)
@@ -437,35 +434,35 @@ public class Configuration {
     @Override
     public String toString() {
         return "Configuration{" +
-                "pathToFirstVersion='" + pathToFirstVersion + '\'' +
-                ", pathToSecondVersion='" + pathToSecondVersion + '\'' +
-                ", junit4=" + junit4 +
-                ", iterations=" + iterations +
-                ", output='" + output + '\'' +
-                ", pathToRepositoryV1='" + pathToRepositoryV1 + '\'' +
-                ", pathToRepositoryV2='" + pathToRepositoryV2 + '\'' +
-                ", shouldMark=" + shouldMark +
-                ", shouldSuspect=" + shouldSuspect +
-                ", pathToReport='" + pathToReport + '\'' +
-                ", wrapperEnum=" + wrapperEnum +
-                ", reportEnum=" + reportEnum +
-                ", measureEnergyConsumption=" + measureEnergyConsumption +
-                ", diff='" + diff + '\'' +
-                ", classpathV1=" + Arrays.toString(classpathV1) +
-                ", classpathV2=" + Arrays.toString(classpathV2) +
-                ", classpathV1AsString='" + classpathV1AsString + '\'' +
-                ", classpathV2AsString='" + classpathV2AsString + '\'' +
-                ", testsList=" + testsList +
-                ", dataV1=" + dataV1 +
-                ", dataV2=" + dataV2 +
-                ", deltas=" + deltas +
-                ", consideredTestsNames=" + consideredTestsNames +
-                ", execLinesAdditions=" + execLinesAdditions +
-                ", execLinesDeletions=" + execLinesDeletions +
-                ", deltaOmega=" + deltaOmega +
-                ", scorePerLineV1=" + scorePerLineV1 +
-                ", scorePerLineV2=" + scorePerLineV2 +
-                ", wrapper=" + wrapper +
+                "pathToFirstVersion='" + pathToFirstVersion + '\'' + Constants.NEW_LINE +
+                ", pathToSecondVersion='" + pathToSecondVersion + '\'' + Constants.NEW_LINE +
+                ", junit4=" + junit4 + Constants.NEW_LINE +
+                ", iterations=" + iterations + Constants.NEW_LINE +
+                ", output='" + output + '\'' + Constants.NEW_LINE +
+                ", pathToRepositoryV1='" + pathToRepositoryV1 + '\'' + Constants.NEW_LINE +
+                ", pathToRepositoryV2='" + pathToRepositoryV2 + '\'' + Constants.NEW_LINE +
+                ", shouldMark=" + shouldMark + Constants.NEW_LINE +
+                ", shouldSuspect=" + shouldSuspect + Constants.NEW_LINE +
+                ", pathToReport='" + pathToReport + '\'' + Constants.NEW_LINE +
+                ", wrapperEnum=" + wrapperEnum + Constants.NEW_LINE +
+                ", reportEnum=" + reportEnum + Constants.NEW_LINE +
+                ", measureEnergyConsumption=" + measureEnergyConsumption + Constants.NEW_LINE +
+                ", diff='" + diff + '\'' + Constants.NEW_LINE +
+                ", classpathV1=" + Arrays.toString(classpathV1) + Constants.NEW_LINE +
+                ", classpathV2=" + Arrays.toString(classpathV2) + Constants.NEW_LINE +
+                ", classpathV1AsString='" + classpathV1AsString + '\'' + Constants.NEW_LINE +
+                ", classpathV2AsString='" + classpathV2AsString + '\'' + Constants.NEW_LINE +
+                ", testsList=" + testsList + Constants.NEW_LINE +
+                ", dataV1=" + dataV1 + Constants.NEW_LINE +
+                ", dataV2=" + dataV2 + Constants.NEW_LINE +
+                ", deltas=" + deltas + Constants.NEW_LINE +
+                ", consideredTestsNames=" + consideredTestsNames + Constants.NEW_LINE +
+                ", execLinesAdditions=" + execLinesAdditions + Constants.NEW_LINE +
+                ", execLinesDeletions=" + execLinesDeletions + Constants.NEW_LINE +
+                ", deltaOmega=" + deltaOmega + Constants.NEW_LINE +
+                ", scorePerLineV1=" + scorePerLineV1 + Constants.NEW_LINE +
+                ", scorePerLineV2=" + scorePerLineV2 + Constants.NEW_LINE +
+                ", wrapper=" + wrapper + Constants.NEW_LINE +
                 '}';
     }
 }
