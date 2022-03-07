@@ -3,7 +3,6 @@ package fr.davidson.diff.jjoules.selection;
 import com.google.gson.GsonBuilder;
 import eu.stamp_project.diff_test_selection.coverage.Coverage;
 import eu.stamp_project.diff_test_selection.coverage.DiffCoverage;
-import eu.stamp_project.diff_test_selection.coverage.TestClassCoverage;
 import eu.stamp_project.diff_test_selection.selector.EnhancedDiffTestSelection;
 import eu.stamp_project.testrunner.listener.CoveredTestResultPerTestMethod;
 import eu.stamp_project.testrunner.runner.Failure;
@@ -18,7 +17,6 @@ import org.slf4j.LoggerFactory;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
