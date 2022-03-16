@@ -4,13 +4,22 @@
 * measure the impact of commits on the energy consumption of the program 
 * break the build in case of an energy regression has been detected.
 
-## Install
+## Prerequisites
 
-To use Diff-JJoules, you need to install [JJoules](https://github.com/davidson-consulting/j-joules) and [JUnit-JJoules](https://github.com/davidson-consulting/junit-jjoules).
+* Java 8+
+* Maven3
+
+To use `diff-jjoules`, you need to install:
+
+* [TLPC-sensor](https://github.com/davidson-consulting/tlpc-sensor) and the maven plugin in [examples/tlpc-sensor](https://github.com/davidson-consulting/tlpc-sensor/tree/main/examples/tlpc-sensor)
+
+## Install
 
 Then, you can install `diff-jjoules`:
 
 ```sh
+git clone https://github.com/davidson-consulting/diff-jjoules.git
+cd diff-jjoules
 mvn clean install -DskipTest
 ```
 
