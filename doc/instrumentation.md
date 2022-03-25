@@ -57,9 +57,9 @@ The instrumentation would result with the following diff:
 public class TestClass {
     @Test
     public void test() {
-    +   fr.davidson.tlpc.sensor.TLPCSensor.start("TestClass#test");
++      fr.davidson.tlpc.sensor.TLPCSensor.start("TestClass#test");
         // testing something
-    +   fr.davidson.tlpc.sensor.TLPCSensor.stop("TestClass#test");
++       fr.davidson.tlpc.sensor.TLPCSensor.stop("TestClass#test");
     }
 }
 ```
