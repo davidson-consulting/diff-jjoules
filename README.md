@@ -23,6 +23,13 @@ cd diff-jjoules
 mvn clean install -DskipTest
 ```
 
+You should also install the maven plugin, from `diff-jjoules` folder:
+
+```sh
+cd diff-jjoules-maven
+mvn clean install -DskipTest
+```
+
 ## Usage
 
 The easiest way to use `diff-jjoules`, you need to clone your project twice: one for the version before applying the 
@@ -33,63 +40,12 @@ In the following, we consider **path/v1** as the path to the version of the prog
 You can run `diff-jjoules` with the following command line, from **path/v1**, where your `pom.xml` is:
 
 ```shell
-mvn fr.davidson:diff-jjoules:diff-jjoules -Dpath-dir-second-version=path/v2
+mvn fr.davidson:diff-jjoules:diff-jjoules-maven -Dpath-dir-second-version=path/v2
 ```
 
-Calling this maven plugin will apply the whole process as follow:
-InstrumentationStepTest
-1. `test-selection`: select the tests that execute the code changes (this is done by `diff-test-selection`;
-2. [`instrumention`](./doc/instrumentation.md): instrument the selected tests with probes to measure their energy consumption;
-3. [`delta`](./doc/delta.md): computation of the energy consumption delta test-wise (&Delta;SEC(t) = SEC(v2,t) - SEC(v1,t));
-4. [`mark`](./doc/mark.md): apply a strategy to mark as passing :heavy_check_mark: or failing :x: the commit;
-5. [`failer`](./doc/failer.md): instrument the tests that have a positive &Delta, meaning that are consuming energy after applying the commit; 
-6. [`suspect`](./doc/suspect.md): run fault localization to rate the modified line according to their suspiciousness;
-7. [`report`](./doc/report.md): generate a readable report;
+## Detailed Documentation
 
-For more information, you can view a dedicated README for each step, however, we advise you to **not** run the steps
-individually since they are made to work together.
-
-`Diff-jjoules` offers an extra feature which the mutation of the source code in order to introduce artificial energy 
-regression. Please, see the dedicated [`documentation`](./doc/mutation.md) for more information.
-
-## Options
-
-In this section, we list the options that are configurables.
-
-:construction:
-
-```text
-Usage: fr.davidson.diff.jjoules.Main [-hV] [--junit4] [--mark] [--measure] [--suspect] -f=<pathToFirstVersion>
-                                     [-i=<iterations>] [-o=<output>] [--path-report-file=<pathToReport>]
-                                     [--path-repository-v1=<pathToRepositoryV1>]
-                                     [--path-repository-v2=<pathToRepositoryV2>] [--report=<reportEnum>]
-                                     -s=<pathToSecondVersion> [--wrapper=<wrapperEnum>]
-  -f, --path-first-version=<pathToFirstVersion>
-                          Path to the first version of the program.
-  -h, --help              Show this help message and exit.
-  -i, --iteration=<iterations>
-                          Number of test executions to measure their energy consumption.
-      --junit4            Enable junit4 tests
-      --mark              Enable mark step.
-      --measure           Enable the energy consumption measurements of Diff-JJoules Default value: false
-  -o, --output=<output>   Path to the output folder.
-      --path-report-file=<pathToReport>
-                          Path to report file to produce.
-      --path-repository-v1=<pathToRepositoryV1>
-                          Path to the first version of the program that contains .git (this is used for multi-modu
-                            projects)
-      --path-repository-v2=<pathToRepositoryV2>
-                          Path to the second version of the program that contains .git (this is used for multi-mod
-                            projects)
-      --report=<reportEnum>
-                          Specify the report type to produce.Valid values: TXT, MARKDOWN, NONE Default value: TXT
-  -s, --path-second-version=<pathToSecondVersion>
-                          Path to the second version of the program.
-      --suspect           Enable suspect step.
-  -V, --version           Print version information and exit.
-      --wrapper=<wrapperEnum>
-                          Specify the wrapper to be used.Valid values: MAVEN, PROPERTIES Default value: MAVEN
-```
+We provide a detailed documentation [here](./doc/documentation.md).
 
 ## Contributing
 

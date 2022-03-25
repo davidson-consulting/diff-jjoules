@@ -1,0 +1,18 @@
+name: Publish website
+
+on:
+  push:
+    branches: main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Copy README.md as index.md
+        run: cp README.md doc/index.md
+      - name: Deploy website
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
