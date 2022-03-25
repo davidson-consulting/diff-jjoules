@@ -1,4 +1,4 @@
-[back](./documentation.md)
+<a href="{{ ./documentation.md }}/index.html"><i class='fa fa-arrow-left'></i></a>
 
 # Instrumentation
 
