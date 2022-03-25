@@ -2,35 +2,35 @@
 
 Calling this maven plugin will apply the whole process as follows:
 
-1. `test-selection`: select the tests that execute the code changes (this is done by `diff-test-selection`);
-2. [`instrumention`](./instrumentation.md): instrument the selected tests with probes to measure their energy consumption;
-3. [`delta`](./delta.md): computation of the energy consumption delta test-wise (&Delta;SEC(t) = SEC(v2,t) - SEC(v1,t));
-4. [`mark`](./mark.md): apply a strategy to mark as passing :heavy_check_mark: or failing :x: the commit;
-5. [`failer`](./failer.md): instrument the tests that have a positive &Delta, meaning that are consuming energy after applying the commit;
-6. [`suspect`](./suspect.md): run fault localization to rate the modified line according to their suspiciousness;
-7. [`report`](./report.md): generate a readable report;
+1. test-selection: select the tests that execute the code changes (this is done by `diff-test-selection`);
+2. [instrumention](./instrumentation.md): instrument the selected tests with probes to measure their energy consumption;
+3. [delta](./delta.md): computation of the energy consumption delta test-wise (&Delta;SEC(t) = SEC(v2,t) - SEC(v1,t));
+4. [mark](./mark.md): apply a strategy to mark as passing :heavy_check_mark: or failing :x: the commit;
+5. [failer](./failer.md): instrument the tests that have a positive &Delta, meaning that are consuming energy after applying the commit;
+6. [suspect](./suspect.md): run fault localization to rate the modified line according to their suspiciousness;
+7. [report](./report.md): generate a readable report;
 
 For more information, you can view a dedicated README for each step, however, we advise you to **not** run the steps
 individually since they are made to work together.
 
 `Diff-jjoules` offers an extra feature which the mutation of the source code in order to introduce artificial energy
-regression. Please, see the dedicated [`documentation`](./mutation.md) for more information.
+regression. Please, see the dedicated [documentation](./mutation.md) for more information.
 
 ## Approach
 
 The approach is divided into 2 workflows:
 
-For the first workflow, we have the `test-selection`, then the [`instrumention`](./instrumentation.md) and eventually
-the [`delta`](./delta.md) computation as shown in the figure below:
+For the first workflow, we have the `test-selection`, then the [instrumention](./instrumentation.md) and eventually
+the [delta](./delta.md) computation as shown in the figure below:
 
 ![workflow_1](./pictures/workflow_1.png)
 
-For the second workflow, we have the [`mark`](./mark.md) to decide to break the build or not, the [`failer`](./failer.md)
-and eventually [`suspect`](./suspect.md) as shown in the figure below:
+For the second workflow, we have the [mark](./mark.md) to decide to break the build or not, the [failer](./failer.md)
+and eventually [suspect](./suspect.md) as shown in the figure below:
 
 ![workflow_2](./pictures/workflow_2.png)
 
-There is one extra step to [`report`](./report.md) formatted result.
+There is one extra step to [report](./report.md) formatted result.
 
 ## Options
 

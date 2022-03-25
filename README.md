@@ -43,6 +43,8 @@ You can run `diff-jjoules` with the following command line, from **path/v1**, wh
 mvn fr.davidson:diff-jjoules:diff-jjoules-maven -Dpath-dir-second-version=path/v2
 ```
 
+Before running on your own project, wa advise to run the [demo](http://github.com/davidson-consulting/diff-jjoules-demo.git) before.
+
 ## Detailed Documentation
 
 We provide a detailed documentation [here](./doc/documentation.md).

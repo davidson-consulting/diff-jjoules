@@ -1,3 +1,5 @@
+[back](./documentation.md)
+
 # Instrumentation
 
 This plugin aims at instrumenting test cases in order to measure their energy consumption. 
@@ -109,3 +111,5 @@ The `measurements.json` JSON files contain something like:
   }
 }
 ```
+
+[back](./documentation.md)
