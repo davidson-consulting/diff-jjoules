@@ -78,6 +78,9 @@ public class DiffJJoulesMojo extends AbstractMojo {
     @Parameter(property = "path-to-report", defaultValue = ".github/workflows/template.md")
     private String pathToReport;
 
+    @Parameter(property = "should-report", defaultValue = "false")
+    private boolean shouldReport;
+
     @Parameter(property = "measure", defaultValue = "false")
     private boolean measureEnergyConsumption;
 
@@ -96,7 +99,9 @@ public class DiffJJoulesMojo extends AbstractMojo {
             final Configuration configuration = this.getConfiguration();
             final DiffJJoulesStep diffJJoulesStep = this.getStep();
             diffJJoulesStep.run(configuration);
-            diffJJoulesStep.report();
+            if (this.shouldReport) {
+                diffJJoulesStep.report();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

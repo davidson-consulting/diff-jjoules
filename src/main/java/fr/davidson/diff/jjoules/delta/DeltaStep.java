@@ -61,7 +61,7 @@ public class DeltaStep extends DiffJJoulesStep {
 
     private void filterTestMethods(Configuration configuration, Datas dataV1, Datas dataV2, Deltas deltaPerTestMethodName) {
         final Map<String, Boolean> emptyIntersectionPerTestMethodName = dataV1.isEmptyIntersectionPerTestMethodName(dataV2);
-        final Map<String, Set<String>> consideredTestsNames = new HashMap<>();
+        final MethodNamesPerClassNames consideredTestsNames = new MethodNamesPerClassNames();
         for (String key : deltaPerTestMethodName.keySet()) {
             if (emptyIntersectionPerTestMethodName.get(key)) {
                 final String[] split = key.split("#");
