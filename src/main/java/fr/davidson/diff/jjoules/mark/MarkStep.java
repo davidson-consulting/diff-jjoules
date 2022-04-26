@@ -9,13 +9,13 @@ import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.mark.computation.*;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.JSONUtils;
+import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import fr.davidson.diff.jjoules.util.Utils;
 import fr.davidson.diff.jjoules.util.coverage.CoverageComputation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @author Benjamin DANGLOT
@@ -50,7 +50,7 @@ public class MarkStep extends DiffJJoulesStep {
     protected void _run(Configuration configuration) {
         this.configuration = configuration;
         LOGGER.info("Run Mark");
-        final Map<String, Set<String>> consideredTestsNames = configuration.getConsideredTestsNames();
+        final MethodNamesPerClassNames consideredTestsNames = configuration.getConsideredTestsNames();
         final Deltas deltas = configuration.getDeltas();
         final Map<String, Delta> consideredDeltas = new HashMap<>();
         for (String key : deltas.keySet()) {
@@ -60,14 +60,18 @@ public class MarkStep extends DiffJJoulesStep {
             }
         }
         // 1 Compute coverage
-        final List<String> allFullQualifiedNameTestClasses = new ArrayList<>(consideredTestsNames.keySet());
-        final List<String> testMethodNames = consideredTestsNames.values().stream().flatMap(Collection::stream).collect(Collectors.toList());
+        final List<String> fullQualifiedNameTestClasses = new ArrayList<>(consideredTestsNames.keySet());
+        final List<String> testMethodNames = new ArrayList<>();
+        for (String fullQualifiedNameTestClass : fullQualifiedNameTestClasses) {
+            final Set<String> consideredTestMethodNames = consideredTestsNames.get(fullQualifiedNameTestClass);
+            testMethodNames.addAll(consideredTestMethodNames);
+        }
         final Coverage coverageFirstVersion = CoverageComputation.convert(
                 CoverageComputation.getCoverage(
                         this.configuration.getPathToFirstVersion(),
                         this.configuration.getClasspathV1AsString(),
                         this.configuration.isJunit4(),
-                        allFullQualifiedNameTestClasses,
+                        fullQualifiedNameTestClasses,
                         testMethodNames,
                         this.configuration.getWrapper().getBinaries()
                 )
@@ -77,7 +81,7 @@ public class MarkStep extends DiffJJoulesStep {
                         this.configuration.getPathToSecondVersion(),
                         this.configuration.getClasspathV2AsString(),
                         this.configuration.isJunit4(),
-                        allFullQualifiedNameTestClasses,
+                        fullQualifiedNameTestClasses,
                         testMethodNames,
                         this.configuration.getWrapper().getBinaries()
                 )

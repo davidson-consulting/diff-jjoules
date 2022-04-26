@@ -63,6 +63,10 @@ public class SelectionStep extends DiffJJoulesStep {
                 this.configuration.getWrapper().getBinaries()
         );
         final Coverage coverageV2 = CoverageComputation.convert(coverage2);
+
+        JSONUtils.write(Constants.joinFiles(this.configuration.getOutput(), "coverage_v1.json"), coverageV1);
+        JSONUtils.write(Constants.joinFiles(this.configuration.getOutput(), "coverage_v2.json"), coverageV2);
+
         final DiffCoverage coverage = new DiffCoverage();
         final EnhancedDiffTestSelection enhancedDiffTestSelection = new EnhancedDiffTestSelection(
                 configuration.getPathToFirstVersion(),
@@ -72,8 +76,6 @@ public class SelectionStep extends DiffJJoulesStep {
                 coverage,
                 coverageV2
         );
-        JSONUtils.write(Constants.joinFiles(this.configuration.getOutput(), "coverage_v1.json"), coverageV1);
-        JSONUtils.write(Constants.joinFiles(this.configuration.getOutput(), "coverage_v2.json"), coverageV2);
         final MethodNamesPerClassNames testsList = MethodNamesPerClassNames.from(enhancedDiffTestSelection.selectTests());
         final Set<Failure> failures = coverage1.getFailingTests();
         failures.addAll(coverage2.getFailingTests());

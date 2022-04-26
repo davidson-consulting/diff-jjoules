@@ -103,7 +103,7 @@ public class Configuration {
 
     private Deltas deltas;
 
-    private Map<String, Set<String>> consideredTestsNames;
+    private MethodNamesPerClassNames consideredTestsNames;
 
     private ExecsLines execLinesAdditions;
 
@@ -275,7 +275,7 @@ public class Configuration {
     public MethodNamesPerClassNames getTestsList() {
         if (this.testsList == null) {
             this.testsList = CSVFileManager.readFile(
-                    Constants.joinFiles(this.output,  SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES)
+                    Constants.joinFiles(this.output, SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES)
             );
         }
         return testsList;
@@ -352,19 +352,19 @@ public class Configuration {
         this.deltas = deltas;
     }
 
-    public Map<String, Set<String>> getConsideredTestsNames() {
+    public MethodNamesPerClassNames getConsideredTestsNames() {
         if (this.consideredTestsNames == null) {
             try {
-                this.consideredTestsNames = JSONUtils.read(DeltaStep.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME, Map.class);
+                this.consideredTestsNames = JSONUtils.read(DeltaStep.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME, MethodNamesPerClassNames.class);
             } catch (Exception e) {
                 e.printStackTrace();
-                return Collections.emptyMap();
+                return new MethodNamesPerClassNames();
             }
         }
         return consideredTestsNames;
     }
 
-    public void setConsideredTestsNames(Map<String, Set<String>> consideredTestsNames) {
+    public void setConsideredTestsNames(MethodNamesPerClassNames consideredTestsNames) {
         this.consideredTestsNames = consideredTestsNames;
     }
 

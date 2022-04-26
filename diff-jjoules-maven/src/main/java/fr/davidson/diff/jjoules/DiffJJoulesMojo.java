@@ -78,6 +78,9 @@ public class DiffJJoulesMojo extends AbstractMojo {
     @Parameter(property = "path-to-report", defaultValue = ".github/workflows/template.md")
     private String pathToReport;
 
+    @Parameter(property = "should-report", defaultValue = "false")
+    private boolean shouldReport;
+
     @Parameter(property = "measure", defaultValue = "false")
     private boolean measureEnergyConsumption;
 
@@ -93,26 +96,32 @@ public class DiffJJoulesMojo extends AbstractMojo {
             if (this.pathToRepositoryV2 == null || this.pathToRepositoryV2.isEmpty()) {
                 this.pathToRepositoryV2 = this.pathDirSecondVersion;
             }
-            Configuration configuration = new Configuration(
-                    this.project.getBasedir().getAbsolutePath() + "/",
-                    this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.pathDirSecondVersion,
-                    this.iterations,
-                    this.outputPath,
-                    this.pathToRepositoryV1,
-                    this.pathToRepositoryV2,
-                    this.pathToReport,
-                    this.shouldSuspect,
-                    this.shouldMark,
-                    ReportEnum.valueOf(this.reportType),
-                    WrapperEnum.MAVEN,
-                    measureEnergyConsumption
-            );
+            final Configuration configuration = this.getConfiguration();
             final DiffJJoulesStep diffJJoulesStep = this.getStep();
             diffJJoulesStep.run(configuration);
-            diffJJoulesStep.report();
+            if (this.shouldReport) {
+                diffJJoulesStep.report();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    protected Configuration getConfiguration() {
+        return new Configuration(
+                this.project.getBasedir().getAbsolutePath() + "/",
+                this.pathDirSecondVersion == null || this.pathDirSecondVersion.isEmpty() ? "" : this.pathDirSecondVersion,
+                this.iterations,
+                this.outputPath,
+                this.pathToRepositoryV1,
+                this.pathToRepositoryV2,
+                this.pathToReport,
+                this.shouldSuspect,
+                this.shouldMark,
+                ReportEnum.valueOf(this.reportType),
+                WrapperEnum.MAVEN,
+                measureEnergyConsumption
+        );
     }
 
     protected DiffJJoulesStep getStep() {
