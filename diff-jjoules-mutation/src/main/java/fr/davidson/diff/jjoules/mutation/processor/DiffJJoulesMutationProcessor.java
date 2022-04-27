@@ -1,6 +1,5 @@
 package fr.davidson.diff.jjoules.mutation.processor;
 
-import fr.davidson.tlpc.sensor.TLPCSensor;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtCodeSnippetStatement;
 import spoon.reflect.declaration.CtMethod;
