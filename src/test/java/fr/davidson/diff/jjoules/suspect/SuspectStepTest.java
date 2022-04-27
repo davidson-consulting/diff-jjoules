@@ -2,7 +2,7 @@ package fr.davidson.diff.jjoules.suspect;
 
 import fr.davidson.diff.jjoules.AbstractDiffJJoulesStepTest;
 import fr.davidson.diff.jjoules.Configuration;
-import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
+import fr.davidson.diff.jjoules.mark.strategies.original.computation.ExecsLines;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import org.junit.jupiter.api.Test;

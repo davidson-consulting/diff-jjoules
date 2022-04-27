@@ -1,7 +1,7 @@
 package fr.davidson.diff.jjoules.mark;
 
-import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
-import fr.davidson.diff.jjoules.mark.computation.Line;
+import fr.davidson.diff.jjoules.mark.strategies.original.computation.ExecsLines;
+import fr.davidson.diff.jjoules.mark.strategies.original.computation.Line;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;

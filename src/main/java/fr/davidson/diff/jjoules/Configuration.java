@@ -5,8 +5,9 @@ import fr.davidson.diff.jjoules.delta.DeltaStep;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
-import fr.davidson.diff.jjoules.mark.MarkStep;
-import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
+import fr.davidson.diff.jjoules.mark.strategies.MarkStrategyEnum;
+import fr.davidson.diff.jjoules.mark.strategies.original.OriginalStrategy;
+import fr.davidson.diff.jjoules.mark.strategies.original.computation.ExecsLines;
 import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
@@ -52,6 +53,15 @@ public class Configuration {
 
     @CommandLine.Option(names = {"--mark"}, description = "Enable mark step.", defaultValue = "false")
     private boolean shouldMark;
+
+    @CommandLine.Option(
+            names = "--mark-strategy",
+            defaultValue = "ORIGINAL",
+            description = "Specify the mark strategy to be used." +
+                    "Valid values: ${COMPLETION-CANDIDATES}" +
+                    " Default value: ${DEFAULT-VALUE}"
+    )
+    private MarkStrategyEnum markStrategyEnum;
 
     @CommandLine.Option(names = {"--suspect"}, description = "Enable suspect step.", defaultValue = "false")
     private boolean shouldSuspect;
@@ -248,6 +258,10 @@ public class Configuration {
         return pathToReport;
     }
 
+    public MarkStrategyEnum getMarkStrategyEnum() {
+        return this.markStrategyEnum;
+    }
+
     public WrapperEnum getWrapperEnum() {
         return wrapperEnum;
     }
@@ -355,7 +369,7 @@ public class Configuration {
     public MethodNamesPerClassNames getConsideredTestsNames() {
         if (this.consideredTestsNames == null) {
             try {
-                this.consideredTestsNames = JSONUtils.read(DeltaStep.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME, MethodNamesPerClassNames.class);
+                this.consideredTestsNames = JSONUtils.read(OriginalStrategy.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME, MethodNamesPerClassNames.class);
             } catch (Exception e) {
                 e.printStackTrace();
                 return new MethodNamesPerClassNames();
@@ -370,7 +384,7 @@ public class Configuration {
 
     public ExecsLines getExecLinesAdditions() {
         if (this.execLinesAdditions == null) {
-            this.execLinesAdditions = JSONUtils.read(MarkStep.PATH_TO_JSON_EXEC_ADDITIONS, ExecsLines.class);
+            this.execLinesAdditions = JSONUtils.read(OriginalStrategy.PATH_TO_JSON_EXEC_ADDITIONS, ExecsLines.class);
         }
         return execLinesAdditions;
     }
@@ -381,7 +395,7 @@ public class Configuration {
 
     public ExecsLines getExecLinesDeletions() {
         if (this.execLinesDeletions == null) {
-            JSONUtils.read(MarkStep.PATH_TO_JSON_EXEC_DELETION, ExecsLines.class);
+            JSONUtils.read(OriginalStrategy.PATH_TO_JSON_EXEC_DELETION, ExecsLines.class);
         }
         return execLinesDeletions;
     }
@@ -392,7 +406,7 @@ public class Configuration {
 
     public Data getDeltaOmega() {
         if (this.deltaOmega == null) {
-            this.deltaOmega = JSONUtils.read(MarkStep.PATH_TO_JSON_DELTA_OMEGA, Data.class);
+            this.deltaOmega = JSONUtils.read(OriginalStrategy.PATH_TO_JSON_DELTA_OMEGA, Data.class);
         }
         return deltaOmega;
     }

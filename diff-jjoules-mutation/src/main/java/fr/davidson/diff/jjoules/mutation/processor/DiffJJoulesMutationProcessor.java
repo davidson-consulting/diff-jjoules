@@ -1,5 +1,6 @@
 package fr.davidson.diff.jjoules.mutation.processor;
 
+import fr.davidson.tlpc.sensor.TLPCSensor;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtCodeSnippetStatement;
 import spoon.reflect.declaration.CtMethod;
@@ -18,7 +19,7 @@ public class DiffJJoulesMutationProcessor extends AbstractProcessor<CtMethod<?>>
 
     private static final String FULL_QUALIFIED_NAME_CONSUME_METHOD_NAME = "fr.davidson.tlpc.sensor.TLPCSensor.consume";
 
-    private static final String FULL_QUALIFIED_NAME_KEY_ENERGY_CONSUMPTION = "fr.davidson.tlpc.sensor.IndicatorPerLabel.KEY_ENERGY_CONSUMPTION";
+    private static final String FULL_QUALIFIED_NAME_KEY_ENERGY_CONSUMPTION = "fr.davidson.tlpc.sensor.IndicatorPerLabel.KEY_CYCLES";
 
     private long consumption;
 
