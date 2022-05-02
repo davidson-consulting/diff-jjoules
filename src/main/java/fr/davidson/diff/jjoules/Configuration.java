@@ -175,6 +175,7 @@ public class Configuration {
         this.pathToRepositoryV1 = Utils.correctPath(pathToRepositoryV1);
         this.pathToRepositoryV2 = Utils.correctPath(pathToRepositoryV2);
         this.wrapperEnum = wrapperEnum;
+        this.markStrategyEnum = MarkStrategyEnum.ORIGINAL;
         this.measureEnergyConsumption = measureEnergyConsumption;
         init();
     }
