@@ -37,7 +37,6 @@ public class DeltaStepTest extends AbstractDiffJJoulesStepTest {
                 - Data from V1
                 - Data from V2
                 - Deltas computed from the Data from V1 and the Data from V2
-                - The list of methods to be considered
          */
         final Configuration configuration = this.getConfiguration();
 
@@ -59,11 +58,9 @@ public class DeltaStepTest extends AbstractDiffJJoulesStepTest {
         assertTrue(configuration.getDataV1().isEmpty());
         assertTrue(configuration.getDataV2().isEmpty());
         assertTrue(configuration.getDeltas().isEmpty());
-        assertTrue(configuration.getConsideredTestsNames().isEmpty());
         new DeltaStep()._run(configuration);
         assertFalse(configuration.getDataV1().isEmpty());
         assertFalse(configuration.getDataV2().isEmpty());
         assertFalse(configuration.getDeltas().isEmpty());
-        assertFalse(configuration.getConsideredTestsNames().isEmpty());
     }
 }
