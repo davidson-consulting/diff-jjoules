@@ -7,7 +7,9 @@ import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Delta;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
+import fr.davidson.diff.jjoules.report.ReportStep;
 import fr.davidson.tlpc.sensor.IndicatorPerLabel;
+import fr.davidson.tlpc.sensor.Report;
 import fr.davidson.tlpc.sensor.TLPCSensor;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +18,6 @@ import java.io.FileReader;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static fr.davidson.diff.jjoules.delta.MeasureEnergyConsumption.*;
 import static fr.davidson.diff.jjoules.util.Constants.NEW_LINE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -26,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * benjamin.danglot@davidson.fr
  * on 26/11/2021
  */
-public class MarkdownStepTest extends AbstractDiffJJoulesStepTest {
+public class MarkdownReportTest extends AbstractDiffJJoulesStepTest {
 
     @Test
     void test() throws Exception{
@@ -80,7 +81,7 @@ public class MarkdownStepTest extends AbstractDiffJJoulesStepTest {
         scorePerLineV1.put("fr.davidson.Example#exampleMethod#10", 1.0);
         configuration.setScorePerLineV1(scorePerLineV1);
         configuration.setScorePerLineV2(scorePerLineV1);
-        new MarkdownStep()._run(configuration);
+        new ReportStep().run(configuration);
         try(final BufferedReader reader = new BufferedReader(new FileReader("target/report.md"))) {
             assertEquals(EXPECTED_REPORT, reader.lines().collect(Collectors.joining(NEW_LINE)));
         }

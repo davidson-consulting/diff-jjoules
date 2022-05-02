@@ -1,18 +1,16 @@
-package fr.davidson.diff.jjoules.report.markdown;
+package fr.davidson.diff.jjoules.report;
 
 import fr.davidson.diff.jjoules.DiffJJoulesMojo;
 import fr.davidson.diff.jjoules.DiffJJoulesStep;
-import org.apache.maven.plugins.annotations.Mojo;
 
 /**
  * @author Benjamin DANGLOT
  * benjamin.danglot@davidson.fr
- * on 25/06/2021
+ * on 02/05/2022
  */
-@Mojo(name = "markdown")
-public class MarkdownMojo extends DiffJJoulesMojo {
+public class ReportMojo extends DiffJJoulesMojo {
     @Override
     protected DiffJJoulesStep getStep() {
-        return new MarkdownStep();
+        return new ReportStep();
     }
 }

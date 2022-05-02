@@ -60,6 +60,9 @@ public class DiffJJoulesStep {
                 this.testFailingInstrumentation();
                 this.testSuspicious();
             }
+            if (this.configuration.isShouldReport()) {
+                this.report();
+            }
         }
     }
 
@@ -106,8 +109,8 @@ public class DiffJJoulesStep {
         this.runDiffJJoulesStep(new SuspectStep(), "Something went wrong during suspect");
     }
 
-    public void report() {
-        this.configuration.getReportEnum().get().run(configuration);
+    private void report() {
+        this.configuration.getReportEnum().get().report(configuration);
     }
 
     private void resetAndCleanBothVersion() {

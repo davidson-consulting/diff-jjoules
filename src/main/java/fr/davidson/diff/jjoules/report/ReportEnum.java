@@ -1,8 +1,7 @@
 package fr.davidson.diff.jjoules.report;
 
-import fr.davidson.diff.jjoules.Configuration;
-import fr.davidson.diff.jjoules.DiffJJoulesStep;
-import fr.davidson.diff.jjoules.report.markdown.MarkdownStep;
+import fr.davidson.diff.jjoules.report.markdown.MarkdownReport;
+import fr.davidson.diff.jjoules.report.textual.TextualReport;
 
 /**
  * @author Benjamin DANGLOT
@@ -10,33 +9,23 @@ import fr.davidson.diff.jjoules.report.markdown.MarkdownStep;
  * on 17/09/2021
  */
 public enum ReportEnum {
-    TXT() {
+    TEXTUAL() {
         @Override
-        public DiffJJoulesStep get() {
-            return new DiffJJoulesStep() {
-                @Override
-                public void run(Configuration configuration) {
-                    // TODO to be implemented
-                }
-            };
+        public Report get() {
+            return new TextualReport();
         }
     },
     MARKDOWN() {
         @Override
-        public DiffJJoulesStep get() {
-            return new MarkdownStep();
+        public Report get() {
+            return new MarkdownReport();
         }
     },
     NONE() {
         @Override
-        public DiffJJoulesStep get() {
-            return new DiffJJoulesStep() {
-                @Override
-                public void run(Configuration configuration) {
-                    // Nothing to do
-                }
-            };
+        public Report get() {
+            return new NoneReport();
         }
     };
-    public abstract DiffJJoulesStep get();
+    public abstract Report get();
 }
