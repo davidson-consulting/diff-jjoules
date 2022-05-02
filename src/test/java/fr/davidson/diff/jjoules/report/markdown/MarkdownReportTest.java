@@ -7,6 +7,7 @@ import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Delta;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
+import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.report.ReportStep;
 import fr.davidson.tlpc.sensor.IndicatorPerLabel;
 import fr.davidson.tlpc.sensor.Report;
@@ -34,6 +35,8 @@ public class MarkdownReportTest extends AbstractDiffJJoulesStepTest {
         final String testName2 = "fr.davidson.diff_jjoules_demo.InternalListTest#testCount2";
         final String testName1 = "fr.davidson.diff_jjoules_demo.InternalListTest#testCount";
         final Configuration configuration = this.getConfiguration();
+        configuration.setReportEnum(ReportEnum.MARKDOWN);
+
         final Deltas deltas = new Deltas();
         final Data dataV1 = new Data(10, 10, 10, 10, 10, 10, 10, 10);
         final Data dataV2 = new Data(100, 100, 100, 100, 100, 100, 100, 100);
@@ -81,6 +84,7 @@ public class MarkdownReportTest extends AbstractDiffJJoulesStepTest {
         scorePerLineV1.put("fr.davidson.Example#exampleMethod#10", 1.0);
         configuration.setScorePerLineV1(scorePerLineV1);
         configuration.setScorePerLineV2(scorePerLineV1);
+        configuration.setShouldSuspect(true);
         new ReportStep().run(configuration);
         try(final BufferedReader reader = new BufferedReader(new FileReader("target/report.md"))) {
             assertEquals(EXPECTED_REPORT, reader.lines().collect(Collectors.joining(NEW_LINE)));
@@ -126,15 +130,6 @@ public class MarkdownReportTest extends AbstractDiffJJoulesStepTest {
             "| Line | Score |" + NEW_LINE +
             "| --- | --- |" + NEW_LINE +
             "| fr.davidson.Example#exampleMethod#10 | 1.0 |" + NEW_LINE +
-            "| fr.davidson.Example#exampleMethod#5 | 0.5 |" + NEW_LINE +
-            "" + NEW_LINE +
-            "" + NEW_LINE +
-            "## Diff-JJoules Consumption" + NEW_LINE +
-            "" + NEW_LINE +
-            "" + NEW_LINE +
-            "| Step | Energy(&mu;J) | Instruction | Durations(ms) |" + NEW_LINE +
-            "| --- | --- | --- | --- |" + NEW_LINE +
-            "| ownConsumptionReport | 100000 | 100000 | 100000 |" + NEW_LINE +
-            "| Diff-Jjoules | 100000 | 100000 | 100000 |";
+            "| fr.davidson.Example#exampleMethod#5 | 0.5 |";
 
 }

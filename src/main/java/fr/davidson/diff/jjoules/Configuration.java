@@ -281,12 +281,24 @@ public class Configuration {
         return diff;
     }
 
+    public void setReportEnum(ReportEnum reportEnum) {
+        this.reportEnum = reportEnum;
+    }
+
     public ReportEnum getReportEnum() {
         return reportEnum;
     }
 
     public Wrapper getWrapper() {
         return this.wrapper;
+    }
+
+    public void setShouldSuspect(boolean shouldSuspect) {
+        this.shouldSuspect = shouldSuspect;
+    }
+
+    public void setMeasureEnergyConsumption(boolean measureEnergyConsumption) {
+        this.measureEnergyConsumption = measureEnergyConsumption;
     }
 
     public boolean isMeasureEnergyConsumption() {

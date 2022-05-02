@@ -46,8 +46,12 @@ public class MarkdownReport implements Report {
         final Data rawDeltaData = splitDataAndBuildReport(deltas, emptyIntersectionPerTestMethodName, reportPerTestClassPerTestMethod, consideredDelta, unconsideredDelta);
         addDeltaPerTest(report, reportPerTestClassPerTestMethod);
         addDeltaOmega(report, rawDeltaData, deltaOmega, consideredDelta, unconsideredDelta, deltas, dataV1, dataV2);
-        suspiciousLines(configuration, report);
-        ownConsumption(configuration, report);
+        if (configuration.isShouldSuspect()) {
+            suspiciousLines(configuration, report);
+        }
+        if (configuration.isMeasureEnergyConsumption()) {
+            ownConsumption(configuration, report);
+        }
         LOGGER.info("{}", report);
         writeReport(report, configuration);
     }
