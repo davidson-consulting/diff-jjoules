@@ -1,16 +1,13 @@
 package fr.davidson.diff.jjoules.mark;
 
 import eu.stamp_project.diff_test_selection.coverage.Coverage;
-import fr.davidson.diff.jjoules.mark.computation.Exec;
-import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
+import fr.davidson.diff.jjoules.mark.strategies.original.computation.Exec;
+import fr.davidson.diff.jjoules.mark.strategies.original.computation.ExecsLines;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

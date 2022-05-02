@@ -26,8 +26,6 @@ public class DeltaStep extends DiffJJoulesStep {
 
     public static final String PATH_TO_JSON_DELTA = "deltas.json";
 
-    public static final String PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME = "consideredTestMethods.json";
-
     private static final Logger LOGGER = LoggerFactory.getLogger(DeltaStep.class);
 
     protected String getReportPathname() {
@@ -56,26 +54,7 @@ public class DeltaStep extends DiffJJoulesStep {
         configuration.setDataV2(dataV2);
         JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_DELTA, deltas);
         configuration.setDeltas(deltas);
-        filterTestMethods(configuration, dataV1, dataV2, deltas);
     }
 
-    private void filterTestMethods(Configuration configuration, Datas dataV1, Datas dataV2, Deltas deltaPerTestMethodName) {
-        final Map<String, Boolean> emptyIntersectionPerTestMethodName = dataV1.isEmptyIntersectionPerTestMethodName(dataV2);
-        final MethodNamesPerClassNames consideredTestsNames = new MethodNamesPerClassNames();
-        for (String key : deltaPerTestMethodName.keySet()) {
-            if (emptyIntersectionPerTestMethodName.get(key)) {
-                final String[] split = key.split("#");
-                if (!consideredTestsNames.containsKey(split[0])) {
-                    consideredTestsNames.put(split[0], new HashSet<>());
-                }
-                consideredTestsNames.get(split[0]).add(split[1]);
-            }
-        }
-        JSONUtils.write(
-                configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME,
-                consideredTestsNames
-        );
-        configuration.setConsideredTestsNames(consideredTestsNames);
-    }
 
 }

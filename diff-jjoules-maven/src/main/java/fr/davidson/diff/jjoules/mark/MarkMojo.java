@@ -10,8 +10,6 @@ import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
-import java.util.Map;
-
 /**
  * @author Benjamin DANGLOT
  * benjamin.danglot@davidson.fr
@@ -23,7 +21,7 @@ public class MarkMojo extends DiffJJoulesMojo {
     /**
      * Specify the path to json file containing the considered test method names
      */
-    @Parameter(property = "path-considered-test-method", required = false, defaultValue = DeltaStep.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME)
+    @Parameter(property = "path-considered-test-method", required = false, defaultValue = MarkStep.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME)
     protected String pathConsideredTestMethod;
 
     /**

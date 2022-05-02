@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.mark.computation;
+package fr.davidson.diff.jjoules.mark.strategies.original.computation;
 
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Delta;

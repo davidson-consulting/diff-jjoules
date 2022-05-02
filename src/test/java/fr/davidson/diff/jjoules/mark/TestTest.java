@@ -3,7 +3,7 @@ package fr.davidson.diff.jjoules.mark;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Delta;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
-import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
+import fr.davidson.diff.jjoules.mark.strategies.original.computation.ExecsLines;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import org.junit.jupiter.api.Test;
 
@@ -37,7 +37,7 @@ public class TestTest {
         execLineList.add(JSONUtils.read("src/test/resources/json/exec_deletions.json", ExecsLines.class));
         execLineList.add(JSONUtils.read("src/test/resources/json/exec_additions.json", ExecsLines.class));
 
-        final Map<String, Double> actual = fr.davidson.diff.jjoules.mark.computation.Test.computeOmegaT(execLineList, phiL);
+        final Map<String, Double> actual = fr.davidson.diff.jjoules.mark.strategies.original.computation.Test.computeOmegaT(execLineList, phiL);
 
         final Map<String, Double> oracle =
                 new HashMap<String, Double>() {
@@ -70,7 +70,7 @@ public class TestTest {
                 new Data(100, 100, 100, 100, 100, 100, 100, 100)
         );
         deltaT.put("fr.davidson.diff_jjoules_demo.InternalListTest#testMapEmptyList", delta);
-        final Map<String, Data> actual = fr.davidson.diff.jjoules.mark.computation.Test.computeOmegaUpperT(omegaT, deltaT);
+        final Map<String, Data> actual = fr.davidson.diff.jjoules.mark.strategies.original.computation.Test.computeOmegaUpperT(omegaT, deltaT);
         assertTrue(actual.containsKey("fr.davidson.diff_jjoules_demo.InternalListTest#testMapEmptyList"));
         assertEquals(191.84210526315792, actual.get("fr.davidson.diff_jjoules_demo.InternalListTest#testMapEmptyList").energy);
     }

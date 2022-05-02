@@ -3,11 +3,13 @@ package fr.davidson.diff.jjoules.mark;
 import fr.davidson.diff.jjoules.AbstractDiffJJoulesStepTest;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Data;
+import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Delta;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,13 +40,19 @@ public class MarkStepTest extends AbstractDiffJJoulesStepTest {
         final MarkStep markStep = new MarkStep();
         final Configuration configuration = this.getConfiguration();
         configuration.setConsideredTestsNames(configuration.getTestsList());
+        final Datas datasV1 = new Datas();
+        final Data dataV1 = new Data(10, 10, 10, 10, 10, 10, 10, 10);
+        datasV1.put("fr.davidson.diff_jjoules_demo.InternalListTest#testCount", Collections.singletonList(dataV1));
+        configuration.setDataV1(datasV1);
+        final Datas datasV2 = new Datas();
+        final Data dataV2 = new Data(100, 100, 100, 100, 100, 100, 100, 100);
+        datasV2.put("fr.davidson.diff_jjoules_demo.InternalListTest#testCount", Collections.singletonList(dataV2));
+        configuration.setDataV2(datasV2);
         final Deltas deltas = new Deltas();
-        final Delta delta = new Delta(
-                new Data(10, 10, 10, 10, 10, 10, 10, 10),
-                new Data(100, 100, 100, 100, 100, 100, 100, 100)
-        );
+        final Delta delta = new Delta(dataV1,dataV2);
         deltas.put("fr.davidson.diff_jjoules_demo.InternalListTest#testCount", delta);
         configuration.setDeltas(deltas);
+
         assertFalse(new File(DIFF_JJOULES_FOLDER_PATH + "/coverage_first.json").exists());
         assertFalse(new File(DIFF_JJOULES_FOLDER_PATH + "/coverage_second.json").exists());
         assertFalse(new File(DIFF_JJOULES_FOLDER_PATH + "/exec_deletions.json").exists());

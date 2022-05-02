@@ -2,8 +2,8 @@ package fr.davidson.diff.jjoules.suspect;
 
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.DiffJJoulesStep;
-import fr.davidson.diff.jjoules.mark.computation.ExecLineTestMap;
-import fr.davidson.diff.jjoules.mark.computation.ExecsLines;
+import fr.davidson.diff.jjoules.mark.strategies.original.computation.ExecLineTestMap;
+import fr.davidson.diff.jjoules.mark.strategies.original.computation.ExecsLines;
 import fr.davidson.diff.jjoules.suspect.fl.FlacocoRunner;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.FullQualifiedName;

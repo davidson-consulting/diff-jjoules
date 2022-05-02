@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.mark.computation;
+package fr.davidson.diff.jjoules.mark.strategies.original.computation;
 
 import eu.stamp_project.diff_test_selection.coverage.Coverage;
 import eu.stamp_project.diff_test_selection.diff.ModifiedLinesTool;

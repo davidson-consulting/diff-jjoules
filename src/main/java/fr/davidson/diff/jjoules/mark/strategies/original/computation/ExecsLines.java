@@ -1,4 +1,4 @@
-package fr.davidson.diff.jjoules.mark.computation;
+package fr.davidson.diff.jjoules.mark.strategies.original.computation;
 
 import java.util.ArrayList;
 
