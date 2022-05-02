@@ -289,8 +289,9 @@ public class Configuration {
 
     public MethodNamesPerClassNames getTestsList() {
         if (this.testsList == null) {
-            this.testsList = CSVFileManager.readFile(
-                    Constants.joinFiles(this.output, SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES)
+            this.testsList = JSONUtils.read(
+                    Constants.joinFiles(this.output, SelectionStep.JSON_SELECTED_TEST_PATHNAME),
+                    MethodNamesPerClassNames.class
             );
         }
         return testsList;

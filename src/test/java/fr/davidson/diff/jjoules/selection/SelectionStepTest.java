@@ -26,6 +26,6 @@ public class SelectionStepTest extends AbstractDiffJJoulesStepTest {
         assertTrue(configuration.getTestsList().isEmpty());
         new SelectionStep()._run(configuration);
         assertEquals(1, configuration.getTestsList().get("fr.davidson.diff_jjoules_demo.InternalListTest").size());
-        assertTrue(new File(Constants.joinFiles(configuration.getOutput(), SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES)).exists());
+        assertTrue(new File(Constants.joinFiles(configuration.getOutput(), SelectionStep.JSON_SELECTED_TEST_PATHNAME)).exists());
     }
 }

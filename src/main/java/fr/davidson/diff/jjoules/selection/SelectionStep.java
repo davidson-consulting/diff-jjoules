@@ -28,7 +28,7 @@ public class SelectionStep extends DiffJJoulesStep {
 
     public static final String JSON_REPORT_FAILURE_PATHNAME = "test_failures.json";
 
-    public static final String PATH_TO_CSV_TESTS_EXEC_CHANGES = "testsThatExecuteTheChange.csv";
+    public static final String JSON_SELECTED_TEST_PATHNAME = "selected_tests.json";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SelectionStep.class);
 
@@ -85,9 +85,9 @@ public class SelectionStep extends DiffJJoulesStep {
             }
         }
         outputFailures(failures);
-        CSVFileManager.writeFile(
-                Constants.joinFiles(this.configuration.getOutput(), SelectionStep.PATH_TO_CSV_TESTS_EXEC_CHANGES),
-                CSVFileManager.formatTestListsToCSVLines(testsList)
+        JSONUtils.write(
+                Constants.joinFiles(this.configuration.getOutput(), SelectionStep.JSON_SELECTED_TEST_PATHNAME),
+                testsList
         );
         this.configuration.setTestsList(testsList);
     }
