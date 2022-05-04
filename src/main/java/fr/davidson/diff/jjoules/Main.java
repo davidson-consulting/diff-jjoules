@@ -13,7 +13,6 @@ public class Main {
         final Configuration configuration = parse(args);
         final DiffJJoulesStep diffJJoulesStep = new DiffJJoulesStep();
         diffJJoulesStep.run(configuration);
-        diffJJoulesStep.report();
     }
 
     public static Configuration parse(String[] args) {

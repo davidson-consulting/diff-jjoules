@@ -99,9 +99,6 @@ public class DiffJJoulesMojo extends AbstractMojo {
             final Configuration configuration = this.getConfiguration();
             final DiffJJoulesStep diffJJoulesStep = this.getStep();
             diffJJoulesStep.run(configuration);
-            if (this.shouldReport) {
-                diffJJoulesStep.report();
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -118,6 +115,7 @@ public class DiffJJoulesMojo extends AbstractMojo {
                 this.pathToReport,
                 this.shouldSuspect,
                 this.shouldMark,
+                this.shouldReport,
                 ReportEnum.valueOf(this.reportType),
                 WrapperEnum.MAVEN,
                 measureEnergyConsumption

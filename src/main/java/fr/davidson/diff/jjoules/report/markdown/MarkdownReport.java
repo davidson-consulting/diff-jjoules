@@ -1,12 +1,12 @@
 package fr.davidson.diff.jjoules.report.markdown;
 
 import fr.davidson.diff.jjoules.Configuration;
-import fr.davidson.diff.jjoules.DiffJJoulesStep;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Delta;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationStep;
+import fr.davidson.diff.jjoules.report.Report;
 import fr.davidson.tlpc.sensor.IndicatorPerLabel;
 import fr.davidson.tlpc.sensor.IndicatorsPerIdentifier;
 import fr.davidson.tlpc.sensor.TLPCSensor;
@@ -26,18 +26,13 @@ import java.util.stream.Collectors;
  * benjamin.danglot@davidson.fr
  * on 06/10/2021
  */
-public class MarkdownStep extends DiffJJoulesStep {
+public class MarkdownReport implements Report {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(InstrumentationStep.class);
 
-    protected String getReportPathname() {
-        return "markdown_mojo";
-    }
-
     @Override
-    protected void _run(Configuration configuration) {
-        this.configuration = configuration;
-        LOGGER.info("Run Markdown - {}", configuration.toString());
+    public void report(Configuration configuration) {
+        LOGGER.info("Run Markdown Report - {}", configuration.toString());
         final Deltas deltas = configuration.getDeltas();
         final Data deltaOmega = configuration.getDeltaOmega();
         final Datas dataV1 = configuration.getDataV1();
@@ -50,8 +45,12 @@ public class MarkdownStep extends DiffJJoulesStep {
         final Data rawDeltaData = splitDataAndBuildReport(deltas, emptyIntersectionPerTestMethodName, reportPerTestClassPerTestMethod, consideredDelta, unconsideredDelta);
         addDeltaPerTest(report, reportPerTestClassPerTestMethod);
         addDeltaOmega(report, rawDeltaData, deltaOmega, consideredDelta, unconsideredDelta, deltas, dataV1, dataV2);
-        suspiciousLines(configuration, report);
-        ownConsumption(configuration, report);
+        if (configuration.isShouldSuspect()) {
+            suspiciousLines(configuration, report);
+        }
+        if (configuration.isMeasureEnergyConsumption()) {
+            ownConsumption(configuration, report);
+        }
         LOGGER.info("{}", report);
         writeReport(report, configuration);
     }

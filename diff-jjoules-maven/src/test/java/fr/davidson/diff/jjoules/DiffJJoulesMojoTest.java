@@ -28,7 +28,7 @@ public class DiffJJoulesMojoTest {
                     new File("src/test/resources/diff-jjoules-demo-v2/").getAbsolutePath(),
                     5,
                     "src/test/java/fr/davidson/diff/jjoules/delta/MeasureEnergyConsumptionTest.java",
-                    "", "", "", true, true,
+                    "", "", "", true, true, true,
                     ReportEnum.NONE,
                     WrapperEnum.MAVEN,
                     false

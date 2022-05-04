@@ -78,9 +78,12 @@ public class Configuration {
     )
     private WrapperEnum wrapperEnum;
 
+    @CommandLine.Option(names = {"--report"}, description = "Enable report step (the mark step must be enabled).", defaultValue = "false")
+    private boolean shouldReport;
+
     @CommandLine.Option(
-            names = "--report",
-            defaultValue = "TXT",
+            names = "--report-type",
+            defaultValue = "TEXTUAL",
             description = "Specify the report type to produce." +
                     "Valid values: ${COMPLETION-CANDIDATES}" +
                     " Default value: ${DEFAULT-VALUE}"
@@ -145,6 +148,7 @@ public class Configuration {
                 "target/report.md",
                 true,
                 shouldMark,
+                shouldMark,
                 ReportEnum.NONE,
                 WrapperEnum.MAVEN,
                 false
@@ -160,12 +164,14 @@ public class Configuration {
                          String pathToReport,
                          boolean shouldSuspect,
                          boolean shouldMark,
+                         boolean shouldReport,
                          ReportEnum reportEnum,
                          WrapperEnum wrapperEnum,
                          boolean measureEnergyConsumption
     ) {
         this.shouldSuspect = shouldSuspect;
         this.shouldMark = shouldMark;
+        this.shouldReport = shouldReport;
         this.reportEnum = reportEnum;
         this.pathToReport = pathToReport;
         this.pathToFirstVersion = Utils.correctPath(pathToFirstVersion);
@@ -251,6 +257,10 @@ public class Configuration {
         return shouldMark;
     }
 
+    public boolean isShouldReport() {
+        return this.shouldReport;
+    }
+
     public boolean isShouldSuspect() {
         return shouldSuspect;
     }
@@ -271,12 +281,24 @@ public class Configuration {
         return diff;
     }
 
+    public void setReportEnum(ReportEnum reportEnum) {
+        this.reportEnum = reportEnum;
+    }
+
     public ReportEnum getReportEnum() {
         return reportEnum;
     }
 
     public Wrapper getWrapper() {
         return this.wrapper;
+    }
+
+    public void setShouldSuspect(boolean shouldSuspect) {
+        this.shouldSuspect = shouldSuspect;
+    }
+
+    public void setMeasureEnergyConsumption(boolean measureEnergyConsumption) {
+        this.measureEnergyConsumption = measureEnergyConsumption;
     }
 
     public boolean isMeasureEnergyConsumption() {
