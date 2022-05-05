@@ -6,6 +6,7 @@ import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Delta;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
+import fr.davidson.diff.jjoules.mark.filters.TestFilter;
 import fr.davidson.diff.jjoules.mark.strategies.MarkStrategy;
 import fr.davidson.diff.jjoules.mark.strategies.original.computation.Exec;
 import fr.davidson.diff.jjoules.mark.strategies.original.computation.ExecsLines;
@@ -25,8 +26,6 @@ import java.util.*;
  * on 27/04/2022
  */
 public class OriginalStrategy implements MarkStrategy {
-
-    public static final String PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME = "consideredTestMethods.json";
 
     public static final String PATH_TO_JSON_COVERAGE_FIRST = "coverage_first.json";
 
@@ -57,7 +56,7 @@ public class OriginalStrategy implements MarkStrategy {
             }
         }
         JSONUtils.write(
-                configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME,
+                configuration.getOutput() + Constants.FILE_SEPARATOR + TestFilter.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME,
                 consideredTestsNames
         );
         configuration.setConsideredTestsNames(consideredTestsNames);

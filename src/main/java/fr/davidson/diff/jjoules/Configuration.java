@@ -5,6 +5,7 @@ import fr.davidson.diff.jjoules.delta.DeltaStep;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
+import fr.davidson.diff.jjoules.mark.filters.TestFilter;
 import fr.davidson.diff.jjoules.mark.strategies.MarkStrategyEnum;
 import fr.davidson.diff.jjoules.mark.strategies.original.OriginalStrategy;
 import fr.davidson.diff.jjoules.mark.strategies.original.computation.ExecsLines;
@@ -393,7 +394,7 @@ public class Configuration {
     public MethodNamesPerClassNames getConsideredTestsNames() {
         if (this.consideredTestsNames == null) {
             try {
-                this.consideredTestsNames = JSONUtils.read(OriginalStrategy.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME, MethodNamesPerClassNames.class);
+                this.consideredTestsNames = JSONUtils.read(TestFilter.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME, MethodNamesPerClassNames.class);
             } catch (Exception e) {
                 e.printStackTrace();
                 return new MethodNamesPerClassNames();
