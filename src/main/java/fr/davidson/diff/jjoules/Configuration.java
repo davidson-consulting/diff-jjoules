@@ -299,6 +299,10 @@ public class Configuration {
         return pathToReport;
     }
 
+    public void setMarkStrategyEnum(MarkStrategyEnum markStrategyEnum) {
+        this.markStrategyEnum = markStrategyEnum;
+    }
+
     public MarkStrategyEnum getMarkStrategyEnum() {
         return this.markStrategyEnum;
     }
