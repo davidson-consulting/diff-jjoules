@@ -1,6 +1,7 @@
 package fr.davidson.diff.jjoules;
 
 import fr.davidson.diff.jjoules.Configuration;
+import fr.davidson.diff.jjoules.mark.filters.TestFilterEnum;
 import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,6 +31,7 @@ public class DiffJJoulesMojoTest {
                     "src/test/java/fr/davidson/diff/jjoules/delta/MeasureEnergyConsumptionTest.java",
                     "", "", "", true, true, true,
                     ReportEnum.NONE,
+                    TestFilterEnum.ALL,
                     WrapperEnum.MAVEN,
                     false
             );

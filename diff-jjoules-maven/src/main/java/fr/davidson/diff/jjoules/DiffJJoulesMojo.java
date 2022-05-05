@@ -1,5 +1,6 @@
 package fr.davidson.diff.jjoules;
 
+import fr.davidson.diff.jjoules.mark.filters.TestFilterEnum;
 import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 import org.apache.maven.plugin.AbstractMojo;
@@ -117,6 +118,7 @@ public class DiffJJoulesMojo extends AbstractMojo {
                 this.shouldMark,
                 this.shouldReport,
                 ReportEnum.valueOf(this.reportType),
+                TestFilterEnum.ALL,
                 WrapperEnum.MAVEN,
                 measureEnergyConsumption
         );
