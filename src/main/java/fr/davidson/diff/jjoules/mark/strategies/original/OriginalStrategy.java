@@ -63,7 +63,7 @@ public class OriginalStrategy implements MarkStrategy {
     }
 
     @Override
-    public void applyStrategy(Configuration configuration, Datas dataV1, Datas dataV2, Deltas deltas) {
+    public void applyStrategy(Configuration configuration, Datas dataV1, Datas dataV2, Deltas deltas, MethodNamesPerClassNames consideredTest) {
         filterTestMethods(configuration, dataV1, dataV2, deltas);
         final MethodNamesPerClassNames consideredTestsNames = configuration.getConsideredTestsNames();
         final Map<String, Delta> consideredDeltas = new HashMap<>();

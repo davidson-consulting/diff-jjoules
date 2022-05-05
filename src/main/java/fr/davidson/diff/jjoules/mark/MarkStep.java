@@ -4,6 +4,7 @@ import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.DiffJJoulesStep;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
+import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,11 +28,15 @@ public class MarkStep extends DiffJJoulesStep {
         final Datas dataV1 = this.configuration.getDataV1();
         final Datas dataV2 = this.configuration.getDataV2();
         final Deltas deltas = this.configuration.getDeltas();
+        final MethodNamesPerClassNames consideredTest = this.configuration.getTestFilterEnum().get().filter(
+                this.configuration, dataV1, dataV2, deltas
+        );
         this.configuration.getMarkStrategyEnum().getStrategy().applyStrategy(
                 this.configuration,
                 dataV1,
                 dataV2,
-                deltas
+                deltas,
+                consideredTest
         );
     }
 

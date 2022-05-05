@@ -6,6 +6,7 @@ import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.mark.filters.TestFilter;
+import fr.davidson.diff.jjoules.mark.filters.TestFilterEnum;
 import fr.davidson.diff.jjoules.mark.strategies.MarkStrategyEnum;
 import fr.davidson.diff.jjoules.mark.strategies.original.OriginalStrategy;
 import fr.davidson.diff.jjoules.mark.strategies.original.computation.ExecsLines;
@@ -92,6 +93,15 @@ public class Configuration {
     private ReportEnum reportEnum;
 
     @CommandLine.Option(
+            names = "--test-filter-type",
+            defaultValue = "ALL",
+            description = "Specify the test filter to use for marking." +
+                    "Valid values: ${COMPLETION-CANDIDATES}" +
+                    " Default value: ${DEFAULT-VALUE}"
+    )
+    private TestFilterEnum testFilterEnum;
+
+    @CommandLine.Option(
             names = "--measure",
             defaultValue = "false",
             description = "Enable the energy consumption measurements of Diff-JJoules" +
@@ -151,6 +161,7 @@ public class Configuration {
                 shouldMark,
                 shouldMark,
                 ReportEnum.NONE,
+                TestFilterEnum.ALL,
                 WrapperEnum.MAVEN,
                 false
         );
@@ -167,9 +178,11 @@ public class Configuration {
                          boolean shouldMark,
                          boolean shouldReport,
                          ReportEnum reportEnum,
+                         TestFilterEnum testFilterEnum,
                          WrapperEnum wrapperEnum,
                          boolean measureEnergyConsumption
     ) {
+        this.testFilterEnum = testFilterEnum;
         this.shouldSuspect = shouldSuspect;
         this.shouldMark = shouldMark;
         this.shouldReport = shouldReport;
@@ -221,6 +234,8 @@ public class Configuration {
         this.classpathV2 = this.classpathV2AsString.split(Constants.PATH_SEPARATOR);
         this.junit4 = !classpathV1AsString.contains("junit-jupiter-engine-5") && (classpathV1AsString.contains("junit-4") || classpathV1AsString.contains("junit-3"));
     }
+
+
 
     public String getPathToFirstVersion() {
         return pathToFirstVersion;
@@ -280,6 +295,14 @@ public class Configuration {
 
     public String getDiff() {
         return diff;
+    }
+
+    public TestFilterEnum getTestFilterEnum() {
+        return testFilterEnum;
+    }
+
+    public void setTestFilterEnum(TestFilterEnum testFilterEnum) {
+        this.testFilterEnum = testFilterEnum;
     }
 
     public void setReportEnum(ReportEnum reportEnum) {
