@@ -109,6 +109,14 @@ public class Configuration {
     )
     private boolean measureEnergyConsumption;
 
+    @CommandLine.Option(
+            names = "--cohen-s-d",
+            defaultValue = "0.8",
+            description = "Specify the threshold of the Cohen's D" +
+                    " Default value: ${DEFAULT-VALUE}"
+    )
+    private double cohensD;
+
     private String diff;
 
     private String[] classpathV1;
@@ -235,7 +243,13 @@ public class Configuration {
         this.junit4 = !classpathV1AsString.contains("junit-jupiter-engine-5") && (classpathV1AsString.contains("junit-4") || classpathV1AsString.contains("junit-3"));
     }
 
+    public double getCohensD() {
+        return cohensD;
+    }
 
+    public void setCohensD(double cohensD) {
+        this.cohensD = cohensD;
+    }
 
     public String getPathToFirstVersion() {
         return pathToFirstVersion;

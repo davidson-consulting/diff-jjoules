@@ -36,7 +36,7 @@ public class StudentsTTestFilter extends AbstractTestFilter {
                 }
                 final double cohensD = this.computeCohensD(cyclesV1, cyclesV2);
                 final double pvalue = tTest.t(cyclesV1, cyclesV2);
-                if (pvalue <= 0.05 && cohensD >= 0.8) {
+                if (pvalue <= 0.05 && cohensD >= configuration.getCohensD()) {
                     final FullQualifiedName fullQualifiedName = FullQualifiedName.fromString(testNameV1);
                     if (!consideredTestMethod.containsKey(fullQualifiedName.className)) {
                         consideredTestMethod.put(fullQualifiedName.className, new HashSet<>());
