@@ -28,7 +28,12 @@ public abstract class AbstractMarkStrategyTest {
     public boolean runStrategy(Datas dataV1,
                                Datas dataV2,
                                Deltas deltas) {
-        final Configuration configuration = new Configuration();
+        final Configuration configuration = new Configuration(
+                "src/test/resources/v1",
+                "src/test/resources/v2",
+                1,
+                false
+        );
         configuration.setOutput("target");
         final MethodNamesPerClassNames consideredTest = new MethodNamesPerClassNames();
         for (String testMethodFullQualifiedName : deltas.keySet()) {
