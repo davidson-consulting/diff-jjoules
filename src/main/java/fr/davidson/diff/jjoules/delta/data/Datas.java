@@ -24,11 +24,11 @@ public class Datas extends HashMap<String, List<Data>> {
                 LOGGER.info("WARNING! Missing key {} in V2!", key);
                 continue;
             }
-            final List<Double> sortedValuesV1 = this.get(key).stream().map(data -> data.instructions).sorted().collect(Collectors.toList());
+            final List<Double> sortedValuesV1 = this.get(key).stream().map(data -> data.cycles).sorted().collect(Collectors.toList());
             isEmptyIntersectionPerTestMethodName.put(key,
                     that.get(key)
                             .stream()
-                            .map(data -> data.instructions)
+                            .map(data -> data.cycles)
                             .noneMatch(value ->
                                     sortedValuesV1.get(0) < value && value < sortedValuesV1.get(sortedValuesV1.size() - 1)
                             )
