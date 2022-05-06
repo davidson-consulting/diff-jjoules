@@ -32,24 +32,24 @@ public class ComputationTest {
         d2.put("key", new ArrayList<>());
 
         d2.get("key").add(new Data(10, 10, 10, 10, 10, 10, 10, 10));
-        System.out.println(d1.isEmptyIntersectionPerTestMethodName(d2));
+        assertFalse(d1.isEmptyIntersectionPerTestMethodName(d2).get("key"));
 
         d2.get("key").clear();
         d2.get("key").add(new Data(-1, -1, -1, -1, -1, -1, -1, -1));
-        System.out.println(d1.isEmptyIntersectionPerTestMethodName(d2));
+        assertTrue(d1.isEmptyIntersectionPerTestMethodName(d2).get("key"));
 
         d2.get("key").clear();
         d2.get("key").add(new Data(10, 10, 10, 10, 10, 10, 10, 10));
         d2.get("key").add(new Data(-1, -1, -1, -1, -1, -1, -1, -1));
-        System.out.println(d1.isEmptyIntersectionPerTestMethodName(d2));
+        assertFalse(d1.isEmptyIntersectionPerTestMethodName(d2).get("key"));
     }
 
     @Test
     void testIsEmptyIntersectionPerTestMethodName() {
-        final Datas datas1 = JSONUtils.read(DATA_V_1_JSON, Datas.class);
-        final Datas datas2 = JSONUtils.read(DATA_V_2_JSON, Datas.class);
+        final Datas datas1 = JSONUtils.read("src/test/resources/json/gson_data_v1.json", Datas.class);
+        final Datas datas2 = JSONUtils.read("src/test/resources/json/gson_data_v1.json", Datas.class);
         final Map<String, Boolean> emptyIntersectionPerTestMethodName = datas1.isEmptyIntersectionPerTestMethodName(datas2);
-        assertTrue(emptyIntersectionPerTestMethodName.get("fr.davidson.diff_jjoules_demo.InternalListTest#testCount"));
+        assertEquals(0, emptyIntersectionPerTestMethodName.keySet().stream().filter(emptyIntersectionPerTestMethodName::get).count());
     }
 
     @Test

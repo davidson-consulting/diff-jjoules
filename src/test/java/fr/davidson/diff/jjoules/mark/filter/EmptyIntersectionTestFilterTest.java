@@ -21,6 +21,6 @@ public class EmptyIntersectionTestFilterTest extends AbstractTestFilterTest {
     @Test
     void test() {
         final MethodNamesPerClassNames methodNamesPerClassNames = this.runFilter();
-        assertEquals(7, methodNamesPerClassNames.size());
+        assertEquals(8, methodNamesPerClassNames.size());
     }
 }
