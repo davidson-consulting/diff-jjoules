@@ -5,6 +5,8 @@ import fr.davidson.diff.jjoules.delta.DeltaStep;
 import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
+import fr.davidson.diff.jjoules.mark.filters.TestFilter;
+import fr.davidson.diff.jjoules.mark.filters.TestFilterEnum;
 import fr.davidson.diff.jjoules.mark.strategies.MarkStrategyEnum;
 import fr.davidson.diff.jjoules.mark.strategies.original.OriginalStrategy;
 import fr.davidson.diff.jjoules.mark.strategies.original.computation.ExecsLines;
@@ -91,12 +93,29 @@ public class Configuration {
     private ReportEnum reportEnum;
 
     @CommandLine.Option(
+            names = "--test-filter-type",
+            defaultValue = "ALL",
+            description = "Specify the test filter to use for marking." +
+                    "Valid values: ${COMPLETION-CANDIDATES}" +
+                    " Default value: ${DEFAULT-VALUE}"
+    )
+    private TestFilterEnum testFilterEnum;
+
+    @CommandLine.Option(
             names = "--measure",
             defaultValue = "false",
             description = "Enable the energy consumption measurements of Diff-JJoules" +
                     " Default value: ${DEFAULT-VALUE}"
     )
     private boolean measureEnergyConsumption;
+
+    @CommandLine.Option(
+            names = "--cohen-s-d",
+            defaultValue = "0.8",
+            description = "Specify the threshold of the Cohen's D" +
+                    " Default value: ${DEFAULT-VALUE}"
+    )
+    private double cohensD;
 
     private String diff;
 
@@ -150,6 +169,7 @@ public class Configuration {
                 shouldMark,
                 shouldMark,
                 ReportEnum.NONE,
+                TestFilterEnum.ALL,
                 WrapperEnum.MAVEN,
                 false
         );
@@ -166,9 +186,11 @@ public class Configuration {
                          boolean shouldMark,
                          boolean shouldReport,
                          ReportEnum reportEnum,
+                         TestFilterEnum testFilterEnum,
                          WrapperEnum wrapperEnum,
                          boolean measureEnergyConsumption
     ) {
+        this.testFilterEnum = testFilterEnum;
         this.shouldSuspect = shouldSuspect;
         this.shouldMark = shouldMark;
         this.shouldReport = shouldReport;
@@ -221,6 +243,14 @@ public class Configuration {
         this.junit4 = !classpathV1AsString.contains("junit-jupiter-engine-5") && (classpathV1AsString.contains("junit-4") || classpathV1AsString.contains("junit-3"));
     }
 
+    public double getCohensD() {
+        return cohensD;
+    }
+
+    public void setCohensD(double cohensD) {
+        this.cohensD = cohensD;
+    }
+
     public String getPathToFirstVersion() {
         return pathToFirstVersion;
     }
@@ -239,6 +269,10 @@ public class Configuration {
 
     public void setIterations(int iterations) {
         this.iterations = iterations;
+    }
+
+    public void setOutput(String output) {
+        this.output = output;
     }
 
     public String getOutput() {
@@ -269,6 +303,10 @@ public class Configuration {
         return pathToReport;
     }
 
+    public void setMarkStrategyEnum(MarkStrategyEnum markStrategyEnum) {
+        this.markStrategyEnum = markStrategyEnum;
+    }
+
     public MarkStrategyEnum getMarkStrategyEnum() {
         return this.markStrategyEnum;
     }
@@ -279,6 +317,14 @@ public class Configuration {
 
     public String getDiff() {
         return diff;
+    }
+
+    public TestFilterEnum getTestFilterEnum() {
+        return testFilterEnum;
+    }
+
+    public void setTestFilterEnum(TestFilterEnum testFilterEnum) {
+        this.testFilterEnum = testFilterEnum;
     }
 
     public void setReportEnum(ReportEnum reportEnum) {
@@ -393,7 +439,7 @@ public class Configuration {
     public MethodNamesPerClassNames getConsideredTestsNames() {
         if (this.consideredTestsNames == null) {
             try {
-                this.consideredTestsNames = JSONUtils.read(OriginalStrategy.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME, MethodNamesPerClassNames.class);
+                this.consideredTestsNames = JSONUtils.read(TestFilter.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME, MethodNamesPerClassNames.class);
             } catch (Exception e) {
                 e.printStackTrace();
                 return new MethodNamesPerClassNames();

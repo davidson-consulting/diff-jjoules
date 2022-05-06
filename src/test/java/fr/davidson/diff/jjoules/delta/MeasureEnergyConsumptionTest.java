@@ -3,6 +3,7 @@ package fr.davidson.diff.jjoules.delta;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.instrumentation.InstrumentationProcessor;
+import fr.davidson.diff.jjoules.mark.filters.TestFilterEnum;
 import fr.davidson.diff.jjoules.report.ReportEnum;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
@@ -53,7 +54,8 @@ public class MeasureEnergyConsumptionTest {
                         "",
                         "",
                         "",
-                        true, true, true, ReportEnum.NONE, WrapperEnum.MAVEN,
+                        true, true, true,
+                        ReportEnum.NONE, TestFilterEnum.ALL, WrapperEnum.MAVEN,
                         false
                 ),
                 dataV1,

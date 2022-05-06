@@ -3,6 +3,7 @@ package fr.davidson.diff.jjoules.mark.strategies;
 import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
+import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 
 /**
  * @author Benjamin DANGLOT
@@ -11,6 +12,10 @@ import fr.davidson.diff.jjoules.delta.data.Deltas;
  */
 public interface MarkStrategy {
 
-    public void applyStrategy(Configuration configuration, Datas dataV1, Datas dataV2, Deltas deltaPerTestMethodName);
+    public void applyStrategy(Configuration configuration,
+                              Datas dataV1,
+                              Datas dataV2,
+                              Deltas deltaPerTestMethodName,
+                              MethodNamesPerClassNames consideredTest);
 
 }
