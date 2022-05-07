@@ -34,16 +34,19 @@ public class MarkStep extends DiffJJoulesStep {
         final MethodNamesPerClassNames consideredTest = this.configuration.getTestFilterEnum().get().filter(
                 this.configuration, dataV1, dataV2, deltas
         );
-        final boolean decision = this.configuration.getMarkStrategyEnum().getStrategy().applyStrategy(
-                this.configuration,
-                dataV1,
-                dataV2,
-                deltas,
-                consideredTest
-        );
+        final boolean decision = this.configuration
+                .getMarkStrategyEnum()
+                .getStrategy()
+                .applyStrategy(
+                        this.configuration,
+                        dataV1,
+                        dataV2,
+                        deltas,
+                        consideredTest
+                );
         final String decisionAsString = decision ? "pass" : "break";
         LOGGER.info("Decision: {}", decisionAsString);
-        try (FileWriter writer = new FileWriter(this.configuration.getOutput() +  "/decision")) {
+        try (FileWriter writer = new FileWriter(this.configuration.getOutput() + "/decision")) {
             writer.write(decisionAsString);
         } catch (Exception e) {
             throw new RuntimeException(e);

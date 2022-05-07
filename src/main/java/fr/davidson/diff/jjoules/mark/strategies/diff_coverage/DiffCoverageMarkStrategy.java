@@ -14,6 +14,7 @@ import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -123,7 +124,7 @@ public class DiffCoverageMarkStrategy extends AbstractCoverageMarkStrategy {
     }
 
     private int matchDiffAndCoverage(
-            HashMap<String, Long> nbDiffLinePerTestName,
+            Map<String, Long> nbDiffLinePerTestName,
             NewCoverage coverage,
             String fullPathname,
             String changes,

@@ -9,6 +9,9 @@ import fr.davidson.diff.jjoules.selection.NewCoverage;
 import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Benjamin DANGLOT
  * benjamin.danglot@davidson.fr
@@ -28,13 +31,18 @@ public class CodeCoverageMarkStrategy extends AbstractCoverageMarkStrategy {
         final NewCoverage coverageV2 = this.getCoverage(configuration.getPathToSecondVersion());
         final int nbCoveredLineV2 = this.nbCoveredLine;
         Data deltaOmega = new Data();
+        final Map<String, Double> weightedDeltaPerTestName = new HashMap<>();
         for (String testClassName : consideredTest.keySet()) {
             for (String testMethodName : consideredTest.get(testClassName)) {
                 final FullQualifiedName fullQualifiedName = new FullQualifiedName(testClassName, testMethodName);
                 for (String coveredSrcClassName : coverageV1.get(testClassName).get(testMethodName).keySet()) {
-                    final double weightV1 = ((double) coverageV1.get(testClassName).get(testMethodName).get(coveredSrcClassName).size()) / ((double) nbCoveredLineV1);
-                    final double weightV2 = ((double) coverageV2.get(testClassName).get(testMethodName).get(coveredSrcClassName).size()) / ((double) nbCoveredLineV2);
-                    deltaOmega = deltaOmega.add(deltaPerTestMethodName.get(fullQualifiedName.toString()), Math.max(weightV1, weightV2));
+                    double weight = ((double) coverageV1.get(testClassName).get(testMethodName).get(coveredSrcClassName).size()) / ((double) nbCoveredLineV1);
+                    if (coverageV2.containsKey(testClassName) &&
+                            coverageV2.get(testClassName).containsKey(testMethodName) &&
+                            coverageV2.get(testClassName).get(testMethodName).containsKey(coveredSrcClassName)) {
+                        weight = Math.max(weight, (double) coverageV2.get(testClassName).get(testMethodName).get(coveredSrcClassName).size() / ((double) nbCoveredLineV2));
+                    }
+                    deltaOmega = deltaOmega.add(deltaPerTestMethodName.get(fullQualifiedName.toString()), weight);
                 }
             }
         }
