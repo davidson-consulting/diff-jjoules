@@ -109,7 +109,8 @@ Usage: fr.davidson.diff.jjoules.Main [-hV] [--junit4] [--mark] [--measure] [--re
       --junit4            Enable junit4 tests
       --mark              Enable mark step.
       --mark-strategy=<markStrategyEnum>
-                          Specify the mark strategy to be used.Valid values: ORIGINAL Default value: ORIGINAL
+                          Specify the mark strategy to be used.Valid values: STRICT, CODE_COVERAGE, DIFF_COVERAGE,
+                            ORIGINAL Default value: ORIGINAL
       --measure           Enable the energy consumption measurements of Diff-JJoules Default value: false
   -o, --output=<output>   Path to the output folder.
       --path-report-file=<pathToReport>
@@ -132,5 +133,5 @@ Usage: fr.davidson.diff.jjoules.Main [-hV] [--junit4] [--mark] [--measure] [--re
                             STUDENTS_T_TEST Default value: ALL
   -V, --version           Print version information and exit.
       --wrapper=<wrapperEnum>
-                          Specify the wrapper to be used.Valid values: MAVEN, PROPERTIES Default value: MAVENg
+                          Specify the wrapper to be used.Valid values: MAVEN, PROPERTIES Default value: MAVEN
 ```
