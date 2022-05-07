@@ -6,7 +6,9 @@ import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
+import fr.davidson.diff.jjoules.util.wrapper.WrapperEnum;
 
+import java.io.File;
 import java.util.HashSet;
 
 /**
@@ -29,12 +31,13 @@ public abstract class AbstractMarkStrategyTest {
                                Datas dataV2,
                                Deltas deltas) {
         final Configuration configuration = new Configuration(
-                "src/test/resources/v1",
-                "src/test/resources/v2",
+                new File("src/test/resources/v1").getAbsolutePath(),
+                new File("src/test/resources/v2").getAbsolutePath(),
                 1,
                 false
         );
         configuration.setOutput("target");
+        configuration.setWrapperEnum(WrapperEnum.MAVEN);
         final MethodNamesPerClassNames consideredTest = new MethodNamesPerClassNames();
         for (String testMethodFullQualifiedName : deltas.keySet()) {
             final FullQualifiedName fullQualifiedName = FullQualifiedName.fromString(testMethodFullQualifiedName);
