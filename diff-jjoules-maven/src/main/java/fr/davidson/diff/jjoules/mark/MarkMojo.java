@@ -4,12 +4,11 @@ import fr.davidson.diff.jjoules.Configuration;
 import fr.davidson.diff.jjoules.DiffJJoulesMojo;
 import fr.davidson.diff.jjoules.DiffJJoulesStep;
 import fr.davidson.diff.jjoules.delta.DeltaStep;
+import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
-import fr.davidson.diff.jjoules.mark.filters.TestFilter;
 import fr.davidson.diff.jjoules.mark.filters.TestFilterEnum;
 import fr.davidson.diff.jjoules.mark.strategies.MarkStrategyEnum;
 import fr.davidson.diff.jjoules.util.JSONUtils;
-import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
@@ -22,10 +21,17 @@ import org.apache.maven.plugins.annotations.Parameter;
 public class MarkMojo extends DiffJJoulesMojo {
 
     /**
-     * Specify the path to json file containing the considered test method names
+     * Specify the path to json file containing the data of V1
      */
-    @Parameter(property = "path-considered-test-method", required = false, defaultValue = TestFilter.PATH_TO_JSON_CONSIDERED_TEST_METHOD_NAME)
-    private String pathConsideredTestMethod;
+    @Parameter(property = "path-data-v1", required = false, defaultValue = DeltaStep.PATH_TO_JSON_DATA_V1)
+    private String pathDataV1;
+
+    /**
+     * Specify the path to json file containing the data of V2
+     */
+    @Parameter(property = "path-data-v2", required = false, defaultValue = DeltaStep.PATH_TO_JSON_DATA_V2)
+    private String pathDataV2;
+
 
     /**
      * Specify the path to json file containing the deltas
@@ -42,7 +48,7 @@ public class MarkMojo extends DiffJJoulesMojo {
     /**
      *
      */
-    @Parameter(property = "mark-strategy", required = false, defaultValue = "ORIGINAL")
+    @Parameter(property = "mark-strategy", required = false, defaultValue = "STRICT")
     private MarkStrategyEnum markStrategyEnum;
 
     /**
@@ -54,7 +60,8 @@ public class MarkMojo extends DiffJJoulesMojo {
     @Override
     protected Configuration getConfiguration() {
         final Configuration configuration = super.getConfiguration();
-        configuration.setConsideredTestsNames(JSONUtils.read(this.pathConsideredTestMethod, MethodNamesPerClassNames.class));
+        configuration.setDataV1(JSONUtils.read(this.pathDataV1, Datas.class));
+        configuration.setDataV2(JSONUtils.read(this.pathDataV2, Datas.class));
         configuration.setDeltas(JSONUtils.read(this.pathDeltas, Deltas.class));
         configuration.setTestFilterEnum(this.testFilterEnum);
         configuration.setCohensD(this.cohensD);
