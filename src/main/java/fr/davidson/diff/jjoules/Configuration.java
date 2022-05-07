@@ -315,6 +315,10 @@ public class Configuration {
         return wrapperEnum;
     }
 
+    public void setWrapperEnum(WrapperEnum wrapperEnum) {
+        this.wrapperEnum = wrapperEnum;
+    }
+
     public String getDiff() {
         return diff;
     }

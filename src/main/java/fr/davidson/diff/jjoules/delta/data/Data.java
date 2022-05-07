@@ -23,6 +23,10 @@ public class Data {
 
     public final double branchMisses;
 
+    public Data() {
+        this(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
+    }
+
     public Data(
             double energy,
             double instructions,
@@ -72,6 +76,23 @@ public class Data {
 
     public double getBranchMisses() {
         return branchMisses;
+    }
+
+    public Data add(Data that) {
+        return this.add(that, 1.0D);
+    }
+
+    public Data add(Data that, double factor) {
+        return new Data(
+                this.energy + (that.energy * factor),
+                this.instructions + (that.instructions * factor),
+                this.durations + (that.durations * factor),
+                this.cycles + (that.cycles * factor),
+                this.caches + (that.caches * factor),
+                this.cacheMisses + (that.cacheMisses * factor),
+                this.branches + (that.branches * factor),
+                this.branchMisses + (that.branchMisses * factor)
+        );
     }
 
     @Override

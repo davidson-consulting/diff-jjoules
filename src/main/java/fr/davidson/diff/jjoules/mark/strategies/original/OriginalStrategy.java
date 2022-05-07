@@ -63,7 +63,7 @@ public class OriginalStrategy implements MarkStrategy {
     }
 
     @Override
-    public void applyStrategy(Configuration configuration, Datas dataV1, Datas dataV2, Deltas deltas, MethodNamesPerClassNames consideredTest) {
+    public boolean applyStrategy(Configuration configuration, Datas dataV1, Datas dataV2, Deltas deltas, MethodNamesPerClassNames consideredTest) {
         filterTestMethods(configuration, dataV1, dataV2, deltas);
         final MethodNamesPerClassNames consideredTestsNames = configuration.getConsideredTestsNames();
         final Map<String, Delta> consideredDeltas = new HashMap<>();
@@ -136,5 +136,6 @@ public class OriginalStrategy implements MarkStrategy {
         );
         JSONUtils.write(configuration.getOutput() + Constants.FILE_SEPARATOR + PATH_TO_JSON_DELTA_OMEGA, deltaOmega);
         configuration.setDeltaOmega(deltaOmega);
+        return deltaOmega.cycles <= 0;
     }
 }

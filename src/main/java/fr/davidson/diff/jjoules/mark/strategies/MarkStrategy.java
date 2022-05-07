@@ -12,7 +12,7 @@ import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
  */
 public interface MarkStrategy {
 
-    public void applyStrategy(Configuration configuration,
+    public boolean applyStrategy(Configuration configuration,
                               Datas dataV1,
                               Datas dataV2,
                               Deltas deltaPerTestMethodName,
