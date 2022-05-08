@@ -11,6 +11,7 @@ import fr.davidson.diff.jjoules.mark.strategies.MarkStrategyEnum;
 import fr.davidson.diff.jjoules.mark.strategies.original.OriginalStrategy;
 import fr.davidson.diff.jjoules.mark.strategies.original.computation.ExecsLines;
 import fr.davidson.diff.jjoules.report.ReportEnum;
+import fr.davidson.diff.jjoules.selection.NewCoverage;
 import fr.davidson.diff.jjoules.selection.SelectionStep;
 import fr.davidson.diff.jjoules.suspect.SuspectStep;
 import fr.davidson.diff.jjoules.util.*;
@@ -517,6 +518,26 @@ public class Configuration {
 
     public void setScorePerLineV2(Map<String, Double> scorePerLineV2) {
         this.scorePerLineV2 = scorePerLineV2;
+    }
+
+    private NewCoverage coverageV1 = new NewCoverage();
+
+    private NewCoverage coverageV2 = new NewCoverage();
+
+    public NewCoverage getCoverageV1() {
+        return coverageV1;
+    }
+
+    public void setCoverageV1(NewCoverage coverageV1) {
+        this.coverageV1 = coverageV1;
+    }
+
+    public NewCoverage getCoverageV2() {
+        return coverageV2;
+    }
+
+    public void setCoverageV2(NewCoverage coverageV2) {
+        this.coverageV2 = coverageV2;
     }
 
     @Override

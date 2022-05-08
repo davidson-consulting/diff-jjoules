@@ -5,12 +5,8 @@ import fr.davidson.diff.jjoules.delta.data.Data;
 import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.mark.strategies.AbstractCoverageMarkStrategy;
-import fr.davidson.diff.jjoules.selection.NewCoverage;
 import fr.davidson.diff.jjoules.util.FullQualifiedName;
 import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author Benjamin DANGLOT
@@ -26,12 +22,10 @@ public class CodeCoverageMarkStrategy extends AbstractCoverageMarkStrategy {
             Datas dataV2,
             Deltas deltaPerTestMethodName,
             MethodNamesPerClassNames consideredTest) {
-        final NewCoverage coverageV1 = this.getCoverage(configuration.getPathToFirstVersion());
-        final int nbCoveredLineV1 = this.nbCoveredLine;
-        final NewCoverage coverageV2 = this.getCoverage(configuration.getPathToSecondVersion());
-        final int nbCoveredLineV2 = this.nbCoveredLine;
+        this.initCoverages(configuration);
+        final int nbCoveredLineV1 = coverageV1.getNbLineCovered();
+        final int nbCoveredLineV2 = coverageV2.getNbLineCovered();
         Data deltaOmega = new Data();
-        final Map<String, Double> weightedDeltaPerTestName = new HashMap<>();
         for (String testClassName : consideredTest.keySet()) {
             for (String testMethodName : consideredTest.get(testClassName)) {
                 final FullQualifiedName fullQualifiedName = new FullQualifiedName(testClassName, testMethodName);

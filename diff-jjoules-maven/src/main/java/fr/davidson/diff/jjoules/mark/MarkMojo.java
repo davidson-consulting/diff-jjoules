@@ -8,6 +8,7 @@ import fr.davidson.diff.jjoules.delta.data.Datas;
 import fr.davidson.diff.jjoules.delta.data.Deltas;
 import fr.davidson.diff.jjoules.mark.filters.TestFilterEnum;
 import fr.davidson.diff.jjoules.mark.strategies.MarkStrategyEnum;
+import fr.davidson.diff.jjoules.selection.NewCoverage;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
@@ -57,6 +58,18 @@ public class MarkMojo extends DiffJJoulesMojo {
     @Parameter(property = "cohen-s-d", required = false, defaultValue = "0.8")
     private double cohensD;
 
+    /**
+     *
+     */
+    @Parameter(property = "path-coverage-v1", required = false, defaultValue = "")
+    private String pathCoverageV1 = "";
+
+    /**
+     *
+     */
+    @Parameter(property = "path-coverage-v2", required = false, defaultValue = "")
+    private String pathCoverageV2 = "";
+
     @Override
     protected Configuration getConfiguration() {
         final Configuration configuration = super.getConfiguration();
@@ -66,6 +79,12 @@ public class MarkMojo extends DiffJJoulesMojo {
         configuration.setTestFilterEnum(this.testFilterEnum);
         configuration.setCohensD(this.cohensD);
         configuration.setMarkStrategyEnum(this.markStrategyEnum);
+        if (!this.pathCoverageV1.isEmpty() && !this.pathCoverageV2.isEmpty()) {
+            configuration.setCoverageV1(JSONUtils.read(this.pathCoverageV1, NewCoverage.class));
+            getLog().info("Coverage V1 loaded ! " + this.pathCoverageV1 + " " + configuration.getCoverageV1().isEmpty());
+            configuration.setCoverageV2(JSONUtils.read(this.pathCoverageV2, NewCoverage.class));
+            getLog().info("Coverage V2 loaded ! " + this.pathCoverageV2 + " " + configuration.getCoverageV2().isEmpty());
+        }
         return configuration;
     }
 
