@@ -14,6 +14,7 @@ import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -86,8 +87,7 @@ public class DiffCoverageMarkStrategy extends AbstractCoverageMarkStrategy {
             Datas dataV2,
             Deltas deltaPerTestMethodName,
             MethodNamesPerClassNames consideredTest) {
-        final NewCoverage coverageV1 = this.getCoverage(configuration.getPathToFirstVersion());
-        final NewCoverage coverageV2 = this.getCoverage(configuration.getPathToSecondVersion());
+        this.initCoverages(configuration);
         Data deltaOmega = new Data();
         final String diff = this.computeDiff(configuration.getPathToFirstVersion() + "/src/main/java/", configuration.getPathToSecondVersion() + "/src/main/java/");
         final String[] diffLines = diff.split(Constants.NEW_LINE);
@@ -105,7 +105,8 @@ public class DiffCoverageMarkStrategy extends AbstractCoverageMarkStrategy {
                 } else if (changes.contains("d")) {
                     nbDiffLine += matchDiffAndCoverage(nbDiffLinePerTestName, coverageV1, fullPathnameV1, changes, "d", 0);
                 } else if (changes.contains("c")) {
-                    // TODO
+                    nbDiffLine += matchDiffAndCoverage(nbDiffLinePerTestName, coverageV1, fullPathnameV1, changes, "c", 0);
+                    nbDiffLine += matchDiffAndCoverage(nbDiffLinePerTestName, coverageV2, fullPathnameV2, changes, "c", 0);
                 } else {
                     throw new RuntimeException("Action changes is not recognized! " + changes);
                 }
@@ -116,23 +117,23 @@ public class DiffCoverageMarkStrategy extends AbstractCoverageMarkStrategy {
                 final FullQualifiedName fullQualifiedName = new FullQualifiedName(testClassName, testMethodName);
                 final Delta delta = deltaPerTestMethodName.get(fullQualifiedName.toString());
                 final Long nbDiffLineCovered = nbDiffLinePerTestName.get(fullQualifiedName.toString());
-                deltaOmega.add(delta, ((double) nbDiffLineCovered / nbDiffLine));
+                deltaOmega.add(delta, ((double) (nbDiffLineCovered == null ? 0.0D : nbDiffLineCovered) / nbDiffLine));
             }
         }
         return deltaOmega.cycles <= 0;
     }
 
     private int matchDiffAndCoverage(
-            HashMap<String, Long> nbDiffLinePerTestName,
+            Map<String, Long> nbDiffLinePerTestName,
             NewCoverage coverage,
             String fullPathname,
             String changes,
             String action, int index) {
-        final String addedLines = changes.split(action)[index];
-        final String[] splittedAddedLines = addedLines.split(",");
-        final int startingLine = Integer.parseInt(splittedAddedLines[0]);
-        final int endingLine = Integer.parseInt(splittedAddedLines[1]);
-        final int nbDiffLine = endingLine - startingLine;
+        final String changedLines = changes.split(action)[index];
+        final String[] splittedChangedLines = changedLines.split(",");
+        final int startingLine = Integer.parseInt(splittedChangedLines[0]);
+        final int endingLine = splittedChangedLines.length > 1 ? Integer.parseInt(splittedChangedLines[1]) : startingLine;
+        final int nbDiffLine = endingLine == startingLine ? 1 : endingLine - startingLine;
         for (String testClassName : coverage.keySet()) {
             for (String testName : coverage.get(testClassName).keySet()) {
                 final FullQualifiedName fullQualifiedName = new FullQualifiedName(testClassName, testName);
