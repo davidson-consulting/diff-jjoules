@@ -16,6 +16,12 @@ public enum MarkStrategyEnum {
             return new StrictMarkStrategy();
         }
     },
+    AGGREGATE() {
+        @Override
+        public MarkStrategy getStrategy() {
+            return new AggregateMarkStrategy();
+        }
+    },
     CODE_COVERAGE() {
         @Override
         public MarkStrategy getStrategy() {
