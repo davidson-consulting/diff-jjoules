@@ -9,7 +9,6 @@ import fr.davidson.diff.jjoules.mark.strategies.AbstractCoverageMarkStrategy;
 import fr.davidson.diff.jjoules.selection.NewCoverage;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.FullQualifiedName;
-import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 
 import java.io.IOException;
@@ -20,7 +19,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
