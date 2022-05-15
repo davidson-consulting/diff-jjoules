@@ -9,6 +9,7 @@ import fr.davidson.diff.jjoules.mark.strategies.AbstractCoverageMarkStrategy;
 import fr.davidson.diff.jjoules.selection.NewCoverage;
 import fr.davidson.diff.jjoules.util.Constants;
 import fr.davidson.diff.jjoules.util.FullQualifiedName;
+import fr.davidson.diff.jjoules.util.JSONUtils;
 import fr.davidson.diff.jjoules.util.MethodNamesPerClassNames;
 
 import java.io.IOException;
@@ -19,6 +20,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author Benjamin DANGLOT
@@ -34,7 +37,7 @@ public class DiffCoverageMarkStrategy extends AbstractCoverageMarkStrategy {
                 pathSrcV1,
                 pathSrcV2
         });
-        System.out.println(command);
+        System.out.println("Running: " + command);
         ExecutorService executor = Executors.newSingleThreadExecutor();
         final Process process;
         try {
@@ -93,23 +96,30 @@ public class DiffCoverageMarkStrategy extends AbstractCoverageMarkStrategy {
         final String[] diffLines = diff.split(Constants.NEW_LINE);
         final HashMap<String, Long> nbDiffLinePerTestName = new HashMap<>();
         int nbDiffLine = 0;
+        final Pattern p = Pattern.compile("\\d+(,\\d+)?[adc]\\d+(,\\d+)?");
         for (int i = 0; i < diffLines.length; i++) {
             final String diffLine = diffLines[i];
-            if (diffLine.startsWith("diff -r")) {
+            if (diffLine.startsWith("diff -r") && diffLine.endsWith(".java")) {
                 final String[] splitLine = diffLine.split(" ");
                 final String fullPathnameV1 = splitLine[2];
                 final String fullPathnameV2 = splitLine[3];
-                final String changes = diffLines[i + 1];
-                if (changes.contains("a")) {
-                    nbDiffLine += matchDiffAndCoverage(nbDiffLinePerTestName, coverageV2, fullPathnameV2, changes, "a", 1);
-                } else if (changes.contains("d")) {
-                    nbDiffLine += matchDiffAndCoverage(nbDiffLinePerTestName, coverageV1, fullPathnameV1, changes, "d", 0);
-                } else if (changes.contains("c")) {
-                    nbDiffLine += matchDiffAndCoverage(nbDiffLinePerTestName, coverageV1, fullPathnameV1, changes, "c", 0);
-                    nbDiffLine += matchDiffAndCoverage(nbDiffLinePerTestName, coverageV2, fullPathnameV2, changes, "c", 0);
-                } else {
-                    throw new RuntimeException("Action changes is not recognized! " + changes);
-                }
+                String current;
+                do {
+                    current = diffLines[++i];
+                    if (p.matcher(current).matches()) {
+                        if (current.contains("a")) {
+                            nbDiffLine += matchDiffAndCoverage(nbDiffLinePerTestName, coverageV2, fullPathnameV2, current, "a", 1);
+                        } else if (current.contains("d")) {
+                            nbDiffLine += matchDiffAndCoverage(nbDiffLinePerTestName, coverageV1, fullPathnameV1, current, "d", 0);
+                        } else if (current.contains("c")) {
+                            int currentNbDiffLine = matchDiffAndCoverage(nbDiffLinePerTestName, coverageV1, fullPathnameV1, current, "c", 0);
+                            currentNbDiffLine += matchDiffAndCoverage(nbDiffLinePerTestName, coverageV2, fullPathnameV2, current, "c", 1);
+                            nbDiffLine += currentNbDiffLine > 1 ? currentNbDiffLine / 2 : currentNbDiffLine;
+                        } else {
+                            throw new RuntimeException("Action changes is not recognized! " + current);
+                        }
+                    }
+                } while (!current.startsWith("diff -r") && i+1 < diffLines.length);
             }
         }
         for (String testClassName : consideredTest.keySet()) {
@@ -117,7 +127,8 @@ public class DiffCoverageMarkStrategy extends AbstractCoverageMarkStrategy {
                 final FullQualifiedName fullQualifiedName = new FullQualifiedName(testClassName, testMethodName);
                 final Delta delta = deltaPerTestMethodName.get(fullQualifiedName.toString());
                 final Long nbDiffLineCovered = nbDiffLinePerTestName.get(fullQualifiedName.toString());
-                deltaOmega.add(delta, ((double) (nbDiffLineCovered == null ? 0.0D : nbDiffLineCovered) / nbDiffLine));
+                final double factor = ((double) (nbDiffLineCovered == null ? 0.0D : (double) nbDiffLineCovered) / (double) nbDiffLine);
+                deltaOmega = deltaOmega.add(delta, factor);
             }
         }
         return deltaOmega.cycles <= 0;
@@ -128,7 +139,10 @@ public class DiffCoverageMarkStrategy extends AbstractCoverageMarkStrategy {
             NewCoverage coverage,
             String fullPathname,
             String changes,
-            String action, int index) {
+            String action,
+            int index) {
+        // 176c176
+        // 224,225c224,225
         final String changedLines = changes.split(action)[index];
         final String[] splittedChangedLines = changedLines.split(",");
         final int startingLine = Integer.parseInt(splittedChangedLines[0]);
