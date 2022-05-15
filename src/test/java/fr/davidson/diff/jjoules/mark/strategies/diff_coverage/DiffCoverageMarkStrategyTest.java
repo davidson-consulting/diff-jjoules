@@ -7,6 +7,7 @@ import fr.davidson.diff.jjoules.mark.strategies.MarkStrategyEnum;
 import fr.davidson.diff.jjoules.util.JSONUtils;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -22,7 +23,7 @@ public class DiffCoverageMarkStrategyTest extends AbstractMarkStrategyTest {
 
     @Test
     void testEnergyRegression() {
-        assertTrue(
+        assertFalse(
                 this.runStrategy(
                         JSONUtils.read("src/test/resources/json/data_v1.json", Datas.class),
                         JSONUtils.read("src/test/resources/json/data_v2.json", Datas.class),

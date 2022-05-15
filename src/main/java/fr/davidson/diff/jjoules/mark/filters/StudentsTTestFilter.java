@@ -28,9 +28,10 @@ public class StudentsTTestFilter extends AbstractTestFilter {
             if (datasV2.containsKey(testNameV1)) {
                 final List<Data> dataV1 = datasV1.get(testNameV1);
                 final List<Data> dataV2 = datasV2.get(testNameV1);
-                final double[] cyclesV1 = new double[dataV1.size()];
-                final double[] cyclesV2 = new double[dataV2.size()];
-                for (int i = 0; i < dataV1.size(); i++) {
+                final int nbMaxElement = Math.min(dataV1.size(), dataV2.size());
+                final double[] cyclesV1 = new double[nbMaxElement];
+                final double[] cyclesV2 = new double[nbMaxElement];
+                for (int i = 0; i < nbMaxElement; i++) {
                     cyclesV1[i] = dataV1.get(i).cycles;
                     cyclesV2[i] = dataV2.get(i).cycles;
                 }

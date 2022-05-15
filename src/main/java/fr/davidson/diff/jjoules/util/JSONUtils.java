@@ -22,6 +22,7 @@ public class JSONUtils {
     }
 
     public static void write(final String path, Object toBeWritten, boolean append) {
+        System.out.println("Writing " + path);
         final Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try (final FileWriter fileWriter = new FileWriter(path, append)) {
             fileWriter.write(gson.toJson(toBeWritten));
