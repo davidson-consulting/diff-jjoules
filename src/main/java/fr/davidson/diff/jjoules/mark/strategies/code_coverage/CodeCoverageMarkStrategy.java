@@ -29,6 +29,10 @@ public class CodeCoverageMarkStrategy extends AbstractCoverageMarkStrategy {
         for (String testClassName : consideredTest.keySet()) {
             for (String testMethodName : consideredTest.get(testClassName)) {
                 final FullQualifiedName fullQualifiedName = new FullQualifiedName(testClassName, testMethodName);
+                if (!coverageV1.containsKey(testClassName) ||
+                        !coverageV1.get(testClassName).containsKey(testMethodName)) {
+                    continue;
+                }
                 for (String coveredSrcClassName : coverageV1.get(testClassName).get(testMethodName).keySet()) {
                     double weight = ((double) coverageV1.get(testClassName).get(testMethodName).get(coveredSrcClassName).size()) / ((double) nbCoveredLineV1);
                     if (coverageV2.containsKey(testClassName) &&
