@@ -19,7 +19,7 @@
         <default.encoding>UTF-8</default.encoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.plugin.version>3.5.4</maven.plugin.version>
+        <maven.plugin.version>3.8.1</maven.plugin.version>
         <maven.plugin.annotations>3.5</maven.plugin.annotations>
     </properties>
 
