@@ -20,14 +20,14 @@ Then, you can install `diff-jjoules`:
 ```sh
 git clone https://github.com/davidson-consulting/diff-jjoules.git
 cd diff-jjoules
-mvn clean install -DskipTest
+mvn clean install -DskipTests
 ```
 
 You should also install the maven plugin, from `diff-jjoules` folder:
 
 ```sh
 cd diff-jjoules-maven
-mvn clean install -DskipTest
+mvn clean install -DskipTests
 ```
 
 ## Usage
